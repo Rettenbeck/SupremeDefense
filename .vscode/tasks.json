@@ -1,0 +1,54 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe Aktive Datei kompilieren",
+            "command": "C:\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-DSFML_STATIC",
+                "${workspaceFolder}/src/main.cpp",
+                "-o",
+                "${workspaceFolder}/bin/main.exe",
+                "-I${workspaceFolder}/src",
+                "-I${workspaceFolder}/include",
+                "-L${workspaceFolder}/lib",
+                "-I${workspaceFolder}/include/SFML",
+                "-I${workspaceFolder}/include/imgui-master",
+                "-I${workspaceFolder}/include/imgui-sfml-master",
+                "${workspaceFolder}/include/imgui-master/imgui.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_draw.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_widgets.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_tables.cpp",
+                "${workspaceFolder}/include/imgui-sfml-master/imgui-SFML.cpp",
+                "-lsfml-graphics-s",
+                "-lsfml-window-s",
+                "-lsfml-system-s",
+                "-lsfml-audio-s",
+                "-lsfml-network-s",
+                // "-Werror",
+                // "-Wall",
+                // "-pedantic",
+                // "-march=native",
+                // "-fopenmp",
+                "-lopengl32",
+                "-lfreetype",
+                "-lgdi32",
+                "-lwinmm",
+                "-lshell32",
+                "-O2"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Vom Debugger generierte Aufgabe."
+        }
+    ],
+    "version": "2.0.0"
+}

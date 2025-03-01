@@ -1,0 +1,42 @@
+
+    auto g = game->getGame();
+
+    // std::cout << "Game: " << g << "\n";
+    // std::cout << "Game Disp: " << g->globalDispatcher << "\n";
+    // std::cout << "Game Layer Disp: " << game->globalDispatcher << "\n";
+    // std::cout << "App Disp: " << app->getGlobalDispatcher() << "\n";
+
+    router->subscribeGlobal<SupDef::UnitDestroyedEvent>([](const SupDef::Events& events) {
+        std::cout << "Batch processed by router from global: " << events.size() << " UnitDestroyedEvents.\n";
+        for (const auto& event : events) {
+            const auto& typedEvent = static_cast<const SupDef::UnitDestroyedEvent&>(*event);
+            std::cout << "  Unit " << typedEvent.unitID << " destroyed.\n";
+        }
+    });
+
+    g->subscribeGlobal<SupDef::UnitDestroyedEvent>([](const SupDef::Events& events) {
+        std::cout << "Batch processed by game from global: " << events.size() << " UnitDestroyedEvents.\n";
+        for (const auto& event : events) {
+            const auto& typedEvent = static_cast<const SupDef::UnitDestroyedEvent&>(*event);
+            std::cout << "  Unit " << typedEvent.unitID << " destroyed.\n";
+        }
+    });
+
+    // Queue events
+    //g->getGlobalDispatcher()->queueEvent<SupDef::UnitDestroyedEvent>(42);
+    //g->getGlobalDispatcher()->queueEvent<SupDef::UnitDestroyedEvent>(43);
+    
+    // Dispatch an immediate event
+    g->getGlobalDispatcher()->dispatch<SupDef::UnitDestroyedEvent>(52);
+    //g->getGlobalDispatcher()->dispatch<SupDef::UnitDestroyedEvent>(53);
+    
+    auto& l = app->getLayers();
+    l.erase(l.begin() + 3);
+
+    // Dispatch an immediate event
+    g->getGlobalDispatcher()->dispatch<SupDef::UnitDestroyedEvent>(62);
+    //g->getGlobalDispatcher()->dispatch<SupDef::UnitDestroyedEvent>(63);
+    
+    // Process queued events at the end of the frame
+    //g->getGlobalDispatcher()->processQueuedEvents();
+    
