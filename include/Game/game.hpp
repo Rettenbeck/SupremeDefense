@@ -4,7 +4,6 @@
 #include <Game/collision_system.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
-// #include <Player/include.hpp>
 
 #pragma once
 
@@ -20,12 +19,12 @@ namespace SupDef {
     
     class Game : public Listener {
         UEntityManager   entityManager   = nullptr;
+        UAssetManager    assetManager    = nullptr;
         UTechManager     techManager     = nullptr;
         UEventDispatcher eventDispatcher = nullptr;
         UTilesChecker    tilesChecker    = nullptr;
         UPathFinder      pathFinder      = nullptr;
         UCollisionSystem collisionSystem = nullptr;
-        URules rules = nullptr;
 
         public:
             Game();
@@ -37,7 +36,7 @@ namespace SupDef {
             void updateWorld(float deltaTime, _EntWorld world);
             void updateMap(float deltaTime, _EntMapTiles map);
 
-            EntityID createEmptyMap();
+            Entity* addMap(AssetID mapAssetID);
 
             void updateTempGoalMass(TilesComponent* tilesComp, _EntPosMovCols& comps);
             void updateTempGoal(TilesComponent* tilesComp, _EntPosMovCol comp);
@@ -51,22 +50,18 @@ namespace SupDef {
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB);
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& list);
             
-            Rules* getRules(Entity* entity);
-            Rules* getRules(EntityID entityID);
-            Asset* getAsset(AssetID id);
-            Asset* getAsset(Entity* entity, AssetID id);
-            Asset* getAsset(EntityID entityID, AssetID assetID);
-            // template <typename T> std::optional<T> getRuleValue(const std::string& key, Entity* entity) const;
-            // template <typename T> std::optional<T> getRuleValue(const std::string& key, EntityID entityID) const;
-            // template <typename T> std::optional<T> getRuleValue(const std::string& key) const;
-
-            //PlayerManager*   getPlayerManager  () { return playerManager  .get(); }
+            Entity* createEntityFromAsset(Entity* asset);
+            Entity* createEntityFromAsset(AssetID assetID);
+            Entity* createEntityFromAsset(AssetID assetID, EntityID parentID);
+            Entity* createEntityFromAsset(AssetID assetID, float x, float y);
+            Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y);
+            
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
+            AssetManager*    getAssetManager   () { return assetManager   .get(); }
             TechManager*     getTechManager    () { return techManager    .get(); }
             TilesChecker*    getTilesChecker   () { return tilesChecker   .get(); }
             PathFinder*      getPathFinder     () { return pathFinder     .get(); }
             CollisionSystem* getCollisionSystem() { return collisionSystem.get(); }
-            Rules* getRules() { return rules.get(); };
             void setGlobalDispatcher(EventDispatcher* globalDispatcher_) { globalDispatcher = globalDispatcher_; }
 
             void to_json    (json& j) const;

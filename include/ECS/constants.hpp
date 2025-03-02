@@ -10,7 +10,16 @@ namespace SupDef {
     using EntityIDs = std::vector<EntityID>;
     using EntityStatus = uint32_t;
 
+    using AssetID = std::string;
+    using AssetIDs = std::vector<AssetID>;
+
+    // using ComponentListEntry = std::pair<std::type_index, Component*>;
+    // using ComponentList = std::vector<ComponentListEntry>;
+
     const EntityID NO_ENTITY = 0;
+    const AssetID NO_ASSET = "/";
+    const std::string NO_NAME = "unknown asset";
+    const std::string NO_DESC = "???";
 
     // Components
     const std::string SC_PARENT                             = "parent"                              ;
@@ -28,12 +37,17 @@ namespace SupDef {
     const std::string SC_COLLISION                          = "collision"                           ;
     const std::string SC_HEALTH                             = "health"                              ;
 
+    // Asset Components
+    const std::string SCA_ASSET                             = "asset"                               ;
+
     // Attributes
     const std::string S_ID                                  = "id"                                  ;
     const std::string S_ENTITIES                            = "entities"                            ;
     const std::string S_COMPONENTS                          = "components"                          ;
     const std::string S_NEXT_ENTITY_ID                      = "next_entity_id"                      ;
+    const std::string S_NAME                                = "name"                                ;
     const std::string S_TYPE                                = "type"                                ;
+    const std::string S_DESCRIPTION                         = "description"                         ;
     const std::string S_PARENT                              = "parent"                              ;
     const std::string S_CHILDREN                            = "children"                            ;
     const std::string S_PLAYER                              = "player"                              ;

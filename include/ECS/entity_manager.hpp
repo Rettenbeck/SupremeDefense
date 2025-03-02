@@ -91,7 +91,8 @@ namespace SupDef {
                 PEntities result;
                 auto children = getChildrenID(entityID);
                 for(auto c : children) {
-                    result.push_back(getEntity(c));
+                    auto entity = getEntity(c);
+                    if (entity) result.push_back(entity);
                 }
                 return result;
             }

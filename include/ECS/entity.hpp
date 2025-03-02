@@ -2,9 +2,9 @@
 
 #pragma once
 
-#ifndef Included_Entity_HPP
+// #ifndef Included_Entity_HPP
 
-#define Included_Entity_HPP
+// #define Included_Entity_HPP
 
 namespace SupDef {
     
@@ -36,6 +36,10 @@ namespace SupDef {
                 auto it = components.find(typeid(T));
                 return (it != components.end()) ? static_cast<T*>(it->second.get()) : nullptr;
             }
+            
+            std::unordered_map<std::type_index, UComponent>& getComponents() {
+                return components;
+            }
 
             template <typename T>
             bool hasComponent() const {
@@ -52,18 +56,26 @@ namespace SupDef {
                 }
             }
         
+            void to_json_skip_assets(json& j) const {
+                j[S_ID] = id;
+                for (const auto& [type, component] : components) {
+                    if (component->isAssetOnly()) continue;
+                    json componentJson;
+                    component->to_json(componentJson);
+                    componentJson[S_TYPE] = component->getTypeName();
+                    j[S_COMPONENTS].push_back(componentJson);
+                }
+            }
+        
             void from_json(const json& j) {
                 id = j.at(S_ID).get<EntityID>();
                 if (j.contains(S_COMPONENTS) && j[S_COMPONENTS].is_array()) {
                     for (const auto& componentJson : j[S_COMPONENTS]) {
                         std::string typeName = componentJson.at(S_TYPE).get<std::string>();
                         auto component = ComponentRegistry::createComponent(typeName);
-                        if (component) {
-                            component->from_json(componentJson);
-                            components[typeid(*component)] = std::move(component);
-                        } else {
-                            assert(false);
-                        }
+                        assert(component);
+                        component->from_json(componentJson);
+                        components[typeid(*component)] = std::move(component);
                     }
                 }
             }
@@ -75,4 +87,4 @@ namespace SupDef {
 
 }
 
-#endif
+// #endif

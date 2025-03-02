@@ -12,13 +12,12 @@ namespace SupDef {
 
     Game::Game() {
         eventDispatcher = std::make_unique<EventDispatcher>();
-        //playerManager   = std::make_unique<PlayerManager  >(eventDispatcher.get());
         entityManager   = std::make_unique<EntityManager  >(eventDispatcher.get());
+        assetManager    = std::make_unique<AssetManager   >(eventDispatcher.get());
         techManager     = std::make_unique<TechManager    >(eventDispatcher.get());
         tilesChecker    = std::make_unique<TilesChecker   >();
         pathFinder      = std::make_unique<PathFinder     >();
         collisionSystem = std::make_unique<CollisionSystem>();
-        rules           = std::make_unique<Rules>();
         
     }
 
@@ -38,28 +37,13 @@ namespace SupDef {
         });
     }
 
-    // PEntities Game::getWorlds() { return entityManager->getEntitiesWithComponents<WorldComponent>(); }
-    // Entity* Game::getWorld() {
-    //     auto worlds = getWorlds();
-    //     if(worlds.empty()) return nullptr;
-    //     return worlds.at(0);
-    // }
-    
-    EntityID Game::createEmptyMap() {
+    Entity* Game::addMap(AssetID mapAssetID) {
         auto worlds = entityManager->getEntitiesWithComponents<WorldComponent>();
-        if(worlds.size() == 0) return NO_ENTITY;
-        auto world = worlds[0];
-        auto world_ent = std::get<0>(world);
+        if(worlds.size() == 0) return nullptr;
+        auto world_entry = worlds[0];
+        auto world = std::get<0>(world_entry);
 
-        int tileSize = 16;
-        int width  = 640;
-        int height = 480;
-
-        auto map = entityManager->createEntity(world_ent->id);
-        map->addComponent<MapComponent>(width, height);
-        map->addComponent<TilesComponent>(tileSize, width, height);
-
-        return map->id;
+        return createEntityFromAsset(mapAssetID, world->id);
     }
     
 }

@@ -1815,3 +1815,45 @@
 [2025-03-02 08:54:40] SUCCESS: World initialized!
 [2025-03-02 08:54:40] SUCCESS: Serialized to game_save.txt
 [2025-03-02 08:54:40] SUCCESS: Deserialized from game_save.txt
+[2025-03-02 10:40:45] INIT: ------------------
+[2025-03-02 10:40:46] SUCCESS: World initialized!
+[2025-03-02 10:40:46] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:07:38] INIT: ------------------
+[2025-03-02 14:07:38] SUCCESS: World initialized!
+[2025-03-02 14:12:09] INIT: ------------------
+[2025-03-02 14:12:09] SUCCESS: World initialized!
+[2025-03-02 14:14:22] INIT: ------------------
+[2025-03-02 14:14:22] SUCCESS: World initialized!
+[2025-03-02 14:21:32] INIT: ------------------
+[2025-03-02 14:21:33] SUCCESS: World initialized!
+[2025-03-02 14:26:35] INIT: ------------------
+[2025-03-02 14:26:36] SUCCESS: World initialized!
+[2025-03-02 14:28:16] INIT: ------------------
+[2025-03-02 14:28:16] SUCCESS: World initialized!
+[2025-03-02 14:30:09] INIT: ------------------
+[2025-03-02 14:30:09] SUCCESS: World initialized!
+[2025-03-02 14:30:11] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:33:20] INIT: ------------------
+[2025-03-02 14:33:20] SUCCESS: World initialized!
+[2025-03-02 14:35:00] INIT: ------------------
+[2025-03-02 14:35:00] SUCCESS: World initialized!
+[2025-03-02 14:35:01] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:37:36] INIT: ------------------
+[2025-03-02 14:37:36] SUCCESS: World initialized!
+[2025-03-02 14:37:38] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:40:04] INIT: ------------------
+[2025-03-02 14:40:05] SUCCESS: World initialized!
+[2025-03-02 14:40:06] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:43:00] INIT: ------------------
+[2025-03-02 14:43:00] SUCCESS: World initialized!
+[2025-03-02 14:43:01] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:45:42] INIT: ------------------
+[2025-03-02 14:45:42] SUCCESS: World initialized!
+[2025-03-02 14:45:43] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:45:50] INFO: Game ended from renderer
+
+[2025-03-02 14:52:59] INIT: ------------------
+[2025-03-02 14:52:59] SUCCESS: World initialized!
+[2025-03-02 14:53:00] SUCCESS: Serialized to game_save.txt
+[2025-03-02 14:53:25] INFO: Game ended from renderer
+
