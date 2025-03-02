@@ -24,10 +24,14 @@ namespace SupDef {
                     { return std::make_unique<RulesComponent>(); });
             }
     
-            template <typename T>
-            std::optional<T> getRule(const std::string& key) const {
-                return rules->get<T>(key);
+            Rules* getRules() {
+                return rules.get();
             }
+
+            // template <typename T>
+            // std::optional<T> getRule(const std::string& key) const {
+            //     return rules->get<T>(key);
+            // }
         
             void to_json(json& j) const override {
                 rules->to_json(j[S_RULES]);

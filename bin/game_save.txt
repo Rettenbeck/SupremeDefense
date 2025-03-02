@@ -6237,18 +6237,7 @@
         ],
         "next_entity_id": 10
     },
-    "player_manager": {
-        "next_player_id": 1,
-        "next_team_id": 1,
-        "players": [],
-        "teams": []
-    },
-    "rules": {
-        "default_map": "DesertArena",
-        "is_fog_of_war_enabled": true,
-        "max_units": 100,
-        "unit_speed": 5.5
-    },
+    "rules": null,
     "tech_manager": {
         "assignees": [],
         "next_tech_id": 1,

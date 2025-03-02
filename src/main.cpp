@@ -325,10 +325,10 @@ SupDef::Game* start_app() {
     auto g = game->getGame();
 
     auto rules = g->getRules();
-    rules->set("unit_speed", 5.5f);
-    rules->set("max_units", 100);
-    rules->set("is_fog_of_war_enabled", true);
-    rules->set("default_map", "DesertArena");
+    // rules->set("unit_speed", 5.5f);
+    // rules->set("max_units", 100);
+    // rules->set("is_fog_of_war_enabled", true);
+    // rules->set("default_map", "DesertArena");
 
     // auto action = std::make_shared<SupDef::Action>();
     // g->getGlobalDispatcher()->dispatch<SupDef::ActionCreatedEvent>(action);

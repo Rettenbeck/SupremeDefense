@@ -2,11 +2,15 @@
 
 #pragma once
 
+#ifndef Included_Entity_HPP
+
+#define Included_Entity_HPP
 
 namespace SupDef {
     
     class Entity {
-        std::unordered_map<std::type_index, UComponent> components;
+        protected:
+            std::unordered_map<std::type_index, UComponent> components;
 
         public:
             EntityID id = NO_ENTITY;
@@ -70,3 +74,5 @@ namespace SupDef {
     using PEntities = std::vector<Entity*>;
 
 }
+
+#endif

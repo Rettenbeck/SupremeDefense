@@ -1,0 +1,3 @@
+[2025-03-01 15:50:22] INIT: ------------------
+[2025-03-01 15:50:22] SUCCESS: World initialized!
+[2025-03-01 15:50:22] SUCCESS: Serialized to game_save.txt

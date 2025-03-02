@@ -1,7 +1,5 @@
 #pragma once
 
-// #include <ECS/components/parent_component.hpp>
-// #include <ECS/components/children_component.hpp>
 #include <ECS/components/rules_component.hpp>
 #include <ECS/components/player_component.hpp>
 #include <ECS/components/team_component.hpp>

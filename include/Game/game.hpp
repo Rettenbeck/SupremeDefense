@@ -51,9 +51,14 @@ namespace SupDef {
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB);
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& list);
             
-            template <typename T> std::optional<T> getRuleValue(const std::string& key, Entity* entity) const;
-            template <typename T> std::optional<T> getRuleValue(const std::string& key, EntityID entityID) const;
-            template <typename T> std::optional<T> getRuleValue(const std::string& key) const;
+            Rules* getRules(Entity* entity);
+            Rules* getRules(EntityID entityID);
+            Asset* getAsset(AssetID id);
+            Asset* getAsset(Entity* entity, AssetID id);
+            Asset* getAsset(EntityID entityID, AssetID assetID);
+            // template <typename T> std::optional<T> getRuleValue(const std::string& key, Entity* entity) const;
+            // template <typename T> std::optional<T> getRuleValue(const std::string& key, EntityID entityID) const;
+            // template <typename T> std::optional<T> getRuleValue(const std::string& key) const;
 
             //PlayerManager*   getPlayerManager  () { return playerManager  .get(); }
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
