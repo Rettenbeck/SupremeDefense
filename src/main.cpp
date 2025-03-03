@@ -33,12 +33,15 @@ void test_app() {
     auto mapComp   = map->getComponent<SupDef::MapComponent>();
     auto tilesComp = map->getComponent<SupDef::TilesComponent>();
 
+    auto player = g->createEntityFromAsset(ASSET_PLAYER);
+    g->setThisPlayer(player->id);
+
     auto e1 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 111.0,  52.0);
     auto e2 = g->createEntityFromAsset(ASSET_IMMOVABLE, e1->id ,  70.0, 192.0);
     auto e3 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 170.0, 192.0);
     auto e4 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 470.0,  52.0);
 
-    
+
     SupDef::V2 start( 2 * 16, 6 * 16);
     SupDef::V2 goal (12 * 16, 8 * 16);
     auto es = g->createEntityFromAsset(ASSET_MOVER,  e3->id, start.x, start.y);
@@ -62,7 +65,6 @@ void test_app() {
     for(auto& t : table) {
         std::cout << "Entity " << (std::get<0>(t))->id << "; " << (std::get<1>(t))->marksTilesImpassable << "; " << (std::get<2>(t))->x << "\n";
     }
-
 
 
 

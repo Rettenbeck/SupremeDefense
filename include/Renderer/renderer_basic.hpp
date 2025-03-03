@@ -41,6 +41,8 @@ namespace SupDef {
             void zoom(float factor);
             void move(float offsetX, float offsetY);
 
+            void subscribeToEvents();
+
             void renderGame();
             void renderCollisionGrid();
             void renderEntitiesWithCollision(EntityManager* entityManager);
@@ -64,6 +66,7 @@ namespace SupDef {
 
             float currentZoom = 1.0;
             bool keyL = false, keyR = false, keyU = false, keyD = false;
+            int commandMode = 0;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

@@ -1,5 +1,5 @@
 #include <ECS/component_registry.hpp>
-#include <Util/text.hpp>
+#include <Misc/text.hpp>
 
 #pragma once
 
@@ -42,7 +42,7 @@ namespace SupDef {
         }
 
         std::string get(std::string key) {
-            return get(key);
+            return get(key, "");
         }
 
         void to_json(json& j) const override {

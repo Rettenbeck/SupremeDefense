@@ -12,28 +12,35 @@ namespace SupDef {
 
     using AssetID = std::string;
     using AssetIDs = std::vector<AssetID>;
+    using CommandID = std::string;
+    using ResourceID = std::string;
 
     // using ComponentListEntry = std::pair<std::type_index, Component*>;
     // using ComponentList = std::vector<ComponentListEntry>;
 
     const EntityID NO_ENTITY = 0;
     const AssetID NO_ASSET = "_";
+    const CommandID NO_COMMAND = "_";
     const std::string NO_NAME = "unknown asset";
     const std::string NO_DESC = "???";
 
-    // Text descriptors
+    // Non-component objects
     const std::string SX_NAME                               = "name"                                ;
     const std::string SX_DESC                               = "desc"                                ;
     const std::string SX_LANG_DE                            = "de"                                  ;
     const std::string SX_LANG_EN                            = "en"                                  ;
-
+    const std::string SX_RESOURCE                           = "resource"                            ;
+    const std::string SX_AMOUNT                             = "amount"                              ;
+    const std::string SX_RATE                               = "gather_rate"                         ;
+    const std::string SX_MAX_CAP                            = "max_capacity"                        ;
+    const std::string SX_SELF_COST                          = "self_cost"                           ;
+    
     // Components
     const std::string SC_TEXT                               = "text"                                ;
-    // const std::string SC_PARENT                             = "parent"                              ;
-    // const std::string SC_CHILDREN                           = "children"                            ;
-    // const std::string SC_RULES                              = "rules"                               ;
     const std::string SC_PLAYER                             = "player"                              ;
     const std::string SC_TEAM                               = "team"                                ;
+    const std::string SC_REQUIREMENT                        = "requirement"                         ;
+    const std::string SC_RESOURCE                           = "resource"                            ;
     const std::string SC_WORLD                              = "world"                               ;
     const std::string SC_MAP                                = "map"                                 ;
     const std::string SC_TILES                              = "tiles"                               ;
@@ -46,6 +53,7 @@ namespace SupDef {
 
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
+    const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Attributes
     const std::string S_KEY                                 = "key"                                 ;
@@ -59,6 +67,9 @@ namespace SupDef {
     const std::string S_NAME                                = "name"                                ;
     const std::string S_TYPE                                = "type"                                ;
     const std::string S_DESCRIPTION                         = "description"                         ;
+    // const std::string S_REQUIREMENTS                        = "requirements"                        ;
+    const std::string S_RESOURCE                            = "resource"                            ;
+    const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_PARENT                              = "parent"                              ;
     const std::string S_CHILDREN                            = "children"                            ;
     const std::string S_PLAYER                              = "player"                              ;

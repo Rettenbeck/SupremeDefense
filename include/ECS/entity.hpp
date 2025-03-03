@@ -49,7 +49,7 @@ namespace SupDef {
             }
 
             void to_json(json& j) const {
-                j[S_ID] = id;
+                if (id != NO_ENTITY) j[S_ID] = id;
                 j[S_ASSET_ID] = assetID;
                 for (const auto& [type, component] : components) {
                     json componentJson;
@@ -60,7 +60,7 @@ namespace SupDef {
             }
         
             void to_json_skip_assets(json& j) const {
-                j[S_ID] = id;
+                if (id != NO_ENTITY) j[S_ID] = id;
                 j[S_ASSET_ID] = assetID;
                 for (const auto& [type, component] : components) {
                     if (component->isAssetOnly()) continue;
@@ -72,7 +72,9 @@ namespace SupDef {
             }
         
             void from_json(const json& j) {
-                id = j.at(S_ID).get<EntityID>();
+                if (j.contains(S_ID)) id = j.at(S_ID).get<EntityID>();
+                else id = NO_ENTITY;
+
                 assetID = j.at(S_ASSET_ID).get<AssetID>();
                 if (j.contains(S_COMPONENTS) && j[S_COMPONENTS].is_array()) {
                     for (const auto& componentJson : j[S_COMPONENTS]) {

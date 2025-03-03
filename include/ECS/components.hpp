@@ -2,6 +2,7 @@
 
 #include <ECS/components/player_component.hpp>
 #include <ECS/components/team_component.hpp>
+#include <ECS/components/resource_component.hpp>
 #include <ECS/components/world_component.hpp>
 #include <ECS/components/map_component.hpp>
 #include <ECS/components/tiles_component.hpp>
@@ -14,3 +15,5 @@
 
 // #include <ECS/asset_components/asset_component.hpp>
 #include <ECS/asset_components/text_component.hpp>
+#include <ECS/asset_components/requirement_component.hpp>
+#include <ECS/asset_components/resource_def_component.hpp>

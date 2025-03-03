@@ -4,7 +4,7 @@
 
 
 namespace SupDef {
-        
+    
     class Event {
         public:
             virtual ~Event() = default;

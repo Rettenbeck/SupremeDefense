@@ -10,6 +10,7 @@ namespace SupDef {
         for(auto& world : worlds) {
             updateWorld(deltaTime, world);
         }
+        updateCommands();
     }
 
     void Game::updateWorld(float deltaTime, _EntWorld world) {

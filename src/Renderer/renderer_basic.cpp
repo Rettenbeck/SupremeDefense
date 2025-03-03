@@ -119,6 +119,10 @@ namespace SupDef {
         gameView.move(offset);
     }
 
+    void RendererBasic::subscribeToEvents() {
+        //
+    }
+
     void RendererBasic::renderGame() {
         if(!game) return;
         renderCollisionGrid();
