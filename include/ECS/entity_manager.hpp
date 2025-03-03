@@ -26,11 +26,19 @@ namespace SupDef {
                 return rawPtr;
             }
 
-            EntityID createEntityID() {
+            Entity* createEntity(AssetID assetID) {
                 EntityID id = nextEntityID++;
-                entities[id] = std::make_unique<Entity>(id);
-                return id;
+                auto newEntity = std::make_unique<Entity>(id, assetID);
+                auto rawPtr = newEntity.get();
+                entities[id] = std::move(newEntity);
+                return rawPtr;
             }
+
+            // EntityID createEntityID() {
+            //     EntityID id = nextEntityID++;
+            //     entities[id] = std::make_unique<Entity>(id);
+            //     return id;
+            // }
 
             void setParent(EntityID childID, EntityID parentID) {
                 parentMap[childID] = parentID;
@@ -43,11 +51,11 @@ namespace SupDef {
                 return rawPtr;
             }
 
-            EntityID createEntityID(int parentID) {
-                auto id = createEntityID();
-                setParent(id, parentID);
-                return id;
-            }
+            // EntityID createEntityID(int parentID) {
+            //     auto id = createEntityID();
+            //     setParent(id, parentID);
+            //     return id;
+            // }
 
             Entity* getEntity(EntityID id) const {
                 if(id == NO_ENTITY) return nullptr;

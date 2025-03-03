@@ -14,9 +14,11 @@ namespace SupDef {
 
         public:
             EntityID id = NO_ENTITY;
+            AssetID assetID = NO_ASSET;
             bool isDead = false;
 
             Entity(EntityID id) : id(id) {}
+            Entity(EntityID id, AssetID assetID) : id(id), assetID(assetID) {}
 
             template <typename T, typename... Args>
             T* addComponent(Args&&... args) {
@@ -48,6 +50,7 @@ namespace SupDef {
 
             void to_json(json& j) const {
                 j[S_ID] = id;
+                j[S_ASSET_ID] = assetID;
                 for (const auto& [type, component] : components) {
                     json componentJson;
                     component->to_json(componentJson);
@@ -58,6 +61,7 @@ namespace SupDef {
         
             void to_json_skip_assets(json& j) const {
                 j[S_ID] = id;
+                j[S_ASSET_ID] = assetID;
                 for (const auto& [type, component] : components) {
                     if (component->isAssetOnly()) continue;
                     json componentJson;
@@ -69,6 +73,7 @@ namespace SupDef {
         
             void from_json(const json& j) {
                 id = j.at(S_ID).get<EntityID>();
+                assetID = j.at(S_ASSET_ID).get<AssetID>();
                 if (j.contains(S_COMPONENTS) && j[S_COMPONENTS].is_array()) {
                     for (const auto& componentJson : j[S_COMPONENTS]) {
                         std::string typeName = componentJson.at(S_TYPE).get<std::string>();

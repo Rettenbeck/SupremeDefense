@@ -17,14 +17,21 @@ namespace SupDef {
     // using ComponentList = std::vector<ComponentListEntry>;
 
     const EntityID NO_ENTITY = 0;
-    const AssetID NO_ASSET = "/";
+    const AssetID NO_ASSET = "_";
     const std::string NO_NAME = "unknown asset";
     const std::string NO_DESC = "???";
 
+    // Text descriptors
+    const std::string SX_NAME                               = "name"                                ;
+    const std::string SX_DESC                               = "desc"                                ;
+    const std::string SX_LANG_DE                            = "de"                                  ;
+    const std::string SX_LANG_EN                            = "en"                                  ;
+
     // Components
-    const std::string SC_PARENT                             = "parent"                              ;
-    const std::string SC_CHILDREN                           = "children"                            ;
-    const std::string SC_RULES                              = "rules"                               ;
+    const std::string SC_TEXT                               = "text"                                ;
+    // const std::string SC_PARENT                             = "parent"                              ;
+    // const std::string SC_CHILDREN                           = "children"                            ;
+    // const std::string SC_RULES                              = "rules"                               ;
     const std::string SC_PLAYER                             = "player"                              ;
     const std::string SC_TEAM                               = "team"                                ;
     const std::string SC_WORLD                              = "world"                               ;
@@ -41,8 +48,12 @@ namespace SupDef {
     const std::string SCA_ASSET                             = "asset"                               ;
 
     // Attributes
+    const std::string S_KEY                                 = "key"                                 ;
+    const std::string S_TEXTS                               = "texts"                               ;
     const std::string S_ID                                  = "id"                                  ;
+    const std::string S_ASSET_ID                            = "asset_id"                            ;
     const std::string S_ENTITIES                            = "entities"                            ;
+    const std::string S_ASSETS                              = "assets"                              ;
     const std::string S_COMPONENTS                          = "components"                          ;
     const std::string S_NEXT_ENTITY_ID                      = "next_entity_id"                      ;
     const std::string S_NAME                                = "name"                                ;

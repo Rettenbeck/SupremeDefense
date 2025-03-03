@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <ECS/components/rules_component.hpp>
 #include <ECS/components/player_component.hpp>
 #include <ECS/components/team_component.hpp>
 #include <ECS/components/world_component.hpp>
@@ -13,4 +12,5 @@
 #include <ECS/components/immovable_component.hpp>
 #include <ECS/components/health_component.hpp>
 
-#include <ECS/asset_components/asset_component.hpp>
+// #include <ECS/asset_components/asset_component.hpp>
+#include <ECS/asset_components/text_component.hpp>

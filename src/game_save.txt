@@ -2,6 +2,7 @@
     "asset_manager": {
         "entities": [
             {
+                "asset_id": "mover",
                 "components": [
                     {
                         "dummy_radius": 6.0,
@@ -25,14 +26,12 @@
                         "X": 0.0,
                         "Y": 0.0,
                         "type": "position"
-                    },
-                    {
-                        "type": "asset"
                     }
                 ],
                 "id": 0
             },
             {
+                "asset_id": "immovable",
                 "components": [
                     {
                         "dummy_radius": 16.0,
@@ -59,14 +58,12 @@
                         "X": 0.0,
                         "Y": 0.0,
                         "type": "position"
-                    },
-                    {
-                        "type": "asset"
                     }
                 ],
                 "id": 0
             },
             {
+                "asset_id": "test_map",
                 "components": [
                     {
                         "tile_list": [
@@ -6080,9 +6077,6 @@
                         "height": 480,
                         "type": "map",
                         "width": 640
-                    },
-                    {
-                        "type": "asset"
                     }
                 ],
                 "id": 0
@@ -6092,6 +6086,7 @@
     "entity_manager": {
         "entities": [
             {
+                "asset_id": "mover",
                 "components": [
                     {
                         "X": 32.0,
@@ -6117,9 +6112,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 9,
+                "parent": 2
             },
             {
+                "asset_id": "mover",
                 "components": [
                     {
                         "X": 192.0,
@@ -6145,13 +6142,15 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 8,
+                "parent": 5
             },
             {
+                "asset_id": "mover",
                 "components": [
                     {
-                        "X": 300.0,
-                        "Y": 300.0,
+                        "X": 32.0,
+                        "Y": 96.0,
                         "type": "position"
                     },
                     {
@@ -6173,9 +6172,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 7,
+                "parent": 5
             },
             {
+                "asset_id": "immovable",
                 "components": [
                     {
                         "X": 470.0,
@@ -6204,9 +6205,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 6,
+                "parent": 2
             },
             {
+                "asset_id": "immovable",
                 "components": [
                     {
                         "X": 170.0,
@@ -6235,9 +6238,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 5,
+                "parent": 2
             },
             {
+                "asset_id": "immovable",
                 "components": [
                     {
                         "X": 70.0,
@@ -6266,9 +6271,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 4,
+                "parent": 3
             },
             {
+                "asset_id": "immovable",
                 "components": [
                     {
                         "X": 111.0,
@@ -6297,9 +6304,11 @@
                         "type": "collision"
                     }
                 ],
-                "id": 0
+                "id": 3,
+                "parent": 2
             },
             {
+                "asset_id": "test_map",
                 "components": [
                     {
                         "height": 480,
@@ -12315,9 +12324,11 @@
                         "type": "tiles"
                     }
                 ],
-                "id": 0
+                "id": 2,
+                "parent": 1
             },
             {
+                "asset_id": "_",
                 "components": [
                     {
                         "maps": [],

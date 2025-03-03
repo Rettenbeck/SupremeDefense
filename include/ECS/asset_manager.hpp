@@ -1,5 +1,5 @@
 #include <ECS/entity.hpp>
-#include <ECS/asset_components/asset_component.hpp>
+//#include <ECS/asset_components/asset_component.hpp>
 #include <EventDispatcher/include.hpp>
 
 #pragma once
@@ -16,17 +16,24 @@ namespace SupDef {
             AssetManager(EventDispatcher* eventDispatcher_) : eventDispatcher(eventDispatcher_) {}
             AssetManager() {}
 
-            Entity* createAsset(AssetID id, std::string name, std::string desc) {
-                auto newEntity = std::make_unique<Entity>(NO_ENTITY);
-                newEntity->addComponent<AssetComponent>(id, name, desc);
+            Entity* createAsset(AssetID id) {
+                auto newEntity = std::make_unique<Entity>(NO_ENTITY, id);
                 auto rawPtr = newEntity.get();
                 assets[id] = std::move(newEntity);
                 return rawPtr;
             }
 
-            Entity* createAsset(AssetID id) {
-                return createAsset(id, NO_NAME, NO_DESC);
-            }
+            // Entity* createAsset(AssetID id, std::string name, std::string desc) {
+            //     auto newEntity = std::make_unique<Entity>(NO_ENTITY);
+            //     //newEntity->addComponent<AssetComponent>(id, name, desc);
+            //     auto rawPtr = newEntity.get();
+            //     assets[id] = std::move(newEntity);
+            //     return rawPtr;
+            // }
+
+            // Entity* createAsset(AssetID id) {
+            //     return createAsset(id, NO_NAME, NO_DESC);
+            // }
 
             Entity* getAsset(AssetID id) const {
                 auto it = assets.find(id);
@@ -79,18 +86,17 @@ namespace SupDef {
                 for (const auto& [id, entity] : assets) {
                     json entityJson;
                     entity->to_json(entityJson);
-                    j[S_ENTITIES].push_back(entityJson);
+                    j[S_ASSETS].push_back(entityJson);
                 }
             }
         
             void from_json(const json& j) {
                 assets.clear();
-                for (const auto& entityJson : j[S_ENTITIES]) {
+                for (const auto& entityJson : j[S_ASSETS]) {
                     auto entity = std::make_unique<Entity>(NO_ENTITY);
                     entity->from_json(entityJson);
-                    auto assetComp = entity->getComponent<AssetComponent>();
-                    assert(assetComp);
-                    assets[assetComp->assetID] = std::move(entity);
+                    // auto assetComp = entity->getComponent<AssetComponent>();
+                    assets[entity->assetID] = std::move(entity);
                 }
             }
 

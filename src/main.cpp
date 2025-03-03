@@ -1,5 +1,6 @@
 #include <iostream>
 #include <include.hpp>
+#include <main_asset.cpp>
 
 
 void test_app();
@@ -11,9 +12,7 @@ void serialize_game(SupDef::Game* g);
 void create_assets (SupDef::Game* g);
 auto app = std::make_unique<SupDef::App>();
 
-const std::string ASSET_TEST_MAP = "test_map";
-const std::string ASSET_IMMOVABLE = "immovable";
-const std::string ASSET_MOVER = "mover";
+
 
 
 
@@ -108,30 +107,6 @@ SupDef::Game* start_app() {
     return g;
 }
 
-void create_assets(SupDef::Game* g) {
-    auto am = g->getAssetManager();
-
-    int tileSize = 16;
-    int width  = 640;
-    int height = 480;
-
-    auto am_map = am->createAsset(ASSET_TEST_MAP);
-    am_map->addComponent<SupDef::MapComponent>(width, height);
-    am_map->addComponent<SupDef::TilesComponent>(tileSize, width, height);
-
-    auto am_imm = am->createAsset(ASSET_IMMOVABLE);
-    am_imm->addComponent<SupDef::PositionComponent>(0.0, 0.0);
-    am_imm->addComponent<SupDef::ImmovableComponent>(true, false, true, true);
-    auto am_imm_col = am_imm->addComponent<SupDef::CollisionComponent>(16.0);
-    am_imm_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 32.0));
-
-    auto am_mov = am->createAsset(ASSET_MOVER);
-    am_mov->addComponent<SupDef::PositionComponent>(0.0, 0.0);
-    am_mov->addComponent<SupDef::MovementComponent>(5.0, true);
-    am_mov->addComponent<SupDef::CollisionComponent>(6.0);
-
-}
-
 void serialize_game(SupDef::Game* g) {
     auto& logger = SupDef::Logger::getInstance();
 
@@ -147,22 +122,22 @@ void serialize_game(SupDef::Game* g) {
     g->serialize(current_filename);
     logger.addMessage(SupDef::MessageType::Success, MSG_SER  , current_filename);
 
-    // // Deserialize and verify
-    // g1->deserialize(current_filename);
-    // logger.addMessage(SupDef::MessageType::Success, MSG_DESER, current_filename);
+    // Deserialize and verify
+    g1->deserialize(current_filename);
+    logger.addMessage(SupDef::MessageType::Success, MSG_DESER, current_filename);
 
-    // // Serialize new state to a file
-    // current_filename = "game_save2.txt";
-    // g1->serialize(current_filename);
-    // logger.addMessage(SupDef::MessageType::Success, MSG_SER  , current_filename);
+    // Serialize new state to a file
+    current_filename = "game_save2.txt";
+    g1->serialize(current_filename);
+    logger.addMessage(SupDef::MessageType::Success, MSG_SER  , current_filename);
 
-    // // Deserialize and verify again
-    // g2->deserialize(current_filename);
-    // logger.addMessage(SupDef::MessageType::Success, MSG_DESER, current_filename);
+    // Deserialize and verify again
+    g2->deserialize(current_filename);
+    logger.addMessage(SupDef::MessageType::Success, MSG_DESER, current_filename);
 
-    // // Serialize new state to a file again
-    // current_filename = "game_save3.txt";
-    // g2->serialize(current_filename);
-    // logger.addMessage(SupDef::MessageType::Success, MSG_SER  , current_filename);
+    // Serialize new state to a file again
+    current_filename = "game_save3.txt";
+    g2->serialize(current_filename);
+    logger.addMessage(SupDef::MessageType::Success, MSG_SER  , current_filename);
 
 }
