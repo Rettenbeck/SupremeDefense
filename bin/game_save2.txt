@@ -126,11 +126,11 @@
                     {
                         "texts": [
                             {
-                                "de": "TestCom",
+                                "de": "Holz",
                                 "key": "name"
                             },
                             {
-                                "de": "Testbefehl",
+                                "de": "Gehacktes Holz",
                                 "key": "desc"
                             }
                         ],
@@ -142,7 +142,6 @@
                 "asset_id": "test_command",
                 "components": [
                     {
-                        "command_type": "build",
                         "type": "command"
                     },
                     {
@@ -161,6 +160,65 @@
                             }
                         ],
                         "type": "requirement"
+                    },
+                    {
+                        "to_build": "immovable",
+                        "type": "build_command"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "TestCom",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Testbefehl",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test_command2",
+                "components": [
+                    {
+                        "type": "command"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 25,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 35,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
+                    },
+                    {
+                        "to_build": "immovable2",
+                        "type": "build_command"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "TestCom2",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Testbefehl2",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
                     }
                 ]
             },
@@ -202,6 +260,57 @@
                             }
                         ],
                         "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "immovable2",
+                "components": [
+                    {
+                        "X": 0.0,
+                        "Y": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Gebaeude2",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einfaches Gebaeude2",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "dummy_radius": 16.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            },
+                            {
+                                "height": 18.0,
+                                "offsetX": 32.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 12.0
+                            }
+                        ],
+                        "type": "collision"
                     }
                 ]
             }

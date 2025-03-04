@@ -18,8 +18,8 @@ void create_assets(SupDef::Game* g) {
     auto am_player = am->createAsset(ASSET_PLAYER);
     am_player->addComponent<SupDef::PlayerComponent>();
     auto am_player_res = am_player->addComponent<SupDef::ResourceComponent>();
-    am_player_res->addResource(ASSET_RES_GOLD, 100);
-    am_player_res->addResource(ASSET_RES_WOOD, 250);
+    am_player_res->addResource(ASSET_RES_GOLD, 250);
+    am_player_res->addResource(ASSET_RES_WOOD, 360);
 
     auto am_res_gold = am->createAsset(ASSET_RES_GOLD);
     am_res_gold->addComponent<SupDef::ResourceDefComponent>();
@@ -30,8 +30,9 @@ void create_assets(SupDef::Game* g) {
     am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Holz", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Gehacktes Holz");
 
     auto am_command_test = am->createAsset(ASSET_TEST_COM);
-    am_command_test->addComponent<SupDef::CommandComponent>(SupDef::COM_TYPE_BUILD);
-    am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "TestCom", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testbefehl");
+    am_command_test->addComponent<SupDef::CommandComponent>();
+    am_command_test->addComponent<SupDef::BuildCommandComponent>(ASSET_IMMOVABLE);
+    am_command_test->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "TestCom", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testbefehl");
     auto am_command_test_req = am_command_test->addComponent<SupDef::RequirementComponent>();
     am_command_test_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_GOLD, 20));
     am_command_test_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_WOOD, 30));
@@ -57,5 +58,21 @@ void create_assets(SupDef::Game* g) {
     am_mov->addComponent<SupDef::MovementComponent>(5.0, true);
     am_mov->addComponent<SupDef::CollisionComponent>(6.0);
     am_mov->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Einheit", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfache Einheit");
+
+    auto am_imm_test = am->createAsset("immovable2");
+    am_imm_test->addComponent<SupDef::PositionComponent>(0.0, 0.0);
+    am_imm_test->addComponent<SupDef::ImmovableComponent>(true, false, true, true);
+    am_imm_test->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Gebaeude2", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfaches Gebaeude2");
+    auto am_imm_test_col = am_imm_test->addComponent<SupDef::CollisionComponent>(16.0);
+    am_imm_test_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 32.0));
+    am_imm_test_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 0.0, 12.0, 18));
+
+    auto am_command_test2 = am->createAsset("test_command2");
+    am_command_test2->addComponent<SupDef::CommandComponent>();
+    am_command_test2->addComponent<SupDef::BuildCommandComponent>("immovable2");
+    am_command_test2->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "TestCom2", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testbefehl2");
+    auto am_command_test2_req = am_command_test2->addComponent<SupDef::RequirementComponent>();
+    am_command_test2_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_GOLD, 25));
+    am_command_test2_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_WOOD, 35));
 
 }

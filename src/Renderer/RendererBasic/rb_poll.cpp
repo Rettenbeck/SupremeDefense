@@ -33,7 +33,8 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::Right) keyR = true;
                     if (keyEvent->code == sf::Keyboard::Key::Up)    keyU = true;
                     if (keyEvent->code == sf::Keyboard::Key::Down)  keyD = true;
-                    if (keyEvent->code == sf::Keyboard::Key::N) trigger();
+                    if (keyEvent->code == sf::Keyboard::Key::N) trigger(1);
+                    if (keyEvent->code == sf::Keyboard::Key::M) trigger(2);
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {

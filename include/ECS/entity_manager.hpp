@@ -34,6 +34,18 @@ namespace SupDef {
                 return rawPtr;
             }
 
+            UEntity createVirtualEntity(AssetID assetID) {
+                return std::make_unique<Entity>(NO_ENTITY, assetID);
+            }
+
+            Entity* realizeEntity(UEntity entity) {
+                EntityID id = nextEntityID++;
+                entity->id = id;
+                auto rawPtr = entity.get();
+                entities[id] = std::move(entity);
+                return rawPtr;
+            }
+
             // EntityID createEntityID() {
             //     EntityID id = nextEntityID++;
             //     entities[id] = std::make_unique<Entity>(id);

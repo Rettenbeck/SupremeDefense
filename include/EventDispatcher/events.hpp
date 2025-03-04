@@ -45,8 +45,11 @@ namespace SupDef {
     struct CommandToRenderEvent : public Event {
         CommandID commandID;
         json data;
+        Entity* virtualEntity = nullptr;
         explicit CommandToRenderEvent(const CommandID& command, const json& jsonData)
             : commandID(command), data(jsonData) {}
+        explicit CommandToRenderEvent(const CommandID& command, const json& jsonData, Entity* entity)
+        : commandID(command), data(jsonData), virtualEntity(entity) {}
     };
 
 

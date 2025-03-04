@@ -41,4 +41,22 @@ namespace SupDef {
         return entity;
     }
 
+    Entity* Game::realizeVirtualEntity() {
+        if (!virtualEntity) return nullptr;
+        return entityManager->realizeEntity(std::move(virtualEntity));
+    }
+
+    void Game::createVirtualEntityFromAsset(Entity* asset) {
+        virtualEntity = std::move(entityManager->createVirtualEntity(asset->assetID));
+        json j;
+        asset->to_json_skip_assets(j);
+        virtualEntity->from_json(j);
+    }
+
+    void Game::createVirtualEntityFromAsset(AssetID assetID) {
+        auto asset = assetManager->getAsset(assetID);
+        assert(asset);
+        createVirtualEntityFromAsset(asset);
+    }
+    
 }

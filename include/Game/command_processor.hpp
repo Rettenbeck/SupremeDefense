@@ -39,12 +39,13 @@ namespace SupDef {
                     }
                 });
             }
-            
+
             void onStartCommand(const StartCommandEvent& event) {
-                if (commandStatus != CommandStatus::NONE) {
-                    Logger::getInstance().addMessage(MessageType::Error, "A command is already active!");
-                    return;
-                }
+                // if (commandStatus != CommandStatus::NONE) {
+                //     Logger::getInstance().addMessage(MessageType::Error, "A command is already active!");
+                //     return;
+                // }
+                reset();
                 std::cout << "ComProcessor received event: StartCommandEvent; ";
                 std::cout << "  Command: " << event.commandID << "\n";
                 currentCommand = event.commandID;
@@ -53,16 +54,6 @@ namespace SupDef {
 
             void onUpdateCommand(const UpdateCommandEvent& event) {
                 if (commandStatus != CommandStatus::RECEIVED && commandStatus != CommandStatus::ONGOING) return;
-                std::cout << "ComProcessor received event: UpdateCommandEvent; ";
-                std::cout << "  Data: " << event.data.dump(4) << "\n";
-                // std::cout << "   Status: ";
-                // switch (commandStatus) {
-                //     case CommandStatus::NONE: std::cout << "NONE"; break;
-                //     case CommandStatus::RECEIVED: std::cout << "RECEIVED"; break;
-                //     case CommandStatus::ONGOING: std::cout << "ONGOING"; break;
-                //     case CommandStatus::CONFIRMED: std::cout << "CONFIRMED"; break;
-                // }
-                // std::cout << "\n";
                 commandStatus = CommandStatus::ONGOING;
                 data = event.data;
             }
@@ -87,6 +78,7 @@ namespace SupDef {
             void reset() {
                 currentCommand = NO_COMMAND;
                 commandStatus = CommandStatus::NONE;
+                data.clear();
             }
         
         private:

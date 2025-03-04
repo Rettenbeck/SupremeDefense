@@ -19,15 +19,17 @@ namespace SupDef {
     using _EntPosCols = std::vector<_EntPosCol>;
     
     class Game : public Listener {
-        EntityID thisPlayer = NO_ENTITY;
-        UEntityManager   entityManager   = nullptr;
-        UAssetManager    assetManager    = nullptr;
-        UTechManager     techManager     = nullptr;
-        UComProcessor    comProcessor    = nullptr;
-        UEventDispatcher eventDispatcher = nullptr;
-        UTilesChecker    tilesChecker    = nullptr;
-        UPathFinder      pathFinder      = nullptr;
-        UCollisionSystem collisionSystem = nullptr;
+        private:
+            EntityID thisPlayer = NO_ENTITY;
+            UEntityManager   entityManager   = nullptr;
+            UAssetManager    assetManager    = nullptr;
+            UTechManager     techManager     = nullptr;
+            UComProcessor    comProcessor    = nullptr;
+            UEventDispatcher eventDispatcher = nullptr;
+            UTilesChecker    tilesChecker    = nullptr;
+            UPathFinder      pathFinder      = nullptr;
+            UCollisionSystem collisionSystem = nullptr;
+            UEntity virtualEntity = nullptr;
 
         public:
             Game();
@@ -42,6 +44,10 @@ namespace SupDef {
             Entity* addMap(AssetID mapAssetID);
 
             void updateCommands();
+            void handleStartCommand(Entity* asset);
+            void handleUpdateCommand(Entity* asset);
+            void handleConfirmCommand(Entity* asset);
+
             bool checkRequirements(RequirementComponent* reqComp, CommandStatus status);
             bool checkRequirements(CommandID commandID, CommandStatus status);
             bool checkResourceRequirements(Entity* player, RequirementComponent* reqComp, CommandStatus status);
@@ -63,6 +69,10 @@ namespace SupDef {
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID);
             Entity* createEntityFromAsset(AssetID assetID, float x, float y);
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y);
+            
+            Entity* realizeVirtualEntity();
+            void createVirtualEntityFromAsset(Entity* asset);
+            void createVirtualEntityFromAsset(AssetID assetID);
             
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }

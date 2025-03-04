@@ -10,13 +10,14 @@ namespace SupDef {
         renderCollisionGrid();
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
+        renderVirtualEntity();
 
-        if (commandMode == RCommandMode::BUILD) {
-            ColorData cd(sf::Color::Yellow, sf::Color::White, 2);
-            auto pos = getMousePosWorld();
-            int w = 20, h = 16;
-            drawRect(pos.x - w /2, pos.y - h / 2, w, h, cd);
-        }
+        // if (commandMode == RCommandMode::BUILD) {
+        //     ColorData cd(sf::Color::Yellow, sf::Color::White, 2);
+        //     auto pos = getMousePosWorld();
+        //     int w = 20, h = 16;
+        //     drawRect(pos.x - w /2, pos.y - h / 2, w, h, cd);
+        // }
     }
 
     void RendererBasic::renderCollisionGrid() {
@@ -70,50 +71,58 @@ namespace SupDef {
     void RendererBasic::renderEntitiesWithCollision(EntityManager* entityManager) {
         assert(entityManager);
         auto entities = entityManager->getEntitiesWithComponents<PositionComponent, CollisionComponent>();
-
-        ColorData cd_shape(sf::Color::Green , sf::Color::Blue , 2);
-        ColorData cd_dummy(sf::Color::Red   , sf::Color::Blue , 1);
-        ColorData cd_bb   (sf::Color::Yellow, sf::Color::Black, 1);
-    
         for (auto [entity, pos, col] : entities) {
-            // auto* pos = entity->getComponent<PositionComponent>();
-            // auto* collision = entity->getComponent<CollisionComponent>();
-            if (!pos || !col) continue;
-    
-            float entityX = pos->x;
-            float entityY = pos->y;
-            auto& bb = col->boundingBox;
+            renderEntityWithCollision(pos, col, false);
+        }
+    }
 
-            //drawRect(entityX + bb.x, entityY + bb.y, bb.w, bb.h, cd_bb);
+    void RendererBasic::renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB) {
+        if (!pos || !col) return;
+    
+        float entityX = pos->x;
+        float entityY = pos->y;
+
+        if (drawBB) {
+            ColorData cd_bb(sf::Color::Yellow, sf::Color::Black, 1);
+            auto& bb = col->boundingBox;
+            drawRect(entityX + bb.x, entityY + bb.y, bb.w, bb.h, cd_bb);
         }
 
-        for (auto [entity, pos, col] : entities) {
-            // auto* pos = entity->getComponent<PositionComponent>();
-            // auto* collision = entity->getComponent<CollisionComponent>();
-            if (!pos || !col) continue;
-    
-            float entityX = pos->x;
-            float entityY = pos->y;
-    
-            if (!col->shapes.empty()) {
-                for (const auto& shape : col->shapes) {
-                    float absX = entityX + shape->offsetX;
-                    float absY = entityY + shape->offsetY;
-    
-                    if (auto* circle = dynamic_cast<CircleShape*>(shape.get())) {
-                        drawCircle(absX, absY, circle->radius, cd_shape);
-                    } 
-                    else if (auto* rect = dynamic_cast<RectangleShape*>(shape.get())) {
-                        drawRect(absX, absY, rect->width, rect->height, cd_shape);
-                    }
-                }
-            } else {
-                if (col->dummyRadius > 0.0f) {
-                    drawCircle(entityX, entityY, col->dummyRadius, cd_dummy);
+        if (!col->shapes.empty()) {
+            ColorData cd_shape(sf::Color::Green, sf::Color::Blue, 2);
+            for (const auto& shape : col->shapes) {
+                float absX = entityX + shape->offsetX;
+                float absY = entityY + shape->offsetY;
+
+                if (auto* circle = dynamic_cast<CircleShape*>(shape.get())) {
+                    drawCircle(absX, absY, circle->radius, cd_shape);
+                } 
+                else if (auto* rect = dynamic_cast<RectangleShape*>(shape.get())) {
+                    drawRect(absX, absY, rect->width, rect->height, cd_shape);
                 }
             }
+        } else {
+            ColorData cd_dummy(sf::Color::Red, sf::Color::Blue, 1);
+            if (col->dummyRadius > 0.0f) {
+                drawCircle(entityX, entityY, col->dummyRadius, cd_dummy);
+            }
         }
+    }
 
+    void RendererBasic::renderVirtualEntity() {
+        if (!virtualEntity) return;
+        if (commandMode != RCommandMode::BUILD) return;
+
+        auto pos = virtualEntity->getComponent<PositionComponent>();
+        auto col = virtualEntity->getComponent<CollisionComponent>();
+        if (!pos || !col) return;
+
+        auto& bb = col->boundingBox;
+        auto position = getMousePosWorld();
+        pos->x = position.x - bb.w / 2;
+        pos->y = position.y - bb.h / 2;
+
+        renderEntityWithCollision(pos, col, true);
     }
 
 }

@@ -5,9 +5,10 @@
 
 namespace SupDef {
 
-    void RendererBasic::trigger() {
-        std::cout << "Command triggered!\n";
-        globalDispatcher->dispatch<StartCommandEvent>("test_command");
+    void RendererBasic::trigger(int i) {
+        std::cout << "Command " << i << " triggered!\n";
+        if(i == 1) globalDispatcher->dispatch<StartCommandEvent>("test_command");
+        if(i == 2) globalDispatcher->dispatch<StartCommandEvent>("test_command2");
     }
 
     void RendererBasic::subscribeToEvents() {
@@ -17,13 +18,13 @@ namespace SupDef {
                 onCommandToRender(typedEvent);
             }
         });
-        
     }
 
     void RendererBasic::onCommandToRender(const CommandToRenderEvent& event) {
         if (!game) return;
         if (!game->getAssetManager()) return;
         currentCommand = event.commandID;
+        virtualEntity = event.virtualEntity;
         auto asset = game->getAssetManager()->getAsset(event.commandID);
         processCommand(asset, event.data);
     }

@@ -25,7 +25,6 @@ namespace SupDef {
         
             void onStart() override {
                 if(!renderer) return;
-                //renderer->initialize();
                 renderer->start();
             }
         
@@ -34,8 +33,8 @@ namespace SupDef {
                 renderer->gui = gui;
                 bool end = false;
 
-                if(!renderer->poll()) end = true;
                 if(!renderer->draw()) end = true;
+                if(!renderer->poll()) end = true;
 
                 if(end) {
                     renderer->end();

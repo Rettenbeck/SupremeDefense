@@ -2,6 +2,57 @@
     "asset_manager": {
         "assets": [
             {
+                "asset_id": "immovable2",
+                "components": [
+                    {
+                        "dummy_radius": 16.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            },
+                            {
+                                "height": 18.0,
+                                "offsetX": 32.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 12.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einfaches Gebaeude2",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Gebaeude2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "X": 0.0,
+                        "Y": 0.0,
+                        "type": "position"
+                    }
+                ]
+            },
+            {
                 "asset_id": "mover",
                 "components": [
                     {
@@ -43,8 +94,67 @@
                 ]
             },
             {
+                "asset_id": "test_command2",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl2",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "TestCom2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "to_build": "immovable2",
+                        "type": "build_command"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 25,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 35,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
+                    },
+                    {
+                        "type": "command"
+                    }
+                ]
+            },
+            {
                 "asset_id": "test_command",
                 "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "TestCom",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "to_build": "immovable",
+                        "type": "build_command"
+                    },
                     {
                         "resources": [
                             {
@@ -63,7 +173,6 @@
                         "type": "requirement"
                     },
                     {
-                        "command_type": "build",
                         "type": "command"
                     }
                 ]
@@ -74,11 +183,11 @@
                     {
                         "texts": [
                             {
-                                "de": "Testbefehl",
+                                "de": "Gehacktes Holz",
                                 "key": "desc"
                             },
                             {
-                                "de": "TestCom",
+                                "de": "Holz",
                                 "key": "name"
                             }
                         ],
@@ -189,11 +298,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 250,
+                                "amount": 360,
                                 "resource": "wood"
                             },
                             {
-                                "amount": 100,
+                                "amount": 250,
                                 "resource": "gold"
                             }
                         ],
@@ -441,11 +550,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 100,
+                                "amount": 250,
                                 "resource": "gold"
                             },
                             {
-                                "amount": 250,
+                                "amount": 360,
                                 "resource": "wood"
                             }
                         ],

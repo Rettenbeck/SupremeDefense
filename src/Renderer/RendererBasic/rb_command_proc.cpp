@@ -20,11 +20,12 @@ namespace SupDef {
         auto comComp = asset->getComponent<CommandComponent>();
         assert(comComp);
         
-        if (comComp->commandType == COM_TYPE_BUILD) {
+        auto buildComp = asset->getComponent<BuildCommandComponent>();
+        if (buildComp) {
             commandMode = RCommandMode::BUILD;
-        } else {
-            Logger::getInstance().addMessage(MessageType::Error, "Unknown type: &1", comComp->commandType);
         }
+        
+        // Logger::getInstance().addMessage(MessageType::Error, "Unknown type: &1", comComp->commandType);
     }
 
     void RendererBasic::processCommandMessage(Entity* asset, std::string msg, const json &j) {

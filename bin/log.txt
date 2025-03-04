@@ -21,3 +21,168 @@
 
 [2025-03-04 15:05:18] INFO: Command test_command  successful!
 
+[2025-03-04 15:12:37] INIT: ------------------
+[2025-03-04 15:12:37] SUCCESS: World initialized!
+[2025-03-04 15:12:37] SUCCESS: Serialized to game_save.txt
+[2025-03-04 15:12:37] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 15:12:37] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 15:12:37] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 15:12:37] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 15:12:41] INFO: Command received: test_command
+
+[2025-03-04 15:12:42] INFO: Command test_command cancelled!
+
+[2025-03-04 15:12:46] INFO: Command received: test_command
+
+[2025-03-04 15:12:47] INFO: Command test_command cancelled!
+
+[2025-03-04 15:12:47] INFO: Command received: test_command
+
+[2025-03-04 15:12:48] INFO: Command test_command  successful!
+
+[2025-03-04 15:12:48] INFO: Command received: test_command
+
+[2025-03-04 15:12:48] INFO: Command test_command  successful!
+
+[2025-03-04 15:12:49] INFO: Command received: test_command
+
+[2025-03-04 15:12:49] INFO: Command test_command  successful!
+
+[2025-03-04 15:12:50] INFO: Command received: test_command
+
+[2025-03-04 15:12:50] INFO: Command test_command  successful!
+
+[2025-03-04 15:12:51] INFO: Command received: test_command
+
+[2025-03-04 15:12:51] INFO: Command test_command  successful!
+
+[2025-03-04 15:12:52] INFO: Command received: test_command
+
+[2025-03-04 15:54:08] INIT: ------------------
+[2025-03-04 15:54:08] SUCCESS: World initialized!
+[2025-03-04 15:54:08] SUCCESS: Serialized to game_save.txt
+[2025-03-04 15:54:08] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 15:54:08] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 15:54:08] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 15:54:08] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 15:54:12] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:23] INFO: Command test_command  successful!
+
+[2025-03-04 15:54:31] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:34] INFO: Command test_command  successful!
+
+[2025-03-04 15:54:36] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:37] INFO: Command test_command cancelled!
+
+[2025-03-04 15:54:41] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:42] INFO: Command test_command cancelled!
+
+[2025-03-04 15:54:43] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:43] INFO: Command test_command cancelled!
+
+[2025-03-04 15:54:43] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:44] INFO: Command test_command  successful!
+
+[2025-03-04 15:54:44] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:44] INFO: Command test_command  successful!
+
+[2025-03-04 15:54:45] INFO: Command test_command accepted!
+
+[2025-03-04 15:54:45] INFO: Command test_command  successful!
+
+[2025-03-04 15:54:45] INFO: Command test_command failed!
+
+[2025-03-04 15:54:47] INFO: Command test_command failed!
+
+[2025-03-04 16:25:43] INIT: ------------------
+[2025-03-04 16:25:43] SUCCESS: World initialized!
+[2025-03-04 16:25:43] SUCCESS: Serialized to game_save.txt
+[2025-03-04 16:25:43] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 16:25:43] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 16:25:43] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 16:25:43] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 16:25:46] INFO: Command test_command accepted!
+
+[2025-03-04 16:25:51] INFO: Command test_command2  successful!
+
+[2025-03-04 16:25:53] INFO: Command test_command accepted!
+
+[2025-03-04 16:25:54] INFO: Command test_command  successful!
+
+[2025-03-04 16:25:54] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:25:55] INFO: Command test_command  successful!
+
+[2025-03-04 16:25:57] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:26:05] INIT: ------------------
+[2025-03-04 16:26:05] SUCCESS: World initialized!
+[2025-03-04 16:26:05] SUCCESS: Serialized to game_save.txt
+[2025-03-04 16:26:05] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 16:26:05] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 16:26:05] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 16:26:05] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 16:26:06] INFO: Command test_command accepted!
+
+[2025-03-04 16:26:13] INFO: Command test_command2  successful!
+
+[2025-03-04 16:26:13] INFO: Command test_command accepted!
+
+[2025-03-04 16:26:14] INFO: Command test_command  successful!
+
+[2025-03-04 16:26:14] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:26:14] INFO: Command test_command2  successful!
+
+[2025-03-04 16:26:15] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:26:16] INFO: Command test_command2  successful!
+
+[2025-03-04 16:26:17] INFO: Command test_command failed!
+
+[2025-03-04 16:26:18] INFO: Game ended from renderer
+
+[2025-03-04 16:26:25] INIT: ------------------
+[2025-03-04 16:26:25] SUCCESS: World initialized!
+[2025-03-04 16:26:26] SUCCESS: Serialized to game_save.txt
+[2025-03-04 16:26:26] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 16:26:26] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 16:26:26] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 16:26:26] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 16:26:26] INFO: Command test_command accepted!
+
+[2025-03-04 16:26:29] INFO: Command test_command  successful!
+
+[2025-03-04 16:26:30] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:26:37] INFO: Game ended from renderer
+
+[2025-03-04 16:26:41] INIT: ------------------
+[2025-03-04 16:26:41] SUCCESS: World initialized!
+[2025-03-04 16:26:41] SUCCESS: Serialized to game_save.txt
+[2025-03-04 16:26:41] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 16:26:41] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 16:26:41] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 16:26:41] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 16:26:41] INFO: Command test_command2 accepted!
+
+[2025-03-04 16:26:43] INFO: Game ended from renderer
+
+[2025-03-04 16:27:26] INIT: ------------------
+[2025-03-04 16:27:26] SUCCESS: World initialized!
+[2025-03-04 16:27:26] SUCCESS: Serialized to game_save.txt
+[2025-03-04 16:27:26] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 16:27:26] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 16:27:26] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 16:27:26] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 16:27:28] INFO: Command test_command accepted!
+
+[2025-03-04 16:27:37] INFO: Game ended from renderer
+

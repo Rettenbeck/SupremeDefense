@@ -51,7 +51,7 @@ namespace SupDef {
             sf::Vector2i getMousePos();
             sf::Vector2f getMousePosWorld();
 
-            void trigger();
+            void trigger(int i);
             void subscribeToEvents();
 
             void onCommandToRender(const CommandToRenderEvent& event);
@@ -67,6 +67,8 @@ namespace SupDef {
             void renderGame();
             void renderCollisionGrid();
             void renderEntitiesWithCollision(EntityManager* entityManager);
+            void renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB);
+            void renderVirtualEntity();
             void renderMaps(EntityManager* entityManager);
             void renderMap(_EntMapTiles map);
             
@@ -90,6 +92,7 @@ namespace SupDef {
             bool keyL = false, keyR = false, keyU = false, keyD = false;
             RCommandMode commandMode = RCommandMode::NONE;
             CommandID currentCommand = NO_COMMAND;
+            Entity* virtualEntity = nullptr;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

@@ -24,10 +24,10 @@ namespace SupDef {
     const std::string NO_DESC = "???";
 
     const CommandType JCOM_MESSAGE = "message";
-    const CommandType COM_TYPE_MOVE = "move";
-    const CommandType COM_TYPE_BUILD = "build";
-    const CommandType COM_TYPE_QUEUE = "queue";
-    const CommandType COM_TYPE_AOE_CAST = "aoe_cast";
+    // const CommandType COM_TYPE_MOVE = "move";
+    // const CommandType COM_TYPE_BUILD = "build";
+    // const CommandType COM_TYPE_QUEUE = "queue";
+    // const CommandType COM_TYPE_AOE_CAST = "aoe_cast";
     
 
     // Non-component objects
@@ -60,9 +60,14 @@ namespace SupDef {
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
     const std::string SCA_COMMAND                           = "command"                             ;
+    const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Attributes
+    const std::string S_COMMAND_TYPE                        = "command_type"                        ;
+    const std::string S_RESOURCES                           = "resources"                           ;
+    const std::string S_TO_BUILD                            = "to_build"                            ;
+
     const std::string S_KEY                                 = "key"                                 ;
     const std::string S_TEXTS                               = "texts"                               ;
     const std::string S_ID                                  = "id"                                  ;
@@ -74,9 +79,7 @@ namespace SupDef {
     const std::string S_NAME                                = "name"                                ;
     const std::string S_TYPE                                = "type"                                ;
     const std::string S_DESCRIPTION                         = "description"                         ;
-    const std::string S_COMMAND_TYPE                        = "command_type"                        ;
     const std::string S_RESOURCE                            = "resource"                            ;
-    const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_PARENT                              = "parent"                              ;
     const std::string S_CHILDREN                            = "children"                            ;
     const std::string S_PLAYER                              = "player"                              ;
