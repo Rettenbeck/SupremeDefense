@@ -19,11 +19,7 @@ namespace SupDef {
                 elements.clear();
 
                 showResources(0, 0);
-        
-
-                // elements.push_back(std::make_unique<GuiPanel>(GuiElementStyle::Default, 450,  50, 80, 70));
-                // elements.push_back(std::make_unique<GuiPanel>(GuiElementStyle::Test, 450, 250, 80, 70));
-                //elements.push_back(std::make_unique<GuiLabel>(460, 60, "Main Menu"));
+                elements.push_back(std::make_unique<GuiPanel >(GuiElementStyle::Default, 1200, 10, 150, 50));
                 elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default,  800, 10, 150, 50, "Play"));
                 elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default, 1000, 10, 150, 50, "Exit"));
             }

@@ -5,6 +5,7 @@
 const std::string ASSET_PLAYER = "player";
 const std::string ASSET_RES_GOLD = "gold";
 const std::string ASSET_RES_WOOD = "wood";
+const std::string ASSET_TEST_COM = "test_command";
 const std::string ASSET_TEST_MAP = "test_map";
 const std::string ASSET_IMMOVABLE = "immovable";
 const std::string ASSET_MOVER = "mover";
@@ -27,6 +28,13 @@ void create_assets(SupDef::Game* g) {
     auto am_res_wood = am->createAsset(ASSET_RES_WOOD);
     am_res_wood->addComponent<SupDef::ResourceDefComponent>();
     am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Holz", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Gehacktes Holz");
+
+    auto am_command_test = am->createAsset(ASSET_TEST_COM);
+    am_command_test->addComponent<SupDef::CommandComponent>(SupDef::COM_BUILD);
+    am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "TestCom", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testbefehl");
+    auto am_command_test_req = am_command_test->addComponent<SupDef::RequirementComponent>();
+    am_command_test_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_GOLD, 20));
+    am_command_test_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_WOOD, 30));
 
     int tileSize = 16;
     int width  = 640;

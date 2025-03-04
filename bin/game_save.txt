@@ -43,16 +43,42 @@
                 ]
             },
             {
+                "asset_id": "test_command",
+                "components": [
+                    {
+                        "resources": [
+                            {
+                                "amount": 20,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 30,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
+                    },
+                    {
+                        "command_type": "build",
+                        "type": "command"
+                    }
+                ]
+            },
+            {
                 "asset_id": "wood",
                 "components": [
                     {
                         "texts": [
                             {
-                                "de": "Gehacktes Holz",
+                                "de": "Testbefehl",
                                 "key": "desc"
                             },
                             {
-                                "de": "Holz",
+                                "de": "TestCom",
                                 "key": "name"
                             }
                         ],
@@ -164,12 +190,10 @@
                         "resources": [
                             {
                                 "amount": 250,
-                                "id": "wood",
                                 "resource": "wood"
                             },
                             {
                                 "amount": 100,
-                                "id": "gold",
                                 "resource": "gold"
                             }
                         ],
@@ -418,12 +442,10 @@
                         "resources": [
                             {
                                 "amount": 100,
-                                "id": "gold",
                                 "resource": "gold"
                             },
                             {
                                 "amount": 250,
-                                "id": "wood",
                                 "resource": "wood"
                             }
                         ],

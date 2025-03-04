@@ -8,7 +8,7 @@
 namespace SupDef {
     
 
-    // #### General events #####################################
+    // #### General events #########################################################################
     struct WindowResizeEvent : public Event {
         unsigned width, height;
         WindowResizeEvent(unsigned width_, unsigned height_) : width(width_), height(height_) {}
@@ -17,20 +17,22 @@ namespace SupDef {
     struct GameEndEvent : public Event {
         GameEndEvent() {}
     };
+    
 
 
-    // #### Command events #####################################
+
+    // #### General events #########################################################################
     struct StartCommandEvent : public Event {
         CommandID commandID;
         StartCommandEvent(const CommandID& command) : commandID(command) {}
     };
 
     struct StartCommandReceivedEvent : public Event {
-        //CommandID commandID;
+        CommandID commandID;
         bool success;
-        StartCommandReceivedEvent(bool isSuccess) : success(isSuccess) {}
-        // StartCommandReceivedEvent(const CommandID& command, bool isSuccess)
-        //     : commandID(command), success(isSuccess) {}
+        // StartCommandReceivedEvent(bool isSuccess) : success(isSuccess) {}
+        StartCommandReceivedEvent(const CommandID& command, bool isSuccess)
+            : commandID(command), success(isSuccess) {}
     };
 
     struct UpdateCommandEvent : public Event {
@@ -45,9 +47,12 @@ namespace SupDef {
 
     struct ConfirmCommandEvent : public Event {
         bool isConfirmed;
+        bool isDirect = false;
         json data;
         explicit ConfirmCommandEvent(bool confirmed, const json& jsonData)
             : isConfirmed(confirmed), data(jsonData) {}
+        explicit ConfirmCommandEvent(bool confirmed, const json& jsonData, bool direct)
+            : isConfirmed(confirmed), data(jsonData), isDirect(direct) {}
     };
 
     struct ConfirmCommandReceivedEvent : public Event {
@@ -58,14 +63,18 @@ namespace SupDef {
     };
     
 
-    // #### Specific command events ############################
+
+
+    // #### General events #########################################################################
     struct UnitSelectedEvent : public Event {
         Entity* entity;
         UnitSelectedEvent(Entity* entity_) : entity(entity_) {}
     };
 
+    
 
-    // #### Other events #######################################
+
+    // #### General events #########################################################################
     struct ActionCreatedEvent : public Event {
         SAction action;
         ActionCreatedEvent(SAction action_) : action(std::move(action_)) {}

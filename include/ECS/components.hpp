@@ -15,5 +15,6 @@
 
 // #include <ECS/asset_components/asset_component.hpp>
 #include <ECS/asset_components/text_component.hpp>
+#include <ECS/asset_components/command_component.hpp>
 #include <ECS/asset_components/requirement_component.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>

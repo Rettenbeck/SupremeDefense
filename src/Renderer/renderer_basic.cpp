@@ -25,6 +25,7 @@ namespace SupDef {
         //font->loadFromFile("arial.ttf");
         assert(globalDispatcher);
         globalDispatcher->dispatch<WindowResizeEvent>(width, height);
+        subscribeToEvents();
     }
 
     void RendererBasic::end() {
@@ -59,6 +60,7 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::Right) keyR = true;
                     if (keyEvent->code == sf::Keyboard::Key::Up)    keyU = true;
                     if (keyEvent->code == sf::Keyboard::Key::Down)  keyD = true;
+                    if (keyEvent->code == sf::Keyboard::Key::N) trigger();
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {
@@ -66,6 +68,16 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::Right) keyR = false;
                     if (keyEvent->code == sf::Keyboard::Key::Up)    keyU = false;
                     if (keyEvent->code == sf::Keyboard::Key::Down)  keyD = false;
+                }
+
+                // if (const auto* mouseMoveEvent = event->getIf<sf::Event::MouseMoved>()) {
+                //     mousePos = mouseMoveEvent->position;
+                // }
+
+                if (const auto* mouseClickEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
+                    // mousePos = mouseClickEvent->position;
+                    if (mouseClickEvent->button == sf::Mouse::Button::Left ) onMouseClick(true );
+                    if (mouseClickEvent->button == sf::Mouse::Button::Right) onMouseClick(false);
                 }
             }
         }
@@ -98,8 +110,7 @@ namespace SupDef {
         ImGui::End();
         ImGui::SFML::Render(*(window.get()));
 
-        ColorData cd(sf::Color::Magenta, sf::Color::Red, 1);
-        drawRect(520, 220, 20, 20, cd);
+        updateCommand();
 
         window->display();
         return true;
@@ -119,8 +130,84 @@ namespace SupDef {
         gameView.move(offset);
     }
 
+    sf::Vector2i RendererBasic::getMousePos() {
+        return sf::Mouse::getPosition(*window.get());
+    }
+
+    sf::Vector2f RendererBasic::getMousePosWorld() {
+        return window->mapPixelToCoords(getMousePos(), gameView);
+    }
+
+    void RendererBasic::trigger() {
+        std::cout << "Command triggered!\n";
+        globalDispatcher->dispatch<StartCommandEvent>("test_command");
+    }
+
     void RendererBasic::subscribeToEvents() {
+        globalDispatcher->subscribe<StartCommandReceivedEvent>([this](const SupDef::Events& events) {
+            for (const auto& event : events) {
+                const auto& typedEvent = static_cast<const SupDef::StartCommandReceivedEvent&>(*event);
+                onStartReceivedCommand(typedEvent);
+            }
+        });
+        globalDispatcher->subscribe<UpdateCommandReceivedEvent>([this](const SupDef::Events& events) {
+            for (const auto& event : events) {
+                const auto& typedEvent = static_cast<const SupDef::UpdateCommandReceivedEvent&>(*event);
+                onUpdateReceivedCommand(typedEvent);
+            }
+        });
+        globalDispatcher->subscribe<ConfirmCommandReceivedEvent>([this](const SupDef::Events& events) {
+            for (const auto& event : events) {
+                const auto& typedEvent = static_cast<const SupDef::ConfirmCommandReceivedEvent&>(*event);
+                onConfirmReceivedCommand(typedEvent);
+            }
+        });
+    }
+
+    void RendererBasic::resetCommand() {
+        currentCommand = NO_COMMAND;
+        commandMode = RCommandMode::NONE;
+    }
+
+    void RendererBasic::onStartReceivedCommand(const StartCommandReceivedEvent& event) {
+        // if (commandMode != RCommandMode::NONE) return;
+        std::cout << "Renderer received event: StartCommandReceivedEvent; ";
+        std::cout << "  Command: " << event.commandID << "; Success: " << event.success << "\n";
+        if (!event.success) resetCommand();
+        currentCommand = event.commandID;
+        commandMode = RCommandMode::BUILD;
+    }
+
+    void RendererBasic::onUpdateReceivedCommand(const UpdateCommandReceivedEvent& event) {
+        // if (commandMode == RCommandMode::NONE) return;
+        std::cout << "Renderer received event: UpdateCommandReceivedEvent; ";
+        std::cout << "  Data: " << event.data.dump(4) << "\n";
         //
+    }
+
+    void RendererBasic::onConfirmReceivedCommand(const ConfirmCommandReceivedEvent& event) {
+        // if (commandMode == RCommandMode::NONE) return;
+        std::cout << "Renderer received event: ConfirmCommandReceivedEvent; ";
+        std::cout << "  Success: " << event.success << "; data: " << event.data.dump(4) << "\n";
+        if (!event.success) resetCommand();
+        resetCommand();
+    }
+    
+    void RendererBasic::onMouseClick(bool left) {
+        json j;
+        auto pos = getMousePosWorld();
+        j["x"] = pos.x;
+        j["y"] = pos.y;
+        globalDispatcher->dispatch<ConfirmCommandEvent>(left, j);
+    }
+
+    void RendererBasic::updateCommand() {
+        if (commandMode == RCommandMode::NONE) return;
+        json j;
+        auto pos = getMousePosWorld();
+        j["x"] = pos.x;
+        j["y"] = pos.y;
+        globalDispatcher->dispatch<UpdateCommandEvent>(j);
     }
 
     void RendererBasic::renderGame() {
@@ -128,6 +215,13 @@ namespace SupDef {
         renderCollisionGrid();
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
+
+        if (commandMode == RCommandMode::BUILD) {
+            ColorData cd(sf::Color::Yellow, sf::Color::White, 2);
+            auto pos = getMousePosWorld();
+            int w = 20, h = 16;
+            drawRect(pos.x - w /2, pos.y - h / 2, w, h, cd);
+        }
     }
 
     void RendererBasic::renderCollisionGrid() {

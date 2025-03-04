@@ -17,8 +17,7 @@ namespace SupDef {
             bool selfCost = false;
 
             Resource() {}
-            Resource(ResourceID resourceID) : resourceID(resourceID) {}
-            Resource(ResourceID resourceID, long amount, float rate, long capacity)
+            Resource(ResourceID resourceID, long amount = 0, float rate = 0.0, long capacity = 0)
                 : resourceID(resourceID), amount(amount), rate(rate), capacity(capacity) {}
 
             void to_json(json& j) const {

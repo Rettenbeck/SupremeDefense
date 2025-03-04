@@ -11,6 +11,11 @@
 
 namespace SupDef {
 
+    enum class RCommandMode {
+        NONE,
+        BUILD
+    };
+
     struct ColorData {
         ColorData() { }
         ColorData(sf::Color fillColor_, sf::Color outlineColor_, float outlineThickness_) {
@@ -41,7 +46,19 @@ namespace SupDef {
             void zoom(float factor);
             void move(float offsetX, float offsetY);
 
+            sf::Vector2i getMousePos();
+            sf::Vector2f getMousePosWorld();
+
+            void trigger();
             void subscribeToEvents();
+            void resetCommand();
+
+            void onStartReceivedCommand(const StartCommandReceivedEvent& event);
+            void onUpdateReceivedCommand(const UpdateCommandReceivedEvent& event);
+            void onConfirmReceivedCommand(const ConfirmCommandReceivedEvent& event);
+
+            void onMouseClick(bool left);
+            void updateCommand();
 
             void renderGame();
             void renderCollisionGrid();
@@ -64,9 +81,11 @@ namespace SupDef {
             sf::View gameView;
             sf::View guiView;
 
+            // sf::Vector2i mousePos;
             float currentZoom = 1.0;
             bool keyL = false, keyR = false, keyU = false, keyD = false;
-            int commandMode = 0;
+            RCommandMode commandMode = RCommandMode::NONE;
+            CommandID currentCommand = NO_COMMAND;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

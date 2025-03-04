@@ -126,15 +126,41 @@
                     {
                         "texts": [
                             {
-                                "de": "Holz",
+                                "de": "TestCom",
                                 "key": "name"
                             },
                             {
-                                "de": "Gehacktes Holz",
+                                "de": "Testbefehl",
                                 "key": "desc"
                             }
                         ],
                         "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test_command",
+                "components": [
+                    {
+                        "command_type": "build",
+                        "type": "command"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 20,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 30,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
                     }
                 ]
             },

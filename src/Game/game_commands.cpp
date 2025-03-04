@@ -15,15 +15,16 @@ namespace SupDef {
 
         switch (status) {
             case CommandStatus::RECEIVED:
-                eventDispatcher->dispatch<StartCommandReceivedEvent>(success);
+                globalDispatcher->dispatch<StartCommandReceivedEvent>(command, success);
+                comProcessor->setCommandStatus(CommandStatus::RECEIVED);
                 if (!success) { comProcessor->reset(); }
                 break;
             case CommandStatus::ONGOING:
-                eventDispatcher->dispatch<UpdateCommandReceivedEvent>(json());
+                globalDispatcher->dispatch<UpdateCommandReceivedEvent>(json());
                 break;
             case CommandStatus::CONFIRMED:
-                eventDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
-                if (!success) { comProcessor->reset(); }
+                globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
+                comProcessor->reset();
                 break;
             default:
                 assert(false);
@@ -35,6 +36,7 @@ namespace SupDef {
         if (!player) return false;
         
         if (!checkResourceRequirements(player, reqComp, status)) return false;
+        // Additional checks...
         return true;
     }
 

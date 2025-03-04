@@ -14,24 +14,24 @@ namespace SupDef {
 
     class CommandProcessor {
         public:
-            CommandProcessor(EventDispatcher* dispatcher) : eventDispatcher(dispatcher) {
+            CommandProcessor(EventDispatcher* dispatcher) : globalDispatcher(dispatcher) {
                 subscribeToEvents();
             }
         
             void subscribeToEvents() {
-                eventDispatcher->subscribe<StartCommandEvent>([this](const SupDef::Events& events) {
+                globalDispatcher->subscribe<StartCommandEvent>([this](const SupDef::Events& events) {
                     for (const auto& event : events) {
                         const auto& typedEvent = static_cast<const SupDef::StartCommandEvent&>(*event);
                         onStartCommand(typedEvent);
                     }
                 });
-                eventDispatcher->subscribe<UpdateCommandEvent>([this](const SupDef::Events& events) {
+                globalDispatcher->subscribe<UpdateCommandEvent>([this](const SupDef::Events& events) {
                     for (const auto& event : events) {
                         const auto& typedEvent = static_cast<const SupDef::UpdateCommandEvent&>(*event);
                         onUpdateCommand(typedEvent);
                     }
                 });
-                eventDispatcher->subscribe<ConfirmCommandEvent>([this](const SupDef::Events& events) {
+                globalDispatcher->subscribe<ConfirmCommandEvent>([this](const SupDef::Events& events) {
                     for (const auto& event : events) {
                         const auto& typedEvent = static_cast<const SupDef::ConfirmCommandEvent&>(*event);
                         onConfirmCommand(typedEvent);
@@ -44,29 +44,44 @@ namespace SupDef {
                     Logger::getInstance().addMessage(MessageType::Error, "A command is already active!");
                     return;
                 }
+                std::cout << "ComProcessor received event: StartCommandEvent; ";
+                std::cout << "  Command: " << event.commandID << "\n";
                 currentCommand = event.commandID;
                 commandStatus = CommandStatus::RECEIVED;
             }
 
             void onUpdateCommand(const UpdateCommandEvent& event) {
                 if (commandStatus != CommandStatus::RECEIVED && commandStatus != CommandStatus::ONGOING) return;
+                std::cout << "ComProcessor received event: UpdateCommandEvent; ";
+                std::cout << "  Data: " << event.data.dump(4) << "\n";
+                // std::cout << "   Status: ";
+                // switch (commandStatus) {
+                //     case CommandStatus::NONE: std::cout << "NONE"; break;
+                //     case CommandStatus::RECEIVED: std::cout << "RECEIVED"; break;
+                //     case CommandStatus::ONGOING: std::cout << "ONGOING"; break;
+                //     case CommandStatus::CONFIRMED: std::cout << "CONFIRMED"; break;
+                // }
+                // std::cout << "\n";
                 commandStatus = CommandStatus::ONGOING;
                 data = event.data;
             }
 
             void onConfirmCommand(const ConfirmCommandEvent& event) {
-                if (commandStatus != CommandStatus::ONGOING) return;
+                if (commandStatus != CommandStatus::RECEIVED && commandStatus != CommandStatus::ONGOING) return;
+                std::cout << "ComProcessor received event: ConfirmCommandEvent; ";
+                std::cout << "  Confirmed: " << event.isConfirmed << "; data: " << event.data.dump(4) << "\n";
             
                 if (event.isConfirmed) {
                     commandStatus = CommandStatus::CONFIRMED;
                 } else {
                     reset();
-                    eventDispatcher->dispatch<ConfirmCommandReceivedEvent>(false, json());
+                    globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(false, json());
                 }
             }
             
             CommandID getCurrentCommand() const { return currentCommand; }
             CommandStatus getCommandStatus() const { return commandStatus; }
+            void setCommandStatus(CommandStatus status) { commandStatus = status; }
             json& getData() { return data; }
         
             void reset() {
@@ -75,7 +90,7 @@ namespace SupDef {
             }
         
         private:
-            EventDispatcher* eventDispatcher;
+            EventDispatcher* globalDispatcher;
             CommandID currentCommand = NO_COMMAND;
             CommandStatus commandStatus = CommandStatus::NONE;
             json data;

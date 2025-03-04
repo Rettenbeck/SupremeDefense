@@ -15,6 +15,8 @@ namespace SupDef {
     using CommandID = std::string;
     using ResourceID = std::string;
 
+    using CommandType = std::string;
+
     // using ComponentListEntry = std::pair<std::type_index, Component*>;
     // using ComponentList = std::vector<ComponentListEntry>;
 
@@ -23,6 +25,12 @@ namespace SupDef {
     const CommandID NO_COMMAND = "_";
     const std::string NO_NAME = "unknown asset";
     const std::string NO_DESC = "???";
+
+    const CommandType COM_MOVE = "move";
+    const CommandType COM_BUILD = "build";
+    const CommandType COM_QUEUE = "queue";
+    const CommandType COM_AOE_CAST = "aoe_cast";
+    
 
     // Non-component objects
     const std::string SX_NAME                               = "name"                                ;
@@ -53,6 +61,7 @@ namespace SupDef {
 
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
+    const std::string SCA_COMMAND                           = "command"                             ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Attributes
@@ -67,7 +76,7 @@ namespace SupDef {
     const std::string S_NAME                                = "name"                                ;
     const std::string S_TYPE                                = "type"                                ;
     const std::string S_DESCRIPTION                         = "description"                         ;
-    // const std::string S_REQUIREMENTS                        = "requirements"                        ;
+    const std::string S_COMMAND_TYPE                        = "command_type"                        ;
     const std::string S_RESOURCE                            = "resource"                            ;
     const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_PARENT                              = "parent"                              ;
