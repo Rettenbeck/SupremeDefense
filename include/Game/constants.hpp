@@ -8,8 +8,8 @@ namespace SupDef {
     
     using CommandType = std::string;
 
-    const CommandType COM_TYPE_MOVE                         = "move"                                ;
-    const CommandType COM_TYPE_BUILD                        = "build"                               ;
+    // const CommandType COM_TYPE_MOVE                         = "move"                                ;
+    // const CommandType COM_TYPE_BUILD                        = "build"                               ;
 
     const std::string DEFAULT_FILENAME_SAVEGAME             = "game_save.txt"                       ;
 

@@ -9,7 +9,8 @@ namespace SupDef {
         NONE,
         RECEIVED,
         ONGOING,
-        CONFIRMED
+        CONFIRMED,
+        CANCELLED
     };
 
     class CommandProcessor {
@@ -74,8 +75,7 @@ namespace SupDef {
                 if (event.isConfirmed) {
                     commandStatus = CommandStatus::CONFIRMED;
                 } else {
-                    reset();
-                    globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(false, json());
+                    commandStatus = CommandStatus::CANCELLED;
                 }
             }
             

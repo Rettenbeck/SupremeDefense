@@ -30,7 +30,7 @@ void create_assets(SupDef::Game* g) {
     am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Holz", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Gehacktes Holz");
 
     auto am_command_test = am->createAsset(ASSET_TEST_COM);
-    am_command_test->addComponent<SupDef::CommandComponent>(SupDef::COM_BUILD);
+    am_command_test->addComponent<SupDef::CommandComponent>(SupDef::COM_TYPE_BUILD);
     am_res_wood->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "TestCom", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testbefehl");
     auto am_command_test_req = am_command_test->addComponent<SupDef::RequirementComponent>();
     am_command_test_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_GOLD, 20));

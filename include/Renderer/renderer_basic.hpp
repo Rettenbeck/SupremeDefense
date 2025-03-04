@@ -43,22 +43,26 @@ namespace SupDef {
             bool poll();
             bool draw();
 
+            void updateMove();
             void zoom(float factor);
             void move(float offsetX, float offsetY);
+            void onMouseClick(bool left);
 
             sf::Vector2i getMousePos();
             sf::Vector2f getMousePosWorld();
 
             void trigger();
             void subscribeToEvents();
+
+            void onCommandToRender(const CommandToRenderEvent& event);
+            // void onStartReceivedCommand(const StartCommandReceivedEvent& event);
+            // void onUpdateReceivedCommand(const UpdateCommandReceivedEvent& event);
+            // void onConfirmReceivedCommand(const ConfirmCommandReceivedEvent& event);
+
             void resetCommand();
-
-            void onStartReceivedCommand(const StartCommandReceivedEvent& event);
-            void onUpdateReceivedCommand(const UpdateCommandReceivedEvent& event);
-            void onConfirmReceivedCommand(const ConfirmCommandReceivedEvent& event);
-
-            void onMouseClick(bool left);
             void updateCommand();
+            void processCommand(Entity* asset, const json &j);
+            void processCommandMessage(Entity* asset, std::string msg, const json &j);
 
             void renderGame();
             void renderCollisionGrid();
@@ -81,8 +85,8 @@ namespace SupDef {
             sf::View gameView;
             sf::View guiView;
 
-            // sf::Vector2i mousePos;
             float currentZoom = 1.0;
+            float moveAmount = 10.0;
             bool keyL = false, keyR = false, keyU = false, keyD = false;
             RCommandMode commandMode = RCommandMode::NONE;
             CommandID currentCommand = NO_COMMAND;

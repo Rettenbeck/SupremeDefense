@@ -9,26 +9,47 @@ namespace SupDef {
         assert(comProcessor);
         auto command = comProcessor->getCurrentCommand();
         auto status = comProcessor->getCommandStatus();
+        std::stringstream ss;
 
-        if (status == CommandStatus::NONE) return;
+        if (status == CommandStatus::NONE) {
+            comProcessor->reset();
+            globalDispatcher->dispatch<CommandToRenderEvent>(NO_COMMAND, json());
+            return;
+        }
         auto success = checkRequirements(command, status);
 
         switch (status) {
             case CommandStatus::RECEIVED:
-                globalDispatcher->dispatch<StartCommandReceivedEvent>(command, success);
-                comProcessor->setCommandStatus(CommandStatus::RECEIVED);
+                // globalDispatcher->dispatch<StartCommandReceivedEvent>(command, success);
+                ss << "Command received: " << command << "\n";
+                comProcessor->setCommandStatus(CommandStatus::ONGOING);
                 if (!success) { comProcessor->reset(); }
                 break;
             case CommandStatus::ONGOING:
-                globalDispatcher->dispatch<UpdateCommandReceivedEvent>(json());
+                // globalDispatcher->dispatch<UpdateCommandReceivedEvent>(json());
                 break;
             case CommandStatus::CONFIRMED:
-                globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
+                // globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
+                ss << "Command " << command << " ";
+                if (!success) ss << "not";
+                ss << " successful!\n";
+                comProcessor->reset();
+                break;
+            case CommandStatus::CANCELLED:
+                // globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
+                ss << "Command " << command << " cancelled!\n";
                 comProcessor->reset();
                 break;
             default:
                 assert(false);
         }
+
+        json j;
+        std::string msg = ss.str();
+        if (!msg.empty()) {
+            j[JCOM_MESSAGE] = msg;
+        }
+        globalDispatcher->dispatch<CommandToRenderEvent>(comProcessor->getCurrentCommand(), j);
     }
 
     bool Game::checkRequirements(RequirementComponent* reqComp, CommandStatus status) {

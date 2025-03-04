@@ -27,23 +27,23 @@ namespace SupDef {
         StartCommandEvent(const CommandID& command) : commandID(command) {}
     };
 
-    struct StartCommandReceivedEvent : public Event {
-        CommandID commandID;
-        bool success;
-        // StartCommandReceivedEvent(bool isSuccess) : success(isSuccess) {}
-        StartCommandReceivedEvent(const CommandID& command, bool isSuccess)
-            : commandID(command), success(isSuccess) {}
-    };
+    // struct StartCommandReceivedEvent : public Event {
+    //     CommandID commandID;
+    //     bool success;
+    //     // StartCommandReceivedEvent(bool isSuccess) : success(isSuccess) {}
+    //     StartCommandReceivedEvent(const CommandID& command, bool isSuccess)
+    //         : commandID(command), success(isSuccess) {}
+    // };
 
     struct UpdateCommandEvent : public Event {
         json data;
         explicit UpdateCommandEvent(const json& jsonData) : data(jsonData) {}
     };
     
-    struct UpdateCommandReceivedEvent : public Event {
-        json data;
-        explicit UpdateCommandReceivedEvent(const json& jsonData) : data(jsonData) {}
-    };
+    // struct UpdateCommandReceivedEvent : public Event {
+    //     json data;
+    //     explicit UpdateCommandReceivedEvent(const json& jsonData) : data(jsonData) {}
+    // };
 
     struct ConfirmCommandEvent : public Event {
         bool isConfirmed;
@@ -55,13 +55,20 @@ namespace SupDef {
             : isConfirmed(confirmed), data(jsonData), isDirect(direct) {}
     };
 
-    struct ConfirmCommandReceivedEvent : public Event {
-        bool success;
+    // struct ConfirmCommandReceivedEvent : public Event {
+    //     bool success;
+    //     json data;
+    //     explicit ConfirmCommandReceivedEvent(bool isSuccess, const json& jsonData)
+    //         : success(isSuccess), data(jsonData) {}
+    // };
+
+    struct CommandToRenderEvent : public Event {
+        CommandID commandID;
         json data;
-        explicit ConfirmCommandReceivedEvent(bool isSuccess, const json& jsonData)
-            : success(isSuccess), data(jsonData) {}
+        explicit CommandToRenderEvent(const CommandID& command, const json& jsonData)
+            : commandID(command), data(jsonData) {}
     };
-    
+
 
 
 
