@@ -41,15 +41,12 @@ namespace SupDef {
             }
 
             void onStartCommand(const StartCommandEvent& event) {
-                // if (commandStatus != CommandStatus::NONE) {
-                //     Logger::getInstance().addMessage(MessageType::Error, "A command is already active!");
-                //     return;
-                // }
                 reset();
                 std::cout << "ComProcessor received event: StartCommandEvent; ";
                 std::cout << "  Command: " << event.commandID << "\n";
                 currentCommand = event.commandID;
                 commandStatus = CommandStatus::RECEIVED;
+                data = event.data;
             }
 
             void onUpdateCommand(const UpdateCommandEvent& event) {
@@ -68,6 +65,7 @@ namespace SupDef {
                 } else {
                     commandStatus = CommandStatus::CANCELLED;
                 }
+                data = event.data;
             }
             
             CommandID getCurrentCommand() const { return currentCommand; }

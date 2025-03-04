@@ -25,7 +25,8 @@ namespace SupDef {
         if (!game->getAssetManager()) return;
         currentCommand = event.commandID;
         virtualEntity = event.virtualEntity;
-        auto asset = game->getAssetManager()->getAsset(event.commandID);
+        json j = event.data;
+        auto asset = game->getAssetFromCommand(event.commandID, j);
         processCommand(asset, event.data);
     }
 

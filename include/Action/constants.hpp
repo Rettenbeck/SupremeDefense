@@ -5,7 +5,8 @@
 
 namespace SupDef {
     
-    const std::string SA_TYPE                               = "type"                                ;
+    const std::string SA_COMMAND_ID                         = "command_id"                          ;
+    const std::string SA_PLAYER_ID                          = "player_id"                           ;
     const std::string SA_DATA                               = "data"                                ;
 
 }

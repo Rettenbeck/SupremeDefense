@@ -1,5 +1,6 @@
 #include <ECS/include.hpp>
 #include <Tech/include.hpp>
+#include <Action/include.hpp>
 #include <Game/path_finder.hpp>
 #include <Game/collision_system.hpp>
 #include <Game/command_processor.hpp>
@@ -29,7 +30,9 @@ namespace SupDef {
             UTilesChecker    tilesChecker    = nullptr;
             UPathFinder      pathFinder      = nullptr;
             UCollisionSystem collisionSystem = nullptr;
+            ActionQueue*     actionQueue     = nullptr;
             UEntity virtualEntity = nullptr;
+            UEntity uniqueCommand = nullptr;
 
         public:
             Game();
@@ -47,10 +50,15 @@ namespace SupDef {
             void handleStartCommand(Entity* asset);
             void handleUpdateCommand(Entity* asset);
             void handleConfirmCommand(Entity* asset);
+            
+            Entity* getAssetFromCommand(CommandID commandID, json &data);
 
-            bool checkRequirements(RequirementComponent* reqComp, CommandStatus status);
-            bool checkRequirements(CommandID commandID, CommandStatus status);
-            bool checkResourceRequirements(Entity* player, RequirementComponent* reqComp, CommandStatus status);
+            void processActions();
+            void processAction(Entity* asset, json &data);
+
+            bool checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction);
+            bool checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction);
+            bool checkResourceReq(Entity* player, RequirementComponent* reqComp, CommandStatus status, bool onAction);
 
             void updateTempGoalMass(TilesComponent* tilesComp, _EntPosMovCols& comps);
             void updateTempGoal(TilesComponent* tilesComp, _EntPosMovCol comp);
@@ -82,6 +90,7 @@ namespace SupDef {
             PathFinder*      getPathFinder     () { return pathFinder     .get(); }
             CollisionSystem* getCollisionSystem() { return collisionSystem.get(); }
             void setGlobalDispatcher(EventDispatcher* globalDispatcher_) { globalDispatcher = globalDispatcher_; }
+            void setActionQueue(ActionQueue* actionQueue_) { actionQueue = actionQueue_; }
             void setThisPlayer(EntityID playerID) { thisPlayer = playerID; }
             Entity* getThisPlayer() { return entityManager->getEntity(thisPlayer); }
 

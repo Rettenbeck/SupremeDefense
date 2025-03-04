@@ -18,14 +18,13 @@ namespace SupDef {
             return;
         }
         if (command != NO_COMMAND) {
-            asset = assetManager->getAsset(command);
+            asset = getAssetFromCommand(command, comProcessor->getData());
             assert(asset);
         }
-        auto success = checkRequirements(command, status);
+        auto success = checkRequirements(command, comProcessor->getData(), status, false);
 
         switch (status) {
             case CommandStatus::RECEIVED:
-                // globalDispatcher->dispatch<StartCommandReceivedEvent>(command, success);
                 ss << "Command " << command << " ";
                 if (success) ss << "accepted!";
                 else ss << "failed!";
@@ -38,12 +37,9 @@ namespace SupDef {
                 }
                 break;
             case CommandStatus::ONGOING:
-
-                // globalDispatcher->dispatch<UpdateCommandReceivedEvent>(json());
                 handleUpdateCommand(asset);
                 break;
             case CommandStatus::CONFIRMED:
-                // globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
                 ss << "Command " << command << " ";
                 if (!success) ss << "not";
                 ss << " successful!\n";
@@ -51,7 +47,6 @@ namespace SupDef {
                 comProcessor->reset();
                 break;
             case CommandStatus::CANCELLED:
-                // globalDispatcher->dispatch<ConfirmCommandReceivedEvent>(success, json());
                 ss << "Command " << command << " cancelled!\n";
                 comProcessor->reset();
                 break;
@@ -86,31 +81,63 @@ namespace SupDef {
 
     void Game::handleConfirmCommand(Entity* asset) {
         assert(asset);
-        //
+        auto action = std::make_shared<Action>(asset->assetID, thisPlayer, comProcessor->getData());
+        globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
     }
 
-    bool Game::checkRequirements(RequirementComponent* reqComp, CommandStatus status) {
+    Entity* Game::getAssetFromCommand(CommandID commandID, json &data) {
+        if (commandID == NO_COMMAND) return nullptr;
+        auto asset = assetManager->getAsset(commandID);
+        if (!asset) {
+            Logger::getInstance().addMessage(MessageType::Error, "Command &1 not found!", commandID);
+            return nullptr;
+        }
+        auto comComp = asset->getComponent<CommandComponent>();
+        if (!comComp) {
+            Logger::getInstance().addMessage(MessageType::Error, "&1 not a command!", commandID);
+            return nullptr;
+        }
+        if (comComp->isUnique) {
+            if (!data.contains(JCOM_UNIQUE)) {
+                Logger::getInstance().addMessage(MessageType::Error,
+                    "&1 marked as unique but does not contain command!", commandID);
+                uniqueCommand = nullptr;
+                return nullptr;
+            }
+            json j = data[JCOM_UNIQUE];
+            uniqueCommand = std::make_unique<Entity>(NO_ENTITY);
+            uniqueCommand->from_json(j);
+            comComp = uniqueCommand->getComponent<CommandComponent>();
+            if (!comComp) {
+                Logger::getInstance().addMessage(MessageType::Error, "Inside asset not a command!", commandID);
+                return nullptr;
+            }
+            return uniqueCommand.get();
+        }
+        return asset;
+    }
+
+    bool Game::checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction) {
+        assert(assetManager);
+        auto asset = getAssetFromCommand(commandID, data);
+        assert(asset);
+        auto reqComp = asset->getComponent<RequirementComponent>();
+        if (!reqComp) return (thisPlayer != NO_ENTITY);
+        return checkRequirements(reqComp, status, onAction);
+    }
+
+    bool Game::checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction) {
         auto player = entityManager->getEntity(thisPlayer);
         if (!player) return false;
         
-        if (!checkResourceRequirements(player, reqComp, status)) return false;
+        if (!checkResourceReq(player, reqComp, status, onAction)) return false;
         // Additional checks...
         return true;
     }
 
-    bool Game::checkRequirements(CommandID commandID, CommandStatus status) {
-        assert(assetManager);
-        auto asset = assetManager->getAsset(commandID);
-        assert(asset);
-        auto reqComp = asset->getComponent<RequirementComponent>();
-        if (!reqComp) return (thisPlayer != NO_ENTITY);
-        return checkRequirements(reqComp, status);
-    }
-
-    bool Game::checkResourceRequirements(Entity* player, RequirementComponent* reqComp, CommandStatus status) {
+    bool Game::checkResourceReq(Entity* player, RequirementComponent* reqComp, CommandStatus status, bool onAction) {
         assert(player);
-        //if(status == CommandStatus::ONGOING) return true;
-
+        assert(reqComp);
         if (!reqComp->resources.empty()) {
             auto resComp = player->getComponent<ResourceComponent>();
             if (!resComp) return false;
@@ -120,7 +147,7 @@ namespace SupDef {
                 if (it == resComp->resources.end()) return false;
                 auto& resourcePlayer = it->second;
                 if (resourcePlayer->amount < resourceReq->amount) return false;
-                if (status == CommandStatus::CONFIRMED) {
+                if (onAction) {
                     resourcePlayer->amount -= resourceReq->amount;
                 }
             }

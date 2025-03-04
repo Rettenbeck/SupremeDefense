@@ -24,7 +24,10 @@ namespace SupDef {
     // #### General events #########################################################################
     struct StartCommandEvent : public Event {
         CommandID commandID;
-        StartCommandEvent(const CommandID& command) : commandID(command) {}
+        json data;
+        StartCommandEvent(const CommandID& command) : commandID(command), data(json{}) {}
+        StartCommandEvent(const CommandID& command, const json& jsonData)
+            : commandID(command), data(jsonData) {}
     };
 
     struct UpdateCommandEvent : public Event {

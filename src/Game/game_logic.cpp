@@ -11,6 +11,7 @@ namespace SupDef {
             updateWorld(deltaTime, world);
         }
         updateCommands();
+        processActions();
     }
 
     void Game::updateWorld(float deltaTime, _EntWorld world) {

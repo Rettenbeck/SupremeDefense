@@ -14,14 +14,13 @@ namespace SupDef {
             UActionQueue actionQueue;
     
         public:
-            GameLayer() {
-                actionQueue = std::make_unique<ActionQueue>();
-            }
+            GameLayer() {}
 
             void onAttach() override {
                 actionQueue = std::make_unique<ActionQueue>();
                 game = std::make_unique<Game>();
                 game->setGlobalDispatcher(globalDispatcher);
+                game->setActionQueue(actionQueue.get());
                 game->initialize();
                 selectionManager = std::make_unique<SelectionManager>();
                 selectionManager->setGlobalDispatcher(globalDispatcher);

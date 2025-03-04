@@ -6,9 +6,10 @@
 namespace SupDef {
 
     struct CommandComponent : public Component {
-        // CommandType commandType;
+        bool isUnique = false;
         
         CommandComponent() { addToRegistry(); }
+        CommandComponent(bool unique) : isUnique(unique) { addToRegistry(); }
         // CommandComponent(CommandType commandType) : commandType(commandType) { addToRegistry(); }
         
         void addToRegistry() {
@@ -17,11 +18,12 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            // j = json{{S_COMMAND_TYPE, commandType}};
+            if (isUnique) j[S_IS_UNIQUE] = isUnique;
         }
     
         void from_json(const json& j) override {
-            // j.at(S_COMMAND_TYPE).get_to(commandType);
+            if (j.contains(S_IS_UNIQUE)) isUnique = j.at(S_IS_UNIQUE).get<bool>();
+            else isUnique = false;
         }
     
         std::string getTypeName() const override {

@@ -294,3 +294,591 @@
 
 [2025-03-04 16:31:54] INFO: Game ended from renderer
 
+[2025-03-04 20:37:34] INIT: ------------------
+[2025-03-04 20:37:35] SUCCESS: World initialized!
+[2025-03-04 20:37:35] SUCCESS: Serialized to game_save.txt
+[2025-03-04 20:37:35] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 20:37:35] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 20:37:35] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 20:37:35] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:36] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:37] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:38] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:39] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:40] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:41] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:42] ERROR: Command _ not found!
+[2025-03-04 20:37:43] INFO: Command test_command accepted!
+
+[2025-03-04 20:40:10] INIT: ------------------
+[2025-03-04 20:40:10] SUCCESS: World initialized!
+[2025-03-04 20:40:10] SUCCESS: Serialized to game_save.txt
+[2025-03-04 20:40:10] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 20:40:10] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 20:40:10] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 20:40:10] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:10] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:11] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:12] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:13] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:14] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:18] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] ERROR: Command _ not found!
+[2025-03-04 20:40:19] INFO: Command test_command accepted!
+
+[2025-03-04 20:43:46] INIT: ------------------
+[2025-03-04 20:43:46] SUCCESS: World initialized!
+[2025-03-04 20:43:46] SUCCESS: Serialized to game_save.txt
+[2025-03-04 20:43:46] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 20:43:46] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 20:43:46] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 20:43:46] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 20:43:49] INFO: Command test_command accepted!
+
+[2025-03-04 20:45:32] INIT: ------------------
+[2025-03-04 20:45:32] SUCCESS: World initialized!
+[2025-03-04 20:45:32] SUCCESS: Serialized to game_save.txt
+[2025-03-04 20:45:32] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 20:45:32] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 20:45:32] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 20:45:32] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 20:45:36] INFO: Command test_command accepted!
+
+[2025-03-04 20:47:53] INIT: ------------------
+[2025-03-04 20:47:53] SUCCESS: World initialized!
+[2025-03-04 20:47:54] SUCCESS: Serialized to game_save.txt
+[2025-03-04 20:47:54] SUCCESS: Deserialized from game_save.txt
+[2025-03-04 20:47:54] SUCCESS: Serialized to game_save2.txt
+[2025-03-04 20:47:54] SUCCESS: Deserialized from game_save2.txt
+[2025-03-04 20:47:54] SUCCESS: Serialized to game_save3.txt
+[2025-03-04 20:47:56] INFO: Command test_command accepted!
+
+[2025-03-04 20:47:56] INFO: Action created
+[2025-03-04 20:47:56] INFO:   Sent to network
+[2025-03-04 20:47:56] INFO:   Sent to replay
+[2025-03-04 20:47:56] INFO: Command test_command  successful!
+
+[2025-03-04 20:47:58] INFO: Command test_command accepted!
+
+[2025-03-04 20:47:59] INFO: Action created
+[2025-03-04 20:47:59] INFO:   Sent to network
+[2025-03-04 20:47:59] INFO:   Sent to replay
+[2025-03-04 20:47:59] INFO: Command test_command  successful!
+
+[2025-03-04 20:48:00] INFO: Command test_command accepted!
+
+[2025-03-04 20:48:01] INFO: Action created
+[2025-03-04 20:48:01] INFO:   Sent to network
+[2025-03-04 20:48:01] INFO:   Sent to replay
+[2025-03-04 20:48:01] INFO: Command test_command  successful!
+

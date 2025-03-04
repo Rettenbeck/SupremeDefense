@@ -24,6 +24,7 @@ namespace SupDef {
     const std::string NO_DESC = "???";
 
     const CommandType JCOM_MESSAGE = "message";
+    const CommandType JCOM_UNIQUE  = "unique_command";
     // const CommandType COM_TYPE_MOVE = "move";
     // const CommandType COM_TYPE_BUILD = "build";
     // const CommandType COM_TYPE_QUEUE = "queue";
@@ -64,7 +65,8 @@ namespace SupDef {
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Attributes
-    const std::string S_COMMAND_TYPE                        = "command_type"                        ;
+    const std::string S_COMMAND_TYPE_                       = "command_type"                        ;
+    const std::string S_IS_UNIQUE                           = "unique"                              ;
     const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_TO_BUILD                            = "to_build"                            ;
 
