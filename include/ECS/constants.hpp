@@ -17,9 +17,6 @@ namespace SupDef {
 
     using CommandType = std::string;
 
-    // using ComponentListEntry = std::pair<std::type_index, Component*>;
-    // using ComponentList = std::vector<ComponentListEntry>;
-
     const EntityID NO_ENTITY = 0;
     const AssetID NO_ASSET = "_";
     const CommandID NO_COMMAND = "_";
