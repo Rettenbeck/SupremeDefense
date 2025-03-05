@@ -6,9 +6,6 @@
 namespace SupDef {
 
     struct WorldComponent : public Component {
-        EntityIDs maps;
-        EntityIDs players;
-        
         WorldComponent() { addToRegistry(); }
         
         void addToRegistry() {
@@ -17,12 +14,12 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_MAPS, maps}, {S_PLAYERS, players}};
+            // j = json{{S_MAPS, maps}, {S_PLAYERS, players}};
         }
     
         void from_json(const json& j) override {
-            j.at(S_MAPS).get_to(maps);
-            j.at(S_PLAYERS).get_to(players);
+            // j.at(S_MAPS).get_to(maps);
+            // j.at(S_PLAYERS).get_to(players);
         }
     
         std::string getTypeName() const override {

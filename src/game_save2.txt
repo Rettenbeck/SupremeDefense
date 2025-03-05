@@ -322,8 +322,6 @@
                 "asset_id": "_",
                 "components": [
                     {
-                        "maps": [],
-                        "players": [],
                         "type": "world"
                     }
                 ],

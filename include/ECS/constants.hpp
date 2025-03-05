@@ -47,6 +47,7 @@ namespace SupDef {
     const std::string SC_TEAM                               = "team"                                ;
     const std::string SC_REQUIREMENT                        = "requirement"                         ;
     const std::string SC_RESOURCE                           = "resource"                            ;
+    const std::string SC_PLAYER_OWNERSHIP                   = "player_ownership"                    ;
     const std::string SC_WORLD                              = "world"                               ;
     const std::string SC_MAP                                = "map"                                 ;
     const std::string SC_TILES                              = "tiles"                               ;
@@ -81,6 +82,8 @@ namespace SupDef {
     const std::string S_TYPE                                = "type"                                ;
     const std::string S_DESCRIPTION                         = "description"                         ;
     const std::string S_RESOURCE                            = "resource"                            ;
+    const std::string S_OWNER                               = "owner"                               ;
+    const std::string S_ACCESSORS                           = "accessors"                           ;
     const std::string S_PARENT                              = "parent"                              ;
     const std::string S_CHILDREN                            = "children"                            ;
     const std::string S_PLAYER                              = "player"                              ;

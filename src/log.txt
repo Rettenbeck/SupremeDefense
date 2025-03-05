@@ -948,3 +948,26 @@
 [2025-03-05 12:20:22] INFO:   Sent to replay
 [2025-03-05 12:20:22] INFO: Command test_command2  successful!
 
+[2025-03-05 13:11:04] INIT: ------------------
+[2025-03-05 13:11:05] SUCCESS: World initialized!
+[2025-03-05 13:11:05] SUCCESS: Serialized to game_save.txt
+[2025-03-05 13:11:05] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 13:11:05] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 13:11:05] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 13:11:05] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 13:11:07] INFO: Command test_command accepted!
+
+[2025-03-05 13:11:08] INFO: Action created
+[2025-03-05 13:11:08] INFO:   Sent to game
+[2025-03-05 13:11:08] INFO:   Sent to replay
+[2025-03-05 13:11:08] INFO: Command test_command  successful!
+
+[2025-03-05 13:11:09] INFO: Command test_command2 accepted!
+
+[2025-03-05 13:11:09] INFO: Action created
+[2025-03-05 13:11:09] INFO:   Sent to game
+[2025-03-05 13:11:09] INFO:   Sent to replay
+[2025-03-05 13:11:09] INFO: Command test_command2  successful!
+
+[2025-03-05 13:11:16] INFO: Game ended from renderer
+

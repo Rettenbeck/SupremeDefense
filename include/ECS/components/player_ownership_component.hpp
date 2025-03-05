@@ -1,0 +1,45 @@
+#include <ECS/component_registry.hpp>
+
+#pragma once
+
+
+namespace SupDef {
+
+    struct PlayerOwnershipComponent : public Component {
+        EntityID ownerID;
+        EntityIDs accessors;
+
+        PlayerOwnershipComponent(EntityID ownerID_) {
+            setInitialOwner(ownerID_);
+            addToRegistry();
+        }
+
+        PlayerOwnershipComponent() { addToRegistry(); }
+
+        void addToRegistry() {
+            ComponentRegistry::registerComponent(getTypeName(), []()
+                { return std::make_unique<PlayerOwnershipComponent>(); });
+        }
+
+        void setInitialOwner(EntityID ownerID_) {
+            accessors.clear();
+            ownerID = ownerID_;
+            accessors.push_back(ownerID_);
+        }
+
+        void to_json(json& j) const override {
+            j = json{{S_OWNER, ownerID}, {S_ACCESSORS, accessors}};
+        }
+
+        void from_json(const json& j) override {
+            j.at(S_OWNER).get_to(ownerID);
+            j.at(S_ACCESSORS).get_to(accessors);
+        }
+
+        std::string getTypeName() const override {
+            return SC_PLAYER_OWNERSHIP;
+        }
+
+    };
+
+}

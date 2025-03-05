@@ -27,6 +27,13 @@ namespace SupDef {
         return entity;
     }
 
+    Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID) {
+        auto entity = createEntityFromAsset(assetID);
+        entityManager->setParent(entity->id, parentID);
+        setInitialOwner(entity, ownerID);
+        return entity;
+    }
+
     Entity* Game::createEntityFromAsset(AssetID assetID, float x, float y) {
         auto entity = createEntityFromAsset(assetID);
         auto posComp = entity->getComponent<PositionComponent>();
@@ -38,6 +45,12 @@ namespace SupDef {
     Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y) {
         auto entity = createEntityFromAsset(assetID, x, y);
         entityManager->setParent(entity->id, parentID);
+        return entity;
+    }
+
+    Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID, float x, float y) {
+        auto entity = createEntityFromAsset(assetID, parentID, x, y);
+        setInitialOwner(entity, ownerID);
         return entity;
     }
 
@@ -57,6 +70,19 @@ namespace SupDef {
         auto asset = assetManager->getAsset(assetID);
         assert(asset);
         createVirtualEntityFromAsset(asset);
+    }
+    
+    void Game::setInitialOwner(Entity* entity, EntityID ownerID) {
+        if (!entity) return;
+        auto ownComp = entity->getComponent<PlayerOwnershipComponent>();
+        if (!ownComp) {
+            ownComp = entity->addComponent<PlayerOwnershipComponent>();
+        }
+        ownComp->setInitialOwner(ownerID);
+    }
+
+    void Game::setInitialOwner(EntityID entityID, EntityID ownerID) {
+        setInitialOwner(entityManager->getEntity(entityID), ownerID);
     }
     
 }

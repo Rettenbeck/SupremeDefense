@@ -54,7 +54,7 @@ namespace SupDef {
             Entity* getAssetFromCommand(CommandID commandID, json &data);
 
             void processActions();
-            void processAction(Entity* command, json &data);
+            void processAction(Entity* command, EntityID playerID, json &data);
 
             bool checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction);
             bool checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction);
@@ -75,8 +75,13 @@ namespace SupDef {
             Entity* createEntityFromAsset(Entity* asset);
             Entity* createEntityFromAsset(AssetID assetID);
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID);
+            Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID);
             Entity* createEntityFromAsset(AssetID assetID, float x, float y);
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y);
+            Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID, float x, float y);
+
+            void setInitialOwner(Entity* entity, EntityID ownerID);
+            void setInitialOwner(EntityID entityID, EntityID ownerID);
             
             Entity* realizeVirtualEntity();
             void createVirtualEntityFromAsset(Entity* asset);
