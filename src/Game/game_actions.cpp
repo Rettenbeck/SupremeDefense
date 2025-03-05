@@ -9,31 +9,28 @@ namespace SupDef {
         assert(actionQueue);
         for (auto& action : actionQueue->getActions()) {
             assert(action);
-            auto asset = getAssetFromCommand(action->commandID, action->data);
-            assert(asset);
-            processAction(asset, action->data);
+            auto command = getAssetFromCommand(action->commandID, action->data);
+            assert(command);
+            processAction(command, action->data);
         }
+        actionQueue->clear();
     }
 
-    void Game::processAction(Entity* asset, json &data) {
-        auto reqComp = asset->getComponent<RequirementComponent>();
+    void Game::processAction(Entity* command, json &data) {
+        auto reqComp = command->getComponent<RequirementComponent>();
         if (reqComp) {
             auto result = checkRequirements(reqComp, CommandStatus::CONFIRMED, true);
         }
 
-        auto buildComp = asset->getComponent<BuildCommandComponent>();
+        auto buildComp = command->getComponent<BuildCommandComponent>();
         if (buildComp) {
-            assert(virtualEntity);
-            auto posComp = virtualEntity->getComponent<PositionComponent>();
-            assert(posComp);
-            float x, y;
-            assert(data.contains("x"));
-            assert(data.contains("y"));
-            x = data["x"];
-            y = data["y"];
-            posComp->x = x;
-            posComp->y = y;
-            realizeVirtualEntity();
+            assert(data.contains(JCOM_X));
+            assert(data.contains(JCOM_Y));
+            assert(data.contains(JCOM_PARENT));
+            auto x = data[JCOM_X];
+            auto y = data[JCOM_Y];
+            auto parentID = data[JCOM_PARENT];
+            createEntityFromAsset(buildComp->toBuild, parentID, x, y);
         }
     }
 

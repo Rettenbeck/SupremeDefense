@@ -882,3 +882,69 @@
 [2025-03-04 20:48:01] INFO:   Sent to replay
 [2025-03-04 20:48:01] INFO: Command test_command  successful!
 
+[2025-03-05 11:37:30] INIT: ------------------
+[2025-03-05 11:37:30] SUCCESS: World initialized!
+[2025-03-05 11:37:30] SUCCESS: Serialized to game_save.txt
+[2025-03-05 11:37:30] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 11:37:30] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 11:37:30] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 11:37:30] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 11:41:40] INIT: ------------------
+[2025-03-05 11:41:41] SUCCESS: World initialized!
+[2025-03-05 11:41:41] SUCCESS: Serialized to game_save.txt
+[2025-03-05 11:41:41] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 11:41:41] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 11:41:41] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 11:41:41] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 11:41:44] INFO: Command test_command accepted!
+
+[2025-03-05 11:41:44] INFO: Action created
+[2025-03-05 11:41:44] INFO:   Sent to game
+[2025-03-05 11:41:44] INFO:   Sent to replay
+[2025-03-05 11:41:44] INFO: Command test_command  successful!
+
+[2025-03-05 12:18:17] INIT: ------------------
+[2025-03-05 12:18:18] SUCCESS: World initialized!
+[2025-03-05 12:18:18] SUCCESS: Serialized to game_save.txt
+[2025-03-05 12:18:18] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 12:18:18] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 12:18:18] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 12:18:18] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 12:18:22] INFO: Command test_command accepted!
+
+[2025-03-05 12:18:24] INFO: Action created
+[2025-03-05 12:18:24] INFO:   Sent to game
+[2025-03-05 12:18:24] INFO:   Sent to replay
+[2025-03-05 12:18:24] INFO: Command test_command  successful!
+
+[2025-03-05 12:18:29] INFO: Command test_command failed!
+
+[2025-03-05 12:18:30] INFO: Command test_command2 failed!
+
+[2025-03-05 12:19:54] INIT: ------------------
+[2025-03-05 12:19:54] SUCCESS: World initialized!
+[2025-03-05 12:19:54] SUCCESS: Serialized to game_save.txt
+[2025-03-05 12:19:54] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 12:19:54] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 12:19:54] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 12:19:54] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 12:20:07] INFO: Command test_command accepted!
+
+[2025-03-05 12:20:08] INFO: Command test_command2 accepted!
+
+[2025-03-05 12:20:09] INFO: Command test_command2 cancelled!
+
+[2025-03-05 12:20:10] INFO: Command test_command accepted!
+
+[2025-03-05 12:20:16] INFO: Action created
+[2025-03-05 12:20:16] INFO:   Sent to game
+[2025-03-05 12:20:16] INFO:   Sent to replay
+[2025-03-05 12:20:16] INFO: Command test_command  successful!
+
+[2025-03-05 12:20:20] INFO: Command test_command2 accepted!
+
+[2025-03-05 12:20:22] INFO: Action created
+[2025-03-05 12:20:22] INFO:   Sent to game
+[2025-03-05 12:20:22] INFO:   Sent to replay
+[2025-03-05 12:20:22] INFO: Command test_command2  successful!
+

@@ -23,12 +23,11 @@ namespace SupDef {
     const std::string NO_NAME = "unknown asset";
     const std::string NO_DESC = "???";
 
-    const CommandType JCOM_MESSAGE = "message";
-    const CommandType JCOM_UNIQUE  = "unique_command";
-    // const CommandType COM_TYPE_MOVE = "move";
-    // const CommandType COM_TYPE_BUILD = "build";
-    // const CommandType COM_TYPE_QUEUE = "queue";
-    // const CommandType COM_TYPE_AOE_CAST = "aoe_cast";
+    const CommandType JCOM_MESSAGE  = "message";
+    const CommandType JCOM_UNIQUE   = "unique_command";
+    const CommandType JCOM_PARENT   = "parent";
+    const CommandType JCOM_X        = "x";
+    const CommandType JCOM_Y        = "y";
     
 
     // Non-component objects

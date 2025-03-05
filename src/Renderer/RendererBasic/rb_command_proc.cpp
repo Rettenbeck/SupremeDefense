@@ -32,4 +32,21 @@ namespace SupDef {
         Logger::getInstance().addMessage(MessageType::Info, msg);
     }
 
+    bool RendererBasic::addVirtualEntityData(json &j) {
+        if (!virtualEntity) return false;
+        auto pos = virtualEntity->getComponent<PositionComponent>();
+        auto col = virtualEntity->getComponent<CollisionComponent>();
+        if (!pos || !col) return false;
+
+        auto& bb = col->boundingBox;
+        auto position = getMousePosWorld();
+        pos->x = position.x - bb.w / 2;
+        pos->y = position.y - bb.h / 2;
+        j[JCOM_X] = pos->x;
+        j[JCOM_Y] = pos->y;
+        auto parentID = mouseToMap();
+        if (parentID != NO_ENTITY) j[JCOM_PARENT] = parentID;
+        return true;
+    }
+
 }

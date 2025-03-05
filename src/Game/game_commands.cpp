@@ -62,27 +62,28 @@ namespace SupDef {
         globalDispatcher->dispatch<CommandToRenderEvent>(comProcessor->getCurrentCommand(), j, virtualEntity.get());
     }
 
-    void Game::handleStartCommand(Entity* asset) {
-        assert(asset);
-        auto comComp = asset->getComponent<CommandComponent>();
+    void Game::handleStartCommand(Entity* command) {
+        assert(command);
+        auto comComp = command->getComponent<CommandComponent>();
         assert(comComp);
 
-        auto buildComp = asset->getComponent<BuildCommandComponent>();
+        auto buildComp = command->getComponent<BuildCommandComponent>();
         if (buildComp) {
             createVirtualEntityFromAsset(buildComp->toBuild);
             assert(virtualEntity);
         }
     }
 
-    void Game::handleUpdateCommand(Entity* asset) {
-        assert(asset);
+    void Game::handleUpdateCommand(Entity* command) {
+        assert(command);
         //
     }
 
-    void Game::handleConfirmCommand(Entity* asset) {
-        assert(asset);
-        auto action = std::make_shared<Action>(asset->assetID, thisPlayer, comProcessor->getData());
+    void Game::handleConfirmCommand(Entity* command) {
+        assert(command);
+        auto action = std::make_shared<Action>(command->assetID, thisPlayer, comProcessor->getData());
         globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
+        virtualEntity = nullptr;
     }
 
     Entity* Game::getAssetFromCommand(CommandID commandID, json &data) {

@@ -96,7 +96,7 @@ SupDef::Game* start_app() {
     auto router = actionRouter.get();
 
     app->addLayer(std::move(gameLayer));
-    app->addLayer(std::move(networkLayer));
+    //app->addLayer(std::move(networkLayer));
     app->addLayer(std::move(replayLayer));
     app->addLayer(std::move(actionRouter));
     app->addLayer(std::move(guiLayer));

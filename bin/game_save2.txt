@@ -11,11 +11,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 100,
+                                "amount": 250,
                                 "resource": "gold"
                             },
                             {
-                                "amount": 250,
+                                "amount": 360,
                                 "resource": "wood"
                             }
                         ],
@@ -353,11 +353,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 250,
+                                "amount": 360,
                                 "resource": "wood"
                             },
                             {
-                                "amount": 100,
+                                "amount": 250,
                                 "resource": "gold"
                             }
                         ],

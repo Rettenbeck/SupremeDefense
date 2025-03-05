@@ -27,10 +27,6 @@ namespace SupDef {
                 isReplay = (replay == nullptr);
             }
 
-            // ActionRouter(GameLayer* game, ReplayLayer* replay = nullptr, NetworkLayer* network = nullptr)
-            //     : gameLayer(game), replayLayer(replay), networkLayer(network),
-            //     isMultiplayer(network != nullptr), isReplay(replay == nullptr) { }
-        
             ActionRouter() {}
 
             void onAttach() override {

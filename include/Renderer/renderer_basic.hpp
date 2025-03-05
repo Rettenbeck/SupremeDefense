@@ -47,6 +47,7 @@ namespace SupDef {
             void zoom(float factor);
             void move(float offsetX, float offsetY);
             void onMouseClick(bool left);
+            EntityID mouseToMap();
 
             sf::Vector2i getMousePos();
             sf::Vector2f getMousePosWorld();
@@ -55,14 +56,11 @@ namespace SupDef {
             void subscribeToEvents();
 
             void onCommandToRender(const CommandToRenderEvent& event);
-            // void onStartReceivedCommand(const StartCommandReceivedEvent& event);
-            // void onUpdateReceivedCommand(const UpdateCommandReceivedEvent& event);
-            // void onConfirmReceivedCommand(const ConfirmCommandReceivedEvent& event);
-
             void resetCommand();
             void updateCommand();
             void processCommand(Entity* asset, const json &j);
             void processCommandMessage(Entity* asset, std::string msg, const json &j);
+            bool addVirtualEntityData(json& j);
 
             void renderGame();
             void renderCollisionGrid();

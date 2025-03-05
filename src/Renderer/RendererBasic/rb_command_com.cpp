@@ -33,10 +33,7 @@ namespace SupDef {
     void RendererBasic::updateCommand() {
         if (commandMode == RCommandMode::NONE) return;
         json j;
-        auto pos = getMousePosWorld();
-        j["x"] = pos.x;
-        j["y"] = pos.y;
-        globalDispatcher->dispatch<UpdateCommandEvent>(j);
+        if (addVirtualEntityData(j)) globalDispatcher->dispatch<UpdateCommandEvent>(j);
     }
 
     void RendererBasic::resetCommand() {

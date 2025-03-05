@@ -28,11 +28,17 @@ namespace SupDef {
     }
 
     void RendererBasic::onMouseClick(bool left) {
+        if (commandMode != RCommandMode::BUILD) return;
         json j;
-        auto pos = getMousePosWorld();
-        j["x"] = pos.x;
-        j["y"] = pos.y;
-        globalDispatcher->dispatch<ConfirmCommandEvent>(left, j);
+        if (addVirtualEntityData(j)) globalDispatcher->dispatch<ConfirmCommandEvent>(left, j);
+    }
+
+    EntityID RendererBasic::mouseToMap() {
+        auto maps = game->getEntityManager()->getEntitiesWithComponents<MapComponent>();
+        for (auto& [entity, mapComp] : maps) {
+            return entity->id;
+        }
+        return NO_ENTITY;
     }
 
     sf::Vector2i RendererBasic::getMousePos() {

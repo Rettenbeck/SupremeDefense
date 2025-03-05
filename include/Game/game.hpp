@@ -47,14 +47,14 @@ namespace SupDef {
             Entity* addMap(AssetID mapAssetID);
 
             void updateCommands();
-            void handleStartCommand(Entity* asset);
-            void handleUpdateCommand(Entity* asset);
-            void handleConfirmCommand(Entity* asset);
+            void handleStartCommand(Entity* command);
+            void handleUpdateCommand(Entity* command);
+            void handleConfirmCommand(Entity* command);
             
             Entity* getAssetFromCommand(CommandID commandID, json &data);
 
             void processActions();
-            void processAction(Entity* asset, json &data);
+            void processAction(Entity* command, json &data);
 
             bool checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction);
             bool checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction);
