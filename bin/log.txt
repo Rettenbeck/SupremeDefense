@@ -14,3 +14,502 @@
 
 [2025-03-05 12:18:46] INFO: Game ended from renderer
 
+[2025-03-05 15:32:25] INIT: ------------------
+[2025-03-05 15:32:25] SUCCESS: World initialized!
+[2025-03-05 15:32:25] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:32:25] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:32:25] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:32:25] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:32:25] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:32:28] ERROR: test_command3 not a command!
+[2025-03-05 15:32:31] INIT: ------------------
+[2025-03-05 15:32:31] SUCCESS: World initialized!
+[2025-03-05 15:32:31] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:32:31] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:32:31] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:32:31] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:32:31] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:32:32] ERROR: test_command3 not a command!
+[2025-03-05 15:32:37] INIT: ------------------
+[2025-03-05 15:32:37] SUCCESS: World initialized!
+[2025-03-05 15:32:37] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:32:37] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:32:37] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:32:37] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:32:37] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:32:42] ERROR: test_command3 not a command!
+[2025-03-05 15:32:50] INIT: ------------------
+[2025-03-05 15:32:50] SUCCESS: World initialized!
+[2025-03-05 15:32:50] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:32:50] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:32:50] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:32:50] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:32:50] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:32:52] ERROR: test_command3 not a command!
+[2025-03-05 15:32:56] INIT: ------------------
+[2025-03-05 15:32:56] SUCCESS: World initialized!
+[2025-03-05 15:32:56] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:32:56] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:32:56] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:32:56] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:32:56] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:32:58] ERROR: test_command3 not a command!
+[2025-03-05 15:33:01] INIT: ------------------
+[2025-03-05 15:33:01] SUCCESS: World initialized!
+[2025-03-05 15:33:01] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:33:01] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:33:01] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:33:01] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:33:01] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:33:03] ERROR: test_command3 not a command!
+[2025-03-05 15:35:10] INIT: ------------------
+[2025-03-05 15:35:10] SUCCESS: World initialized!
+[2025-03-05 15:35:10] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:35:10] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:35:10] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:35:10] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:35:10] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:13] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:14] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:15] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:35:16] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:26] INIT: ------------------
+[2025-03-05 15:36:26] SUCCESS: World initialized!
+[2025-03-05 15:36:26] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:36:26] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:36:26] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:36:26] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:36:26] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:36:30] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:36] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:37] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:38] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:39] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:39] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:36:53] INFO: Game ended from renderer
+
+[2025-03-05 15:40:05] INIT: ------------------
+[2025-03-05 15:40:05] SUCCESS: World initialized!
+[2025-03-05 15:40:05] SUCCESS: Serialized to game_save.txt
+[2025-03-05 15:40:05] SUCCESS: Deserialized from game_save.txt
+[2025-03-05 15:40:05] SUCCESS: Serialized to game_save2.txt
+[2025-03-05 15:40:05] SUCCESS: Deserialized from game_save2.txt
+[2025-03-05 15:40:05] SUCCESS: Serialized to game_save3.txt
+[2025-03-05 15:40:09] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:40:12] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:40:19] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:40:24] INFO: Direct command test_command3 successful!
+
+[2025-03-05 15:40:26] INFO: Action created
+[2025-03-05 15:40:26] INFO:   Sent to game
+[2025-03-05 15:40:26] INFO:   Sent to replay
+[2025-03-05 15:40:27] INFO: Action created
+[2025-03-05 15:40:27] INFO:   Sent to game
+[2025-03-05 15:40:27] INFO:   Sent to replay
+[2025-03-05 15:40:29] INFO: Game ended from renderer
+

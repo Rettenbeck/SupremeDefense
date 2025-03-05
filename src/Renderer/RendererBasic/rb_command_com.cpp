@@ -9,6 +9,9 @@ namespace SupDef {
         std::cout << "Command " << i << " triggered!\n";
         if(i == 1) globalDispatcher->dispatch<StartCommandEvent>("test_command");
         if(i == 2) globalDispatcher->dispatch<StartCommandEvent>("test_command2");
+        if(i == 3) globalDispatcher->dispatch<DirectCommandEvent>("test_command3", true);
+        if(i == 4) globalDispatcher->dispatch<DirectCommandEvent>("test_command4", true);
+        if(i == 5) globalDispatcher->dispatch<DirectCommandEvent>("test_command5", true);
     }
 
     void RendererBasic::subscribeToEvents() {

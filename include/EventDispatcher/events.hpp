@@ -37,12 +37,19 @@ namespace SupDef {
     
     struct ConfirmCommandEvent : public Event {
         bool isConfirmed;
-        bool isDirect = false;
         json data;
         explicit ConfirmCommandEvent(bool confirmed, const json& jsonData)
             : isConfirmed(confirmed), data(jsonData) {}
-        explicit ConfirmCommandEvent(bool confirmed, const json& jsonData, bool direct)
-            : isConfirmed(confirmed), data(jsonData), isDirect(direct) {}
+    };
+
+    struct DirectCommandEvent : public Event {
+        CommandID commandID;
+        bool msgOnFailure = true;
+        json data;
+        DirectCommandEvent(const CommandID& command, bool msgOnFailure)
+            : commandID(command), msgOnFailure(msgOnFailure), data(json()) {}
+        DirectCommandEvent(const CommandID& command, bool msgOnFailure, const json& jsonData)
+            : commandID(command), msgOnFailure(msgOnFailure), data(jsonData) {}
     };
 
     struct CommandToRenderEvent : public Event {

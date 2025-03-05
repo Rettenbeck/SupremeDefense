@@ -6,6 +6,7 @@
 namespace SupDef {
 
     void Game::updateCommands() {
+        processDirectCommands();
         assert(comProcessor);
         auto command = comProcessor->getCurrentCommand();
         auto status = comProcessor->getCommandStatus();
@@ -54,12 +55,36 @@ namespace SupDef {
                 assert(false);
         }
 
+        auto j = getFeedbackFromCheck(comProcessor->getData());
+        globalDispatcher->dispatch<CommandToRenderEvent>(comProcessor->getCurrentCommand(), j, virtualEntity.get());
+    }
+
+    void Game::processDirectCommands() {
+        assert(comProcessor);
+        auto& directs = comProcessor->getDirects();
+        for (auto& d : directs) {
+            auto success = checkRequirements(d.commandID, d.data, CommandStatus::CONFIRMED, false);
+            if (success) {
+                std::stringstream ss;
+                ss << "Direct command " << d.commandID << " successful!\n";
+                auto j = getFeedbackFromCheck(d.data, ss.str());
+                globalDispatcher->dispatch<CommandToRenderEvent>(d.commandID, j);
+            }
+        }
+        directs.clear();
+    }
+
+    json Game::getFeedbackFromCheck(json& input) {
+        return getFeedbackFromCheck(input, "");
+    }
+
+    json Game::getFeedbackFromCheck(json& input, std::string msg) {
         json j;
-        std::string msg = ss.str();
         if (!msg.empty()) {
             j[JCOM_MESSAGE] = msg;
         }
-        globalDispatcher->dispatch<CommandToRenderEvent>(comProcessor->getCurrentCommand(), j, virtualEntity.get());
+        // Add additional feedback...
+        return j;
     }
 
     void Game::handleStartCommand(Entity* command) {
@@ -76,7 +101,6 @@ namespace SupDef {
 
     void Game::handleUpdateCommand(Entity* command) {
         assert(command);
-        //
     }
 
     void Game::handleConfirmCommand(Entity* command) {
@@ -116,44 +140,6 @@ namespace SupDef {
             return uniqueCommand.get();
         }
         return asset;
-    }
-
-    bool Game::checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction) {
-        assert(assetManager);
-        auto asset = getAssetFromCommand(commandID, data);
-        assert(asset);
-        auto reqComp = asset->getComponent<RequirementComponent>();
-        if (!reqComp) return (thisPlayer != NO_ENTITY);
-        return checkRequirements(reqComp, status, onAction);
-    }
-
-    bool Game::checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction) {
-        auto player = entityManager->getEntity(thisPlayer);
-        if (!player) return false;
-        
-        if (!checkResourceReq(player, reqComp, status, onAction)) return false;
-        // Additional checks...
-        return true;
-    }
-
-    bool Game::checkResourceReq(Entity* player, RequirementComponent* reqComp, CommandStatus status, bool onAction) {
-        assert(player);
-        assert(reqComp);
-        if (!reqComp->resources.empty()) {
-            auto resComp = player->getComponent<ResourceComponent>();
-            if (!resComp) return false;
-            for(const auto& resourceReq : reqComp->resources) {
-                if (!resourceReq) continue;
-                auto it = resComp->resources.find(resourceReq->resourceID);
-                if (it == resComp->resources.end()) return false;
-                auto& resourcePlayer = it->second;
-                if (resourcePlayer->amount < resourceReq->amount) return false;
-                if (onAction) {
-                    resourcePlayer->amount -= resourceReq->amount;
-                }
-            }
-        }
-        return true;
     }
 
 }

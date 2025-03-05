@@ -2,6 +2,14 @@
     "asset_manager": {
         "assets": [
             {
+                "asset_id": "test_command4",
+                "components": [
+                    {
+                        "type": "command"
+                    }
+                ]
+            },
+            {
                 "asset_id": "immovable2",
                 "components": [
                     {
@@ -49,6 +57,14 @@
                         "X": 0.0,
                         "Y": 0.0,
                         "type": "position"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test_command5",
+                "components": [
+                    {
+                        "type": "command"
                     }
                 ]
             },
@@ -195,6 +211,14 @@
                     },
                     {
                         "type": "resource_def"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test_command3",
+                "components": [
+                    {
+                        "type": "command"
                     }
                 ]
             },
@@ -586,8 +610,6 @@
                 "asset_id": "_",
                 "components": [
                     {
-                        "maps": [],
-                        "players": [],
                         "type": "world"
                     }
                 ],

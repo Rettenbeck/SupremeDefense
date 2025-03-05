@@ -75,4 +75,13 @@ void create_assets(SupDef::Game* g) {
     am_command_test2_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_GOLD, 25));
     am_command_test2_req->add(std::make_unique<SupDef::Resource>(ASSET_RES_WOOD, 35));
 
+    auto am_command_test3 = am->createAsset("test_command3");
+    am_command_test3->addComponent<SupDef::CommandComponent>();
+
+    auto am_command_test4 = am->createAsset("test_command4");
+    am_command_test4->addComponent<SupDef::CommandComponent>();
+
+    auto am_command_test5 = am->createAsset("test_command5");
+    am_command_test5->addComponent<SupDef::CommandComponent>();
+
 }

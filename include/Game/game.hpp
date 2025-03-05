@@ -47,6 +47,7 @@ namespace SupDef {
             Entity* addMap(AssetID mapAssetID);
 
             void updateCommands();
+            void processDirectCommands();
             void handleStartCommand(Entity* command);
             void handleUpdateCommand(Entity* command);
             void handleConfirmCommand(Entity* command);
@@ -56,9 +57,12 @@ namespace SupDef {
             void processActions();
             void processAction(Entity* command, EntityID playerID, json &data);
 
+            json getFeedbackFromCheck(json& input);
+            json getFeedbackFromCheck(json& input, std::string msg);
             bool checkRequirements(CommandID commandID, json &data, CommandStatus status, bool onAction);
-            bool checkRequirements(RequirementComponent* reqComp, CommandStatus status, bool onAction);
-            bool checkResourceReq(Entity* player, RequirementComponent* reqComp, CommandStatus status, bool onAction);
+            bool checkRequirements(RequirementComponent* reqComp, json &data, CommandStatus status, bool onAction);
+            bool checkResourceReq(Entity* player, RequirementComponent* reqComp, json &data,
+                CommandStatus status, bool onAction);
 
             void updateTempGoalMass(TilesComponent* tilesComp, _EntPosMovCols& comps);
             void updateTempGoal(TilesComponent* tilesComp, _EntPosMovCol comp);

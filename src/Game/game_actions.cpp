@@ -24,7 +24,7 @@ namespace SupDef {
 
         auto reqComp = command->getComponent<RequirementComponent>();
         if (reqComp) {
-            auto result = checkRequirements(reqComp, CommandStatus::CONFIRMED, true);
+            auto result = checkRequirements(reqComp, data, CommandStatus::CONFIRMED, true);
         }
 
         auto buildComp = command->getComponent<BuildCommandComponent>();

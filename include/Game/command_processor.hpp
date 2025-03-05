@@ -38,6 +38,12 @@ namespace SupDef {
                         onConfirmCommand(typedEvent);
                     }
                 });
+                globalDispatcher->subscribe<DirectCommandEvent>([this](const SupDef::Events& events) {
+                    for (const auto& event : events) {
+                        const auto& typedEvent = static_cast<const SupDef::DirectCommandEvent&>(*event);
+                        directs.push_back(typedEvent);
+                    }
+                });
             }
 
             void onStartCommand(const StartCommandEvent& event) {
@@ -71,6 +77,7 @@ namespace SupDef {
             CommandID getCurrentCommand() const { return currentCommand; }
             CommandStatus getCommandStatus() const { return commandStatus; }
             void setCommandStatus(CommandStatus status) { commandStatus = status; }
+            std::vector<DirectCommandEvent>& getDirects() { return directs; }
             json& getData() { return data; }
         
             void reset() {
@@ -83,6 +90,7 @@ namespace SupDef {
             EventDispatcher* globalDispatcher;
             CommandID currentCommand = NO_COMMAND;
             CommandStatus commandStatus = CommandStatus::NONE;
+            std::vector<DirectCommandEvent> directs;
             json data;
 
     };

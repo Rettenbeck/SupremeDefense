@@ -118,6 +118,14 @@
                 ]
             },
             {
+                "asset_id": "test_command3",
+                "components": [
+                    {
+                        "type": "command"
+                    }
+                ]
+            },
+            {
                 "asset_id": "wood",
                 "components": [
                     {
@@ -264,6 +272,14 @@
                 ]
             },
             {
+                "asset_id": "test_command5",
+                "components": [
+                    {
+                        "type": "command"
+                    }
+                ]
+            },
+            {
                 "asset_id": "immovable2",
                 "components": [
                     {
@@ -313,6 +329,14 @@
                         "type": "collision"
                     }
                 ]
+            },
+            {
+                "asset_id": "test_command4",
+                "components": [
+                    {
+                        "type": "command"
+                    }
+                ]
             }
         ]
     },
@@ -322,8 +346,6 @@
                 "asset_id": "_",
                 "components": [
                     {
-                        "maps": [],
-                        "players": [],
                         "type": "world"
                     }
                 ],

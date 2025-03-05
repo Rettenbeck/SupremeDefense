@@ -1,6 +1,7 @@
 #include <Game/game.hpp>
 #include <Game/game_actions.cpp>
 #include <Game/game_commands.cpp>
+#include <Game/game_requirements.cpp>
 #include <Game/game_collisions.cpp>
 #include <Game/game_movement.cpp>
 #include <Game/game_logic.cpp>
