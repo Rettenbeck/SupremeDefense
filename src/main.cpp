@@ -27,7 +27,7 @@ void test_app() {
     auto g = start_app();
 
     auto entityManager = g->getEntityManager();
-    auto techManager = g->getTechManager();
+    // auto techManager = g->getTechManager();
 
     auto map = g->addMap(ASSET_TEST_MAP);
     auto mapComp   = map->getComponent<SupDef::MapComponent>();

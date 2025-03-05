@@ -1,5 +1,5 @@
 #include <ECS/include.hpp>
-#include <Tech/include.hpp>
+// #include <Tech/include.hpp>
 #include <App/Log/logger.hpp>
 
 #pragma once

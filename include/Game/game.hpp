@@ -1,5 +1,5 @@
 #include <ECS/include.hpp>
-#include <Tech/include.hpp>
+// #include <Tech/include.hpp>
 #include <Action/include.hpp>
 #include <Game/path_finder.hpp>
 #include <Game/collision_system.hpp>
@@ -24,7 +24,7 @@ namespace SupDef {
             EntityID thisPlayer = NO_ENTITY;
             UEntityManager   entityManager   = nullptr;
             UAssetManager    assetManager    = nullptr;
-            UTechManager     techManager     = nullptr;
+            // UTechManager     techManager     = nullptr;
             UComProcessor    comProcessor    = nullptr;
             UEventDispatcher eventDispatcher = nullptr;
             UTilesChecker    tilesChecker    = nullptr;
@@ -93,7 +93,7 @@ namespace SupDef {
             
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }
-            TechManager*     getTechManager    () { return techManager    .get(); }
+            // TechManager*     getTechManager    () { return techManager    .get(); }
             CommandProcessor*getComProcessor   () { return comProcessor   .get(); }
             TilesChecker*    getTilesChecker   () { return tilesChecker   .get(); }
             PathFinder*      getPathFinder     () { return pathFinder     .get(); }

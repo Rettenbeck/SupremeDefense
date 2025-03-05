@@ -617,11 +617,5 @@
             }
         ],
         "next_entity_id": 11
-    },
-    "tech_manager": {
-        "assignees": [],
-        "next_tech_id": 1,
-        "owners": [],
-        "techs": []
     }
 }

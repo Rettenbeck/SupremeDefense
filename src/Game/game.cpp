@@ -17,7 +17,7 @@ namespace SupDef {
         eventDispatcher = std::make_unique<EventDispatcher >();
         entityManager   = std::make_unique<EntityManager   >(eventDispatcher.get());
         assetManager    = std::make_unique<AssetManager    >(eventDispatcher.get());
-        techManager     = std::make_unique<TechManager     >(eventDispatcher.get());
+        // techManager     = std::make_unique<TechManager     >(eventDispatcher.get());
         tilesChecker    = std::make_unique<TilesChecker    >();
         pathFinder      = std::make_unique<PathFinder      >();
         collisionSystem = std::make_unique<CollisionSystem >();
