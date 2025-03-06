@@ -46,12 +46,6 @@ namespace SupDef {
                 return rawPtr;
             }
 
-            // EntityID createEntityID() {
-            //     EntityID id = nextEntityID++;
-            //     entities[id] = std::make_unique<Entity>(id);
-            //     return id;
-            // }
-
             void setParent(EntityID childID, EntityID parentID) {
                 parentMap[childID] = parentID;
                 childrenMap[parentID].push_back(childID);
@@ -62,12 +56,6 @@ namespace SupDef {
                 setParent(rawPtr->id, parentID);
                 return rawPtr;
             }
-
-            // EntityID createEntityID(int parentID) {
-            //     auto id = createEntityID();
-            //     setParent(id, parentID);
-            //     return id;
-            // }
 
             Entity* getEntity(EntityID id) const {
                 if(id == NO_ENTITY) return nullptr;
@@ -83,14 +71,6 @@ namespace SupDef {
                 }
                 return result;
             }
-
-            // PEntities getEntities() {
-            //     PEntities result;
-            //     for (const auto& entity : entities) {
-            //         result.push_back(entity.second.get());
-            //     }
-            //     return result;
-            // }
 
             EntityID getParentID(EntityID entityID) const {
                 auto it = parentMap.find(entityID);
@@ -179,6 +159,15 @@ namespace SupDef {
                     removeEntity(childID);
                 }
                 removeEntityFlat(entityID);
+            }
+
+            void cleanupDeadEntities(EntityIDs& entityIDs) {
+                entityIDs.erase(
+                    std::remove_if(entityIDs.begin(), entityIDs.end(), [&](int value) {
+                        return entities.find(value) == entities.end();
+                    }),
+                    entityIDs.end()
+                );
             }
 
             void to_json(json& j) const {

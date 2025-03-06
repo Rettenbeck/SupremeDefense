@@ -64,11 +64,15 @@ namespace SupDef {
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
+    // Tech Components
+    const std::string SCT_TECH                              = "tech"                                ;   
+
     // Attributes
-    const std::string S_COMMAND_TYPE_                       = "command_type"                        ;
     const std::string S_IS_UNIQUE                           = "unique"                              ;
     const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_TO_BUILD                            = "to_build"                            ;
+
+    const std::string S_ASSIGNEES                           = "assignees"                           ;
 
     const std::string S_KEY                                 = "key"                                 ;
     const std::string S_TEXTS                               = "texts"                               ;

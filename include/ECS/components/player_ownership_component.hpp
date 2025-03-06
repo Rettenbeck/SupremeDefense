@@ -27,6 +27,16 @@ namespace SupDef {
             accessors.push_back(ownerID_);
         }
 
+        void addAccessor(EntityID entityID) {
+            if (std::find(accessors.begin(), accessors.end(), entityID) == accessors.end()) {
+                accessors.push_back(entityID);
+            }
+        }
+
+        void removeAccessor(EntityID entityID) {
+            accessors.erase(std::remove(accessors.begin(), accessors.end(), entityID), accessors.end());
+        }
+
         void to_json(json& j) const override {
             j = json{{S_OWNER, ownerID}, {S_ACCESSORS, accessors}};
         }

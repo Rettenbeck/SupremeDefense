@@ -6,6 +6,7 @@
 namespace SupDef {
 
     void Game::update(float deltaTime) {
+        removeResolvedCollisions();
         auto worlds = entityManager->getEntitiesWithComponents<WorldComponent>();
         for(auto& world : worlds) {
             updateWorld(deltaTime, world);

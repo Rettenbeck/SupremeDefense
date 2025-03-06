@@ -1,8 +1,8 @@
 #include <ECS/include.hpp>
-// #include <Tech/include.hpp>
 #include <Action/include.hpp>
 #include <Game/path_finder.hpp>
 #include <Game/collision_system.hpp>
+#include <Game/collision_tracker.hpp>
 #include <Game/command_processor.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
@@ -22,15 +22,15 @@ namespace SupDef {
     class Game : public Listener {
         private:
             EntityID thisPlayer = NO_ENTITY;
-            UEntityManager   entityManager   = nullptr;
-            UAssetManager    assetManager    = nullptr;
-            // UTechManager     techManager     = nullptr;
-            UComProcessor    comProcessor    = nullptr;
-            UEventDispatcher eventDispatcher = nullptr;
-            UTilesChecker    tilesChecker    = nullptr;
-            UPathFinder      pathFinder      = nullptr;
-            UCollisionSystem collisionSystem = nullptr;
-            ActionQueue*     actionQueue     = nullptr;
+            UEntityManager    entityManager    = nullptr;
+            UAssetManager     assetManager     = nullptr;
+            UComProcessor     comProcessor     = nullptr;
+            UEventDispatcher  eventDispatcher  = nullptr;
+            UTilesChecker     tilesChecker     = nullptr;
+            UPathFinder       pathFinder       = nullptr;
+            UCollisionSystem  collisionSystem  = nullptr;
+            UCollisionTracker collisionTracker = nullptr;
+            ActionQueue*      actionQueue      = nullptr;
             UEntity virtualEntity = nullptr;
             UEntity uniqueCommand = nullptr;
 
@@ -73,8 +73,11 @@ namespace SupDef {
             void updatePosition(float deltaTime, TilesComponent* tilesComp, Entity* entity);
 
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, bool groupMode);
-            CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB);
-            CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& list);
+            void updateCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, CollisionGroup collisionGroup, bool groupMode);
+            void updateCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, CollisionGroup collisionGroup);
+            void updateCollisions(MapComponent* mapComponent, _EntPosCols& list, CollisionGroup collisionGroup);
+            void removeResolvedCollisions(CollisionGroup collisionGroup);
+            void removeResolvedCollisions();
             
             Entity* createEntityFromAsset(Entity* asset);
             Entity* createEntityFromAsset(AssetID assetID);
@@ -93,7 +96,6 @@ namespace SupDef {
             
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }
-            // TechManager*     getTechManager    () { return techManager    .get(); }
             CommandProcessor*getComProcessor   () { return comProcessor   .get(); }
             TilesChecker*    getTilesChecker   () { return tilesChecker   .get(); }
             PathFinder*      getPathFinder     () { return pathFinder     .get(); }

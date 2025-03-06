@@ -19,3 +19,5 @@
 #include <ECS/asset_components/build_command_component.hpp>
 #include <ECS/asset_components/requirement_component.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>
+
+#include <ECS/tech_components/tech_component.hpp>

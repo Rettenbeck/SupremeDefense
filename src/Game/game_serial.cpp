@@ -12,14 +12,14 @@ namespace SupDef {
         j[SG_ASSET_MANAGER] = json();
         assetManager->to_json(j[SG_ASSET_MANAGER]);
 
-        // j[SG_TECH_MANAGER] = json();
-        // techManager->to_json(j[SG_TECH_MANAGER]);
+        j[SG_COLLISION_TRACKER] = json();
+        collisionTracker->to_json(j[SG_COLLISION_TRACKER]);
     }
 
     void Game::from_json(const json& j) {
-        entityManager->from_json(j[SG_ENTITY_MANAGER]);
-        assetManager ->from_json(j[SG_ASSET_MANAGER ]);
-        // techManager  ->from_json(j[SG_TECH_MANAGER  ]);
+        entityManager    ->from_json(j[SG_ENTITY_MANAGER]);
+        assetManager     ->from_json(j[SG_ASSET_MANAGER ]);
+        collisionTracker ->from_json(j[SG_COLLISION_TRACKER]);
     }
 
     void Game::serialize(const std::string& filename) const {

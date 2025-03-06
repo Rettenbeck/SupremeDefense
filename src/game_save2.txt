@@ -340,6 +340,7 @@
             }
         ]
     },
+    "collision_tracker": null,
     "entity_manager": {
         "entities": [
             {
