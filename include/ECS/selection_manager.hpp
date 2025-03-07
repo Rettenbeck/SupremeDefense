@@ -12,6 +12,7 @@ namespace SupDef {
         
         public:
             void selectUnit(Entity* entity) {
+                if (!entity) return;
                 if (entity->hasComponent<SelectableComponent>()) {
                     selected.push_back(entity->id);
                 }
@@ -27,6 +28,7 @@ namespace SupDef {
 
             void initialize() {
                 globalDispatcher->subscribe<UnitSelectedEvent>([this](const SupDef::Events& events) {
+                    selected.clear();
                     for (const auto& event : events) {
                         const auto& typedEvent = static_cast<const SupDef::UnitSelectedEvent&>(*event);
                         selectUnit(typedEvent.entity);

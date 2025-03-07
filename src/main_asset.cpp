@@ -50,7 +50,9 @@ void create_assets(SupDef::Game* g) {
     auto am_imm = am->createAsset(ASSET_IMMOVABLE);
     am_imm->addComponent<SupDef::PositionComponent>(0.0, 0.0);
     am_imm->addComponent<SupDef::ImmovableComponent>(true, false, true, true);
+    am_imm->addComponent<SupDef::SelectableComponent>();
     am_imm->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Gebaeude", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfaches Gebaeude");
+    am_imm->addComponent<SupDef::SelectableComponent>();
     auto am_imm_col = am_imm->addComponent<SupDef::CollisionComponent>(16.0);
     am_imm_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 32.0));
 
@@ -59,11 +61,13 @@ void create_assets(SupDef::Game* g) {
     am_mov->addComponent<SupDef::MovementComponent>(5.0, true);
     am_mov->addComponent<SupDef::CollisionComponent>(6.0);
     am_mov->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Einheit", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfache Einheit");
+    am_mov->addComponent<SupDef::SelectableComponent>();
 
     auto am_imm_test = am->createAsset("immovable2");
     am_imm_test->addComponent<SupDef::PositionComponent>(0.0, 0.0);
     am_imm_test->addComponent<SupDef::ImmovableComponent>(true, false, true, true);
     am_imm_test->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Gebaeude2", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfaches Gebaeude2");
+    am_imm_test->addComponent<SupDef::SelectableComponent>();
     auto am_imm_test_col = am_imm_test->addComponent<SupDef::CollisionComponent>(16.0);
     am_imm_test_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 32.0));
     am_imm_test_col->addShape(std::make_unique<SupDef::RectangleShape>(32.0, 0.0, 12.0, 18));

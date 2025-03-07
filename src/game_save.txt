@@ -34,6 +34,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "texts": [
                             {
                                 "de": "Einfaches Gebaeude2",
@@ -75,6 +78,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "texts": [
                             {
@@ -318,6 +324,9 @@
                         "type": "text"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": false,
@@ -388,6 +397,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 10,
@@ -420,6 +432,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 9,
@@ -452,6 +467,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 8,
@@ -474,6 +492,9 @@
                         "requires_collision_check": false,
                         "requires_tile_check": true,
                         "type": "immovable"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "dummy_radius": 16.0,
@@ -511,6 +532,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 16.0,
                         "shapes": [
                             {
@@ -546,6 +570,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 16.0,
                         "shapes": [
                             {
@@ -579,6 +606,9 @@
                         "requires_collision_check": false,
                         "requires_tile_check": true,
                         "type": "immovable"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "dummy_radius": 16.0,

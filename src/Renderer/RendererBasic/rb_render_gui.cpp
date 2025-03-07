@@ -5,6 +5,31 @@
 
 namespace SupDef {
 
+    void RendererBasic::showDebug() {
+        if (!debugMode) return;
+        std::stringstream ss;
+
+        auto pos = getMousePos();
+        auto posW = getMousePosWorld();
+        ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
+        ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
+
+        ss << "Selected units amount: " << gui->getSelectionManager()->getSelectedUnits().size() << " [";
+        for (auto id : gui->getSelectionManager()->getSelectedUnits()) {
+            ss << id << "  ";
+        }
+        ss << "]\n";
+
+        ss << "Selectable units amount: " << selectables.size() << "\n";
+        for (auto [ent, map, bb, xm, ym] : selectables) {
+            ss << " -> Entity: " << ent->id << "; map: " << map->id;
+            ss << "; x: " << bb->x << "; y: " << bb->y << "; w: " << bb->w << "; h: " << bb->h;
+            ss << "; xm: " << xm << "; ym: " << ym << "\n";
+        }
+
+        drawLabel(GuiElementStyle::Default, 0, 100, ss.str());
+    }
+
     void RendererBasic::renderGui() {
         if(!gui) return;
         for (const auto element : gui->getGuiElements()) {
@@ -20,6 +45,7 @@ namespace SupDef {
                     break;
             }
         }
+        showDebug();
     }
 
     void RendererBasic::drawPanel(GuiElementStyle style, float x, float y, float width, float height) {

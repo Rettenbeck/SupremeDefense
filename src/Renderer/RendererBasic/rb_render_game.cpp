@@ -10,14 +10,8 @@ namespace SupDef {
         renderCollisionGrid();
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
+        renderSelectedUnits();
         renderVirtualEntity();
-
-        // if (commandMode == RCommandMode::BUILD) {
-        //     ColorData cd(sf::Color::Yellow, sf::Color::White, 2);
-        //     auto pos = getMousePosWorld();
-        //     int w = 20, h = 16;
-        //     drawRect(pos.x - w /2, pos.y - h / 2, w, h, cd);
-        // }
     }
 
     void RendererBasic::renderCollisionGrid() {
@@ -83,13 +77,13 @@ namespace SupDef {
         float entityY = pos->y;
 
         if (drawBB) {
-            ColorData cd_bb(sf::Color::Yellow, sf::Color::Black, 1);
+            ColorData cd_bb(sf::Color::Yellow, sf::Color::Black, 0);
             auto& bb = col->boundingBox;
             drawRect(entityX + bb.x, entityY + bb.y, bb.w, bb.h, cd_bb);
         }
 
         if (!col->shapes.empty()) {
-            ColorData cd_shape(sf::Color::Green, sf::Color::Blue, 2);
+            ColorData cd_shape(sf::Color::Green, sf::Color::Blue, 0);
             for (const auto& shape : col->shapes) {
                 float absX = entityX + shape->offsetX;
                 float absY = entityY + shape->offsetY;
@@ -102,11 +96,34 @@ namespace SupDef {
                 }
             }
         } else {
-            ColorData cd_dummy(sf::Color::Red, sf::Color::Blue, 1);
+            ColorData cd_dummy(sf::Color::Red, sf::Color::Blue, 0);
             if (col->dummyRadius > 0.0f) {
                 drawCircle(entityX, entityY, col->dummyRadius, cd_dummy);
             }
         }
+    }
+
+    void RendererBasic::renderSelectedUnits() {
+        auto sm = gui->getSelectionManager();
+        assert(sm);
+        auto list = sm->getSelectedUnits();
+        for (auto id : list) {
+            renderSelectedUnit(id);
+        }
+    }
+
+    void RendererBasic::renderSelectedUnit(EntityID entityID) {
+        auto entity = game->getEntityManager()->getEntity(entityID);
+        if (!entity) return;
+        auto posComp = entity->getComponent<PositionComponent>();
+        auto colComp = entity->getComponent<CollisionComponent>();
+        if (!posComp) return;
+        if (!colComp) return;
+
+        int d = 5;
+        ColorData cd(sf::Color::Black, sf::Color::White, 1);
+        drawSelection(posComp->xAbs - d, posComp->yAbs - d,
+            colComp->boundingBox.w + 2 * d, colComp->boundingBox.h + 2 * d, cd);
     }
 
     void RendererBasic::renderVirtualEntity() {
@@ -121,7 +138,6 @@ namespace SupDef {
         auto position = getMousePosWorld();
         pos->x = position.x - bb.w / 2;
         pos->y = position.y - bb.h / 2;
-
         renderEntityWithCollision(pos, col, true);
     }
 

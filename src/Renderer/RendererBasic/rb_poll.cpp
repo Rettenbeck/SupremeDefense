@@ -7,6 +7,7 @@ namespace SupDef {
 
     bool RendererBasic::poll() {
         if(!window->isOpen()) { return false; }
+        prepareSelectableList();
 
         while (const std::optional<sf::Event> event = window->pollEvent()) {
             if(event.has_value()) { ImGui::SFML::ProcessEvent(*(window.get()), event.value()); }
@@ -38,6 +39,7 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::C) trigger(3);
                     if (keyEvent->code == sf::Keyboard::Key::V) trigger(4);
                     if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
+                    if (keyEvent->code == sf::Keyboard::Key::D) debugMode = !debugMode;
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {

@@ -42,6 +42,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "texts": [
                             {
                                 "de": "Gebaeude",
@@ -282,6 +285,9 @@
                             }
                         ],
                         "type": "text"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ]
             },
@@ -324,6 +330,9 @@
                             }
                         ],
                         "type": "text"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "dummy_radius": 16.0,
@@ -436,6 +445,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -469,6 +481,9 @@
                             }
                         ],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "marks_tiles_impassable": true,
@@ -506,6 +521,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -541,6 +559,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -562,6 +583,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "dummy_radius": 6.0,
                         "shapes": [],
@@ -595,6 +619,9 @@
                 "asset_id": "mover",
                 "components": [
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
@@ -626,6 +653,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "dummy_radius": 6.0,
                         "shapes": [],

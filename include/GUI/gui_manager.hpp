@@ -10,6 +10,7 @@ namespace SupDef {
         private:
             GuiElements elements;
             Game* game = nullptr;
+            SelectionManager* selectionManager = nullptr;
             unsigned width = 1, height = 1;
         
         public:
@@ -19,11 +20,11 @@ namespace SupDef {
                 elements.clear();
 
                 showResources(0, 0);
-                elements.push_back(std::make_unique<GuiPanel >(GuiElementStyle::Default, 1200, 10, 150, 50));
-                elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default,  800, 10, 150, 50, "Play"));
-                elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default, 1000, 10, 150, 50, "Exit"));
+                // elements.push_back(std::make_unique<GuiPanel >(GuiElementStyle::Default, 1200, 10, 150, 50));
+                // elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default,  800, 10, 150, 50, "Play"));
+                // elements.push_back(std::make_unique<GuiButton>(GuiElementStyle::Default, 1000, 10, 150, 50, "Exit"));
             }
-        
+
             void showResources(unsigned x, unsigned y, unsigned line_distance = 16) {
                 auto player = game->getThisPlayer();
                 if (!player) return;
@@ -65,6 +66,8 @@ namespace SupDef {
             }
 
             void setGame(Game* game_) { game = game_; }
+            void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
+            SelectionManager* getSelectionManager() { return selectionManager; }
 
     };
 

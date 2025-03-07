@@ -42,6 +42,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "texts": [
                             {
                                 "de": "Gebaeude",
@@ -130,6 +133,7 @@
                 "asset_id": "test_command3",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -159,6 +163,7 @@
                 "asset_id": "test_command",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     },
                     {
@@ -201,6 +206,7 @@
                 "asset_id": "test_command2",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     },
                     {
@@ -279,6 +285,9 @@
                             }
                         ],
                         "type": "text"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ]
             },
@@ -286,6 +295,7 @@
                 "asset_id": "test_command5",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -322,6 +332,9 @@
                         "type": "text"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 16.0,
                         "shapes": [
                             {
@@ -347,6 +360,7 @@
                 "asset_id": "test_command4",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -431,6 +445,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -464,6 +481,9 @@
                             }
                         ],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "marks_tiles_impassable": true,
@@ -501,6 +521,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -536,6 +559,9 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": true,
@@ -557,6 +583,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "dummy_radius": 6.0,
                         "shapes": [],
@@ -590,6 +619,9 @@
                 "asset_id": "mover",
                 "components": [
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
@@ -621,6 +653,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "dummy_radius": 6.0,
                         "shapes": [],

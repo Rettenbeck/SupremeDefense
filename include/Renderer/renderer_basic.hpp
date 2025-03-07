@@ -11,6 +11,9 @@
 
 namespace SupDef {
 
+    using RSelectable  = std::tuple<Entity*, Entity*, BoundingBox*, float, float>;
+    using RSelectables = std::vector<RSelectable>;
+
     enum class RCommandMode {
         NONE,
         BUILD
@@ -34,7 +37,6 @@ namespace SupDef {
             RendererBasic();
             ~RendererBasic();
             
-            // void initialize();
             void start();
             void end();
 
@@ -52,6 +54,10 @@ namespace SupDef {
             sf::Vector2i getMousePos();
             sf::Vector2f getMousePosWorld();
 
+            void prepareSelectableList();
+            std::tuple<Entity*, EntityID> getUnitInSpot(float worldX, float worldY);
+            EntityID getMapByCoords(float worldX, float worldY);
+
             void trigger(int i);
             void subscribeToEvents();
 
@@ -66,10 +72,13 @@ namespace SupDef {
             void renderCollisionGrid();
             void renderEntitiesWithCollision(EntityManager* entityManager);
             void renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB);
+            void renderSelectedUnits();
+            void renderSelectedUnit(EntityID entityID);
             void renderVirtualEntity();
             void renderMaps(EntityManager* entityManager);
             void renderMap(_EntMapTiles map);
             
+            void showDebug();
             void renderGui();
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
@@ -78,6 +87,8 @@ namespace SupDef {
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);
             void drawLine(float x1, float y1, float x2, float y2, sf::Color color);
+
+            void drawSelection(float x, float y, float width, float height, ColorData cData);
 
             sf::Clock deltaClock;
             std::unique_ptr<sf::RenderWindow> window;
@@ -91,6 +102,11 @@ namespace SupDef {
             RCommandMode commandMode = RCommandMode::NONE;
             CommandID currentCommand = NO_COMMAND;
             Entity* virtualEntity = nullptr;
+
+            EntityID currentMap = NO_ENTITY;
+            RSelectables selectables;
+
+            bool debugMode = true;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

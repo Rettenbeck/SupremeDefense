@@ -5,6 +5,7 @@
                 "asset_id": "test_command4",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -31,6 +32,9 @@
                             }
                         ],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "texts": [
@@ -66,6 +70,7 @@
                 "asset_id": "test_command5",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -73,6 +78,9 @@
             {
                 "asset_id": "mover",
                 "components": [
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "texts": [
                             {
@@ -151,6 +159,7 @@
                         "type": "requirement"
                     },
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -193,6 +202,7 @@
                         "type": "requirement"
                     },
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -222,6 +232,7 @@
                 "asset_id": "test_command3",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -313,6 +324,9 @@
                         "type": "text"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "marks_tiles_impassable": true,
                         "marks_tiles_occupied": true,
                         "placed_down": false,
@@ -383,6 +397,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 10,
@@ -415,6 +432,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 9,
@@ -447,6 +467,9 @@
                         "dummy_radius": 6.0,
                         "shapes": [],
                         "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ],
                 "id": 8,
@@ -469,6 +492,9 @@
                         "requires_collision_check": false,
                         "requires_tile_check": true,
                         "type": "immovable"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "dummy_radius": 16.0,
@@ -506,6 +532,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 16.0,
                         "shapes": [
                             {
@@ -541,6 +570,9 @@
                         "type": "immovable"
                     },
                     {
+                        "type": "selectable"
+                    },
+                    {
                         "dummy_radius": 16.0,
                         "shapes": [
                             {
@@ -574,6 +606,9 @@
                         "requires_collision_check": false,
                         "requires_tile_check": true,
                         "type": "immovable"
+                    },
+                    {
+                        "type": "selectable"
                     },
                     {
                         "dummy_radius": 16.0,
