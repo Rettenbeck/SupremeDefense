@@ -28,7 +28,9 @@
                 "components": [
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -114,6 +116,13 @@
                             }
                         ],
                         "type": "text"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
                     }
                 ]
             },
@@ -235,7 +244,9 @@
                 "components": [
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -284,7 +295,9 @@
                 "components": [
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -356,6 +369,13 @@
                 "asset_id": "test_map",
                 "components": [
                     {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
                         "tile_size": 16,
                         "tiles_x": 40,
                         "tiles_y": 30,
@@ -420,7 +440,9 @@
                     },
                     {
                         "X": 111.0,
+                        "X_absolute": 0.0,
                         "Y": 52.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -453,7 +475,9 @@
                     },
                     {
                         "X": 70.0,
+                        "X_absolute": 0.0,
                         "Y": 192.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -486,7 +510,9 @@
                     },
                     {
                         "X": 170.0,
+                        "X_absolute": 0.0,
                         "Y": 192.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -519,7 +545,9 @@
                     },
                     {
                         "X": 470.0,
+                        "X_absolute": 0.0,
                         "Y": 52.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -549,7 +577,9 @@
                     },
                     {
                         "X": 32.0,
+                        "X_absolute": 0.0,
                         "Y": 96.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -579,7 +609,9 @@
                     },
                     {
                         "X": 192.0,
+                        "X_absolute": 0.0,
                         "Y": 128.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],
@@ -609,7 +641,9 @@
                     },
                     {
                         "X": 32.0,
+                        "X_absolute": 0.0,
                         "Y": 96.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ],

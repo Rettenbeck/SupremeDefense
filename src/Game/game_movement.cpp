@@ -105,4 +105,28 @@ namespace SupDef {
         updatePosition(deltaTime, tilesComp, _EntPosMovCol(nullptr, pos, mov, col));
     }
 
+    void Game::passPositionToChildren(Entity* entity, PositionComponent* positionComponent) {
+        if (!entity) return;
+        if (!positionComponent) return;
+
+        auto children = entityManager->getChildren(entity->id);
+        for (auto child : children) {
+            auto posCompChild = child->getComponent<PositionComponent>();
+            if (!posCompChild) continue;
+            posCompChild->xAbs = posCompChild->x + positionComponent->xAbs;
+            posCompChild->yAbs = posCompChild->y + positionComponent->yAbs;
+            passPositionToChildren(child, posCompChild);
+        }
+    }
+
+    void Game::passPositionToChildren(Entity* entity) {
+        if (!entity) return;
+        auto posComp = entity->getComponent<PositionComponent>();
+        passPositionToChildren(entity, posComp);
+    }
+
+    void Game::passPositionToChildren(EntityID entityID) {
+        passPositionToChildren(entityManager->getEntity(entityID));
+    }
+
 }

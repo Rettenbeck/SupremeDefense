@@ -45,6 +45,7 @@ void create_assets(SupDef::Game* g) {
     am_map->addComponent<SupDef::MapComponent>(width, height);
     am_map->addComponent<SupDef::TilesComponent>(tileSize, width, height);
     am_map->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Map", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Testkarte");
+    am_map->addComponent<SupDef::PositionComponent>(0.0, 0.0);
 
     auto am_imm = am->createAsset(ASSET_IMMOVABLE);
     am_imm->addComponent<SupDef::PositionComponent>(0.0, 0.0);

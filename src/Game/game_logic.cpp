@@ -7,12 +7,16 @@ namespace SupDef {
 
     void Game::update(float deltaTime) {
         removeResolvedCollisions();
+        updateWorlds(deltaTime);
+        updateCommands();
+        processActions();
+    }
+
+    void Game::updateWorlds(float deltaTime) {
         auto worlds = entityManager->getEntitiesWithComponents<WorldComponent>();
         for(auto& world : worlds) {
             updateWorld(deltaTime, world);
         }
-        updateCommands();
-        processActions();
     }
 
     void Game::updateWorld(float deltaTime, _EntWorld world) {
@@ -25,6 +29,7 @@ namespace SupDef {
     void Game::updateMap(float deltaTime, _EntMapTiles map) {
         auto movingEntities = entityManager->getEntitiesWithComponents<PositionComponent, MovementComponent, CollisionComponent>(std::get<0>(map)->id);
         updatePositionMass(deltaTime, std::get<2>(map), movingEntities);
+        passPositionToChildren(std::get<0>(map));
     }
 
 }

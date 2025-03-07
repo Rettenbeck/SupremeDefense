@@ -55,7 +55,9 @@
                     },
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ]
@@ -104,7 +106,9 @@
                     },
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ]
@@ -226,6 +230,13 @@
                 "asset_id": "test_map",
                 "components": [
                     {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
                         "texts": [
                             {
                                 "de": "Testkarte",
@@ -311,7 +322,9 @@
                     },
                     {
                         "X": 0.0,
+                        "X_absolute": 0.0,
                         "Y": 0.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     }
                 ]
@@ -348,7 +361,9 @@
                 "components": [
                     {
                         "X": 32.0,
+                        "X_absolute": 0.0,
                         "Y": 96.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -378,7 +393,9 @@
                 "components": [
                     {
                         "X": 192.0,
+                        "X_absolute": 0.0,
                         "Y": 128.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -408,7 +425,9 @@
                 "components": [
                     {
                         "X": 32.0,
+                        "X_absolute": 0.0,
                         "Y": 96.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -438,7 +457,9 @@
                 "components": [
                     {
                         "X": 470.0,
+                        "X_absolute": 0.0,
                         "Y": 52.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -471,7 +492,9 @@
                 "components": [
                     {
                         "X": 170.0,
+                        "X_absolute": 0.0,
                         "Y": 192.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -504,7 +527,9 @@
                 "components": [
                     {
                         "X": 70.0,
+                        "X_absolute": 0.0,
                         "Y": 192.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -537,7 +562,9 @@
                 "components": [
                     {
                         "X": 111.0,
+                        "X_absolute": 0.0,
                         "Y": 52.0,
+                        "Y_absolute": 0.0,
                         "type": "position"
                     },
                     {
@@ -602,6 +629,13 @@
                         "tiles_x": 40,
                         "tiles_y": 30,
                         "type": "tiles"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
                     }
                 ],
                 "id": 2,

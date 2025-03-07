@@ -41,6 +41,7 @@ namespace SupDef {
             
             void update(float deltaTime);
 
+            void updateWorlds(float deltaTime);
             void updateWorld(float deltaTime, _EntWorld world);
             void updateMap(float deltaTime, _EntMapTiles map);
 
@@ -71,6 +72,9 @@ namespace SupDef {
             void updatePositionMass(float deltaTime, TilesComponent* tilesComp, _EntPosMovCols& comps);
             void updatePosition(float deltaTime, TilesComponent* tilesComp, _EntPosMovCol comp);
             void updatePosition(float deltaTime, TilesComponent* tilesComp, Entity* entity);
+            void passPositionToChildren(Entity* entity, PositionComponent* positionComponent);
+            void passPositionToChildren(Entity* entity);
+            void passPositionToChildren(EntityID entityID);
 
             CollisionPairs findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, bool groupMode);
             void updateCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, CollisionGroup collisionGroup, bool groupMode);

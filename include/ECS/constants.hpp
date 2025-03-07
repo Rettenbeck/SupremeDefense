@@ -62,6 +62,7 @@ namespace SupDef {
     const std::string SCA_ASSET                             = "asset"                               ;
     const std::string SCA_COMMAND                           = "command"                             ;
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
+    const std::string SCA_INIT_CONTAINER                    = "init_container"                      ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Tech Components
@@ -71,6 +72,7 @@ namespace SupDef {
     const std::string S_IS_UNIQUE                           = "unique"                              ;
     const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_TO_BUILD                            = "to_build"                            ;
+    const std::string S_CONTAINED                           = "contained"                           ;
 
     const std::string S_ASSIGNEES                           = "assignees"                           ;
 
@@ -104,6 +106,8 @@ namespace SupDef {
     const std::string S_PLAYERS                             = "players"                             ;
     const std::string S_X                                   = "X"                                   ;
     const std::string S_Y                                   = "Y"                                   ;
+    const std::string S_X_ABS                               = "X_absolute"                          ;
+    const std::string S_Y_ABS                               = "Y_absolute"                          ;
     const std::string S_VX                                  = "VX"                                  ;
     const std::string S_VY                                  = "VY"                                  ;
 
