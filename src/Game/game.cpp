@@ -5,6 +5,7 @@
 #include <Game/game_collisions.cpp>
 #include <Game/game_movement.cpp>
 #include <Game/game_logic.cpp>
+#include <Game/game_tech.cpp>
 #include <Game/game_assets.cpp>
 #include <Game/game_serial.cpp>
 

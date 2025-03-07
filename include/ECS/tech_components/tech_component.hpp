@@ -37,6 +37,8 @@ namespace SupDef {
             return SCT_TECH;
         }
 
+        bool isTech() const override { return true; }
+
     };
 
 }

@@ -16,6 +16,11 @@ namespace SupDef {
     using ResourceID = std::string;
 
     using CommandType = std::string;
+    
+    using Cooldown = long;
+    const Cooldown COOLDOWN_SEC = 12000;
+    const Cooldown COOLDOWN_FRAME = COOLDOWN_SEC / 60;
+    const Cooldown NO_COOLDOWN = -1;
 
     const EntityID NO_ENTITY = 0;
     const AssetID NO_ASSET = "_";
@@ -67,12 +72,17 @@ namespace SupDef {
 
     // Tech Components
     const std::string SCT_TECH                              = "tech"                                ;   
+    const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;   
 
     // Attributes
     const std::string S_IS_UNIQUE                           = "unique"                              ;
     const std::string S_RESOURCES                           = "resources"                           ;
     const std::string S_TO_BUILD                            = "to_build"                            ;
     const std::string S_CONTAINED                           = "contained"                           ;
+    const std::string S_COOLDOWN                            = "cooldown"                            ;
+    const std::string S_CURRENT_COOLDOWN                    = "current_cooldown"                    ;
+    const std::string S_INIT_FULL_COOLDOWN                  = "init_with_full_cooldown"             ;
+    const std::string S_COMMAND                             = "command"                             ;
 
     const std::string S_ASSIGNEES                           = "assignees"                           ;
 

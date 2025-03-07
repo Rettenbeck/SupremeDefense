@@ -28,7 +28,7 @@ namespace SupDef {
             return SCA_RESOURCE_DEF;
         }
 
-        bool isAssetOnly() const override { return true; }
+        bool isAsset() const override { return true; }
 
     };
     

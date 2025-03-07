@@ -11,7 +11,7 @@ namespace SupDef {
             EventDispatcher* eventDispatcher = nullptr;
             std::unordered_map<EntityID, UEntity> entities;
             std::unordered_map<EntityID, EntityID> parentMap;
-            std::unordered_map<EntityID, std::vector<EntityID>> childrenMap;
+            std::unordered_map<EntityID, EntityIDs> childrenMap;
             EntityID nextEntityID = 1;
 
         public:

@@ -47,7 +47,7 @@ namespace SupDef {
 
             Entity* addMap(AssetID mapAssetID);
 
-            void updateCommands();
+            void processCommands();
             void processDirectCommands();
             void handleStartCommand(Entity* command);
             void handleUpdateCommand(Entity* command);
@@ -98,6 +98,9 @@ namespace SupDef {
             void createVirtualEntityFromAsset(Entity* asset);
             void createVirtualEntityFromAsset(AssetID assetID);
             
+            void processTechs();
+            void processTechsForEntity(EntityID entityID, EntityIDs& techIDs);
+
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }
             CommandProcessor*getComProcessor   () { return comProcessor   .get(); }

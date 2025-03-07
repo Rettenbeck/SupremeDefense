@@ -5,7 +5,7 @@
 
 namespace SupDef {
 
-    void Game::updateCommands() {
+    void Game::processCommands() {
         processDirectCommands();
         assert(comProcessor);
         auto command = comProcessor->getCurrentCommand();

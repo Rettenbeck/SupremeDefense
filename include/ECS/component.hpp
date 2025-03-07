@@ -14,7 +14,8 @@ namespace SupDef {
             virtual void to_json(json& j) const = 0;
             virtual void from_json(const json& j) = 0;
             virtual std::string getTypeName() const = 0;
-            virtual bool isAssetOnly() const { return false; }
+            virtual bool isAsset() const { return false; }
+            virtual bool isTech() const { return false; }
             
     };
 

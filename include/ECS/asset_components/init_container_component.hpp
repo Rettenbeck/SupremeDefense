@@ -33,7 +33,7 @@ namespace SupDef {
             return SCA_INIT_CONTAINER;
         }
 
-        bool isAssetOnly() const override { return true; }
+        bool isAsset() const override { return true; }
 
     };
     

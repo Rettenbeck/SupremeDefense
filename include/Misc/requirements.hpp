@@ -22,7 +22,6 @@ namespace SupDef {
             
             ResourceRequirement(UResource resource_) : resource(std::move(resource_)) {}
             
-        };
-        
+    };
     
 }

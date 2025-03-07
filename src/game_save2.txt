@@ -130,6 +130,7 @@
                 "asset_id": "test_command3",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -159,6 +160,7 @@
                 "asset_id": "test_command",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     },
                     {
@@ -201,6 +203,7 @@
                 "asset_id": "test_command2",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     },
                     {
@@ -286,6 +289,7 @@
                 "asset_id": "test_command5",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]
@@ -347,6 +351,7 @@
                 "asset_id": "test_command4",
                 "components": [
                     {
+                        "cooldown": -1,
                         "type": "command"
                     }
                 ]

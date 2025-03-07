@@ -72,7 +72,7 @@ namespace SupDef {
             return SC_TEXT;
         }
 
-        bool isAssetOnly() const override { return true; }
+        bool isAsset() const override { return true; }
 
     };
     

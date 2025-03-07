@@ -28,7 +28,7 @@ namespace SupDef {
             return SCA_BUILD_COMMAND;
         }
 
-        bool isAssetOnly() const override { return true; }
+        bool isAsset() const override { return true; }
 
     };
     

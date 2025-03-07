@@ -63,7 +63,7 @@ namespace SupDef {
                 if (id != NO_ENTITY) j[S_ID] = id;
                 j[S_ASSET_ID] = assetID;
                 for (const auto& [type, component] : components) {
-                    if (component->isAssetOnly()) continue;
+                    if (component->isAsset()) continue;
                     json componentJson;
                     component->to_json(componentJson);
                     componentJson[S_TYPE] = component->getTypeName();
