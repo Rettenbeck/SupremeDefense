@@ -16,6 +16,10 @@ namespace SupDef {
             Logger::getInstance().addMessage(MessageType::Error, "Unknown command: &1", currentCommand);
             return;
         }
+        if (!game->getCommandTracker()->ongoing) {
+            commandMode = RCommandMode::NONE;
+            return;
+        }
 
         auto comComp = asset->getComponent<CommandComponent>();
         assert(comComp);
@@ -24,8 +28,6 @@ namespace SupDef {
         if (buildComp) {
             commandMode = RCommandMode::BUILD;
         }
-        
-        // Logger::getInstance().addMessage(MessageType::Error, "Unknown type: &1", comComp->commandType);
     }
 
     void RendererBasic::processCommandMessage(Entity* asset, std::string msg, const json &j) {

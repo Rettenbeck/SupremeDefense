@@ -5,109 +5,103 @@
 
 namespace SupDef {
 
-    void Game::processCommands() {
-        processDirectCommands();
-        assert(comProcessor);
-        auto command = comProcessor->getCurrentCommand();
-        auto status = comProcessor->getCommandStatus();
-        Entity* asset  = nullptr;
-        std::stringstream ss;
-
-        if (status == CommandStatus::NONE) {
-            comProcessor->reset();
-            globalDispatcher->dispatch<CommandToRenderEvent>(NO_COMMAND, json());
+    void Game::handleTriggerCommand(const TriggerCommandEvent& event) {
+        if (event.cancel) {
+            commandTracker->reset();
             return;
         }
-        if (command != NO_COMMAND) {
-            asset = getAssetFromCommand(command, comProcessor->getData());
-            assert(asset);
-        }
-        auto success = checkRequirements(command, comProcessor->getData(), status, false);
+        json data = event.data;
 
-        switch (status) {
-            case CommandStatus::RECEIVED:
-                ss << "Command " << command << " ";
-                if (success) ss << "accepted!";
-                else ss << "failed!";
-                ss << "\n";
-                comProcessor->setCommandStatus(CommandStatus::ONGOING);
-                if (success) {
-                    handleStartCommand(asset);
-                } else {
-                    comProcessor->reset();
-                }
-                break;
-            case CommandStatus::ONGOING:
-                handleUpdateCommand(asset);
-                break;
-            case CommandStatus::CONFIRMED:
-                ss << "Command " << command << " ";
-                if (!success) ss << "not";
-                ss << " successful!\n";
-                if (success) handleConfirmCommand(asset);
-                comProcessor->reset();
-                break;
-            case CommandStatus::CANCELLED:
-                ss << "Command " << command << " cancelled!\n";
-                comProcessor->reset();
-                break;
-            default:
-                assert(false);
+        auto [valid, command, active] = isTechProperCommand(event.entityID, event.techID);
+        if (!valid) return;
+
+        auto success = checkRequirements(command->assetID, data, false);
+        if (!success) {
+            auto j = getFeedbackFromCheck(data, "Requirements not met");
+            globalDispatcher->dispatch<CommandToRenderEvent>(active->commandID, event.entityID, event.techID, j);
+            return;
         }
 
-        auto j = getFeedbackFromCheck(comProcessor->getData());
-        globalDispatcher->dispatch<CommandToRenderEvent>(comProcessor->getCurrentCommand(), j, virtualEntity.get());
-    }
-
-    void Game::processDirectCommands() {
-        assert(comProcessor);
-        auto& directs = comProcessor->getDirects();
-        for (auto& d : directs) {
-            auto success = checkRequirements(d.commandID, d.data, CommandStatus::CONFIRMED, false);
-            if (success) {
-                std::stringstream ss;
-                ss << "Direct command " << d.commandID << " successful!\n";
-                auto j = getFeedbackFromCheck(d.data, ss.str());
-                globalDispatcher->dispatch<CommandToRenderEvent>(d.commandID, j);
-            }
+        auto complete = isCommandComplete(command, data);
+        if (complete) {
+            commandTracker->reset();
+            std::cout << "Command triggered! Data: " << data << "\n";
+            handleCompleteCommand(event.entityID, event.techID, command->assetID, data);
+        } else {
+            commandTracker->set(event.entityID, event.techID, active->commandID);
+            handleIncompleteCommand(command, event.entityID, event.techID, data);
         }
-        directs.clear();
     }
 
-    json Game::getFeedbackFromCheck(json& input) {
-        return getFeedbackFromCheck(input, "");
+    void Game::handleUpdateCommand(const UpdateCommandEvent& event) {
+        //
     }
 
-    json Game::getFeedbackFromCheck(json& input, std::string msg) {
-        json j;
-        if (!msg.empty()) {
-            j[JCOM_MESSAGE] = msg;
-        }
-        // Add additional feedback...
-        return j;
+    void Game::handleCompleteCommand(EntityID entityID, EntityID techID, CommandID commandID, json data) {
+        std::stringstream ss;
+        ss << "Command " << commandID << " successful!\n";
+        std::cout << "Command triggered! 2, Data: " << data << "\n";
+        auto j = getFeedbackFromCheck(data);
+        std::cout << "Command triggered! 3, j: " << j << "\n";
+        globalDispatcher->dispatch<CommandToRenderEvent>(commandID, entityID, techID, j);
+        auto action = std::make_shared<Action>(commandID, entityID, thisPlayer, j);
+        globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
+        virtualEntity = nullptr;
     }
 
-    void Game::handleStartCommand(Entity* command) {
-        assert(command);
-        auto comComp = command->getComponent<CommandComponent>();
-        assert(comComp);
-
+    void Game::handleIncompleteCommand(Entity* command, EntityID entityID, EntityID techID, json j) {
         auto buildComp = command->getComponent<BuildCommandComponent>();
         if (buildComp) {
             createVirtualEntityFromAsset(buildComp->toBuild);
             assert(virtualEntity);
+            globalDispatcher->dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
+        }
+        auto moveComp = command->getComponent<MoveCommandComponent>();
+        if (moveComp) {
+            //
         }
     }
 
-    void Game::handleUpdateCommand(Entity* command) {
-        assert(command);
+    bool Game::isCommandComplete(Entity* command, json j) {
+        auto buildComp = command->getComponent<BuildCommandComponent>();
+        if (buildComp) {
+            if (!j.contains(JCOM_X) || !j.contains(JCOM_Y)) {
+                return false;
+            }
+        }
+        auto moveComp = command->getComponent<MoveCommandComponent>();
+        if (moveComp) {
+            if (!j.contains(JCOM_X) || !j.contains(JCOM_Y)) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    void Game::handleConfirmCommand(Entity* command) {
-        assert(command);
-        auto action = std::make_shared<Action>(command->assetID, thisPlayer, comProcessor->getData());
-        globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
-        virtualEntity = nullptr;
+    std::tuple<bool, Entity*, ActiveTechComponent*> Game::isTechProperCommand(EntityID entityID, EntityID techID) {
+        auto tech = entityManager->getEntity(techID);
+        if (!tech) {
+            Logger::getInstance().addMessage(MessageType::Error, "Tech &1 does not exist!", techID);
+            return {false, nullptr, nullptr};
+        }
+        auto techComp = tech->getComponent<TechComponent>();
+        auto activeComp = tech->getComponent<ActiveTechComponent>();
+        if (!techComp || !activeComp) {
+            Logger::getInstance().addMessage(MessageType::Error, "Entity &1 not a tech!", techID);
+            return {false, nullptr, nullptr};
+        }
+        auto it = std::find(techComp->assignees.begin(), techComp->assignees.end(), entityID);
+        if (it == techComp->assignees.end()) {
+            Logger::getInstance().addMessage(MessageType::Error, "Entity &1 not asssigned to tech!", entityID);
+            return {false, nullptr, nullptr};
+        }
+        json j;
+        auto command = getAssetFromCommand(activeComp->commandID, j);
+        if (!command) {
+            Logger::getInstance().addMessage(MessageType::Error, "Command &1 does not exist!", activeComp->commandID);
+            return {false, nullptr, nullptr};
+        }
+        return {true, command, activeComp};
     }
 
     Entity* Game::getAssetFromCommand(CommandID commandID, json &data) {
@@ -140,6 +134,19 @@ namespace SupDef {
             return uniqueCommand.get();
         }
         return asset;
+    }
+
+    json Game::getFeedbackFromCheck(json& input) {
+        return getFeedbackFromCheck(input, "");
+    }
+
+    json Game::getFeedbackFromCheck(json& input, std::string msg) {
+        json j = input;
+        if (!msg.empty()) {
+            j[JCOM_MESSAGE] = msg;
+        }
+        // Add additional feedback...
+        return j;
     }
 
 }

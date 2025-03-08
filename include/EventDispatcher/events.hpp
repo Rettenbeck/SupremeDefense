@@ -22,12 +22,15 @@ namespace SupDef {
 
 
     // #### General events #########################################################################
-    struct StartCommandEvent : public Event {
-        CommandID commandID;
+    struct TriggerCommandEvent : public Event {
+        EntityID entityID, techID;
         json data;
-        StartCommandEvent(const CommandID& command) : commandID(command), data(json{}) {}
-        StartCommandEvent(const CommandID& command, const json& jsonData)
-            : commandID(command), data(jsonData) {}
+        bool cancel;
+        TriggerCommandEvent() : entityID(NO_ENTITY), techID(NO_ENTITY), data(json()), cancel(true) {}
+        TriggerCommandEvent(const EntityID entityID, const EntityID techID, const json& jsonData)
+        : entityID(entityID), techID(techID), data(jsonData), cancel(false) {}
+        TriggerCommandEvent(const EntityID entityID, const EntityID techID, const json& jsonData, bool cancel)
+        : entityID(entityID), techID(techID), data(jsonData), cancel(cancel) {}
     };
 
     struct UpdateCommandEvent : public Event {
@@ -35,31 +38,13 @@ namespace SupDef {
         explicit UpdateCommandEvent(const json& jsonData) : data(jsonData) {}
     };
     
-    struct ConfirmCommandEvent : public Event {
-        bool isConfirmed;
-        json data;
-        explicit ConfirmCommandEvent(bool confirmed, const json& jsonData)
-            : isConfirmed(confirmed), data(jsonData) {}
-    };
-
-    struct DirectCommandEvent : public Event {
-        CommandID commandID;
-        bool msgOnFailure = true;
-        json data;
-        DirectCommandEvent(const CommandID& command, bool msgOnFailure)
-            : commandID(command), msgOnFailure(msgOnFailure), data(json()) {}
-        DirectCommandEvent(const CommandID& command, bool msgOnFailure, const json& jsonData)
-            : commandID(command), msgOnFailure(msgOnFailure), data(jsonData) {}
-    };
-
     struct CommandToRenderEvent : public Event {
         CommandID commandID;
+        EntityID entityID, techID;
         json data;
-        Entity* virtualEntity = nullptr;
-        explicit CommandToRenderEvent(const CommandID& command, const json& jsonData)
-            : commandID(command), data(jsonData) {}
-        explicit CommandToRenderEvent(const CommandID& command, const json& jsonData, Entity* entity)
-        : commandID(command), data(jsonData), virtualEntity(entity) {}
+        explicit CommandToRenderEvent(const CommandID& command,
+            const EntityID entityID, const EntityID techID, const json& jsonData)
+            : commandID(command), entityID(entityID), techID(techID), data(jsonData) {}
     };
 
 

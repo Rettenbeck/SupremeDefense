@@ -187,7 +187,7 @@ namespace SupDef {
                 auto active = tech->getComponent<ActiveTechComponent>();
                 assert(active);
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<StartCommandEvent>(active->commandID);
+                globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, json());
             }
         
             const GuiElements& getGuiElements() const { return elements; }

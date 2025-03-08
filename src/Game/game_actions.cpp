@@ -11,12 +11,12 @@ namespace SupDef {
             assert(action);
             auto command = getAssetFromCommand(action->commandID, action->data);
             assert(command);
-            processAction(command, action->playerID, action->data);
+            processAction(command, action->entityID, action->playerID, action->data);
         }
         actionQueue->clear();
     }
 
-    void Game::processAction(Entity* command, EntityID playerID, json &data) {
+    void Game::processAction(Entity* command, EntityID entityID, EntityID playerID, json &data) {
         auto player = entityManager->getEntity(playerID);
         assert(player);
         auto playerComp = player->getComponent<PlayerComponent>();
@@ -24,7 +24,7 @@ namespace SupDef {
 
         auto reqComp = command->getComponent<RequirementComponent>();
         if (reqComp) {
-            auto result = checkRequirements(reqComp, data, CommandStatus::CONFIRMED, true);
+            auto result = checkRequirements(reqComp, data, true);
         }
 
         auto buildComp = command->getComponent<BuildCommandComponent>();

@@ -22,22 +22,33 @@ namespace SupDef {
         pathFinder       = std::make_unique<PathFinder      >();
         collisionSystem  = std::make_unique<CollisionSystem >();
         collisionTracker = std::make_unique<CollisionTracker>();
+        commandTracker   = std::make_unique<CommandTracker  >();
     }
 
     void Game::initialize() {
-        comProcessor = std::make_unique<CommandProcessor>(globalDispatcher);
+        // comProcessor = std::make_unique<CommandProcessor>(globalDispatcher);
         
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
         Logger::getInstance().addMessage(MessageType::Success, "World initialized!");
 
-        // eventDispatcher->subscribe<EntityDestroyedEvent>([this](const Events& events) {
-        //     std::cout << "Batch processed: " << events.size() << " EntityDestroyedEvents.\n";
+        globalDispatcher->subscribe<TriggerCommandEvent>([this](const SupDef::Events& events) {
+            for (const auto& event : events) {
+                const auto& typedEvent = static_cast<const TriggerCommandEvent&>(*event);
+                handleTriggerCommand(typedEvent);
+            }
+        });
+        globalDispatcher->subscribe<UpdateCommandEvent>([this](const SupDef::Events& events) {
+            for (const auto& event : events) {
+                const auto& typedEvent = static_cast<const UpdateCommandEvent&>(*event);
+                handleUpdateCommand(typedEvent);
+            }
+        });
+        // globalDispatcher->subscribe<ConfirmCommandEvent>([this](const SupDef::Events& events) {
         //     for (const auto& event : events) {
-        //         const auto& typedEvent = static_cast<const EntityDestroyedEvent&>(*event);
-        //         std::cout << "Entity " << typedEvent.entityID << " destroyed.\n";
-        //         this->techManager->onEntityDestroyed(typedEvent.entityID);
+        //         const auto& typedEvent = static_cast<const ConfirmCommandEvent&>(*event);
+        //         handleConfirmCommand(typedEvent);
         //     }
         // });
     }

@@ -38,7 +38,14 @@ namespace SupDef {
 
         switch (commandMode) {
             case RCommandMode::BUILD:
-                if (addVirtualEntityData(j)) globalDispatcher->dispatch<ConfirmCommandEvent>(button == MLEFT, j);
+                if (button == MLEFT) {
+                    if (addVirtualEntityData(j)) {
+                        auto c = game->getCommandTracker(); assert(c);
+                        globalDispatcher->dispatch<TriggerCommandEvent>(c->entityID, c->techID, j);
+                    }
+                } else if (button == MRIGHT) {
+                    globalDispatcher->dispatch<TriggerCommandEvent>();
+                }
                 break;
             case RCommandMode::NONE:
                 if (button == MLEFT) {

@@ -1479,3 +1479,45 @@
 [2025-03-08 12:22:37] SUCCESS: Serialized to game_save2.txt
 [2025-03-08 12:22:37] SUCCESS: Deserialized from game_save2.txt
 [2025-03-08 12:22:37] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 22:00:05] INIT: ------------------
+[2025-03-08 22:00:05] SUCCESS: World initialized!
+[2025-03-08 22:00:05] SUCCESS: Serialized to game_save.txt
+[2025-03-08 22:00:05] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 22:00:05] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 22:00:05] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 22:00:05] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 22:00:12] INFO: Action created
+[2025-03-08 22:00:12] INFO:   Sent to game
+[2025-03-08 22:00:12] INFO:   Sent to replay
+[2025-03-08 22:02:20] INIT: ------------------
+[2025-03-08 22:02:20] SUCCESS: World initialized!
+[2025-03-08 22:02:20] SUCCESS: Serialized to game_save.txt
+[2025-03-08 22:02:20] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 22:02:20] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 22:02:20] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 22:02:20] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 22:02:38] INFO: Action created
+[2025-03-08 22:02:38] INFO:   Sent to game
+[2025-03-08 22:02:38] INFO:   Sent to replay
+[2025-03-08 22:04:53] INIT: ------------------
+[2025-03-08 22:04:54] SUCCESS: World initialized!
+[2025-03-08 22:04:54] SUCCESS: Serialized to game_save.txt
+[2025-03-08 22:04:54] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 22:04:54] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 22:04:54] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 22:04:54] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 22:05:00] INFO: Action created
+[2025-03-08 22:05:00] INFO:   Sent to game
+[2025-03-08 22:05:00] INFO:   Sent to replay
+[2025-03-08 22:06:14] INIT: ------------------
+[2025-03-08 22:06:14] SUCCESS: World initialized!
+[2025-03-08 22:06:14] SUCCESS: Serialized to game_save.txt
+[2025-03-08 22:06:14] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 22:06:14] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 22:06:14] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 22:06:14] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 22:06:32] INFO: Action created
+[2025-03-08 22:06:32] INFO:   Sent to game
+[2025-03-08 22:06:32] INFO:   Sent to replay
+[2025-03-08 22:06:42] INFO: Game ended from renderer
+
