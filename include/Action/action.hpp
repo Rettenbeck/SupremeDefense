@@ -18,12 +18,6 @@ namespace SupDef {
             Action(CommandID commandID, EntityID entityID, EntityID playerID, json data)
                 : commandID(commandID), entityID(entityID), playerID(playerID), data(data) { }
 
-            // Action(CommandID commandID, EntityID playerID, json data)
-            //     : commandID(commandID), playerID(playerID), data(data) { }
-
-            // Action(CommandID commandID, EntityID playerID)
-            //     : commandID(commandID), playerID(playerID) { data = json{ }; }
-                
             Action() { data = json{}; }
         
             void to_json(json& j) const {

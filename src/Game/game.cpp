@@ -26,8 +26,6 @@ namespace SupDef {
     }
 
     void Game::initialize() {
-        // comProcessor = std::make_unique<CommandProcessor>(globalDispatcher);
-        
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
@@ -45,12 +43,6 @@ namespace SupDef {
                 handleUpdateCommand(typedEvent);
             }
         });
-        // globalDispatcher->subscribe<ConfirmCommandEvent>([this](const SupDef::Events& events) {
-        //     for (const auto& event : events) {
-        //         const auto& typedEvent = static_cast<const ConfirmCommandEvent&>(*event);
-        //         handleConfirmCommand(typedEvent);
-        //     }
-        // });
     }
 
     Entity* Game::addMap(AssetID mapAssetID) {

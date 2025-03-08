@@ -3,7 +3,6 @@
 #include <Game/path_finder.hpp>
 #include <Game/collision_system.hpp>
 #include <Game/collision_tracker.hpp>
-// #include <Game/command_processor.hpp>
 #include <Game/command_tracker.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
@@ -86,7 +85,6 @@ namespace SupDef {
 
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }
-            // CommandProcessor*getComProcessor   () { return comProcessor   .get(); }
             TilesChecker*    getTilesChecker   () { return tilesChecker   .get(); }
             PathFinder*      getPathFinder     () { return pathFinder     .get(); }
             CollisionSystem* getCollisionSystem() { return collisionSystem.get(); }
@@ -111,7 +109,6 @@ namespace SupDef {
             EntityID thisPlayer = NO_ENTITY;
             UEntityManager    entityManager    = nullptr;
             UAssetManager     assetManager     = nullptr;
-            // UComProcessor     comProcessor     = nullptr;
             UEventDispatcher  eventDispatcher  = nullptr;
             UTilesChecker     tilesChecker     = nullptr;
             UPathFinder       pathFinder       = nullptr;
