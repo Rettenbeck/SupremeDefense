@@ -8,8 +8,8 @@ namespace SupDef {
 
     struct CollisionComponent : public Component {
         CollisionShapes shapes;
-        float dummyRadius = 0.0f;
         BoundingBox boundingBox;
+        float dummyRadius = 0.0f;
     
         CollisionComponent(float dummyRadius_) : dummyRadius(dummyRadius_) { onInit(); }
         CollisionComponent() { onInit(); }
@@ -114,6 +114,7 @@ namespace SupDef {
                     addShape(std::move(shape));
                 }
             }
+            updateBoundingBox();
         }
     
         std::string getTypeName() const override {

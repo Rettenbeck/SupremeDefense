@@ -24,6 +24,7 @@ namespace SupDef {
         for (auto [ent, map, bb, xm, ym] : selectables) {
             ss << " -> Entity: " << ent->id << "; map: " << map->id;
             ss << "; x: " << bb->x << "; y: " << bb->y << "; w: " << bb->w << "; h: " << bb->h;
+            ss << "; def: " << bb->isDefined;
             ss << "; xm: " << xm << "; ym: " << ym << "\n";
         }
 

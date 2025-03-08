@@ -61,10 +61,10 @@ void test_app() {
     g->updateTempGoal(tilesComp, em);
 
 
-    auto table = g->getEntityManager()->getEntitiesWithComponents<SupDef::ImmovableComponent, SupDef::PositionComponent>();
-    for(auto& t : table) {
-        std::cout << "Entity " << (std::get<0>(t))->id << "; " << (std::get<1>(t))->marksTilesImpassable << "; " << (std::get<2>(t))->x << "\n";
-    }
+    // auto table = g->getEntityManager()->getEntitiesWithComponents<SupDef::ImmovableComponent, SupDef::PositionComponent>();
+    // for(auto& t : table) {
+    //     std::cout << "Entity " << (std::get<0>(t))->id << "; " << (std::get<1>(t))->marksTilesImpassable << "; " << (std::get<2>(t))->x << "\n";
+    // }
 
 
 

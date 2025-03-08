@@ -2,15 +2,6 @@
     "asset_manager": {
         "assets": [
             {
-                "asset_id": "test_command4",
-                "components": [
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    }
-                ]
-            },
-            {
                 "asset_id": "immovable2",
                 "components": [
                     {
@@ -56,6 +47,68 @@
                         "requires_collision_check": false,
                         "requires_tile_check": true,
                         "type": "immovable"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test_command4",
+                "components": [
+                    {
+                        "cooldown": -1,
+                        "type": "command"
+                    }
+                ]
+            },
+            {
+                "asset_id": "mover2",
+                "components": [
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [
+                            {
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "radius": 9.0,
+                                "shape_type": "circle"
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einfache Einheit2",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Einheit2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 5.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
                     },
                     {
                         "X": 0.0,
@@ -371,12 +424,12 @@
     "entity_manager": {
         "entities": [
             {
-                "asset_id": "mover",
+                "asset_id": "mover2",
                 "components": [
                     {
-                        "X": 32.0,
+                        "X": 0.0,
                         "X_absolute": 0.0,
-                        "Y": 96.0,
+                        "Y": 0.0,
                         "Y_absolute": 0.0,
                         "type": "position"
                     },
@@ -394,12 +447,19 @@
                         "type": "movement"
                     },
                     {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
+                        "type": "selectable"
                     },
                     {
-                        "type": "selectable"
+                        "dummy_radius": 6.0,
+                        "shapes": [
+                            {
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "radius": 9.0,
+                                "shape_type": "circle"
+                            }
+                        ],
+                        "type": "collision"
                     }
                 ],
                 "id": 10,
@@ -444,9 +504,9 @@
                 "asset_id": "mover",
                 "components": [
                     {
-                        "X": 32.0,
+                        "X": 0.0,
                         "X_absolute": 0.0,
-                        "Y": 96.0,
+                        "Y": 0.0,
                         "Y_absolute": 0.0,
                         "type": "position"
                     },

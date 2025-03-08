@@ -45,7 +45,7 @@ namespace SupDef {
             bool poll();
             bool draw();
 
-            void updateMove();
+            void doScrolling();
             void zoom(float factor);
             void move(float offsetX, float offsetY);
             void onMouseClick(bool left);
@@ -87,6 +87,7 @@ namespace SupDef {
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);
             void drawLine(float x1, float y1, float x2, float y2, sf::Color color);
+            void drawLine1D(float x1, float y1, float x2, float y2, sf::Color color);
 
             void drawSelection(float x, float y, float width, float height, ColorData cData);
 
@@ -107,6 +108,7 @@ namespace SupDef {
             RSelectables selectables;
 
             bool debugMode = true;
+            bool drawTiles = true;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

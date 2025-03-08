@@ -29,12 +29,15 @@ namespace SupDef {
         auto h = y2 - y1; if (h < 1.0) h = 1.0;
         ColorData cr(color, color, 0);
         drawRect(x1, y1, w, h, cr);
-        // sf::VertexArray line(sf::PrimitiveType::Lines, 2);
-        // line[0].position = sf::Vector2f(x1, y1);
-        // line[0].color = color;
-        // line[1].position = sf::Vector2f(x2, y1);
-        // line[1].color = color;
-        // window->draw(line);
+    }
+
+    void RendererBasic::drawLine1D(float x1, float y1, float x2, float y2, sf::Color color) {
+        sf::VertexArray line(sf::PrimitiveType::Lines, 2);
+        line[0].position = sf::Vector2f(x1, y1);
+        line[0].color = color;
+        line[1].position = sf::Vector2f(x2, y1);
+        line[1].color = color;
+        window->draw(line);
     }
 
     void RendererBasic::drawSelection(float x, float y, float width, float height, ColorData cData) {

@@ -40,6 +40,7 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::V) trigger(4);
                     if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
                     if (keyEvent->code == sf::Keyboard::Key::D) debugMode = !debugMode;
+                    if (keyEvent->code == sf::Keyboard::Key::T) drawTiles = !drawTiles;
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {
@@ -48,10 +49,6 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::Up)    keyU = false;
                     if (keyEvent->code == sf::Keyboard::Key::Down)  keyD = false;
                 }
-
-                // if (const auto* mouseMoveEvent = event->getIf<sf::Event::MouseMoved>()) {
-                //     mousePos = mouseMoveEvent->position;
-                // }
 
                 if (const auto* mouseClickEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
                     // mousePos = mouseClickEvent->position;

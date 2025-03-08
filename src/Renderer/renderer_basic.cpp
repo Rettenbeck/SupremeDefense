@@ -47,7 +47,7 @@ namespace SupDef {
         window->clear(sf::Color::Black);
 
         window->setView(gameView);
-        updateMove();
+        doScrolling();
         renderGame();
 
         window->setView(guiView);

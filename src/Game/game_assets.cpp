@@ -12,6 +12,7 @@ namespace SupDef {
         asset->to_json_skip_assets(j);
         entity->from_json(j);
         entity->id = id;
+
         auto initComp = asset->getComponent<InitContainerComponent>();
         if (initComp) {
             for (auto& c : initComp->contained) {

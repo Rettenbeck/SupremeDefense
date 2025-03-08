@@ -5,7 +5,7 @@
 
 namespace SupDef {
 
-    void RendererBasic::updateMove() {
+    void RendererBasic::doScrolling() {
         float moveAmountCur = moveAmount * currentZoom;
         if(keyL) move(-moveAmountCur, 0);
         if(keyR) move( moveAmountCur, 0);
@@ -72,13 +72,18 @@ namespace SupDef {
 
         for (auto [entity, posComp, colComp, seComp] : list) {
             auto parent = game->getEntityManager()->getParent(entity->id);
+            while(true) {
+                if (!parent) break;
+                auto mapComp = parent->getComponent<MapComponent>();
+                if (mapComp) break;
+                parent = game->getEntityManager()->getParent(parent->id);
+            }
             if (!parent) continue;
-            auto mapComp = parent->getComponent<MapComponent>();
-            if (!mapComp) continue;
 
             float x1, y1, x2, y2, xm, ym;
             auto bb = &(colComp->boundingBox);
-            x1 = posComp->xAbs; y1 = posComp->yAbs;
+            x1 = posComp->xAbs + bb->x;
+            y1 = posComp->yAbs + bb->y;
             x2 = x1 + bb->w;
             y2 = y1 + bb->h;
             

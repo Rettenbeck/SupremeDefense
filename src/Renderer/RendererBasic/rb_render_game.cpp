@@ -7,7 +7,7 @@ namespace SupDef {
 
     void RendererBasic::renderGame() {
         if(!game) return;
-        renderCollisionGrid();
+        //renderCollisionGrid();
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
         renderSelectedUnits();
@@ -37,29 +37,31 @@ namespace SupDef {
     }
 
     void RendererBasic::renderMap(_EntMapTiles map) {
-        ColorData cd_empty     (sf::Color::Black  , sf::Color::White, 2);
-        ColorData cd_occupied  (sf::Color::Red    , sf::Color::White, 2);
-        ColorData cd_impassable(sf::Color::Blue   , sf::Color::White, 2);
-        ColorData cd_obstructed(sf::Color::Magenta, sf::Color::White, 2);
+        sf::Color colGray = sf::Color(120, 120, 12,  80);
+        ColorData cd_empty     (sf::Color(  0,   0,   0,  80), colGray, 1);
+        ColorData cd_occupied  (sf::Color(150,   0,   0,  80), colGray, 1);
+        ColorData cd_impassable(sf::Color( 90,  90,  90,  80), colGray, 1);
+        ColorData cd_obstructed(sf::Color( 50,   0,   0, 140), colGray, 1);
 
         auto tilesComponent = std::get<2>(map);
-        if(!tilesComponent) return;
+        if (!tilesComponent) return;
+        if (!drawTiles) return;
 
         int s = tilesComponent->tileSize;
         int x = -1, y = 0, index = -1;
-        // for(auto& t : tilesComponent->tiles) {
-        //     index++;
-        //     if(++x >= tilesComponent->tilesX) {
-        //         x = 0; y++;
-        //     }
+        for(auto& t : tilesComponent->tiles) {
+            index++;
+            if(++x >= tilesComponent->tilesX) {
+                x = 0; y++;
+            }
 
-        //     ColorData c;
-        //     if(!t->isOccupied && !t->isImpassable) c = cd_empty;
-        //     if( t->isOccupied && !t->isImpassable) c = cd_occupied;
-        //     if(!t->isOccupied &&  t->isImpassable) c = cd_impassable;
-        //     if( t->isOccupied &&  t->isImpassable) c = cd_obstructed;
-        //     drawRect(x * s, y * s, s, s, c);
-        // }
+            ColorData c;
+            if(!t->isOccupied && !t->isImpassable) c = cd_empty;
+            if( t->isOccupied && !t->isImpassable) c = cd_occupied;
+            if(!t->isOccupied &&  t->isImpassable) c = cd_impassable;
+            if( t->isOccupied &&  t->isImpassable) c = cd_obstructed;
+            drawRect(x * s, y * s, s, s, c);
+        }
     }
 
     void RendererBasic::renderEntitiesWithCollision(EntityManager* entityManager) {
@@ -73,8 +75,8 @@ namespace SupDef {
     void RendererBasic::renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB) {
         if (!pos || !col) return;
     
-        float entityX = pos->x;
-        float entityY = pos->y;
+        float entityX = pos->xAbs;
+        float entityY = pos->yAbs;
 
         if (drawBB) {
             ColorData cd_bb(sf::Color::Yellow, sf::Color::Black, 0);
@@ -122,8 +124,13 @@ namespace SupDef {
 
         int d = 5;
         ColorData cd(sf::Color::Black, sf::Color::White, 1);
-        drawSelection(posComp->xAbs - d, posComp->yAbs - d,
-            colComp->boundingBox.w + 2 * d, colComp->boundingBox.h + 2 * d, cd);
+        drawSelection(
+            posComp->xAbs - d + colComp->boundingBox.x,
+            posComp->yAbs - d + colComp->boundingBox.y,
+            colComp->boundingBox.w + 2 * d,
+            colComp->boundingBox.h + 2 * d,
+            cd
+        );
     }
 
     void RendererBasic::renderVirtualEntity() {
@@ -136,8 +143,8 @@ namespace SupDef {
 
         auto& bb = col->boundingBox;
         auto position = getMousePosWorld();
-        pos->x = position.x - bb.w / 2;
-        pos->y = position.y - bb.h / 2;
+        pos->xAbs = position.x - bb.w / 2;
+        pos->yAbs = position.y - bb.h / 2;
         renderEntityWithCollision(pos, col, true);
     }
 

@@ -8,7 +8,8 @@ const std::string ASSET_RES_WOOD = "wood";
 const std::string ASSET_TEST_COM = "test_command";
 const std::string ASSET_TEST_MAP = "test_map";
 const std::string ASSET_IMMOVABLE = "immovable";
-const std::string ASSET_MOVER = "mover";
+const std::string ASSET_MOVER  = "mover";
+const std::string ASSET_MOVER2 = "mover2";
 
 
 
@@ -62,6 +63,14 @@ void create_assets(SupDef::Game* g) {
     am_mov->addComponent<SupDef::CollisionComponent>(6.0);
     am_mov->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Einheit", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfache Einheit");
     am_mov->addComponent<SupDef::SelectableComponent>();
+
+    auto am_mov2 = am->createAsset(ASSET_MOVER2);
+    am_mov2->addComponent<SupDef::PositionComponent>(0.0, 0.0);
+    am_mov2->addComponent<SupDef::MovementComponent>(5.0, true);
+    am_mov2->addComponent<SupDef::TextComponent>(SupDef::SX_NAME, SupDef::SX_LANG_DE, "Einheit2", SupDef::SX_DESC, SupDef::SX_LANG_DE, "Einfache Einheit2");
+    am_mov2->addComponent<SupDef::SelectableComponent>();
+    auto am_mov2_col = am_mov2->addComponent<SupDef::CollisionComponent>(6.0);
+    am_mov2_col->addShape(std::make_unique<SupDef::CircleShape>(9.0));
 
     auto am_imm_test = am->createAsset("immovable2");
     am_imm_test->addComponent<SupDef::PositionComponent>(0.0, 0.0);
