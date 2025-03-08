@@ -25,7 +25,6 @@ namespace SupDef {
         auto complete = isCommandComplete(command, data);
         if (complete) {
             commandTracker->reset();
-            std::cout << "Command triggered! Data: " << data << "\n";
             handleCompleteCommand(event.entityID, event.techID, command->assetID, data);
         } else {
             commandTracker->set(event.entityID, event.techID, active->commandID);
@@ -40,9 +39,7 @@ namespace SupDef {
     void Game::handleCompleteCommand(EntityID entityID, EntityID techID, CommandID commandID, json data) {
         std::stringstream ss;
         ss << "Command " << commandID << " successful!\n";
-        std::cout << "Command triggered! 2, Data: " << data << "\n";
         auto j = getFeedbackFromCheck(data);
-        std::cout << "Command triggered! 3, j: " << j << "\n";
         globalDispatcher->dispatch<CommandToRenderEvent>(commandID, entityID, techID, j);
         auto action = std::make_shared<Action>(commandID, entityID, thisPlayer, j);
         globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
