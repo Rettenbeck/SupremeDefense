@@ -10,10 +10,8 @@ namespace SupDef {
         AssetIDs contained;
 
         InitContainerComponent() { addToRegistry(); }
-
-        InitContainerComponent(AssetIDs contained_) {
-            contained = contained_;
-        }
+        InitContainerComponent(AssetID contained_) { addToRegistry(); contained.push_back(contained_); }
+        InitContainerComponent(AssetIDs contained_) { addToRegistry(); contained = contained_; }
 
         void addToRegistry() {
             ComponentRegistry::registerComponent(getTypeName(), []()

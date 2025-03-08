@@ -12,28 +12,7 @@
 
 namespace SupDef {
 
-    using _EntWorld = std::tuple<Entity*, WorldComponent*>;
-    using _EntMapTiles = std::tuple<Entity*, MapComponent*, TilesComponent*>;
-    using _EntPosMovCol  = std::tuple<Entity*, PositionComponent*, MovementComponent*, CollisionComponent*>;
-    using _EntPosMovCols = std::vector<_EntPosMovCol>;
-    using _EntPosCol  = std::tuple<Entity*, PositionComponent*, CollisionComponent*>;
-    using _EntPosCols = std::vector<_EntPosCol>;
-    
     class Game : public Listener {
-        private:
-            EntityID thisPlayer = NO_ENTITY;
-            UEntityManager    entityManager    = nullptr;
-            UAssetManager     assetManager     = nullptr;
-            UComProcessor     comProcessor     = nullptr;
-            UEventDispatcher  eventDispatcher  = nullptr;
-            UTilesChecker     tilesChecker     = nullptr;
-            UPathFinder       pathFinder       = nullptr;
-            UCollisionSystem  collisionSystem  = nullptr;
-            UCollisionTracker collisionTracker = nullptr;
-            ActionQueue*      actionQueue      = nullptr;
-            UEntity virtualEntity = nullptr;
-            UEntity uniqueCommand = nullptr;
-
         public:
             Game();
             
@@ -100,6 +79,9 @@ namespace SupDef {
             
             void processTechs();
             void processTechsForEntity(EntityID entityID, EntityIDs& techIDs);
+            void assignTechs(_EntTechs& techs);
+            Entity* getCommandFromActiveTech(Entity* tech);
+            Entity* getCommandFromActiveTech(ActiveTechComponent* activeTechComp);
 
             EntityManager*   getEntityManager  () { return entityManager  .get(); }
             AssetManager*    getAssetManager   () { return assetManager   .get(); }
@@ -112,12 +94,32 @@ namespace SupDef {
             void setThisPlayer(EntityID playerID) { thisPlayer = playerID; }
             Entity* getThisPlayer() { return entityManager->getEntity(thisPlayer); }
 
+            TechMap& getTechToAssignees() { return techToAssignees; }
+            TechMap& getAssigneeToTechs() { return assigneeToTechs; }
+
             void to_json    (json& j) const;
             void from_json  (const json& j);
             void serialize  (const std::string& filename) const;
             void deserialize(const std::string& filename);
             void serialize  () const { serialize  (DEFAULT_FILENAME_SAVEGAME); }
             void deserialize()       { deserialize(DEFAULT_FILENAME_SAVEGAME); }
+
+        private:
+            EntityID thisPlayer = NO_ENTITY;
+            UEntityManager    entityManager    = nullptr;
+            UAssetManager     assetManager     = nullptr;
+            UComProcessor     comProcessor     = nullptr;
+            UEventDispatcher  eventDispatcher  = nullptr;
+            UTilesChecker     tilesChecker     = nullptr;
+            UPathFinder       pathFinder       = nullptr;
+            UCollisionSystem  collisionSystem  = nullptr;
+            UCollisionTracker collisionTracker = nullptr;
+            ActionQueue*      actionQueue      = nullptr;
+            UEntity virtualEntity = nullptr;
+            UEntity uniqueCommand = nullptr;
+
+            TechMap techToAssignees;
+            TechMap assigneeToTechs;
 
     };
     

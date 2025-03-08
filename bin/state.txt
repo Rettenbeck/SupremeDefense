@@ -251,19 +251,6 @@
                 "asset_id": "com_move",
                 "components": [
                     {
-                        "texts": [
-                            {
-                                "de": "Die Einheit rumbewegen",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Bewegen",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    },
-                    {
                         "type": "move_command"
                     },
                     {
@@ -287,11 +274,11 @@
                     {
                         "texts": [
                             {
-                                "de": "Testbefehl",
+                                "de": "Die Einheit rumbewegen",
                                 "key": "desc"
                             },
                             {
-                                "de": "TestCom",
+                                "de": "Bewegen",
                                 "key": "name"
                             }
                         ],
@@ -494,7 +481,9 @@
                 "asset_id": "tech_test_command",
                 "components": [
                     {
-                        "assignees": [],
+                        "assignees": [
+                            13
+                        ],
                         "type": "tech"
                     },
                     {
@@ -569,7 +558,12 @@
                 "asset_id": "tech_move",
                 "components": [
                     {
-                        "assignees": [],
+                        "assignees": [
+                            9,
+                            11,
+                            13,
+                            3
+                        ],
                         "type": "tech"
                     },
                     {
@@ -587,9 +581,9 @@
                 "components": [
                     {
                         "X": 111.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 111.0,
                         "Y": 52.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 52.0,
                         "type": "position"
                     },
                     {
@@ -625,9 +619,9 @@
                 "components": [
                     {
                         "X": 70.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 181.0,
                         "Y": 192.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 244.0,
                         "type": "position"
                     },
                     {
@@ -663,9 +657,9 @@
                 "components": [
                     {
                         "X": 170.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 170.0,
                         "Y": 192.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 192.0,
                         "type": "position"
                     },
                     {
@@ -701,9 +695,9 @@
                 "components": [
                     {
                         "X": 470.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 470.0,
                         "Y": 52.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 52.0,
                         "type": "position"
                     },
                     {
@@ -739,9 +733,9 @@
                 "components": [
                     {
                         "X": 32.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 202.0,
                         "Y": 96.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 288.0,
                         "type": "position"
                     },
                     {
@@ -773,7 +767,9 @@
                 "asset_id": "tech_test_command",
                 "components": [
                     {
-                        "assignees": [],
+                        "assignees": [
+                            9
+                        ],
                         "type": "tech"
                     },
                     {
@@ -791,9 +787,9 @@
                 "components": [
                     {
                         "X": 192.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 362.0,
                         "Y": 128.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 320.0,
                         "type": "position"
                     },
                     {
@@ -825,7 +821,9 @@
                 "asset_id": "tech_test_command",
                 "components": [
                     {
-                        "assignees": [],
+                        "assignees": [
+                            11
+                        ],
                         "type": "tech"
                     },
                     {
@@ -843,9 +841,9 @@
                 "components": [
                     {
                         "X": 32.0,
-                        "X_absolute": 0.0,
+                        "X_absolute": 32.0,
                         "Y": 96.0,
-                        "Y_absolute": 0.0,
+                        "Y_absolute": 96.0,
                         "type": "position"
                     },
                     {

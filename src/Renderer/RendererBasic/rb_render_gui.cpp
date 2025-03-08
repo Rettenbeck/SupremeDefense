@@ -28,12 +28,12 @@ namespace SupDef {
             ss << "; xm: " << xm << "; ym: " << ym << "\n";
         }
 
-        drawLabel(GuiElementStyle::Default, 0, 100, ss.str());
+        drawLabel(GuiElementStyle::Default, 2, 100, ss.str());
     }
 
     void RendererBasic::renderGui() {
         if(!gui) return;
-        for (const auto element : gui->getGuiElements()) {
+        for (const auto& element : gui->getGuiElements()) {
             switch (element->type) {
                 case GuiElementType::Panel:
                     drawPanel(element->style, element->x, element->y, element->width, element->height);

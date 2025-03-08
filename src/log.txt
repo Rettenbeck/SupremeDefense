@@ -1330,3 +1330,152 @@
 [2025-03-08 07:46:42] INFO:   Sent to replay
 [2025-03-08 07:46:53] INFO: Game ended from renderer
 
+[2025-03-08 07:56:38] INIT: ------------------
+[2025-03-08 07:56:38] SUCCESS: World initialized!
+[2025-03-08 07:56:38] SUCCESS: Serialized to game_save.txt
+[2025-03-08 07:56:38] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 07:56:38] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 07:56:38] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 07:56:38] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 07:56:43] INFO: Game ended from renderer
+
+[2025-03-08 09:08:04] INIT: ------------------
+[2025-03-08 09:08:04] SUCCESS: World initialized!
+[2025-03-08 09:08:04] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:10:46] INIT: ------------------
+[2025-03-08 09:10:46] SUCCESS: World initialized!
+[2025-03-08 09:10:46] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:12:32] INIT: ------------------
+[2025-03-08 09:12:32] SUCCESS: World initialized!
+[2025-03-08 09:12:32] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:13:59] INIT: ------------------
+[2025-03-08 09:13:59] SUCCESS: World initialized!
+[2025-03-08 09:13:59] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:17:56] INIT: ------------------
+[2025-03-08 09:17:56] SUCCESS: World initialized!
+[2025-03-08 09:17:56] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:17:56] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:17:56] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:17:56] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:17:56] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 09:18:27] INFO: Game ended from renderer
+
+[2025-03-08 09:37:45] INIT: ------------------
+[2025-03-08 09:37:46] SUCCESS: World initialized!
+[2025-03-08 09:37:46] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:37:46] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:37:46] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:37:46] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:37:46] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 09:39:03] INIT: ------------------
+[2025-03-08 09:39:03] SUCCESS: World initialized!
+[2025-03-08 09:39:03] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:39:03] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:39:03] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:39:03] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:39:03] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 09:39:27] INFO: Game ended from renderer
+
+[2025-03-08 09:42:44] INIT: ------------------
+[2025-03-08 09:42:44] SUCCESS: World initialized!
+[2025-03-08 09:42:44] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:42:45] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:42:45] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:42:45] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:42:45] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 09:43:58] INIT: ------------------
+[2025-03-08 09:43:59] SUCCESS: World initialized!
+[2025-03-08 09:43:59] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:43:59] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:43:59] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:43:59] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:43:59] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 09:59:05] INIT: ------------------
+[2025-03-08 09:59:05] SUCCESS: World initialized!
+[2025-03-08 09:59:05] SUCCESS: Serialized to game_save.txt
+[2025-03-08 09:59:05] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 09:59:05] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 09:59:05] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 09:59:05] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 10:02:30] INIT: ------------------
+[2025-03-08 10:02:30] SUCCESS: World initialized!
+[2025-03-08 10:02:30] SUCCESS: Serialized to game_save.txt
+[2025-03-08 10:02:30] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 10:02:30] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 10:02:30] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 10:02:30] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 10:03:37] INFO: Game ended from renderer
+
+[2025-03-08 11:45:34] INIT: ------------------
+[2025-03-08 11:45:34] SUCCESS: World initialized!
+[2025-03-08 11:45:34] SUCCESS: Serialized to game_save.txt
+[2025-03-08 11:45:34] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 11:45:34] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 11:45:34] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 11:45:34] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 11:45:53] INFO: Game ended from renderer
+
+[2025-03-08 11:46:48] INIT: ------------------
+[2025-03-08 11:46:48] SUCCESS: World initialized!
+[2025-03-08 11:46:48] SUCCESS: Serialized to game_save.txt
+[2025-03-08 11:46:49] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 11:46:49] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 11:46:49] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 11:46:49] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 11:47:04] INFO: Game ended from renderer
+
+[2025-03-08 11:55:08] INIT: ------------------
+[2025-03-08 11:55:08] SUCCESS: World initialized!
+[2025-03-08 11:55:08] SUCCESS: Serialized to game_save.txt
+[2025-03-08 11:55:08] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 11:55:08] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 11:55:08] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 11:55:08] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 11:55:48] INFO: Game ended from renderer
+
+[2025-03-08 12:12:03] INIT: ------------------
+[2025-03-08 12:12:03] SUCCESS: World initialized!
+[2025-03-08 12:12:03] SUCCESS: Serialized to game_save.txt
+[2025-03-08 12:12:03] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 12:12:03] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 12:12:03] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 12:12:04] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 12:12:48] INFO: Game ended from renderer
+
+[2025-03-08 12:14:29] INIT: ------------------
+[2025-03-08 12:14:29] SUCCESS: World initialized!
+[2025-03-08 12:14:29] SUCCESS: Serialized to game_save.txt
+[2025-03-08 12:14:29] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 12:14:29] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 12:14:29] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 12:14:29] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 12:14:43] INFO: Action created
+[2025-03-08 12:14:43] INFO:   Sent to game
+[2025-03-08 12:14:43] INFO:   Sent to replay
+[2025-03-08 12:14:52] INFO: Game ended from renderer
+
+[2025-03-08 12:16:20] INIT: ------------------
+[2025-03-08 12:16:20] SUCCESS: World initialized!
+[2025-03-08 12:16:20] SUCCESS: Serialized to game_save.txt
+[2025-03-08 12:16:20] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 12:16:20] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 12:16:20] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 12:16:20] SUCCESS: Serialized to game_save3.txt
+[2025-03-08 12:19:41] INFO: Action created
+[2025-03-08 12:19:41] INFO:   Sent to game
+[2025-03-08 12:19:41] INFO:   Sent to replay
+[2025-03-08 12:20:53] INFO: Action created
+[2025-03-08 12:20:53] INFO:   Sent to game
+[2025-03-08 12:20:53] INFO:   Sent to replay
+[2025-03-08 12:21:05] INFO: Action created
+[2025-03-08 12:21:05] INFO:   Sent to game
+[2025-03-08 12:21:05] INFO:   Sent to replay
+[2025-03-08 12:21:30] INFO: Game ended from renderer
+
+[2025-03-08 12:22:37] INIT: ------------------
+[2025-03-08 12:22:37] SUCCESS: World initialized!
+[2025-03-08 12:22:37] SUCCESS: Serialized to game_save.txt
+[2025-03-08 12:22:37] SUCCESS: Deserialized from game_save.txt
+[2025-03-08 12:22:37] SUCCESS: Serialized to game_save2.txt
+[2025-03-08 12:22:37] SUCCESS: Deserialized from game_save2.txt
+[2025-03-08 12:22:37] SUCCESS: Serialized to game_save3.txt

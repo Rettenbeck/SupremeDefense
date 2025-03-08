@@ -48,7 +48,7 @@ namespace SupDef {
             void doScrolling();
             void zoom(float factor);
             void move(float offsetX, float offsetY);
-            void onMouseClick(bool left);
+            void onMouseClick(MouseClick button);
             EntityID mouseToMap();
 
             sf::Vector2i getMousePos();

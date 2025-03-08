@@ -16,9 +16,11 @@
 
 #include <ECS/asset_components/text_component.hpp>
 #include <ECS/asset_components/command_component.hpp>
+#include <ECS/asset_components/move_command_component.hpp>
 #include <ECS/asset_components/build_command_component.hpp>
 #include <ECS/asset_components/init_container_component.hpp>
 #include <ECS/asset_components/requirement_component.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>
 
 #include <ECS/tech_components/tech_component.hpp>
+#include <ECS/tech_components/active_tech_component.hpp>

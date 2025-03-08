@@ -8,7 +8,17 @@ namespace SupDef {
     
     using CommandType = std::string;
     using CollisionGroup = std::string;
+    using TechMap = std::unordered_map<EntityID, EntityIDs>;
 
+    using _EntWorld = std::tuple<Entity*, WorldComponent*>;
+    using _EntMapTiles = std::tuple<Entity*, MapComponent*, TilesComponent*>;
+    using _EntPosMovCol  = std::tuple<Entity*, PositionComponent*, MovementComponent*, CollisionComponent*>;
+    using _EntPosMovCols = std::vector<_EntPosMovCol>;
+    using _EntPosCol  = std::tuple<Entity*, PositionComponent*, CollisionComponent*>;
+    using _EntPosCols = std::vector<_EntPosCol>;
+    using _EntTech  = std::tuple<Entity*, TechComponent*>;
+    using _EntTechs = std::vector<_EntTech>;
+    
     const std::string DEFAULT_FILENAME_SAVEGAME             = "game_save.txt"                       ;
 
     const std::string SG_GAME                               = "game"                                ;

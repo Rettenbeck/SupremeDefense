@@ -66,6 +66,7 @@ namespace SupDef {
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
     const std::string SCA_COMMAND                           = "command"                             ;
+    const std::string SCA_MOVE_COMMAND                      = "move_command"                        ;
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_INIT_CONTAINER                    = "init_container"                      ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;

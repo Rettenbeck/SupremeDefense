@@ -41,6 +41,7 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
                     if (keyEvent->code == sf::Keyboard::Key::D) debugMode = !debugMode;
                     if (keyEvent->code == sf::Keyboard::Key::T) drawTiles = !drawTiles;
+                    if (keyEvent->code == sf::Keyboard::Key::S) game->serialize("state.txt");
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {
@@ -52,8 +53,8 @@ namespace SupDef {
 
                 if (const auto* mouseClickEvent = event->getIf<sf::Event::MouseButtonPressed>()) {
                     // mousePos = mouseClickEvent->position;
-                    if (mouseClickEvent->button == sf::Mouse::Button::Left ) onMouseClick(true );
-                    if (mouseClickEvent->button == sf::Mouse::Button::Right) onMouseClick(false);
+                    if (mouseClickEvent->button == sf::Mouse::Button::Left ) onMouseClick(MLEFT );
+                    if (mouseClickEvent->button == sf::Mouse::Button::Right) onMouseClick(MRIGHT);
                 }
             }
         }

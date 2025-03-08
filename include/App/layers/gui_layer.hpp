@@ -34,6 +34,7 @@ namespace SupDef {
         
             void update(float deltaTime) override {
                 if (guiManager) {
+                    guiManager->setGlobalDispatcher(globalDispatcher);
                     guiManager->setSelectionManager(selectionManager);
                     guiManager->setGame(game);
                     guiManager->update(deltaTime);

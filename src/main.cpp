@@ -48,6 +48,7 @@ void test_app() {
     auto eg = g->createEntityFromAsset(ASSET_MOVER,  e3->id,  goal.x,  goal.y);
     auto em = g->createEntityFromAsset(ASSET_MOVER, map->id, start.x, start.y);
     
+    
 
     g->getTilesChecker()->setTilesAfterPlacing(e1, tilesComp);
     g->getTilesChecker()->setTilesAfterPlacing(e2, tilesComp);

@@ -27,14 +27,21 @@ namespace SupDef {
         gameView.move(offset);
     }
 
-    void RendererBasic::onMouseClick(bool left) {
+    void RendererBasic::onMouseClick(MouseClick button) {
         json j;
+        auto mousePos = getMousePos();
+        auto element = gui->getGuiInSpot(mousePos.x, mousePos.y);
+        if (element) {
+            gui->handleClickOnGui(element, button);
+            return;
+        }
+
         switch (commandMode) {
             case RCommandMode::BUILD:
-                if (addVirtualEntityData(j)) globalDispatcher->dispatch<ConfirmCommandEvent>(left, j);
+                if (addVirtualEntityData(j)) globalDispatcher->dispatch<ConfirmCommandEvent>(button == MLEFT, j);
                 break;
             case RCommandMode::NONE:
-                if (left) {
+                if (button == MLEFT) {
                     auto pos = getMousePosWorld();
                     auto [entity, mapID] = getUnitInSpot(pos.x, pos.y);
                     int id = NO_ENTITY;
