@@ -39,6 +39,13 @@ namespace SupDef {
                 return (it != components.end()) ? static_cast<T*>(it->second.get()) : nullptr;
             }
             
+            template <typename T>
+            T* retrieveComponent() {
+                auto comp = getComponent<T>();
+                if (comp) return comp;
+                return addComponent<T>();
+            }
+            
             std::unordered_map<std::type_index, UComponent>& getComponents() {
                 return components;
             }

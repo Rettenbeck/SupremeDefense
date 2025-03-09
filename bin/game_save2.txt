@@ -2,183 +2,21 @@
     "asset_manager": {
         "assets": [
             {
-                "asset_id": "immovable2",
+                "asset_id": "example_map",
                 "components": [
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
                     {
                         "texts": [
                             {
-                                "de": "Gebaeude2",
+                                "de": "Beispielkarte",
                                 "key": "name"
                             },
                             {
-                                "de": "Einfaches Gebaeude2",
+                                "de": "Nur eine beispielhafte Karte",
                                 "key": "desc"
                             }
                         ],
                         "type": "text"
                     },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            },
-                            {
-                                "height": 18.0,
-                                "offsetX": 32.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 12.0
-                            }
-                        ],
-                        "type": "collision"
-                    }
-                ]
-            },
-            {
-                "asset_id": "mover2",
-                "components": [
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Einheit2",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Einfache Einheit2",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [
-                            {
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "radius": 9.0,
-                                "shape_type": "circle"
-                            }
-                        ],
-                        "type": "collision"
-                    }
-                ]
-            },
-            {
-                "asset_id": "test_command3",
-                "components": [
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    }
-                ]
-            },
-            {
-                "asset_id": "gold",
-                "components": [
-                    {
-                        "type": "resource_def"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Gold",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Wertvolles Gold",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "test_map",
-                "components": [
-                    {
-                        "height": 480,
-                        "type": "map",
-                        "width": 640
-                    },
-                    {
-                        "tile_size": 16,
-                        "tiles_x": 40,
-                        "tiles_y": 30,
-                        "type": "tiles"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Map",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Testkarte",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
-                    },
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ]
-            },
-            {
-                "asset_id": "player",
-                "components": [
                     {
                         "team": 0,
                         "type": "player"
@@ -190,7 +28,7 @@
                                 "resource": "gold"
                             },
                             {
-                                "amount": 360,
+                                "amount": 380,
                                 "resource": "wood"
                             }
                         ],
@@ -201,55 +39,6 @@
                             "tech_move"
                         ],
                         "type": "init_container"
-                    }
-                ]
-            },
-            {
-                "asset_id": "immovable",
-                "components": [
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Gebaeude",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Einfaches Gebaeude",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
-                    },
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
                     }
                 ]
             },
@@ -275,115 +64,21 @@
                 ]
             },
             {
-                "asset_id": "tech_move",
+                "asset_id": "mover1",
                 "components": [
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    },
-                    {
-                        "command": "com_move",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ]
-            },
-            {
-                "asset_id": "test_command2",
-                "components": [
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    },
-                    {
-                        "resources": [
-                            {
-                                "amount": 25,
-                                "id": "gold",
-                                "max_capacity": 0,
-                                "resource": "gold"
-                            },
-                            {
-                                "amount": 35,
-                                "id": "wood",
-                                "max_capacity": 0,
-                                "resource": "wood"
-                            }
-                        ],
-                        "type": "requirement"
-                    },
-                    {
-                        "to_build": "immovable2",
-                        "type": "build_command"
-                    },
                     {
                         "texts": [
                             {
-                                "de": "TestCom2",
+                                "de": "Mover One",
                                 "key": "name"
                             },
                             {
-                                "de": "Testbefehl2",
+                                "de": "Einfache Einheit zum Testen",
                                 "key": "desc"
                             }
                         ],
                         "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "test_command5",
-                "components": [
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    }
-                ]
-            },
-            {
-                "asset_id": "tech_test_command",
-                "components": [
-                    {
-                        "assignees": [],
-                        "type": "tech"
                     },
-                    {
-                        "command": "test_command",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ]
-            },
-            {
-                "asset_id": "com_move",
-                "components": [
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    },
-                    {
-                        "type": "move_command"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Bewegen",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Die Einheit rumbewegen",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "mover",
-                "components": [
                     {
                         "X": 0.0,
                         "X_absolute": 0.0,
@@ -410,32 +105,124 @@
                         "type": "collision"
                     },
                     {
+                        "type": "selectable"
+                    }
+                ]
+            },
+            {
+                "asset_id": "mover2",
+                "components": [
+                    {
                         "texts": [
                             {
-                                "de": "Einheit",
+                                "de": "Mover Two",
                                 "key": "name"
                             },
                             {
-                                "de": "Einfache Einheit",
+                                "de": "Etwas schneller als M1",
                                 "key": "desc"
                             }
                         ],
                         "type": "text"
                     },
                     {
-                        "type": "selectable"
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
                     },
                     {
-                        "contained": [
-                            "tech_test_command"
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 48.0
+                            }
                         ],
-                        "type": "init_container"
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
                     }
                 ]
             },
             {
-                "asset_id": "test_command",
+                "asset_id": "imm1",
                 "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Gebäude 1",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Testgebäude 1",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test1",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl 1",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einfach was testen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
                     {
                         "cooldown": -1,
                         "type": "command"
@@ -456,32 +243,151 @@
                             }
                         ],
                         "type": "requirement"
-                    },
-                    {
-                        "to_build": "immovable",
-                        "type": "build_command"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "TestCom",
-                                "key": "name"
-                            },
-                            {
-                                "de": "Testbefehl",
-                                "key": "desc"
-                            }
-                        ],
-                        "type": "text"
                     }
                 ]
             },
             {
-                "asset_id": "test_command4",
+                "asset_id": "move",
                 "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Bewegen",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einheit bewegen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
                     {
                         "cooldown": -1,
                         "type": "command"
+                    }
+                ]
+            },
+            {
+                "asset_id": "tech_move",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Bewegen",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einheit bewegen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "move",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test1_move",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl 1",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einfach was testen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test2",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl 2",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einfach was nochmals testen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "cooldown": -1,
+                        "type": "command"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 25,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 35,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
+                    }
+                ]
+            },
+            {
+                "asset_id": "test2_move",
+                "components": [
+                    {
+                        "texts": [
+                            {
+                                "de": "Testbefehl 2",
+                                "key": "name"
+                            },
+                            {
+                                "de": "Einfach was nochmals testen",
+                                "key": "desc"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
                     }
                 ]
             }
@@ -491,58 +397,6 @@
     "entity_manager": {
         "entities": [
             {
-                "asset_id": "mover",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 192.0,
-                        "goal_Y": 128.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 32.0,
-                        "X_absolute": 0.0,
-                        "Y": 96.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 13,
-                "parent": 2
-            },
-            {
-                "asset_id": "tech_test_command",
-                "components": [
-                    {
-                        "command": "test_command",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 14,
-                "parent": 13
-            },
-            {
                 "asset_id": "_",
                 "components": [
                     {
@@ -550,330 +404,8 @@
                     }
                 ],
                 "id": 1
-            },
-            {
-                "asset_id": "test_map",
-                "components": [
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "tile_size": 16,
-                        "tiles_x": 40,
-                        "tiles_y": 30,
-                        "type": "tiles"
-                    },
-                    {
-                        "height": 480,
-                        "type": "map",
-                        "width": 640
-                    }
-                ],
-                "id": 2,
-                "parent": 1
-            },
-            {
-                "asset_id": "player",
-                "components": [
-                    {
-                        "resources": [
-                            {
-                                "amount": 360,
-                                "resource": "wood"
-                            },
-                            {
-                                "amount": 250,
-                                "resource": "gold"
-                            }
-                        ],
-                        "type": "resource"
-                    },
-                    {
-                        "team": 0,
-                        "type": "player"
-                    }
-                ],
-                "id": 3,
-                "parent": 0
-            },
-            {
-                "asset_id": "tech_move",
-                "components": [
-                    {
-                        "command": "com_move",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 4,
-                "parent": 3
-            },
-            {
-                "asset_id": "immovable",
-                "components": [
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 111.0,
-                        "X_absolute": 0.0,
-                        "Y": 52.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 5,
-                "parent": 2
-            },
-            {
-                "asset_id": "immovable",
-                "components": [
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 70.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 6,
-                "parent": 5
-            },
-            {
-                "asset_id": "immovable",
-                "components": [
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 170.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 7,
-                "parent": 2
-            },
-            {
-                "asset_id": "immovable",
-                "components": [
-                    {
-                        "dummy_radius": 16.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 470.0,
-                        "X_absolute": 0.0,
-                        "Y": 52.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 8,
-                "parent": 2
-            },
-            {
-                "asset_id": "mover",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 32.0,
-                        "X_absolute": 0.0,
-                        "Y": 96.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 9,
-                "parent": 7
-            },
-            {
-                "asset_id": "tech_test_command",
-                "components": [
-                    {
-                        "command": "test_command",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 10,
-                "parent": 9
-            },
-            {
-                "asset_id": "mover",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 192.0,
-                        "X_absolute": 0.0,
-                        "Y": 128.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 11,
-                "parent": 7
-            },
-            {
-                "asset_id": "tech_test_command",
-                "components": [
-                    {
-                        "command": "test_command",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 12,
-                "parent": 11
             }
         ],
-        "next_entity_id": 15
+        "next_entity_id": 2
     }
 }

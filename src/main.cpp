@@ -1,6 +1,6 @@
 #include <iostream>
 #include <include.hpp>
-#include <main_asset.cpp>
+// #include <main_asset.cpp>
 
 
 void test_app();
@@ -28,28 +28,28 @@ void test_app() {
     auto g = start_app();
 
     auto entityManager = g->getEntityManager();
+    
 
-    auto map = g->addMap(ASSET_TEST_MAP);
+    auto map = g->addMap(SupDef::AS_MAP_EX);
     auto mapComp   = map->getComponent<SupDef::MapComponent>();
     auto tilesComp = map->getComponent<SupDef::TilesComponent>();
 
-    auto player = g->createEntityFromAsset(ASSET_PLAYER);
+    auto player = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
     g->setThisPlayer(player->id);
 
-    auto e1 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 111.0,  52.0);
-    auto e2 = g->createEntityFromAsset(ASSET_IMMOVABLE, e1->id ,  70.0, 192.0);
-    auto e3 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 170.0, 192.0);
-    auto e4 = g->createEntityFromAsset(ASSET_IMMOVABLE, map->id, 470.0,  52.0);
+    auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 111.0,  52.0);
+    auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, e1->id ,  70.0, 192.0);
+    auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 170.0, 192.0);
+    auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 470.0,  52.0);
 
 
     SupDef::V2 start( 2 * 16, 6 * 16);
     SupDef::V2 goal (12 * 16, 8 * 16);
-    auto es = g->createEntityFromAsset(ASSET_MOVER,  e3->id, start.x, start.y);
-    auto eg = g->createEntityFromAsset(ASSET_MOVER,  e3->id,  goal.x,  goal.y);
-    auto em = g->createEntityFromAsset(ASSET_MOVER, map->id, start.x, start.y);
+    auto es = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1,  e3->id, start.x + 12, start.y);
+    auto eg = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1,  e3->id,  goal.x,  goal.y);
+    auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, start.x, start.y);
     
     
-
     g->getTilesChecker()->setTilesAfterPlacing(e1, tilesComp);
     g->getTilesChecker()->setTilesAfterPlacing(e2, tilesComp);
     g->getTilesChecker()->setTilesAfterPlacing(e3, tilesComp);
@@ -58,6 +58,8 @@ void test_app() {
 
     auto em_pos = em->getComponent<SupDef::PositionComponent>();
     auto em_mov = em->getComponent<SupDef::MovementComponent>();
+    assert(em_pos);
+    assert(em_mov);
     em_mov->setGoal(goal.x, goal.y, em_pos->x, em_pos->y);
     g->updateTempGoal(tilesComp, em);
 
@@ -104,8 +106,7 @@ SupDef::Game* start_app() {
     app->addLayer(std::move(renderLayer));
 
     auto g = game->getGame();
-
-    create_assets(g);
+    SupDef::BuildAssets::build(g->getAssetManager());
 
     return g;
 }

@@ -13,6 +13,27 @@ namespace SupDef {
         InitContainerComponent(AssetID contained_) { addToRegistry(); contained.push_back(contained_); }
         InitContainerComponent(AssetIDs contained_) { addToRegistry(); contained = contained_; }
 
+        InitContainerComponent(AssetID contained1, AssetID contained2) {
+            addToRegistry();
+            contained.push_back(contained1);
+            contained.push_back(contained2);
+        }
+
+        InitContainerComponent(AssetID contained1, AssetID contained2, AssetID contained3) {
+            addToRegistry();
+            contained.push_back(contained1);
+            contained.push_back(contained2);
+            contained.push_back(contained3);
+        }
+
+        InitContainerComponent(AssetID contained1, AssetID contained2, AssetID contained3, AssetID contained4) {
+            addToRegistry();
+            contained.push_back(contained1);
+            contained.push_back(contained2);
+            contained.push_back(contained3);
+            contained.push_back(contained4);
+        }
+
         void addToRegistry() {
             ComponentRegistry::registerComponent(getTypeName(), []()
                 { return std::make_unique<InitContainerComponent>(); });

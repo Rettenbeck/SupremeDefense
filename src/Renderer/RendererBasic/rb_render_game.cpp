@@ -54,7 +54,6 @@ namespace SupDef {
             if(++x >= tilesComponent->tilesX) {
                 x = 0; y++;
             }
-
             ColorData c;
             if(!t->isOccupied && !t->isImpassable) c = cd_empty;
             if( t->isOccupied && !t->isImpassable) c = cd_occupied;

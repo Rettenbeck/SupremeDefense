@@ -8,7 +8,6 @@
 namespace SupDef {
     
     class AssetManager {
-        //private:
         public:
             EventDispatcher* eventDispatcher = nullptr;
             std::unordered_map<AssetID, UEntity> assets;
@@ -22,18 +21,6 @@ namespace SupDef {
                 assets[id] = std::move(newEntity);
                 return rawPtr;
             }
-
-            // Entity* createAsset(AssetID id, std::string name, std::string desc) {
-            //     auto newEntity = std::make_unique<Entity>(NO_ENTITY);
-            //     //newEntity->addComponent<AssetComponent>(id, name, desc);
-            //     auto rawPtr = newEntity.get();
-            //     assets[id] = std::move(newEntity);
-            //     return rawPtr;
-            // }
-
-            // Entity* createAsset(AssetID id) {
-            //     return createAsset(id, NO_NAME, NO_DESC);
-            // }
 
             Entity* getAsset(AssetID id) const {
                 auto it = assets.find(id);
@@ -72,13 +59,7 @@ namespace SupDef {
                 return result;
             }
 
-            // template <typename... ComponentTypes>
-            // std::vector<std::tuple<Entity*, ComponentTypes*...>> getAssetsWithComponents(AssetIDs group) {
-            //     return getAssetsWithComponents<ComponentTypes...>(getAsset(group));
-            // }
-
             void removeAsset(AssetID id) {
-                //eventDispatcher->dispatch<EntityDestroyedEvent>(entityID);
                 assets.erase(id);
             }
 
@@ -95,7 +76,6 @@ namespace SupDef {
                 for (const auto& entityJson : j[S_ASSETS]) {
                     auto entity = std::make_unique<Entity>(NO_ENTITY);
                     entity->from_json(entityJson);
-                    // auto assetComp = entity->getComponent<AssetComponent>();
                     assets[entity->assetID] = std::move(entity);
                 }
             }
