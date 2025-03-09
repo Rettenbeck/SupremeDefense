@@ -8,6 +8,8 @@ namespace SupDef {
     void Game::handleTriggerCommand(const TriggerCommandEvent& event) {
         if (event.cancel) {
             commandTracker->reset();
+            globalDispatcher->dispatch<CommandToRenderEvent>(NO_COMMAND, NO_ENTITY, NO_ENTITY, json());
+            //virtualEntity = nullptr;
             return;
         }
         json data = event.data;

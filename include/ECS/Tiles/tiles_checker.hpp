@@ -62,7 +62,7 @@ namespace SupDef {
                         auto coord = tilesComponent->getPosFromIndex(t);
                         shapePtr->offsetX = coord.x;
                         shapePtr->offsetY = coord.y;
-                        if(col->collidesWith(rect.get(), pos->x, pos->y, 0, 0)) {
+                        if(col->collidesWith(rect.get(), pos->xAbs, pos->yAbs, 0, 0)) {
                             affected.push_back(entity->id);
                             break;
                         }
@@ -73,7 +73,7 @@ namespace SupDef {
 
         public:
             TilesChecker() {}
-            
+
             void setTilesAfterPlacing(_EntPosColImm comp, TilesComponent* tilesComponent) {
                 auto pos = std::get<1>(comp);
                 auto col = std::get<2>(comp);
@@ -82,7 +82,7 @@ namespace SupDef {
 
                 imm->placedDown = true;
                 if(!imm->marksTilesOccupied && !imm->marksTilesImpassable) return;
-                auto tiles = getAffectedTilesForShape(pos->x, pos->y, col, tilesComponent);
+                auto tiles = getAffectedTilesForShape(pos->xAbs, pos->yAbs, col, tilesComponent);
                 setTilesByShape(imm, tilesComponent, tiles);
             }
 
@@ -105,7 +105,8 @@ namespace SupDef {
                 auto tiles = getAffectedTilesForShape(pos->x, pos->y, col, tilesComponent);
                 tilesComponent->setTilesToDefault(tiles);
 
-                auto all_entities = entityManager->getEntitiesWithComponents<PositionComponent, CollisionComponent, ImmovableComponent>();
+                auto all_entities = entityManager->getEntitiesWithComponents
+                    <PositionComponent, CollisionComponent, ImmovableComponent>();
                 auto entities = getAffectedShapesForTiles(tiles, all_entities, tilesComponent);
                 for(auto entityID : entities) {
                     if(entityID == entity->id) continue;
@@ -114,6 +115,19 @@ namespace SupDef {
                     imm = tmp->getComponent<ImmovableComponent>();
                     if(!imm->placedDown) continue;
                     setTilesAfterPlacing(tmp, tilesComponent);
+                }
+            }
+
+            void resetTiles(TilesComponent* tilesComponent) {
+                tilesComponent->setTilesToDefault();
+            }
+
+            void setTiles(TilesComponent* tilesComponent, EntityManager* entityManager) {
+                auto all_entities = entityManager->getEntitiesWithComponents
+                    <PositionComponent, CollisionComponent, ImmovableComponent>();
+                //
+                for (auto& comp : all_entities) {
+                    setTilesAfterPlacing(comp, tilesComponent);
                 }
             }
 

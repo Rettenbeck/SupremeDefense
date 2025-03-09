@@ -11,11 +11,12 @@ namespace SupDef::BuildAssets {
             AS_UNIT_IMM_1_TILES_CHECK, AS_UNIT_IMM_1_COL_CHECK, AS_UNIT_IMM_1_OCCUPY, AS_UNIT_IMM_1_IMPASSABLE,
             AS_UNIT_IMM_1_WIDTH, AS_UNIT_IMM_1_HEIGHT
         );
+        AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
     }
 
     void buildImmovableUnitI2(AssetManager* am) {
         auto asset = AssetBuilder::buildImmovableUnit(
-            AsData(am, AS_UNIT_MOVER_2, AS_UNIT_MOVER_2_NAME_DE, AS_UNIT_MOVER_2_DESC_DE),
+            AsData(am, AS_UNIT_IMM_2, AS_UNIT_IMM_2_NAME_DE, AS_UNIT_IMM_2_DESC_DE),
             AS_UNIT_IMM_2_TILES_CHECK, AS_UNIT_IMM_2_COL_CHECK, AS_UNIT_IMM_2_OCCUPY, AS_UNIT_IMM_2_IMPASSABLE,
             AS_UNIT_IMM_2_WIDTH, AS_UNIT_IMM_2_HEIGHT
         );

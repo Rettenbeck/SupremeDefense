@@ -41,7 +41,7 @@ namespace SupDef {
             }
 
             void buildGuiForUnit() {
-                buildGuiForUnit(5, height - 32 * 4, 64, 32, 1, 1, 5);
+                buildGuiForUnit(5, height - 32 * 4, 96, 32, 1, 1, 5);
             }
 
             void buildGuiForUnit(int x, int y, int bw, int bh, int sx, int sy, int cols) {

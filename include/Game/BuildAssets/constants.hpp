@@ -55,7 +55,7 @@ namespace SupDef {
     const std::string AS_COM_TEST2                          = "com_test2"                           ;
     const std::string AS_COM_TEST2_NAME_DE                  = "Testbefehl 2"                        ;
     const std::string AS_COM_TEST2_DESC_DE                  = "Einfach was nochmals testen"         ;
-    const std::string AS_COM_TECH_TEST2                     = "com_tech_test1"                      ;
+    const std::string AS_COM_TECH_TEST2                     = "com_tech_test2"                      ;
     
 
 

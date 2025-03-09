@@ -37,7 +37,7 @@ void test_app() {
     auto player = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
     g->setThisPlayer(player->id);
 
-    auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 111.0,  52.0);
+    auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 32.0,  64.0);
     auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, e1->id ,  70.0, 192.0);
     auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 170.0, 192.0);
     auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 470.0,  52.0);
@@ -47,27 +47,16 @@ void test_app() {
     SupDef::V2 goal (12 * 16, 8 * 16);
     auto es = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1,  e3->id, start.x + 12, start.y);
     auto eg = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1,  e3->id,  goal.x,  goal.y);
-    auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, start.x, start.y);
+    auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, start.x, start.y);
     
-    
-    g->getTilesChecker()->setTilesAfterPlacing(e1, tilesComp);
-    g->getTilesChecker()->setTilesAfterPlacing(e2, tilesComp);
-    g->getTilesChecker()->setTilesAfterPlacing(e3, tilesComp);
-    g->getTilesChecker()->setTilesAfterPlacing(e4, tilesComp);
-
 
     auto em_pos = em->getComponent<SupDef::PositionComponent>();
     auto em_mov = em->getComponent<SupDef::MovementComponent>();
+
     assert(em_pos);
     assert(em_mov);
     em_mov->setGoal(goal.x, goal.y, em_pos->x, em_pos->y);
     g->updateTempGoal(tilesComp, em);
-
-
-    // auto table = g->getEntityManager()->getEntitiesWithComponents<SupDef::ImmovableComponent, SupDef::PositionComponent>();
-    // for(auto& t : table) {
-    //     std::cout << "Entity " << (std::get<0>(t))->id << "; " << (std::get<1>(t))->marksTilesImpassable << "; " << (std::get<2>(t))->x << "\n";
-    // }
 
 
 

@@ -2,36 +2,12 @@
     "asset_manager": {
         "assets": [
             {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Einfach was nochmals testen",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Testbefehl 2",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
                 "asset_id": "com_test1",
                 "components": [
+                    {
+                        "to_build": "imm1",
+                        "type": "build_command"
+                    },
                     {
                         "resources": [
                             {
@@ -69,8 +45,40 @@
                 ]
             },
             {
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einfach was nochmals testen",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Testbefehl 2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
                 "asset_id": "com_test2",
                 "components": [
+                    {
+                        "to_build": "imm2",
+                        "type": "build_command"
+                    },
                     {
                         "resources": [
                             {
@@ -136,8 +144,88 @@
                 ]
             },
             {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einfach was testen",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Testbefehl 1",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "imm2",
+                "components": [
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 48.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Testgebäude 2",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Gebäude 2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
                 "asset_id": "com_move",
                 "components": [
+                    {
+                        "type": "move_command"
+                    },
                     {
                         "cooldown": -1,
                         "type": "command"
@@ -160,6 +248,12 @@
             {
                 "asset_id": "imm1",
                 "components": [
+                    {
+                        "contained": [
+                            "com_tech_test1"
+                        ],
+                        "type": "init_container"
+                    },
                     {
                         "type": "selectable"
                     },
@@ -210,28 +304,31 @@
                 "asset_id": "mover2",
                 "components": [
                     {
+                        "contained": [
+                            "com_tech_test2"
+                        ],
+                        "type": "init_container"
+                    },
+                    {
                         "type": "selectable"
                     },
                     {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 48.0
-                            }
-                        ],
+                        "dummy_radius": 8.0,
+                        "shapes": [],
                         "type": "collision"
                     },
                     {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 6.199999809265137,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
                     },
                     {
                         "X": 0.0,
@@ -299,6 +396,13 @@
             {
                 "asset_id": "mover1",
                 "components": [
+                    {
+                        "contained": [
+                            "com_tech_test1",
+                            "com_tech_test2"
+                        ],
+                        "type": "init_container"
+                    },
                     {
                         "type": "selectable"
                     },
@@ -1907,7 +2011,24 @@
     "entity_manager": {
         "entities": [
             {
-                "asset_id": "mover1",
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 20,
+                "parent": 19
+            },
+            {
+                "asset_id": "mover2",
                 "components": [
                     {
                         "X": 32.0,
@@ -1917,20 +2038,20 @@
                         "type": "position"
                     },
                     {
-                        "VX": 5.0,
+                        "VX": 6.199999809265137,
                         "VY": 0.0,
                         "goal_X": 192.0,
                         "goal_Y": 128.0,
                         "has_goal": true,
                         "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 5.0,
+                        "original_speed": 6.199999809265137,
+                        "speed": 6.199999809265137,
                         "temp_goal_X": 48.0,
                         "temp_goal_Y": 96.0,
                         "type": "movement"
                     },
                     {
-                        "dummy_radius": 6.0,
+                        "dummy_radius": 8.0,
                         "shapes": [],
                         "type": "collision"
                     },
@@ -1938,8 +2059,42 @@
                         "type": "selectable"
                     }
                 ],
-                "id": 11,
+                "id": 19,
                 "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 18,
+                "parent": 16
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 17,
+                "parent": 16
             },
             {
                 "asset_id": "mover1",
@@ -1973,236 +2128,51 @@
                         "type": "selectable"
                     }
                 ],
-                "id": 10,
-                "parent": 7
+                "id": 16,
+                "parent": 9
             },
             {
-                "asset_id": "mover1",
-                "components": [
-                    {
-                        "X": 44.0,
-                        "X_absolute": 0.0,
-                        "Y": 96.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 9,
-                "parent": 7
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "X": 470.0,
-                        "X_absolute": 0.0,
-                        "Y": 52.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 8,
-                "parent": 2
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "X": 170.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 7,
-                "parent": 2
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "X": 70.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 6,
-                "parent": 5
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "X": 111.0,
-                        "X_absolute": 0.0,
-                        "Y": 52.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": true,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 5,
-                "parent": 2
-            },
-            {
-                "asset_id": "tech_move",
+                "asset_id": "com_tech_test2",
                 "components": [
                     {
                         "assignees": [],
                         "type": "tech"
                     },
                     {
-                        "command": "com_move",
+                        "command": "com_test2",
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
                         "type": "active_tech"
                     }
                 ],
-                "id": 4,
-                "parent": 3
+                "id": 15,
+                "parent": 13
             },
             {
-                "asset_id": "player",
+                "asset_id": "com_tech_test1",
                 "components": [
                     {
-                        "team": 0,
-                        "type": "player"
+                        "assignees": [],
+                        "type": "tech"
                     },
                     {
-                        "resources": [
-                            {
-                                "amount": 250,
-                                "resource": "gold"
-                            },
-                            {
-                                "amount": 380,
-                                "resource": "wood"
-                            }
-                        ],
-                        "type": "resource"
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
                     }
                 ],
-                "id": 3,
-                "parent": 0
+                "id": 14,
+                "parent": 13
+            },
+            {
+                "asset_id": "_",
+                "components": [
+                    {
+                        "type": "world"
+                    }
+                ],
+                "id": 1
             },
             {
                 "asset_id": "example_map",
@@ -2330,13 +2300,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2385,13 +2355,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2430,13 +2400,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2485,13 +2455,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2725,13 +2695,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2740,13 +2710,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2825,13 +2795,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2840,13 +2810,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2925,13 +2895,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -2940,13 +2910,13 @@
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
-                                "is_impassable": true,
-                                "is_occupied": true,
+                                "is_impassable": false,
+                                "is_occupied": false,
                                 "movement_cost": 1.0
                             },
                             {
@@ -3732,15 +3702,302 @@
                 "parent": 1
             },
             {
-                "asset_id": "_",
+                "asset_id": "player",
                 "components": [
                     {
-                        "type": "world"
+                        "team": 0,
+                        "type": "player"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 250,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 380,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "resource"
                     }
                 ],
-                "id": 1
+                "id": 3,
+                "parent": 0
+            },
+            {
+                "asset_id": "tech_move",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_move",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 4,
+                "parent": 3
+            },
+            {
+                "asset_id": "imm1",
+                "components": [
+                    {
+                        "X": 32.0,
+                        "X_absolute": 0.0,
+                        "Y": 64.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ],
+                "id": 5,
+                "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 6,
+                "parent": 5
+            },
+            {
+                "asset_id": "imm1",
+                "components": [
+                    {
+                        "X": 70.0,
+                        "X_absolute": 0.0,
+                        "Y": 192.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ],
+                "id": 7,
+                "parent": 5
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 8,
+                "parent": 7
+            },
+            {
+                "asset_id": "imm1",
+                "components": [
+                    {
+                        "X": 170.0,
+                        "X_absolute": 0.0,
+                        "Y": 192.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ],
+                "id": 9,
+                "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 10,
+                "parent": 9
+            },
+            {
+                "asset_id": "imm1",
+                "components": [
+                    {
+                        "X": 470.0,
+                        "X_absolute": 0.0,
+                        "Y": 52.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "marks_tiles_impassable": true,
+                        "marks_tiles_occupied": true,
+                        "placed_down": false,
+                        "requires_collision_check": false,
+                        "requires_tile_check": true,
+                        "type": "immovable"
+                    },
+                    {
+                        "dummy_radius": 32.0,
+                        "shapes": [
+                            {
+                                "height": 32.0,
+                                "offsetX": 0.0,
+                                "offsetY": 0.0,
+                                "shape_type": "rectangle",
+                                "width": 32.0
+                            }
+                        ],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ],
+                "id": 11,
+                "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    },
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 12,
+                "parent": 11
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "X": 44.0,
+                        "X_absolute": 0.0,
+                        "Y": 96.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 5.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    }
+                ],
+                "id": 13,
+                "parent": 9
             }
         ],
-        "next_entity_id": 12
+        "next_entity_id": 21
     }
 }

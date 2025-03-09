@@ -45,6 +45,12 @@ namespace SupDef {
             }
         }
 
+        void setTilesToDefault() {
+            for(auto& tile : tiles) {
+                tile->setToDefault();
+            }
+        }
+
         inline int getIndexFromXY(int x, int y) {
             return tilesX * y + x;
         }

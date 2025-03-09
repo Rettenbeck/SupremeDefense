@@ -12,8 +12,8 @@ namespace SupDef::CollisionUtils {
 
     // Rectangle vs. Rectangle
     bool checkCollision(const RectangleShape* r1, float x1, float y1, const RectangleShape* r2, float x2, float y2) {
-        return !(x1 + r1->width  < x2 || x2 + r2->width  < x1 ||
-                 y1 + r1->height < y2 || y2 + r2->height < y1);
+        return !(x1 + r1->width  <= x2 || x2 + r2->width  <= x1 ||
+                 y1 + r1->height <= y2 || y2 + r2->height <= y1);
     }
 
     // Circle vs. Rectangle (using nearest point projection)

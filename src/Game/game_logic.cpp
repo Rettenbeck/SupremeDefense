@@ -30,6 +30,10 @@ namespace SupDef {
         auto movingEntities = entityManager->getEntitiesWithComponents<PositionComponent, MovementComponent, CollisionComponent>(std::get<0>(map)->id);
         updatePositionMass(deltaTime, std::get<2>(map), movingEntities);
         passPositionToChildren(std::get<0>(map));
+
+        auto tilesComp = std::get<2>(map);
+        tilesChecker->resetTiles(tilesComp);
+        tilesChecker->setTiles(tilesComp, entityManager.get());
     }
 
 }
