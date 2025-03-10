@@ -1590,7 +1590,7 @@
                         "goal_Y": 0.0,
                         "has_goal": false,
                         "is_ground_based": true,
-                        "original_speed": 5.0,
+                        "original_speed": 2.0,
                         "speed": 0.0,
                         "temp_goal_X": 0.0,
                         "temp_goal_Y": 0.0,
@@ -1684,7 +1684,7 @@
                         "goal_Y": 0.0,
                         "has_goal": false,
                         "is_ground_based": true,
-                        "original_speed": 6.199999809265137,
+                        "original_speed": 3.200000047683716,
                         "speed": 0.0,
                         "temp_goal_X": 0.0,
                         "temp_goal_Y": 0.0,
@@ -2011,438 +2011,13 @@
     "entity_manager": {
         "entities": [
             {
-                "asset_id": "mover1",
+                "asset_id": "_",
                 "components": [
                     {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 44.0,
-                        "X_absolute": 0.0,
-                        "Y": 96.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
+                        "type": "world"
                     }
                 ],
-                "id": 13,
-                "parent": 9
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 12,
-                "parent": 11
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 470.0,
-                        "X_absolute": 0.0,
-                        "Y": 52.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 11,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 10,
-                "parent": 9
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 170.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 9,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 8,
-                "parent": 7
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 70.0,
-                        "X_absolute": 0.0,
-                        "Y": 192.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 7,
-                "parent": 5
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 20,
-                "parent": 19
-            },
-            {
-                "asset_id": "mover2",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 8.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 6.199999809265137,
-                        "VY": 0.0,
-                        "goal_X": 192.0,
-                        "goal_Y": 128.0,
-                        "has_goal": true,
-                        "is_ground_based": true,
-                        "original_speed": 6.199999809265137,
-                        "speed": 6.199999809265137,
-                        "temp_goal_X": 48.0,
-                        "temp_goal_Y": 96.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 32.0,
-                        "X_absolute": 0.0,
-                        "Y": 96.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 19,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 6,
-                "parent": 5
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 18,
-                "parent": 16
-            },
-            {
-                "asset_id": "imm1",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 32.0,
-                        "shapes": [
-                            {
-                                "height": 32.0,
-                                "offsetX": 0.0,
-                                "offsetY": 0.0,
-                                "shape_type": "rectangle",
-                                "width": 32.0
-                            }
-                        ],
-                        "type": "collision"
-                    },
-                    {
-                        "marks_tiles_impassable": true,
-                        "marks_tiles_occupied": true,
-                        "placed_down": false,
-                        "requires_collision_check": false,
-                        "requires_tile_check": true,
-                        "type": "immovable"
-                    },
-                    {
-                        "X": 32.0,
-                        "X_absolute": 0.0,
-                        "Y": 64.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 5,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 17,
-                "parent": 16
-            },
-            {
-                "asset_id": "tech_move",
-                "components": [
-                    {
-                        "command": "com_move",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 4,
-                "parent": 3
-            },
-            {
-                "asset_id": "mover1",
-                "components": [
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 5.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 192.0,
-                        "X_absolute": 0.0,
-                        "Y": 128.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    }
-                ],
-                "id": 16,
-                "parent": 9
-            },
-            {
-                "asset_id": "player",
-                "components": [
-                    {
-                        "resources": [
-                            {
-                                "amount": 380,
-                                "resource": "wood"
-                            },
-                            {
-                                "amount": 250,
-                                "resource": "gold"
-                            }
-                        ],
-                        "type": "resource"
-                    },
-                    {
-                        "team": 0,
-                        "type": "player"
-                    }
-                ],
-                "id": 3,
-                "parent": 0
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "assignees": [],
-                        "type": "tech"
-                    }
-                ],
-                "id": 15,
-                "parent": 13
+                "id": 1
             },
             {
                 "asset_id": "example_map",
@@ -3972,6 +3547,82 @@
                 "parent": 1
             },
             {
+                "asset_id": "player",
+                "components": [
+                    {
+                        "resources": [
+                            {
+                                "amount": 380,
+                                "resource": "wood"
+                            },
+                            {
+                                "amount": 250,
+                                "resource": "gold"
+                            }
+                        ],
+                        "type": "resource"
+                    },
+                    {
+                        "team": 0,
+                        "type": "player"
+                    }
+                ],
+                "id": 3,
+                "parent": 0
+            },
+            {
+                "asset_id": "tech_move",
+                "components": [
+                    {
+                        "command": "com_move",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    }
+                ],
+                "id": 4,
+                "parent": 3
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 2.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "X": 44.0,
+                        "X_absolute": 0.0,
+                        "Y": 96.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    }
+                ],
+                "id": 5,
+                "parent": 2
+            },
+            {
                 "asset_id": "com_tech_test1",
                 "components": [
                     {
@@ -3985,19 +3636,148 @@
                         "type": "tech"
                     }
                 ],
-                "id": 14,
-                "parent": 13
+                "id": 6,
+                "parent": 5
             },
             {
-                "asset_id": "_",
+                "asset_id": "com_tech_test2",
                 "components": [
                     {
-                        "type": "world"
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
                     }
                 ],
-                "id": 1
+                "id": 7,
+                "parent": 5
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 2.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "X": 204.0,
+                        "X_absolute": 0.0,
+                        "Y": 128.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    }
+                ],
+                "id": 8,
+                "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test1",
+                "components": [
+                    {
+                        "command": "com_test1",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    }
+                ],
+                "id": 9,
+                "parent": 8
+            },
+            {
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    }
+                ],
+                "id": 10,
+                "parent": 8
+            },
+            {
+                "asset_id": "mover2",
+                "components": [
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "dummy_radius": 8.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 3.200000047683716,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "X": 32.0,
+                        "X_absolute": 0.0,
+                        "Y": 96.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    }
+                ],
+                "id": 11,
+                "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "assignees": [],
+                        "type": "tech"
+                    }
+                ],
+                "id": 12,
+                "parent": 11
             }
         ],
-        "next_entity_id": 21
+        "next_entity_id": 13
     }
 }

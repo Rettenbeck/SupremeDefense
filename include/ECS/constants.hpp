@@ -30,7 +30,7 @@ namespace SupDef {
 
     const CommandType JCOM_MESSAGE  = "message";
     const CommandType JCOM_UNIQUE   = "unique_command";
-    const CommandType JCOM_PARENT   = "parent";
+    const CommandType JCOM_MAP      = "map";
     const CommandType JCOM_X        = "x";
     const CommandType JCOM_Y        = "y";
     

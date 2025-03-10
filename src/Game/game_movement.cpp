@@ -21,17 +21,27 @@ namespace SupDef {
             movementComp->setVelocityToZero();
             return;
         }
+        
+        assert(pathFinder);
+        auto result = pathFinder->findPathForUnit(  tilesComp, positionComp->xAbs, positionComp->yAbs,
+                                                    movementComp->goalX, movementComp->goalY, collisionComp->dummyRadius);
+        //
 
-        auto path = pathFinder->findPathForUnit(tilesComp, positionComp->x, positionComp->y,
-                                                movementComp->goalX, movementComp->goalY, collisionComp->dummyRadius);
-        if (path.size() <= 1) {
+        std::cout << "Pathfinder ended; " << result->path.size() << "\n";
+        if (result->stuck || !result->found || result->path.empty()) {
             movementComp->clearGoal();
             movementComp->setVelocityToZero();
+            if(result->stuck) std::cout << " is stuck";
+            if(!result->found) std::cout << " no path";
+            std::cout << "\n";
         } else {
-            auto& p = path[1];
-            movementComp->tempGoalX = p.x;
-            movementComp->tempGoalY = p.y;
+            int index = 0;
+            if (result->path.size() > 1) index = 1;
+            auto& p = result->path[index];
+            movementComp->tempGoalX = p->x;
+            movementComp->tempGoalY = p->y;
             movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
+            std::cout << "; tmp: " << p->x << "; " << p->y << "\n";
         }
     }
     
@@ -60,8 +70,9 @@ namespace SupDef {
             return;
         }
     
-        float newX = positionComp->x + movementComp->vx * deltaTime;
-        float newY = positionComp->y + movementComp->vy * deltaTime;
+        // movementComp->speed = movementComp->original_speed;
+        float newX = positionComp->xAbs + movementComp->vx * deltaTime;
+        float newY = positionComp->yAbs + movementComp->vy * deltaTime;
 
         float targetX = movementComp->isGroundBased ? movementComp->tempGoalX : movementComp->goalX;
         float targetY = movementComp->isGroundBased ? movementComp->tempGoalY : movementComp->goalY;
@@ -80,10 +91,11 @@ namespace SupDef {
             
             if (movementComp->isGroundBased) {
                 auto dFinalGoalSq = Math::getDistanceSquared(movementComp->goalX, movementComp->goalY, targetX, targetY);
-                // std::cout << "Final distance: " << dFinalGoalSq << "\n";
-                if(dFinalGoalSq > 3.0) {
+                std::cout << "Goal: " << movementComp->goalX << "; " << movementComp->goalY << "\n";
+                std::cout << "Final distance: " << dFinalGoalSq << "\n";
+                if(dFinalGoalSq > 263.0) {
                     updateTempGoal(tilesComp, comp);
-                    // std::cout << "movementComp.x: " << movementComp->tempGoalX << "; y: " << movementComp->tempGoalY << "\n";
+                    std::cout << "movementComp.x: " << movementComp->tempGoalX << "; y: " << movementComp->tempGoalY << "\n";
                     movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
                 } else {
                     movementComp->clearGoal();

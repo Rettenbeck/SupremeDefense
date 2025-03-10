@@ -67,7 +67,7 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_1                       = "mover1"                              ;
     const std::string AS_UNIT_MOVER_1_NAME_DE               = "Mover One"                           ;
     const std::string AS_UNIT_MOVER_1_DESC_DE               = "Einfache Einheit zum Testen"         ;
-    const float AS_UNIT_MOVER_1_SPEED               = 5.0;
+    const float AS_UNIT_MOVER_1_SPEED               = 2.0;
     const float AS_UNIT_MOVER_1_DUMMY_RADIUS        = 6.0;
     const bool  AS_UNIT_MOVER_1_GROUND_BASED        = true;
 
@@ -75,7 +75,7 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_2                       = "mover2"                              ;
     const std::string AS_UNIT_MOVER_2_NAME_DE               = "Mover Two"                           ;
     const std::string AS_UNIT_MOVER_2_DESC_DE               = "Etwas schneller als M1"              ;
-    const float AS_UNIT_MOVER_2_SPEED               = 6.2;
+    const float AS_UNIT_MOVER_2_SPEED               = 3.2;
     const float AS_UNIT_MOVER_2_DUMMY_RADIUS        = 8.0;
     const bool  AS_UNIT_MOVER_2_GROUND_BASED        = true;
 

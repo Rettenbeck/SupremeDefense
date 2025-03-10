@@ -16,6 +16,7 @@ namespace SupDef {
 
     enum class RCommandMode {
         NONE,
+        MOVE,
         BUILD
     };
 
@@ -66,6 +67,7 @@ namespace SupDef {
             void updateCommand();
             void processCommand(Entity* asset, const json &j);
             void processCommandMessage(Entity* asset, std::string msg, const json &j);
+            bool addPositionData(json& j);
             bool addVirtualEntityData(json& j);
 
             void renderGame();
@@ -107,7 +109,7 @@ namespace SupDef {
             EntityID currentMap = NO_ENTITY;
             RSelectables selectables;
 
-            bool debugMode = true;
+            bool debugMode = false;
             bool drawTiles = true;
 
             //std::unique_ptr<GUI::Root> gui;

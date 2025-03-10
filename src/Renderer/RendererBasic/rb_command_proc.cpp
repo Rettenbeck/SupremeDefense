@@ -24,6 +24,11 @@ namespace SupDef {
         auto comComp = asset->getComponent<CommandComponent>();
         assert(comComp);
         
+        auto moveComp = asset->getComponent<MoveCommandComponent>();
+        if (moveComp) {
+            commandMode = RCommandMode::MOVE;
+        }
+
         auto buildComp = asset->getComponent<BuildCommandComponent>();
         if (buildComp) {
             commandMode = RCommandMode::BUILD;
@@ -32,6 +37,15 @@ namespace SupDef {
 
     void RendererBasic::processCommandMessage(Entity* asset, std::string msg, const json &j) {
         Logger::getInstance().addMessage(MessageType::Info, msg);
+    }
+
+    bool RendererBasic::addPositionData(json &j) {
+        auto position = getMousePosWorld();
+        j[JCOM_X] = position.x;
+        j[JCOM_Y] = position.y;
+        auto mapID = mouseToMap();
+        if (mapID != NO_ENTITY) j[JCOM_MAP] = mapID;
+        return true;
     }
 
     bool RendererBasic::addVirtualEntityData(json &j) {
@@ -46,8 +60,8 @@ namespace SupDef {
         pos->y = position.y - bb.h / 2;
         j[JCOM_X] = pos->x;
         j[JCOM_Y] = pos->y;
-        auto parentID = mouseToMap();
-        if (parentID != NO_ENTITY) j[JCOM_PARENT] = parentID;
+        auto mapID = mouseToMap();
+        if (mapID != NO_ENTITY) j[JCOM_MAP] = mapID;
         return true;
     }
 

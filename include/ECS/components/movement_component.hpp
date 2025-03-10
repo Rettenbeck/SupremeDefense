@@ -53,7 +53,6 @@ namespace SupDef {
         void setGoal(float goalX_, float goalY_, float myX, float myY) {
             goalX = goalX_; goalY = goalY_;
             hasGoal = true;
-            //setVelocityTowardsGoal(myX, myY);
         }
 
         bool isCloseToGoal(float myX, float myY, float toleranceSquared = 1.0f) {

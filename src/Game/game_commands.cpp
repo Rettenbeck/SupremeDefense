@@ -9,7 +9,7 @@ namespace SupDef {
         if (event.cancel) {
             commandTracker->reset();
             globalDispatcher->dispatch<CommandToRenderEvent>(NO_COMMAND, NO_ENTITY, NO_ENTITY, json());
-            //virtualEntity = nullptr;
+            virtualEntity = nullptr;
             return;
         }
         json data = event.data;
@@ -57,7 +57,7 @@ namespace SupDef {
         }
         auto moveComp = command->getComponent<MoveCommandComponent>();
         if (moveComp) {
-            //
+            globalDispatcher->dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
         }
     }
 
