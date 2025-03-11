@@ -1,5 +1,0 @@
-{
-    "framerate": 60.0,
-    "init_window_width": 1400,
-    "init_window_height": 900
-}
