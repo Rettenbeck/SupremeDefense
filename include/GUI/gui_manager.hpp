@@ -10,7 +10,6 @@ namespace SupDef {
     const MouseClick MLEFT = false;
     const MouseClick MRIGHT = true;
 
-    // using GUI_TechMapEntry = std::tuple<EntityID, EntityID, ActiveTechComponent*, CommandComponent*>;
     using GUI_TechMapEntry = std::tuple<EntityID, EntityID, ActiveTechComponent*>;
     using GUI_TechMap = std::vector<GUI_TechMapEntry>;
     using GUI_ElementMap = std::unordered_map<GuiElement*, std::tuple<EntityID, EntityID>>;
@@ -177,7 +176,7 @@ namespace SupDef {
                 return nullptr;
             }
 
-            void handleClickOnGui(GuiElement* element, MouseClick button) {
+            void handleClickOnGui(GuiElement* element, MouseClick button, json data) {
                 if (!element) return;
                 auto it = elementMap.find(element);
                 assert(it != elementMap.end());
@@ -187,7 +186,28 @@ namespace SupDef {
                 auto active = tech->getComponent<ActiveTechComponent>();
                 assert(active);
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, json());
+                globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, data);
+            }
+        
+            void handleClickOnGui(GuiElement* element, MouseClick button) {
+                handleClickOnGui(element, button, json());
+            }
+        
+            void handleClickMove(json& j) {
+                for(auto& [element, tuple] : elementMap) {
+                    auto techID = std::get<1>(tuple);
+                    auto tech = game->getEntityManager()->getEntity(techID);
+                    auto active = tech->getComponent<ActiveTechComponent>();
+                    if (active) {
+                        auto asset = game->getAssetFromCommand(active->commandID, j);
+                        if (asset) {
+                            if (asset->hasComponent<MoveCommandComponent>()) {
+                                handleClickOnGui(element, MLEFT, j);
+                                return;
+                            }
+                        }
+                    }
+                }
             }
         
             const GuiElements& getGuiElements() const { return elements; }

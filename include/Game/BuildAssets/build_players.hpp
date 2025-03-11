@@ -11,8 +11,8 @@ namespace SupDef::BuildAssets {
             AsData(am, AS_PLAYER_EX, AS_PLAYER_EX_NAME_DE, AS_PLAYER_EX_DESC_DE)
         );
         //
-        AssetBuilder::addResource(asset, AS_RES_GOLD, 250);
-        AssetBuilder::addResource(asset, AS_RES_WOOD, 380);
+        AssetBuilder::addResource(asset, AS_RES_GOLD, 2500);
+        AssetBuilder::addResource(asset, AS_RES_WOOD, 3800);
         AssetBuilder::addInit(asset, AS_COM_TECH_MOVE);
     }
 

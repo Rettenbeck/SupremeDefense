@@ -2301,3 +2301,1190 @@
 [2025-03-10 12:19:08] SUCCESS: Serialized to game_save2.txt
 [2025-03-10 12:19:08] SUCCESS: Deserialized from game_save2.txt
 [2025-03-10 12:19:08] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:25:34] INIT: ------------------
+[2025-03-11 13:25:34] SUCCESS: World initialized!
+[2025-03-11 13:25:34] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:25:34] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:25:35] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:25:35] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:25:35] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:25:46] INFO: Action created
+[2025-03-11 13:25:46] INFO:   Sent to game
+[2025-03-11 13:25:46] INFO:   Sent to replay
+[2025-03-11 13:25:49] INFO: Action created
+[2025-03-11 13:25:49] INFO:   Sent to game
+[2025-03-11 13:25:49] INFO:   Sent to replay
+[2025-03-11 13:25:50] INFO: Action created
+[2025-03-11 13:25:50] INFO:   Sent to game
+[2025-03-11 13:25:50] INFO:   Sent to replay
+[2025-03-11 13:25:51] INFO: Action created
+[2025-03-11 13:25:51] INFO:   Sent to game
+[2025-03-11 13:25:51] INFO:   Sent to replay
+[2025-03-11 13:25:51] INFO: Action created
+[2025-03-11 13:25:51] INFO:   Sent to game
+[2025-03-11 13:25:51] INFO:   Sent to replay
+[2025-03-11 13:25:52] INFO: Action created
+[2025-03-11 13:25:52] INFO:   Sent to game
+[2025-03-11 13:25:52] INFO:   Sent to replay
+[2025-03-11 13:25:52] INFO: Action created
+[2025-03-11 13:25:52] INFO:   Sent to game
+[2025-03-11 13:25:52] INFO:   Sent to replay
+[2025-03-11 13:25:58] INFO: Action created
+[2025-03-11 13:25:58] INFO:   Sent to game
+[2025-03-11 13:25:58] INFO:   Sent to replay
+[2025-03-11 13:26:00] INFO: Action created
+[2025-03-11 13:26:00] INFO:   Sent to game
+[2025-03-11 13:26:00] INFO:   Sent to replay
+[2025-03-11 13:26:01] INFO: Action created
+[2025-03-11 13:26:01] INFO:   Sent to game
+[2025-03-11 13:26:01] INFO:   Sent to replay
+[2025-03-11 13:26:02] INFO: Action created
+[2025-03-11 13:26:02] INFO:   Sent to game
+[2025-03-11 13:26:02] INFO:   Sent to replay
+[2025-03-11 13:26:03] INFO: Action created
+[2025-03-11 13:26:03] INFO:   Sent to game
+[2025-03-11 13:26:03] INFO:   Sent to replay
+[2025-03-11 13:26:04] INFO: Action created
+[2025-03-11 13:26:04] INFO:   Sent to game
+[2025-03-11 13:26:04] INFO:   Sent to replay
+[2025-03-11 13:26:05] INFO: Action created
+[2025-03-11 13:26:05] INFO:   Sent to game
+[2025-03-11 13:26:05] INFO:   Sent to replay
+[2025-03-11 13:26:07] INFO: Action created
+[2025-03-11 13:26:07] INFO:   Sent to game
+[2025-03-11 13:26:07] INFO:   Sent to replay
+[2025-03-11 13:26:09] INFO: Action created
+[2025-03-11 13:26:09] INFO:   Sent to game
+[2025-03-11 13:26:09] INFO:   Sent to replay
+[2025-03-11 13:26:11] INFO: Game ended from renderer
+
+[2025-03-11 13:43:42] INIT: ------------------
+[2025-03-11 13:43:42] SUCCESS: World initialized!
+[2025-03-11 13:43:42] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:43:42] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:43:43] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:43:43] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:43:43] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:46:23] INIT: ------------------
+[2025-03-11 13:46:24] SUCCESS: World initialized!
+[2025-03-11 13:46:24] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:46:24] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:46:24] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:46:24] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:46:24] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:46:28] INFO: Action created
+[2025-03-11 13:46:28] INFO:   Sent to game
+[2025-03-11 13:46:28] INFO:   Sent to replay
+[2025-03-11 13:46:44] INFO: Action created
+[2025-03-11 13:46:44] INFO:   Sent to game
+[2025-03-11 13:46:44] INFO:   Sent to replay
+[2025-03-11 13:46:45] INFO: Action created
+[2025-03-11 13:46:45] INFO:   Sent to game
+[2025-03-11 13:46:45] INFO:   Sent to replay
+[2025-03-11 13:46:46] INFO: Action created
+[2025-03-11 13:46:46] INFO:   Sent to game
+[2025-03-11 13:46:46] INFO:   Sent to replay
+[2025-03-11 13:46:46] INFO: Action created
+[2025-03-11 13:46:46] INFO:   Sent to game
+[2025-03-11 13:46:46] INFO:   Sent to replay
+[2025-03-11 13:46:46] INFO: Action created
+[2025-03-11 13:46:46] INFO:   Sent to game
+[2025-03-11 13:46:46] INFO:   Sent to replay
+[2025-03-11 13:46:47] INFO: Action created
+[2025-03-11 13:46:47] INFO:   Sent to game
+[2025-03-11 13:46:47] INFO:   Sent to replay
+[2025-03-11 13:46:47] INFO: Action created
+[2025-03-11 13:46:47] INFO:   Sent to game
+[2025-03-11 13:46:47] INFO:   Sent to replay
+[2025-03-11 13:46:47] INFO: Action created
+[2025-03-11 13:46:47] INFO:   Sent to game
+[2025-03-11 13:46:47] INFO:   Sent to replay
+[2025-03-11 13:46:47] INFO: Action created
+[2025-03-11 13:46:47] INFO:   Sent to game
+[2025-03-11 13:46:47] INFO:   Sent to replay
+[2025-03-11 13:46:48] INFO: Action created
+[2025-03-11 13:46:48] INFO:   Sent to game
+[2025-03-11 13:46:48] INFO:   Sent to replay
+[2025-03-11 13:46:51] INFO: Game ended from renderer
+
+[2025-03-11 13:48:17] INIT: ------------------
+[2025-03-11 13:48:18] SUCCESS: World initialized!
+[2025-03-11 13:48:18] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:48:18] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:48:18] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:48:18] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:48:18] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:48:24] INFO: Action created
+[2025-03-11 13:48:24] INFO:   Sent to game
+[2025-03-11 13:48:24] INFO:   Sent to replay
+[2025-03-11 13:48:28] INFO: Action created
+[2025-03-11 13:48:28] INFO:   Sent to game
+[2025-03-11 13:48:28] INFO:   Sent to replay
+[2025-03-11 13:48:30] INFO: Game ended from renderer
+
+[2025-03-11 13:49:47] INIT: ------------------
+[2025-03-11 13:49:47] SUCCESS: World initialized!
+[2025-03-11 13:49:47] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:49:47] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:49:48] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:49:48] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:49:48] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:49:50] INFO: Action created
+[2025-03-11 13:49:50] INFO:   Sent to game
+[2025-03-11 13:49:50] INFO:   Sent to replay
+[2025-03-11 13:49:53] INFO: Action created
+[2025-03-11 13:49:53] INFO:   Sent to game
+[2025-03-11 13:49:53] INFO:   Sent to replay
+[2025-03-11 13:49:55] INFO: Action created
+[2025-03-11 13:49:55] INFO:   Sent to game
+[2025-03-11 13:49:55] INFO:   Sent to replay
+[2025-03-11 13:49:57] INFO: Action created
+[2025-03-11 13:49:57] INFO:   Sent to game
+[2025-03-11 13:49:57] INFO:   Sent to replay
+[2025-03-11 13:49:59] INFO: Action created
+[2025-03-11 13:49:59] INFO:   Sent to game
+[2025-03-11 13:49:59] INFO:   Sent to replay
+[2025-03-11 13:50:02] INFO: Action created
+[2025-03-11 13:50:02] INFO:   Sent to game
+[2025-03-11 13:50:02] INFO:   Sent to replay
+[2025-03-11 13:50:05] INFO: Action created
+[2025-03-11 13:50:05] INFO:   Sent to game
+[2025-03-11 13:50:05] INFO:   Sent to replay
+[2025-03-11 13:50:09] INFO: Game ended from renderer
+
+[2025-03-11 13:51:12] INIT: ------------------
+[2025-03-11 13:51:12] SUCCESS: World initialized!
+[2025-03-11 13:51:12] SUCCESS: Serialized to game_save.txt
+[2025-03-11 13:51:12] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 13:51:12] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 13:51:12] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 13:51:13] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 13:56:20] INFO: Action created
+[2025-03-11 13:56:20] INFO:   Sent to game
+[2025-03-11 13:56:20] INFO:   Sent to replay
+[2025-03-11 13:56:30] INFO: Action created
+[2025-03-11 13:56:30] INFO:   Sent to game
+[2025-03-11 13:56:30] INFO:   Sent to replay
+[2025-03-11 14:41:03] INFO: Action created
+[2025-03-11 14:41:03] INFO:   Sent to game
+[2025-03-11 14:41:03] INFO:   Sent to replay
+[2025-03-11 14:41:04] INFO: Action created
+[2025-03-11 14:41:04] INFO:   Sent to game
+[2025-03-11 14:41:04] INFO:   Sent to replay
+[2025-03-11 14:41:05] INFO: Action created
+[2025-03-11 14:41:05] INFO:   Sent to game
+[2025-03-11 14:41:05] INFO:   Sent to replay
+[2025-03-11 14:41:06] INFO: Action created
+[2025-03-11 14:41:06] INFO:   Sent to game
+[2025-03-11 14:41:06] INFO:   Sent to replay
+[2025-03-11 14:41:13] INFO: Action created
+[2025-03-11 14:41:13] INFO:   Sent to game
+[2025-03-11 14:41:13] INFO:   Sent to replay
+[2025-03-11 14:41:15] INFO: Action created
+[2025-03-11 14:41:15] INFO:   Sent to game
+[2025-03-11 14:41:15] INFO:   Sent to replay
+[2025-03-11 14:41:16] INFO: Action created
+[2025-03-11 14:41:16] INFO:   Sent to game
+[2025-03-11 14:41:16] INFO:   Sent to replay
+[2025-03-11 14:41:17] INFO: Action created
+[2025-03-11 14:41:17] INFO:   Sent to game
+[2025-03-11 14:41:17] INFO:   Sent to replay
+[2025-03-11 14:41:17] INFO: Action created
+[2025-03-11 14:41:17] INFO:   Sent to game
+[2025-03-11 14:41:17] INFO:   Sent to replay
+[2025-03-11 14:41:19] INFO: Action created
+[2025-03-11 14:41:19] INFO:   Sent to game
+[2025-03-11 14:41:19] INFO:   Sent to replay
+[2025-03-11 14:41:20] INFO: Action created
+[2025-03-11 14:41:20] INFO:   Sent to game
+[2025-03-11 14:41:20] INFO:   Sent to replay
+[2025-03-11 14:41:27] INFO: Action created
+[2025-03-11 14:41:27] INFO:   Sent to game
+[2025-03-11 14:41:27] INFO:   Sent to replay
+[2025-03-11 14:41:27] INFO: Action created
+[2025-03-11 14:41:27] INFO:   Sent to game
+[2025-03-11 14:41:27] INFO:   Sent to replay
+[2025-03-11 14:41:29] INFO: Action created
+[2025-03-11 14:41:29] INFO:   Sent to game
+[2025-03-11 14:41:29] INFO:   Sent to replay
+[2025-03-11 14:41:29] INFO: Action created
+[2025-03-11 14:41:29] INFO:   Sent to game
+[2025-03-11 14:41:29] INFO:   Sent to replay
+[2025-03-11 14:41:30] INFO: Action created
+[2025-03-11 14:41:30] INFO:   Sent to game
+[2025-03-11 14:41:30] INFO:   Sent to replay
+[2025-03-11 14:41:32] INFO: Action created
+[2025-03-11 14:41:32] INFO:   Sent to game
+[2025-03-11 14:41:32] INFO:   Sent to replay
+[2025-03-11 14:41:33] INFO: Action created
+[2025-03-11 14:41:33] INFO:   Sent to game
+[2025-03-11 14:41:33] INFO:   Sent to replay
+[2025-03-11 14:41:34] INFO: Action created
+[2025-03-11 14:41:34] INFO:   Sent to game
+[2025-03-11 14:41:34] INFO:   Sent to replay
+[2025-03-11 14:41:36] INFO: Action created
+[2025-03-11 14:41:36] INFO:   Sent to game
+[2025-03-11 14:41:36] INFO:   Sent to replay
+[2025-03-11 14:41:38] INFO: Action created
+[2025-03-11 14:41:38] INFO:   Sent to game
+[2025-03-11 14:41:38] INFO:   Sent to replay
+[2025-03-11 14:41:38] INFO: Action created
+[2025-03-11 14:41:38] INFO:   Sent to game
+[2025-03-11 14:41:38] INFO:   Sent to replay
+[2025-03-11 14:41:41] INFO: Action created
+[2025-03-11 14:41:41] INFO:   Sent to game
+[2025-03-11 14:41:41] INFO:   Sent to replay
+[2025-03-11 14:41:42] INFO: Action created
+[2025-03-11 14:41:42] INFO:   Sent to game
+[2025-03-11 14:41:42] INFO:   Sent to replay
+[2025-03-11 14:41:43] INFO: Action created
+[2025-03-11 14:41:43] INFO:   Sent to game
+[2025-03-11 14:41:43] INFO:   Sent to replay
+[2025-03-11 14:41:44] INFO: Action created
+[2025-03-11 14:41:44] INFO:   Sent to game
+[2025-03-11 14:41:44] INFO:   Sent to replay
+[2025-03-11 14:41:44] INFO: Action created
+[2025-03-11 14:41:44] INFO:   Sent to game
+[2025-03-11 14:41:44] INFO:   Sent to replay
+[2025-03-11 14:41:45] INFO: Action created
+[2025-03-11 14:41:45] INFO:   Sent to game
+[2025-03-11 14:41:45] INFO:   Sent to replay
+[2025-03-11 14:41:45] INFO: Action created
+[2025-03-11 14:41:45] INFO:   Sent to game
+[2025-03-11 14:41:45] INFO:   Sent to replay
+[2025-03-11 14:41:46] INFO: Action created
+[2025-03-11 14:41:46] INFO:   Sent to game
+[2025-03-11 14:41:46] INFO:   Sent to replay
+[2025-03-11 14:41:47] INFO: Action created
+[2025-03-11 14:41:47] INFO:   Sent to game
+[2025-03-11 14:41:47] INFO:   Sent to replay
+[2025-03-11 14:41:48] INFO: Action created
+[2025-03-11 14:41:48] INFO:   Sent to game
+[2025-03-11 14:41:48] INFO:   Sent to replay
+[2025-03-11 14:41:49] INFO: Action created
+[2025-03-11 14:41:49] INFO:   Sent to game
+[2025-03-11 14:41:49] INFO:   Sent to replay
+[2025-03-11 14:41:51] INFO: Action created
+[2025-03-11 14:41:51] INFO:   Sent to game
+[2025-03-11 14:41:51] INFO:   Sent to replay
+[2025-03-11 14:41:53] INFO: Action created
+[2025-03-11 14:41:53] INFO:   Sent to game
+[2025-03-11 14:41:53] INFO:   Sent to replay
+[2025-03-11 14:41:55] INFO: Action created
+[2025-03-11 14:41:55] INFO:   Sent to game
+[2025-03-11 14:41:55] INFO:   Sent to replay
+[2025-03-11 14:41:57] INFO: Action created
+[2025-03-11 14:41:57] INFO:   Sent to game
+[2025-03-11 14:41:57] INFO:   Sent to replay
+[2025-03-11 14:41:58] INFO: Action created
+[2025-03-11 14:41:58] INFO:   Sent to game
+[2025-03-11 14:41:58] INFO:   Sent to replay
+[2025-03-11 14:41:59] INFO: Action created
+[2025-03-11 14:41:59] INFO:   Sent to game
+[2025-03-11 14:41:59] INFO:   Sent to replay
+[2025-03-11 14:42:00] INFO: Action created
+[2025-03-11 14:42:00] INFO:   Sent to game
+[2025-03-11 14:42:00] INFO:   Sent to replay
+[2025-03-11 14:42:01] INFO: Action created
+[2025-03-11 14:42:01] INFO:   Sent to game
+[2025-03-11 14:42:01] INFO:   Sent to replay
+[2025-03-11 14:42:02] INFO: Action created
+[2025-03-11 14:42:02] INFO:   Sent to game
+[2025-03-11 14:42:02] INFO:   Sent to replay
+[2025-03-11 14:42:04] INFO: Action created
+[2025-03-11 14:42:04] INFO:   Sent to game
+[2025-03-11 14:42:04] INFO:   Sent to replay
+[2025-03-11 14:42:05] INFO: Action created
+[2025-03-11 14:42:05] INFO:   Sent to game
+[2025-03-11 14:42:05] INFO:   Sent to replay
+[2025-03-11 14:42:06] INFO: Action created
+[2025-03-11 14:42:06] INFO:   Sent to game
+[2025-03-11 14:42:06] INFO:   Sent to replay
+[2025-03-11 14:42:07] INFO: Action created
+[2025-03-11 14:42:07] INFO:   Sent to game
+[2025-03-11 14:42:07] INFO:   Sent to replay
+[2025-03-11 14:42:09] INFO: Action created
+[2025-03-11 14:42:09] INFO:   Sent to game
+[2025-03-11 14:42:09] INFO:   Sent to replay
+[2025-03-11 14:42:10] INFO: Action created
+[2025-03-11 14:42:10] INFO:   Sent to game
+[2025-03-11 14:42:10] INFO:   Sent to replay
+[2025-03-11 14:42:11] INFO: Action created
+[2025-03-11 14:42:11] INFO:   Sent to game
+[2025-03-11 14:42:11] INFO:   Sent to replay
+[2025-03-11 14:42:11] INFO: Action created
+[2025-03-11 14:42:11] INFO:   Sent to game
+[2025-03-11 14:42:11] INFO:   Sent to replay
+[2025-03-11 14:42:12] INFO: Action created
+[2025-03-11 14:42:12] INFO:   Sent to game
+[2025-03-11 14:42:12] INFO:   Sent to replay
+[2025-03-11 14:42:12] INFO: Action created
+[2025-03-11 14:42:12] INFO:   Sent to game
+[2025-03-11 14:42:12] INFO:   Sent to replay
+[2025-03-11 14:42:16] INFO: Game ended from renderer
+
+[2025-03-11 14:44:49] INIT: ------------------
+[2025-03-11 14:44:49] SUCCESS: World initialized!
+[2025-03-11 14:44:49] SUCCESS: Serialized to game_save.txt
+[2025-03-11 14:44:49] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 14:44:49] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 14:44:49] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 14:44:50] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 14:44:55] INFO: Action created
+[2025-03-11 14:44:55] INFO:   Sent to game
+[2025-03-11 14:44:55] INFO:   Sent to replay
+[2025-03-11 14:44:57] INFO: Action created
+[2025-03-11 14:44:57] INFO:   Sent to game
+[2025-03-11 14:44:57] INFO:   Sent to replay
+[2025-03-11 14:44:57] INFO: Action created
+[2025-03-11 14:44:57] INFO:   Sent to game
+[2025-03-11 14:44:57] INFO:   Sent to replay
+[2025-03-11 14:44:58] INFO: Action created
+[2025-03-11 14:44:58] INFO:   Sent to game
+[2025-03-11 14:44:58] INFO:   Sent to replay
+[2025-03-11 14:44:59] INFO: Action created
+[2025-03-11 14:44:59] INFO:   Sent to game
+[2025-03-11 14:44:59] INFO:   Sent to replay
+[2025-03-11 14:44:59] INFO: Action created
+[2025-03-11 14:44:59] INFO:   Sent to game
+[2025-03-11 14:44:59] INFO:   Sent to replay
+[2025-03-11 14:45:00] INFO: Action created
+[2025-03-11 14:45:00] INFO:   Sent to game
+[2025-03-11 14:45:00] INFO:   Sent to replay
+[2025-03-11 14:45:00] INFO: Action created
+[2025-03-11 14:45:00] INFO:   Sent to game
+[2025-03-11 14:45:00] INFO:   Sent to replay
+[2025-03-11 14:45:00] INFO: Action created
+[2025-03-11 14:45:00] INFO:   Sent to game
+[2025-03-11 14:45:00] INFO:   Sent to replay
+[2025-03-11 14:45:01] INFO: Action created
+[2025-03-11 14:45:01] INFO:   Sent to game
+[2025-03-11 14:45:01] INFO:   Sent to replay
+[2025-03-11 14:45:01] INFO: Action created
+[2025-03-11 14:45:01] INFO:   Sent to game
+[2025-03-11 14:45:01] INFO:   Sent to replay
+[2025-03-11 14:45:02] INFO: Action created
+[2025-03-11 14:45:02] INFO:   Sent to game
+[2025-03-11 14:45:02] INFO:   Sent to replay
+[2025-03-11 14:45:02] INFO: Action created
+[2025-03-11 14:45:02] INFO:   Sent to game
+[2025-03-11 14:45:02] INFO:   Sent to replay
+[2025-03-11 14:45:03] INFO: Action created
+[2025-03-11 14:45:03] INFO:   Sent to game
+[2025-03-11 14:45:03] INFO:   Sent to replay
+[2025-03-11 14:45:03] INFO: Action created
+[2025-03-11 14:45:03] INFO:   Sent to game
+[2025-03-11 14:45:03] INFO:   Sent to replay
+[2025-03-11 14:45:05] INFO: Action created
+[2025-03-11 14:45:05] INFO:   Sent to game
+[2025-03-11 14:45:05] INFO:   Sent to replay
+[2025-03-11 14:45:11] INFO: Action created
+[2025-03-11 14:45:11] INFO:   Sent to game
+[2025-03-11 14:45:11] INFO:   Sent to replay
+[2025-03-11 14:45:13] INFO: Action created
+[2025-03-11 14:45:13] INFO:   Sent to game
+[2025-03-11 14:45:13] INFO:   Sent to replay
+[2025-03-11 14:45:17] INFO: Action created
+[2025-03-11 14:45:17] INFO:   Sent to game
+[2025-03-11 14:45:17] INFO:   Sent to replay
+[2025-03-11 14:45:21] INFO: Action created
+[2025-03-11 14:45:21] INFO:   Sent to game
+[2025-03-11 14:45:21] INFO:   Sent to replay
+[2025-03-11 14:45:22] INFO: Action created
+[2025-03-11 14:45:22] INFO:   Sent to game
+[2025-03-11 14:45:22] INFO:   Sent to replay
+[2025-03-11 14:45:23] INFO: Action created
+[2025-03-11 14:45:23] INFO:   Sent to game
+[2025-03-11 14:45:23] INFO:   Sent to replay
+[2025-03-11 14:45:25] INFO: Action created
+[2025-03-11 14:45:25] INFO:   Sent to game
+[2025-03-11 14:45:25] INFO:   Sent to replay
+[2025-03-11 14:45:26] INFO: Action created
+[2025-03-11 14:45:26] INFO:   Sent to game
+[2025-03-11 14:45:26] INFO:   Sent to replay
+[2025-03-11 14:45:27] INFO: Action created
+[2025-03-11 14:45:27] INFO:   Sent to game
+[2025-03-11 14:45:27] INFO:   Sent to replay
+[2025-03-11 14:45:28] INFO: Action created
+[2025-03-11 14:45:28] INFO:   Sent to game
+[2025-03-11 14:45:28] INFO:   Sent to replay
+[2025-03-11 14:45:29] INFO: Action created
+[2025-03-11 14:45:29] INFO:   Sent to game
+[2025-03-11 14:45:29] INFO:   Sent to replay
+[2025-03-11 14:45:30] INFO: Action created
+[2025-03-11 14:45:30] INFO:   Sent to game
+[2025-03-11 14:45:30] INFO:   Sent to replay
+[2025-03-11 14:45:30] INFO: Action created
+[2025-03-11 14:45:30] INFO:   Sent to game
+[2025-03-11 14:45:30] INFO:   Sent to replay
+[2025-03-11 14:45:31] INFO: Action created
+[2025-03-11 14:45:31] INFO:   Sent to game
+[2025-03-11 14:45:31] INFO:   Sent to replay
+[2025-03-11 14:45:35] INFO: Action created
+[2025-03-11 14:45:35] INFO:   Sent to game
+[2025-03-11 14:45:35] INFO:   Sent to replay
+[2025-03-11 14:45:40] INFO: Action created
+[2025-03-11 14:45:40] INFO:   Sent to game
+[2025-03-11 14:45:40] INFO:   Sent to replay
+[2025-03-11 14:45:42] INFO: Action created
+[2025-03-11 14:45:42] INFO:   Sent to game
+[2025-03-11 14:45:42] INFO:   Sent to replay
+[2025-03-11 14:45:43] INFO: Action created
+[2025-03-11 14:45:43] INFO:   Sent to game
+[2025-03-11 14:45:43] INFO:   Sent to replay
+[2025-03-11 14:45:48] INFO: Action created
+[2025-03-11 14:45:48] INFO:   Sent to game
+[2025-03-11 14:45:48] INFO:   Sent to replay
+[2025-03-11 14:45:49] INFO: Action created
+[2025-03-11 14:45:49] INFO:   Sent to game
+[2025-03-11 14:45:49] INFO:   Sent to replay
+[2025-03-11 14:45:50] INFO: Action created
+[2025-03-11 14:45:50] INFO:   Sent to game
+[2025-03-11 14:45:50] INFO:   Sent to replay
+[2025-03-11 14:45:51] INFO: Action created
+[2025-03-11 14:45:51] INFO:   Sent to game
+[2025-03-11 14:45:51] INFO:   Sent to replay
+[2025-03-11 14:45:52] INFO: Action created
+[2025-03-11 14:45:52] INFO:   Sent to game
+[2025-03-11 14:45:52] INFO:   Sent to replay
+[2025-03-11 14:45:53] INFO: Action created
+[2025-03-11 14:45:53] INFO:   Sent to game
+[2025-03-11 14:45:53] INFO:   Sent to replay
+[2025-03-11 14:45:54] INFO: Action created
+[2025-03-11 14:45:54] INFO:   Sent to game
+[2025-03-11 14:45:54] INFO:   Sent to replay
+[2025-03-11 14:45:55] INFO: Action created
+[2025-03-11 14:45:55] INFO:   Sent to game
+[2025-03-11 14:45:55] INFO:   Sent to replay
+[2025-03-11 14:45:57] INFO: Action created
+[2025-03-11 14:45:57] INFO:   Sent to game
+[2025-03-11 14:45:57] INFO:   Sent to replay
+[2025-03-11 14:45:58] INFO: Action created
+[2025-03-11 14:45:58] INFO:   Sent to game
+[2025-03-11 14:45:58] INFO:   Sent to replay
+[2025-03-11 14:45:58] INFO: Action created
+[2025-03-11 14:45:58] INFO:   Sent to game
+[2025-03-11 14:45:58] INFO:   Sent to replay
+[2025-03-11 14:45:59] INFO: Action created
+[2025-03-11 14:45:59] INFO:   Sent to game
+[2025-03-11 14:45:59] INFO:   Sent to replay
+[2025-03-11 14:45:59] INFO: Action created
+[2025-03-11 14:45:59] INFO:   Sent to game
+[2025-03-11 14:45:59] INFO:   Sent to replay
+[2025-03-11 14:46:00] INFO: Action created
+[2025-03-11 14:46:00] INFO:   Sent to game
+[2025-03-11 14:46:00] INFO:   Sent to replay
+[2025-03-11 14:46:01] INFO: Action created
+[2025-03-11 14:46:01] INFO:   Sent to game
+[2025-03-11 14:46:01] INFO:   Sent to replay
+[2025-03-11 14:46:01] INFO: Action created
+[2025-03-11 14:46:01] INFO:   Sent to game
+[2025-03-11 14:46:01] INFO:   Sent to replay
+[2025-03-11 14:46:02] INFO: Action created
+[2025-03-11 14:46:02] INFO:   Sent to game
+[2025-03-11 14:46:02] INFO:   Sent to replay
+[2025-03-11 14:46:02] INFO: Action created
+[2025-03-11 14:46:02] INFO:   Sent to game
+[2025-03-11 14:46:02] INFO:   Sent to replay
+[2025-03-11 14:46:04] INFO: Action created
+[2025-03-11 14:46:04] INFO:   Sent to game
+[2025-03-11 14:46:04] INFO:   Sent to replay
+[2025-03-11 14:46:10] INFO: Action created
+[2025-03-11 14:46:10] INFO:   Sent to game
+[2025-03-11 14:46:10] INFO:   Sent to replay
+[2025-03-11 14:46:16] INFO: Action created
+[2025-03-11 14:46:16] INFO:   Sent to game
+[2025-03-11 14:46:16] INFO:   Sent to replay
+[2025-03-11 14:46:17] INFO: Action created
+[2025-03-11 14:46:17] INFO:   Sent to game
+[2025-03-11 14:46:17] INFO:   Sent to replay
+[2025-03-11 14:46:18] INFO: Action created
+[2025-03-11 14:46:18] INFO:   Sent to game
+[2025-03-11 14:46:18] INFO:   Sent to replay
+[2025-03-11 14:46:19] INFO: Action created
+[2025-03-11 14:46:19] INFO:   Sent to game
+[2025-03-11 14:46:19] INFO:   Sent to replay
+[2025-03-11 14:46:21] INFO: Action created
+[2025-03-11 14:46:21] INFO:   Sent to game
+[2025-03-11 14:46:21] INFO:   Sent to replay
+[2025-03-11 14:46:23] INFO: Action created
+[2025-03-11 14:46:23] INFO:   Sent to game
+[2025-03-11 14:46:23] INFO:   Sent to replay
+[2025-03-11 14:46:24] INFO: Action created
+[2025-03-11 14:46:24] INFO:   Sent to game
+[2025-03-11 14:46:24] INFO:   Sent to replay
+[2025-03-11 14:46:25] INFO: Action created
+[2025-03-11 14:46:25] INFO:   Sent to game
+[2025-03-11 14:46:25] INFO:   Sent to replay
+[2025-03-11 14:46:26] INFO: Action created
+[2025-03-11 14:46:26] INFO:   Sent to game
+[2025-03-11 14:46:26] INFO:   Sent to replay
+[2025-03-11 14:46:26] INFO: Action created
+[2025-03-11 14:46:26] INFO:   Sent to game
+[2025-03-11 14:46:26] INFO:   Sent to replay
+[2025-03-11 14:46:27] INFO: Action created
+[2025-03-11 14:46:27] INFO:   Sent to game
+[2025-03-11 14:46:27] INFO:   Sent to replay
+[2025-03-11 14:46:28] INFO: Action created
+[2025-03-11 14:46:28] INFO:   Sent to game
+[2025-03-11 14:46:28] INFO:   Sent to replay
+[2025-03-11 14:46:29] INFO: Action created
+[2025-03-11 14:46:29] INFO:   Sent to game
+[2025-03-11 14:46:29] INFO:   Sent to replay
+[2025-03-11 14:46:31] INFO: Action created
+[2025-03-11 14:46:31] INFO:   Sent to game
+[2025-03-11 14:46:31] INFO:   Sent to replay
+[2025-03-11 14:46:32] INFO: Action created
+[2025-03-11 14:46:32] INFO:   Sent to game
+[2025-03-11 14:46:32] INFO:   Sent to replay
+[2025-03-11 14:46:33] INFO: Action created
+[2025-03-11 14:46:33] INFO:   Sent to game
+[2025-03-11 14:46:33] INFO:   Sent to replay
+[2025-03-11 14:46:37] INFO: Action created
+[2025-03-11 14:46:37] INFO:   Sent to game
+[2025-03-11 14:46:37] INFO:   Sent to replay
+[2025-03-11 14:46:40] INFO: Action created
+[2025-03-11 14:46:40] INFO:   Sent to game
+[2025-03-11 14:46:40] INFO:   Sent to replay
+[2025-03-11 14:46:42] INFO: Action created
+[2025-03-11 14:46:42] INFO:   Sent to game
+[2025-03-11 14:46:42] INFO:   Sent to replay
+[2025-03-11 14:46:43] INFO: Action created
+[2025-03-11 14:46:43] INFO:   Sent to game
+[2025-03-11 14:46:43] INFO:   Sent to replay
+[2025-03-11 14:46:46] INFO: Action created
+[2025-03-11 14:46:46] INFO:   Sent to game
+[2025-03-11 14:46:46] INFO:   Sent to replay
+[2025-03-11 14:46:48] INFO: Action created
+[2025-03-11 14:46:48] INFO:   Sent to game
+[2025-03-11 14:46:48] INFO:   Sent to replay
+[2025-03-11 14:46:51] INFO: Game ended from renderer
+
+[2025-03-11 14:55:28] INIT: ------------------
+[2025-03-11 14:55:28] SUCCESS: World initialized!
+[2025-03-11 14:55:28] SUCCESS: Serialized to game_save.txt
+[2025-03-11 14:55:28] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 14:55:28] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 14:55:28] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 14:55:28] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 14:55:31] INFO: Action created
+[2025-03-11 14:55:31] INFO:   Sent to game
+[2025-03-11 14:55:31] INFO:   Sent to replay
+[2025-03-11 14:55:33] INFO: Action created
+[2025-03-11 14:55:33] INFO:   Sent to game
+[2025-03-11 14:55:33] INFO:   Sent to replay
+[2025-03-11 14:55:34] INFO: Action created
+[2025-03-11 14:55:34] INFO:   Sent to game
+[2025-03-11 14:55:34] INFO:   Sent to replay
+[2025-03-11 14:55:35] INFO: Action created
+[2025-03-11 14:55:35] INFO:   Sent to game
+[2025-03-11 14:55:35] INFO:   Sent to replay
+[2025-03-11 14:55:35] INFO: Action created
+[2025-03-11 14:55:35] INFO:   Sent to game
+[2025-03-11 14:55:35] INFO:   Sent to replay
+[2025-03-11 14:55:36] INFO: Action created
+[2025-03-11 14:55:36] INFO:   Sent to game
+[2025-03-11 14:55:36] INFO:   Sent to replay
+[2025-03-11 14:55:37] INFO: Game ended from renderer
+
+[2025-03-11 14:58:14] INIT: ------------------
+[2025-03-11 14:58:14] SUCCESS: World initialized!
+[2025-03-11 14:58:14] SUCCESS: Serialized to game_save.txt
+[2025-03-11 14:58:14] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 14:58:14] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 14:58:14] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 14:58:15] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 14:58:17] INFO: Action created
+[2025-03-11 14:58:17] INFO:   Sent to game
+[2025-03-11 14:58:17] INFO:   Sent to replay
+[2025-03-11 14:58:24] INFO: Action created
+[2025-03-11 14:58:24] INFO:   Sent to game
+[2025-03-11 14:58:24] INFO:   Sent to replay
+[2025-03-11 14:58:25] INFO: Action created
+[2025-03-11 14:58:25] INFO:   Sent to game
+[2025-03-11 14:58:25] INFO:   Sent to replay
+[2025-03-11 14:58:26] INFO: Action created
+[2025-03-11 14:58:26] INFO:   Sent to game
+[2025-03-11 14:58:26] INFO:   Sent to replay
+[2025-03-11 14:58:26] INFO: Action created
+[2025-03-11 14:58:26] INFO:   Sent to game
+[2025-03-11 14:58:26] INFO:   Sent to replay
+[2025-03-11 14:58:26] INFO: Action created
+[2025-03-11 14:58:26] INFO:   Sent to game
+[2025-03-11 14:58:26] INFO:   Sent to replay
+[2025-03-11 14:58:27] INFO: Action created
+[2025-03-11 14:58:27] INFO:   Sent to game
+[2025-03-11 14:58:27] INFO:   Sent to replay
+[2025-03-11 14:58:27] INFO: Action created
+[2025-03-11 14:58:27] INFO:   Sent to game
+[2025-03-11 14:58:27] INFO:   Sent to replay
+[2025-03-11 14:58:27] INFO: Action created
+[2025-03-11 14:58:27] INFO:   Sent to game
+[2025-03-11 14:58:27] INFO:   Sent to replay
+[2025-03-11 14:58:27] INFO: Action created
+[2025-03-11 14:58:27] INFO:   Sent to game
+[2025-03-11 14:58:27] INFO:   Sent to replay
+[2025-03-11 14:58:27] INFO: Action created
+[2025-03-11 14:58:27] INFO:   Sent to game
+[2025-03-11 14:58:27] INFO:   Sent to replay
+[2025-03-11 14:58:28] INFO: Action created
+[2025-03-11 14:58:28] INFO:   Sent to game
+[2025-03-11 14:58:28] INFO:   Sent to replay
+[2025-03-11 14:58:34] INFO: Action created
+[2025-03-11 14:58:34] INFO:   Sent to game
+[2025-03-11 14:58:34] INFO:   Sent to replay
+[2025-03-11 14:58:36] INFO: Action created
+[2025-03-11 14:58:36] INFO:   Sent to game
+[2025-03-11 14:58:36] INFO:   Sent to replay
+[2025-03-11 14:58:39] INFO: Game ended from renderer
+
+[2025-03-11 15:00:09] INIT: ------------------
+[2025-03-11 15:00:10] SUCCESS: World initialized!
+[2025-03-11 15:00:10] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:00:10] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:00:10] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:00:10] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:00:10] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:00:12] INFO: Action created
+[2025-03-11 15:00:12] INFO:   Sent to game
+[2025-03-11 15:00:12] INFO:   Sent to replay
+[2025-03-11 15:00:14] INFO: Action created
+[2025-03-11 15:00:14] INFO:   Sent to game
+[2025-03-11 15:00:14] INFO:   Sent to replay
+[2025-03-11 15:00:20] INFO: Game ended from renderer
+
+[2025-03-11 15:01:18] INIT: ------------------
+[2025-03-11 15:01:18] SUCCESS: World initialized!
+[2025-03-11 15:01:18] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:01:18] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:01:19] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:01:19] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:01:19] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:02:24] INFO: Action created
+[2025-03-11 15:02:24] INFO:   Sent to game
+[2025-03-11 15:02:24] INFO:   Sent to replay
+[2025-03-11 15:02:28] INFO: Action created
+[2025-03-11 15:02:28] INFO:   Sent to game
+[2025-03-11 15:02:28] INFO:   Sent to replay
+[2025-03-11 15:02:37] INFO: Action created
+[2025-03-11 15:02:37] INFO:   Sent to game
+[2025-03-11 15:02:37] INFO:   Sent to replay
+[2025-03-11 15:02:39] INFO: Action created
+[2025-03-11 15:02:39] INFO:   Sent to game
+[2025-03-11 15:02:39] INFO:   Sent to replay
+[2025-03-11 15:02:40] INFO: Action created
+[2025-03-11 15:02:40] INFO:   Sent to game
+[2025-03-11 15:02:40] INFO:   Sent to replay
+[2025-03-11 15:02:41] INFO: Action created
+[2025-03-11 15:02:41] INFO:   Sent to game
+[2025-03-11 15:02:41] INFO:   Sent to replay
+[2025-03-11 15:02:43] INFO: Action created
+[2025-03-11 15:02:43] INFO:   Sent to game
+[2025-03-11 15:02:43] INFO:   Sent to replay
+[2025-03-11 15:02:45] INFO: Action created
+[2025-03-11 15:02:45] INFO:   Sent to game
+[2025-03-11 15:02:45] INFO:   Sent to replay
+[2025-03-11 15:02:46] INFO: Action created
+[2025-03-11 15:02:46] INFO:   Sent to game
+[2025-03-11 15:02:46] INFO:   Sent to replay
+[2025-03-11 15:02:46] INFO: Action created
+[2025-03-11 15:02:46] INFO:   Sent to game
+[2025-03-11 15:02:46] INFO:   Sent to replay
+[2025-03-11 15:02:47] INFO: Action created
+[2025-03-11 15:02:47] INFO:   Sent to game
+[2025-03-11 15:02:47] INFO:   Sent to replay
+[2025-03-11 15:02:48] INFO: Action created
+[2025-03-11 15:02:48] INFO:   Sent to game
+[2025-03-11 15:02:48] INFO:   Sent to replay
+[2025-03-11 15:02:56] INFO: Action created
+[2025-03-11 15:02:56] INFO:   Sent to game
+[2025-03-11 15:02:56] INFO:   Sent to replay
+[2025-03-11 15:03:01] INFO: Action created
+[2025-03-11 15:03:01] INFO:   Sent to game
+[2025-03-11 15:03:01] INFO:   Sent to replay
+[2025-03-11 15:03:05] INFO: Action created
+[2025-03-11 15:03:05] INFO:   Sent to game
+[2025-03-11 15:03:05] INFO:   Sent to replay
+[2025-03-11 15:03:06] INFO: Action created
+[2025-03-11 15:03:06] INFO:   Sent to game
+[2025-03-11 15:03:06] INFO:   Sent to replay
+[2025-03-11 15:03:12] INFO: Action created
+[2025-03-11 15:03:12] INFO:   Sent to game
+[2025-03-11 15:03:12] INFO:   Sent to replay
+[2025-03-11 15:03:14] INFO: Action created
+[2025-03-11 15:03:14] INFO:   Sent to game
+[2025-03-11 15:03:14] INFO:   Sent to replay
+[2025-03-11 15:03:17] INFO: Action created
+[2025-03-11 15:03:17] INFO:   Sent to game
+[2025-03-11 15:03:17] INFO:   Sent to replay
+[2025-03-11 15:03:18] INFO: Action created
+[2025-03-11 15:03:18] INFO:   Sent to game
+[2025-03-11 15:03:18] INFO:   Sent to replay
+[2025-03-11 15:03:21] INFO: Action created
+[2025-03-11 15:03:21] INFO:   Sent to game
+[2025-03-11 15:03:21] INFO:   Sent to replay
+[2025-03-11 15:03:24] INFO: Action created
+[2025-03-11 15:03:24] INFO:   Sent to game
+[2025-03-11 15:03:24] INFO:   Sent to replay
+[2025-03-11 15:03:33] INFO: Action created
+[2025-03-11 15:03:33] INFO:   Sent to game
+[2025-03-11 15:03:33] INFO:   Sent to replay
+[2025-03-11 15:03:34] INFO: Action created
+[2025-03-11 15:03:34] INFO:   Sent to game
+[2025-03-11 15:03:34] INFO:   Sent to replay
+[2025-03-11 15:03:36] INFO: Action created
+[2025-03-11 15:03:36] INFO:   Sent to game
+[2025-03-11 15:03:36] INFO:   Sent to replay
+[2025-03-11 15:03:37] INFO: Action created
+[2025-03-11 15:03:37] INFO:   Sent to game
+[2025-03-11 15:03:37] INFO:   Sent to replay
+[2025-03-11 15:03:38] INFO: Action created
+[2025-03-11 15:03:38] INFO:   Sent to game
+[2025-03-11 15:03:38] INFO:   Sent to replay
+[2025-03-11 15:03:39] INFO: Action created
+[2025-03-11 15:03:39] INFO:   Sent to game
+[2025-03-11 15:03:39] INFO:   Sent to replay
+[2025-03-11 15:03:39] INFO: Action created
+[2025-03-11 15:03:39] INFO:   Sent to game
+[2025-03-11 15:03:39] INFO:   Sent to replay
+[2025-03-11 15:03:41] INFO: Action created
+[2025-03-11 15:03:41] INFO:   Sent to game
+[2025-03-11 15:03:41] INFO:   Sent to replay
+[2025-03-11 15:03:42] INFO: Action created
+[2025-03-11 15:03:42] INFO:   Sent to game
+[2025-03-11 15:03:42] INFO:   Sent to replay
+[2025-03-11 15:03:43] INFO: Action created
+[2025-03-11 15:03:43] INFO:   Sent to game
+[2025-03-11 15:03:43] INFO:   Sent to replay
+[2025-03-11 15:03:45] INFO: Action created
+[2025-03-11 15:03:45] INFO:   Sent to game
+[2025-03-11 15:03:45] INFO:   Sent to replay
+[2025-03-11 15:03:45] INFO: Action created
+[2025-03-11 15:03:45] INFO:   Sent to game
+[2025-03-11 15:03:45] INFO:   Sent to replay
+[2025-03-11 15:03:46] INFO: Action created
+[2025-03-11 15:03:46] INFO:   Sent to game
+[2025-03-11 15:03:46] INFO:   Sent to replay
+[2025-03-11 15:03:48] INFO: Action created
+[2025-03-11 15:03:48] INFO:   Sent to game
+[2025-03-11 15:03:48] INFO:   Sent to replay
+[2025-03-11 15:03:48] INFO: Action created
+[2025-03-11 15:03:48] INFO:   Sent to game
+[2025-03-11 15:03:48] INFO:   Sent to replay
+[2025-03-11 15:03:48] INFO: Action created
+[2025-03-11 15:03:48] INFO:   Sent to game
+[2025-03-11 15:03:48] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:49] INFO: Action created
+[2025-03-11 15:03:49] INFO:   Sent to game
+[2025-03-11 15:03:49] INFO:   Sent to replay
+[2025-03-11 15:03:50] INFO: Action created
+[2025-03-11 15:03:50] INFO:   Sent to game
+[2025-03-11 15:03:50] INFO:   Sent to replay
+[2025-03-11 15:03:50] INFO: Action created
+[2025-03-11 15:03:50] INFO:   Sent to game
+[2025-03-11 15:03:50] INFO:   Sent to replay
+[2025-03-11 15:03:50] INFO: Action created
+[2025-03-11 15:03:50] INFO:   Sent to game
+[2025-03-11 15:03:50] INFO:   Sent to replay
+[2025-03-11 15:03:50] INFO: Action created
+[2025-03-11 15:03:50] INFO:   Sent to game
+[2025-03-11 15:03:50] INFO:   Sent to replay
+[2025-03-11 15:03:51] INFO: Action created
+[2025-03-11 15:03:51] INFO:   Sent to game
+[2025-03-11 15:03:51] INFO:   Sent to replay
+[2025-03-11 15:03:52] INFO: Action created
+[2025-03-11 15:03:52] INFO:   Sent to game
+[2025-03-11 15:03:52] INFO:   Sent to replay
+[2025-03-11 15:03:55] INFO: Action created
+[2025-03-11 15:03:55] INFO:   Sent to game
+[2025-03-11 15:03:55] INFO:   Sent to replay
+[2025-03-11 15:03:57] INFO: Action created
+[2025-03-11 15:03:57] INFO:   Sent to game
+[2025-03-11 15:03:57] INFO:   Sent to replay
+[2025-03-11 15:03:58] INFO: Action created
+[2025-03-11 15:03:58] INFO:   Sent to game
+[2025-03-11 15:03:58] INFO:   Sent to replay
+[2025-03-11 15:03:58] INFO: Action created
+[2025-03-11 15:03:58] INFO:   Sent to game
+[2025-03-11 15:03:58] INFO:   Sent to replay
+[2025-03-11 15:03:58] INFO: Action created
+[2025-03-11 15:03:58] INFO:   Sent to game
+[2025-03-11 15:03:58] INFO:   Sent to replay
+[2025-03-11 15:03:58] INFO: Action created
+[2025-03-11 15:03:58] INFO:   Sent to game
+[2025-03-11 15:03:58] INFO:   Sent to replay
+[2025-03-11 15:04:01] INFO: Action created
+[2025-03-11 15:04:01] INFO:   Sent to game
+[2025-03-11 15:04:01] INFO:   Sent to replay
+[2025-03-11 15:04:03] INFO: Action created
+[2025-03-11 15:04:03] INFO:   Sent to game
+[2025-03-11 15:04:03] INFO:   Sent to replay
+[2025-03-11 15:04:04] INFO: Action created
+[2025-03-11 15:04:04] INFO:   Sent to game
+[2025-03-11 15:04:04] INFO:   Sent to replay
+[2025-03-11 15:04:05] INFO: Action created
+[2025-03-11 15:04:05] INFO:   Sent to game
+[2025-03-11 15:04:05] INFO:   Sent to replay
+[2025-03-11 15:04:06] INFO: Action created
+[2025-03-11 15:04:06] INFO:   Sent to game
+[2025-03-11 15:04:06] INFO:   Sent to replay
+[2025-03-11 15:04:07] INFO: Action created
+[2025-03-11 15:04:07] INFO:   Sent to game
+[2025-03-11 15:04:07] INFO:   Sent to replay
+[2025-03-11 15:04:08] INFO: Action created
+[2025-03-11 15:04:08] INFO:   Sent to game
+[2025-03-11 15:04:08] INFO:   Sent to replay
+[2025-03-11 15:04:09] INFO: Action created
+[2025-03-11 15:04:09] INFO:   Sent to game
+[2025-03-11 15:04:09] INFO:   Sent to replay
+[2025-03-11 15:04:10] INFO: Action created
+[2025-03-11 15:04:10] INFO:   Sent to game
+[2025-03-11 15:04:10] INFO:   Sent to replay
+[2025-03-11 15:04:10] INFO: Action created
+[2025-03-11 15:04:10] INFO:   Sent to game
+[2025-03-11 15:04:10] INFO:   Sent to replay
+[2025-03-11 15:04:11] INFO: Action created
+[2025-03-11 15:04:11] INFO:   Sent to game
+[2025-03-11 15:04:11] INFO:   Sent to replay
+[2025-03-11 15:04:11] INFO: Action created
+[2025-03-11 15:04:11] INFO:   Sent to game
+[2025-03-11 15:04:11] INFO:   Sent to replay
+[2025-03-11 15:04:12] INFO: Action created
+[2025-03-11 15:04:12] INFO:   Sent to game
+[2025-03-11 15:04:12] INFO:   Sent to replay
+[2025-03-11 15:04:12] INFO: Action created
+[2025-03-11 15:04:12] INFO:   Sent to game
+[2025-03-11 15:04:12] INFO:   Sent to replay
+[2025-03-11 15:04:13] INFO: Action created
+[2025-03-11 15:04:13] INFO:   Sent to game
+[2025-03-11 15:04:13] INFO:   Sent to replay
+[2025-03-11 15:04:13] INFO: Action created
+[2025-03-11 15:04:13] INFO:   Sent to game
+[2025-03-11 15:04:13] INFO:   Sent to replay
+[2025-03-11 15:04:13] INFO: Action created
+[2025-03-11 15:04:13] INFO:   Sent to game
+[2025-03-11 15:04:13] INFO:   Sent to replay
+[2025-03-11 15:04:13] INFO: Action created
+[2025-03-11 15:04:13] INFO:   Sent to game
+[2025-03-11 15:04:13] INFO:   Sent to replay
+[2025-03-11 15:04:13] INFO: Action created
+[2025-03-11 15:04:13] INFO:   Sent to game
+[2025-03-11 15:04:13] INFO:   Sent to replay
+[2025-03-11 15:04:14] INFO: Action created
+[2025-03-11 15:04:14] INFO:   Sent to game
+[2025-03-11 15:04:14] INFO:   Sent to replay
+[2025-03-11 15:04:14] INFO: Action created
+[2025-03-11 15:04:14] INFO:   Sent to game
+[2025-03-11 15:04:14] INFO:   Sent to replay
+[2025-03-11 15:04:14] INFO: Action created
+[2025-03-11 15:04:14] INFO:   Sent to game
+[2025-03-11 15:04:14] INFO:   Sent to replay
+[2025-03-11 15:04:14] INFO: Action created
+[2025-03-11 15:04:14] INFO:   Sent to game
+[2025-03-11 15:04:14] INFO:   Sent to replay
+[2025-03-11 15:04:14] INFO: Action created
+[2025-03-11 15:04:14] INFO:   Sent to game
+[2025-03-11 15:04:14] INFO:   Sent to replay
+[2025-03-11 15:04:15] INFO: Action created
+[2025-03-11 15:04:15] INFO:   Sent to game
+[2025-03-11 15:04:15] INFO:   Sent to replay
+[2025-03-11 15:04:15] INFO: Action created
+[2025-03-11 15:04:15] INFO:   Sent to game
+[2025-03-11 15:04:15] INFO:   Sent to replay
+[2025-03-11 15:04:15] INFO: Action created
+[2025-03-11 15:04:15] INFO:   Sent to game
+[2025-03-11 15:04:15] INFO:   Sent to replay
+[2025-03-11 15:04:15] INFO: Action created
+[2025-03-11 15:04:15] INFO:   Sent to game
+[2025-03-11 15:04:15] INFO:   Sent to replay
+[2025-03-11 15:04:15] INFO: Action created
+[2025-03-11 15:04:15] INFO:   Sent to game
+[2025-03-11 15:04:15] INFO:   Sent to replay
+[2025-03-11 15:04:16] INFO: Action created
+[2025-03-11 15:04:16] INFO:   Sent to game
+[2025-03-11 15:04:16] INFO:   Sent to replay
+[2025-03-11 15:04:16] INFO: Action created
+[2025-03-11 15:04:16] INFO:   Sent to game
+[2025-03-11 15:04:16] INFO:   Sent to replay
+[2025-03-11 15:04:16] INFO: Action created
+[2025-03-11 15:04:16] INFO:   Sent to game
+[2025-03-11 15:04:16] INFO:   Sent to replay
+[2025-03-11 15:04:16] INFO: Action created
+[2025-03-11 15:04:16] INFO:   Sent to game
+[2025-03-11 15:04:16] INFO:   Sent to replay
+[2025-03-11 15:04:16] INFO: Action created
+[2025-03-11 15:04:16] INFO:   Sent to game
+[2025-03-11 15:04:16] INFO:   Sent to replay
+[2025-03-11 15:04:17] INFO: Action created
+[2025-03-11 15:04:17] INFO:   Sent to game
+[2025-03-11 15:04:17] INFO:   Sent to replay
+[2025-03-11 15:04:17] INFO: Action created
+[2025-03-11 15:04:17] INFO:   Sent to game
+[2025-03-11 15:04:17] INFO:   Sent to replay
+[2025-03-11 15:04:17] INFO: Action created
+[2025-03-11 15:04:17] INFO:   Sent to game
+[2025-03-11 15:04:17] INFO:   Sent to replay
+[2025-03-11 15:04:17] INFO: Action created
+[2025-03-11 15:04:17] INFO:   Sent to game
+[2025-03-11 15:04:17] INFO:   Sent to replay
+[2025-03-11 15:04:17] INFO: Action created
+[2025-03-11 15:04:17] INFO:   Sent to game
+[2025-03-11 15:04:17] INFO:   Sent to replay
+[2025-03-11 15:04:18] INFO: Action created
+[2025-03-11 15:04:18] INFO:   Sent to game
+[2025-03-11 15:04:18] INFO:   Sent to replay
+[2025-03-11 15:04:18] INFO: Action created
+[2025-03-11 15:04:18] INFO:   Sent to game
+[2025-03-11 15:04:18] INFO:   Sent to replay
+[2025-03-11 15:04:18] INFO: Action created
+[2025-03-11 15:04:18] INFO:   Sent to game
+[2025-03-11 15:04:18] INFO:   Sent to replay
+[2025-03-11 15:04:18] INFO: Action created
+[2025-03-11 15:04:18] INFO:   Sent to game
+[2025-03-11 15:04:18] INFO:   Sent to replay
+[2025-03-11 15:04:18] INFO: Action created
+[2025-03-11 15:04:18] INFO:   Sent to game
+[2025-03-11 15:04:18] INFO:   Sent to replay
+[2025-03-11 15:04:19] INFO: Action created
+[2025-03-11 15:04:19] INFO:   Sent to game
+[2025-03-11 15:04:19] INFO:   Sent to replay
+[2025-03-11 15:04:19] INFO: Action created
+[2025-03-11 15:04:19] INFO:   Sent to game
+[2025-03-11 15:04:19] INFO:   Sent to replay
+[2025-03-11 15:04:19] INFO: Action created
+[2025-03-11 15:04:19] INFO:   Sent to game
+[2025-03-11 15:04:19] INFO:   Sent to replay
+[2025-03-11 15:04:22] INFO: Action created
+[2025-03-11 15:04:22] INFO:   Sent to game
+[2025-03-11 15:04:22] INFO:   Sent to replay
+[2025-03-11 15:04:23] INFO: Action created
+[2025-03-11 15:04:23] INFO:   Sent to game
+[2025-03-11 15:04:23] INFO:   Sent to replay
+[2025-03-11 15:04:23] INFO: Action created
+[2025-03-11 15:04:23] INFO:   Sent to game
+[2025-03-11 15:04:23] INFO:   Sent to replay
+[2025-03-11 15:04:23] INFO: Action created
+[2025-03-11 15:04:23] INFO:   Sent to game
+[2025-03-11 15:04:23] INFO:   Sent to replay
+[2025-03-11 15:04:24] INFO: Action created
+[2025-03-11 15:04:24] INFO:   Sent to game
+[2025-03-11 15:04:24] INFO:   Sent to replay
+[2025-03-11 15:04:24] INFO: Action created
+[2025-03-11 15:04:24] INFO:   Sent to game
+[2025-03-11 15:04:24] INFO:   Sent to replay
+[2025-03-11 15:04:24] INFO: Action created
+[2025-03-11 15:04:24] INFO:   Sent to game
+[2025-03-11 15:04:24] INFO:   Sent to replay
+[2025-03-11 15:04:25] INFO: Action created
+[2025-03-11 15:04:25] INFO:   Sent to game
+[2025-03-11 15:04:25] INFO:   Sent to replay
+[2025-03-11 15:04:25] INFO: Action created
+[2025-03-11 15:04:25] INFO:   Sent to game
+[2025-03-11 15:04:25] INFO:   Sent to replay
+[2025-03-11 15:04:25] INFO: Action created
+[2025-03-11 15:04:25] INFO:   Sent to game
+[2025-03-11 15:04:25] INFO:   Sent to replay
+[2025-03-11 15:04:25] INFO: Action created
+[2025-03-11 15:04:25] INFO:   Sent to game
+[2025-03-11 15:04:25] INFO:   Sent to replay
+[2025-03-11 15:04:26] INFO: Action created
+[2025-03-11 15:04:26] INFO:   Sent to game
+[2025-03-11 15:04:26] INFO:   Sent to replay
+[2025-03-11 15:04:26] INFO: Action created
+[2025-03-11 15:04:26] INFO:   Sent to game
+[2025-03-11 15:04:26] INFO:   Sent to replay
+[2025-03-11 15:04:26] INFO: Action created
+[2025-03-11 15:04:26] INFO:   Sent to game
+[2025-03-11 15:04:26] INFO:   Sent to replay
+[2025-03-11 15:04:28] INFO: Action created
+[2025-03-11 15:04:28] INFO:   Sent to game
+[2025-03-11 15:04:28] INFO:   Sent to replay
+[2025-03-11 15:04:29] INFO: Action created
+[2025-03-11 15:04:29] INFO:   Sent to game
+[2025-03-11 15:04:29] INFO:   Sent to replay
+[2025-03-11 15:04:29] INFO: Action created
+[2025-03-11 15:04:29] INFO:   Sent to game
+[2025-03-11 15:04:29] INFO:   Sent to replay
+[2025-03-11 15:04:30] INFO: Action created
+[2025-03-11 15:04:30] INFO:   Sent to game
+[2025-03-11 15:04:30] INFO:   Sent to replay
+[2025-03-11 15:04:31] INFO: Action created
+[2025-03-11 15:04:31] INFO:   Sent to game
+[2025-03-11 15:04:31] INFO:   Sent to replay
+[2025-03-11 15:04:31] INFO: Action created
+[2025-03-11 15:04:31] INFO:   Sent to game
+[2025-03-11 15:04:31] INFO:   Sent to replay
+[2025-03-11 15:04:31] INFO: Action created
+[2025-03-11 15:04:31] INFO:   Sent to game
+[2025-03-11 15:04:31] INFO:   Sent to replay
+[2025-03-11 15:04:31] INFO: Action created
+[2025-03-11 15:04:31] INFO:   Sent to game
+[2025-03-11 15:04:31] INFO:   Sent to replay
+[2025-03-11 15:04:31] INFO: Action created
+[2025-03-11 15:04:31] INFO:   Sent to game
+[2025-03-11 15:04:31] INFO:   Sent to replay
+[2025-03-11 15:04:32] INFO: Action created
+[2025-03-11 15:04:32] INFO:   Sent to game
+[2025-03-11 15:04:32] INFO:   Sent to replay
+[2025-03-11 15:04:32] INFO: Action created
+[2025-03-11 15:04:32] INFO:   Sent to game
+[2025-03-11 15:04:32] INFO:   Sent to replay
+[2025-03-11 15:04:32] INFO: Action created
+[2025-03-11 15:04:32] INFO:   Sent to game
+[2025-03-11 15:04:32] INFO:   Sent to replay
+[2025-03-11 15:04:32] INFO: Action created
+[2025-03-11 15:04:32] INFO:   Sent to game
+[2025-03-11 15:04:32] INFO:   Sent to replay
+[2025-03-11 15:04:32] INFO: Action created
+[2025-03-11 15:04:32] INFO:   Sent to game
+[2025-03-11 15:04:32] INFO:   Sent to replay
+[2025-03-11 15:04:33] INFO: Action created
+[2025-03-11 15:04:33] INFO:   Sent to game
+[2025-03-11 15:04:33] INFO:   Sent to replay
+[2025-03-11 15:04:35] INFO: Action created
+[2025-03-11 15:04:35] INFO:   Sent to game
+[2025-03-11 15:04:35] INFO:   Sent to replay
+[2025-03-11 15:04:36] INFO: Action created
+[2025-03-11 15:04:36] INFO:   Sent to game
+[2025-03-11 15:04:36] INFO:   Sent to replay
+[2025-03-11 15:04:36] INFO: Action created
+[2025-03-11 15:04:36] INFO:   Sent to game
+[2025-03-11 15:04:36] INFO:   Sent to replay
+[2025-03-11 15:04:37] INFO: Action created
+[2025-03-11 15:04:37] INFO:   Sent to game
+[2025-03-11 15:04:37] INFO:   Sent to replay
+[2025-03-11 15:04:37] INFO: Action created
+[2025-03-11 15:04:37] INFO:   Sent to game
+[2025-03-11 15:04:37] INFO:   Sent to replay
+[2025-03-11 15:04:38] INFO: Action created
+[2025-03-11 15:04:38] INFO:   Sent to game
+[2025-03-11 15:04:38] INFO:   Sent to replay
+[2025-03-11 15:04:38] INFO: Action created
+[2025-03-11 15:04:38] INFO:   Sent to game
+[2025-03-11 15:04:38] INFO:   Sent to replay
+[2025-03-11 15:04:39] INFO: Action created
+[2025-03-11 15:04:39] INFO:   Sent to game
+[2025-03-11 15:04:39] INFO:   Sent to replay
+[2025-03-11 15:04:39] INFO: Action created
+[2025-03-11 15:04:39] INFO:   Sent to game
+[2025-03-11 15:04:39] INFO:   Sent to replay
+[2025-03-11 15:04:42] INFO: Action created
+[2025-03-11 15:04:42] INFO:   Sent to game
+[2025-03-11 15:04:42] INFO:   Sent to replay
+[2025-03-11 15:04:43] INFO: Action created
+[2025-03-11 15:04:43] INFO:   Sent to game
+[2025-03-11 15:04:43] INFO:   Sent to replay
+[2025-03-11 15:04:43] INFO: Action created
+[2025-03-11 15:04:43] INFO:   Sent to game
+[2025-03-11 15:04:43] INFO:   Sent to replay
+[2025-03-11 15:04:44] INFO: Action created
+[2025-03-11 15:04:44] INFO:   Sent to game
+[2025-03-11 15:04:44] INFO:   Sent to replay
+[2025-03-11 15:04:46] INFO: Action created
+[2025-03-11 15:04:46] INFO:   Sent to game
+[2025-03-11 15:04:46] INFO:   Sent to replay
+[2025-03-11 15:04:47] INFO: Action created
+[2025-03-11 15:04:47] INFO:   Sent to game
+[2025-03-11 15:04:47] INFO:   Sent to replay
+[2025-03-11 15:04:48] INFO: Action created
+[2025-03-11 15:04:48] INFO:   Sent to game
+[2025-03-11 15:04:48] INFO:   Sent to replay
+[2025-03-11 15:04:49] INFO: Action created
+[2025-03-11 15:04:49] INFO:   Sent to game
+[2025-03-11 15:04:49] INFO:   Sent to replay
+[2025-03-11 15:04:50] INFO: Game ended from renderer
+
+[2025-03-11 15:08:43] INIT: ------------------
+[2025-03-11 15:08:43] SUCCESS: World initialized!
+[2025-03-11 15:08:44] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:08:44] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:08:44] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:08:44] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:08:44] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:08:52] INFO: Action created
+[2025-03-11 15:08:52] INFO:   Sent to game
+[2025-03-11 15:08:52] INFO:   Sent to replay
+[2025-03-11 15:08:56] INFO: Action created
+[2025-03-11 15:08:56] INFO:   Sent to game
+[2025-03-11 15:08:56] INFO:   Sent to replay
+[2025-03-11 15:08:59] INFO: Action created
+[2025-03-11 15:08:59] INFO:   Sent to game
+[2025-03-11 15:08:59] INFO:   Sent to replay
+[2025-03-11 15:08:59] INFO: Action created
+[2025-03-11 15:08:59] INFO:   Sent to game
+[2025-03-11 15:08:59] INFO:   Sent to replay
+[2025-03-11 15:09:00] INFO: Action created
+[2025-03-11 15:09:00] INFO:   Sent to game
+[2025-03-11 15:09:00] INFO:   Sent to replay
+[2025-03-11 15:09:00] INFO: Action created
+[2025-03-11 15:09:00] INFO:   Sent to game
+[2025-03-11 15:09:00] INFO:   Sent to replay
+[2025-03-11 15:09:00] INFO: Action created
+[2025-03-11 15:09:00] INFO:   Sent to game
+[2025-03-11 15:09:00] INFO:   Sent to replay
+[2025-03-11 15:09:00] INFO: Action created
+[2025-03-11 15:09:00] INFO:   Sent to game
+[2025-03-11 15:09:00] INFO:   Sent to replay
+[2025-03-11 15:09:01] INFO: Game ended from renderer
+
+[2025-03-11 15:15:16] INIT: ------------------
+[2025-03-11 15:15:16] SUCCESS: World initialized!
+[2025-03-11 15:15:16] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:15:16] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:15:16] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:15:16] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:15:16] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:15:19] INFO: Action created
+[2025-03-11 15:15:19] INFO:   Sent to game
+[2025-03-11 15:15:19] INFO:   Sent to replay
+[2025-03-11 15:15:21] INFO: Action created
+[2025-03-11 15:15:21] INFO:   Sent to game
+[2025-03-11 15:15:21] INFO:   Sent to replay
+[2025-03-11 15:15:23] INFO: Action created
+[2025-03-11 15:15:23] INFO:   Sent to game
+[2025-03-11 15:15:23] INFO:   Sent to replay
+[2025-03-11 15:15:26] INFO: Action created
+[2025-03-11 15:15:26] INFO:   Sent to game
+[2025-03-11 15:15:26] INFO:   Sent to replay
+[2025-03-11 15:21:14] INIT: ------------------
+[2025-03-11 15:21:14] SUCCESS: World initialized!
+[2025-03-11 15:21:14] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:21:14] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:21:14] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:21:14] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:21:15] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:21:23] INFO: Action created
+[2025-03-11 15:21:23] INFO:   Sent to game
+[2025-03-11 15:21:23] INFO:   Sent to replay
+[2025-03-11 15:21:27] INFO: Game ended from renderer
+
+[2025-03-11 15:22:18] INIT: ------------------
+[2025-03-11 15:22:18] SUCCESS: World initialized!
+[2025-03-11 15:22:18] SUCCESS: Serialized to game_save.txt
+[2025-03-11 15:22:18] SUCCESS: Deserialized from game_save.txt
+[2025-03-11 15:22:18] SUCCESS: Serialized to game_save2.txt
+[2025-03-11 15:22:18] SUCCESS: Deserialized from game_save2.txt
+[2025-03-11 15:22:18] SUCCESS: Serialized to game_save3.txt
+[2025-03-11 15:22:26] INFO: Action created
+[2025-03-11 15:22:26] INFO:   Sent to game
+[2025-03-11 15:22:26] INFO:   Sent to replay
+[2025-03-11 15:22:29] INFO: Action created
+[2025-03-11 15:22:29] INFO:   Sent to game
+[2025-03-11 15:22:29] INFO:   Sent to replay
+[2025-03-11 15:22:31] INFO: Game ended from renderer
+

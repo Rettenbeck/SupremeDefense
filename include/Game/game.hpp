@@ -14,6 +14,8 @@ namespace SupDef {
 
     class Game : public Listener {
         public:
+            std::vector<std::tuple<float, float>> pathTiles;
+
             Game();
             
             void initialize();

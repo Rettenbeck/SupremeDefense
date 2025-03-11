@@ -61,6 +61,19 @@ namespace SupDef {
             if( t->isOccupied &&  t->isImpassable) c = cd_obstructed;
             drawRect(x * s, y * s, s, s, c);
         }
+
+        for(auto [px, py] : game->pathTiles) {
+            drawRect(px - s/2, py - s/2, s, s, cd_impassable);
+        }
+
+        int width  = tilesComponent->tilesX * 2 + 1;
+        int height = tilesComponent->tilesY * 2 + 1;
+        int subStep = s / 2.0f;
+        for (auto& [key, pn] : game->getPathFinder()->visited) {
+            x = key % width;
+            y = key / width;
+            drawRect(x * subStep, y * subStep, s, s, cd_obstructed);
+        }
     }
 
     void RendererBasic::renderEntitiesWithCollision(EntityManager* entityManager) {

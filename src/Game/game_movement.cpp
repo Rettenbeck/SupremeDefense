@@ -22,18 +22,29 @@ namespace SupDef {
             return;
         }
         
-        assert(pathFinder);
+        pathTiles.clear();
         auto result = pathFinder->findPathForUnit(  tilesComp, positionComp->xAbs, positionComp->yAbs,
                                                     movementComp->goalX, movementComp->goalY, collisionComp->dummyRadius);
         //
 
-        std::cout << "Pathfinder ended; " << result->path.size() << "\n";
+        // std::cout << "Pathfinder ended; " << result->path.size() << "\n";
+        if (!result->path.empty()) {
+            for (auto& p : result->path) {
+                pathTiles.emplace_back(p->x, p->y);
+            }
+        }
+
+        std::cout << "Path length: " << result->path.size()
+        << "; found: " << result->found
+        << "; stuck: " << result->stuck
+        << "; done:  " << result->done << "\n";
+
         if (result->stuck || !result->found || result->path.empty()) {
             movementComp->clearGoal();
             movementComp->setVelocityToZero();
-            if(result->stuck) std::cout << " is stuck";
-            if(!result->found) std::cout << " no path";
-            std::cout << "\n";
+            // if(result->stuck) std::cout << " is stuck";
+            // if(!result->found) std::cout << " no path";
+            // std::cout << "\n";
         } else {
             int index = 0;
             if (result->path.size() > 1) index = 1;
@@ -41,7 +52,7 @@ namespace SupDef {
             movementComp->tempGoalX = p->x;
             movementComp->tempGoalY = p->y;
             movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
-            std::cout << "; tmp: " << p->x << "; " << p->y << "\n";
+            // std::cout << "; tmp: " << p->x << "; " << p->y << "\n";
         }
     }
     
@@ -91,11 +102,11 @@ namespace SupDef {
             
             if (movementComp->isGroundBased) {
                 auto dFinalGoalSq = Math::getDistanceSquared(movementComp->goalX, movementComp->goalY, targetX, targetY);
-                std::cout << "Goal: " << movementComp->goalX << "; " << movementComp->goalY << "\n";
-                std::cout << "Final distance: " << dFinalGoalSq << "\n";
+                // std::cout << "Goal: " << movementComp->goalX << "; " << movementComp->goalY << "\n";
+                // std::cout << "Final distance: " << dFinalGoalSq << "\n";
                 if(dFinalGoalSq > 263.0) {
                     updateTempGoal(tilesComp, comp);
-                    std::cout << "movementComp.x: " << movementComp->tempGoalX << "; y: " << movementComp->tempGoalY << "\n";
+                    // std::cout << "movementComp.x: " << movementComp->tempGoalX << "; y: " << movementComp->tempGoalY << "\n";
                     movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
                 } else {
                     movementComp->clearGoal();

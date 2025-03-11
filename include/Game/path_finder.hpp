@@ -68,14 +68,16 @@ namespace SupDef {
                 float tileSize = tilesComponent->tileSize;
                 float subStep = tileSize / 2.0f;
 
-                int width  = tilesComponent->tilesX + 1;
-                int height = tilesComponent->tilesY + 1;
+                int width  = tilesComponent->tilesX * 2 + 1;
+                int height = tilesComponent->tilesY * 2 + 1;
                 int total  = width * height;
                 
+                auto getCoordKeyFromPos = [&](float c) {
+                    return int((c + subStep / 2.0) / subStep);
+                };
+
                 auto getKeyFromPos = [&](float x, float y) {
-                    int indexX = (x + subStep / 2.0) / subStep;
-                    int indexY = (y + subStep / 2.0) / subStep;
-                    return width * indexY + indexX;
+                    return width * getCoordKeyFromPos(y) + getCoordKeyFromPos(x);
                 };
                 
                 auto heuristic = [](float x1, float y1, float x2, float y2) {
@@ -93,6 +95,9 @@ namespace SupDef {
                     return tile ? tile->movementCost : MAX_COST;
                 };
 
+                startX = getCoordKeyFromPos(startX) * subStep;
+                startY = getCoordKeyFromPos(startY) * subStep;
+
                 auto startNode = std::make_shared<PathNode>(
                     startX, startY, 0.0f, heuristic(startX, startY, goalX, goalY), nullptr
                 );
@@ -107,8 +112,6 @@ namespace SupDef {
                     {subStep, subStep}, {subStep, -subStep}, {-subStep, subStep}, {-subStep, -subStep}
                 };
 
-                int i = 0;
-
                 while (!openSet.empty()) {
                     auto current = openSet.top();
                     openSet.pop();
@@ -118,7 +121,6 @@ namespace SupDef {
                         result->found = true;
                         // std::cout << "Goal found ";
                         // std::cout << current.get() << "\n";
-                        int i = 0;
                         for (auto n = current; n; n = n->parent) {
                             // std::cout << "n: " << n << "\n";
                             // std::cout << "  parent: " << n->parent << "\n";
@@ -127,7 +129,6 @@ namespace SupDef {
                             if (!n->parent) break;
                             if (n.get() == startNode.get()) break;
                             if (n.get() == n->parent.get()) break;
-                            if(i++ > 10) break;
                         }
                         // std::cout << "Return list created\n";
                         std::reverse(result->path.begin(), result->path.end());

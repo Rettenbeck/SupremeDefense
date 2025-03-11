@@ -66,6 +66,10 @@ namespace SupDef {
                     std::cout << "Entity: " << id << "; map: " << mapID << "\n";
                     currentMap = mapID;
                     globalDispatcher->dispatch<UnitSelectedEvent>(entity);
+                } else if (button == MRIGHT) {
+                    if (addPositionData(j)) {
+                        gui->handleClickMove(j);
+                    }
                 }
                 break;
             default:

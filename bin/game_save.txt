@@ -364,11 +364,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 380,
+                                "amount": 3800,
                                 "resource": "wood"
                             },
                             {
-                                "amount": 250,
+                                "amount": 2500,
                                 "resource": "gold"
                             }
                         ],
@@ -2227,11 +2227,11 @@
                     {
                         "resources": [
                             {
-                                "amount": 250,
+                                "amount": 2500,
                                 "resource": "gold"
                             },
                             {
-                                "amount": 380,
+                                "amount": 3800,
                                 "resource": "wood"
                             }
                         ],

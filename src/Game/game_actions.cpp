@@ -65,10 +65,10 @@ namespace SupDef {
                 assert(movComp);
                 movComp->setGoal(x, y, posComp->xAbs, posComp->yAbs);
                 updateTempGoal(tilesComp, entity);
-                std::cout << "Goal set! " << x << "; " << y << "\n"; 
+                // std::cout << "Goal set! " << x << "; " << y << "\n"; 
             } else {
-                std::cout << "invalid; x: " << x << "; y: " << y << "\n";
-                std::cout << "  mx1: " << mx1 << "; my1: " << my1 << "; mx2: " << mx2 << "; my2: " << my2 << "\n";
+                // std::cout << "invalid; x: " << x << "; y: " << y << "\n";
+                // std::cout << "  mx1: " << mx1 << "; my1: " << my1 << "; mx2: " << mx2 << "; my2: " << my2 << "\n";
             }
         }
     }
