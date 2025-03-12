@@ -24,11 +24,11 @@ namespace SupDef {
             std::string getTimestampString() const {
                 auto t = std::chrono::system_clock::to_time_t(timestamp);
                 std::tm tm{};
-        // #ifdef _MSC_VER
+        #ifdef _MSC_VER
                 localtime_s(&tm, &t);
-        // #else
-        //         localtime_r(&t, &tm);
-        // #endif
+        #else
+                localtime_r(&t, &tm);
+        #endif
                 std::ostringstream oss;
                 oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
                 return oss.str();

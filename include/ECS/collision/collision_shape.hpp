@@ -9,7 +9,7 @@ namespace SupDef {
         public:
             float offsetX = 0.0f, offsetY = 0.0f;
             virtual ~CollisionShape() = default;
-            virtual BoundingBox getBoundingBox();
+            virtual BoundingBox getBoundingBox() = 0;
     };
 
     using UCollisionShape = std::unique_ptr<CollisionShape>;
