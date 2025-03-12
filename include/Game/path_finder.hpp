@@ -57,6 +57,7 @@ namespace SupDef {
         public:
             PathQueue openSet;
             NodeMap visited;
+            const int stepFactor = 2;
         
             UPathResult findPathForUnit(TilesComponent* tilesComponent, float startX,
                 float startY, float goalX, float goalY, float unitRadius) {
@@ -66,11 +67,14 @@ namespace SupDef {
                 auto result = std::make_unique<PathResult>();
                 const float MAX_COST = 999999999;
                 float tileSize = tilesComponent->tileSize;
-                float subStep = tileSize / 2.0f;
+                float subStep = tileSize / (float) stepFactor;
 
-                int width  = tilesComponent->tilesX * 2 + 1;
-                int height = tilesComponent->tilesY * 2 + 1;
+                int width  = tilesComponent->tilesX * stepFactor;
+                int height = tilesComponent->tilesY * stepFactor;
                 int total  = width * height;
+
+                float mapWidth  = tilesComponent->tilesX * tileSize;
+                float mapHeight = tilesComponent->tilesY * tileSize;
                 
                 auto getCoordKeyFromPos = [&](float c) {
                     return int((c + subStep / 2.0) / subStep);
@@ -103,8 +107,6 @@ namespace SupDef {
                 );
 
                 visited[getKeyFromPos(startX, startY)] = startNode;
-                // std::cout << "Startnode: " << startNode.get() << "; parent: " << startNode->parent <<
-                // "; key: " << getKeyFromPos(startX, startY) << "\n";
                 openSet.push(startNode);
                 
                 FloatPairs directions = {
@@ -119,18 +121,13 @@ namespace SupDef {
                     
                     if (heuristic(current->x, current->y, goalX, goalY) < subStep) {
                         result->found = true;
-                        // std::cout << "Goal found ";
-                        // std::cout << current.get() << "\n";
                         for (auto n = current; n; n = n->parent) {
-                            // std::cout << "n: " << n << "\n";
-                            // std::cout << "  parent: " << n->parent << "\n";
                             assert(n);
                             result->path.push_back(n);
                             if (!n->parent) break;
                             if (n.get() == startNode.get()) break;
                             if (n.get() == n->parent.get()) break;
                         }
-                        // std::cout << "Return list created\n";
                         std::reverse(result->path.begin(), result->path.end());
                         return std::move(result);
                     }
@@ -138,6 +135,7 @@ namespace SupDef {
                     for (auto& [dx, dy] : directions) {
                         float nx = current->x + dx;
                         float ny = current->y + dy;
+                        if (nx < 0.0 || ny < 0.0 || nx > mapWidth || ny > mapHeight) continue;
 
                         if (!isPassable(nx, ny)) continue;
                         if (!isPassable(nx + unitRadius, ny)) continue;
@@ -152,16 +150,8 @@ namespace SupDef {
                         auto newNode = std::make_shared<PathNode>(
                             nx, ny, newCost, heuristic(nx, ny, goalX, goalY), visited[getKeyFromPos(current->x, current->y)]
                         );
-                        // std::cout << "newNode: " << newNode.get() << "; parent: " << newNode->parent.get()
-                        // << "; key: " << getKeyFromPos(current->x, current->y) << newNode->toStr() << "\n";
-
+                        
                         visited[key] = newNode;
-
-                        // std::cout << "visited:\n";
-                        // for(auto& [key, node] : visited) {
-                        //     std::cout << "  Key: " << key << "; node: " << node << "\n";
-                        // }
-
                         openSet.push(std::move(newNode));
                     }
                 }
