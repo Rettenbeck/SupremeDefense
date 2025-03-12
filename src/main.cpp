@@ -26,10 +26,8 @@ int main() {
 
 void test_app() {
     auto g = start_app();
-
     auto entityManager = g->getEntityManager();
     
-
     auto map = g->addMap(SupDef::AS_MAP_EX);
     auto mapComp   = map->getComponent<SupDef::MapComponent>();
     auto tilesComp = map->getComponent<SupDef::TilesComponent>();
@@ -37,20 +35,12 @@ void test_app() {
     auto player = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
     g->setThisPlayer(player->id);
 
-    // auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 32.0,  64.0);
-    // auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, e1->id ,  70.0, 192.0);
-    // auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 170.0, 192.0);
-    // auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_IMM_1, map->id, 470.0,  52.0);
-
-
     SupDef::V2 start( 2 * 16, 6 * 16);
     SupDef::V2 goal (12 * 16, 8 * 16);
     auto es = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, start.x + 12, start.y);
     auto eg = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id,  goal.x + 12,  goal.y);
     auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, start.x, start.y);
     
-
-
     serialize_game(g);
 
     app->run();

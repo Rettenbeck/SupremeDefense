@@ -17,6 +17,7 @@ namespace SupDef {
     enum class RCommandMode {
         NONE,
         MOVE,
+        FRAME,
         BUILD
     };
 
