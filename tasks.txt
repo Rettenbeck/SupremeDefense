@@ -1,0 +1,44 @@
+
+GUI in-game
+======================
+-In der Klasse GuiManager (include/GUI/gui_manager.hpp) wird die Gui zusammengebaut und im Attribut "elements" abgelegt (dies wird dann an den Renderer übergeben, der des dann zeichnet).
+-Hier wäre noch eine ausgereiftere Gui zu gestalten:
+	-Wenn eine Einheit markiert wird, deren Aktionen ausgeben (mehr oder weniger schon implementiert aber nicht schön) sowie Name, Beschreibung, Lebenspunkte, Portrait, etc.
+
+GUI Menü
+======================
+-Außerhalb des Spiels müsste noch eine Menüführung eingebaut werden
+-Vermutlich erst zu einem späteren Spielstand sinnvoll
+
+Netzwerkfähigkeit
+======================
+-Es gibt bereits einen NetworkLayer (include/App/layers/network_layer.hpp). Jeder Layer ist wie ein eigener Prozess, der in der Game loop wiederholt aufgerufen wird (siehe die App-Klasse, include/App/app.hpp, Methode "run"). Der Netzwerk Layer wäre dafür da, mit den anderen Spielern im LAN zu kommunizieren.
+-Ich würde lock-step networking machen (falls dies der richtige Begriff ist):
+	-Es gibt einen Server und mehrere Clients
+	-Jedes Frame sendet jeder Client seine Aktionen an den Server -> Wenn der Server von jedem Spieler eine Nachricht bekommen hat (mit den entsprechenden Aktionen oder auch keine Aktionen, falls der jeweilige Client keine Aktion vollzogen hat), dann sendet er alle Aktionen an jedem Spieler -> Jeder Spieler hat damit alle Aktionen aller Spieler und kann dadurch sein Spiel demensprechend aktualisieren. Jeder Spieler sollte damit synchron sein eigenes Spiel auf Laufen haben.
+	-Die Aktionen werden bereits korrekt an die richtigen Layer verteilt. In einem Netzwerk-Spiel bekommt der Network-Layer die Aktionen direkt in seine ActionQueue. Das ist also schon mal implementiert :)
+	-Wie soll die Verbindung aufgebaut sein? Irgendwas über Sockets?
+
+Tech/Buff/Weapon System
+======================
+-Etwas komplizierter, machen wir entweder in einem Gespräch aus oder ich nehm mir später Zeit, des genauer zu erklären :D
+
+Gegner Spawner
+======================
+-Eine Komponente basteln, die Gegner spawnen kann
+-Am besten mit Rundenzähler und einer Gegnerliste mit einem Timer
+
+Grafik zeichnen
+======================
+-Lästig, aber muss irgendwann gemacht werden :)
+
+Level- und Einheitendesign
+======================
+-Welche Einheiten solls geben? Wie sollen die Level und die Maps aussehen?
+-Welche Fraktionen? Technologiebäume?
+-etc.
+-Hier ist kein grafisches Design gemeint, sondern allgemein der Spielaufbau
+
+
+
+
