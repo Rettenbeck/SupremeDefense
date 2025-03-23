@@ -1,6 +1,5 @@
 #include <iostream>
 #include <include.hpp>
-// #include <main_asset.cpp>
 
 
 void test_app();
