@@ -9,6 +9,11 @@ namespace SupDef {
         if (!debugMode) return;
         std::stringstream ss;
 
+        ss << "Framecount Total:    " << framecountTotal << "\n";
+        ss << "           Renderer: " << framecountRenderer << "\n";
+        ss << "           Game:     " << framecountGame << "\n";
+        ss << "\n";
+
         auto pos = getMousePos();
         auto posW = getMousePosWorld();
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
@@ -26,6 +31,14 @@ namespace SupDef {
             ss << "; x: " << bb->x << "; y: " << bb->y << "; w: " << bb->w << "; h: " << bb->h;
             ss << "; def: " << bb->isDefined;
             ss << "; xm: " << xm << "; ym: " << ym << "\n";
+        }
+        ss << "\n";
+
+        auto col = game->getCollisionTracker();
+        ss << "Collisions: " << col->getCollisionList().size() << "\n";
+        for(auto& collision : col->getCollisionList()) {
+            ss << "  Entities: " << collision->entityA << " & " << collision->entityB;
+            ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
         }
 
         drawLabel(GuiElementStyle::Default, 2, 100, ss.str());

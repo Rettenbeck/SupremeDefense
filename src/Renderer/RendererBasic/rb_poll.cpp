@@ -34,14 +34,20 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::Right) keyR = true;
                     if (keyEvent->code == sf::Keyboard::Key::Up)    keyU = true;
                     if (keyEvent->code == sf::Keyboard::Key::Down)  keyD = true;
-                    if (keyEvent->code == sf::Keyboard::Key::N) trigger(1);
-                    if (keyEvent->code == sf::Keyboard::Key::M) trigger(2);
-                    if (keyEvent->code == sf::Keyboard::Key::C) trigger(3);
-                    if (keyEvent->code == sf::Keyboard::Key::V) trigger(4);
-                    if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
+                    // if (keyEvent->code == sf::Keyboard::Key::N) trigger(1);
+                    // if (keyEvent->code == sf::Keyboard::Key::M) trigger(2);
+                    // if (keyEvent->code == sf::Keyboard::Key::C) trigger(3);
+                    // if (keyEvent->code == sf::Keyboard::Key::V) trigger(4);
+                    // if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
                     if (keyEvent->code == sf::Keyboard::Key::D) debugMode = !debugMode;
                     if (keyEvent->code == sf::Keyboard::Key::T) drawTiles = !drawTiles;
                     if (keyEvent->code == sf::Keyboard::Key::S) game->serialize("state.txt");
+                    if (keyEvent->code == sf::Keyboard::Key::P) {
+                        auto currentPlayer = game->getThisPlayer()->id;
+                        auto otherPlayer = game->otherPlayer;
+                        game->otherPlayer = currentPlayer;
+                        game->setThisPlayer(otherPlayer);
+                    }
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {

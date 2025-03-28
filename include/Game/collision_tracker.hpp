@@ -8,7 +8,7 @@ namespace SupDef {
     struct CollisionInfo {
         EntityID entityA;
         EntityID entityB;
-        int frameCount;       // 1 = new collision, >1 = ongoing, <0 = just ended
+        int frameCount;       // 1 = new collision, >1 = ongoing, <1 = just ended
         CollisionGroup collisionGroup;
     
         CollisionInfo(EntityID a, EntityID b, CollisionGroup group)
@@ -27,6 +27,7 @@ namespace SupDef {
 
     using UCollisionInfo = std::unique_ptr<CollisionInfo>;
     using CollisionInfos = std::vector<UCollisionInfo>;
+    using PCollisionInfos = std::vector<CollisionInfo*>;
 
     class CollisionTracker {
         public:
@@ -61,6 +62,26 @@ namespace SupDef {
             }
 
             CollisionInfos& getCollisionList() { return collisionList; }
+
+            CollisionInfo* retrieve(EntityID entityA, EntityID entityB) {
+                for (auto& collision : collisionList) {
+                    if ((collision->entityA == entityA && collision->entityB == entityB) ||
+                        (collision->entityA == entityB && collision->entityB == entityA)) {
+                            return collision.get();
+                        }
+                }
+                return nullptr;
+            }
+
+            PCollisionInfos retrieve(EntityID entity) {
+                PCollisionInfos result;
+                for (auto& collision : collisionList) {
+                    if (collision->entityA == entity || collision->entityB == entity) {
+                        result.push_back(collision.get());
+                    }
+                }
+                return result;
+            }
 
             void to_json(json& j) const {
                 for (const auto& col : collisionList) {

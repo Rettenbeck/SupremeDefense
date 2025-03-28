@@ -80,6 +80,12 @@ namespace SupDef {
                 if(render) {
                     render->setGame(gamePtr);
                     render->setGuiManager(guiPtr);
+
+                    float fc_total = 1 / getLastMeasurement();
+                    float fc_renderer = 1 / render->getLastMeasurement();
+                    float fc_game = 0.0;
+                    if (game) fc_game = 1 / game->getLastMeasurement();
+                    render->setFramecountData(fc_total, fc_renderer, fc_game);
                 }
                 if(action) action->prepare(game, replay, network);
             }

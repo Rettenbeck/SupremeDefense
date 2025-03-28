@@ -49,8 +49,13 @@ namespace SupDef {
                 }
             }
 
-            // Game* getGame() { return game; }
-            // GuiManager* getGuiManager() const { return gui; }
+            void setFramecountData(float fc_total, float fc_renderer, float fc_game) {
+                if (renderer) {
+                    renderer->framecountTotal = fc_total;
+                    renderer->framecountRenderer = fc_renderer;
+                    renderer->framecountGame = fc_game;
+                }
+            }
 
             void setGame(Game* game_) { game = game_; }
             void setGuiManager(GuiManager* gui_) { gui = gui_; }

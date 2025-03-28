@@ -8,6 +8,7 @@ namespace SupDef {
     void Game::update(float deltaTime) {
         removeResolvedCollisions();
         updateWorlds(deltaTime);
+        determineCollisions();
         processTechs();
         processActions();
     }

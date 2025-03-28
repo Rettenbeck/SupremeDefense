@@ -12,6 +12,9 @@
 #include <ECS/components/movement_component.hpp>
 #include <ECS/components/collision_component.hpp>
 #include <ECS/components/immovable_component.hpp>
+#include <ECS/components/influence_component.hpp>
+#include <ECS/components/influenceable_component.hpp>
+#include <ECS/components/projectile_component.hpp>
 #include <ECS/components/health_component.hpp>
 
 #include <ECS/asset_components/text_component.hpp>

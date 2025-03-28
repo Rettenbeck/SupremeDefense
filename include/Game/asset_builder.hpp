@@ -101,9 +101,9 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildTechForCommand(AsData data, CommandID commandID) {
+        static Entity* buildTechForCommand(AsData data, CommandID commandID, TechComponent* techData = nullptr) {
             auto asset = createEmptyAsset(data);
-            asset->addComponent<TechComponent>();
+            asset->addComponent<TechComponent>(techData);
             asset->addComponent<ActiveTechComponent>(commandID);
             return asset;
         }
@@ -114,10 +114,10 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildCommand(AsData data, AssetID techName) {
+        static Entity* buildCommand(AsData data, AssetID techName, TechComponent* techData = nullptr) {
             auto asset = buildCommand(data);
             data.assetID = techName;
-            buildTechForCommand(data, asset->assetID);
+            buildTechForCommand(data, asset->assetID, techData);
             return asset;
         }
 

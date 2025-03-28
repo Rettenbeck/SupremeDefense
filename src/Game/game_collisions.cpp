@@ -5,6 +5,64 @@
 
 namespace SupDef {
 
+    void Game::determineCollisions() {
+        determineCollisionsInfluence();
+    }
+
+    void Game::determineCollisionsInfluence() {
+        auto influencables = entityManager->getEntitiesWithComponents<InfluenceableComponent>();
+        auto influencers   = entityManager->getEntitiesWithComponents<InfluenceComponent>();
+        auto influencable_entities = entityManager->extractEntities(influencables);
+        auto influence_entities    = entityManager->extractEntities(influencers);
+        processCollisions(influencable_entities, influence_entities, CG_INFLUENCE);
+    }
+
+    void Game::processCollisions(PEntities group, CollisionGroup collisionGroup) {
+        auto list = convertEntitiesForCollision(group);
+        for (auto [mapID, entPosCols] : list) {
+            auto cg = buildCollisionGroup(collisionGroup, mapID);
+            auto map = entityManager->getEntity(mapID);
+            assert(map);
+            auto mapComp = map->getComponent<MapComponent>();
+            assert(mapComp);
+            updateCollisions(mapComp, entPosCols, cg);
+        }
+    }
+
+    void Game::processCollisions(PEntities group1, PEntities group2, CollisionGroup collisionGroup) {
+        auto list1 = convertEntitiesForCollision(group1);
+        auto list2 = convertEntitiesForCollision(group2);
+        for (auto& [mapID, entPosCols1] : list1) {
+            if (list2.count(mapID) == 0) continue;
+            auto cg = buildCollisionGroup(collisionGroup, mapID);
+            auto map = entityManager->getEntity(mapID);
+            assert(map);
+            auto mapComp = map->getComponent<MapComponent>();
+            assert(mapComp);
+            auto& entPosCols2 = list2[mapID];
+            updateCollisions(mapComp, entPosCols1, entPosCols2, cg);
+        }
+    }
+
+    _Map_EntPosCols Game::convertEntitiesForCollision(PEntities group) {
+        std::unordered_map<EntityID, PEntities> splitByMap;
+        _Map_EntPosCols result;
+        for (auto entity : group) {
+            auto mapID = getMapOfEntity(entity->id);
+            splitByMap[mapID].push_back(entity);
+        }
+        for (auto [mapID, subGroup] : splitByMap) {
+            result[mapID] = entityManager->getEntitiesWithComponents<PositionComponent, CollisionComponent>(subGroup);
+        }
+        return result;
+    }
+
+    CollisionGroup Game::buildCollisionGroup(CollisionGroup collisionGroup, EntityID mapID) {
+        std::stringstream ss;
+        ss << mapID;
+        return collisionGroup + ss.str();
+    }
+
     CollisionPairs Game::findCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, bool groupMode) {
         assert(mapComponent);
         Colliders colliders;

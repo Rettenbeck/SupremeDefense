@@ -55,6 +55,13 @@ namespace SupDef {
                 return components.find(typeid(T)) != components.end();
             }
 
+            bool hasComponentByName(std::string name) const {
+                for (auto& [type, component] : components) {
+                    if (component->getTypeName() == name) return true;
+                }
+                return false;
+            }
+
             void to_json(json& j) const {
                 if (id != NO_ENTITY) j[S_ID] = id;
                 j[S_ASSET_ID] = assetID;
