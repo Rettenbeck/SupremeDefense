@@ -45,7 +45,7 @@ namespace SupDef {
                         if (sameGroup && a->entity->id > b->entity->id) continue;
                         collisionChecksNarrow++;
 
-                        if (a->col->collidesWith(b->col, a->pos->x, a->pos->y, b->pos->x, b->pos->y)) {
+                        if (a->col->collidesWith(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs)) {
                             collisions.push_back(CollisionPair(a->entity, b->entity));
                             collisionsTotal++;
                         }
@@ -116,8 +116,8 @@ namespace SupDef {
                         addToLarge(obj);
                     } else {
                         assert(obj->col->boundingBox.isDefined);
-                        int tileX = static_cast<int>((obj->pos->x + obj->col->boundingBox.x) / tileSize);
-                        int tileY = static_cast<int>((obj->pos->y + obj->col->boundingBox.y) / tileSize);
+                        int tileX = static_cast<int>((obj->pos->xAbs + obj->col->boundingBox.x) / tileSize);
+                        int tileY = static_cast<int>((obj->pos->yAbs + obj->col->boundingBox.y) / tileSize);
 
                         if (oob(tileX, tileY)) {
                             addToLarge(obj);

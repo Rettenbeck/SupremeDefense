@@ -16,6 +16,7 @@ namespace SupDef {
         public:
             std::vector<std::tuple<float, float>> pathTiles;
             EntityID otherPlayer = NO_ENTITY;
+            std::string toPrint = "";
 
             Game();
             

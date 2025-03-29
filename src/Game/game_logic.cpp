@@ -6,6 +6,7 @@
 namespace SupDef {
 
     void Game::update(float deltaTime) {
+        toPrint = "";
         removeResolvedCollisions();
         updateWorlds(deltaTime);
         determineCollisions();

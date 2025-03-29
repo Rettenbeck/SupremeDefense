@@ -75,6 +75,7 @@ namespace SupDef {
             void renderCollisionGrid();
             void renderEntitiesWithCollision(EntityManager* entityManager);
             void renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB);
+            void renderEntityWithInfluence(PositionComponent* pos, CollisionComponent* col);
             void renderSelectedUnits();
             void renderSelectedUnit(EntityID entityID);
             void renderVirtualEntity();

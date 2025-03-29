@@ -11,6 +11,7 @@ namespace SupDef::BuildAssets {
             AS_UNIT_IMM_1_TILES_CHECK, AS_UNIT_IMM_1_COL_CHECK, AS_UNIT_IMM_1_OCCUPY, AS_UNIT_IMM_1_IMPASSABLE,
             AS_UNIT_IMM_1_WIDTH, AS_UNIT_IMM_1_HEIGHT
         );
+        asset->addComponent<InfluenceableComponent>();
         AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
     }
 
@@ -20,6 +21,7 @@ namespace SupDef::BuildAssets {
             AS_UNIT_IMM_2_TILES_CHECK, AS_UNIT_IMM_2_COL_CHECK, AS_UNIT_IMM_2_OCCUPY, AS_UNIT_IMM_2_IMPASSABLE,
             AS_UNIT_IMM_2_WIDTH, AS_UNIT_IMM_2_HEIGHT
         );
+        asset->addComponent<InfluenceableComponent>();
     }
 
     void buildImmovableUnits(AssetManager* am) {

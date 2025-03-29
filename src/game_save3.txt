@@ -45,6 +45,64 @@
                 ]
             },
             {
+                "asset_id": "tech_allow_build_indirect1",
+                "components": [
+                    {
+                        "techs_to_apply": [
+                            "com_test1"
+                        ],
+                        "type": "gift_tech"
+                    },
+                    {
+                        "dummy_radius": 50.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "type": "influence"
+                    },
+                    {
+                        "affects_all": true,
+                        "affects_enemy": false,
+                        "affects_same_player": false,
+                        "affects_same_team": false,
+                        "apply_to_all": false,
+                        "apply_to_children": false,
+                        "apply_to_influence": true,
+                        "apply_to_owner": false,
+                        "apply_to_parent": false,
+                        "blacklist": [],
+                        "filter_by_components": false,
+                        "gained": [],
+                        "kept": [],
+                        "lost": [],
+                        "required_components": [],
+                        "type": "tech",
+                        "whitelist": []
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Bauen über selbst",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Indirekt bauen",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
                 "asset_id": "wood",
                 "components": [
                     {
@@ -69,11 +127,7 @@
                 "asset_id": "mover1",
                 "components": [
                     {
-                        "contained": [
-                            "com_tech_test1",
-                            "com_tech_test2"
-                        ],
-                        "type": "init_container"
+                        "type": "influenceable"
                     },
                     {
                         "type": "selectable"
@@ -159,186 +213,6 @@
                             },
                             {
                                 "de": "Bewegen",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    },
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Einfach was nochmals testen",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Testbefehl 2",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "player",
-                "components": [
-                    {
-                        "contained": [
-                            "tech_move"
-                        ],
-                        "type": "init_container"
-                    },
-                    {
-                        "resources": [
-                            {
-                                "amount": 3800,
-                                "resource": "wood"
-                            },
-                            {
-                                "amount": 2500,
-                                "resource": "gold"
-                            }
-                        ],
-                        "type": "resource"
-                    },
-                    {
-                        "is_neutral": false,
-                        "team": 0,
-                        "type": "player"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Spieler",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Spieler",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "com_test1",
-                "components": [
-                    {
-                        "to_build": "imm1",
-                        "type": "build_command"
-                    },
-                    {
-                        "resources": [
-                            {
-                                "amount": 20,
-                                "id": "gold",
-                                "max_capacity": 0,
-                                "resource": "gold"
-                            },
-                            {
-                                "amount": 30,
-                                "id": "wood",
-                                "max_capacity": 0,
-                                "resource": "wood"
-                            }
-                        ],
-                        "type": "requirement"
-                    },
-                    {
-                        "cooldown": -1,
-                        "type": "command"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Einfach was testen",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Testbefehl 1",
-                                "key": "name"
-                            }
-                        ],
-                        "type": "text"
-                    }
-                ]
-            },
-            {
-                "asset_id": "mover2",
-                "components": [
-                    {
-                        "contained": [
-                            "com_tech_test2"
-                        ],
-                        "type": "init_container"
-                    },
-                    {
-                        "type": "selectable"
-                    },
-                    {
-                        "dummy_radius": 8.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 3.200000047683716,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "X": 0.0,
-                        "X_absolute": 0.0,
-                        "Y": 0.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "texts": [
-                            {
-                                "de": "Etwas schneller als M1",
-                                "key": "desc"
-                            },
-                            {
-                                "de": "Mover Two",
                                 "key": "name"
                             }
                         ],
@@ -1937,6 +1811,9 @@
                         "type": "init_container"
                     },
                     {
+                        "type": "influenceable"
+                    },
+                    {
                         "type": "selectable"
                     },
                     {
@@ -1983,16 +1860,80 @@
                 ]
             },
             {
-                "asset_id": "player_no_move",
+                "asset_id": "com_tech_test2",
                 "components": [
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    },
+                    {
+                        "dummy_radius": 38.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "type": "influence"
+                    },
+                    {
+                        "affects_all": true,
+                        "affects_enemy": false,
+                        "affects_same_player": false,
+                        "affects_same_team": false,
+                        "apply_to_all": false,
+                        "apply_to_children": false,
+                        "apply_to_influence": true,
+                        "apply_to_owner": false,
+                        "apply_to_parent": false,
+                        "blacklist": [],
+                        "filter_by_components": false,
+                        "gained": [],
+                        "kept": [],
+                        "lost": [],
+                        "required_components": [],
+                        "type": "tech",
+                        "whitelist": []
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einfach was nochmals testen",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Testbefehl 2",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "player",
+                "components": [
+                    {
+                        "contained": [
+                            "tech_move"
+                        ],
+                        "type": "init_container"
+                    },
                     {
                         "resources": [
                             {
-                                "amount": 3600,
+                                "amount": 3800,
                                 "resource": "wood"
                             },
                             {
-                                "amount": 2400,
+                                "amount": 2500,
                                 "resource": "gold"
                             }
                         ],
@@ -2006,11 +1947,11 @@
                     {
                         "texts": [
                             {
-                                "de": "Spieler (nm)",
+                                "de": "Spieler",
                                 "key": "desc"
                             },
                             {
-                                "de": "Spieler (nm)",
+                                "de": "Spieler",
                                 "key": "name"
                             }
                         ],
@@ -2019,10 +1960,28 @@
                 ]
             },
             {
-                "asset_id": "com_move",
+                "asset_id": "com_test1",
                 "components": [
                     {
-                        "type": "move_command"
+                        "to_build": "imm1",
+                        "type": "build_command"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 20,
+                                "id": "gold",
+                                "max_capacity": 0,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 30,
+                                "id": "wood",
+                                "max_capacity": 0,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "requirement"
                     },
                     {
                         "cooldown": -1,
@@ -2031,11 +1990,11 @@
                     {
                         "texts": [
                             {
-                                "de": "Einheit bewegen",
+                                "de": "Einfach was testen",
                                 "key": "desc"
                             },
                             {
-                                "de": "Bewegen",
+                                "de": "Testbefehl 1",
                                 "key": "name"
                             }
                         ],
@@ -2046,6 +2005,9 @@
             {
                 "asset_id": "imm2",
                 "components": [
+                    {
+                        "type": "influenceable"
+                    },
                     {
                         "type": "selectable"
                     },
@@ -2091,6 +2053,122 @@
                         "type": "text"
                     }
                 ]
+            },
+            {
+                "asset_id": "com_move",
+                "components": [
+                    {
+                        "type": "move_command"
+                    },
+                    {
+                        "cooldown": -1,
+                        "type": "command"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Einheit bewegen",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Bewegen",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "player_no_move",
+                "components": [
+                    {
+                        "resources": [
+                            {
+                                "amount": 3600,
+                                "resource": "wood"
+                            },
+                            {
+                                "amount": 2400,
+                                "resource": "gold"
+                            }
+                        ],
+                        "type": "resource"
+                    },
+                    {
+                        "is_neutral": false,
+                        "team": 0,
+                        "type": "player"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Spieler (nm)",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Spieler (nm)",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "asset_id": "mover2",
+                "components": [
+                    {
+                        "contained": [
+                            "com_tech_test2"
+                        ],
+                        "type": "init_container"
+                    },
+                    {
+                        "type": "influenceable"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "dummy_radius": 8.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 3.200000047683716,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "texts": [
+                            {
+                                "de": "Etwas schneller als M1",
+                                "key": "desc"
+                            },
+                            {
+                                "de": "Mover Two",
+                                "key": "name"
+                            }
+                        ],
+                        "type": "text"
+                    }
+                ]
             }
         ]
     },
@@ -2098,17 +2176,83 @@
     "entity_manager": {
         "entities": [
             {
-                "asset_id": "_",
+                "asset_id": "com_tech_test2",
                 "components": [
                     {
-                        "type": "world"
+                        "affects_all": true,
+                        "affects_enemy": false,
+                        "affects_same_player": false,
+                        "affects_same_team": false,
+                        "apply_to_all": false,
+                        "apply_to_children": false,
+                        "apply_to_influence": true,
+                        "apply_to_owner": false,
+                        "apply_to_parent": false,
+                        "blacklist": [],
+                        "filter_by_components": false,
+                        "gained": [],
+                        "kept": [],
+                        "lost": [],
+                        "required_components": [],
+                        "type": "tech",
+                        "whitelist": []
+                    },
+                    {
+                        "type": "influence"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "dummy_radius": 38.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
                     }
                 ],
-                "id": 1
+                "id": 13,
+                "parent": 12
             },
             {
-                "asset_id": "mover1",
+                "asset_id": "mover2",
                 "components": [
+                    {
+                        "X": 264.0,
+                        "X_absolute": 0.0,
+                        "Y": 12.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 3.200000047683716,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 8.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
                     {
                         "accessors": [
                             5
@@ -2116,6 +2260,61 @@
                         "owner": 5,
                         "type": "player_ownership"
                     },
+                    {
+                        "type": "influenceable"
+                    }
+                ],
+                "id": 12,
+                "parent": 2
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "X": 214.0,
+                        "X_absolute": 0.0,
+                        "Y": 64.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 2.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "accessors": [
+                            5
+                        ],
+                        "owner": 5,
+                        "type": "player_ownership"
+                    },
+                    {
+                        "type": "influenceable"
+                    }
+                ],
+                "id": 11,
+                "parent": 2
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
                     {
                         "X": 212.0,
                         "X_absolute": 0.0,
@@ -2143,10 +2342,289 @@
                     },
                     {
                         "type": "selectable"
+                    },
+                    {
+                        "accessors": [
+                            5
+                        ],
+                        "owner": 5,
+                        "type": "player_ownership"
+                    },
+                    {
+                        "type": "influenceable"
                     }
                 ],
-                "id": 14,
+                "id": 10,
                 "parent": 2
+            },
+            {
+                "asset_id": "com_tech_test2",
+                "components": [
+                    {
+                        "affects_all": true,
+                        "affects_enemy": false,
+                        "affects_same_player": false,
+                        "affects_same_team": false,
+                        "apply_to_all": false,
+                        "apply_to_children": false,
+                        "apply_to_influence": true,
+                        "apply_to_owner": false,
+                        "apply_to_parent": false,
+                        "blacklist": [],
+                        "filter_by_components": false,
+                        "gained": [],
+                        "kept": [],
+                        "lost": [],
+                        "required_components": [],
+                        "type": "tech",
+                        "whitelist": []
+                    },
+                    {
+                        "type": "influence"
+                    },
+                    {
+                        "X": 0.0,
+                        "X_absolute": 0.0,
+                        "Y": 0.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "dummy_radius": 38.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "command": "com_test2",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 9,
+                "parent": 8
+            },
+            {
+                "asset_id": "mover2",
+                "components": [
+                    {
+                        "X": 64.0,
+                        "X_absolute": 0.0,
+                        "Y": 12.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 3.200000047683716,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 8.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "accessors": [
+                            3
+                        ],
+                        "owner": 3,
+                        "type": "player_ownership"
+                    },
+                    {
+                        "type": "influenceable"
+                    }
+                ],
+                "id": 8,
+                "parent": 2
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "X": 14.0,
+                        "X_absolute": 0.0,
+                        "Y": 64.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 2.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "accessors": [
+                            3
+                        ],
+                        "owner": 3,
+                        "type": "player_ownership"
+                    },
+                    {
+                        "type": "influenceable"
+                    }
+                ],
+                "id": 7,
+                "parent": 2
+            },
+            {
+                "asset_id": "mover1",
+                "components": [
+                    {
+                        "X": 12.0,
+                        "X_absolute": 0.0,
+                        "Y": 20.0,
+                        "Y_absolute": 0.0,
+                        "type": "position"
+                    },
+                    {
+                        "VX": 0.0,
+                        "VY": 0.0,
+                        "goal_X": 0.0,
+                        "goal_Y": 0.0,
+                        "has_goal": false,
+                        "is_ground_based": true,
+                        "original_speed": 2.0,
+                        "speed": 0.0,
+                        "temp_goal_X": 0.0,
+                        "temp_goal_Y": 0.0,
+                        "type": "movement"
+                    },
+                    {
+                        "dummy_radius": 6.0,
+                        "shapes": [],
+                        "type": "collision"
+                    },
+                    {
+                        "type": "selectable"
+                    },
+                    {
+                        "accessors": [
+                            3
+                        ],
+                        "owner": 3,
+                        "type": "player_ownership"
+                    },
+                    {
+                        "type": "influenceable"
+                    }
+                ],
+                "id": 6,
+                "parent": 2
+            },
+            {
+                "asset_id": "player_no_move",
+                "components": [
+                    {
+                        "is_neutral": false,
+                        "team": 0,
+                        "type": "player"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 2400,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 3600,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "resource"
+                    }
+                ],
+                "id": 5,
+                "parent": 0
+            },
+            {
+                "asset_id": "tech_move",
+                "components": [
+                    {
+                        "affects_all": false,
+                        "affects_enemy": false,
+                        "affects_same_player": true,
+                        "affects_same_team": false,
+                        "apply_to_all": true,
+                        "apply_to_children": false,
+                        "apply_to_influence": false,
+                        "apply_to_owner": false,
+                        "apply_to_parent": false,
+                        "blacklist": [],
+                        "filter_by_components": true,
+                        "gained": [],
+                        "kept": [],
+                        "lost": [],
+                        "required_components": [
+                            "position",
+                            "movement",
+                            "collision",
+                            "selectable"
+                        ],
+                        "type": "tech",
+                        "whitelist": []
+                    },
+                    {
+                        "command": "com_move",
+                        "current_cooldown": 0,
+                        "init_with_full_cooldown": false,
+                        "type": "active_tech"
+                    }
+                ],
+                "id": 4,
+                "parent": 3
+            },
+            {
+                "asset_id": "player",
+                "components": [
+                    {
+                        "is_neutral": false,
+                        "team": 0,
+                        "type": "player"
+                    },
+                    {
+                        "resources": [
+                            {
+                                "amount": 2500,
+                                "resource": "gold"
+                            },
+                            {
+                                "amount": 3800,
+                                "resource": "wood"
+                            }
+                        ],
+                        "type": "resource"
+                    }
+                ],
+                "id": 3,
+                "parent": 0
             },
             {
                 "asset_id": "example_map",
@@ -3676,623 +4154,15 @@
                 "parent": 1
             },
             {
-                "asset_id": "com_tech_test1",
+                "asset_id": "_",
                 "components": [
                     {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
+                        "type": "world"
                     }
                 ],
-                "id": 15,
-                "parent": 14
-            },
-            {
-                "asset_id": "player",
-                "components": [
-                    {
-                        "is_neutral": false,
-                        "team": 0,
-                        "type": "player"
-                    },
-                    {
-                        "resources": [
-                            {
-                                "amount": 2500,
-                                "resource": "gold"
-                            },
-                            {
-                                "amount": 3800,
-                                "resource": "wood"
-                            }
-                        ],
-                        "type": "resource"
-                    }
-                ],
-                "id": 3,
-                "parent": 0
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 16,
-                "parent": 14
-            },
-            {
-                "asset_id": "tech_move",
-                "components": [
-                    {
-                        "affects_all": false,
-                        "affects_enemy": false,
-                        "affects_same_player": true,
-                        "affects_same_team": false,
-                        "apply_to_all": true,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": false,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": true,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [
-                            "position",
-                            "movement",
-                            "collision",
-                            "selectable"
-                        ],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_move",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 4,
-                "parent": 3
-            },
-            {
-                "asset_id": "mover1",
-                "components": [
-                    {
-                        "accessors": [
-                            5
-                        ],
-                        "owner": 5,
-                        "type": "player_ownership"
-                    },
-                    {
-                        "X": 214.0,
-                        "X_absolute": 0.0,
-                        "Y": 64.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 2.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 17,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 13,
-                "parent": 12
-            },
-            {
-                "asset_id": "mover2",
-                "components": [
-                    {
-                        "accessors": [
-                            3
-                        ],
-                        "owner": 3,
-                        "type": "player_ownership"
-                    },
-                    {
-                        "X": 64.0,
-                        "X_absolute": 0.0,
-                        "Y": 12.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 3.200000047683716,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 8.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 12,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 11,
-                "parent": 9
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 10,
-                "parent": 9
-            },
-            {
-                "asset_id": "mover1",
-                "components": [
-                    {
-                        "accessors": [
-                            3
-                        ],
-                        "owner": 3,
-                        "type": "player_ownership"
-                    },
-                    {
-                        "X": 14.0,
-                        "X_absolute": 0.0,
-                        "Y": 64.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 2.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 9,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 8,
-                "parent": 6
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 21,
-                "parent": 20
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 7,
-                "parent": 6
-            },
-            {
-                "asset_id": "mover2",
-                "components": [
-                    {
-                        "accessors": [
-                            5
-                        ],
-                        "owner": 5,
-                        "type": "player_ownership"
-                    },
-                    {
-                        "X": 264.0,
-                        "X_absolute": 0.0,
-                        "Y": 12.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 3.200000047683716,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 8.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 20,
-                "parent": 2
-            },
-            {
-                "asset_id": "mover1",
-                "components": [
-                    {
-                        "accessors": [
-                            3
-                        ],
-                        "owner": 3,
-                        "type": "player_ownership"
-                    },
-                    {
-                        "X": 12.0,
-                        "X_absolute": 0.0,
-                        "Y": 20.0,
-                        "Y_absolute": 0.0,
-                        "type": "position"
-                    },
-                    {
-                        "VX": 0.0,
-                        "VY": 0.0,
-                        "goal_X": 0.0,
-                        "goal_Y": 0.0,
-                        "has_goal": false,
-                        "is_ground_based": true,
-                        "original_speed": 2.0,
-                        "speed": 0.0,
-                        "temp_goal_X": 0.0,
-                        "temp_goal_Y": 0.0,
-                        "type": "movement"
-                    },
-                    {
-                        "dummy_radius": 6.0,
-                        "shapes": [],
-                        "type": "collision"
-                    },
-                    {
-                        "type": "selectable"
-                    }
-                ],
-                "id": 6,
-                "parent": 2
-            },
-            {
-                "asset_id": "com_tech_test2",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test2",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 19,
-                "parent": 17
-            },
-            {
-                "asset_id": "com_tech_test1",
-                "components": [
-                    {
-                        "affects_all": true,
-                        "affects_enemy": false,
-                        "affects_same_player": false,
-                        "affects_same_team": false,
-                        "apply_to_all": false,
-                        "apply_to_children": false,
-                        "apply_to_influence": false,
-                        "apply_to_owner": true,
-                        "apply_to_parent": false,
-                        "blacklist": [],
-                        "filter_by_components": false,
-                        "gained": [],
-                        "kept": [],
-                        "lost": [],
-                        "required_components": [],
-                        "type": "tech",
-                        "whitelist": []
-                    },
-                    {
-                        "command": "com_test1",
-                        "current_cooldown": 0,
-                        "init_with_full_cooldown": false,
-                        "type": "active_tech"
-                    }
-                ],
-                "id": 18,
-                "parent": 17
-            },
-            {
-                "asset_id": "player_no_move",
-                "components": [
-                    {
-                        "is_neutral": false,
-                        "team": 0,
-                        "type": "player"
-                    },
-                    {
-                        "resources": [
-                            {
-                                "amount": 2400,
-                                "resource": "gold"
-                            },
-                            {
-                                "amount": 3600,
-                                "resource": "wood"
-                            }
-                        ],
-                        "type": "resource"
-                    }
-                ],
-                "id": 5,
-                "parent": 0
+                "id": 1
             }
         ],
-        "next_entity_id": 22
+        "next_entity_id": 14
     }
 }

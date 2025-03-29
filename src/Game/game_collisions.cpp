@@ -67,6 +67,20 @@ namespace SupDef {
         assert(mapComponent);
         Colliders colliders;
 
+        std::stringstream ss;
+        ss << "Processing collisions:\n";
+        ss << "  Group 1:\n    ";
+        for (auto [ent, pos, col] : listA) {
+            ss << ent->id << "; x: " << pos->xAbs << "; y: " << pos->yAbs << "; radius: " << col->dummyRadius << "\n";
+        }
+        ss << "\n";
+        ss << "  Group 2:\n    ";
+        for (auto [ent, pos, col] : listB) {
+            ss << ent->id << "; x: " << pos->xAbs << "; y: " << pos->yAbs << "; radius: " << col->dummyRadius << "\n";
+        }
+        ss << "\n";
+        toPrint += ss.str();
+
         auto addToColliders = [&](_EntPosCols& list, bool group) {
             for(auto& [entity, pos, col] : list) {
                 colliders.push_back(new Collider(entity, pos, col, group));
@@ -85,7 +99,7 @@ namespace SupDef {
     }
 
     void Game::updateCollisions(MapComponent* mapComponent, _EntPosCols& listA, _EntPosCols& listB, CollisionGroup collisionGroup) {
-        updateCollisions(mapComponent, listA, listB, collisionGroup, false);
+        updateCollisions(mapComponent, listA, listB, collisionGroup, true);
     }
 
     void Game::updateCollisions(MapComponent* mapComponent, _EntPosCols& list, CollisionGroup collisionGroup) {

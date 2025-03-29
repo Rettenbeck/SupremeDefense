@@ -41,7 +41,20 @@ namespace SupDef {
                     // if (keyEvent->code == sf::Keyboard::Key::B) trigger(5);
                     if (keyEvent->code == sf::Keyboard::Key::D) debugMode = !debugMode;
                     if (keyEvent->code == sf::Keyboard::Key::T) drawTiles = !drawTiles;
-                    if (keyEvent->code == sf::Keyboard::Key::S) game->serialize("state.txt");
+                    if (keyEvent->code == sf::Keyboard::Key::S) {
+                        std::string filename = "state";
+                        std::string ext = ".txt";
+                        std::string prev = filename + ext;
+                        game->serialize(prev);
+                        for (int i = 0; i < 2; i++) {
+                            std::stringstream ss;
+                            auto g = std::make_unique<SupDef::Game>();
+                            g->deserialize(prev);
+                            ss << filename << (i+2) << ext;
+                            prev = ss.str();
+                            g->serialize(prev); 
+                        }
+                    }
                     if (keyEvent->code == sf::Keyboard::Key::P) {
                         auto currentPlayer = game->getThisPlayer()->id;
                         auto otherPlayer = game->otherPlayer;

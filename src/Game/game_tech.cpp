@@ -101,7 +101,7 @@ namespace SupDef {
                 if (collision->collisionGroup == collisionGroup) {
                     auto otherID = collision->entityA;
                     if (otherID == entity->id) otherID = collision->entityB;
-                    tech->addAssignee(otherID);
+                    if (otherID != owner->id) tech->addAssignee(otherID);
                 }
             }
         }

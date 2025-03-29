@@ -42,6 +42,9 @@ namespace SupDef {
             ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
         }
 
+        ss << "\n--- More Debug Info ---\n";
+        ss << game->toPrint << "\n";
+
         drawLabel(GuiElementStyle::Default, 2, 100, ss.str());
     }
 

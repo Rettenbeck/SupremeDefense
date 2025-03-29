@@ -21,7 +21,7 @@ namespace SupDef::BuildAssets {
 
     void buildCommandTest1(AssetManager* am) {
         auto techComponent = std::make_unique<TechComponent>();
-        techComponent->applyToWithinInfluence = true;
+        techComponent->applyToOwner = true;
         techComponent->affectsAll = true;
 
         auto asset = AssetBuilder::buildCommand(
@@ -41,7 +41,7 @@ namespace SupDef::BuildAssets {
 
         auto asset = AssetBuilder::buildCommand(
             AsData(am, AS_COM_TEST2, AS_COM_TEST2_NAME_DE, AS_COM_TEST2_DESC_DE),
-            AS_COM_TECH_TEST2, TechData(techComponent.get())
+            AS_COM_TECH_TEST2, TechData(techComponent.get(), 38.0)
         );
         asset->addComponent<BuildCommandComponent>(AS_UNIT_IMM_2);
         auto req = asset->retrieveComponent<RequirementComponent>();

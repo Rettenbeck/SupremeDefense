@@ -69,6 +69,13 @@ namespace SupDef {
             colComp->addShape(std::make_unique<SupDef::RectangleShape>(width, height));
         }
 
+        static void addDummyRadius(Entity* asset, float radius) {
+            assert(asset);
+            auto colComp = asset->retrieveComponent<CollisionComponent>();
+            assert(colComp);
+            colComp->dummyRadius = radius;
+        }
+
         static Entity* buildMap(AsData data, int tileSize, int x, int y, int width, int height) {
             auto asset = createEmptyAsset(data);
             asset->addComponent<MapComponent>(width, height);
@@ -111,9 +118,13 @@ namespace SupDef {
 
         static Entity* buildTech(AsData data, TechData techData) {
             auto asset = createEmptyAsset(data);
-            asset->addComponent<TechComponent>(techData);
-            if (techData.techComponent->applyToWithinInfluence) {
-                asset->addComponent<InfluenceComponent>(techData.radius);
+            asset->addComponent<TechComponent>(techData.techComponent);
+            if (techData.techComponent) {
+                if (techData.techComponent->applyToWithinInfluence) {
+                    asset->addComponent<InfluenceComponent>();
+                    asset->addComponent<PositionComponent>();
+                    addDummyRadius(asset, techData.radius);
+                }
             }
             return asset;
         }
@@ -121,7 +132,6 @@ namespace SupDef {
         static Entity* buildTechForCommand(AsData data, CommandID commandID, TechData techData) {
             auto asset = buildTech(data, techData);
             asset->addComponent<ActiveTechComponent>(commandID);
-            if (techData.techComponent) if (techData.techComponent->applyToWithinInfluence) { asset->addComponent<InfluenceComponent>(techData.radius); }
             return asset;
         }
 

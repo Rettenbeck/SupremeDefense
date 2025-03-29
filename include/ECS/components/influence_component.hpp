@@ -6,10 +6,7 @@
 namespace SupDef {
 
     struct InfluenceComponent : public Component {
-        float radius;
-
         InfluenceComponent() { addToRegistry(); }
-        InfluenceComponent(float radius) : radius(radius) { addToRegistry(); }
 
         void addToRegistry() {
             ComponentRegistry::registerComponent(getTypeName(), []()
@@ -17,11 +14,11 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j[S_RADIUS] = radius;
+            // j[S_RADIUS] = radius;
         }
 
         void from_json(const json& j) override {
-            j.at(S_RADIUS).get_to(radius);
+            // j.at(S_RADIUS).get_to(radius);
         }
 
         std::string getTypeName() const override {
