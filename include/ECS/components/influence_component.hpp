@@ -9,6 +9,7 @@ namespace SupDef {
         float radius;
 
         InfluenceComponent() { addToRegistry(); }
+        InfluenceComponent(float radius) : radius(radius) { addToRegistry(); }
 
         void addToRegistry() {
             ComponentRegistry::registerComponent(getTypeName(), []()

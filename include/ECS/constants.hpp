@@ -75,8 +75,9 @@ namespace SupDef {
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Tech Components
-    const std::string SCT_TECH                              = "tech"                                ;   
-    const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;   
+    const std::string SCT_TECH                              = "tech"                                ;
+    const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;
+    const std::string SCT_GIFT_TECH                         = "gift_tech"                           ;
 
     // Attributes
     const std::string S_IS_UNIQUE                           = "unique"                              ;
@@ -93,6 +94,7 @@ namespace SupDef {
     const std::string S_KEPT                                = "kept"                                ;
     const std::string S_LOST                                = "lost"                                ;
     const std::string S_APPLY_TO_ALL                        = "apply_to_all"                        ;
+    const std::string S_APPLY_TO_OWNER                      = "apply_to_owner"                      ;
     const std::string S_APPLY_TO_PARENT                     = "apply_to_parent"                     ;
     const std::string S_APPLY_TO_CHILDREN                   = "apply_to_children"                   ;
     const std::string S_APPLY_TO_PLAYER_UNITS               = "apply_to_player_units"               ;
@@ -105,6 +107,7 @@ namespace SupDef {
     const std::string S_REQUIRED_COMPONENTS                 = "required_components"                 ;
     const std::string S_WHITELIST                           = "whitelist"                           ;
     const std::string S_BLACKLIST                           = "blacklist"                           ;
+    const std::string S_TECHS_TO_APPLY                      = "techs_to_apply"                      ;
 
     const std::string S_KEY                                 = "key"                                 ;
     const std::string S_TEXTS                               = "texts"                               ;

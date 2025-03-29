@@ -9,6 +9,7 @@ namespace SupDef {
         EntityIDs assignees, gained, kept, lost;
 
         bool applyToAll = false;
+        bool applyToOwner = false;
         bool applyToParent = false;
         bool applyToChildren = false;
         bool applyToWithinInfluence = false;
@@ -24,6 +25,7 @@ namespace SupDef {
         std::unordered_set<EntityID> blacklist;
     
         TechComponent() { addToRegistry(); }
+        
         TechComponent(TechComponent* other) {
             copyFrom(other);
             addToRegistry();
@@ -50,18 +52,21 @@ namespace SupDef {
             }
         }
 
+        template <typename ComponentType>
+        void addRequiredComponent() {
+            ComponentType instance;
+            addRequiredComponentFromString(instance.getTypeName());
+        }
+
         template <typename... ComponentTypes>
         void addRequiredComponents() {
-            (..., ([] {
-                using T = ComponentTypes;
-                T instance;
-                addRequiredComponentFromString(instance.getTypeName());
-            }()));
+            (..., addRequiredComponent<ComponentTypes>());
         }
 
         void copyFrom(TechComponent* other) {
             if (!other) return;
             applyToAll              = other->applyToAll;
+            applyToOwner            = other->applyToOwner;
             applyToParent           = other->applyToParent;
             applyToChildren         = other->applyToChildren;
             applyToWithinInfluence  = other->applyToWithinInfluence;
@@ -78,6 +83,7 @@ namespace SupDef {
             j[S_KEPT                 ] = kept;
             j[S_LOST                 ] = lost;
             j[S_APPLY_TO_ALL         ] = applyToAll;
+            j[S_APPLY_TO_OWNER       ] = applyToOwner;
             j[S_APPLY_TO_PARENT      ] = applyToParent;
             j[S_APPLY_TO_CHILDREN    ] = applyToChildren;
             j[S_APPLY_TO_INFLUENCE   ] = applyToWithinInfluence;
@@ -96,6 +102,7 @@ namespace SupDef {
             j.at(S_KEPT                 ).get_to(kept                  );
             j.at(S_LOST                 ).get_to(lost                  );
             j.at(S_APPLY_TO_ALL         ).get_to(applyToAll            );
+            j.at(S_APPLY_TO_OWNER       ).get_to(applyToOwner          );
             j.at(S_APPLY_TO_PARENT      ).get_to(applyToParent         );
             j.at(S_APPLY_TO_CHILDREN    ).get_to(applyToChildren       );
             j.at(S_APPLY_TO_INFLUENCE   ).get_to(applyToWithinInfluence);

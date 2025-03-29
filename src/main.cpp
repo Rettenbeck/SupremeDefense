@@ -32,7 +32,7 @@ void test_app() {
     auto tilesComp = map->getComponent<SupDef::TilesComponent>();
 
     auto player1 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
-    auto player2 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
+    auto player2 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX_NO_MOVE);
     g->setThisPlayer(player1->id);
     g->otherPlayer = player2->id;
 

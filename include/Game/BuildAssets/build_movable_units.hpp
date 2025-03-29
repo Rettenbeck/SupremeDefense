@@ -10,8 +10,8 @@ namespace SupDef::BuildAssets {
             AsData(am, AS_UNIT_MOVER_1, AS_UNIT_MOVER_1_NAME_DE, AS_UNIT_MOVER_1_DESC_DE),
             AS_UNIT_MOVER_1_SPEED, AS_UNIT_MOVER_1_GROUND_BASED, AS_UNIT_MOVER_1_DUMMY_RADIUS
         );
-        AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
-        AssetBuilder::addInit(asset, AS_COM_TECH_TEST2);
+        // AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
+        // AssetBuilder::addInit(asset, AS_COM_TECH_TEST2);
     }
 
     void buildMovableUnitM2(AssetManager* am) {

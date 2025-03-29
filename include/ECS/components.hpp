@@ -27,3 +27,4 @@
 
 #include <ECS/tech_components/tech_component.hpp>
 #include <ECS/tech_components/active_tech_component.hpp>
+#include <ECS/tech_components/gift_tech_component.hpp>

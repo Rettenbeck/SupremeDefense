@@ -16,8 +16,18 @@ namespace SupDef::BuildAssets {
         AssetBuilder::addInit(asset, AS_COM_TECH_MOVE);
     }
 
+    void buildPlayerExampleNoMove(AssetManager* am) {
+        auto asset = AssetBuilder::buildPlayer(
+            AsData(am, AS_PLAYER_EX_NO_MOVE, AS_PLAYER_EX_NO_MOVE_NAME_DE, AS_PLAYER_EX_NO_MOVE_DESC_DE)
+        );
+        //
+        AssetBuilder::addResource(asset, AS_RES_GOLD, 2400);
+        AssetBuilder::addResource(asset, AS_RES_WOOD, 3600);
+    }
+
     void buildPlayers(AssetManager* am) {
         buildPlayerExample(am);
+        buildPlayerExampleNoMove(am);
     }
 
 }

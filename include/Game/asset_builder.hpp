@@ -20,6 +20,14 @@ namespace SupDef {
             name_de(name_de), desc_de(desc_de), name_en(name_en), desc_en(desc_en) {}
     };
 
+    struct TechData {
+        TechComponent* techComponent = nullptr;
+        float radius = 0.0;
+        TechData() {}
+        TechData(TechComponent* techComponent) : techComponent(techComponent) {}
+        TechData(TechComponent* techComponent, float radius) : techComponent(techComponent), radius(radius) {}
+    };
+
     class AssetBuilder {
         public:
 
@@ -101,10 +109,19 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildTechForCommand(AsData data, CommandID commandID, TechComponent* techData = nullptr) {
+        static Entity* buildTech(AsData data, TechData techData) {
             auto asset = createEmptyAsset(data);
             asset->addComponent<TechComponent>(techData);
+            if (techData.techComponent->applyToWithinInfluence) {
+                asset->addComponent<InfluenceComponent>(techData.radius);
+            }
+            return asset;
+        }
+
+        static Entity* buildTechForCommand(AsData data, CommandID commandID, TechData techData) {
+            auto asset = buildTech(data, techData);
             asset->addComponent<ActiveTechComponent>(commandID);
+            if (techData.techComponent) if (techData.techComponent->applyToWithinInfluence) { asset->addComponent<InfluenceComponent>(techData.radius); }
             return asset;
         }
 
@@ -114,11 +131,23 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildCommand(AsData data, AssetID techName, TechComponent* techData = nullptr) {
+        static Entity* buildCommand(AsData data, AssetID techName, TechData techData) {
             auto asset = buildCommand(data);
             data.assetID = techName;
             buildTechForCommand(data, asset->assetID, techData);
             return asset;
+        }
+
+        static Entity* buildGiftTech(AsData data, TechData techData, AssetIDs techsToApply) {
+            auto asset = buildTech(data, techData);
+            asset->addComponent<GiftTechComponent>(techsToApply);
+            return asset;
+        }
+
+        static Entity* buildGiftTech(AsData data, TechData techData, AssetID techToApply) {
+            AssetIDs assets;
+            assets.push_back(techToApply);
+            return buildGiftTech(data, techData, assets);
         }
 
     };

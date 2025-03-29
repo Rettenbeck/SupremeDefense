@@ -114,9 +114,6 @@ namespace SupDef {
             void assignTechByList(Entity* entity, TechComponent* tech);
 
             EntityIDsTriple compareVectors(const EntityIDs& vec1, const EntityIDs& vec2);
-            // void handleAssigneesGained(EntityIDs gained_assignees, Entity* entity, TechComponent* tech);
-            // void handleAssigneesKept(EntityIDs kept_assignees, Entity* entity, TechComponent* tech);
-            // void handleAssigneesLost(EntityIDs lost_assignees, Entity* entity, TechComponent* tech);
             Entity* getCommandFromActiveTech(Entity* tech);
             Entity* getCommandFromActiveTech(ActiveTechComponent* activeTechComp);
             

@@ -16,6 +16,7 @@ namespace SupDef {
 
         auto pos = getMousePos();
         auto posW = getMousePosWorld();
+        ss << "Player: " << game->getThisPlayer()->id << "\n";
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
         ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
 

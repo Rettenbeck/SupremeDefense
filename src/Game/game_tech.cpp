@@ -6,19 +6,26 @@
 namespace SupDef {
 
     void Game::processTechs() {
+        // std::cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
         techToAssignees.clear();
         assigneeToTechs.clear();
         auto techs = entityManager->getEntitiesWithComponents<TechComponent>();
         assignTechs(techs);
 
         for (auto [tech, techComp] : techs) {
+            // std::cout << "Tech: " << tech->id << "; assignees: ";
             for (auto assignee : techComp->assignees) {
+                // std::cout << "  " << assignee;
                 techToAssignees[tech->id].push_back(assignee);
                 assigneeToTechs[assignee].push_back(tech->id);
             }
+            // std::cout << "\n";
         }
 
         for (auto& [entityID, techIDs] : assigneeToTechs) {
+            // std::cout << "Entity: " << entityID << "; techs:\n";
+            // for(auto t : techIDs) std::cout << "  " << t;
+            // std::cout << "\n";
             processTechsForEntity(entityID, techIDs);
         }
     }
@@ -28,13 +35,25 @@ namespace SupDef {
     }
 
     void Game::assignTechs(_EntTechs& techs) {
+        auto vec2str = [](EntityIDs& ids) {
+            std::stringstream ss;
+            for (auto id : ids) ss << id << "  ";
+            return ss.str();
+        };
+
         for (auto [entity, tech] : techs) {
+            // std::cout << "  ---------------------------------------\n";
+            // std::cout << "    " << "Tech: " << entity->id << "\n";
             auto previous_assignees = tech->assignees;
             tech->assignees.clear();
             assignTech(entity, tech);
+            // std::cout << "      After 1: " << vec2str(tech->assignees) << "\n";
             filterTech(entity, tech);
+            // std::cout << "      After 2: " << vec2str(tech->assignees) << "\n";
             filterTechByComponents(entity, tech);
+            // std::cout << "      After 3: " << vec2str(tech->assignees) << "\n";
             assignTechByList(entity, tech);
+            // std::cout << "      After 4: " << vec2str(tech->assignees) << "\n";
 
             auto [kept, lost, gained] = compareVectors(previous_assignees, tech->assignees);
             tech->gained = gained;
@@ -51,6 +70,10 @@ namespace SupDef {
         auto children = entityManager->getChildren(owner->id);
         auto ownComp = owner->getComponent<PlayerOwnershipComponent>();
 
+        if (tech->applyToOwner) {
+            tech->addAssignee(owner->id);
+        }
+
         if (tech->applyToParent) {
             if (parent) {
                 tech->addAssignee(parent->id);
@@ -64,11 +87,9 @@ namespace SupDef {
         }
 
         if (tech->applyToAll) {
-            if (ownComp) {
-                auto allUnitsOfPlayer = retrieveChildrenRecursive(ownComp->ownerID);
-                for (auto child : allUnitsOfPlayer) {
-                    tech->addAssignee(child->id);
-                }
+            auto allUnits = entityManager->getEntitiesWithComponents<PlayerOwnershipComponent>();
+            for (auto [child, childOwnerComp] : allUnits) {
+                tech->addAssignee(child->id);
             }
         }
 

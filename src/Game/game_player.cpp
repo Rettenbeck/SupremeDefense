@@ -11,6 +11,8 @@ namespace SupDef {
         if (playerComp) return entity;
         auto ownerComp = entity->getComponent<PlayerOwnershipComponent>();
         if (ownerComp) return entityManager->getEntity(ownerComp->ownerID);
+        auto parent = entityManager->getParent(entity->id);
+        if (parent) return getPlayer(parent);
         return nullptr;
     }
 
