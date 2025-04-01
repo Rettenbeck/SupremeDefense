@@ -26,6 +26,10 @@ namespace SupDef {
     const std::string AS_PLAYER_EX_NAME_DE                  = "Spieler"                             ;
     const std::string AS_PLAYER_EX_DESC_DE                  = "Spieler"                             ;
 
+    const std::string AS_PLAYER_EX_NO_MOVE                  = "player_no_move"                      ;
+    const std::string AS_PLAYER_EX_NO_MOVE_NAME_DE          = "Spieler (nm)"                        ;
+    const std::string AS_PLAYER_EX_NO_MOVE_DESC_DE          = "Spieler (nm)"                        ;
+
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -37,6 +41,15 @@ namespace SupDef {
     const std::string AS_RES_WOOD                           = "wood"                                ;
     const std::string AS_RES_WOOD_NAME_DE                   = "Holz"                                ;
     const std::string AS_RES_WOOD_DESC_DE                   = "Gehacktes Holz"                      ;
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= TECHS                                   =-=-=-=-=-=-=-=-=-=-=-=-= //
+    const std::string AS_TECH_ALLOW_BUILD1                  = "tech_allow_build_indirect1"          ;
+    const std::string AS_TECH_ALLOW_BUILD1_NAME_DE          = "Indirekt bauen"                      ;
+    const std::string AS_TECH_ALLOW_BUILD1_DESC_DE          = "Bauen über selbst"                   ;
+    const float AS_TECH_ALLOW_BUILD1_RADIUS         = 80.0;
 
 
 
@@ -56,8 +69,8 @@ namespace SupDef {
     const std::string AS_COM_TEST2_NAME_DE                  = "Testbefehl 2"                        ;
     const std::string AS_COM_TEST2_DESC_DE                  = "Einfach was nochmals testen"         ;
     const std::string AS_COM_TECH_TEST2                     = "com_tech_test2"                      ;
+    const float AS_COM_TEST2_RADIUS                 = 60.0;
     
-
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //

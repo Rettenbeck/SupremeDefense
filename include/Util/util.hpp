@@ -84,5 +84,27 @@ namespace SupDef {
     using VF2s = std::vector<VF2>;
 
     using Ints = std::vector<int>;
+    
+    template <typename T>
+    void push_back_unique(std::vector<T>& vec, const T& value) {
+        if (std::find(vec.begin(), vec.end(), value) == vec.end()) {
+            vec.push_back(value);
+        }
+    }
+    
+    template <typename T>
+    void remove_all(std::vector<T>& vec, const T& value) {
+        vec.erase(std::remove(vec.begin(), vec.end(), value), vec.end());
+    }
+    
+    template <typename T>
+    bool remove_first(std::vector<T>& vec, const T& value) {
+        auto it = std::find(vec.begin(), vec.end(), value);
+        if (it != vec.end()) {
+            vec.erase(it);
+            return true;
+        }
+        return false;
+    }
 
 }

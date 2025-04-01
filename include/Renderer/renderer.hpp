@@ -24,6 +24,8 @@ namespace SupDef {
             GuiManager* gui = nullptr;
             EventDispatcher* globalDispatcher = nullptr;
 
+            float framecountTotal = 0.0, framecountRenderer = 0.0, framecountGame = 0.0;
+
     };
 
     using URenderer = std::unique_ptr<Renderer>;

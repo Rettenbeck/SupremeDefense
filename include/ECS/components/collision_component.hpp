@@ -47,6 +47,14 @@ namespace SupDef {
             updateBoundingBox();
         }
         
+        VF2 getCenter() {
+            if (boundingBox.isDefined) {
+                return VF2(boundingBox.x + boundingBox.w / 2.0, boundingBox.y + boundingBox.h / 2.0);
+            } else {
+                return VF2(0.0, 0.0);
+            }
+        }
+
         bool collidesWithSimple(const CollisionComponent* other, float myX, float myY, float otherX, float otherY) const {
             if(dummyRadius == 0.0 || other->dummyRadius == 0.0) return false;
             return Math::circleOverlap(myX, myY, otherX, otherY, dummyRadius, other->dummyRadius);

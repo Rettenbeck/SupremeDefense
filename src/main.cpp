@@ -1,6 +1,5 @@
 #include <iostream>
 #include <include.hpp>
-// #include <main_asset.cpp>
 
 
 void test_app();
@@ -32,14 +31,18 @@ void test_app() {
     auto mapComp   = map->getComponent<SupDef::MapComponent>();
     auto tilesComp = map->getComponent<SupDef::TilesComponent>();
 
-    auto player = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
-    g->setThisPlayer(player->id);
+    auto player1 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
+    auto player2 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX_NO_MOVE);
+    g->setThisPlayer(player1->id);
+    g->otherPlayer = player2->id;
 
-    SupDef::V2 start( 2 * 16, 6 * 16);
-    SupDef::V2 goal (12 * 16, 8 * 16);
-    auto es = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, start.x + 12, start.y);
-    auto eg = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id,  goal.x + 12,  goal.y);
-    auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, start.x, start.y);
+    auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  12,  20);
+    auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  14,  64);
+    auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player1->id,  64,  12);
+
+    auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 212,  20);
+    auto e5 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 214,  64);
+    auto e6 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player2->id, 264,  12);
     
     serialize_game(g);
 

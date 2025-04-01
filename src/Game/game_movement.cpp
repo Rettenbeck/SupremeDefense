@@ -27,24 +27,15 @@ namespace SupDef {
                                                     movementComp->goalX, movementComp->goalY, collisionComp->dummyRadius);
         //
 
-        // std::cout << "Pathfinder ended; " << result->path.size() << "\n";
         if (!result->path.empty()) {
             for (auto& p : result->path) {
                 pathTiles.emplace_back(p->x, p->y);
             }
         }
 
-        std::cout << "Path length: " << result->path.size()
-        << "; found: " << result->found
-        << "; stuck: " << result->stuck
-        << "; done:  " << result->done << "\n";
-
         if (result->stuck || !result->found || result->path.empty()) {
             movementComp->clearGoal();
             movementComp->setVelocityToZero();
-            // if(result->stuck) std::cout << " is stuck";
-            // if(!result->found) std::cout << " no path";
-            // std::cout << "\n";
         } else {
             int index = 0;
             if (result->path.size() > 1) index = 1;
@@ -52,7 +43,6 @@ namespace SupDef {
             movementComp->tempGoalX = p->x;
             movementComp->tempGoalY = p->y;
             movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
-            // std::cout << "; tmp: " << p->x << "; " << p->y << "\n";
         }
     }
     
@@ -136,8 +126,9 @@ namespace SupDef {
         for (auto child : children) {
             auto posCompChild = child->getComponent<PositionComponent>();
             if (!posCompChild) continue;
-            posCompChild->xAbs = posCompChild->x + positionComponent->xAbs;
-            posCompChild->yAbs = posCompChild->y + positionComponent->yAbs;
+            auto center = getCenterOfEntity(entity, positionComponent);
+            posCompChild->xAbs = posCompChild->x + center.x;
+            posCompChild->yAbs = posCompChild->y + center.y;
             passPositionToChildren(child, posCompChild);
         }
     }

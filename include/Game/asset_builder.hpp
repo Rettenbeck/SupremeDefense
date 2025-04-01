@@ -20,6 +20,14 @@ namespace SupDef {
             name_de(name_de), desc_de(desc_de), name_en(name_en), desc_en(desc_en) {}
     };
 
+    struct TechData {
+        TechComponent* techComponent = nullptr;
+        float radius = 0.0;
+        TechData() {}
+        TechData(TechComponent* techComponent) : techComponent(techComponent) {}
+        TechData(TechComponent* techComponent, float radius) : techComponent(techComponent), radius(radius) {}
+    };
+
     class AssetBuilder {
         public:
 
@@ -44,6 +52,13 @@ namespace SupDef {
             resComp->addResource(id, amount, gatherRate, maxCapacity);
         }
 
+        static void addRequiredResource(Entity* asset, ResourceID id, long amount) {
+            //
+            assert(asset);
+            auto req = asset->retrieveComponent<RequirementComponent>();
+            req->add(std::make_unique<SupDef::Resource>(id, amount));
+        }
+
         static void addInit(Entity* asset, AssetID assetID) {
             assert(asset);
             auto initComp = asset->retrieveComponent<InitContainerComponent>();
@@ -59,6 +74,13 @@ namespace SupDef {
                 colComp->dummyRadius = std::min(width, height);
             }
             colComp->addShape(std::make_unique<SupDef::RectangleShape>(width, height));
+        }
+
+        static void addDummyRadius(Entity* asset, float radius) {
+            assert(asset);
+            auto colComp = asset->retrieveComponent<CollisionComponent>();
+            assert(colComp);
+            colComp->dummyRadius = radius;
         }
 
         static Entity* buildMap(AsData data, int tileSize, int x, int y, int width, int height) {
@@ -101,9 +123,21 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildTechForCommand(AsData data, CommandID commandID) {
+        static Entity* buildTech(AsData data, TechData techData) {
             auto asset = createEmptyAsset(data);
-            asset->addComponent<TechComponent>();
+            asset->addComponent<TechComponent>(techData.techComponent);
+            if (techData.techComponent) {
+                if (techData.techComponent->applyToWithinInfluence) {
+                    asset->addComponent<InfluenceComponent>();
+                    asset->addComponent<PositionComponent>();
+                    addDummyRadius(asset, techData.radius);
+                }
+            }
+            return asset;
+        }
+
+        static Entity* buildTechForCommand(AsData data, CommandID commandID, TechData techData) {
+            auto asset = buildTech(data, techData);
             asset->addComponent<ActiveTechComponent>(commandID);
             return asset;
         }
@@ -114,11 +148,23 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildCommand(AsData data, AssetID techName) {
+        static Entity* buildCommand(AsData data, AssetID techName, TechData techData) {
             auto asset = buildCommand(data);
             data.assetID = techName;
-            buildTechForCommand(data, asset->assetID);
+            buildTechForCommand(data, asset->assetID, techData);
             return asset;
+        }
+
+        static Entity* buildGiftTech(AsData data, TechData techData, AssetIDs techsToApply) {
+            auto asset = buildTech(data, techData);
+            asset->addComponent<GiftTechComponent>(techsToApply);
+            return asset;
+        }
+
+        static Entity* buildGiftTech(AsData data, TechData techData, AssetID techToApply) {
+            AssetIDs assets;
+            assets.push_back(techToApply);
+            return buildGiftTech(data, techData, assets);
         }
 
     };

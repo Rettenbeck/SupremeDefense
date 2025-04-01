@@ -32,7 +32,6 @@ namespace SupDef {
 
     using SPathNode = std::shared_ptr<PathNode>;
     using PathNodes = std::vector<SPathNode>;
-    // using PPathNodes = std::vector<PathNode*>;
     using NodeMap = std::unordered_map<int, SPathNode>;
     using FloatPair = std::pair<float, float>;
     using FloatPairs = std::vector<FloatPair>;

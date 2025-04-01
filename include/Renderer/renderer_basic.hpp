@@ -75,6 +75,7 @@ namespace SupDef {
             void renderCollisionGrid();
             void renderEntitiesWithCollision(EntityManager* entityManager);
             void renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB);
+            void renderEntityWithInfluence(PositionComponent* pos, CollisionComponent* col);
             void renderSelectedUnits();
             void renderSelectedUnit(EntityID entityID);
             void renderVirtualEntity();
@@ -86,6 +87,8 @@ namespace SupDef {
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
+            void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
+            void drawCooldownOverlay(float x, float y, float width, float height, float perc);
 
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);

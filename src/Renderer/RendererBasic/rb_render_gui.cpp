@@ -9,8 +9,14 @@ namespace SupDef {
         if (!debugMode) return;
         std::stringstream ss;
 
+        ss << "Framecount Total:    " << framecountTotal << "\n";
+        ss << "           Renderer: " << framecountRenderer << "\n";
+        ss << "           Game:     " << framecountGame << "\n";
+        ss << "\n";
+
         auto pos = getMousePos();
         auto posW = getMousePosWorld();
+        ss << "Player: " << game->getThisPlayer()->id << "\n";
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
         ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
 
@@ -27,6 +33,17 @@ namespace SupDef {
             ss << "; def: " << bb->isDefined;
             ss << "; xm: " << xm << "; ym: " << ym << "\n";
         }
+        ss << "\n";
+
+        auto col = game->getCollisionTracker();
+        ss << "Collisions: " << col->getCollisionList().size() << "\n";
+        for(auto& collision : col->getCollisionList()) {
+            ss << "  Entities: " << collision->entityA << " & " << collision->entityB;
+            ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
+        }
+
+        ss << "\n--- More Debug Info ---\n";
+        ss << game->toPrint << "\n";
 
         drawLabel(GuiElementStyle::Default, 2, 100, ss.str());
     }
@@ -97,6 +114,17 @@ namespace SupDef {
         if (ImGui::Button(text.c_str(), ImVec2(width, height))) {
             std::cout << "Button '" << text << "' clicked!\n";
         }
+    }
+
+    void RendererBasic::drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max) {
+        auto perc = ((double) current) / ((double) max);
+        drawCooldownOverlay(x, y, width, height, (float) perc);
+    }
+
+    void RendererBasic::drawCooldownOverlay(float x, float y, float width, float height, float perc) {
+        sf::Color overlay(37, 150, 190, 150);
+        ColorData cd(overlay, overlay, 0);
+        drawRect(x, y, width * perc, height, cd);
     }
 
 }

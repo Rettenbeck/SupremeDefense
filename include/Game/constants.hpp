@@ -6,9 +6,21 @@
 
 namespace SupDef {
     
+    enum class Relation {
+        Same, Allied, Opposing, Neutral, Undefined
+    };
+
+    enum class TechPersistence {
+        Gained, Kept, Lost, Undefined
+    };
+
     using CommandType = std::string;
     using CollisionGroup = std::string;
-    using TechMap = std::unordered_map<EntityID, EntityIDs>;
+    using TechAssignment = std::tuple<EntityID, TechPersistence>;
+    using TechAssignments = std::vector<TechAssignment>;
+    using TechMap = std::unordered_map<EntityID, TechAssignments>;
+
+    using EntityIDsTriple = std::tuple<EntityIDs, EntityIDs, EntityIDs>;
 
     using _EntWorld = std::tuple<Entity*, WorldComponent*>;
     using _EntMapTiles = std::tuple<Entity*, MapComponent*, TilesComponent*>;
@@ -16,9 +28,13 @@ namespace SupDef {
     using _EntPosMovCols = std::vector<_EntPosMovCol>;
     using _EntPosCol  = std::tuple<Entity*, PositionComponent*, CollisionComponent*>;
     using _EntPosCols = std::vector<_EntPosCol>;
+    using _Map_EntPosCols = std::unordered_map<EntityID, _EntPosCols>;
     using _EntTech  = std::tuple<Entity*, TechComponent*>;
     using _EntTechs = std::vector<_EntTech>;
     
+    const CollisionGroup CG_INFLUENCE                       = "cg_influence"                        ;
+    const CollisionGroup CG_PROJECTILE                      = "cg_projectile"                       ;
+
     const std::string DEFAULT_FILENAME_SAVEGAME             = "game_save.txt"                       ;
 
     const std::string SG_GAME                               = "game"                                ;
