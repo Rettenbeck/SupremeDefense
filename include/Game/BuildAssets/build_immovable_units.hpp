@@ -12,7 +12,6 @@ namespace SupDef::BuildAssets {
             AS_UNIT_IMM_1_WIDTH, AS_UNIT_IMM_1_HEIGHT
         );
         asset->addComponent<InfluenceableComponent>();
-        AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
     }
 
     void buildImmovableUnitI2(AssetManager* am) {
@@ -22,6 +21,7 @@ namespace SupDef::BuildAssets {
             AS_UNIT_IMM_2_WIDTH, AS_UNIT_IMM_2_HEIGHT
         );
         asset->addComponent<InfluenceableComponent>();
+        AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
     }
 
     void buildImmovableUnits(AssetManager* am) {

@@ -107,7 +107,9 @@ namespace SupDef {
     const std::string S_REQUIRED_COMPONENTS                 = "required_components"                 ;
     const std::string S_WHITELIST                           = "whitelist"                           ;
     const std::string S_BLACKLIST                           = "blacklist"                           ;
-    const std::string S_TECHS_TO_APPLY                      = "techs_to_apply"                      ;
+    const std::string S_TECHS_TO_CREATE                     = "techs_to_create"                     ;
+    const std::string S_CREATED_TECHS                       = "created_techs"                       ;
+    const std::string S_CREATED_BY                          = "created_by"                          ;
 
     const std::string S_KEY                                 = "key"                                 ;
     const std::string S_TEXTS                               = "texts"                               ;

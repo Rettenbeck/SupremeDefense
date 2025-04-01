@@ -8,6 +8,7 @@ namespace SupDef {
         Info,
         Warning,
         Error,
+        Assert,
         Success
     };
 

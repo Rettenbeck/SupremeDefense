@@ -7,6 +7,7 @@ namespace SupDef {
 
     struct TechComponent : public Component {
         EntityIDs assignees, gained, kept, lost;
+        EntityID createdBy = NO_ENTITY;
 
         bool applyToAll = false;
         bool applyToOwner = false;
@@ -37,19 +38,15 @@ namespace SupDef {
         }
 
         void addAssignee(EntityID entityID) {
-            if (std::find(assignees.begin(), assignees.end(), entityID) == assignees.end()) {
-                assignees.push_back(entityID);
-            }
+            push_back_unique(assignees, entityID);
         }
 
         void removeAssignee(EntityID entityID) {
-            assignees.erase(std::remove(assignees.begin(), assignees.end(), entityID), assignees.end());
+            remove_all(assignees, entityID);
         }
 
         void addRequiredComponentFromString(std::string name) {
-            if (std::find(requiredComponents.begin(), requiredComponents.end(), name) == requiredComponents.end()) {
-                requiredComponents.push_back(name);
-            }
+            push_back_unique(requiredComponents, name);
         }
 
         template <typename ComponentType>
@@ -82,6 +79,7 @@ namespace SupDef {
             j[S_GAINED               ] = gained;
             j[S_KEPT                 ] = kept;
             j[S_LOST                 ] = lost;
+            j[S_CREATED_BY           ] = createdBy;
             j[S_APPLY_TO_ALL         ] = applyToAll;
             j[S_APPLY_TO_OWNER       ] = applyToOwner;
             j[S_APPLY_TO_PARENT      ] = applyToParent;
@@ -101,6 +99,7 @@ namespace SupDef {
             j.at(S_GAINED               ).get_to(gained                );
             j.at(S_KEPT                 ).get_to(kept                  );
             j.at(S_LOST                 ).get_to(lost                  );
+            j.at(S_CREATED_BY           ).get_to(createdBy             );
             j.at(S_APPLY_TO_ALL         ).get_to(applyToAll            );
             j.at(S_APPLY_TO_OWNER       ).get_to(applyToOwner          );
             j.at(S_APPLY_TO_PARENT      ).get_to(applyToParent         );

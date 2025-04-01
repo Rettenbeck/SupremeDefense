@@ -5,7 +5,8 @@
                 "asset_id": "tech_allow_build_indirect1",
                 "components": [
                     {
-                        "techs_to_apply": [
+                        "created_techs": [],
+                        "techs_to_create": [
                             "com_test1"
                         ],
                         "type": "gift_tech"
@@ -36,6 +37,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -164,6 +166,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -392,6 +395,12 @@
                 "asset_id": "imm2",
                 "components": [
                     {
+                        "contained": [
+                            "com_tech_test1"
+                        ],
+                        "type": "init_container"
+                    },
+                    {
                         "type": "influenceable"
                     },
                     {
@@ -460,6 +469,7 @@
                         "apply_to_owner": true,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -503,6 +513,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": true,
                         "gained": [],
                         "kept": [],
@@ -2073,12 +2084,6 @@
                 "asset_id": "imm1",
                 "components": [
                     {
-                        "contained": [
-                            "com_tech_test1"
-                        ],
-                        "type": "init_container"
-                    },
-                    {
                         "type": "influenceable"
                     },
                     {
@@ -2189,6 +2194,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -2371,6 +2377,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -2578,6 +2585,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": true,
                         "gained": [],
                         "kept": [],

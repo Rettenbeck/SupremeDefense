@@ -28,6 +28,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -52,7 +53,8 @@
                         "type": "collision"
                     },
                     {
-                        "techs_to_apply": [
+                        "created_techs": [],
+                        "techs_to_create": [
                             "com_test1"
                         ],
                         "type": "gift_tech"
@@ -221,12 +223,6 @@
                     },
                     {
                         "type": "influenceable"
-                    },
-                    {
-                        "contained": [
-                            "com_tech_test1"
-                        ],
-                        "type": "init_container"
                     }
                 ]
             },
@@ -1795,6 +1791,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": true,
                         "gained": [],
                         "kept": [],
@@ -1843,6 +1840,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -2124,6 +2122,12 @@
                     },
                     {
                         "type": "influenceable"
+                    },
+                    {
+                        "contained": [
+                            "com_tech_test1"
+                        ],
+                        "type": "init_container"
                     }
                 ]
             },
@@ -2154,6 +2158,7 @@
                         "apply_to_owner": true,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -3756,6 +3761,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": true,
                         "gained": [],
                         "kept": [],
@@ -3968,6 +3974,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],
@@ -4150,6 +4157,7 @@
                         "apply_to_owner": false,
                         "apply_to_parent": false,
                         "blacklist": [],
+                        "created_by": 0,
                         "filter_by_components": false,
                         "gained": [],
                         "kept": [],

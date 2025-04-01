@@ -6,32 +6,34 @@
 namespace SupDef {
 
     void Game::processTechs() {
-        // std::cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-        techToAssignees.clear();
-        assigneeToTechs.clear();
+        removeObsoleteGiftedTechs();
+
         auto techs = entityManager->getEntitiesWithComponents<TechComponent>();
         assignTechs(techs);
+        distributeTechAssignment(techs);
 
-        for (auto [tech, techComp] : techs) {
-            // std::cout << "Tech: " << tech->id << "; assignees: ";
-            for (auto assignee : techComp->assignees) {
-                // std::cout << "  " << assignee;
-                techToAssignees[tech->id].push_back(assignee);
-                assigneeToTechs[assignee].push_back(tech->id);
-            }
-            // std::cout << "\n";
-        }
-
-        for (auto& [entityID, techIDs] : assigneeToTechs) {
-            // std::cout << "Entity: " << entityID << "; techs:\n";
-            // for(auto t : techIDs) std::cout << "  " << t;
-            // std::cout << "\n";
-            processTechsForEntity(entityID, techIDs);
+        for (auto& [entityID, techAssignments] : assigneeToTechs) {
+            processTechsForEntity(entityID, techAssignments);
         }
     }
 
-    void Game::processTechsForEntity(EntityID entityID, EntityIDs& techIDs) {
-        //
+    void Game::processTechsForEntity(EntityID entityID, TechAssignments& techAssignments) {
+        auto entity = entityManager->getEntity(entityID);
+        if (!entity) return;
+
+        for (auto [techID, persistence] : techAssignments) {
+            auto tech = entityManager->getEntity(techID);
+            if (!tech) continue;
+
+            auto giftComp = tech->getComponent<GiftTechComponent>();
+            if (giftComp) {
+                if (persistence == TechPersistence::Gained) {
+                    createGiftedTech(entity, tech, giftComp);
+                } else {
+                    removeGiftedTech(entity, tech, giftComp);
+                }
+            }
+        }
     }
 
     void Game::assignTechs(_EntTechs& techs) {
@@ -42,30 +44,23 @@ namespace SupDef {
         };
 
         for (auto [entity, tech] : techs) {
-            // std::cout << "  ---------------------------------------\n";
-            // std::cout << "    " << "Tech: " << entity->id << "\n";
             auto previous_assignees = tech->assignees;
             tech->assignees.clear();
             assignTech(entity, tech);
-            // std::cout << "      After 1: " << vec2str(tech->assignees) << "\n";
             filterTech(entity, tech);
-            // std::cout << "      After 2: " << vec2str(tech->assignees) << "\n";
             filterTechByComponents(entity, tech);
-            // std::cout << "      After 3: " << vec2str(tech->assignees) << "\n";
             assignTechByList(entity, tech);
-            // std::cout << "      After 4: " << vec2str(tech->assignees) << "\n";
 
             auto [kept, lost, gained] = compareVectors(previous_assignees, tech->assignees);
             tech->gained = gained;
             tech->kept = kept;
             tech->lost = lost;
         }
-
     }
 
     void Game::assignTech(Entity* entity, TechComponent* tech) {
         auto owner = entityManager->getParent(entity->id);
-        assert(owner);
+        if (!log_assert(owner)) return;
         auto parent = entityManager->getParent(owner->id);
         auto children = entityManager->getChildren(owner->id);
         auto ownComp = owner->getComponent<PlayerOwnershipComponent>();
@@ -139,7 +134,7 @@ namespace SupDef {
         EntityIDs filtered;
         for (auto id : tech->assignees) {
             auto assignee = entityManager->getEntity(id);
-            assert(assignee);
+            if (!log_assert(assignee)) continue;
             bool result = true;
             for (auto comp : tech->requiredComponents) {
                 if (!assignee->hasComponentByName(comp)) {
@@ -161,11 +156,69 @@ namespace SupDef {
         }
     }
 
+    void Game::distributeTechAssignment(_EntTechs& techList) {
+        techToAssignees.clear();
+        assigneeToTechs.clear();
+        for (auto [tech, techComp] : techList) {
+            for (auto assignee : techComp->gained) {
+                techToAssignees[tech->id].emplace_back(assignee, TechPersistence::Gained);
+                assigneeToTechs[assignee].emplace_back(tech->id, TechPersistence::Gained);
+            }
+            for (auto assignee : techComp->kept) {
+                techToAssignees[tech->id].emplace_back(assignee, TechPersistence::Kept);
+                assigneeToTechs[assignee].emplace_back(tech->id, TechPersistence::Kept);
+            }
+            for (auto assignee : techComp->lost) {
+                techToAssignees[tech->id].emplace_back(assignee, TechPersistence::Lost);
+                assigneeToTechs[assignee].emplace_back(tech->id, TechPersistence::Lost);
+            }
+        }
+    }
+    
+    void Game::createGiftedTech(Entity* gifted, Entity* gifter, GiftTechComponent* giftComp) {
+        if (!log_assert(gifted  )) return;
+        if (!log_assert(gifter  )) return;
+        if (!log_assert(giftComp)) return;
+
+        for (auto techToCreate : giftComp->techsToCreate) {
+            auto createdTech = createEntityFromAsset(techToCreate, gifted->id);
+            assert(createdTech);
+            auto createdTechComp = createdTech->getComponent<TechComponent>();
+            assert(createdTechComp);
+            giftComp->addCreatedTech(gifted->id, createdTech->id);
+            createdTechComp->createdBy = gifter->id;
+        }
+    }
+
+    void Game::removeGiftedTech(Entity* gifted, Entity* gifter, GiftTechComponent* giftComp) {
+        if (!log_assert(gifted  )) return;
+        if (!log_assert(gifter  )) return;
+        if (!log_assert(giftComp)) return;
+
+        if (giftComp->createdTechs.count(gifted->id)) {
+            for(auto techID : giftComp->createdTechs[gifted->id]) {
+                entityManager->removeEntity(techID);
+                giftComp->removeCreatedTech(gifted->id, techID);
+            }
+        }
+    }
+
+    void Game::removeObsoleteGiftedTechs() {
+        auto techs = entityManager->getEntitiesWithComponents<TechComponent>();
+        for (auto [tech, techComp] : techs) {
+            if (techComp->createdBy != NO_ENTITY) {
+                auto gifter = entityManager->getEntity(techComp->createdBy);
+                if (!gifter) {
+                    entityManager->removeEntity(tech->id);
+                }
+            }
+        }
+    }
+
     EntityIDsTriple Game::compareVectors(const EntityIDs& vec1, const EntityIDs& vec2) {
         std::unordered_set<EntityID> set1(vec1.begin(), vec1.end());
         std::unordered_set<EntityID> set2(vec2.begin(), vec2.end());
         EntityIDs in_both, only_in_1, only_in_2;
-
         for (int val : set1) {  // Entries from vec1
             if (set2.count(val)) in_both.push_back(val);
             else only_in_1.push_back(val);
@@ -173,7 +226,6 @@ namespace SupDef {
         for (int val : set2) {  // Entries only in vec2
             if (!set1.count(val)) only_in_2.push_back(val);
         }
-
         return {in_both, only_in_1, only_in_2};
     }
 

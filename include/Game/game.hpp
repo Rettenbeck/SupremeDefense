@@ -107,12 +107,16 @@ namespace SupDef {
             
             // ### TECH MANAGEMENT ######################################################## //
             void processTechs();
-            void processTechsForEntity(EntityID entityID, EntityIDs& techIDs);
+            void processTechsForEntity(EntityID entityID, TechAssignments& techAssignments);
             void assignTechs(_EntTechs& techs);
             void assignTech(Entity* entity, TechComponent* tech);
             void filterTech(Entity* entity, TechComponent* tech);
             void filterTechByComponents(Entity* entity, TechComponent* tech);
             void assignTechByList(Entity* entity, TechComponent* tech);
+            void distributeTechAssignment(_EntTechs& techList);
+            void createGiftedTech(Entity* gifted, Entity* gifter, GiftTechComponent* giftComp);
+            void removeGiftedTech(Entity* gifted, Entity* gifter, GiftTechComponent* giftComp);
+            void removeObsoleteGiftedTechs();
 
             EntityIDsTriple compareVectors(const EntityIDs& vec1, const EntityIDs& vec2);
             Entity* getCommandFromActiveTech(Entity* tech);

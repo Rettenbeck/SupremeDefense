@@ -10,9 +10,15 @@ namespace SupDef {
         Same, Allied, Opposing, Neutral, Undefined
     };
 
+    enum class TechPersistence {
+        Gained, Kept, Lost, Undefined
+    };
+
     using CommandType = std::string;
     using CollisionGroup = std::string;
-    using TechMap = std::unordered_map<EntityID, EntityIDs>;
+    using TechAssignment = std::tuple<EntityID, TechPersistence>;
+    using TechAssignments = std::vector<TechAssignment>;
+    using TechMap = std::unordered_map<EntityID, TechAssignments>;
 
     using EntityIDsTriple = std::tuple<EntityIDs, EntityIDs, EntityIDs>;
 
