@@ -61,6 +61,9 @@ namespace SupDef {
     const std::string SC_MOVEMENT                           = "movement"                            ;
     const std::string SC_IMMOVABLE                          = "immovable"                           ;
     const std::string SC_COLLISION                          = "collision"                           ;
+    const std::string SC_INFLUENCE                          = "influence"                           ;
+    const std::string SC_INFLUENCEABLE                      = "influenceable"                       ;
+    const std::string SC_PROJECTILE                         = "projectile"                          ;
     const std::string SC_HEALTH                             = "health"                              ;
 
     // Asset Components
@@ -72,8 +75,9 @@ namespace SupDef {
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
 
     // Tech Components
-    const std::string SCT_TECH                              = "tech"                                ;   
-    const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;   
+    const std::string SCT_TECH                              = "tech"                                ;
+    const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;
+    const std::string SCT_GIFT_TECH                         = "gift_tech"                           ;
 
     // Attributes
     const std::string S_IS_UNIQUE                           = "unique"                              ;
@@ -82,10 +86,31 @@ namespace SupDef {
     const std::string S_CONTAINED                           = "contained"                           ;
     const std::string S_COOLDOWN                            = "cooldown"                            ;
     const std::string S_CURRENT_COOLDOWN                    = "current_cooldown"                    ;
+    const std::string S_ORIGINAL_COOLDOWN                   = "original_cooldown"                   ;
     const std::string S_INIT_FULL_COOLDOWN                  = "init_with_full_cooldown"             ;
     const std::string S_COMMAND                             = "command"                             ;
 
     const std::string S_ASSIGNEES                           = "assignees"                           ;
+    const std::string S_GAINED                              = "gained"                              ;
+    const std::string S_KEPT                                = "kept"                                ;
+    const std::string S_LOST                                = "lost"                                ;
+    const std::string S_APPLY_TO_ALL                        = "apply_to_all"                        ;
+    const std::string S_APPLY_TO_OWNER                      = "apply_to_owner"                      ;
+    const std::string S_APPLY_TO_PARENT                     = "apply_to_parent"                     ;
+    const std::string S_APPLY_TO_CHILDREN                   = "apply_to_children"                   ;
+    const std::string S_APPLY_TO_PLAYER_UNITS               = "apply_to_player_units"               ;
+    const std::string S_APPLY_TO_INFLUENCE                  = "apply_to_influence"                  ;
+    const std::string S_AFFECTS_ALL                         = "affects_all"                         ;
+    const std::string S_AFFECTS_SAME_PLAYER                 = "affects_same_player"                 ;
+    const std::string S_AFFECTS_SAME_TEAM                   = "affects_same_team"                   ;
+    const std::string S_AFFECTS_ENEMY                       = "affects_enemy"                       ;
+    const std::string S_FILTER_BY_COMPONENTS                = "filter_by_components"                ;
+    const std::string S_REQUIRED_COMPONENTS                 = "required_components"                 ;
+    const std::string S_WHITELIST                           = "whitelist"                           ;
+    const std::string S_BLACKLIST                           = "blacklist"                           ;
+    const std::string S_TECHS_TO_CREATE                     = "techs_to_create"                     ;
+    const std::string S_CREATED_TECHS                       = "created_techs"                       ;
+    const std::string S_CREATED_BY                          = "created_by"                          ;
 
     const std::string S_KEY                                 = "key"                                 ;
     const std::string S_TEXTS                               = "texts"                               ;
@@ -105,6 +130,7 @@ namespace SupDef {
     const std::string S_CHILDREN                            = "children"                            ;
     const std::string S_PLAYER                              = "player"                              ;
     const std::string S_TEAM                                = "team"                                ;
+    const std::string S_IS_NEUTRAL                          = "is_neutral"                          ;
     const std::string S_RULES                               = "rules"                               ;
     const std::string S_MAPS                                = "maps"                                ;
     const std::string S_TILES                               = "tile_list"                           ;

@@ -15,8 +15,8 @@ namespace SupDef {
 
         auto initComp = asset->getComponent<InitContainerComponent>();
         if (initComp) {
-            for (auto& c : initComp->contained) {
-                createEntityFromAsset(c, id);
+            for (auto& containedID : initComp->contained) {
+                createEntityFromAsset(containedID, id);
             }
         }
         return entity;

@@ -7,7 +7,6 @@ namespace SupDef {
 
     void RendererBasic::renderGame() {
         if(!game) return;
-        //renderCollisionGrid();
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
         renderSelectedUnits();
@@ -83,7 +82,11 @@ namespace SupDef {
         assert(entityManager);
         auto entities = entityManager->getEntitiesWithComponents<PositionComponent, CollisionComponent>();
         for (auto [entity, pos, col] : entities) {
-            renderEntityWithCollision(pos, col, false);
+            if (entity->hasComponent<InfluenceComponent>()) {
+                // renderEntityWithInfluence(pos, col);
+            } else {
+                renderEntityWithCollision(pos, col, false);
+            }
         }
     }
 
@@ -120,6 +123,32 @@ namespace SupDef {
         }
     }
 
+    void RendererBasic::renderEntityWithInfluence(PositionComponent* pos, CollisionComponent* col) {
+        if (!pos || !col) return;
+    
+        float entityX = pos->xAbs;
+        float entityY = pos->yAbs;
+
+        ColorData cd(sf::Color(250, 0, 0, 40), sf::Color(250, 0, 0, 90), 0);
+        if (!col->shapes.empty()) {
+            for (const auto& shape : col->shapes) {
+                float absX = entityX + shape->offsetX;
+                float absY = entityY + shape->offsetY;
+
+                if (auto* circle = dynamic_cast<CircleShape*>(shape.get())) {
+                    drawCircle(absX, absY, circle->radius, cd);
+                } 
+                else if (auto* rect = dynamic_cast<RectangleShape*>(shape.get())) {
+                    drawRect(absX, absY, rect->width, rect->height, cd);
+                }
+            }
+        } else {
+            if (col->dummyRadius > 0.0f) {
+                drawCircle(entityX, entityY, col->dummyRadius, cd);
+            }
+        }
+    }
+
     void RendererBasic::renderSelectedUnits() {
         auto sm = gui->getSelectionManager();
         assert(sm);
@@ -136,6 +165,11 @@ namespace SupDef {
         auto colComp = entity->getComponent<CollisionComponent>();
         if (!posComp) return;
         if (!colComp) return;
+
+        auto infs = game->getEntityManager()->getEntitiesWithComponents<PositionComponent, CollisionComponent, InfluenceComponent>(entityID);
+        for(auto [entity, pos, col, inf] : infs) {
+            renderEntityWithInfluence(pos, col);
+        }
 
         int d = 5;
         ColorData cd(sf::Color::Black, sf::Color::White, 1);

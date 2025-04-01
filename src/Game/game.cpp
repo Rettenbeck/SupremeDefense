@@ -4,6 +4,7 @@
 #include <Game/game_requirements.cpp>
 #include <Game/game_collisions.cpp>
 #include <Game/game_movement.cpp>
+#include <Game/game_player.cpp>
 #include <Game/game_logic.cpp>
 #include <Game/game_tech.cpp>
 #include <Game/game_assets.cpp>
@@ -29,8 +30,6 @@ namespace SupDef {
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
-        Logger::getInstance().addMessage(MessageType::Success, "World initialized!");
-
         globalDispatcher->subscribe<TriggerCommandEvent>([this](const SupDef::Events& events) {
             for (const auto& event : events) {
                 const auto& typedEvent = static_cast<const TriggerCommandEvent&>(*event);
@@ -53,4 +52,20 @@ namespace SupDef {
         return createEntityFromAsset(mapAssetID, world->id);
     }
     
+    EntityID Game::getMapOfEntity(EntityID entityID) {
+        int count = 50;
+        if (entityID == NO_ENTITY) return NO_ENTITY;
+        auto current = entityID;
+        while(--count > 0) {
+            current = entityManager->getParent(current)->id;
+            if (current == NO_ENTITY) return NO_ENTITY;
+            auto entity = entityManager->getEntity(current);
+            assert(entity);
+            auto mapComp = entity->getComponent<MapComponent>();
+            if (mapComp) return current;
+        }
+        Logger::getInstance().addMessage(MessageType::Error, "Infinite loop in Game::getMapOfEntity");
+        return NO_ENTITY;
+    }
+
 }

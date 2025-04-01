@@ -84,7 +84,9 @@ namespace SupDef {
                 auto entities = game->getEntityManager()->getEntities(selected);
                 ss << "Entities selected: " << entities.size() << "\n";
                 for (auto entity : entities) {
-                    auto techIDs = assigneeToTechs[entity->id];
+                    auto techAssignments = assigneeToTechs[entity->id];
+                    EntityIDs techIDs;
+                    for (auto [techID, persistence] : techAssignments) techIDs.push_back(techID);
                     auto techs = game->getEntityManager()->getEntities(techIDs);
                     ss << "  Entity: " << entity->id << "; tech size: " << techs.size() << "\n";
                     for (auto tech : techs) {
