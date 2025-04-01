@@ -29,7 +29,7 @@ namespace SupDef {
             if (giftComp) {
                 if (persistence == TechPersistence::Gained) {
                     createGiftedTech(entity, tech, giftComp);
-                } else {
+                } else if (persistence == TechPersistence::Lost) {
                     removeGiftedTech(entity, tech, giftComp);
                 }
             }
@@ -208,9 +208,7 @@ namespace SupDef {
         for (auto [tech, techComp] : techs) {
             if (techComp->createdBy != NO_ENTITY) {
                 auto gifter = entityManager->getEntity(techComp->createdBy);
-                if (!gifter) {
-                    entityManager->removeEntity(tech->id);
-                }
+                if (!gifter) entityManager->removeEntity(tech->id);
             }
         }
     }
@@ -245,40 +243,3 @@ namespace SupDef {
     }
 
 }
-
-
-
-        // auto movers = entityManager->getEntitiesWithComponents<
-        //     PositionComponent, MovementComponent, CollisionComponent, SelectableComponent>();
-        
-        // auto players = entityManager->getEntitiesWithComponents<PlayerComponent>();
-        // MoveCommandComponent* mcComp = nullptr;
-        // Entity* moveTech = nullptr;
-        // for (auto [entity, player] : players) {
-        //     auto children = entityManager->getChildren(entity->id);
-        //     for (auto child : children) {
-        //         auto command = getCommandFromActiveTech(child);
-        //         if (command) {
-        //             mcComp = command->getComponent<MoveCommandComponent>();
-        //             if (mcComp) moveTech = child;
-        //         }
-        //         if (mcComp) break;
-        //     }
-        //     if (mcComp) break;
-        // }
-
-        // if (mcComp) {
-        //     assert(moveTech);
-        //     auto techComp = moveTech->getComponent<TechComponent>();
-        //     assert(techComp);
-        //     for(auto [ent, pos, mov, col, sel] : movers) {
-        //         techComp->addAssignee(ent->id);
-        //     }
-        // }
-
-        // auto actives = entityManager->getEntitiesWithComponents<TechComponent, ActiveTechComponent>();
-        // for(auto [ent, tech, active] : actives) {
-        //     auto parent = entityManager->getParent(ent->id);
-        //     if (!parent) continue;
-        //     tech->addAssignee(parent->id);
-        // }

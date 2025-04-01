@@ -48,14 +48,14 @@
                         "type": "position"
                     },
                     {
-                        "dummy_radius": 50.0,
+                        "dummy_radius": 80.0,
                         "shapes": [],
                         "type": "collision"
                     },
                     {
                         "created_techs": [],
                         "techs_to_create": [
-                            "com_test1"
+                            "com_tech_test1"
                         ],
                         "type": "gift_tech"
                     }
@@ -223,6 +223,12 @@
                     },
                     {
                         "type": "influenceable"
+                    },
+                    {
+                        "contained": [
+                            "tech_allow_build_indirect1"
+                        ],
+                        "type": "init_container"
                     }
                 ]
             },
@@ -1807,8 +1813,10 @@
                     },
                     {
                         "command": "com_move",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     }
                 ]
@@ -1860,14 +1868,16 @@
                         "type": "position"
                     },
                     {
-                        "dummy_radius": 38.0,
+                        "dummy_radius": 60.0,
                         "shapes": [],
                         "type": "collision"
                     },
                     {
                         "command": "com_test2",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     }
                 ]
@@ -2125,7 +2135,7 @@
                     },
                     {
                         "contained": [
-                            "com_tech_test1"
+                            "tech_allow_build_indirect1"
                         ],
                         "type": "init_container"
                     }
@@ -2169,8 +2179,10 @@
                     },
                     {
                         "command": "com_test1",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     }
                 ]
@@ -3746,8 +3758,10 @@
                 "components": [
                     {
                         "command": "com_move",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     },
                     {
@@ -3944,12 +3958,14 @@
                 "components": [
                     {
                         "command": "com_test2",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     },
                     {
-                        "dummy_radius": 38.0,
+                        "dummy_radius": 60.0,
                         "shapes": [],
                         "type": "collision"
                     },
@@ -4127,12 +4143,14 @@
                 "components": [
                     {
                         "command": "com_test2",
+                        "cooldown": 0,
                         "current_cooldown": 0,
                         "init_with_full_cooldown": false,
+                        "original_cooldown": 0,
                         "type": "active_tech"
                     },
                     {
-                        "dummy_radius": 38.0,
+                        "dummy_radius": 60.0,
                         "shapes": [],
                         "type": "collision"
                     },

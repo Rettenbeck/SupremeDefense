@@ -11,8 +11,6 @@ namespace SupDef::BuildAssets {
             AS_UNIT_MOVER_1_SPEED, AS_UNIT_MOVER_1_GROUND_BASED, AS_UNIT_MOVER_1_DUMMY_RADIUS
         );
         asset->addComponent<InfluenceableComponent>();
-        // AssetBuilder::addInit(asset, AS_COM_TECH_TEST1);
-        // AssetBuilder::addInit(asset, AS_COM_TECH_TEST2);
     }
 
     void buildMovableUnitM2(AssetManager* am) {

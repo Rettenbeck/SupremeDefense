@@ -52,6 +52,13 @@ namespace SupDef {
             resComp->addResource(id, amount, gatherRate, maxCapacity);
         }
 
+        static void addRequiredResource(Entity* asset, ResourceID id, long amount) {
+            //
+            assert(asset);
+            auto req = asset->retrieveComponent<RequirementComponent>();
+            req->add(std::make_unique<SupDef::Resource>(id, amount));
+        }
+
         static void addInit(Entity* asset, AssetID assetID) {
             assert(asset);
             auto initComp = asset->retrieveComponent<InitContainerComponent>();

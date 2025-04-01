@@ -86,6 +86,7 @@ namespace SupDef {
     const std::string S_CONTAINED                           = "contained"                           ;
     const std::string S_COOLDOWN                            = "cooldown"                            ;
     const std::string S_CURRENT_COOLDOWN                    = "current_cooldown"                    ;
+    const std::string S_ORIGINAL_COOLDOWN                   = "original_cooldown"                   ;
     const std::string S_INIT_FULL_COOLDOWN                  = "init_with_full_cooldown"             ;
     const std::string S_COMMAND                             = "command"                             ;
 

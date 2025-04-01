@@ -27,7 +27,7 @@ namespace SupDef {
 
         void addCreatedTech(EntityID assignee, EntityID techID) {
             auto& vec = createdTechs[assignee];
-            push_back_unique(vec, assignee);
+            push_back_unique(vec, techID);
         }
 
         void removeCreatedTech(EntityID assignee, EntityID techID) {

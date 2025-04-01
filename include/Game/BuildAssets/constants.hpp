@@ -46,10 +46,10 @@ namespace SupDef {
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
     // =-=-=-=-=-=-=-=-=-=-=-=-= TECHS                                   =-=-=-=-=-=-=-=-=-=-=-=-= //
-    const std::string AS_TECH_ALLOW_BUILD_INDIRECT1         = "tech_allow_build_indirect1"          ;
-    const std::string AS_TECH_ALLOW_BUILD_INDIRECT1_NAME_DE = "Indirekt bauen"                      ;
-    const std::string AS_TECH_ALLOW_BUILD_INDIRECT1_DESC_DE = "Bauen über selbst"                   ;
-    const float AS_TECH_ALLOW_BUILD_INDIRECT1_RADIUS        = 50.0;
+    const std::string AS_TECH_ALLOW_BUILD1                  = "tech_allow_build_indirect1"          ;
+    const std::string AS_TECH_ALLOW_BUILD1_NAME_DE          = "Indirekt bauen"                      ;
+    const std::string AS_TECH_ALLOW_BUILD1_DESC_DE          = "Bauen über selbst"                   ;
+    const float AS_TECH_ALLOW_BUILD1_RADIUS         = 80.0;
 
 
 
@@ -69,13 +69,8 @@ namespace SupDef {
     const std::string AS_COM_TEST2_NAME_DE                  = "Testbefehl 2"                        ;
     const std::string AS_COM_TEST2_DESC_DE                  = "Einfach was nochmals testen"         ;
     const std::string AS_COM_TECH_TEST2                     = "com_tech_test2"                      ;
+    const float AS_COM_TEST2_RADIUS                 = 60.0;
     
-    const std::string AS_COM_INF_TEST1                      = "com_inf_test1"                       ;
-    const std::string AS_COM_INF_TEST1_NAME_DE              = "Testbefehl Inf 1"                    ;
-    const std::string AS_COM_INF_TEST1_DESC_DE              = "Einfach was testen Inf"              ;
-    const std::string AS_COM_TECH_INF_TEST1                 = "com_tech_inf_test1"                  ;
-    
-
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //

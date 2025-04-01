@@ -87,6 +87,8 @@ namespace SupDef {
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
+            void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
+            void drawCooldownOverlay(float x, float y, float width, float height, float perc);
 
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);

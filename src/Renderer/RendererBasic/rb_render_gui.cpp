@@ -116,4 +116,15 @@ namespace SupDef {
         }
     }
 
+    void RendererBasic::drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max) {
+        auto perc = ((double) current) / ((double) max);
+        drawCooldownOverlay(x, y, width, height, (float) perc);
+    }
+
+    void RendererBasic::drawCooldownOverlay(float x, float y, float width, float height, float perc) {
+        sf::Color overlay(37, 150, 190, 150);
+        ColorData cd(overlay, overlay, 0);
+        drawRect(x, y, width * perc, height, cd);
+    }
+
 }

@@ -121,4 +121,28 @@ namespace SupDef {
                          collisions.end());
     }
     
+    VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos, CollisionComponent* col) {
+        assert(entity);
+        assert(pos);
+        VF2 coord(0.0, 0.0);
+        if (col) {
+            auto center = col->getCenter();
+            coord.x = center.x;
+            coord.y = center.y;
+        }
+        return VF2(pos->xAbs + coord.x, pos->yAbs + coord.y);
+    }
+
+    VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos) {
+        assert(entity);
+        auto col = entity->getComponent<CollisionComponent>();
+        return getCenterOfEntity(entity, pos, col);
+    }
+
+    VF2 Game::getCenterOfEntity(Entity* entity) {
+        auto pos = entity->getComponent<PositionComponent>();
+        auto col = entity->getComponent<CollisionComponent>();
+        return getCenterOfEntity(entity, pos, col);
+    }
+
 }

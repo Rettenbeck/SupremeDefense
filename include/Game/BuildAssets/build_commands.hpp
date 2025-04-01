@@ -29,9 +29,8 @@ namespace SupDef::BuildAssets {
             AS_COM_TECH_TEST1, TechData(techComponent.get())
         );
         asset->addComponent<BuildCommandComponent>(AS_UNIT_IMM_1);
-        auto req = asset->retrieveComponent<RequirementComponent>();
-        req->add(std::make_unique<SupDef::Resource>(AS_RES_GOLD, 20));
-        req->add(std::make_unique<SupDef::Resource>(AS_RES_WOOD, 30));
+        AssetBuilder::addRequiredResource(asset, AS_RES_GOLD, 20);
+        AssetBuilder::addRequiredResource(asset, AS_RES_WOOD, 30);
     }
 
     void buildCommandTest2(AssetManager* am) {
@@ -41,12 +40,11 @@ namespace SupDef::BuildAssets {
 
         auto asset = AssetBuilder::buildCommand(
             AsData(am, AS_COM_TEST2, AS_COM_TEST2_NAME_DE, AS_COM_TEST2_DESC_DE),
-            AS_COM_TECH_TEST2, TechData(techComponent.get(), 38.0)
+            AS_COM_TECH_TEST2, TechData(techComponent.get(), AS_COM_TEST2_RADIUS)
         );
         asset->addComponent<BuildCommandComponent>(AS_UNIT_IMM_2);
-        auto req = asset->retrieveComponent<RequirementComponent>();
-        req->add(std::make_unique<SupDef::Resource>(AS_RES_GOLD, 25));
-        req->add(std::make_unique<SupDef::Resource>(AS_RES_WOOD, 35));
+        AssetBuilder::addRequiredResource(asset, AS_RES_GOLD, 25);
+        AssetBuilder::addRequiredResource(asset, AS_RES_WOOD, 35);
     }
 
     void buildCommands(AssetManager* am) {

@@ -84,6 +84,9 @@ namespace SupDef {
             void updateCollisions(MapComponent* mapComponent, _EntPosCols& list, CollisionGroup collisionGroup);
             void removeResolvedCollisions(CollisionGroup collisionGroup);
             void removeResolvedCollisions();
+            VF2 getCenterOfEntity(Entity* entity, PositionComponent* pos, CollisionComponent* col);
+            VF2 getCenterOfEntity(Entity* entity, PositionComponent* pos);
+            VF2 getCenterOfEntity(Entity* entity);
             
 
             
