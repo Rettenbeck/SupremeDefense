@@ -1,6 +1,5 @@
 #include <iostream>
 #include <include.hpp>
-// #include <main_asset.cpp>
 
 
 void test_app();
@@ -41,7 +40,7 @@ void test_app() {
     auto eg = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id,  goal.x + 12,  goal.y);
     auto em = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, start.x, start.y);
     
-    serialize_game(g);
+    //serialize_game(g);
 
     app->run();
 

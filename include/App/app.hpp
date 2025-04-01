@@ -24,7 +24,7 @@ namespace SupDef {
                 globalDispatcher = std::make_unique<EventDispatcher>();
 
                 settings = std::make_unique<Settings>(DEFAULT_FILENAME_SETTINGS);
-                setFramerate(settings->get<double>(S_APP_FRAMERATE, 5.0));
+                setFramerate(settings->get<double>(S_APP_FRAMERATE, 60.0));
 
                 init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
