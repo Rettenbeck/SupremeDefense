@@ -10,11 +10,15 @@ namespace SupDef {
     }
 
     void Game::determineCollisionsInfluence() {
+        assert(collisionSystem);
         auto influencables = entityManager->getEntitiesWithComponents<InfluenceableComponent>();
         auto influencers   = entityManager->getEntitiesWithComponents<InfluenceComponent>();
         auto influencable_entities = entityManager->extractEntities(influencables);
         auto influence_entities    = entityManager->extractEntities(influencers);
+
+        collisionSystem->setInfluenceMode(true);
         processCollisions(influencable_entities, influence_entities, CG_INFLUENCE);
+        collisionSystem->setInfluenceMode(false);
     }
 
     void Game::processCollisions(PEntities group, CollisionGroup collisionGroup) {
@@ -124,13 +128,8 @@ namespace SupDef {
     VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos, CollisionComponent* col) {
         assert(entity);
         assert(pos);
-        VF2 coord(0.0, 0.0);
-        if (col) {
-            auto center = col->getCenter();
-            coord.x = center.x;
-            coord.y = center.y;
-        }
-        return VF2(pos->xAbs + coord.x, pos->yAbs + coord.y);
+        if (col) return col->getCenter(pos->xAbs, pos->yAbs);
+        return VF2(pos->xAbs, pos->yAbs);
     }
 
     VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos) {

@@ -172,6 +172,7 @@ namespace SupDef {
     const std::string S_SHAPE_TYPE_RECT                     = "rectangle"                           ;
     const std::string S_WIDTH                               = "width"                               ;
     const std::string S_HEIGHT                              = "height"                              ;
+    const std::string S_IS_INFLUENCE                        = "is_influence"                        ;
     const std::string S_HEALTH                              = "health"                              ;
 
 

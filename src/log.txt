@@ -4574,3 +4574,101 @@
 [2025-04-01 14:41:21] SUCCESS: Serialized to game_save3.txt
 [2025-04-01 14:41:27] INFO: Game ended from renderer
 
+[2025-04-02 17:29:44] INIT: ------------------
+[2025-04-02 17:32:50] INIT: ------------------
+[2025-04-02 17:35:01] INIT: ------------------
+[2025-04-02 17:35:07] INFO: Game ended from renderer
+
+[2025-04-02 17:41:17] INIT: ------------------
+[2025-04-02 17:42:15] INFO: Action created
+[2025-04-02 17:42:15] INFO:   Sent to game
+[2025-04-02 17:42:15] INFO:   Sent to replay
+[2025-04-02 17:42:17] INFO: Action created
+[2025-04-02 17:42:17] INFO:   Sent to game
+[2025-04-02 17:42:17] INFO:   Sent to replay
+[2025-04-02 17:42:19] INFO: Action created
+[2025-04-02 17:42:19] INFO:   Sent to game
+[2025-04-02 17:42:19] INFO:   Sent to replay
+[2025-04-02 17:42:21] INFO: Action created
+[2025-04-02 17:42:21] INFO:   Sent to game
+[2025-04-02 17:42:21] INFO:   Sent to replay
+[2025-04-02 17:42:23] INFO: Action created
+[2025-04-02 17:42:23] INFO:   Sent to game
+[2025-04-02 17:42:23] INFO:   Sent to replay
+[2025-04-02 17:42:23] INFO: Action created
+[2025-04-02 17:42:23] INFO:   Sent to game
+[2025-04-02 17:42:23] INFO:   Sent to replay
+[2025-04-02 17:42:28] INFO: Action created
+[2025-04-02 17:42:28] INFO:   Sent to game
+[2025-04-02 17:42:28] INFO:   Sent to replay
+[2025-04-02 17:42:30] INFO: Action created
+[2025-04-02 17:42:30] INFO:   Sent to game
+[2025-04-02 17:42:30] INFO:   Sent to replay
+[2025-04-02 17:42:32] INFO: Action created
+[2025-04-02 17:42:32] INFO:   Sent to game
+[2025-04-02 17:42:32] INFO:   Sent to replay
+[2025-04-02 17:42:34] INFO: Action created
+[2025-04-02 17:42:34] INFO:   Sent to game
+[2025-04-02 17:42:34] INFO:   Sent to replay
+[2025-04-02 17:42:36] INFO: Action created
+[2025-04-02 17:42:36] INFO:   Sent to game
+[2025-04-02 17:42:36] INFO:   Sent to replay
+[2025-04-02 17:42:39] INFO: Action created
+[2025-04-02 17:42:39] INFO:   Sent to game
+[2025-04-02 17:42:39] INFO:   Sent to replay
+[2025-04-02 17:42:45] INFO: Action created
+[2025-04-02 17:42:45] INFO:   Sent to game
+[2025-04-02 17:42:45] INFO:   Sent to replay
+[2025-04-02 17:42:48] INFO: Action created
+[2025-04-02 17:42:48] INFO:   Sent to game
+[2025-04-02 17:42:48] INFO:   Sent to replay
+[2025-04-02 17:42:52] INFO: Action created
+[2025-04-02 17:42:52] INFO:   Sent to game
+[2025-04-02 17:42:52] INFO:   Sent to replay
+[2025-04-02 17:42:53] INFO: Action created
+[2025-04-02 17:42:53] INFO:   Sent to game
+[2025-04-02 17:42:53] INFO:   Sent to replay
+[2025-04-02 17:42:58] INFO: Game ended from renderer
+
+[2025-04-02 18:05:13] INIT: ------------------
+[2025-04-02 18:05:33] INFO: Action created
+[2025-04-02 18:05:33] INFO:   Sent to game
+[2025-04-02 18:05:33] INFO:   Sent to replay
+[2025-04-02 18:05:36] INFO: Action created
+[2025-04-02 18:05:36] INFO:   Sent to game
+[2025-04-02 18:05:36] INFO:   Sent to replay
+[2025-04-02 18:05:38] INFO: Action created
+[2025-04-02 18:05:38] INFO:   Sent to game
+[2025-04-02 18:05:38] INFO:   Sent to replay
+[2025-04-02 18:05:41] INFO: Action created
+[2025-04-02 18:05:41] INFO:   Sent to game
+[2025-04-02 18:05:41] INFO:   Sent to replay
+[2025-04-02 18:05:42] INFO: Action created
+[2025-04-02 18:05:42] INFO:   Sent to game
+[2025-04-02 18:05:42] INFO:   Sent to replay
+[2025-04-02 18:05:43] INFO: Action created
+[2025-04-02 18:05:43] INFO:   Sent to game
+[2025-04-02 18:05:43] INFO:   Sent to replay
+[2025-04-02 18:05:50] INFO: Action created
+[2025-04-02 18:05:50] INFO:   Sent to game
+[2025-04-02 18:05:50] INFO:   Sent to replay
+[2025-04-02 18:05:52] INFO: Action created
+[2025-04-02 18:05:52] INFO:   Sent to game
+[2025-04-02 18:05:52] INFO:   Sent to replay
+[2025-04-02 18:05:55] INFO: Action created
+[2025-04-02 18:05:55] INFO:   Sent to game
+[2025-04-02 18:05:55] INFO:   Sent to replay
+[2025-04-02 18:05:59] INFO: Action created
+[2025-04-02 18:05:59] INFO:   Sent to game
+[2025-04-02 18:05:59] INFO:   Sent to replay
+[2025-04-02 18:06:01] INFO: Action created
+[2025-04-02 18:06:01] INFO:   Sent to game
+[2025-04-02 18:06:01] INFO:   Sent to replay
+[2025-04-02 18:06:03] INFO: Action created
+[2025-04-02 18:06:03] INFO:   Sent to game
+[2025-04-02 18:06:03] INFO:   Sent to replay
+[2025-04-02 18:06:07] INFO: Action created
+[2025-04-02 18:06:07] INFO:   Sent to game
+[2025-04-02 18:06:07] INFO:   Sent to replay
+[2025-04-02 18:06:18] INFO: Game ended from renderer
+

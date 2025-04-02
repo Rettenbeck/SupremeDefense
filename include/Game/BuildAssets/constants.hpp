@@ -49,7 +49,7 @@ namespace SupDef {
     const std::string AS_TECH_ALLOW_BUILD1                  = "tech_allow_build_indirect1"          ;
     const std::string AS_TECH_ALLOW_BUILD1_NAME_DE          = "Indirekt bauen"                      ;
     const std::string AS_TECH_ALLOW_BUILD1_DESC_DE          = "Bauen über selbst"                   ;
-    const float AS_TECH_ALLOW_BUILD1_RADIUS         = 80.0;
+    const float AS_TECH_ALLOW_BUILD1_RADIUS         = 90.0;
 
 
 
@@ -69,7 +69,7 @@ namespace SupDef {
     const std::string AS_COM_TEST2_NAME_DE                  = "Testbefehl 2"                        ;
     const std::string AS_COM_TEST2_DESC_DE                  = "Einfach was nochmals testen"         ;
     const std::string AS_COM_TECH_TEST2                     = "com_tech_test2"                      ;
-    const float AS_COM_TEST2_RADIUS                 = 60.0;
+    const float AS_COM_TEST2_RADIUS                 = 70.0;
     
 
 
@@ -81,7 +81,7 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_1_NAME_DE               = "Mover One"                           ;
     const std::string AS_UNIT_MOVER_1_DESC_DE               = "Einfache Einheit zum Testen"         ;
     const float AS_UNIT_MOVER_1_SPEED               = 2.0;
-    const float AS_UNIT_MOVER_1_DUMMY_RADIUS        = 6.0;
+    const float AS_UNIT_MOVER_1_DUMMY_RADIUS        = 12.0;
     const bool  AS_UNIT_MOVER_1_GROUND_BASED        = true;
 
     // =-=-=-=-=-=-=-=-=-= Mover 2                                             =-=-=-=-=-=-=-=-=-= //
@@ -89,7 +89,7 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_2_NAME_DE               = "Mover Two"                           ;
     const std::string AS_UNIT_MOVER_2_DESC_DE               = "Etwas schneller als M1"              ;
     const float AS_UNIT_MOVER_2_SPEED               = 3.2;
-    const float AS_UNIT_MOVER_2_DUMMY_RADIUS        = 8.0;
+    const float AS_UNIT_MOVER_2_DUMMY_RADIUS        = 15.0;
     const bool  AS_UNIT_MOVER_2_GROUND_BASED        = true;
 
     

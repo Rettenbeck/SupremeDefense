@@ -32,6 +32,7 @@ namespace SupDef {
             int tileSize;
             GridMap gridA, gridB;
             Colliders largeObjectsA, largeObjectsB;
+            bool influenceMode = false;
 
             int collisionChecksExpected = 0, collisionChecksActual = 0, collisionChecksNarrow = 0, collisionsTotal = 0;
             
@@ -45,7 +46,14 @@ namespace SupDef {
                         if (sameGroup && a->entity->id > b->entity->id) continue;
                         collisionChecksNarrow++;
 
-                        if (a->col->collidesWith(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs)) {
+                        bool collide;
+                        if (influenceMode) {
+                            collide = a->col->withinInfluence(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs);
+                        } else {
+                            collide = a->col->collidesWith(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs);
+                        }
+
+                        if (collide) {
                             collisions.push_back(CollisionPair(a->entity, b->entity));
                             collisionsTotal++;
                         }
@@ -91,11 +99,9 @@ namespace SupDef {
                     if (objToAdd->group) {
                         gridB[keyToAdd].push_back(objToAdd);
                         nGroup2++;
-                        //std::cout << "Added " << objToAdd->entity->id << " with key " << keyToAdd << " to grid B\n";
                     } else {
                         gridA[keyToAdd].push_back(objToAdd);
                         nGroup1++;
-                        //std::cout << "Added " << objToAdd->entity->id << " with key " << keyToAdd << " to grid A\n";
                     }
                 };
                 
@@ -103,11 +109,9 @@ namespace SupDef {
                     if (objToAdd->group) {
                         largeObjectsB.push_back(objToAdd);
                         nGroup2++;
-                        //std::cout << "Added " << objToAdd->entity->id << " to large B\n";
                     } else {
                         largeObjectsA.push_back(objToAdd);
                         nGroup1++;
-                        //std::cout << "Added " << objToAdd->entity->id << " to large A\n";
                     }
                 };
                 
@@ -164,6 +168,7 @@ namespace SupDef {
             }
         
             int getTileSize() { return tileSize; }
+            void setInfluenceMode(bool influenceMode_) { influenceMode = influenceMode_; }
 
             using ColStats = std::tuple<int, int, int, int>;
             ColStats getCollisionStats() {
