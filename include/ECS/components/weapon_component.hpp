@@ -32,20 +32,37 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j[S_COOLDOWN         ] = cooldown;
-            j[S_CURRENT_COOLDOWN ] = current_cooldown;
-            j[S_ORIGINAL_COOLDOWN] = original_cooldown;
-            j[S_PROJECTILE       ] = projectile;
-            j[S_TARGETS          ] = targets;
+            generic_to_json(j, this);
         }
-    
+
         void from_json(const json& j) override {
-            j.at(S_COOLDOWN         ).get_to(cooldown);
-            j.at(S_CURRENT_COOLDOWN ).get_to(current_cooldown);
-            j.at(S_ORIGINAL_COOLDOWN).get_to(original_cooldown);
-            j.at(S_PROJECTILE       ).get_to(projectile);
-            j.at(S_TARGETS          ).get_to(targets);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(WeaponComponent)
+            REFLECT_FIELD(cooldown)
+            REFLECT_FIELD(current_cooldown)
+            REFLECT_FIELD(original_cooldown)
+            REFLECT_FIELD(projectile)
+            REFLECT_FIELD(targets)
+            REFLECT_UNIQUE(damage, Damage)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j[S_COOLDOWN         ] = cooldown;
+        //     j[S_CURRENT_COOLDOWN ] = current_cooldown;
+        //     j[S_ORIGINAL_COOLDOWN] = original_cooldown;
+        //     j[S_PROJECTILE       ] = projectile;
+        //     j[S_TARGETS          ] = targets;
+        // }
+    
+        // void from_json(const json& j) override {
+        //     j.at(S_COOLDOWN         ).get_to(cooldown);
+        //     j.at(S_CURRENT_COOLDOWN ).get_to(current_cooldown);
+        //     j.at(S_ORIGINAL_COOLDOWN).get_to(original_cooldown);
+        //     j.at(S_PROJECTILE       ).get_to(projectile);
+        //     j.at(S_TARGETS          ).get_to(targets);
+        // }
     
         std::string getTypeName() const override {
             return SC_WEAPON;

@@ -17,12 +17,24 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_HEALTH, health}};
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_HEALTH).get_to(health);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(HealthComponent)
+            REFLECT_FIELD(health)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j = json{{S_HEALTH, health}};
+        // }
+
+        // void from_json(const json& j) override {
+        //     j.at(S_HEALTH).get_to(health);
+        // }
 
         std::string getTypeName() const override {
             return SC_HEALTH;

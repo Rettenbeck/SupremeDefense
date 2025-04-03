@@ -34,16 +34,30 @@ namespace SupDef {
             }
 
             void to_json(json& j) const {
-                j[SX_DAMAGE_AMOUNT] = damage_amount;
-                j[SX_DAMAGE_TYPE  ] = damageType;
-                j[SX_PIERCE       ] = pierce;
+                generic_to_json(j, this);
             }
-            
+    
             void from_json(const json& j) {
-                damage_amount = j.at(SX_DAMAGE_AMOUNT).get<long>();
-                damageType    = j.at(SX_DAMAGE_TYPE  ).get<DamageType>();
-                pierce        = j.at(SX_PIERCE       ).get<long>();
+                generic_from_json(j, this);
             }
+    
+            REFLECT_COMPONENT_BEGIN(Damage)
+                REFLECT_FIELD(damage_amount)
+                REFLECT_FIELD(damageType)
+                REFLECT_FIELD(pierce)
+            REFLECT_COMPONENT_END()
+    
+            // void to_json(json& j) const {
+            //     j[SX_DAMAGE_AMOUNT] = damage_amount;
+            //     j[SX_DAMAGE_TYPE  ] = damageType;
+            //     j[SX_PIERCE       ] = pierce;
+            // }
+            
+            // void from_json(const json& j) {
+            //     damage_amount = j.at(SX_DAMAGE_AMOUNT).get<long>();
+            //     damageType    = j.at(SX_DAMAGE_TYPE  ).get<DamageType>();
+            //     pierce        = j.at(SX_PIERCE       ).get<long>();
+            // }
         
     };
     

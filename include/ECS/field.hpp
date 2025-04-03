@@ -52,8 +52,7 @@ namespace SupDef {
     struct UniquePtrField : public IField<T> {
         std::unique_ptr<PointeeType> T::* memberPtr;
     
-        UniquePtrField(const std::string& name_, std::unique_ptr<PointeeType> T::* ptr)
-            : memberPtr(ptr) {
+        UniquePtrField(const std::string& name_, std::unique_ptr<PointeeType> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -73,7 +72,8 @@ namespace SupDef {
                 obj->*memberPtr = nullptr;
             } else {
                 obj->*memberPtr = std::make_unique<PointeeType>();
-                generic_from_json(j, obj->*memberPtr);
+                auto& ptr = obj->*memberPtr;
+                generic_from_json(j, ptr.get());
             }
         }
     
@@ -252,13 +252,13 @@ namespace SupDef {
         fields.push_back(std::make_unique<Field<ThisType, decltype(ThisType::name)>>(#name, &ThisType::name));
 
     #define REFLECT_UNIQUE(name, pointeeType) \
-        fields.push_back(makeUniqueField<ThisType, pointeeType>(#name, &ThisType::name))
+        fields.push_back(makeUniqueField<ThisType, pointeeType>(#name, &ThisType::name));
 
     #define REFLECT_LIST_UNIQUE(name, itemType) \
-        fields.push_back(makeListField<ThisType, itemType>(#name, &ThisType::name))
+        fields.push_back(makeListField<ThisType, itemType>(#name, &ThisType::name));
 
     #define REFLECT_MAP_UNIQUE(name, keyType, valueType) \
-        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name))
+        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name));
 
     #define REFLECT_COMPONENT_END() \
         return fields; \

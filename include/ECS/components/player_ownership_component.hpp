@@ -38,13 +38,26 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_OWNER, ownerID}, {S_ACCESSORS, accessors}};
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_OWNER).get_to(ownerID);
-            j.at(S_ACCESSORS).get_to(accessors);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(PlayerOwnershipComponent)
+            REFLECT_FIELD(ownerID)
+            REFLECT_FIELD(accessors)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j = json{{S_OWNER, ownerID}, {S_ACCESSORS, accessors}};
+        // }
+
+        // void from_json(const json& j) override {
+        //     j.at(S_OWNER).get_to(ownerID);
+        //     j.at(S_ACCESSORS).get_to(accessors);
+        // }
 
         std::string getTypeName() const override {
             return SC_PLAYER_OWNERSHIP;

@@ -4737,3 +4737,51 @@
 [2025-04-03 20:37:57] INFO:   Sent to replay
 [2025-04-03 20:38:05] INFO: Game ended from renderer
 
+[2025-04-03 20:56:16] INIT: ------------------
+[2025-04-03 20:56:20] INFO: Action created
+[2025-04-03 20:56:20] INFO:   Sent to game
+[2025-04-03 20:56:20] INFO:   Sent to replay
+[2025-04-03 20:56:22] INFO: Game ended from renderer
+
+[2025-04-03 21:11:59] INIT: ------------------
+[2025-04-03 21:12:23] INFO: Action created
+[2025-04-03 21:12:23] INFO:   Sent to game
+[2025-04-03 21:12:23] INFO:   Sent to replay
+[2025-04-03 21:12:38] INFO: Game ended from renderer
+
+[2025-04-03 21:14:29] INIT: ------------------
+[2025-04-03 21:14:37] INFO: Action created
+[2025-04-03 21:14:37] INFO:   Sent to game
+[2025-04-03 21:14:37] INFO:   Sent to replay
+[2025-04-03 21:14:38] INFO: Action created
+[2025-04-03 21:14:38] INFO:   Sent to game
+[2025-04-03 21:14:38] INFO:   Sent to replay
+[2025-04-03 21:14:46] INFO: Action created
+[2025-04-03 21:14:46] INFO:   Sent to game
+[2025-04-03 21:14:46] INFO:   Sent to replay
+[2025-04-03 21:14:48] INFO: Action created
+[2025-04-03 21:14:48] INFO:   Sent to game
+[2025-04-03 21:14:48] INFO:   Sent to replay
+[2025-04-03 21:14:50] INFO: Action created
+[2025-04-03 21:14:50] INFO:   Sent to game
+[2025-04-03 21:14:50] INFO:   Sent to replay
+[2025-04-03 21:14:55] INFO: Action created
+[2025-04-03 21:14:55] INFO:   Sent to game
+[2025-04-03 21:14:55] INFO:   Sent to replay
+[2025-04-03 21:15:04] INFO: Action created
+[2025-04-03 21:15:04] INFO:   Sent to game
+[2025-04-03 21:15:04] INFO:   Sent to replay
+[2025-04-03 21:15:08] INFO: Action created
+[2025-04-03 21:15:08] INFO:   Sent to game
+[2025-04-03 21:15:08] INFO:   Sent to replay
+[2025-04-03 21:15:16] INFO: Action created
+[2025-04-03 21:15:16] INFO:   Sent to game
+[2025-04-03 21:15:16] INFO:   Sent to replay
+[2025-04-03 21:15:19] INFO: Action created
+[2025-04-03 21:15:19] INFO:   Sent to game
+[2025-04-03 21:15:19] INFO:   Sent to replay
+[2025-04-03 21:15:27] INFO: Action created
+[2025-04-03 21:15:27] INFO:   Sent to game
+[2025-04-03 21:15:27] INFO:   Sent to replay
+[2025-04-03 21:15:45] INFO: Game ended from renderer
+
