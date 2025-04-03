@@ -4684,3 +4684,11 @@
 [2025-04-03 10:04:07] INFO:   Sent to replay
 [2025-04-03 10:04:09] INFO: Game ended from renderer
 
+[2025-04-03 17:19:43] INIT: ------------------
+[2025-04-03 17:22:06] INIT: ------------------
+[2025-04-03 17:23:16] INIT: ------------------
+[2025-04-03 17:23:19] INFO: Action created
+[2025-04-03 17:23:19] INFO:   Sent to game
+[2025-04-03 17:23:19] INFO:   Sent to replay
+[2025-04-03 17:23:22] INFO: Game ended from renderer
+

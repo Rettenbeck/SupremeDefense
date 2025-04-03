@@ -10,7 +10,7 @@ namespace SupDef {
         AssetIDs applyTechsOnHit;
         int multiHitCooldown = 0;   // 0 = Can only once; 1 = hits every frame; 2 = hits every second frame, etc.
         bool homing = false;
-        std::unique_ptr<Damage> damage = nullptr;
+        UDamage damage = nullptr;
 
         ProjectileComponent() {
             damage = std::make_unique<Damage>();
