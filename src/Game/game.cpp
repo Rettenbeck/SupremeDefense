@@ -30,8 +30,6 @@ namespace SupDef {
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
-        Logger::getInstance().addMessage(MessageType::Success, "World initialized!");
-
         globalDispatcher->subscribe<TriggerCommandEvent>([this](const SupDef::Events& events) {
             for (const auto& event : events) {
                 const auto& typedEvent = static_cast<const TriggerCommandEvent&>(*event);

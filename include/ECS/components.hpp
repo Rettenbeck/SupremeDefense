@@ -15,6 +15,7 @@
 #include <ECS/components/influence_component.hpp>
 #include <ECS/components/influenceable_component.hpp>
 #include <ECS/components/projectile_component.hpp>
+#include <ECS/components/projectile_target_component.hpp>
 #include <ECS/components/health_component.hpp>
 
 #include <ECS/asset_components/text_component.hpp>

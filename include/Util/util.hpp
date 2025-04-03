@@ -51,6 +51,10 @@ namespace SupDef {
                 return (r1*r1 + 2*r1*r2 + r2*r2) >= getDistanceSquared(x1, y1, x2, y2);
             }
 
+            inline static bool pointWithinCircle(float x1, float y1, float x2, float y2, float r) {
+                return (r*r) >= getDistanceSquared(x1, y1, x2, y2);
+            }
+
             inline static int getGridIndex(float value, int grid_size) {
                 if(grid_size == 0) return value;
                 return value / grid_size;

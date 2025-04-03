@@ -44,7 +44,7 @@ void test_app() {
     auto e5 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 214,  64);
     auto e6 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player2->id, 264,  12);
     
-    serialize_game(g);
+    //serialize_game(g);
 
     app->run();
 

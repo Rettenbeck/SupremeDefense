@@ -10,6 +10,7 @@ namespace SupDef {
         CollisionShapes shapes;
         BoundingBox boundingBox;
         float dummyRadius = 0.0f;
+        bool isInfluence = false;
     
         CollisionComponent(float dummyRadius_) : dummyRadius(dummyRadius_) { onInit(); }
         CollisionComponent() { onInit(); }
@@ -47,7 +48,7 @@ namespace SupDef {
             updateBoundingBox();
         }
         
-        VF2 getCenter() {
+        VF2 getCenter() const {
             if (boundingBox.isDefined) {
                 return VF2(boundingBox.x + boundingBox.w / 2.0, boundingBox.y + boundingBox.h / 2.0);
             } else {
@@ -55,12 +56,19 @@ namespace SupDef {
             }
         }
 
+        VF2 getCenter(float x, float y) const {
+            auto center = getCenter();
+            return VF2(x + center.x, y + center.y);
+        }
+
         bool collidesWithSimple(const CollisionComponent* other, float myX, float myY, float otherX, float otherY) const {
+            assert(other);
             if(dummyRadius == 0.0 || other->dummyRadius == 0.0) return false;
             return Math::circleOverlap(myX, myY, otherX, otherY, dummyRadius, other->dummyRadius);
         }
         
         bool collidesWith(const CollisionComponent* other, float myX, float myY, float otherX, float otherY) const {
+            assert(other);
             if(shapes.empty() || other->shapes.empty()) {
                 return collidesWithSimple(other, myX, myY, otherX, otherY);
             }
@@ -76,8 +84,22 @@ namespace SupDef {
             return false;
         }
 
+        bool withinInfluence(const CollisionComponent* other, float myX, float myY, float otherX, float otherY) const {
+            assert(other);
+            auto myCenter = getCenter(myX, myY);
+            auto otherCenter = other->getCenter(otherX, otherY);
+            float radius;
+            if (isInfluence) {
+                radius = dummyRadius;
+            } else {
+                radius = other->dummyRadius;
+            }
+            return Math::pointWithinCircle(myCenter.x, myCenter.y, otherCenter.x, otherCenter.y, radius);
+        }
+
         void to_json(json& j) const override {
             j[S_DUMMY_RADIUS] = dummyRadius;
+            j[S_IS_INFLUENCE] = isInfluence;
             j[S_SHAPES] = json::array();
             for (const auto& shape : shapes) {
                 json shapeJson;
@@ -99,6 +121,7 @@ namespace SupDef {
     
         void from_json(const json& j) override {
             dummyRadius = j.value(S_DUMMY_RADIUS, 0.0f);
+            isInfluence = j.value(S_IS_INFLUENCE, false);
             shapes.clear();
             
             for (const auto& shapeJson : j.at(S_SHAPES)) {
