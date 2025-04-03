@@ -263,4 +263,52 @@ namespace SupDef {
         return fields; \
     }
 
+
+
+    #define DEFINE_COMPONENT_BEGIN(CLASS_NAME, COMPONENT_NAME)                 \
+    class CLASS_NAME : public Component {                                      \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        std::string getTypeName() const override {                             \
+            return COMPONENT_NAME;                                             \
+        }                                                                      \
+        void addToRegistry() {                                                 \
+            ComponentRegistry::registerComponent(getTypeName(), []()           \
+                { return std::make_unique<ThisType>(); });                     \
+        }                                                                      \
+        CLASS_NAME() { addToRegistry(); }                                      \
+        void to_json(json& j) const override {                                 \
+            generic_to_json(j, this);                                          \
+        }                                                                      \
+        void from_json(const json& j) override {                               \
+            generic_from_json(j, this);                                        \
+        }                                                                      \
+        static std::vector<std::unique_ptr<IField<ThisType>>> getFieldMap() { \
+            std::vector<std::unique_ptr<IField<ThisType>>> fields;
+
+    //
+    #define DECLARE_FIELD(type, name, defaultValue) \
+        type name = defaultValue; \
+        fields.push_back(makeField<ThisType>(#name, &ThisType::name));
+    
+    #define DECLARE_UNIQUE(type, name) \
+        std::unique_ptr<type> name; \
+        fields.push_back(makeUniqueField<ThisType, type>(#name, &ThisType::name));
+
+    #define DECLARE_LIST_UNIQUE(type, name) \
+        std::vector<std::unique_ptr<type>> name; \
+        fields.push_back(makeListField<ThisType, type>(#name, &ThisType::name));
+
+    #define DECLARE_MAP_UNIQUE(keyType, valueType, name) \
+        std::unordered_map<keyType, std::unique_ptr<valueType>> name; \
+        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name));
+    //
+    #define DEFINE_COMPONENT_BODY                                              \
+        return fields;                                                     \
+    }
+
+    //
+    #define DEFINE_COMPONENT_END \
+    };
+            
 }
