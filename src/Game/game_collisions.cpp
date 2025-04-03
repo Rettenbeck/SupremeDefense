@@ -7,17 +7,38 @@ namespace SupDef {
 
     void Game::determineCollisions() {
         determineCollisionsInfluence();
+        determineCollisionsProjectiles();
     }
 
     void Game::determineCollisionsInfluence() {
-        assert(collisionSystem);
-        auto influencables = entityManager->getEntitiesWithComponents<InfluenceableComponent>();
-        auto influencers   = entityManager->getEntitiesWithComponents<InfluenceComponent>();
-        auto influencable_entities = entityManager->extractEntities(influencables);
-        auto influence_entities    = entityManager->extractEntities(influencers);
+        determineCollisionsGeneric<InfluenceableComponent, InfluenceComponent>(CG_INFLUENCE, true);
+    }
 
-        collisionSystem->setInfluenceMode(true);
-        processCollisions(influencable_entities, influence_entities, CG_INFLUENCE);
+    void Game::determineCollisionsProjectiles() {
+        determineCollisionsGeneric<ProjectileComponent, ProjectileTargetComponent>(CG_PROJECTILE);
+    }
+
+    template <typename T>
+    void Game::determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode) {
+        assert(collisionSystem);
+        auto group = entityManager->getEntitiesWithComponents<T>();
+        auto group_ents = entityManager->extractEntities(group);
+        
+        collisionSystem->setInfluenceMode(influenceMode);
+        processCollisions(group_ents, collisionGroup);
+        collisionSystem->setInfluenceMode(false);
+    }
+
+    template <typename T1, typename T2>
+    void Game::determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode) {
+        assert(collisionSystem);
+        auto group1 = entityManager->getEntitiesWithComponents<T1>();
+        auto group2 = entityManager->getEntitiesWithComponents<T2>();
+        auto group1_ents = entityManager->extractEntities(group1);
+        auto group2_ents = entityManager->extractEntities(group2);
+        
+        collisionSystem->setInfluenceMode(influenceMode);
+        processCollisions(group1_ents, group2_ents, collisionGroup);
         collisionSystem->setInfluenceMode(false);
     }
 

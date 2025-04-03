@@ -65,15 +65,27 @@ namespace SupDef {
             void updatePositionMass(float deltaTime, TilesComponent* tilesComp, _EntPosMovCols& comps);
             void updatePosition(float deltaTime, TilesComponent* tilesComp, _EntPosMovCol comp);
             void updatePosition(float deltaTime, TilesComponent* tilesComp, Entity* entity);
+            void updatePositionDirected(float deltaTime, TilesComponent* tilesComp, _EntPosMovCol comp);
             void passPositionToChildren(Entity* entity, PositionComponent* positionComponent);
             void passPositionToChildren(Entity* entity);
             void passPositionToChildren(EntityID entityID);
+            void setNewPositionByDifference(PositionComponent* pos, float dx, float dy);
+            void setNewRelativePosition(PositionComponent* pos, float x, float y);
+            void setNewAbsolutePosition(PositionComponent* pos, float x, float y);
             
 
             
             // ### COLLISION HANDLING ##################################################### //
             void determineCollisions();
             void determineCollisionsInfluence();
+            void determineCollisionsProjectiles();
+
+            template <typename T>
+            void determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode = false);
+
+            template <typename T1, typename T2>
+            void determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode = false);
+
             void processCollisions(PEntities group, CollisionGroup collisionGroup);
             void processCollisions(PEntities group1, PEntities group2, CollisionGroup collisionGroup);
             _Map_EntPosCols convertEntitiesForCollision(PEntities group);

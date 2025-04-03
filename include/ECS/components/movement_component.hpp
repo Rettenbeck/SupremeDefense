@@ -5,14 +5,20 @@
 
 namespace SupDef {
 
+    enum class MovementMode {
+        PursueTarget, DirectedMotion
+    };
+
     struct MovementComponent : public Component {
-        float vx = 0.0f, vy = 0.0f;
-        float original_speed = 0.0f;
-        float speed = 0.0f;
-        bool isGroundBased = true;
-        bool hasGoal = false;
-        float goalX = 0.0f, goalY = 0.0f;
-        float tempGoalX = 0.0f, tempGoalY = 0.0f;
+        float vx = 0.0f, vy = 0.0f;                 // Current x and y speed; calculated by direction and speed
+        float original_speed = 0.0f;                // Speed without any modifiers
+        float speed = 0.0f;                         // Current speed with modifiers applied
+        bool isGroundBased = true;                  // Ground-based = bound to tiles (has to avoid walls and buildings)
+        bool hasGoal = false;                       // Has currently a goal to follow
+        float goalX = 0.0f, goalY = 0.0f;           // X and Y of goal
+        float tempGoalX = 0.0f, tempGoalY = 0.0f;   // X and Y of temporary goal (relevant only for ground-based movers as flyers can move straigth to target)
+        float angle = 0.0f;                         // Angle at which the entity moves (relevant only for directed movers)
+        MovementMode movementMode = MovementMode::PursueTarget;
 
         MovementComponent(float speed_, bool isGroundBased_) : original_speed(speed_), isGroundBased(isGroundBased_) { addToRegistry(); }
         MovementComponent() { addToRegistry(); }
@@ -72,7 +78,9 @@ namespace SupDef {
                 {S_GOAL_X, goalX},
                 {S_GOAL_Y, goalY},
                 {S_TEMP_GOAL_X, tempGoalX},
-                {S_TEMP_GOAL_Y, tempGoalY}
+                {S_TEMP_GOAL_Y, tempGoalY},
+                {S_ANGLE, angle},
+                {S_MOVEMENT_MODE, movementMode}
             };
         }
 
@@ -87,6 +95,8 @@ namespace SupDef {
             j.at(S_GOAL_Y).get_to(goalY);
             j.at(S_TEMP_GOAL_X).get_to(tempGoalX);
             j.at(S_TEMP_GOAL_Y).get_to(tempGoalY);
+            j.at(S_ANGLE).get_to(angle);
+            j.at(S_MOVEMENT_MODE).get_to(movementMode);
         }
 
         std::string getTypeName() const override {

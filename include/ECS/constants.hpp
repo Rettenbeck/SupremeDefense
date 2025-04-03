@@ -45,6 +45,8 @@ namespace SupDef {
     const std::string SX_RATE                               = "gather_rate"                         ;
     const std::string SX_MAX_CAP                            = "max_capacity"                        ;
     const std::string SX_SELF_COST                          = "self_cost"                           ;
+    const std::string SX_DAMAGE_AMOUNT                      = "damage_amount"                       ;
+    const std::string SX_DAMAGE_TYPE                        = "damage_type"                         ;
     
     // Components
     const std::string SC_TEXT                               = "text"                                ;
@@ -64,6 +66,7 @@ namespace SupDef {
     const std::string SC_INFLUENCE                          = "influence"                           ;
     const std::string SC_INFLUENCEABLE                      = "influenceable"                       ;
     const std::string SC_PROJECTILE                         = "projectile"                          ;
+    const std::string SC_PROJECTILE_TARGET                  = "projectile_target"                   ;
     const std::string SC_HEALTH                             = "health"                              ;
 
     // Asset Components
@@ -156,6 +159,8 @@ namespace SupDef {
     const std::string S_GOAL_Y                              = "goal_Y"                              ;
     const std::string S_TEMP_GOAL_X                         = "temp_goal_X"                         ;
     const std::string S_TEMP_GOAL_Y                         = "temp_goal_Y"                         ;
+    const std::string S_ANGLE                               = "angle"                               ;
+    const std::string S_MOVEMENT_MODE                       = "movement_mode"                       ;
 
     const std::string S_REQUIRES_TILE_CHECK                 = "requires_tile_check"                 ;
     const std::string S_REQUIRES_COLLISION_CHECK            = "requires_collision_check"            ;
@@ -174,6 +179,10 @@ namespace SupDef {
     const std::string S_HEIGHT                              = "height"                              ;
     const std::string S_IS_INFLUENCE                        = "is_influence"                        ;
     const std::string S_HEALTH                              = "health"                              ;
+    const std::string S_APPLY_TECHS_ON_HIT                  = "apply_techs_on_hit"                  ;
+    const std::string S_MULTIHIT_COOLDOWN                   = "multihit_cooldown"                   ;
+    const std::string S_HOMING                              = "homing"                              ;
+    const std::string S_DAMAGE                              = "damage"                              ;
 
 
 }
