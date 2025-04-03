@@ -110,8 +110,8 @@ namespace SupDef {
 
             float x1, y1, x2, y2, xm, ym;
             auto bb = &(colComp->boundingBox);
-            x1 = posComp->xAbs + bb->x;
-            y1 = posComp->yAbs + bb->y;
+            x1 = posComp->x + bb->x;
+            y1 = posComp->y + bb->y;
             x2 = x1 + bb->w;
             y2 = y1 + bb->h;
             

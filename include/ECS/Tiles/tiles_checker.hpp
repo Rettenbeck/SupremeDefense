@@ -62,7 +62,7 @@ namespace SupDef {
                         auto coord = tilesComponent->getPosFromIndex(t);
                         shapePtr->offsetX = coord.x;
                         shapePtr->offsetY = coord.y;
-                        if(col->collidesWith(rect.get(), pos->xAbs, pos->yAbs, 0, 0)) {
+                        if(col->collidesWith(rect.get(), pos->x, pos->y, 0, 0)) {
                             affected.push_back(entity->id);
                             break;
                         }
@@ -82,7 +82,7 @@ namespace SupDef {
 
                 imm->placedDown = true;
                 if(!imm->marksTilesOccupied && !imm->marksTilesImpassable) return;
-                auto tiles = getAffectedTilesForShape(pos->xAbs, pos->yAbs, col, tilesComponent);
+                auto tiles = getAffectedTilesForShape(pos->x, pos->y, col, tilesComponent);
                 setTilesByShape(imm, tilesComponent, tiles);
             }
 

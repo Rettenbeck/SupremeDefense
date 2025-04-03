@@ -113,12 +113,12 @@ namespace SupDef {
         ss << "Processing collisions:\n";
         ss << "  Group 1:\n    ";
         for (auto [ent, pos, col] : listA) {
-            ss << ent->id << "; x: " << pos->xAbs << "; y: " << pos->yAbs << "; radius: " << col->dummyRadius << "\n";
+            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
         }
         ss << "\n";
         ss << "  Group 2:\n    ";
         for (auto [ent, pos, col] : listB) {
-            ss << ent->id << "; x: " << pos->xAbs << "; y: " << pos->yAbs << "; radius: " << col->dummyRadius << "\n";
+            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
         }
         ss << "\n";
         toPrint += ss.str();
@@ -166,8 +166,8 @@ namespace SupDef {
     VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos, CollisionComponent* col) {
         assert(entity);
         assert(pos);
-        if (col) return col->getCenter(pos->xAbs, pos->yAbs);
-        return VF2(pos->xAbs, pos->yAbs);
+        if (col) return col->getCenter(pos->x, pos->y);
+        return VF2(pos->x, pos->y);
     }
 
     VF2 Game::getCenterOfEntity(Entity* entity, PositionComponent* pos) {

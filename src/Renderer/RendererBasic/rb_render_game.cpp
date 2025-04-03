@@ -93,8 +93,8 @@ namespace SupDef {
     void RendererBasic::renderEntityWithCollision(PositionComponent* pos, CollisionComponent* col, bool drawBB) {
         if (!pos || !col) return;
     
-        float entityX = pos->xAbs;
-        float entityY = pos->yAbs;
+        float entityX = pos->x;
+        float entityY = pos->y;
 
         if (drawBB) {
             ColorData cd_bb(sf::Color::Yellow, sf::Color::Black, 0);
@@ -126,8 +126,8 @@ namespace SupDef {
     void RendererBasic::renderEntityWithInfluence(PositionComponent* pos, CollisionComponent* col) {
         if (!pos || !col) return;
     
-        float entityX = pos->xAbs;
-        float entityY = pos->yAbs;
+        float entityX = pos->x;
+        float entityY = pos->y;
 
         ColorData cd(sf::Color(250, 0, 0, 40), sf::Color(250, 0, 0, 90), 0);
         if (!col->shapes.empty()) {
@@ -174,8 +174,8 @@ namespace SupDef {
         int d = 5;
         ColorData cd(sf::Color::Black, sf::Color::White, 1);
         drawSelection(
-            posComp->xAbs - d + colComp->boundingBox.x,
-            posComp->yAbs - d + colComp->boundingBox.y,
+            posComp->x - d + colComp->boundingBox.x,
+            posComp->y - d + colComp->boundingBox.y,
             colComp->boundingBox.w + 2 * d,
             colComp->boundingBox.h + 2 * d,
             cd
@@ -192,8 +192,8 @@ namespace SupDef {
 
         auto& bb = col->boundingBox;
         auto position = getMousePosWorld();
-        pos->xAbs = position.x - bb.w / 2;
-        pos->yAbs = position.y - bb.h / 2;
+        pos->x = position.x - bb.w / 2;
+        pos->y = position.y - bb.h / 2;
         renderEntityWithCollision(pos, col, true);
     }
 

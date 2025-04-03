@@ -4683,3 +4683,57 @@
 [2025-04-03 10:04:07] INFO:   Sent to game
 [2025-04-03 10:04:07] INFO:   Sent to replay
 [2025-04-03 10:04:09] INFO: Game ended from renderer
+[2025-04-03 20:20:57] INIT: ------------------
+[2025-04-03 20:21:06] INFO: Action created
+[2025-04-03 20:21:06] INFO:   Sent to game
+[2025-04-03 20:21:06] INFO:   Sent to replay
+[2025-04-03 20:21:10] INFO: Action created
+[2025-04-03 20:21:10] INFO:   Sent to game
+[2025-04-03 20:21:10] INFO:   Sent to replay
+[2025-04-03 20:21:15] INFO: Game ended from renderer
+
+[2025-04-03 20:28:04] INIT: ------------------
+[2025-04-03 20:28:07] INFO: Game ended from renderer
+
+[2025-04-03 20:29:36] INIT: ------------------
+[2025-04-03 20:29:39] INFO: Action created
+[2025-04-03 20:29:39] INFO:   Sent to game
+[2025-04-03 20:29:39] INFO:   Sent to replay
+[2025-04-03 20:29:45] INFO: Action created
+[2025-04-03 20:29:45] INFO:   Sent to game
+[2025-04-03 20:29:45] INFO:   Sent to replay
+[2025-04-03 20:29:54] INFO: Action created
+[2025-04-03 20:29:54] INFO:   Sent to game
+[2025-04-03 20:29:54] INFO:   Sent to replay
+[2025-04-03 20:30:03] INFO: Game ended from renderer
+
+[2025-04-03 20:31:32] INIT: ------------------
+[2025-04-03 20:31:39] INFO: Action created
+[2025-04-03 20:31:39] INFO:   Sent to game
+[2025-04-03 20:31:39] INFO:   Sent to replay
+[2025-04-03 20:31:41] INFO: Action created
+[2025-04-03 20:31:41] INFO:   Sent to game
+[2025-04-03 20:31:41] INFO:   Sent to replay
+[2025-04-03 20:31:50] INFO: Game ended from renderer
+
+[2025-04-03 20:35:44] INIT: ------------------
+[2025-04-03 20:35:49] INFO: Action created
+[2025-04-03 20:35:49] INFO:   Sent to game
+[2025-04-03 20:35:49] INFO:   Sent to replay
+[2025-04-03 20:35:51] INFO: Action created
+[2025-04-03 20:35:51] INFO:   Sent to game
+[2025-04-03 20:35:51] INFO:   Sent to replay
+[2025-04-03 20:35:55] INFO: Action created
+[2025-04-03 20:35:55] INFO:   Sent to game
+[2025-04-03 20:35:55] INFO:   Sent to replay
+[2025-04-03 20:35:58] INFO: Action created
+[2025-04-03 20:35:58] INFO:   Sent to game
+[2025-04-03 20:35:58] INFO:   Sent to replay
+[2025-04-03 20:36:05] INFO: Game ended from renderer
+
+[2025-04-03 20:37:52] INIT: ------------------
+[2025-04-03 20:37:57] INFO: Action created
+[2025-04-03 20:37:57] INFO:   Sent to game
+[2025-04-03 20:37:57] INFO:   Sent to replay
+[2025-04-03 20:38:05] INFO: Game ended from renderer
+

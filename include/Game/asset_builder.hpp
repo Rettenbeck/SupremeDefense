@@ -153,7 +153,7 @@ namespace SupDef {
             if (techData.techComponent) {
                 if (techData.techComponent->applyToWithinInfluence) {
                     asset->addComponent<InfluenceComponent>();
-                    asset->addComponent<PositionComponent>();
+                    asset->addComponent<PositionComponent>(true);
                     addDummyRadius(asset, techData.radius, true);
                 }
             }
@@ -193,7 +193,7 @@ namespace SupDef {
 
         static Entity* buildWeapon(AsData data, AssetID projectile, Damage* damage, Cooldown cooldown, float radius) {
             auto asset = createEmptyAsset(data);
-            asset->addComponent<PositionComponent>();
+            asset->addComponent<PositionComponent>(true);
             asset->addComponent<InfluenceComponent>();
             asset->addComponent<WeaponComponent>(projectile, damage, cooldown);
             addDummyRadius(asset, radius);
