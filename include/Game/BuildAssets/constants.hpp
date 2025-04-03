@@ -131,7 +131,7 @@ namespace SupDef {
     const long AS_WEAPON_BASIC_DAMAGE               = 12;
     const long AS_WEAPON_BASIC_PIERCE               = 2;
     const DamageType AS_WEAPON_BASIC_DTYPE          = DamageType::Normal;
-    const int AS_WEAPON_BASIC_COOLDOWN              = 20;
+    const int AS_WEAPON_BASIC_COOLDOWN              = 4500;
     const float AS_WEAPON_BASIC_RADIUS              = 100.0;
     
     // =-=-=-=-=-=-=-=-=-= Weapon Basic Homer                                  =-=-=-=-=-=-=-=-=-= //
@@ -141,7 +141,7 @@ namespace SupDef {
     const long AS_WEAPON_BASIC_HOMER_DAMAGE         = 8;
     const long AS_WEAPON_BASIC_HOMER_PIERCE         = 2;
     const DamageType AS_WEAPON_BASIC_HOMER_DTYPE    = DamageType::Normal;
-    const int AS_WEAPON_BASIC_HOMER_COOLDOWN        = 24;
+    const int AS_WEAPON_BASIC_HOMER_COOLDOWN        = 3600;
     const float AS_WEAPON_BASIC_HOMER_RADIUS        = 130.0;
 
 

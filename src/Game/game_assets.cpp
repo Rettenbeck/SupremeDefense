@@ -45,7 +45,7 @@ namespace SupDef {
         auto entity = createEntityFromAsset(assetID);
         auto posComp = entity->getComponent<PositionComponent>();
         assert(posComp);
-        setNewPositionToCenter(entity, posComp, x, y);
+        setNewCenteredPosition(entity, posComp, x, y);
         return entity;
     }
 

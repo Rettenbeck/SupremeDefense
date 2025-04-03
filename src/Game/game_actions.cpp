@@ -63,7 +63,7 @@ namespace SupDef {
                 auto movComp = entity->getComponent<MovementComponent>();
                 assert(posComp);
                 assert(movComp);
-                movComp->setGoal(x, y, posComp->xAbs, posComp->yAbs);
+                movComp->setGoal(x, y, posComp->x, posComp->y);
                 updateTempGoal(tilesComp, entity);
                 // std::cout << "Goal set! " << x << "; " << y << "\n"; 
             } else {

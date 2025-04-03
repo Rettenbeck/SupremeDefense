@@ -70,9 +70,8 @@ namespace SupDef {
             void passPositionToChildren(Entity* entity);
             void passPositionToChildren(EntityID entityID);
             void setNewPositionByDifference(PositionComponent* pos, float dx, float dy);
-            void setNewRelativePosition(PositionComponent* pos, float x, float y);
-            void setNewAbsolutePosition(PositionComponent* pos, float x, float y);
-            void setNewPositionToCenter(Entity* entity, PositionComponent* pos, float x, float y);
+            void setNewPosition(PositionComponent* pos, float x, float y);
+            void setNewCenteredPosition(Entity* entity, PositionComponent* pos, float x, float y);
             
 
             

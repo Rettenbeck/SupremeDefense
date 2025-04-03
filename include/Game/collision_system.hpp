@@ -48,9 +48,9 @@ namespace SupDef {
 
                         bool collide;
                         if (influenceMode) {
-                            collide = a->col->withinInfluence(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs);
+                            collide = a->col->withinInfluence(b->col, a->pos->x, a->pos->y, b->pos->x, b->pos->y);
                         } else {
-                            collide = a->col->collidesWith(b->col, a->pos->xAbs, a->pos->yAbs, b->pos->xAbs, b->pos->yAbs);
+                            collide = a->col->collidesWith(b->col, a->pos->x, a->pos->y, b->pos->x, b->pos->y);
                         }
 
                         if (collide) {
@@ -120,8 +120,8 @@ namespace SupDef {
                         addToLarge(obj);
                     } else {
                         assert(obj->col->boundingBox.isDefined);
-                        int tileX = static_cast<int>((obj->pos->xAbs + obj->col->boundingBox.x) / tileSize);
-                        int tileY = static_cast<int>((obj->pos->yAbs + obj->col->boundingBox.y) / tileSize);
+                        int tileX = static_cast<int>((obj->pos->x + obj->col->boundingBox.x) / tileSize);
+                        int tileY = static_cast<int>((obj->pos->y + obj->col->boundingBox.y) / tileSize);
 
                         if (oob(tileX, tileY)) {
                             addToLarge(obj);

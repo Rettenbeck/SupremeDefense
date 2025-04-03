@@ -25,7 +25,7 @@ namespace SupDef {
         }
         
         pathTiles.clear();
-        auto result = pathFinder->findPathForUnit(  tilesComp, positionComp->xAbs, positionComp->yAbs,
+        auto result = pathFinder->findPathForUnit(  tilesComp, positionComp->x, positionComp->y,
                                                     movementComp->goalX, movementComp->goalY, collisionComp->dummyRadius);
         //
 
@@ -79,8 +79,8 @@ namespace SupDef {
         }
     
         // movementComp->speed = movementComp->original_speed;
-        float newX = positionComp->xAbs + movementComp->vx * deltaTime;
-        float newY = positionComp->yAbs + movementComp->vy * deltaTime;
+        float newX = positionComp->x + movementComp->vx * deltaTime;
+        float newY = positionComp->y + movementComp->vy * deltaTime;
 
         float targetX = movementComp->isGroundBased ? movementComp->tempGoalX : movementComp->goalX;
         float targetY = movementComp->isGroundBased ? movementComp->tempGoalY : movementComp->goalY;
@@ -93,7 +93,7 @@ namespace SupDef {
         // std::cout << "vX: " << movementComp->vx << "; vY: " << movementComp->vy << "; targetX: " << targetX << "; targetY: " << targetY << "; ";
         // std::cout << "dist: " << distanceToGoalSq << "; speedSq: " << speedSq << "\n";
         if (distanceToGoalSq <= speedSq) {
-            setNewAbsolutePosition(positionComp, targetX, targetY);
+            setNewPosition(positionComp, targetX, targetY);
             movementComp->setVelocityToZero();
             
             if (movementComp->isGroundBased) {
@@ -103,7 +103,7 @@ namespace SupDef {
                 if(dFinalGoalSq > 263.0) {
                     updateTempGoal(tilesComp, comp);
                     // std::cout << "movementComp.x: " << movementComp->tempGoalX << "; y: " << movementComp->tempGoalY << "\n";
-                    movementComp->setVelocityTowardsGoal(positionComp->xAbs, positionComp->yAbs);
+                    movementComp->setVelocityTowardsGoal(positionComp->x, positionComp->y);
                 } else {
                     movementComp->clearGoal();
                 }
@@ -111,7 +111,7 @@ namespace SupDef {
                 movementComp->clearGoal();
             }
         } else {
-            setNewAbsolutePosition(positionComp, newX, newY);
+            setNewPosition(positionComp, newX, newY);
         }
     }
 
@@ -128,9 +128,9 @@ namespace SupDef {
         auto movementComp = std::get<2>(comp);
         assert(positionComp);
         assert(movementComp);
-        float newX = positionComp->xAbs + movementComp->vx * deltaTime;
-        float newY = positionComp->yAbs + movementComp->vy * deltaTime;
-        setNewAbsolutePosition(positionComp, newX, newY);
+        float newX = positionComp->x + movementComp->vx * deltaTime;
+        float newY = positionComp->y + movementComp->vy * deltaTime;
+        setNewPosition(positionComp, newX, newY);
     }
 
     void Game::passPositionToChildren(Entity* entity, PositionComponent* positionComponent) {
@@ -141,9 +141,11 @@ namespace SupDef {
         for (auto child : children) {
             auto posCompChild = child->getComponent<PositionComponent>();
             if (!posCompChild) continue;
-            auto center = getCenterOfEntity(entity, positionComponent);
-            posCompChild->xAbs = posCompChild->x + center.x;
-            posCompChild->yAbs = posCompChild->y + center.y;
+            if (posCompChild->followParent) {
+                auto center = getCenterOfEntity(entity, positionComponent);
+                posCompChild->x = posCompChild->xRel + center.x;
+                posCompChild->y = posCompChild->yRel + center.y;
+            }
             passPositionToChildren(child, posCompChild);
         }
     }
@@ -160,24 +162,15 @@ namespace SupDef {
 
     void Game::setNewPositionByDifference(PositionComponent* pos, float dx, float dy) {
         assert(pos);
-        pos->x += dx; pos->y += dy; pos->xAbs += dx; pos->yAbs += dy;
+        pos->x += dx; pos->y += dy;
     }
 
-    void Game::setNewRelativePosition(PositionComponent* pos, float x, float y) {
+    void Game::setNewPosition(PositionComponent* pos, float x, float y) {
         assert(pos);
-        float dx = x - pos->x;
-        float dy = y - pos->y;
-        setNewPositionByDifference(pos, dx, dy);
+        pos->x = x; pos->y = y;
     }
 
-    void Game::setNewAbsolutePosition(PositionComponent* pos, float x, float y) {
-        assert(pos);
-        float dx = x - pos->xAbs;
-        float dy = y - pos->yAbs;
-        setNewPositionByDifference(pos, dx, dy);
-    }
-
-    void Game::setNewPositionToCenter(Entity* entity, PositionComponent* pos, float x, float y) {
+    void Game::setNewCenteredPosition(Entity* entity, PositionComponent* pos, float x, float y) {
         auto center = getCenterOfEntity(entity, pos);
         float dx = x - center.x;
         float dy = y - center.y;
