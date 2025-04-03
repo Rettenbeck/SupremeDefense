@@ -18,15 +18,19 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_X, x}, {S_Y, y}, {S_X_ABS, xAbs}, {S_Y_ABS, yAbs}};
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_X).get_to(x);
-            j.at(S_Y).get_to(y);
-            j.at(S_X_ABS).get_to(xAbs);
-            j.at(S_Y_ABS).get_to(yAbs);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(PositionComponent)
+            REFLECT_FIELD(x)
+            REFLECT_FIELD(y)
+            REFLECT_FIELD(xAbs)
+            REFLECT_FIELD(yAbs)
+        REFLECT_COMPONENT_END()
 
         std::string getTypeName() const override {
             return SC_POSITION;
