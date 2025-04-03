@@ -31,8 +31,11 @@ namespace SupDef {
     using _Map_EntPosCols = std::unordered_map<EntityID, _EntPosCols>;
     using _EntTech  = std::tuple<Entity*, TechComponent*>;
     using _EntTechs = std::vector<_EntTech>;
+    using _EntPosColInfWpn  = std::tuple<Entity*, PositionComponent*, CollisionComponent*, InfluenceComponent*, WeaponComponent*>;
+    using _EntPosColInfWpns = std::vector<_EntPosColInfWpn>;
     
     const CollisionGroup CG_INFLUENCE                       = "cg_influence"                        ;
+    const CollisionGroup CG_WEAPON                          = "cg_weapon"                           ;
     const CollisionGroup CG_PROJECTILE                      = "cg_projectile"                       ;
 
     const std::string DEFAULT_FILENAME_SAVEGAME             = "game_save.txt"                       ;

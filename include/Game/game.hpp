@@ -72,19 +72,21 @@ namespace SupDef {
             void setNewPositionByDifference(PositionComponent* pos, float dx, float dy);
             void setNewRelativePosition(PositionComponent* pos, float x, float y);
             void setNewAbsolutePosition(PositionComponent* pos, float x, float y);
+            void setNewPositionToCenter(Entity* entity, PositionComponent* pos, float x, float y);
             
 
             
             // ### COLLISION HANDLING ##################################################### //
             void determineCollisions();
             void determineCollisionsInfluence();
+            void determineCollisionsWeapons();
             void determineCollisionsProjectiles();
 
-            template <typename T>
+            template <typename... T>
             void determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode = false);
 
-            template <typename T1, typename T2>
-            void determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode = false);
+            template<typename... A, typename... B>
+            void determineCollisionsGeneric(std::tuple<A...> a, std::tuple<B...> b, CollisionGroup collisionGroup, bool influenceMode = false);
 
             void processCollisions(PEntities group, CollisionGroup collisionGroup);
             void processCollisions(PEntities group1, PEntities group2, CollisionGroup collisionGroup);
@@ -99,6 +101,7 @@ namespace SupDef {
             VF2 getCenterOfEntity(Entity* entity, PositionComponent* pos, CollisionComponent* col);
             VF2 getCenterOfEntity(Entity* entity, PositionComponent* pos);
             VF2 getCenterOfEntity(Entity* entity);
+            EntityIDs findCollisionPartners(EntityID entityID, CollisionGroup collisionGroup);
             
 
             
@@ -136,6 +139,18 @@ namespace SupDef {
             EntityIDsTriple compareVectors(const EntityIDs& vec1, const EntityIDs& vec2);
             Entity* getCommandFromActiveTech(Entity* tech);
             Entity* getCommandFromActiveTech(ActiveTechComponent* activeTechComp);
+            
+
+            
+            // ### WEAPON HANDLING ######################################################## //
+            void processWeapons();
+            void processWeapon(Entity* entity, PositionComponent* pos, CollisionComponent* col, WeaponComponent* wpn);
+            void clearWeapon(WeaponComponent* wpn);
+            void determineTargetsForWeapon(Entity* entity, WeaponComponent* wpn);
+            void sortTargetsForWeapon(Entity* entity, WeaponComponent* wpn);
+            void shootWeapon(Entity* entity, PositionComponent* pos, CollisionComponent* col, WeaponComponent* wpn);
+            void shootWeaponNormal(Entity* entity, Entity* target, EntityID mapID, Entity* owner,
+                PositionComponent* pos, CollisionComponent* col, WeaponComponent* wpn);
             
 
             

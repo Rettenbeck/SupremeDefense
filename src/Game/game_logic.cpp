@@ -10,6 +10,7 @@ namespace SupDef {
         removeResolvedCollisions();
         updateWorlds(deltaTime);
         determineCollisions();
+        processWeapons();
         processTechs();
         processActions();
     }

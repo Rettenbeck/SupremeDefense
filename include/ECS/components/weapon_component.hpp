@@ -18,10 +18,14 @@ namespace SupDef {
             assert(damage_);
             projectile = projectile_;
             damage = damage_->clone();
-            current_cooldown = cooldown_; cooldown = cooldown_;
+            original_cooldown = cooldown_; cooldown = cooldown_;
             addToRegistry();
         }
         
+        void addTarget(EntityID target) {
+            push_back_unique(targets, target);
+        }
+
         void addToRegistry() {
             ComponentRegistry::registerComponent(getTypeName(), []()
                 { return std::make_unique<WeaponComponent>(); });
