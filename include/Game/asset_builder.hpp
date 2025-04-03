@@ -28,6 +28,27 @@ namespace SupDef {
         TechData(TechComponent* techComponent, float radius) : techComponent(techComponent), radius(radius) {}
     };
 
+    struct ProjectileData {
+        int multiHitCooldown = 0;
+        bool homing = false;
+        float radius = 1.0;
+        float speed = 5.0;
+        AssetIDs applyTechsOnHit;
+        ProjectileData();
+        ProjectileData(int multiHitCooldown, bool homing, float radius)
+        : multiHitCooldown(multiHitCooldown), homing(homing), radius(radius) {}
+        ProjectileData(int multiHitCooldown, bool homing, float radius, float speed)
+        : multiHitCooldown(multiHitCooldown), homing(homing), radius(radius), speed(speed) {}
+        ProjectileData(int multiHitCooldown, bool homing, float radius, AssetID applyTechOnHit)
+        : multiHitCooldown(multiHitCooldown), homing(homing), radius(radius) {
+            applyTechsOnHit.push_back(applyTechOnHit);
+        }
+        ProjectileData(int multiHitCooldown, bool homing, float radius, float speed, AssetID applyTechOnHit)
+        : multiHitCooldown(multiHitCooldown), homing(homing), radius(radius), speed(speed) {
+            applyTechsOnHit.push_back(applyTechOnHit);
+        }
+    };
+
     class AssetBuilder {
         public:
 
@@ -104,6 +125,7 @@ namespace SupDef {
             asset->addComponent<MovementComponent>(speed, groundBased);
             asset->addComponent<CollisionComponent>(dummyRadius);
             asset->addComponent<SelectableComponent>();
+            asset->addComponent<ProjectileTargetComponent>();
             return asset;
         }
 
@@ -113,6 +135,7 @@ namespace SupDef {
             asset->addComponent<SupDef::ImmovableComponent>(tilesCheck, colCheck, occupy, impassable);
             asset->addComponent<SupDef::CollisionComponent>(3.0);
             asset->addComponent<SupDef::SelectableComponent>();
+            asset->addComponent<ProjectileTargetComponent>();
             return asset;
         }
 
@@ -166,6 +189,31 @@ namespace SupDef {
             AssetIDs assets;
             assets.push_back(techToApply);
             return buildGiftTech(data, techData, assets);
+        }
+
+        static Entity* buildWeapon(AsData data, AssetID projectile, Damage* damage, Cooldown cooldown, float radius) {
+            auto asset = createEmptyAsset(data);
+            asset->addComponent<PositionComponent>();
+            asset->addComponent<InfluenceComponent>();
+            asset->addComponent<WeaponComponent>(projectile, damage, cooldown);
+            addDummyRadius(asset, radius);
+            return asset;
+        }
+
+        static Entity* buildProjectile(AsData data, ProjectileData projectileData) {
+            auto asset = createEmptyAsset(data);
+            asset->addComponent<PositionComponent>();
+            auto mov = asset->addComponent<MovementComponent>();
+            auto pro = asset->addComponent<ProjectileComponent>();
+            addDummyRadius(asset, projectileData.radius);
+            mov->original_speed = projectileData.speed;
+            mov->speed = projectileData.speed;
+            mov->isGroundBased = false;
+            mov->movementMode = MovementMode::DirectedMotion;
+            pro->applyTechsOnHit = projectileData.applyTechsOnHit;
+            pro->multiHitCooldown = projectileData.multiHitCooldown;
+            pro->homing = projectileData.homing;
+            return asset;
         }
 
     };

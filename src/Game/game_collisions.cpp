@@ -7,21 +7,38 @@ namespace SupDef {
 
     void Game::determineCollisions() {
         determineCollisionsInfluence();
+        determineCollisionsWeapons();
         determineCollisionsProjectiles();
     }
 
     void Game::determineCollisionsInfluence() {
-        determineCollisionsGeneric<InfluenceableComponent, InfluenceComponent>(CG_INFLUENCE, true);
+        determineCollisionsGeneric(
+            std::tuple<InfluenceableComponent>{},
+            std::tuple<InfluenceComponent, TechComponent>{},
+            CG_INFLUENCE, true
+        );
+    }
+
+    void Game::determineCollisionsWeapons() {
+        determineCollisionsGeneric(
+            std::tuple<ProjectileTargetComponent>{},
+            std::tuple<InfluenceComponent, WeaponComponent>{},
+            CG_WEAPON
+        );
     }
 
     void Game::determineCollisionsProjectiles() {
-        determineCollisionsGeneric<ProjectileComponent, ProjectileTargetComponent>(CG_PROJECTILE);
+        determineCollisionsGeneric(
+            std::tuple<ProjectileComponent>{},
+            std::tuple<ProjectileTargetComponent>{},
+            CG_PROJECTILE
+        );
     }
-
-    template <typename T>
+    
+    template <typename... T>
     void Game::determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode) {
         assert(collisionSystem);
-        auto group = entityManager->getEntitiesWithComponents<T>();
+        auto group = entityManager->getEntitiesWithComponents<T...>();
         auto group_ents = entityManager->extractEntities(group);
         
         collisionSystem->setInfluenceMode(influenceMode);
@@ -29,11 +46,11 @@ namespace SupDef {
         collisionSystem->setInfluenceMode(false);
     }
 
-    template <typename T1, typename T2>
-    void Game::determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode) {
+    template<typename... A, typename... B>
+    void Game::determineCollisionsGeneric(std::tuple<A...> a, std::tuple<B...> b, CollisionGroup collisionGroup, bool influenceMode) {
         assert(collisionSystem);
-        auto group1 = entityManager->getEntitiesWithComponents<T1>();
-        auto group2 = entityManager->getEntitiesWithComponents<T2>();
+        auto group1 = entityManager->getEntitiesWithComponents<A...>();
+        auto group2 = entityManager->getEntitiesWithComponents<B...>();
         auto group1_ents = entityManager->extractEntities(group1);
         auto group2_ents = entityManager->extractEntities(group2);
         
@@ -163,6 +180,23 @@ namespace SupDef {
         auto pos = entity->getComponent<PositionComponent>();
         auto col = entity->getComponent<CollisionComponent>();
         return getCenterOfEntity(entity, pos, col);
+    }
+
+    EntityIDs Game::findCollisionPartners(EntityID entityID, CollisionGroup collisionGroup) {
+        EntityIDs result;
+        if (entityID == NO_ENTITY) return result;
+
+        auto mapID = getMapOfEntity(entityID);
+        auto fullCollisionGroup = buildCollisionGroup(collisionGroup, mapID);
+        auto collisions = collisionTracker->retrieve(entityID);
+        for (auto collision : collisions) {
+            if (collision->collisionGroup == fullCollisionGroup) {
+                auto otherID = collision->entityA;
+                if (otherID == entityID) otherID = collision->entityB;
+                result.push_back(otherID);
+            }
+        }
+        return result;
     }
 
 }

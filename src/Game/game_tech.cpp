@@ -63,7 +63,7 @@ namespace SupDef {
         if (!log_assert(owner)) return;
         auto parent = entityManager->getParent(owner->id);
         auto children = entityManager->getChildren(owner->id);
-        auto ownComp = owner->getComponent<PlayerOwnershipComponent>();
+        // auto ownComp = owner->getComponent<PlayerOwnershipComponent>();
 
         if (tech->applyToOwner) {
             tech->addAssignee(owner->id);
@@ -89,15 +89,9 @@ namespace SupDef {
         }
 
         if (tech->applyToWithinInfluence) {
-            auto mapID = getMapOfEntity(entity->id);
-            auto collisionGroup = buildCollisionGroup(CG_INFLUENCE, mapID);
-            auto collisions = collisionTracker->retrieve(entity->id);
-            for (auto collision : collisions) {
-                if (collision->collisionGroup == collisionGroup) {
-                    auto otherID = collision->entityA;
-                    if (otherID == entity->id) otherID = collision->entityB;
-                    if (otherID != owner->id) tech->addAssignee(otherID);
-                }
+            auto collisionPartners = findCollisionPartners(entity->id, CG_INFLUENCE);
+            for (auto partnerID : collisionPartners) {
+                if (partnerID != owner->id) tech->addAssignee(partnerID);
             }
         }
     }

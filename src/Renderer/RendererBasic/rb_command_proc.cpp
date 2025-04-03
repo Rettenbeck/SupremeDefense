@@ -56,8 +56,8 @@ namespace SupDef {
 
         auto& bb = col->boundingBox;
         auto position = getMousePosWorld();
-        pos->x = position.x - bb.w / 2;
-        pos->y = position.y - bb.h / 2;
+        pos->x = position.x;
+        pos->y = position.y;
         j[JCOM_X] = pos->x;
         j[JCOM_Y] = pos->y;
         auto mapID = mouseToMap();

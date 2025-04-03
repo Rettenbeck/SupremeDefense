@@ -5,6 +5,8 @@
 #include <Game/BuildAssets/build_immovable_units.hpp>
 #include <Game/BuildAssets/build_commands.hpp>
 #include <Game/BuildAssets/build_techs.hpp>
+#include <Game/BuildAssets/build_weapons.hpp>
+#include <Game/BuildAssets/build_projectiles.hpp>
 
 #pragma once
 
@@ -19,6 +21,8 @@ namespace SupDef::BuildAssets {
         buildImmovableUnits(am);
         buildCommands(am);
         buildTechs(am);
+        buildWeapons(am);
+        buildProjectiles(am);
     }
 
 }

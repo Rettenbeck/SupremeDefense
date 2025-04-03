@@ -17,7 +17,7 @@ namespace SupDef {
         bool hasGoal = false;                       // Has currently a goal to follow
         float goalX = 0.0f, goalY = 0.0f;           // X and Y of goal
         float tempGoalX = 0.0f, tempGoalY = 0.0f;   // X and Y of temporary goal (relevant only for ground-based movers as flyers can move straigth to target)
-        float angle = 0.0f;                         // Angle at which the entity moves (relevant only for directed movers)
+        // float angle = 0.0f;                         // Angle at which the entity moves (relevant only for directed movers)
         MovementMode movementMode = MovementMode::PursueTarget;
 
         MovementComponent(float speed_, bool isGroundBased_) : original_speed(speed_), isGroundBased(isGroundBased_) { addToRegistry(); }
@@ -36,6 +36,18 @@ namespace SupDef {
 
         void setVelocityToZero() { vx = 0.0f; vy = 0.0f; }
 
+        void setVelocityTowardsTarget(float myX, float myY, float targetX, float targetY) {
+            setVelocityToZero();
+            setCurrentSpeed();
+            float dx = targetX - myX;
+            float dy = targetY - myY;
+            float length = std::sqrt(dx * dx + dy * dy);
+            if (length > 0.0f) {
+                vx = (dx / length) * speed;
+                vy = (dy / length) * speed;
+            }
+        }
+        
         void setVelocityTowardsGoal(float myX, float myY) {
             if (!hasGoal) {
                 setVelocityToZero();
@@ -79,7 +91,7 @@ namespace SupDef {
                 {S_GOAL_Y, goalY},
                 {S_TEMP_GOAL_X, tempGoalX},
                 {S_TEMP_GOAL_Y, tempGoalY},
-                {S_ANGLE, angle},
+                // {S_ANGLE, angle},
                 {S_MOVEMENT_MODE, movementMode}
             };
         }
@@ -95,7 +107,7 @@ namespace SupDef {
             j.at(S_GOAL_Y).get_to(goalY);
             j.at(S_TEMP_GOAL_X).get_to(tempGoalX);
             j.at(S_TEMP_GOAL_Y).get_to(tempGoalY);
-            j.at(S_ANGLE).get_to(angle);
+            // j.at(S_ANGLE).get_to(angle);
             j.at(S_MOVEMENT_MODE).get_to(movementMode);
         }
 

@@ -47,6 +47,7 @@ namespace SupDef {
     const std::string SX_SELF_COST                          = "self_cost"                           ;
     const std::string SX_DAMAGE_AMOUNT                      = "damage_amount"                       ;
     const std::string SX_DAMAGE_TYPE                        = "damage_type"                         ;
+    const std::string SX_PIERCE                             = "pierce"                              ;
     
     // Components
     const std::string SC_TEXT                               = "text"                                ;
@@ -67,6 +68,7 @@ namespace SupDef {
     const std::string SC_INFLUENCEABLE                      = "influenceable"                       ;
     const std::string SC_PROJECTILE                         = "projectile"                          ;
     const std::string SC_PROJECTILE_TARGET                  = "projectile_target"                   ;
+    const std::string SC_WEAPON                             = "weapon"                              ;
     const std::string SC_HEALTH                             = "health"                              ;
 
     // Asset Components
@@ -183,6 +185,8 @@ namespace SupDef {
     const std::string S_MULTIHIT_COOLDOWN                   = "multihit_cooldown"                   ;
     const std::string S_HOMING                              = "homing"                              ;
     const std::string S_DAMAGE                              = "damage"                              ;
+    const std::string S_TARGETS                             = "targets"                             ;
+    const std::string S_PROJECTILE                          = "projectile"                          ;
 
 
 }

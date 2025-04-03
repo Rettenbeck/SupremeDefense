@@ -7,6 +7,7 @@
 #include <Game/game_player.cpp>
 #include <Game/game_logic.cpp>
 #include <Game/game_tech.cpp>
+#include <Game/game_weapons.cpp>
 #include <Game/game_assets.cpp>
 #include <Game/game_serial.cpp>
 

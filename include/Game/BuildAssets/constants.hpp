@@ -92,8 +92,6 @@ namespace SupDef {
     const float AS_UNIT_MOVER_2_DUMMY_RADIUS        = 15.0;
     const bool  AS_UNIT_MOVER_2_GROUND_BASED        = true;
 
-    
-
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -120,5 +118,53 @@ namespace SupDef {
     const bool AS_UNIT_IMM_2_COL_CHECK              = false;
     const bool AS_UNIT_IMM_2_OCCUPY                 = true;
     const bool AS_UNIT_IMM_2_IMPASSABLE             = true;
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= Weapons                                 =-=-=-=-=-=-=-=-=-=-=-=-= //
+    
+    // =-=-=-=-=-=-=-=-=-= Weapon Basic                                        =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WEAPON_BASIC                       = "weapon_basic"                        ;
+    const std::string AS_WEAPON_BASIC_NAME_DE               = "Standard-Waffe"                      ;
+    const std::string AS_WEAPON_BASIC_DESC_DE               = "Einfache Waffe ohne Verfolgung"      ;
+    const long AS_WEAPON_BASIC_DAMAGE               = 12;
+    const long AS_WEAPON_BASIC_PIERCE               = 2;
+    const DamageType AS_WEAPON_BASIC_DTYPE          = DamageType::Normal;
+    const int AS_WEAPON_BASIC_COOLDOWN              = 20;
+    const float AS_WEAPON_BASIC_RADIUS              = 100.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Weapon Basic Homer                                  =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WEAPON_BASIC_HOMER                 = "weapon_basic_homing"                 ;
+    const std::string AS_WEAPON_BASIC_HOMER_NAME_DE         = "Verfolgende Waffe"                   ;
+    const std::string AS_WEAPON_BASIC_HOMER_DESC_DE         = "Einfache Waffe mit Verfolgung"       ;
+    const long AS_WEAPON_BASIC_HOMER_DAMAGE         = 8;
+    const long AS_WEAPON_BASIC_HOMER_PIERCE         = 2;
+    const DamageType AS_WEAPON_BASIC_HOMER_DTYPE    = DamageType::Normal;
+    const int AS_WEAPON_BASIC_HOMER_COOLDOWN        = 24;
+    const float AS_WEAPON_BASIC_HOMER_RADIUS        = 130.0;
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= Projectiles                             =-=-=-=-=-=-=-=-=-=-=-=-= //
+    
+    // =-=-=-=-=-=-=-=-=-= Projectile Basic                                    =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_PROJECTILE_BASIC                   = "proj_basic"                          ;
+    const std::string AS_PROJECTILE_BASIC_NAME_DE           = "Standard-Projektil"                  ;
+    const std::string AS_PROJECTILE_BASIC_DESC_DE           = "Einfaches Geschoss ohne Verfolgung"  ;
+    const int AS_PROJECTILE_BASIC_MULTIHIT          = 0;
+    const bool AS_PROJECTILE_BASIC_HOMING           = false;
+    const float AS_PROJECTILE_BASIC_RADIUS          = 4.0;
+    const float AS_PROJECTILE_BASIC_SPEED           = 10.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Projectile Basic Homer                              =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_PROJECTILE_BASIC_HOMER             = "proj_basic_homer"                    ;
+    const std::string AS_PROJECTILE_BASIC_HOMER_NAME_DE     = "Verfolgendes Projektil"              ;
+    const std::string AS_PROJECTILE_BASIC_HOMER_DESC_DE     = "Einfaches Geschoss mit Verfolgung"   ;
+    const int AS_PROJECTILE_BASIC_HOMER_MULTIHIT    = 0;
+    const bool AS_PROJECTILE_BASIC_HOMER_HOMING     = false;
+    const float AS_PROJECTILE_BASIC_HOMER_RADIUS    = 4.0;
+    const float AS_PROJECTILE_BASIC_HOMER_SPEED     = 10.0;
 
 }

@@ -13,6 +13,7 @@ namespace SupDef::BuildAssets {
         );
         asset->addComponent<InfluenceableComponent>();
         AssetBuilder::addInit(asset, AS_TECH_ALLOW_BUILD1);
+        //AssetBuilder::addInit(asset, AS_WEAPON_BASIC);
     }
 
     void buildImmovableUnitI2(AssetManager* am) {
@@ -23,6 +24,7 @@ namespace SupDef::BuildAssets {
         );
         asset->addComponent<InfluenceableComponent>();
         AssetBuilder::addInit(asset, AS_TECH_ALLOW_BUILD1);
+        AssetBuilder::addInit(asset, AS_WEAPON_BASIC_HOMER);
     }
 
     void buildImmovableUnits(AssetManager* am) {
