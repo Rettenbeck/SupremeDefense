@@ -76,44 +76,72 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j[S_GAINED               ] = gained;
-            j[S_KEPT                 ] = kept;
-            j[S_LOST                 ] = lost;
-            j[S_CREATED_BY           ] = createdBy;
-            j[S_APPLY_TO_ALL         ] = applyToAll;
-            j[S_APPLY_TO_OWNER       ] = applyToOwner;
-            j[S_APPLY_TO_PARENT      ] = applyToParent;
-            j[S_APPLY_TO_CHILDREN    ] = applyToChildren;
-            j[S_APPLY_TO_INFLUENCE   ] = applyToWithinInfluence;
-            j[S_AFFECTS_ALL          ] = affectsAll;
-            j[S_AFFECTS_SAME_PLAYER  ] = affectsSamePlayer;
-            j[S_AFFECTS_SAME_TEAM    ] = affectsSameTeam;
-            j[S_AFFECTS_ENEMY        ] = affectsEnemy;
-            j[S_FILTER_BY_COMPONENTS ] = filterByComponents;
-            j[S_REQUIRED_COMPONENTS  ] = requiredComponents;
-            j[S_WHITELIST            ] = whitelist;
-            j[S_BLACKLIST            ] = blacklist;
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_GAINED               ).get_to(gained                );
-            j.at(S_KEPT                 ).get_to(kept                  );
-            j.at(S_LOST                 ).get_to(lost                  );
-            j.at(S_CREATED_BY           ).get_to(createdBy             );
-            j.at(S_APPLY_TO_ALL         ).get_to(applyToAll            );
-            j.at(S_APPLY_TO_OWNER       ).get_to(applyToOwner          );
-            j.at(S_APPLY_TO_PARENT      ).get_to(applyToParent         );
-            j.at(S_APPLY_TO_CHILDREN    ).get_to(applyToChildren       );
-            j.at(S_APPLY_TO_INFLUENCE   ).get_to(applyToWithinInfluence);
-            j.at(S_AFFECTS_ALL          ).get_to(affectsAll            );
-            j.at(S_AFFECTS_SAME_PLAYER  ).get_to(affectsSamePlayer     );
-            j.at(S_AFFECTS_SAME_TEAM    ).get_to(affectsSameTeam       );
-            j.at(S_AFFECTS_ENEMY        ).get_to(affectsEnemy          );
-            j.at(S_FILTER_BY_COMPONENTS ).get_to(filterByComponents    );
-            j.at(S_REQUIRED_COMPONENTS  ).get_to(requiredComponents    );
-            j.at(S_WHITELIST            ).get_to(whitelist             );
-            j.at(S_BLACKLIST            ).get_to(blacklist             );
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(TechComponent)
+            REFLECT_FIELD(gained)
+            REFLECT_FIELD(kept)
+            REFLECT_FIELD(lost)
+            REFLECT_FIELD(createdBy)
+            REFLECT_FIELD(applyToAll)
+            REFLECT_FIELD(applyToOwner)
+            REFLECT_FIELD(applyToParent)
+            REFLECT_FIELD(applyToChildren)
+            REFLECT_FIELD(applyToWithinInfluence)
+            REFLECT_FIELD(affectsAll)
+            REFLECT_FIELD(affectsSamePlayer)
+            REFLECT_FIELD(affectsSameTeam)
+            REFLECT_FIELD(affectsEnemy)
+            REFLECT_FIELD(filterByComponents)
+            REFLECT_FIELD(requiredComponents)
+            REFLECT_FIELD(whitelist)
+            REFLECT_FIELD(blacklist)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j[S_GAINED               ] = gained;
+        //     j[S_KEPT                 ] = kept;
+        //     j[S_LOST                 ] = lost;
+        //     j[S_CREATED_BY           ] = createdBy;
+        //     j[S_APPLY_TO_ALL         ] = applyToAll;
+        //     j[S_APPLY_TO_OWNER       ] = applyToOwner;
+        //     j[S_APPLY_TO_PARENT      ] = applyToParent;
+        //     j[S_APPLY_TO_CHILDREN    ] = applyToChildren;
+        //     j[S_APPLY_TO_INFLUENCE   ] = applyToWithinInfluence;
+        //     j[S_AFFECTS_ALL          ] = affectsAll;
+        //     j[S_AFFECTS_SAME_PLAYER  ] = affectsSamePlayer;
+        //     j[S_AFFECTS_SAME_TEAM    ] = affectsSameTeam;
+        //     j[S_AFFECTS_ENEMY        ] = affectsEnemy;
+        //     j[S_FILTER_BY_COMPONENTS ] = filterByComponents;
+        //     j[S_REQUIRED_COMPONENTS  ] = requiredComponents;
+        //     j[S_WHITELIST            ] = whitelist;
+        //     j[S_BLACKLIST            ] = blacklist;
+        // }
+
+        // void from_json(const json& j) override {
+        //     j.at(S_GAINED               ).get_to(gained                );
+        //     j.at(S_KEPT                 ).get_to(kept                  );
+        //     j.at(S_LOST                 ).get_to(lost                  );
+        //     j.at(S_CREATED_BY           ).get_to(createdBy             );
+        //     j.at(S_APPLY_TO_ALL         ).get_to(applyToAll            );
+        //     j.at(S_APPLY_TO_OWNER       ).get_to(applyToOwner          );
+        //     j.at(S_APPLY_TO_PARENT      ).get_to(applyToParent         );
+        //     j.at(S_APPLY_TO_CHILDREN    ).get_to(applyToChildren       );
+        //     j.at(S_APPLY_TO_INFLUENCE   ).get_to(applyToWithinInfluence);
+        //     j.at(S_AFFECTS_ALL          ).get_to(affectsAll            );
+        //     j.at(S_AFFECTS_SAME_PLAYER  ).get_to(affectsSamePlayer     );
+        //     j.at(S_AFFECTS_SAME_TEAM    ).get_to(affectsSameTeam       );
+        //     j.at(S_AFFECTS_ENEMY        ).get_to(affectsEnemy          );
+        //     j.at(S_FILTER_BY_COMPONENTS ).get_to(filterByComponents    );
+        //     j.at(S_REQUIRED_COMPONENTS  ).get_to(requiredComponents    );
+        //     j.at(S_WHITELIST            ).get_to(whitelist             );
+        //     j.at(S_BLACKLIST            ).get_to(blacklist             );
+        // }
 
         std::string getTypeName() const override {
             return SCT_TECH;

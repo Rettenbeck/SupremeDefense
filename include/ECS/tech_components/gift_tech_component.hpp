@@ -37,14 +37,27 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j[S_TECHS_TO_CREATE] = techsToCreate;
-            j[S_CREATED_TECHS  ] = createdTechs;
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_TECHS_TO_CREATE).get_to(techsToCreate);
-            j.at(S_CREATED_TECHS  ).get_to(createdTechs);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(GiftTechComponent)
+            REFLECT_FIELD(techsToCreate)
+            REFLECT_FIELD(createdTechs)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j[S_TECHS_TO_CREATE] = techsToCreate;
+        //     j[S_CREATED_TECHS  ] = createdTechs;
+        // }
+
+        // void from_json(const json& j) override {
+        //     j.at(S_TECHS_TO_CREATE).get_to(techsToCreate);
+        //     j.at(S_CREATED_TECHS  ).get_to(createdTechs);
+        // }
 
         std::string getTypeName() const override {
             return SCT_GIFT_TECH;

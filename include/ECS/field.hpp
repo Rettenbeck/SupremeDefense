@@ -97,8 +97,7 @@ namespace SupDef {
     struct ListField : public IField<T> {
         std::vector<std::unique_ptr<ItemType>> T::* memberPtr;
     
-        ListField(const std::string& name_, std::vector<std::unique_ptr<ItemType>> T::* ptr)
-            : memberPtr(ptr) {
+        ListField(const std::string& name_, std::vector<std::unique_ptr<ItemType>> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -156,8 +155,7 @@ namespace SupDef {
     struct MapField : public IField<T> {
         std::unordered_map<K, std::unique_ptr<V>> T::* memberPtr;
     
-        MapField(const std::string& name_, std::unordered_map<K, std::unique_ptr<V>> T::* ptr)
-            : memberPtr(ptr) {
+        MapField(const std::string& name_, std::unordered_map<K, std::unique_ptr<V>> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -167,12 +165,13 @@ namespace SupDef {
             nlohmann::json j = nlohmann::json::object();
     
             for (const auto& [key, value] : map) {
+                std::stringstream ss; ss << key;
                 if (value) {
                     nlohmann::json valJson;
                     generic_to_json(valJson, value.get());
-                    j[std::to_string(key)] = valJson;
+                    j[ss.str()] = valJson;
                 } else {
-                    j[std::to_string(key)] = nullptr;
+                    j[ss.str()] = nullptr;
                 }
             }
     

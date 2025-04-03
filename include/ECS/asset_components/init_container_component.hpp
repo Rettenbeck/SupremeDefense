@@ -40,13 +40,25 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_CONTAINED, contained}};
+            generic_to_json(j, this);
         }
-    
+
         void from_json(const json& j) override {
-            contained.clear();
-            j.at(S_CONTAINED).get_to(contained);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(InitContainerComponent)
+            REFLECT_FIELD(contained)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j = json{{S_CONTAINED, contained}};
+        // }
+    
+        // void from_json(const json& j) override {
+        //     contained.clear();
+        //     j.at(S_CONTAINED).get_to(contained);
+        // }
     
         std::string getTypeName() const override {
             return SCA_INIT_CONTAINER;

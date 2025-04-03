@@ -6,8 +6,6 @@
 namespace SupDef {
 
     struct InfluenceableComponent : public Component {
-        float radius;
-
         InfluenceableComponent() { addToRegistry(); }
 
         void addToRegistry() {

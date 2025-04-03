@@ -19,20 +19,36 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j[S_COMMAND] = commandID;
-            j[S_COOLDOWN          ] = cooldown;
-            j[S_CURRENT_COOLDOWN  ] = current_cooldown;
-            j[S_ORIGINAL_COOLDOWN ] = original_cooldown;
-            j[S_INIT_FULL_COOLDOWN] = initWithFullCooldown;
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            j.at(S_COMMAND).get_to(commandID);
-            j.at(S_COOLDOWN          ).get_to(cooldown);
-            j.at(S_CURRENT_COOLDOWN  ).get_to(current_cooldown);
-            j.at(S_ORIGINAL_COOLDOWN ).get_to(original_cooldown);
-            j.at(S_INIT_FULL_COOLDOWN).get_to(initWithFullCooldown);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(ActiveTechComponent)
+            REFLECT_FIELD(commandID)
+            REFLECT_FIELD(cooldown)
+            REFLECT_FIELD(current_cooldown)
+            REFLECT_FIELD(original_cooldown)
+            REFLECT_FIELD(initWithFullCooldown)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j[S_COMMAND] = commandID;
+        //     j[S_COOLDOWN          ] = cooldown;
+        //     j[S_CURRENT_COOLDOWN  ] = current_cooldown;
+        //     j[S_ORIGINAL_COOLDOWN ] = original_cooldown;
+        //     j[S_INIT_FULL_COOLDOWN] = initWithFullCooldown;
+        // }
+
+        // void from_json(const json& j) override {
+        //     j.at(S_COMMAND).get_to(commandID);
+        //     j.at(S_COOLDOWN          ).get_to(cooldown);
+        //     j.at(S_CURRENT_COOLDOWN  ).get_to(current_cooldown);
+        //     j.at(S_ORIGINAL_COOLDOWN ).get_to(original_cooldown);
+        //     j.at(S_INIT_FULL_COOLDOWN).get_to(initWithFullCooldown);
+        // }
 
         std::string getTypeName() const override {
             return SCT_ACTIVE_TECH;

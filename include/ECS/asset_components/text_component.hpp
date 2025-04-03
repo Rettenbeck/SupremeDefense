@@ -46,27 +46,39 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            for (const auto& [key, text] : texts) {
-                if (text) {
-                    json textJson;
-                    text->to_json(textJson);
-                    textJson[S_KEY] = key;
-                    j[S_TEXTS].push_back(textJson);
-                }
-            }
+            generic_to_json(j, this);
         }
-    
+
         void from_json(const json& j) override {
-            texts.clear();
-            if (j.contains(S_TEXTS) && j[S_TEXTS].is_array()) {
-                for (const auto& textJson : j[S_TEXTS]) {
-                    auto key = textJson.at(S_KEY).get<std::string>();
-                    auto text = std::make_unique<Text>();
-                    text->from_json(textJson);
-                    texts[key] = std::move(text);
-                }
-            }
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(TextComponent)
+            REFLECT_MAP_UNIQUE(texts, std::string, Text)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     for (const auto& [key, text] : texts) {
+        //         if (text) {
+        //             json textJson;
+        //             text->to_json(textJson);
+        //             textJson[S_KEY] = key;
+        //             j[S_TEXTS].push_back(textJson);
+        //         }
+        //     }
+        // }
+    
+        // void from_json(const json& j) override {
+        //     texts.clear();
+        //     if (j.contains(S_TEXTS) && j[S_TEXTS].is_array()) {
+        //         for (const auto& textJson : j[S_TEXTS]) {
+        //             auto key = textJson.at(S_KEY).get<std::string>();
+        //             auto text = std::make_unique<Text>();
+        //             text->from_json(textJson);
+        //             texts[key] = std::move(text);
+        //         }
+        //     }
+        // }
     
         std::string getTypeName() const override {
             return SC_TEXT;

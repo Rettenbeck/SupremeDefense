@@ -17,12 +17,24 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_TO_BUILD, toBuild}};
+            generic_to_json(j, this);
         }
-    
+
         void from_json(const json& j) override {
-            j.at(S_TO_BUILD).get_to(toBuild);
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(BuildCommandComponent)
+            REFLECT_FIELD(toBuild)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j = json{{S_TO_BUILD, toBuild}};
+        // }
+    
+        // void from_json(const json& j) override {
+        //     j.at(S_TO_BUILD).get_to(toBuild);
+        // }
     
         std::string getTypeName() const override {
             return SCA_BUILD_COMMAND;

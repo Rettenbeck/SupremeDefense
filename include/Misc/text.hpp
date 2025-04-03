@@ -29,12 +29,24 @@ namespace SupDef {
             std::string get() { return get(""); }
 
             void to_json(json& j) const {
-                j = texts;
+                generic_to_json(j, this);
             }
-            
+    
             void from_json(const json& j) {
-                texts = j.get<std::unordered_map<std::string, std::string>>();
+                generic_from_json(j, this);
             }
+    
+            REFLECT_COMPONENT_BEGIN(Text)
+                REFLECT_FIELD(texts)
+            REFLECT_COMPONENT_END()
+    
+            // void to_json(json& j) const {
+            //     j = texts;
+            // }
+            
+            // void from_json(const json& j) {
+            //     texts = j.get<std::unordered_map<std::string, std::string>>();
+            // }
         
     };
 

@@ -84,26 +84,41 @@ namespace SupDef {
         }
 
         void to_json(json& j) const override {
-            j = json{{S_TILE_SIZE, tileSize}, {S_TILES_X, tilesX}, {S_TILES_Y, tilesY}};
-            j[S_TILES] = json::array();
-            for (const auto& tile : tiles) {
-                json tileJson;
-                tile->to_json(tileJson);
-                j[S_TILES].push_back(tileJson);
-            }
+            generic_to_json(j, this);
         }
 
         void from_json(const json& j) override {
-            tiles.clear();
-            j.at(S_TILE_SIZE).get_to(tileSize);
-            j.at(S_TILES_X).get_to(tilesX);
-            j.at(S_TILES_Y).get_to(tilesY);
-            for (const auto& tileJson : j.at(S_TILES)) {
-                auto tile = std::make_unique<Tile>();
-                tile->from_json(tileJson);
-                tiles.push_back(std::move(tile));
-            }
+            generic_from_json(j, this);
         }
+
+        REFLECT_COMPONENT_BEGIN(TilesComponent)
+            REFLECT_FIELD(tileSize)
+            REFLECT_FIELD(tilesX)
+            REFLECT_FIELD(tilesY)
+            REFLECT_LIST_UNIQUE(tiles, Tile)
+        REFLECT_COMPONENT_END()
+
+        // void to_json(json& j) const override {
+        //     j = json{{S_TILE_SIZE, tileSize}, {S_TILES_X, tilesX}, {S_TILES_Y, tilesY}};
+        //     j[S_TILES] = json::array();
+        //     for (const auto& tile : tiles) {
+        //         json tileJson;
+        //         tile->to_json(tileJson);
+        //         j[S_TILES].push_back(tileJson);
+        //     }
+        // }
+
+        // void from_json(const json& j) override {
+        //     tiles.clear();
+        //     j.at(S_TILE_SIZE).get_to(tileSize);
+        //     j.at(S_TILES_X).get_to(tilesX);
+        //     j.at(S_TILES_Y).get_to(tilesY);
+        //     for (const auto& tileJson : j.at(S_TILES)) {
+        //         auto tile = std::make_unique<Tile>();
+        //         tile->from_json(tileJson);
+        //         tiles.push_back(std::move(tile));
+        //     }
+        // }
 
         std::string getTypeName() const override {
             return SC_TILES;
