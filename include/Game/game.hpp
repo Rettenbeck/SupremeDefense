@@ -101,6 +101,7 @@ namespace SupDef {
             VF2 getCenterOfEntity(Entity* entity, PositionComponent* pos);
             VF2 getCenterOfEntity(Entity* entity);
             EntityIDs findCollisionPartners(EntityID entityID, CollisionGroup collisionGroup);
+            PCollisionInfos findCollisionsOfEntity(EntityID entityID, CollisionGroup collisionGroup);
             
 
             
@@ -150,6 +151,18 @@ namespace SupDef {
             void shootWeapon(Entity* entity, PositionComponent* pos, CollisionComponent* col, WeaponComponent* wpn);
             void shootWeaponNormal(Entity* entity, Entity* target, EntityID mapID, Entity* owner,
                 PositionComponent* pos, CollisionComponent* col, WeaponComponent* wpn);
+            
+
+            
+            // ### PROJECTILE HANDLING #################################################### //
+            void processProjectiles();
+            void processProjectile(EntityID entityID, PositionComponent* pos, MovementComponent* mov,
+                CollisionComponent* col, ProjectileComponent* pro);
+            void processProjectileCollisions(EntityID projectileID, ProjectileComponent* pro);
+            void processProjectileCollision(EntityID projectileID, ProjectileComponent* pro, Entity* other, CollisionInfo* collision);
+            void removeProjectile(EntityID projectileID);
+            void targetDestroyed(EntityID targetID);
+            void removeOffMapProjectile(EntityID entityID, PositionComponent* pos, CollisionComponent* col);
             
 
             

@@ -86,6 +86,7 @@ namespace SupDef {
                 // renderEntityWithInfluence(pos, col);
             } else {
                 renderEntityWithCollision(pos, col, false);
+                drawHealthBar(entity, pos, col, 56, 10);
             }
         }
     }
@@ -195,6 +196,49 @@ namespace SupDef {
         pos->x = position.x - bb.w / 2;
         pos->y = position.y - bb.h / 2;
         renderEntityWithCollision(pos, col, true);
+    }
+
+    void RendererBasic::drawHealthBar(Entity* entity, PositionComponent* pos, CollisionComponent* col, int hbWidth, int hbHeight) {
+        assert(entity);
+        assert(pos);
+        assert(col);
+        
+        auto healthComp = entity->getComponent<HealthComponent>();
+        if (!healthComp) return;
+
+        auto center = game->getCenterOfEntity(entity, pos, col);
+        if (col->boundingBox.isDefined) center.y -= col->boundingBox.h / 2;
+        center.x -= hbWidth  / 2;
+        center.y -= hbHeight * 1;
+        drawHealthBar(center.x, center.y, hbWidth, hbHeight, healthComp->health, healthComp->max_health);
+    }
+
+    void RendererBasic::drawHealthBar(float x, float y, float width, float height, long health, long health_max) {
+        ColorData outline(sf::Color(0, 0, 0), sf::Color(0, 0, 0), 0);
+        drawRect(x, y, width, height, outline);
+        if(health_max == 0) return;
+
+        int xi = x + 1, yi = y + 1;
+        int wi = width - 2, hi = height - 2;
+        
+        float perc = (((float) health) / ((float) health_max));
+        if (perc < 0.0) perc = 0.0;
+        if (perc > 1.0) perc = 1.0;
+        wi = (int) (((float) wi) * perc);
+
+        ColorData bar;
+        bar.outlineColor = sf::Color(0, 0, 0);
+        bar.outlineThickness = 0;
+
+        if(perc > 0.5) {
+            bar.fillColor = sf::Color(0, 255, 0);
+        } else if(perc > 0.25) {
+            bar.fillColor = sf::Color(255, 255, 0);
+        } else {
+            bar.fillColor = sf::Color(255, 0, 0);
+        }
+
+        drawRect(xi, yi, wi, hi, bar);
     }
 
 }

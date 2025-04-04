@@ -53,6 +53,9 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::K) {
                         game->serialize("state_secondary.txt");
                     }
+                    if (keyEvent->code == sf::Keyboard::Key::L) {
+                        game->deserialize("state.txt");
+                    }
                     if (keyEvent->code == sf::Keyboard::Key::P) {
                         auto currentPlayer = game->getThisPlayer()->id;
                         auto otherPlayer = game->otherPlayer;

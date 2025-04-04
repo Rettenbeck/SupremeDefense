@@ -79,6 +79,8 @@ namespace SupDef {
             void renderSelectedUnits();
             void renderSelectedUnit(EntityID entityID);
             void renderVirtualEntity();
+            void drawHealthBar(Entity* entity, PositionComponent* pos, CollisionComponent* col, int hbWidth, int hbHeight);
+            void drawHealthBar(float x, float y, float width, float height, long health, long health_max);
             void renderMaps(EntityManager* entityManager);
             void renderMap(_EntMapTiles map);
             

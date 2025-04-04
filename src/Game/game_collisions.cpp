@@ -30,7 +30,7 @@ namespace SupDef {
     void Game::determineCollisionsProjectiles() {
         determineCollisionsGeneric(
             std::tuple<ProjectileComponent>{},
-            std::tuple<ProjectileTargetComponent>{},
+            std::tuple<ProjectileHittableComponent>{},
             CG_PROJECTILE
         );
     }
@@ -109,19 +109,19 @@ namespace SupDef {
         assert(mapComponent);
         Colliders colliders;
 
-        std::stringstream ss;
-        ss << "Processing collisions:\n";
-        ss << "  Group 1:\n    ";
-        for (auto [ent, pos, col] : listA) {
-            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
-        }
-        ss << "\n";
-        ss << "  Group 2:\n    ";
-        for (auto [ent, pos, col] : listB) {
-            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
-        }
-        ss << "\n";
-        toPrint += ss.str();
+        // std::stringstream ss;
+        // ss << "Processing collisions:\n";
+        // ss << "  Group 1:\n    ";
+        // for (auto [ent, pos, col] : listA) {
+        //     ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
+        // }
+        // ss << "\n";
+        // ss << "  Group 2:\n    ";
+        // for (auto [ent, pos, col] : listB) {
+        //     ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
+        // }
+        // ss << "\n";
+        // toPrint += ss.str();
 
         auto addToColliders = [&](_EntPosCols& list, bool group) {
             for(auto& [entity, pos, col] : list) {
@@ -194,6 +194,25 @@ namespace SupDef {
                 auto otherID = collision->entityA;
                 if (otherID == entityID) otherID = collision->entityB;
                 result.push_back(otherID);
+            }
+        }
+        return result;
+    }
+
+    PCollisionInfos Game::findCollisionsOfEntity(EntityID entityID, CollisionGroup collisionGroup) {
+        PCollisionInfos result;
+        if (entityID == NO_ENTITY) return result;
+
+        auto mapID = getMapOfEntity(entityID);
+        auto fullCollisionGroup = buildCollisionGroup(collisionGroup, mapID);
+        auto collisions = collisionTracker->retrieve(entityID);
+        for (auto collision : collisions) {
+            if (collision->collisionGroup == fullCollisionGroup) {
+                auto otherID = collision->entityA;
+                if (otherID == entityID) otherID = collision->entityB;
+                collision->entityA = entityID;
+                collision->entityB = otherID;
+                result.push_back(collision);
             }
         }
         return result;

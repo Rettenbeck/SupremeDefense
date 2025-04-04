@@ -124,10 +124,24 @@ namespace SupDef {
     }
 
     void Game::updatePositionDirected(float deltaTime, TilesComponent* tilesComp, _EntPosMovCol comp) {
+        auto entity       = std::get<0>(comp);
         auto positionComp = std::get<1>(comp);
         auto movementComp = std::get<2>(comp);
+        assert(entity);
         assert(positionComp);
         assert(movementComp);
+        auto projectileComp = entity->getComponent<ProjectileComponent>();
+        if (projectileComp) {
+            if (projectileComp->homing) {
+                auto other = entityManager->getEntity(projectileComp->target);
+                if (other) {
+                    auto otherPosComp = other->getComponent<PositionComponent>();
+                    if (otherPosComp) {
+                        movementComp->setVelocityTowardsTarget(positionComp->x, positionComp->y, otherPosComp->x, otherPosComp->y);
+                    }
+                }
+            }
+        }
         float newX = positionComp->x + movementComp->vx * deltaTime;
         float newY = positionComp->y + movementComp->vy * deltaTime;
         setNewPosition(positionComp, newX, newY);
