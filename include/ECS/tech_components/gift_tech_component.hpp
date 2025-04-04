@@ -5,17 +5,11 @@
 
 namespace SupDef {
 
-    struct GiftTechComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(GiftTechComponent, SCT_GIFT_TECH)
         AssetIDs techsToCreate;
         std::unordered_map<EntityID, EntityIDs> createdTechs;
 
-        GiftTechComponent() { addToRegistry(); }
         GiftTechComponent(AssetIDs techsToCreate) : techsToCreate(techsToCreate) { addToRegistry(); }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<GiftTechComponent>(); });
-        }
 
         void addTech(AssetID assetID) {
             push_back_unique(techsToCreate, assetID);
@@ -36,35 +30,12 @@ namespace SupDef {
             if (vec.empty()) createdTechs.erase(assignee);
         }
 
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
+        bool isTech() const override { return true; }
 
         REFLECT_COMPONENT_BEGIN(GiftTechComponent)
             REFLECT_FIELD(techsToCreate)
             REFLECT_FIELD(createdTechs)
         REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     j[S_TECHS_TO_CREATE] = techsToCreate;
-        //     j[S_CREATED_TECHS  ] = createdTechs;
-        // }
-
-        // void from_json(const json& j) override {
-        //     j.at(S_TECHS_TO_CREATE).get_to(techsToCreate);
-        //     j.at(S_CREATED_TECHS  ).get_to(createdTechs);
-        // }
-
-        std::string getTypeName() const override {
-            return SCT_GIFT_TECH;
-        }
-
-        bool isTech() const override { return true; }
-
-    };
+    DEFINE_COMPONENT_END
 
 }

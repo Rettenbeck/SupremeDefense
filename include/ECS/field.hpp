@@ -282,33 +282,66 @@ namespace SupDef {
         }                                                                      \
         void from_json(const json& j) override {                               \
             generic_from_json(j, this);                                        \
-        }                                                                      \
-        static std::vector<std::unique_ptr<IField<ThisType>>> getFieldMap() { \
-            std::vector<std::unique_ptr<IField<ThisType>>> fields;
+        }
 
-    //
-    #define DECLARE_FIELD(type, name, defaultValue) \
-        type name = defaultValue; \
-        fields.push_back(makeField<ThisType>(#name, &ThisType::name));
     
-    #define DECLARE_UNIQUE(type, name) \
-        std::unique_ptr<type> name; \
-        fields.push_back(makeUniqueField<ThisType, type>(#name, &ThisType::name));
+    #define DEFINE_EMPTY_COMPONENT(CLASS_NAME, COMPONENT_NAME) \
+    DEFINE_COMPONENT_BEGIN(CLASS_NAME, COMPONENT_NAME) \
+        REFLECT_COMPONENT_BEGIN(ThisType) \
+        REFLECT_COMPONENT_END() \
+    DEFINE_COMPONENT_END
+    
 
-    #define DECLARE_LIST_UNIQUE(type, name) \
-        std::vector<std::unique_ptr<type>> name; \
-        fields.push_back(makeListField<ThisType, type>(#name, &ThisType::name));
+    #define DEFINE_COMPONENT_NOJSON_BEGIN(CLASS_NAME, COMPONENT_NAME)          \
+    class CLASS_NAME : public Component {                                      \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        std::string getTypeName() const override {                             \
+            return COMPONENT_NAME;                                             \
+        }                                                                      \
+        void addToRegistry() {                                                 \
+            ComponentRegistry::registerComponent(getTypeName(), []()           \
+                { return std::make_unique<ThisType>(); });                     \
+        }                                                                      \
+        CLASS_NAME() { addToRegistry(); }
 
-    #define DECLARE_MAP_UNIQUE(keyType, valueType, name) \
-        std::unordered_map<keyType, std::unique_ptr<valueType>> name; \
-        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name));
-    //
-    #define DEFINE_COMPONENT_BODY                                              \
-        return fields;                                                     \
-    }
 
-    //
+    #define DEFINE_SCLASS_BEGIN(CLASS_NAME)                                    \
+    class CLASS_NAME {                                                         \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        CLASS_NAME() {}                                                        \
+        void to_json(json& j) const {                                          \
+            generic_to_json(j, this);                                          \
+        }                                                                      \
+        void from_json(const json& j) {                                        \
+            generic_from_json(j, this);                                        \
+        }
+
+
+    #define DEFINE_SCLASS_NOJSON_BEGIN(CLASS_NAME)                             \
+    class CLASS_NAME {                                                         \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        CLASS_NAME() { addToRegistry(); }
+    
+    
+
     #define DEFINE_COMPONENT_END \
     };
-            
+
+    #define DEFINE_SCLASS_END \
+    }; \
+
+    
+    #define DEFINE_UNIQUE(CLASS, UNIQUE) \
+    using UNIQUE = std::unique_ptr<CLASS>;
+
+    #define DEFINE_LIST(CLASS, LIST) \
+    using LIST = std::vector<CLASS>;
+
+    #define DEFINE_UNIQUE_AND_LIST(CLASS, UNIQUE, LIST) \
+    DEFINE_UNIQUE(CLASS, UNIQUE) \
+    DEFINE_LIST(UNIQUE, LIST)
+
 }

@@ -5,43 +5,15 @@
 
 namespace SupDef {
 
-    struct MapComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(MapComponent, SC_MAP)
         int width = 0, height = 0;
 
         MapComponent(int width_, int height_) : width(width_), height(height_) { addToRegistry(); }
-        MapComponent() { addToRegistry(); }
 
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<MapComponent>(); });
-        }
-
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
-
-        REFLECT_COMPONENT_BEGIN(MapComponent)
+        REFLECT_COMPONENT_BEGIN(ThisType)
             REFLECT_FIELD(width)
             REFLECT_FIELD(height)
         REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     j = json{{S_WIDTH, width}, {S_HEIGHT, height}};
-        // }
-
-        // void from_json(const json& j) override {
-        //     j.at(S_WIDTH ).get_to(width );
-        //     j.at(S_HEIGHT).get_to(height);
-        // }
-
-        std::string getTypeName() const override {
-            return SC_MAP;
-        }
-
-    };
-
+    DEFINE_COMPONENT_END
+    
 }

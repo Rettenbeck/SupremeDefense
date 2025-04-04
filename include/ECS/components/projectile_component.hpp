@@ -6,22 +6,12 @@
 
 namespace SupDef {
 
-    struct ProjectileComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(ProjectileComponent, SC_PROJECTILE)
         AssetIDs applyTechsOnHit;
         int multiHitCooldown = 0;   // 0 = Can only once; 1 = hits every frame; 2 = hits every second frame, etc.
         bool homing = false;
         UDamage damage = nullptr;
         EntityID createdBy = NO_ENTITY;
-
-        ProjectileComponent() {
-            damage = std::make_unique<Damage>();
-            addToRegistry();
-        }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<ProjectileComponent>(); });
-        }
 
         void addTechOnHit(AssetID assetID) {
             push_back_unique(applyTechsOnHit, assetID);
@@ -31,46 +21,11 @@ namespace SupDef {
             remove_all(applyTechsOnHit, assetID);
         }
 
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
-
         REFLECT_COMPONENT_BEGIN(ProjectileComponent)
             REFLECT_FIELD(applyTechsOnHit)
             REFLECT_FIELD(multiHitCooldown)
             REFLECT_FIELD(homing)
             REFLECT_UNIQUE(damage, Damage)
         REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     j[S_APPLY_TECHS_ON_HIT] = applyTechsOnHit;
-        //     j[S_MULTIHIT_COOLDOWN ] = multiHitCooldown;
-        //     j[S_HOMING] = homing;
-        //     j[S_CREATED_BY] = createdBy;
-
-        //     assert(damage);
-        //     j[S_DAMAGE] = json();
-        //     damage->to_json(j[S_DAMAGE]);
-        // }
-
-        // void from_json(const json& j) override {
-        //     j.at(S_APPLY_TECHS_ON_HIT).get_to(applyTechsOnHit );
-        //     j.at(S_MULTIHIT_COOLDOWN ).get_to(multiHitCooldown);
-        //     j.at(S_HOMING).get_to(homing);
-        //     j.at(S_CREATED_BY).get_to(createdBy);
-            
-        //     assert(damage);
-        //     damage->from_json(j[S_DAMAGE]);
-        // }
-
-        std::string getTypeName() const override {
-            return SC_PROJECTILE;
-        }
-
-    };
-
+    DEFINE_COMPONENT_END
 }

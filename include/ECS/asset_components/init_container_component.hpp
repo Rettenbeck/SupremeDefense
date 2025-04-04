@@ -6,10 +6,9 @@
 
 namespace SupDef {
 
-    struct InitContainerComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(InitContainerComponent, SCA_INIT_CONTAINER)
         AssetIDs contained;
 
-        InitContainerComponent() { addToRegistry(); }
         InitContainerComponent(AssetID contained_) { addToRegistry(); contained.push_back(contained_); }
         InitContainerComponent(AssetIDs contained_) { addToRegistry(); contained = contained_; }
 
@@ -34,38 +33,10 @@ namespace SupDef {
             contained.push_back(contained4);
         }
 
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<InitContainerComponent>(); });
-        }
-
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
-
-        REFLECT_COMPONENT_BEGIN(InitContainerComponent)
-            REFLECT_FIELD(contained)
-        REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     j = json{{S_CONTAINED, contained}};
-        // }
-    
-        // void from_json(const json& j) override {
-        //     contained.clear();
-        //     j.at(S_CONTAINED).get_to(contained);
-        // }
-    
-        std::string getTypeName() const override {
-            return SCA_INIT_CONTAINER;
-        }
-
         bool isAsset() const override { return true; }
 
-    };
-    
+        REFLECT_COMPONENT_BEGIN(ThisType)
+            REFLECT_FIELD(contained)
+        REFLECT_COMPONENT_END()
+    DEFINE_COMPONENT_END
 }

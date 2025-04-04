@@ -5,7 +5,7 @@
 
 namespace SupDef {
 
-    struct TechComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(TechComponent, SCT_TECH)
         EntityIDs assignees, gained, kept, lost;
         EntityID createdBy = NO_ENTITY;
 
@@ -25,16 +25,9 @@ namespace SupDef {
         std::unordered_set<EntityID> whitelist;
         std::unordered_set<EntityID> blacklist;
     
-        TechComponent() { addToRegistry(); }
-        
         TechComponent(TechComponent* other) {
             copyFrom(other);
             addToRegistry();
-        }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<TechComponent>(); });
         }
 
         void addAssignee(EntityID entityID) {
@@ -75,13 +68,7 @@ namespace SupDef {
             requiredComponents      = other->requiredComponents;
         }
 
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
+        bool isTech() const override { return true; }
 
         REFLECT_COMPONENT_BEGIN(TechComponent)
             REFLECT_FIELD(gained)
@@ -102,53 +89,6 @@ namespace SupDef {
             REFLECT_FIELD(whitelist)
             REFLECT_FIELD(blacklist)
         REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     j[S_GAINED               ] = gained;
-        //     j[S_KEPT                 ] = kept;
-        //     j[S_LOST                 ] = lost;
-        //     j[S_CREATED_BY           ] = createdBy;
-        //     j[S_APPLY_TO_ALL         ] = applyToAll;
-        //     j[S_APPLY_TO_OWNER       ] = applyToOwner;
-        //     j[S_APPLY_TO_PARENT      ] = applyToParent;
-        //     j[S_APPLY_TO_CHILDREN    ] = applyToChildren;
-        //     j[S_APPLY_TO_INFLUENCE   ] = applyToWithinInfluence;
-        //     j[S_AFFECTS_ALL          ] = affectsAll;
-        //     j[S_AFFECTS_SAME_PLAYER  ] = affectsSamePlayer;
-        //     j[S_AFFECTS_SAME_TEAM    ] = affectsSameTeam;
-        //     j[S_AFFECTS_ENEMY        ] = affectsEnemy;
-        //     j[S_FILTER_BY_COMPONENTS ] = filterByComponents;
-        //     j[S_REQUIRED_COMPONENTS  ] = requiredComponents;
-        //     j[S_WHITELIST            ] = whitelist;
-        //     j[S_BLACKLIST            ] = blacklist;
-        // }
-
-        // void from_json(const json& j) override {
-        //     j.at(S_GAINED               ).get_to(gained                );
-        //     j.at(S_KEPT                 ).get_to(kept                  );
-        //     j.at(S_LOST                 ).get_to(lost                  );
-        //     j.at(S_CREATED_BY           ).get_to(createdBy             );
-        //     j.at(S_APPLY_TO_ALL         ).get_to(applyToAll            );
-        //     j.at(S_APPLY_TO_OWNER       ).get_to(applyToOwner          );
-        //     j.at(S_APPLY_TO_PARENT      ).get_to(applyToParent         );
-        //     j.at(S_APPLY_TO_CHILDREN    ).get_to(applyToChildren       );
-        //     j.at(S_APPLY_TO_INFLUENCE   ).get_to(applyToWithinInfluence);
-        //     j.at(S_AFFECTS_ALL          ).get_to(affectsAll            );
-        //     j.at(S_AFFECTS_SAME_PLAYER  ).get_to(affectsSamePlayer     );
-        //     j.at(S_AFFECTS_SAME_TEAM    ).get_to(affectsSameTeam       );
-        //     j.at(S_AFFECTS_ENEMY        ).get_to(affectsEnemy          );
-        //     j.at(S_FILTER_BY_COMPONENTS ).get_to(filterByComponents    );
-        //     j.at(S_REQUIRED_COMPONENTS  ).get_to(requiredComponents    );
-        //     j.at(S_WHITELIST            ).get_to(whitelist             );
-        //     j.at(S_BLACKLIST            ).get_to(blacklist             );
-        // }
-
-        std::string getTypeName() const override {
-            return SCT_TECH;
-        }
-
-        bool isTech() const override { return true; }
-
-    };
+    DEFINE_COMPONENT_END
 
 }

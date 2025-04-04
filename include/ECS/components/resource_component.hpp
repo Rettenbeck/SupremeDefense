@@ -7,16 +7,9 @@
 
 namespace SupDef {
 
-    struct ResourceComponent  : public Component {
+    DEFINE_COMPONENT_BEGIN(ResourceComponent, SC_RESOURCE)
         std::unordered_map<ResourceID, UResource> resources;
         
-        ResourceComponent() { addToRegistry(); }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<ResourceComponent >(); });
-        }
-
         void addResource(const ResourceID& id, long amount = 0, float gatherRate = 0, long maxCapacity = INFINITE_CAPACITY) {
             resources[id] = std::make_unique<Resource>(id, amount, gatherRate, maxCapacity);
         }
@@ -25,42 +18,9 @@ namespace SupDef {
             resources[resource->resourceID] = std::move(resource);
         }
 
-        void to_json(json& j) const override {
-            generic_to_json(j, this);
-        }
-
-        void from_json(const json& j) override {
-            generic_from_json(j, this);
-        }
-
-        REFLECT_COMPONENT_BEGIN(ResourceComponent)
+        REFLECT_COMPONENT_BEGIN(ThisType)
             REFLECT_MAP_UNIQUE(resources, ResourceID, Resource)
         REFLECT_COMPONENT_END()
-
-        // void to_json(json& j) const override {
-        //     for (const auto& [id, resource] : resources) {
-        //         if (resource) {
-        //             json resourceJson;
-        //             resource->to_json(resourceJson);
-        //             j[S_RESOURCES].push_back(resourceJson);
-        //         }
-        //     }
-        // }
-    
-        // void from_json(const json& j) override {
-        //     resources.clear();
-        //     if (j.contains(S_RESOURCES) && j[S_RESOURCES].is_array()) {
-        //         for (const auto& resourceJson : j[S_RESOURCES]) {
-        //             auto resource = std::make_unique<Resource>();
-        //             resource->from_json(resourceJson);
-        //             resources[resource->resourceID] = std::move(resource);
-        //         }
-        //     }
-        // }
-    
-        std::string getTypeName() const override {
-            return SC_RESOURCE;
-        }
-    };
+    DEFINE_COMPONENT_END
     
 }
