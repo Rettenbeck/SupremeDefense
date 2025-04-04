@@ -119,13 +119,15 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildMovableUnit(AsData data, float speed, bool groundBased, float dummyRadius) {
+        static Entity* buildMovableUnit(AsData data, long health, float speed, bool groundBased, float dummyRadius) {
             auto asset = createEmptyAsset(data);
             asset->addComponent<PositionComponent>(0.0, 0.0);
             asset->addComponent<MovementComponent>(speed, groundBased);
             asset->addComponent<CollisionComponent>(dummyRadius);
+            asset->addComponent<HealthComponent>(health);
             asset->addComponent<SelectableComponent>();
             asset->addComponent<ProjectileTargetComponent>();
+            asset->addComponent<ProjectileHittableComponent>();
             return asset;
         }
 
@@ -135,7 +137,7 @@ namespace SupDef {
             asset->addComponent<SupDef::ImmovableComponent>(tilesCheck, colCheck, occupy, impassable);
             asset->addComponent<SupDef::CollisionComponent>(3.0);
             asset->addComponent<SupDef::SelectableComponent>();
-            asset->addComponent<ProjectileTargetComponent>();
+            asset->addComponent<ProjectileHittableComponent>();
             return asset;
         }
 

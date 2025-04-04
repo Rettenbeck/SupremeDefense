@@ -30,7 +30,7 @@ namespace SupDef {
     void Game::determineCollisionsProjectiles() {
         determineCollisionsGeneric(
             std::tuple<ProjectileComponent>{},
-            std::tuple<ProjectileTargetComponent>{},
+            std::tuple<ProjectileHittableComponent>{},
             CG_PROJECTILE
         );
     }
@@ -194,6 +194,25 @@ namespace SupDef {
                 auto otherID = collision->entityA;
                 if (otherID == entityID) otherID = collision->entityB;
                 result.push_back(otherID);
+            }
+        }
+        return result;
+    }
+
+    PCollisionInfos Game::findCollisionsOfEntity(EntityID entityID, CollisionGroup collisionGroup) {
+        PCollisionInfos result;
+        if (entityID == NO_ENTITY) return result;
+
+        auto mapID = getMapOfEntity(entityID);
+        auto fullCollisionGroup = buildCollisionGroup(collisionGroup, mapID);
+        auto collisions = collisionTracker->retrieve(entityID);
+        for (auto collision : collisions) {
+            if (collision->collisionGroup == fullCollisionGroup) {
+                auto otherID = collision->entityA;
+                if (otherID == entityID) otherID = collision->entityB;
+                collision->entityA = entityID;
+                collision->entityB = otherID;
+                result.push_back(collision);
             }
         }
         return result;

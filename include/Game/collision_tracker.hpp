@@ -14,6 +14,9 @@ namespace SupDef {
         CollisionInfo(EntityID a, EntityID b, CollisionGroup group)
             : entityA(a), entityB(b), frameCount(1), collisionGroup(std::move(group)) {}
     
+        bool isNew() { return frameCount == 1; }
+        bool hasEnded() { return frameCount < 1; }
+
         bool operator==(const CollisionInfo& other) const {
             return (entityA == other.entityA && entityB == other.entityB) ||
                    (entityA == other.entityB && entityB == other.entityA);  // Order doesn't matter

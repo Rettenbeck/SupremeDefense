@@ -82,6 +82,8 @@ namespace SupDef {
         assert(movComp);
         proComp->createdBy = entity->id;
         movComp->setVelocityTowardsTarget(center.x, center.y, centerTarget.x, centerTarget.y);
+        proComp->damage = wpn->damage->clone();
+        proComp->target = target->id;
     }
     
 }

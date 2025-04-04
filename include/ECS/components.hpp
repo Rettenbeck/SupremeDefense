@@ -16,6 +16,7 @@
 #include <ECS/components/influenceable_component.hpp>
 #include <ECS/components/projectile_component.hpp>
 #include <ECS/components/projectile_target_component.hpp>
+#include <ECS/components/projectile_hittable_component.hpp>
 #include <ECS/components/weapon_component.hpp>
 #include <ECS/components/health_component.hpp>
 
