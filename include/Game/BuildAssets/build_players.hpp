@@ -23,6 +23,7 @@ namespace SupDef::BuildAssets {
         //
         AssetBuilder::addResource(asset, AS_RES_GOLD, 2400);
         AssetBuilder::addResource(asset, AS_RES_WOOD, 3600);
+        AssetBuilder::addInit(asset, AS_COM_TECH_MOVE);
     }
 
     void buildPlayers(AssetManager* am) {

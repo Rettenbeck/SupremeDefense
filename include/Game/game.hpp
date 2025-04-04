@@ -156,13 +156,13 @@ namespace SupDef {
             
             // ### PROJECTILE HANDLING #################################################### //
             void processProjectiles();
-            void processProjectile(Entity* entity, PositionComponent* pos, MovementComponent* mov,
+            void processProjectile(EntityID entityID, PositionComponent* pos, MovementComponent* mov,
                 CollisionComponent* col, ProjectileComponent* pro);
-            void processProjectileCollisions(Entity* projectile, ProjectileComponent* pro);
-            void processProjectileCollision(Entity* projectile, ProjectileComponent* pro, Entity* other, CollisionInfo* collision);
+            void processProjectileCollisions(EntityID projectileID, ProjectileComponent* pro);
+            void processProjectileCollision(EntityID projectileID, ProjectileComponent* pro, Entity* other, CollisionInfo* collision);
             void removeProjectile(EntityID projectileID);
             void targetDestroyed(EntityID targetID);
-            void removeOffMapProjectile(Entity* entity, PositionComponent* pos);
+            void removeOffMapProjectile(EntityID entityID, PositionComponent* pos, CollisionComponent* col);
             
 
             

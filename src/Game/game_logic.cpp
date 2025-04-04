@@ -11,6 +11,7 @@ namespace SupDef {
         updateWorlds(deltaTime);
         determineCollisions();
         processWeapons();
+        processProjectiles();
         processTechs();
         processActions();
     }

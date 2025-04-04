@@ -109,19 +109,19 @@ namespace SupDef {
         assert(mapComponent);
         Colliders colliders;
 
-        std::stringstream ss;
-        ss << "Processing collisions:\n";
-        ss << "  Group 1:\n    ";
-        for (auto [ent, pos, col] : listA) {
-            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
-        }
-        ss << "\n";
-        ss << "  Group 2:\n    ";
-        for (auto [ent, pos, col] : listB) {
-            ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
-        }
-        ss << "\n";
-        toPrint += ss.str();
+        // std::stringstream ss;
+        // ss << "Processing collisions:\n";
+        // ss << "  Group 1:\n    ";
+        // for (auto [ent, pos, col] : listA) {
+        //     ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
+        // }
+        // ss << "\n";
+        // ss << "  Group 2:\n    ";
+        // for (auto [ent, pos, col] : listB) {
+        //     ss << ent->id << "; x: " << pos->x << "; y: " << pos->y << "; radius: " << col->dummyRadius << "\n";
+        // }
+        // ss << "\n";
+        // toPrint += ss.str();
 
         auto addToColliders = [&](_EntPosCols& list, bool group) {
             for(auto& [entity, pos, col] : list) {

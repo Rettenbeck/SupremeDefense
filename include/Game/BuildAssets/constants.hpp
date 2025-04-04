@@ -80,16 +80,16 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_1                       = "mover1"                              ;
     const std::string AS_UNIT_MOVER_1_NAME_DE               = "Mover One"                           ;
     const std::string AS_UNIT_MOVER_1_DESC_DE               = "Einfache Einheit zum Testen"         ;
-    const long AS_UNIT_MOVER_1_HEALTH              = 300;
-    const float AS_UNIT_MOVER_1_SPEED               = 2.0;
+    const long AS_UNIT_MOVER_1_HEALTH               = 300;
+    const float AS_UNIT_MOVER_1_SPEED               = 8.0;
     const float AS_UNIT_MOVER_1_DUMMY_RADIUS        = 12.0;
     const bool  AS_UNIT_MOVER_1_GROUND_BASED        = true;
 
     // =-=-=-=-=-=-=-=-=-= Mover 2                                             =-=-=-=-=-=-=-=-=-= //
     const std::string AS_UNIT_MOVER_2                       = "mover2"                              ;
     const std::string AS_UNIT_MOVER_2_NAME_DE               = "Mover Two"                           ;
-    const std::string AS_UNIT_MOVER_2_DESC_DE               = "Etwas schneller als M1"              ;
-    const long AS_UNIT_MOVER_2_HEALTH              = 400;
+    const std::string AS_UNIT_MOVER_2_DESC_DE               = "Etwas groesser als M1"               ;
+    const long AS_UNIT_MOVER_2_HEALTH               = 400;
     const float AS_UNIT_MOVER_2_SPEED               = 3.2;
     const float AS_UNIT_MOVER_2_DUMMY_RADIUS        = 15.0;
     const bool  AS_UNIT_MOVER_2_GROUND_BASED        = true;
@@ -141,7 +141,7 @@ namespace SupDef {
     const std::string AS_WEAPON_BASIC_HOMER_NAME_DE         = "Verfolgende Waffe"                   ;
     const std::string AS_WEAPON_BASIC_HOMER_DESC_DE         = "Einfache Waffe mit Verfolgung"       ;
     const long AS_WEAPON_BASIC_HOMER_DAMAGE         = 8;
-    const long AS_WEAPON_BASIC_HOMER_PIERCE         = 2;
+    const long AS_WEAPON_BASIC_HOMER_PIERCE         = 1;
     const DamageType AS_WEAPON_BASIC_HOMER_DTYPE    = DamageType::Normal;
     const int AS_WEAPON_BASIC_HOMER_COOLDOWN        = 3600;
     const float AS_WEAPON_BASIC_HOMER_RADIUS        = 130.0;
@@ -165,7 +165,7 @@ namespace SupDef {
     const std::string AS_PROJECTILE_BASIC_HOMER_NAME_DE     = "Verfolgendes Projektil"              ;
     const std::string AS_PROJECTILE_BASIC_HOMER_DESC_DE     = "Einfaches Geschoss mit Verfolgung"   ;
     const int AS_PROJECTILE_BASIC_HOMER_MULTIHIT    = 0;
-    const bool AS_PROJECTILE_BASIC_HOMER_HOMING     = false;
+    const bool AS_PROJECTILE_BASIC_HOMER_HOMING     = true;
     const float AS_PROJECTILE_BASIC_HOMER_RADIUS    = 4.0;
     const float AS_PROJECTILE_BASIC_HOMER_SPEED     = 10.0;
 
