@@ -5,29 +5,14 @@
 
 namespace SupDef {
 
-    struct PlayerComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(PlayerComponent, SC_PLAYER)
         EntityID teamID = NO_ENTITY;
         bool isNeutral = false;
-        
-        PlayerComponent() { addToRegistry(); }
 
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<PlayerComponent>(); });
-        }
+        REFLECT_COMPONENT_BEGIN(ThisType)
+            REFLECT_FIELD(teamID)
+            REFLECT_FIELD(isNeutral)
+        REFLECT_COMPONENT_END()
+    DEFINE_COMPONENT_END
 
-        void to_json(json& j) const override {
-            j = json{{S_TEAM, teamID}, {S_IS_NEUTRAL, isNeutral}};
-        }
-    
-        void from_json(const json& j) override {
-            j.at(S_TEAM).get_to(teamID);
-            j.at(S_IS_NEUTRAL).get_to(isNeutral);
-        }
-    
-        std::string getTypeName() const override {
-            return SC_PLAYER;
-        }
-    };
-    
 }

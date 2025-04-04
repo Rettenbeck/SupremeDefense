@@ -5,41 +5,22 @@
 
 namespace SupDef {
 
-    struct ActiveTechComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(ActiveTechComponent, SCT_ACTIVE_TECH)
         CommandID commandID = NO_COMMAND;
         Cooldown current_cooldown = 0, cooldown = 0, original_cooldown = 0;
         bool initWithFullCooldown = false;
 
-        ActiveTechComponent() : commandID(NO_COMMAND) { addToRegistry(); }
         ActiveTechComponent(CommandID commandID) : commandID(commandID) { addToRegistry(); }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<ActiveTechComponent>(); });
-        }
-
-        void to_json(json& j) const override {
-            j[S_COMMAND] = commandID;
-            j[S_COOLDOWN          ] = cooldown;
-            j[S_CURRENT_COOLDOWN  ] = current_cooldown;
-            j[S_ORIGINAL_COOLDOWN ] = original_cooldown;
-            j[S_INIT_FULL_COOLDOWN] = initWithFullCooldown;
-        }
-
-        void from_json(const json& j) override {
-            j.at(S_COMMAND).get_to(commandID);
-            j.at(S_COOLDOWN          ).get_to(cooldown);
-            j.at(S_CURRENT_COOLDOWN  ).get_to(current_cooldown);
-            j.at(S_ORIGINAL_COOLDOWN ).get_to(original_cooldown);
-            j.at(S_INIT_FULL_COOLDOWN).get_to(initWithFullCooldown);
-        }
-
-        std::string getTypeName() const override {
-            return SCT_ACTIVE_TECH;
-        }
 
         bool isTech() const override { return true; }
 
-    };
+        REFLECT_COMPONENT_BEGIN(ActiveTechComponent)
+            REFLECT_FIELD(commandID)
+            REFLECT_FIELD(cooldown)
+            REFLECT_FIELD(current_cooldown)
+            REFLECT_FIELD(original_cooldown)
+            REFLECT_FIELD(initWithFullCooldown)
+        REFLECT_COMPONENT_END()
+    DEFINE_COMPONENT_END
 
 }

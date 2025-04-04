@@ -52,8 +52,7 @@ namespace SupDef {
     struct UniquePtrField : public IField<T> {
         std::unique_ptr<PointeeType> T::* memberPtr;
     
-        UniquePtrField(const std::string& name_, std::unique_ptr<PointeeType> T::* ptr)
-            : memberPtr(ptr) {
+        UniquePtrField(const std::string& name_, std::unique_ptr<PointeeType> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -73,7 +72,8 @@ namespace SupDef {
                 obj->*memberPtr = nullptr;
             } else {
                 obj->*memberPtr = std::make_unique<PointeeType>();
-                generic_from_json(j, obj->*memberPtr);
+                auto& ptr = obj->*memberPtr;
+                generic_from_json(j, ptr.get());
             }
         }
     
@@ -97,8 +97,7 @@ namespace SupDef {
     struct ListField : public IField<T> {
         std::vector<std::unique_ptr<ItemType>> T::* memberPtr;
     
-        ListField(const std::string& name_, std::vector<std::unique_ptr<ItemType>> T::* ptr)
-            : memberPtr(ptr) {
+        ListField(const std::string& name_, std::vector<std::unique_ptr<ItemType>> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -156,8 +155,7 @@ namespace SupDef {
     struct MapField : public IField<T> {
         std::unordered_map<K, std::unique_ptr<V>> T::* memberPtr;
     
-        MapField(const std::string& name_, std::unordered_map<K, std::unique_ptr<V>> T::* ptr)
-            : memberPtr(ptr) {
+        MapField(const std::string& name_, std::unordered_map<K, std::unique_ptr<V>> T::* ptr) : memberPtr(ptr) {
             this->name = name_;
         }
     
@@ -167,12 +165,13 @@ namespace SupDef {
             nlohmann::json j = nlohmann::json::object();
     
             for (const auto& [key, value] : map) {
+                std::stringstream ss; ss << key;
                 if (value) {
                     nlohmann::json valJson;
                     generic_to_json(valJson, value.get());
-                    j[std::to_string(key)] = valJson;
+                    j[ss.str()] = valJson;
                 } else {
-                    j[std::to_string(key)] = nullptr;
+                    j[ss.str()] = nullptr;
                 }
             }
     
@@ -252,16 +251,97 @@ namespace SupDef {
         fields.push_back(std::make_unique<Field<ThisType, decltype(ThisType::name)>>(#name, &ThisType::name));
 
     #define REFLECT_UNIQUE(name, pointeeType) \
-        fields.push_back(makeUniqueField<ThisType, pointeeType>(#name, &ThisType::name))
+        fields.push_back(makeUniqueField<ThisType, pointeeType>(#name, &ThisType::name));
 
     #define REFLECT_LIST_UNIQUE(name, itemType) \
-        fields.push_back(makeListField<ThisType, itemType>(#name, &ThisType::name))
+        fields.push_back(makeListField<ThisType, itemType>(#name, &ThisType::name));
 
     #define REFLECT_MAP_UNIQUE(name, keyType, valueType) \
-        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name))
+        fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name));
 
     #define REFLECT_COMPONENT_END() \
         return fields; \
     }
+
+
+
+    #define DEFINE_COMPONENT_BEGIN(CLASS_NAME, COMPONENT_NAME)                 \
+    class CLASS_NAME : public Component {                                      \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        std::string getTypeName() const override {                             \
+            return COMPONENT_NAME;                                             \
+        }                                                                      \
+        void addToRegistry() {                                                 \
+            ComponentRegistry::registerComponent(getTypeName(), []()           \
+                { return std::make_unique<ThisType>(); });                     \
+        }                                                                      \
+        CLASS_NAME() { addToRegistry(); }                                      \
+        void to_json(json& j) const override {                                 \
+            generic_to_json(j, this);                                          \
+        }                                                                      \
+        void from_json(const json& j) override {                               \
+            generic_from_json(j, this);                                        \
+        }
+
+    
+    #define DEFINE_EMPTY_COMPONENT(CLASS_NAME, COMPONENT_NAME) \
+    DEFINE_COMPONENT_BEGIN(CLASS_NAME, COMPONENT_NAME) \
+        REFLECT_COMPONENT_BEGIN(ThisType) \
+        REFLECT_COMPONENT_END() \
+    DEFINE_COMPONENT_END
+    
+
+    #define DEFINE_COMPONENT_NOJSON_BEGIN(CLASS_NAME, COMPONENT_NAME)          \
+    class CLASS_NAME : public Component {                                      \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        std::string getTypeName() const override {                             \
+            return COMPONENT_NAME;                                             \
+        }                                                                      \
+        void addToRegistry() {                                                 \
+            ComponentRegistry::registerComponent(getTypeName(), []()           \
+                { return std::make_unique<ThisType>(); });                     \
+        }                                                                      \
+        CLASS_NAME() { addToRegistry(); }
+
+
+    #define DEFINE_SCLASS_BEGIN(CLASS_NAME)                                    \
+    class CLASS_NAME {                                                         \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        CLASS_NAME() {}                                                        \
+        void to_json(json& j) const {                                          \
+            generic_to_json(j, this);                                          \
+        }                                                                      \
+        void from_json(const json& j) {                                        \
+            generic_from_json(j, this);                                        \
+        }
+
+
+    #define DEFINE_SCLASS_NOJSON_BEGIN(CLASS_NAME)                             \
+    class CLASS_NAME {                                                         \
+    public:                                                                    \
+        using ThisType = CLASS_NAME;                                           \
+        CLASS_NAME() { addToRegistry(); }
+    
+    
+
+    #define DEFINE_COMPONENT_END \
+    };
+
+    #define DEFINE_SCLASS_END \
+    }; \
+
+    
+    #define DEFINE_UNIQUE(CLASS, UNIQUE) \
+    using UNIQUE = std::unique_ptr<CLASS>;
+
+    #define DEFINE_LIST(CLASS, LIST) \
+    using LIST = std::vector<CLASS>;
+
+    #define DEFINE_UNIQUE_AND_LIST(CLASS, UNIQUE, LIST) \
+    DEFINE_UNIQUE(CLASS, UNIQUE) \
+    DEFINE_LIST(UNIQUE, LIST)
 
 }

@@ -6,10 +6,8 @@
 
 namespace SupDef {
 
-    struct TextComponent : public Component {
+    DEFINE_COMPONENT_BEGIN(TextComponent, SC_TEXT)
         std::unordered_map<std::string, UText> texts;
-
-        TextComponent() { addToRegistry(); }
 
         TextComponent(std::string key, std::string language, std::string text) {
             addText(key, language, text);
@@ -23,11 +21,6 @@ namespace SupDef {
             addToRegistry();
         }
         
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<TextComponent>(); });
-        }
-
         void addText(std::string key, UText text) {
             texts[key] = std::move(text);
         }
@@ -45,35 +38,11 @@ namespace SupDef {
             return get(key, "");
         }
 
-        void to_json(json& j) const override {
-            for (const auto& [key, text] : texts) {
-                if (text) {
-                    json textJson;
-                    text->to_json(textJson);
-                    textJson[S_KEY] = key;
-                    j[S_TEXTS].push_back(textJson);
-                }
-            }
-        }
-    
-        void from_json(const json& j) override {
-            texts.clear();
-            if (j.contains(S_TEXTS) && j[S_TEXTS].is_array()) {
-                for (const auto& textJson : j[S_TEXTS]) {
-                    auto key = textJson.at(S_KEY).get<std::string>();
-                    auto text = std::make_unique<Text>();
-                    text->from_json(textJson);
-                    texts[key] = std::move(text);
-                }
-            }
-        }
-    
-        std::string getTypeName() const override {
-            return SC_TEXT;
-        }
-
         bool isAsset() const override { return true; }
 
-    };
-    
+        REFLECT_COMPONENT_BEGIN(ThisType)
+            REFLECT_MAP_UNIQUE(texts, std::string, Text)
+        REFLECT_COMPONENT_END()
+    DEFINE_COMPONENT_END
+
 }

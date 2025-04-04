@@ -4,21 +4,14 @@
 
 
 namespace SupDef {
-
-    struct PlayerOwnershipComponent : public Component {
+    
+    DEFINE_COMPONENT_BEGIN(PlayerOwnershipComponent, SC_PLAYER_OWNERSHIP)
         EntityID ownerID;
         EntityIDs accessors;
 
         PlayerOwnershipComponent(EntityID ownerID_) {
             setInitialOwner(ownerID_);
             addToRegistry();
-        }
-
-        PlayerOwnershipComponent() { addToRegistry(); }
-
-        void addToRegistry() {
-            ComponentRegistry::registerComponent(getTypeName(), []()
-                { return std::make_unique<PlayerOwnershipComponent>(); });
         }
 
         void setInitialOwner(EntityID ownerID_) {
@@ -37,19 +30,9 @@ namespace SupDef {
             accessors.erase(std::remove(accessors.begin(), accessors.end(), entityID), accessors.end());
         }
 
-        void to_json(json& j) const override {
-            j = json{{S_OWNER, ownerID}, {S_ACCESSORS, accessors}};
-        }
-
-        void from_json(const json& j) override {
-            j.at(S_OWNER).get_to(ownerID);
-            j.at(S_ACCESSORS).get_to(accessors);
-        }
-
-        std::string getTypeName() const override {
-            return SC_PLAYER_OWNERSHIP;
-        }
-
-    };
-
+        REFLECT_COMPONENT_BEGIN(ThisType)
+            REFLECT_FIELD(ownerID)
+            REFLECT_FIELD(accessors)
+        REFLECT_COMPONENT_END()
+    DEFINE_COMPONENT_END
 }
