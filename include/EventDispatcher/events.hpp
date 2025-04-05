@@ -80,17 +80,10 @@ namespace SupDef {
     };
 
     struct GameHasUpdatedEvent : public Event {
-        GameHasUpdatedEvent() {}
-    };
-
-    struct UpdateGameFrameCountEvent : public Event {
-        long frameCount;
-        UpdateGameFrameCountEvent(long frameCount) : frameCount(frameCount) {}
-    };
-
-    struct UpdateThisPlayerEvent : public Event {
         EntityID thisPlayer;
-        UpdateThisPlayerEvent(EntityID thisPlayer) : thisPlayer(thisPlayer) {}
+        long frameCount;
+        GameHasUpdatedEvent(EntityID thisPlayer, long frameCount)
+        : thisPlayer(thisPlayer), frameCount(frameCount) {}
     };
 
 

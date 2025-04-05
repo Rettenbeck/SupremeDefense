@@ -40,17 +40,21 @@ namespace SupDef {
                 logger.addMessage(MessageType::Info, "Action created");
 
                 if (isMultiplayer && networkLayer) {
-                    networkLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to network");
+                    networkLayer->getActionQueue()->enqueue(action);
                 } else {
-                    gameLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to game");
+                    forwardActionToGame(action);
                 }
         
                 if (replayLayer && !isReplay) {
-                    replayLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to replay");
+                    replayLayer->getActionQueue()->enqueue(action);
                 }
+            }
+
+            void forwardActionToGame(SAction action) {
+                gameLayer->getActionQueue()->enqueue(action);
             }
         
             void update(float deltaTime) override {

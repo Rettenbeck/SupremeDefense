@@ -37,9 +37,7 @@ namespace SupDef {
                 if (blocked) return;
                 game->update(deltaTime);
                 frameCount++;
-                globalDispatcher->dispatch<GameHasUpdatedEvent>();
-                globalDispatcher->dispatch<UpdateGameFrameCountEvent>(frameCount);
-                globalDispatcher->dispatch<UpdateThisPlayerEvent>(game->getThisPlayer()->id);
+                globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
             }
             
             Game* getGame() { return game.get(); }

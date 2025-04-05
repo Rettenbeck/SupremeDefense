@@ -8,8 +8,10 @@ namespace SupDef {
 
     class SocketBackend : public Listener {
         public:
-            virtual void send(const std::string& data, int playerID = -1) = 0;
-            virtual std::optional<std::string> receive(int playerID = -1) = 0;
+            virtual bool startAsClient(const std::string& ip, unsigned short port) = 0;
+            virtual bool startAsServer(unsigned short port) = 0;
+            virtual void send(const std::string& data) = 0;
+            virtual std::optional<std::string> receive() = 0;
             virtual void update() = 0;
             virtual ~SocketBackend() = default;
 

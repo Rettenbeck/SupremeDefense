@@ -25,6 +25,7 @@
                 "-lsfml-system-s",
                 "-lsfml-audio-s",
                 "-lsfml-network-s",
+                "-lws2_32",
                 // "-Werror",
                 // "-Wall",
                 // "-pedantic",
