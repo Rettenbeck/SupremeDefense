@@ -21,7 +21,7 @@ namespace SupDef {
 
 
 
-    // #### General events #########################################################################
+    // #### Command events #########################################################################
     struct TriggerCommandEvent : public Event {
         EntityID entityID, techID;
         json data;
@@ -50,7 +50,7 @@ namespace SupDef {
 
 
 
-    // #### General events #########################################################################
+    // #### Gui events #############################################################################
     struct UnitSelectedEvent : public Event {
         Entity* entity;
         UnitSelectedEvent(Entity* entity_) : entity(entity_) {}
@@ -59,7 +59,7 @@ namespace SupDef {
     
 
 
-    // #### General events #########################################################################
+    // #### Action events ##########################################################################
     struct ActionCreatedEvent : public Event {
         SAction action;
         ActionCreatedEvent(SAction action_) : action(std::move(action_)) {}
@@ -69,6 +69,16 @@ namespace SupDef {
         EntityID entityID;
         EntityDestroyedEvent(EntityID id) : entityID(id) {}
     };
+
+    
+
+
+    // #### Network events #########################################################################
+    struct GameBlockedEvent : public Event {
+        bool blocked;
+        ActionCreatedEvent(bool blocked = true) : blocked(blocked) {}
+    };
+
 
 
 }

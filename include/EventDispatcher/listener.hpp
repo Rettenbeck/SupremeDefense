@@ -35,4 +35,14 @@ namespace SupDef {
 
     };
 
+    #define SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+    assert(DISPATCHER) \
+    DISPATCHER->subscribe<EVENT>([this](const SupDef::Events& events) { \
+        for (const auto& event : events) {                              \
+            const auto& typedEvent = static_cast<const EVENT&>(*event); \
+    
+    #define SUBSCRIBE_END \
+        } \
+    });   \
+
 }

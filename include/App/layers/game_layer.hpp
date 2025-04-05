@@ -12,6 +12,7 @@ namespace SupDef {
             UGame game;
             USelectionManager selectionManager;
             UActionQueue actionQueue;
+            bool blocked = false;
     
         public:
             GameLayer() {}
@@ -25,9 +26,19 @@ namespace SupDef {
                 selectionManager = std::make_unique<SelectionManager>();
                 selectionManager->setGlobalDispatcher(globalDispatcher);
                 selectionManager->initialize();
+
+                SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedEvent)
+                // globalDispatcher->subscribe<GameBlockedEvent>([this](const SupDef::Events& events) {
+                //     for (const auto& event : events) {
+                //         const auto& typedEvent = static_cast<const UpdateCommandEvent&>(*event);
+                    blocked = typedEvent.blocked;
+                //     }
+                // });
+                SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
+                if (blocked) return;
                 game->update(deltaTime);
             }
             
