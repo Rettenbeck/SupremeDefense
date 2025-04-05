@@ -13,6 +13,7 @@ namespace SupDef {
             USelectionManager selectionManager;
             UActionQueue actionQueue;
             bool blocked = false;
+            long frameCount = 0;
     
         public:
             GameLayer() {}
@@ -35,6 +36,10 @@ namespace SupDef {
             void update(float deltaTime) override {
                 if (blocked) return;
                 game->update(deltaTime);
+                frameCount++;
+                globalDispatcher->dispatch<GameHasUpdatedEvent>();
+                globalDispatcher->dispatch<UpdateGameFrameCountEvent>(frameCount);
+                globalDispatcher->dispatch<UpdateThisPlayerEvent>(game->getThisPlayer()->id);
             }
             
             Game* getGame() { return game.get(); }

@@ -79,6 +79,20 @@ namespace SupDef {
         GameBlockedEvent(bool blocked = true) : blocked(blocked) {}
     };
 
+    struct GameHasUpdatedEvent : public Event {
+        GameHasUpdatedEvent() {}
+    };
+
+    struct UpdateGameFrameCountEvent : public Event {
+        long frameCount;
+        UpdateGameFrameCountEvent(long frameCount) : frameCount(frameCount) {}
+    };
+
+    struct UpdateThisPlayerEvent : public Event {
+        EntityID thisPlayer;
+        UpdateThisPlayerEvent(EntityID thisPlayer) : thisPlayer(thisPlayer) {}
+    };
+
 
 
 }
