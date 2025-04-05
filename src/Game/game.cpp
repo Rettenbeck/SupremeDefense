@@ -32,18 +32,12 @@ namespace SupDef {
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
-        globalDispatcher->subscribe<TriggerCommandEvent>([this](const SupDef::Events& events) {
-            for (const auto& event : events) {
-                const auto& typedEvent = static_cast<const TriggerCommandEvent&>(*event);
-                handleTriggerCommand(typedEvent);
-            }
-        });
-        globalDispatcher->subscribe<UpdateCommandEvent>([this](const SupDef::Events& events) {
-            for (const auto& event : events) {
-                const auto& typedEvent = static_cast<const UpdateCommandEvent&>(*event);
-                handleUpdateCommand(typedEvent);
-            }
-        });
+        SUBSCRIBE_BEGIN(globalDispatcher, TriggerCommandEvent)
+            handleTriggerCommand(typedEvent);
+        SUBSCRIBE_END
+        SUBSCRIBE_BEGIN(globalDispatcher, UpdateCommandEvent)
+            handleUpdateCommand(typedEvent);
+        SUBSCRIBE_END
     }
 
     Entity* Game::addMap(AssetID mapAssetID) {

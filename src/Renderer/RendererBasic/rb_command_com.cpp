@@ -15,12 +15,9 @@ namespace SupDef {
     }
 
     void RendererBasic::subscribeToEvents() {
-        globalDispatcher->subscribe<CommandToRenderEvent>([this](const SupDef::Events& events) {
-            for (const auto& event : events) {
-                const auto& typedEvent = static_cast<const SupDef::CommandToRenderEvent&>(*event);
-                onCommandToRender(typedEvent);
-            }
-        });
+        SUBSCRIBE_BEGIN(globalDispatcher, CommandToRenderEvent)
+            onCommandToRender(typedEvent);
+        SUBSCRIBE_END
     }
 
     void RendererBasic::onCommandToRender(const CommandToRenderEvent& event) {

@@ -30,13 +30,9 @@ namespace SupDef {
             ActionRouter() {}
 
             void onAttach() override {
-                globalDispatcher->subscribe<ActionCreatedEvent>([this](const Events& events) {
-                    for(auto& e : events) {
-                        if (auto* actionEvent = dynamic_cast<ActionCreatedEvent*>(e.get())) {
-                            handleAction(actionEvent->action);
-                        }
-                    }
-                });
+                SUBSCRIBE_BEGIN(globalDispatcher, ActionCreatedEvent)
+                    handleAction(typedEvent.action);
+                SUBSCRIBE_END
             }
         
             void handleAction(SAction action) {
