@@ -29,10 +29,10 @@ namespace SupDef {
                 init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
 
-                globalDispatcher->subscribe<GameEndEvent>([this](const SupDef::Events& events) {
+                SUBSCRIBE_BEGIN(globalDispatcher, GameEndEvent)
                     Logger::getInstance().addMessage(MessageType::Info, "Game ended from renderer\n");
                     end = true;
-                });
+                SUBSCRIBE_END
             }
 
             ~App() { layers.clear(); }

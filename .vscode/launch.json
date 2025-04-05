@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/User/Documents/Cpp/GA_Engine/src",
-      "program": "c:/Users/User/Documents/Cpp/GA_Engine/src/build/Debug/outDebug",
+      "cwd": "c:/Users/User/Documents/Cpp/SupremeDefense/src",
+      "program": "c:/Users/User/Documents/Cpp/SupremeDefense/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

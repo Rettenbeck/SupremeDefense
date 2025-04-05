@@ -27,13 +27,12 @@ namespace SupDef {
             }
 
             void initialize() {
-                globalDispatcher->subscribe<UnitSelectedEvent>([this](const SupDef::Events& events) {
+                SUBSCRIBE_HEAD_BEGIN(globalDispatcher, UnitSelectedEvent)
                     selected.clear();
-                    for (const auto& event : events) {
-                        const auto& typedEvent = static_cast<const SupDef::UnitSelectedEvent&>(*event);
+                    SUBSCRIBE_BODY_BEGIN
                         selectUnit(typedEvent.entity);
-                    }
-                });
+                    SUBSCRIBE_BODY_END
+                SUBSCRIBE_HEAD_END
             }
 
             void setGlobalDispatcher(EventDispatcher* globalDispatcher_) { globalDispatcher = globalDispatcher_; }

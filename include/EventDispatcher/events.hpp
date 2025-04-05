@@ -76,7 +76,7 @@ namespace SupDef {
     // #### Network events #########################################################################
     struct GameBlockedEvent : public Event {
         bool blocked;
-        ActionCreatedEvent(bool blocked = true) : blocked(blocked) {}
+        GameBlockedEvent(bool blocked = true) : blocked(blocked) {}
     };
 
 

@@ -28,12 +28,7 @@ namespace SupDef {
                 selectionManager->initialize();
 
                 SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedEvent)
-                // globalDispatcher->subscribe<GameBlockedEvent>([this](const SupDef::Events& events) {
-                //     for (const auto& event : events) {
-                //         const auto& typedEvent = static_cast<const UpdateCommandEvent&>(*event);
                     blocked = typedEvent.blocked;
-                //     }
-                // });
                 SUBSCRIBE_END
             }
         

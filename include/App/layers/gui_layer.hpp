@@ -19,13 +19,10 @@ namespace SupDef {
         
             void onAttach() override {
                 guiManager = std::make_unique<GuiManager>();
-                assert(globalDispatcher);
-                globalDispatcher->subscribe<WindowResizeEvent>([this](const SupDef::Events& events) {
-                    for (const auto& event : events) {
-                        const auto& typedEvent = static_cast<const SupDef::WindowResizeEvent&>(*event);
-                        guiManager->resize(typedEvent.width, typedEvent.height);
-                    }
-                });
+                
+                SUBSCRIBE_BEGIN(globalDispatcher, WindowResizeEvent)
+                    guiManager->resize(typedEvent.width, typedEvent.height);
+                SUBSCRIBE_END
             }
         
             void onDetach() override {
