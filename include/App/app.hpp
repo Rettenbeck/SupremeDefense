@@ -33,11 +33,14 @@ namespace SupDef {
                     LOG(Info, "Game ended from renderer")
                     end = true;
                 SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsServer)
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsServerEvent)
                     startNetworkGameAsServer(typedEvent.port);
                 SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsClient)
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsClientEvent)
                     startNetworkGameAsClient(typedEvent.ip, typedEvent.port);
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, CompleteServerEvent)
+                    completeServer();
                 SUBSCRIBE_END
             }
 
@@ -138,6 +141,10 @@ namespace SupDef {
 
             bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
                 return getNetworkLayer()->startNetworkGameAsClient(ip, port);
+            }
+
+            void completeServer() {
+                getNetworkLayer()->completeServer();
             }
 
             void setFramerate(double fps) {

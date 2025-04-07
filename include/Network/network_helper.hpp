@@ -42,6 +42,7 @@ namespace SupDef {
                 package = nullptr;
                 auto received = socketBackend->receive();
                 if (!received.has_value()) return;
+                LOG(Info, "Message received: &1", received.value())
                 json j;
                 try {
                     j = json::parse(received.value());

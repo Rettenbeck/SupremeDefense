@@ -19,51 +19,55 @@ namespace SupDef {
                 socket.setBlocking(false);
             }
 
-            std::string socketStatusToString(sf::Socket::Status status) {
-                switch (status) {
-                    case sf::Socket::Status::Done: return "Done";
-                    case sf::Socket::Status::NotReady: return "NotReady (non-blocking)";
-                    case sf::Socket::Status::Partial: return "Partial (sent/received part of data)";
-                    case sf::Socket::Status::Disconnected: return "Disconnected";
-                    case sf::Socket::Status::Error: return "Generic Error";
-                    default: return "Unknown";
-                }
-            }
-
             bool startAsClient(const std::string& ip, unsigned short port) {
                 auto opt_ip = sf::IpAddress::resolve(ip);
                 if (!opt_ip.has_value()) return false;
 
+                socket.setBlocking(true);
                 auto status = socket.connect(opt_ip.value(), port);
+                socket.setBlocking(false);
                 if (status == sf::Socket::Status::Done) {
                     isServer = false;
                     isConnected = true;
-                    socket.setBlocking(false);
+                    LOG(Success, "Connected with server!")
                     return true;
+                } else if (status != sf::Socket::Status::NotReady) {
+                    LOG_ERROR("Client connection failed with status: &1", socketStatusToString(status))
                 }
-                std::cout << "Client connection failed with status: " << socketStatusToString(status) << "\n";
                 return false;
             }
         
             bool startAsServer(unsigned short port) {
-                auto status = listener.accept(socket);
-                if (status != sf::Socket::Status::Done) {
-                    std::cout << "Server listen failed with status: " << socketStatusToString(status) << "\n";
+                auto status = listener.listen(port);
+                if (status == sf::Socket::Status::Done) {
+                    LOG(Success, "Server started!")
+                    return true;
+                } else {
+                    LOG_ERROR("Server listen failed with status: &1", socketStatusToString(status))
                     return false;
                 }
+            }
+        
+            bool checkForClients() {
                 listener.setBlocking(false);
                 sf::TcpSocket newClient;
-                status = listener.accept(socket);
+                auto status = listener.accept(socket);
                 if (status == sf::Socket::Status::Done) {
                     isServer = true;
                     isConnected = true;
                     socket.setBlocking(false);
+                    LOG(Success, "Client connected!")
                     return true;
+                } else if (status != sf::Socket::Status::NotReady) {
+                    LOG_ERROR("Server accepting failed with status: &1", socketStatusToString(status))
                 }
-                std::cout << "Server accepting failed with status: " << socketStatusToString(status) << "\n";
                 return false;
             }
-        
+
+            void closeServer() {
+                listener.close();
+            }
+
             void send(const std::string& data) override {
                 if (!isConnected) return;
         
@@ -105,6 +109,17 @@ namespace SupDef {
         
             void update() override {
                 // Not used in this minimal version
+            }
+
+            std::string socketStatusToString(sf::Socket::Status status) {
+                switch (status) {
+                    case sf::Socket::Status::Done: return "Done";
+                    case sf::Socket::Status::NotReady: return "NotReady (non-blocking)";
+                    case sf::Socket::Status::Partial: return "Partial (sent/received part of data)";
+                    case sf::Socket::Status::Disconnected: return "Disconnected";
+                    case sf::Socket::Status::Error: return "Generic Error";
+                    default: return "Unknown";
+                }
             }
 
     };

@@ -7,6 +7,10 @@
 
 namespace SupDef {
 
+    enum class NetworkStatus {
+        Initial, Listening, Connected, Completed
+    };
+
     class NetworkLayer : public Layer {
         private:
             USocketBackend socketBackend;
@@ -14,6 +18,7 @@ namespace SupDef {
             UNetworkPlayerTracker npt;
             UActionQueue actionQueue;
             UActionQueue actionQueueForGame;
+            NetworkStatus status = NetworkStatus::Initial;
             bool isServer = false;
             bool hasGameUpdated = false;
             long gameFrameCount = 0;
@@ -41,8 +46,20 @@ namespace SupDef {
             }
         
             void update(float deltaTime) override {
-                send();
-                receive();
+                switch(status) {
+                    case NetworkStatus::Initial:
+                        break;
+                    case NetworkStatus::Listening:
+                        checkForClients();
+                        break;
+                    case NetworkStatus::Connected:
+                    case NetworkStatus::Completed:
+                        send();
+                        receive();
+                        break;
+                    default:
+                        assert(false);
+                }
             }
 
             void send() {
@@ -84,6 +101,11 @@ namespace SupDef {
                 return true;
             }
 
+            void checkForClients() {
+                assert(socketBackend);
+                socketBackend->checkForClients();
+            }
+
             void receiveActionQueue(json& j) {
                 networkHelper->fillActionQueueFromJson(j, actionQueueForGame.get(), gameFrameCount);
                 globalDispatcher->dispatch<ReceivedActionsFromServerEvent>(actionQueueForGame.get());
@@ -104,21 +126,27 @@ namespace SupDef {
             bool startNetworkGameAsServer(unsigned short port) {
                 assert(socketBackend);
                 if(!socketBackend->startAsServer(port)) {
-                    LOG_ERROR("Starting as server failed");
                     return false;
                 }
                 isServer = true;
+                status = NetworkStatus::Listening;
                 return true;
             }
 
             bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
                 assert(socketBackend);
-                if(!socketBackend->startAsClient(ip, port)) {
-                    LOG_ERROR("Starting as client failed");
-                    return false;
-                }
+                if(!socketBackend->startAsClient(ip, port)) { return false; }
+                status = NetworkStatus::Connected;
                 isServer = false;
                 return true;
+            }
+
+            void completeServer() {
+                if (status == NetworkStatus::Listening) {
+                    assert(socketBackend);
+                    socketBackend->closeServer();
+                    status = NetworkStatus::Completed;
+                }
             }
 
             ActionQueue* getActionQueue() { return actionQueue.get(); }

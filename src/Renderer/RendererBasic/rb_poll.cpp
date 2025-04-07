@@ -63,10 +63,13 @@ namespace SupDef {
                         game->setThisPlayer(otherPlayer);
                     }
                     if (keyEvent->code == sf::Keyboard::Key::Y) {
-                        globalDispatcher->dispatch<StartNetworkGameAsServer>();
+                        globalDispatcher->dispatch<StartNetworkGameAsServerEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::X) {
-                        globalDispatcher->dispatch<StartNetworkGameAsClient>();
+                        globalDispatcher->dispatch<StartNetworkGameAsClientEvent>();
+                    }
+                    if (keyEvent->code == sf::Keyboard::Key::C) {
+                        globalDispatcher->dispatch<CompleteServerEvent>();
                     }
                 }
 
