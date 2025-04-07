@@ -20,7 +20,7 @@ namespace SupDef {
         public:
             App() {
                 Logger::getInstance().setFileOutput(DEFAULT_FILENAME_LOG);
-                Logger::getInstance().addMessage(MessageType::Init, MESSAGE_INIT);
+                LOG(Init, MESSAGE_INIT)
                 globalDispatcher = std::make_unique<EventDispatcher>();
 
                 settings = std::make_unique<Settings>(DEFAULT_FILENAME_SETTINGS);
@@ -30,7 +30,7 @@ namespace SupDef {
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
 
                 SUBSCRIBE_BEGIN(globalDispatcher, GameEndEvent)
-                    Logger::getInstance().addMessage(MessageType::Info, "Game ended from renderer\n");
+                    LOG(Info, "Game ended from renderer")
                     end = true;
                 SUBSCRIBE_END
             }

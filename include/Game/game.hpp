@@ -33,6 +33,7 @@ namespace SupDef {
 
             Entity* addMap(AssetID mapAssetID);
             EntityID getMapOfEntity(EntityID entityID);
+            void generatePlayerList();
 
             
 

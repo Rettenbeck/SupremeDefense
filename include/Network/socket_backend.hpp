@@ -17,7 +17,7 @@ namespace SupDef {
 
             void blockGame(bool blocked = true) {
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<GameBlockedEvent>(blocked);
+                globalDispatcher->dispatch<GameBlockedByNetworkEvent>(blocked);
             }
 
     };

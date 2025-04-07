@@ -33,6 +33,9 @@ namespace SupDef {
                 SUBSCRIBE_BEGIN(globalDispatcher, ActionCreatedEvent)
                     handleAction(typedEvent.action);
                 SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, ReceivedActionsFromServerEvent)
+                    forwardActionsToGame(typedEvent.actionQueue);
+                SUBSCRIBE_END
             }
         
             void handleAction(SAction action) {
@@ -55,6 +58,13 @@ namespace SupDef {
 
             void forwardActionToGame(SAction action) {
                 gameLayer->getActionQueue()->enqueue(action);
+            }
+        
+            void forwardActionsToGame(ActionQueue* actionQueue) {
+                assert(actionQueue);
+                for(auto action : actionQueue->getActions()) {
+                    gameLayer->getActionQueue()->enqueue(action);
+                }
             }
         
             void update(float deltaTime) override {

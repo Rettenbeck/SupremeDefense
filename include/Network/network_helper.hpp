@@ -1,8 +1,8 @@
-#include <Util/basic.hpp>
-// #include <EventDispatcher/include.hpp>
+#include <Util/util.hpp>
 #include <App/constants.hpp>
 #include <Action/action_queue.hpp>
 #include <Network/socket_backend.hpp>
+#include <App/Log/logger.hpp>
 
 #pragma once
 
@@ -17,11 +17,11 @@ namespace SupDef {
     };
     using UNetworkPackage = std::unique_ptr<NetworkPackage>;
 
-    class NetworkManager {
+    class NetworkHelper {
         public:
             UNetworkPackage package = nullptr;
 
-            NetworkManager() {}
+            NetworkHelper() {}
 
             void sendClientActionsToSocket(SocketBackend* socketBackend, ActionQueue* actionQueue,
                 uint32_t thisPlayer, long gameFrameCount) {
@@ -33,7 +33,7 @@ namespace SupDef {
                 socketBackend->send(actions_str);
             }
 
-            void hasReceivedMessage(SocketBackend* socketBackend) {
+            void processReceivedMessage(SocketBackend* socketBackend) {
                 package = nullptr;
                 auto received = socketBackend->receive();
                 if (!received.has_value()) return;
@@ -41,11 +41,11 @@ namespace SupDef {
                 try {
                     j = json::parse(received.value());
                 } catch (json::parse_error& e) {
-                    Logger::getInstance().addMessage(MessageType::Error, "Received bad network package");
+                    LOG_ERROR("Received bad network package")
                     return;
                 }
                 if (!j.contains(S_NET_MESSAGE_TYPE)) {
-                    Logger::getInstance().addMessage(MessageType::Error, "Network package incorrectly formatted");
+                    LOG_ERROR("Network package incorrectly formatted")
                     return;
                 }
                 auto type = j[S_NET_MESSAGE_TYPE];
@@ -54,8 +54,7 @@ namespace SupDef {
                 } else if (type == S_NET_ACTIONS_FROM_SERVER) {
                     package = std::make_unique<NetworkPackage>(false, j);
                 } else {
-                    Logger::getInstance().addMessage(MessageType::Error,
-                        "Network package has unknown message type: &1", type);
+                    LOG_ERROR("Network package has unknown message type: &1", type)
                     return;
                 }
             }
@@ -65,12 +64,11 @@ namespace SupDef {
                 actionQueue->clear();
 
                 if (!j.contains(SA_ACTIONS)) {
-                    Logger::getInstance().addMessage(MessageType::Error, "Network package does not contain actions");
+                    LOG_ERROR("Network package does not contain actions")
                     return;
                 }
                 if (!j[SA_ACTIONS].is_array()) {
-                    Logger::getInstance().addMessage(MessageType::Error,
-                        "Network package do not contain an action array");
+                    LOG_ERROR("Network package do not contain an action array")
                     return;
                 }
 
@@ -107,10 +105,9 @@ namespace SupDef {
                 j[SA_PLAYER] = thisPlayer;
                 j[SA_FRAME_COUNT] = gameFrameCount;
             }
-
-
+            
     };
 
-    using UNetworkManager = std::unique_ptr<NetworkManager>;
+    using UNetworkHelper = std::unique_ptr<NetworkHelper>;
 
 }

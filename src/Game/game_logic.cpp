@@ -14,6 +14,7 @@ namespace SupDef {
         processProjectiles();
         processTechs();
         processActions();
+        generatePlayerList();
     }
 
     void Game::updateWorlds(float deltaTime) {

@@ -12,7 +12,7 @@ namespace SupDef {
             UGame game;
             USelectionManager selectionManager;
             UActionQueue actionQueue;
-            bool blocked = false;
+            bool blockedByNetwork = false;
             long frameCount = 0;
     
         public:
@@ -28,13 +28,13 @@ namespace SupDef {
                 selectionManager->setGlobalDispatcher(globalDispatcher);
                 selectionManager->initialize();
 
-                SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedEvent)
-                    blocked = typedEvent.blocked;
+                SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedByNetworkEvent)
+                    blockedByNetwork = typedEvent.blocked;
                 SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
-                if (blocked) return;
+                if (blockedByNetwork) return;
                 game->update(deltaTime);
                 frameCount++;
                 globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);

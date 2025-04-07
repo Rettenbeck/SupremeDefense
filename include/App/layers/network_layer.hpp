@@ -10,56 +10,79 @@ namespace SupDef {
     class NetworkLayer : public Layer {
         private:
             USocketBackend socketBackend;
-            UNetworkManager networkManager;
+            UNetworkHelper networkHelper;
+            UNetworkPlayerTracker npt;
             UActionQueue actionQueue;
-            UActionQueue actionQueueServer;
+            UActionQueue actionQueueForGame;
             bool isServer = false;
             bool hasGameUpdated = false;
             long gameFrameCount = 0;
-            uint32_t thisPlayer = 0;
-            std::vector<uint32_t> players;
 
         public:
             NetworkLayer() {
+                npt = std::make_unique<NetworkPlayerTracker>();
                 socketBackend = std::make_unique<SFMLSocketBackend>();
-                networkManager = std::make_unique<NetworkManager>();
+                networkHelper = std::make_unique<NetworkHelper>();
                 actionQueue = std::make_unique<ActionQueue>();
-                actionQueueServer = std::make_unique<ActionQueue>();
+                actionQueueForGame = std::make_unique<ActionQueue>();
             }
         
             void onAttach() override {
                 SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
+                    assert(npt);
+                    npt->setThisPlayer(typedEvent.thisPlayer);
                     hasGameUpdated = true;
-                    thisPlayer = typedEvent.thisPlayer;
                     gameFrameCount = typedEvent.frameCount;
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
+                    assert(npt);
+                    npt->resetPlayerList(typedEvent.playerList);
                 SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
-                assert(actionQueueServer);
-                assert(networkManager);
-                checkReceivedMessage();
+                send();
+            }
+
+            void send() {
+                if (!hasGameUpdated) return;
+                assert(actionQueueForGame);
+                assert(networkHelper);
+                assert(npt);
+                globalDispatcher->dispatch<GameBlockedByNetworkEvent>(true);
 
                 if (isServer) {
                     // if (hasGameUpdated) send all actions to socket
                 } else {
-                    if (hasGameUpdated) {
-                        networkManager->sendClientActionsToSocket(
-                            socketBackend.get(), actionQueue.get(), thisPlayer, gameFrameCount
-                        );
-                    }
+                    networkHelper->sendClientActionsToSocket(
+                        socketBackend.get(), actionQueue.get(), npt->getThisPlayer(), gameFrameCount
+                    );
                 }
 
                 hasGameUpdated = false;
             }
 
+            void receive() {
+                assert(networkHelper);
+                checkReceivedMessage();
+                if (!networkHelper->package) return;
+
+                if (isServer) {
+                    //
+                } else {
+                    networkHelper->fillActionQueueFromJson(networkHelper->package->data, actionQueueForGame.get());
+                    globalDispatcher->dispatch<ReceivedActionsFromServerEvent>(actionQueueForGame.get());
+                    globalDispatcher->dispatch<GameBlockedByNetworkEvent>(false);
+                }
+            }
+
             void checkReceivedMessage() {
-                assert(networkManager);
-                networkManager->hasReceivedMessage(socketBackend.get());
-                if (networkManager->package) {
-                    if (networkManager->package->forServer != isServer) {
-                        Logger::getInstance().addMessage(MessageType::Error, "Received unfitting message");
-                        networkManager->package = nullptr;
+                assert(networkHelper);
+                networkHelper->processReceivedMessage(socketBackend.get());
+                if (networkHelper->package) {
+                    if (networkHelper->package->forServer != isServer) {
+                        LOG_ERROR("Received unfitting message")
+                        networkHelper->package = nullptr;
                     }
                 }
             }

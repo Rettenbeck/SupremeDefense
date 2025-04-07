@@ -1,6 +1,7 @@
 #include <EventDispatcher/event.hpp>
 #include <ECS/entity.hpp>
 #include <Action/action.hpp>
+#include <Action/action_queue.hpp>
 
 #pragma once
 
@@ -74,9 +75,9 @@ namespace SupDef {
 
 
     // #### Network events #########################################################################
-    struct GameBlockedEvent : public Event {
+    struct GameBlockedByNetworkEvent : public Event {
         bool blocked;
-        GameBlockedEvent(bool blocked = true) : blocked(blocked) {}
+        GameBlockedByNetworkEvent(bool blocked = true) : blocked(blocked) {}
     };
 
     struct GameHasUpdatedEvent : public Event {
@@ -86,6 +87,16 @@ namespace SupDef {
         : thisPlayer(thisPlayer), frameCount(frameCount) {}
     };
 
+    struct ReceivedActionsFromServerEvent : public Event {
+        ActionQueue* actionQueue = nullptr;
+        ReceivedActionsFromServerEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
+    };
+
+    struct SendPlayerListEvent : public Event {
+        EntityIDs playerList;
+        SendPlayerListEvent(EntityIDs& playerList) : playerList(playerList) {}
+    };
 
 
+    
 }

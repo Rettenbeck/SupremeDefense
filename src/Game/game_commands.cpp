@@ -80,24 +80,24 @@ namespace SupDef {
     std::tuple<bool, Entity*, ActiveTechComponent*> Game::isTechProperCommand(EntityID entityID, EntityID techID) {
         auto tech = entityManager->getEntity(techID);
         if (!tech) {
-            Logger::getInstance().addMessage(MessageType::Error, "Tech &1 does not exist!", techID);
+            LOG_ERROR("Tech &1 does not exist!", techID)
             return {false, nullptr, nullptr};
         }
         auto techComp = tech->getComponent<TechComponent>();
         auto activeComp = tech->getComponent<ActiveTechComponent>();
         if (!techComp || !activeComp) {
-            Logger::getInstance().addMessage(MessageType::Error, "Entity &1 not a tech!", techID);
+            LOG_ERROR("Entity &1 not a tech!", techID)
             return {false, nullptr, nullptr};
         }
         auto it = std::find(techComp->assignees.begin(), techComp->assignees.end(), entityID);
         if (it == techComp->assignees.end()) {
-            Logger::getInstance().addMessage(MessageType::Error, "Entity &1 not asssigned to tech!", entityID);
+            LOG_ERROR("Entity &1 not asssigned to tech!", entityID)
             return {false, nullptr, nullptr};
         }
         json j;
         auto command = getAssetFromCommand(activeComp->commandID, j);
         if (!command) {
-            Logger::getInstance().addMessage(MessageType::Error, "Command &1 does not exist!", activeComp->commandID);
+            LOG_ERROR("Command &1 does not exist!", activeComp->commandID)
             return {false, nullptr, nullptr};
         }
         return {true, command, activeComp};
@@ -107,18 +107,17 @@ namespace SupDef {
         if (commandID == NO_COMMAND) return nullptr;
         auto asset = assetManager->getAsset(commandID);
         if (!asset) {
-            Logger::getInstance().addMessage(MessageType::Error, "Command &1 not found!", commandID);
+            LOG_ERROR("Command &1 not found!", commandID)
             return nullptr;
         }
         auto comComp = asset->getComponent<CommandComponent>();
         if (!comComp) {
-            Logger::getInstance().addMessage(MessageType::Error, "&1 not a command!", commandID);
+            LOG_ERROR("&1 not a command!", commandID)
             return nullptr;
         }
         if (comComp->isUnique) {
             if (!data.contains(JCOM_UNIQUE)) {
-                Logger::getInstance().addMessage(MessageType::Error,
-                    "&1 marked as unique but does not contain command!", commandID);
+                LOG_ERROR("&1 marked as unique but does not contain command!", commandID)
                 uniqueCommand = nullptr;
                 return nullptr;
             }
@@ -127,7 +126,7 @@ namespace SupDef {
             uniqueCommand->from_json(j);
             comComp = uniqueCommand->getComponent<CommandComponent>();
             if (!comComp) {
-                Logger::getInstance().addMessage(MessageType::Error, "Inside asset not a command!", commandID);
+                LOG_ERROR("Inside asset not a command!")
                 return nullptr;
             }
             return uniqueCommand.get();
