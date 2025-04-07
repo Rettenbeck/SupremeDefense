@@ -18,30 +18,49 @@ namespace SupDef {
             SFMLSocketBackend() {
                 socket.setBlocking(false);
             }
-        
+
+            std::string socketStatusToString(sf::Socket::Status status) {
+                switch (status) {
+                    case sf::Socket::Status::Done: return "Done";
+                    case sf::Socket::Status::NotReady: return "NotReady (non-blocking)";
+                    case sf::Socket::Status::Partial: return "Partial (sent/received part of data)";
+                    case sf::Socket::Status::Disconnected: return "Disconnected";
+                    case sf::Socket::Status::Error: return "Generic Error";
+                    default: return "Unknown";
+                }
+            }
+
             bool startAsClient(const std::string& ip, unsigned short port) {
                 auto opt_ip = sf::IpAddress::resolve(ip);
                 if (!opt_ip.has_value()) return false;
 
-                if (socket.connect(opt_ip.value(), port) == sf::Socket::Status::Done) {
+                auto status = socket.connect(opt_ip.value(), port);
+                if (status == sf::Socket::Status::Done) {
                     isServer = false;
                     isConnected = true;
                     socket.setBlocking(false);
                     return true;
                 }
+                std::cout << "Client connection failed with status: " << socketStatusToString(status) << "\n";
                 return false;
             }
         
             bool startAsServer(unsigned short port) {
-                if (listener.listen(port) != sf::Socket::Status::Done) return false;
+                auto status = listener.accept(socket);
+                if (status != sf::Socket::Status::Done) {
+                    std::cout << "Server listen failed with status: " << socketStatusToString(status) << "\n";
+                    return false;
+                }
                 listener.setBlocking(false);
                 sf::TcpSocket newClient;
-                if (listener.accept(socket) == sf::Socket::Status::Done) {
+                status = listener.accept(socket);
+                if (status == sf::Socket::Status::Done) {
                     isServer = true;
                     isConnected = true;
                     socket.setBlocking(false);
                     return true;
                 }
+                std::cout << "Server accepting failed with status: " << socketStatusToString(status) << "\n";
                 return false;
             }
         

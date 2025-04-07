@@ -33,6 +33,12 @@ namespace SupDef {
                     LOG(Info, "Game ended from renderer")
                     end = true;
                 SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsServer)
+                    startNetworkGameAsServer(typedEvent.port);
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsClient)
+                    startNetworkGameAsClient(typedEvent.ip, typedEvent.port);
+                SUBSCRIBE_END
             }
 
             ~App() { layers.clear(); }
@@ -115,6 +121,23 @@ namespace SupDef {
                     stopMeasurement();
                     waitUntilElapsed(frame_duration * 1000.0);
                 }
+            }
+
+            NetworkLayer* getNetworkLayer() {
+                auto ptr = getLayer<NetworkLayer>();
+                if (ptr) return ptr;
+                addLayer(std::make_unique<NetworkLayer>());
+                ptr = getLayer<NetworkLayer>();
+                assert(ptr);
+                return ptr;
+            }
+
+            bool startNetworkGameAsServer(unsigned short port) {
+                return getNetworkLayer()->startNetworkGameAsServer(port);
+            }
+
+            bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
+                return getNetworkLayer()->startNetworkGameAsClient(ip, port);
             }
 
             void setFramerate(double fps) {

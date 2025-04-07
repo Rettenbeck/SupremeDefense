@@ -23,6 +23,11 @@ namespace SupDef {
 
             NetworkHelper() {}
 
+            void sendJsonToSocket(SocketBackend* socketBackend, json& j) {
+                assert(socketBackend);
+                socketBackend->send(j.dump(2));
+            }
+
             void sendClientActionsToSocket(SocketBackend* socketBackend, ActionQueue* actionQueue,
                 uint32_t thisPlayer, long gameFrameCount) {
                 //
@@ -59,18 +64,14 @@ namespace SupDef {
                 }
             }
 
-            void fillActionQueueFromJson(const json& j, ActionQueue* actionQueue) {
+            void fillActionQueueFromJson(const json& j, ActionQueue* actionQueue, long frameCount) {
                 assert(actionQueue);
                 actionQueue->clear();
 
-                if (!j.contains(SA_ACTIONS)) {
-                    LOG_ERROR("Network package does not contain actions")
-                    return;
-                }
-                if (!j[SA_ACTIONS].is_array()) {
-                    LOG_ERROR("Network package do not contain an action array")
-                    return;
-                }
+                JSON_CONTAINS_WITH_MSG_AND_RETURN(j, SA_ACTIONS, "Network package does not contain actions");
+                JSON_CONTAINS_WITH_MSG_AND_RETURN(j, SA_FRAME_COUNT, "Network package does not contain frame count");
+                CHECK_CONDITION_WITH_MSG_AND_RETURN(!j[SA_ACTIONS].is_array(), "Network package do not contain an action array")
+                CHECK_CONDITION_WITH_MSG_AND_RETURN((long) j[SA_FRAME_COUNT] != frameCount, "Network package contains different frame count")
 
                 for (const auto& actionJson : j[SA_ACTIONS]) {
                     auto action = std::make_shared<Action>();

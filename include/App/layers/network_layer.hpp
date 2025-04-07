@@ -42,6 +42,7 @@ namespace SupDef {
         
             void update(float deltaTime) override {
                 send();
+                receive();
             }
 
             void send() {
@@ -52,7 +53,7 @@ namespace SupDef {
                 globalDispatcher->dispatch<GameBlockedByNetworkEvent>(true);
 
                 if (isServer) {
-                    // if (hasGameUpdated) send all actions to socket
+                    // Nothing to do -> handled in the receive logic
                 } else {
                     networkHelper->sendClientActionsToSocket(
                         socketBackend.get(), actionQueue.get(), npt->getThisPlayer(), gameFrameCount
@@ -62,18 +63,31 @@ namespace SupDef {
                 hasGameUpdated = false;
             }
 
-            void receive() {
+            bool receive() {
                 assert(networkHelper);
+                assert(npt);
                 checkReceivedMessage();
-                if (!networkHelper->package) return;
+                if (!networkHelper->package) return false;
 
                 if (isServer) {
-                    //
+                    npt->addPlayerMessage(networkHelper->package->data);
+                    if (npt->complete()) {
+                        json j;
+                        npt->to_json(j);
+                        networkHelper->sendJsonToSocket(socketBackend.get(), j);
+                        receiveActionQueue(j);
+                    }
                 } else {
-                    networkHelper->fillActionQueueFromJson(networkHelper->package->data, actionQueueForGame.get());
-                    globalDispatcher->dispatch<ReceivedActionsFromServerEvent>(actionQueueForGame.get());
-                    globalDispatcher->dispatch<GameBlockedByNetworkEvent>(false);
+                    receiveActionQueue(networkHelper->package->data);
                 }
+                
+                return true;
+            }
+
+            void receiveActionQueue(json& j) {
+                networkHelper->fillActionQueueFromJson(j, actionQueueForGame.get(), gameFrameCount);
+                globalDispatcher->dispatch<ReceivedActionsFromServerEvent>(actionQueueForGame.get());
+                globalDispatcher->dispatch<GameBlockedByNetworkEvent>(false);
             }
 
             void checkReceivedMessage() {
@@ -85,6 +99,26 @@ namespace SupDef {
                         networkHelper->package = nullptr;
                     }
                 }
+            }
+
+            bool startNetworkGameAsServer(unsigned short port) {
+                assert(socketBackend);
+                if(!socketBackend->startAsServer(port)) {
+                    LOG_ERROR("Starting as server failed");
+                    return false;
+                }
+                isServer = true;
+                return true;
+            }
+
+            bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
+                assert(socketBackend);
+                if(!socketBackend->startAsClient(ip, port)) {
+                    LOG_ERROR("Starting as client failed");
+                    return false;
+                }
+                isServer = false;
+                return true;
             }
 
             ActionQueue* getActionQueue() { return actionQueue.get(); }
