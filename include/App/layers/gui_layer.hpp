@@ -43,8 +43,10 @@ namespace SupDef {
                     auto ptr = setGuiManager<GuiManagerGame>();
                     ptr->setSelectionManager(selectionManager);
                     ptr->setGame(game);
+                    // ptr->update(deltaTime);
                 } else {
-                    setGuiManager<GuiManagerNetwork>();
+                    auto ptr = setGuiManager<GuiManagerNetwork>();
+                    // ptr->update(deltaTime);
                 }
                 guiManager->update(deltaTime);
             }

@@ -24,7 +24,7 @@ namespace SupDef {
         public:
             virtual ~GuiManager() {}
         
-            void update(float deltaTime) {
+            virtual void update(float deltaTime) {
                 info.clear();
                 elements.clear();
                 clickableMap.clear();
@@ -84,19 +84,19 @@ namespace SupDef {
                 return true;
             }
 
-            void handleClickOnGui(GuiElement* element, MouseClick button, json data) {}
+            virtual void handleClickOnGui(GuiElement* element, MouseClick button, json data) {}
         
-            void handleClickOnGui(GuiElement* element, MouseClick button) {
+            virtual void handleClickOnGui(GuiElement* element, MouseClick button) {
                 handleClickOnGui(element, button, json());
             }
         
-            void handleClickMove(json& j) { }
+            virtual void handleClickMove(json& j) { }
 
             const GuiElements& getGuiElements() const { return elements; }
 
             void resize(unsigned width_, unsigned height_) {
                 width = width_; height = height_;
-                std::cout << "Resized to " << width << " & " << height << "\n";
+                // std::cout << "Resized to " << width << " & " << height << "\n";
             }
 
             void setMousePos(int x, int y) { mouseX = x; mouseY = y; }

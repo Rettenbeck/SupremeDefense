@@ -62,6 +62,7 @@ namespace SupDef {
         updateCommand();
 
         window->display();
+        globalDispatcher->dispatch<WindowResizeEvent>(window->getSize().x, window->getSize().y);
         return true;
     }
 

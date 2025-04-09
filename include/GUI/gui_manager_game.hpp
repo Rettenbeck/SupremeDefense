@@ -21,8 +21,6 @@ namespace SupDef {
         
             void update(float deltaTime) {
                 GuiManager::update(deltaTime);
-                // info.clear();
-                // elements.clear();
 
                 showResources(0, 0);
                 buildGuiForUnit();
