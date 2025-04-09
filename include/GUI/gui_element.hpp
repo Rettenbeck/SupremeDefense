@@ -1,11 +1,12 @@
 #include <Util/basic.hpp>
+#include <GUI/constants.hpp>
 
 #pragma once
 
 
 namespace SupDef {
 
-    enum class GuiElementType  { Button, Label, Panel };
+    enum class GuiElementType  { Button, Label, Panel, Input, Table };
     enum class GuiElementStyle { Default, Test };
 
     struct GuiElement {
@@ -14,9 +15,10 @@ namespace SupDef {
         std::string text;
         float x, y, width, height;
         bool clickable = true;
+        char ipBuffer[64] = "";
 
         GuiElement(GuiElementType type, GuiElementStyle style, float x, float y, float width, float height, std::string text = "")
-            : type(type), style(style), x(x), y(y), width(width), height(height), text(std::move(text)) {}
+        : type(type), style(style), x(x), y(y), width(width), height(height), text(std::move(text)) {}
 
         virtual ~GuiElement() = default;
     };

@@ -42,6 +42,9 @@ namespace SupDef {
                 SUBSCRIBE_BEGIN(globalDispatcher, CompleteServerEvent)
                     completeServer();
                 SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StopNetworkGameEvent)
+                    stopNetworkGame();
+                SUBSCRIBE_END
             }
 
             ~App() { layers.clear(); }
@@ -55,6 +58,17 @@ namespace SupDef {
                 });
             }
         
+            template <typename T>
+            void removeLayer() {
+                for (auto it = layers.begin(); it != layers.end(); it++) {
+                    auto ptr = (*it).get();
+                    if (dynamic_cast<T*>(ptr)) {
+                        ptr->onDetach();
+                        layers.erase(it);
+                    }
+                }
+            }
+
             template <typename T>
             T* getLayer() {
                 for(auto& l : layers) {
@@ -102,7 +116,6 @@ namespace SupDef {
             void start() {
                 auto render = getLayer<RenderLayer>();
                 render->setWindowSize(init_window_width, init_window_height);
-
                 for (auto& layer : layers) {
                     layer->onStart();
                 }
@@ -136,11 +149,21 @@ namespace SupDef {
             }
 
             bool startNetworkGameAsServer(unsigned short port) {
-                return getNetworkLayer()->startNetworkGameAsServer(port);
+                assert(globalDispatcher);
+                auto success = getNetworkLayer()->startNetworkGameAsServer(port);
+                globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
+                return success;
             }
 
             bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
-                return getNetworkLayer()->startNetworkGameAsClient(ip, port);
+                assert(globalDispatcher);
+                auto success = getNetworkLayer()->startNetworkGameAsClient(ip, port);
+                globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
+                return success;
+            }
+
+            void stopNetworkGame() {
+                removeLayer<NetworkLayer>();
             }
 
             void completeServer() {

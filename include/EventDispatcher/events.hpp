@@ -75,6 +75,11 @@ namespace SupDef {
 
 
     // #### Network events #########################################################################
+    struct SetPlayerNameEvent : public Event {
+        std::string name;
+        SetPlayerNameEvent(std::string name) : name(name) {}
+    };
+
     struct StartNetworkGameAsServerEvent : public Event {
         unsigned short port;
         StartNetworkGameAsServerEvent() : port(9000) {}
@@ -90,6 +95,16 @@ namespace SupDef {
 
     struct CompleteServerEvent : public Event {
         CompleteServerEvent() {}
+    };
+
+    struct StartGameAsServerStatusEvent : public Event {
+        bool success;
+        StartGameAsServerStatusEvent(bool success) : success(success) {}
+    };
+
+    struct StartGameAsClientStatusEvent : public Event {
+        bool success;
+        StartGameAsClientStatusEvent(bool success) : success(success) {}
     };
 
     struct GameBlockedByNetworkEvent : public Event {
@@ -112,6 +127,10 @@ namespace SupDef {
     struct SendPlayerListEvent : public Event {
         EntityIDs playerList;
         SendPlayerListEvent(EntityIDs& playerList) : playerList(playerList) {}
+    };
+
+    struct StopNetworkGameEvent : public Event {
+        StopNetworkGameEvent() {}
     };
 
 

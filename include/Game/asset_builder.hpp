@@ -87,6 +87,45 @@ namespace SupDef {
             initComp->contained.push_back(assetID);
         }
 
+        static void addInit(Entity* asset, AssetIDs assetIDs) {
+            for (auto& assetID : assetIDs) {
+                addInit(asset, assetID);
+            }
+        }
+
+        static void addPlayerSpawn(AsData data, Entity* asset, float x, float y, AssetIDs players) {
+            assert(asset);
+            AsData dataSpawn = data;
+            int i = 1;
+            do {
+                std::stringstream ss; ss << data.assetID << AFFIX_SPAWN << i;
+                dataSpawn.assetID = ss.str();
+                if (!data.am->getAsset(dataSpawn.assetID)) break;
+            } while (i++ < 1000);
+            auto assetSpawn = createEmptyAsset(dataSpawn);
+            assetSpawn->addComponent<PlayerSpawnComponent>(players);
+            assetSpawn->addComponent<InitPositionComponent>(x, y);
+            addInit(asset, dataSpawn.assetID);
+        }
+
+        static void addPlayerSpawn(AsData data, Entity* asset, float x, float y, AssetID player) {
+            AssetIDs players;
+            players.push_back(player);
+            addPlayerSpawn(data, asset, x, y, players);
+        }
+
+        static void addPlayerSpawns(AsData data, Entity* asset, VF2s positions, AssetIDs players) {
+            for (auto& position : positions) {
+                addPlayerSpawn(data, asset, position.x, position.y, players);
+            }
+        }
+
+        static void addPlayerSpawns(AsData data, Entity* asset, VF2s positions, AssetID player) {
+            AssetIDs players;
+            players.push_back(player);
+            addPlayerSpawns(data, asset, positions, players);
+        }
+
         static void addRectangleShape(Entity* asset, float width, float height, bool calcDummyRadius = true) {
             assert(asset);
             auto colComp = asset->retrieveComponent<CollisionComponent>();
@@ -103,6 +142,13 @@ namespace SupDef {
             assert(colComp);
             colComp->dummyRadius = radius;
             colComp->isInfluence = isInfluence;
+        }
+
+        static Entity* buildWorld(AsData data, AssetID map) {
+            auto asset = createEmptyAsset(data);
+            asset->addComponent<WorldComponent>();
+            addInit(asset, map);
+            return asset;
         }
 
         static Entity* buildMap(AsData data, int tileSize, int x, int y, int width, int height) {

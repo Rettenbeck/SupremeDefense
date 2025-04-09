@@ -27,6 +27,8 @@
 #include <ECS/asset_components/init_container_component.hpp>
 #include <ECS/asset_components/requirement_component.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>
+#include <ECS/asset_components/init_position_component.hpp>
+#include <ECS/asset_components/player_spawn_component.hpp>
 
 #include <ECS/tech_components/tech_component.hpp>
 #include <ECS/tech_components/active_tech_component.hpp>
