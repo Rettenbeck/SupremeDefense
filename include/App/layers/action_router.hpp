@@ -30,13 +30,12 @@ namespace SupDef {
             ActionRouter() {}
 
             void onAttach() override {
-                globalDispatcher->subscribe<ActionCreatedEvent>([this](const Events& events) {
-                    for(auto& e : events) {
-                        if (auto* actionEvent = dynamic_cast<ActionCreatedEvent*>(e.get())) {
-                            handleAction(actionEvent->action);
-                        }
-                    }
-                });
+                SUBSCRIBE_BEGIN(globalDispatcher, ActionCreatedEvent)
+                    handleAction(typedEvent.action);
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, ReceivedActionsFromServerEvent)
+                    forwardActionsToGame(typedEvent.actionQueue);
+                SUBSCRIBE_END
             }
         
             void handleAction(SAction action) {
@@ -44,16 +43,27 @@ namespace SupDef {
                 logger.addMessage(MessageType::Info, "Action created");
 
                 if (isMultiplayer && networkLayer) {
-                    networkLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to network");
+                    networkLayer->getActionQueue()->enqueue(action);
                 } else {
-                    gameLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to game");
+                    forwardActionToGame(action);
                 }
         
                 if (replayLayer && !isReplay) {
-                    replayLayer->getActionQueue()->enqueue(action);
                     logger.addMessage(MessageType::Info, "  Sent to replay");
+                    replayLayer->getActionQueue()->enqueue(action);
+                }
+            }
+
+            void forwardActionToGame(SAction action) {
+                gameLayer->getActionQueue()->enqueue(action);
+            }
+        
+            void forwardActionsToGame(ActionQueue* actionQueue) {
+                assert(actionQueue);
+                for(auto action : actionQueue->getActions()) {
+                    gameLayer->getActionQueue()->enqueue(action);
                 }
             }
         

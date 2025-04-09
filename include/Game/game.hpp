@@ -26,13 +26,16 @@ namespace SupDef {
 
 
 
-            // ### GENERAL UPDATES ######################################################## //
+            // ### GENERAL FUNCTIONS ###################################################### //
+            void startWorld(AssetID world);
+
             void updateWorlds(float deltaTime);
             void updateWorld(float deltaTime, _EntWorld world);
             void updateMap(float deltaTime, _EntMapTiles map);
 
             Entity* addMap(AssetID mapAssetID);
             EntityID getMapOfEntity(EntityID entityID);
+            void generatePlayerList();
 
             
 

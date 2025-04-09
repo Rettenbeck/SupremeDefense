@@ -32,18 +32,12 @@ namespace SupDef {
         auto world = entityManager->createEntity();
         world->addComponent<WorldComponent>();
 
-        globalDispatcher->subscribe<TriggerCommandEvent>([this](const SupDef::Events& events) {
-            for (const auto& event : events) {
-                const auto& typedEvent = static_cast<const TriggerCommandEvent&>(*event);
-                handleTriggerCommand(typedEvent);
-            }
-        });
-        globalDispatcher->subscribe<UpdateCommandEvent>([this](const SupDef::Events& events) {
-            for (const auto& event : events) {
-                const auto& typedEvent = static_cast<const UpdateCommandEvent&>(*event);
-                handleUpdateCommand(typedEvent);
-            }
-        });
+        SUBSCRIBE_BEGIN(globalDispatcher, TriggerCommandEvent)
+            handleTriggerCommand(typedEvent);
+        SUBSCRIBE_END
+        SUBSCRIBE_BEGIN(globalDispatcher, UpdateCommandEvent)
+            handleUpdateCommand(typedEvent);
+        SUBSCRIBE_END
     }
 
     Entity* Game::addMap(AssetID mapAssetID) {
@@ -66,8 +60,17 @@ namespace SupDef {
             auto mapComp = entity->getComponent<MapComponent>();
             if (mapComp) return current;
         }
-        Logger::getInstance().addMessage(MessageType::Error, "Infinite loop in Game::getMapOfEntity");
+        LOG_ERROR("Infinite loop in Game::getMapOfEntity")
         return NO_ENTITY;
+    }
+
+    void Game::generatePlayerList() {
+        EntityIDs playerList;
+        auto players = entityManager->getEntitiesWithComponents<PlayerComponent>();
+        for (auto [entity, playerComp] : players) {
+            playerList.push_back(entity->id);
+        }
+        globalDispatcher->dispatch<SendPlayerListEvent>(playerList);
     }
 
 }

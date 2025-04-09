@@ -12,6 +12,8 @@ namespace SupDef {
             UGame game;
             USelectionManager selectionManager;
             UActionQueue actionQueue;
+            bool blockedByNetwork = false;
+            long frameCount = 0;
     
         public:
             GameLayer() {}
@@ -25,10 +27,17 @@ namespace SupDef {
                 selectionManager = std::make_unique<SelectionManager>();
                 selectionManager->setGlobalDispatcher(globalDispatcher);
                 selectionManager->initialize();
+
+                SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedByNetworkEvent)
+                    blockedByNetwork = typedEvent.blocked;
+                SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
+                if (blockedByNetwork) return;
                 game->update(deltaTime);
+                frameCount++;
+                globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
             }
             
             Game* getGame() { return game.get(); }

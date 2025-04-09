@@ -18,7 +18,7 @@ namespace SupDef {
                 if (!file) {
                     std::stringstream ss;
                     ss << "Failed to open settings file: " << filename;
-                    Logger::getInstance().addMessage(MessageType::Error, ss.str());
+                    LOG_ERROR(ss.str())
                     return false;
                 }
                 try {
@@ -28,7 +28,7 @@ namespace SupDef {
                 } catch (const nlohmann::json::parse_error& e) {
                     std::stringstream ss;
                     ss << "JSON parsing error: " << e.what();
-                    Logger::getInstance().addMessage(MessageType::Error, ss.str());
+                    LOG_ERROR(ss.str())
                     return false;
                 }
                 return true;
@@ -39,7 +39,7 @@ namespace SupDef {
                 if (!file) {
                     std::stringstream ss;
                     ss << "Failed to open settings file: " << filename;
-                    Logger::getInstance().addMessage(MessageType::Error, ss.str());
+                    LOG_ERROR(ss.str())
                     return false;
                 }
                 json j;
@@ -61,7 +61,7 @@ namespace SupDef {
                     } catch (const nlohmann::json::type_error&) {
                         std::stringstream ss;
                         ss << "Type mismatch for key: " << key;
-                        Logger::getInstance().addMessage(MessageType::Error, ss.str());
+                        LOG_ERROR(ss.str())
                     }
                 }
                 return defaultValue;

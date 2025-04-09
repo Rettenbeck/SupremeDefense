@@ -20,7 +20,7 @@ namespace SupDef {
         public:
             App() {
                 Logger::getInstance().setFileOutput(DEFAULT_FILENAME_LOG);
-                Logger::getInstance().addMessage(MessageType::Init, MESSAGE_INIT);
+                LOG(Init, MESSAGE_INIT)
                 globalDispatcher = std::make_unique<EventDispatcher>();
 
                 settings = std::make_unique<Settings>(DEFAULT_FILENAME_SETTINGS);
@@ -29,10 +29,22 @@ namespace SupDef {
                 init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
 
-                globalDispatcher->subscribe<GameEndEvent>([this](const SupDef::Events& events) {
-                    Logger::getInstance().addMessage(MessageType::Info, "Game ended from renderer\n");
+                SUBSCRIBE_BEGIN(globalDispatcher, GameEndEvent)
+                    LOG(Info, "Game ended from renderer")
                     end = true;
-                });
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsServerEvent)
+                    startNetworkGameAsServer(typedEvent.port);
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsClientEvent)
+                    startNetworkGameAsClient(typedEvent.ip, typedEvent.port);
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, CompleteServerEvent)
+                    completeServer();
+                SUBSCRIBE_END
+                SUBSCRIBE_BEGIN(globalDispatcher, StopNetworkGameEvent)
+                    stopNetworkGame();
+                SUBSCRIBE_END
             }
 
             ~App() { layers.clear(); }
@@ -46,6 +58,17 @@ namespace SupDef {
                 });
             }
         
+            template <typename T>
+            void removeLayer() {
+                for (auto it = layers.begin(); it != layers.end(); it++) {
+                    auto ptr = (*it).get();
+                    if (dynamic_cast<T*>(ptr)) {
+                        ptr->onDetach();
+                        layers.erase(it);
+                    }
+                }
+            }
+
             template <typename T>
             T* getLayer() {
                 for(auto& l : layers) {
@@ -93,7 +116,6 @@ namespace SupDef {
             void start() {
                 auto render = getLayer<RenderLayer>();
                 render->setWindowSize(init_window_width, init_window_height);
-
                 for (auto& layer : layers) {
                     layer->onStart();
                 }
@@ -115,6 +137,37 @@ namespace SupDef {
                     stopMeasurement();
                     waitUntilElapsed(frame_duration * 1000.0);
                 }
+            }
+
+            NetworkLayer* getNetworkLayer() {
+                auto ptr = getLayer<NetworkLayer>();
+                if (ptr) return ptr;
+                addLayer(std::make_unique<NetworkLayer>());
+                ptr = getLayer<NetworkLayer>();
+                assert(ptr);
+                return ptr;
+            }
+
+            bool startNetworkGameAsServer(unsigned short port) {
+                assert(globalDispatcher);
+                auto success = getNetworkLayer()->startNetworkGameAsServer(port);
+                globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
+                return success;
+            }
+
+            bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
+                assert(globalDispatcher);
+                auto success = getNetworkLayer()->startNetworkGameAsClient(ip, port);
+                globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
+                return success;
+            }
+
+            void stopNetworkGame() {
+                removeLayer<NetworkLayer>();
+            }
+
+            void completeServer() {
+                getNetworkLayer()->completeServer();
             }
 
             void setFramerate(double fps) {

@@ -20,26 +20,29 @@ namespace SupDef {
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
         ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
 
-        ss << "Selected units amount: " << gui->getSelectionManager()->getSelectedUnits().size() << " [";
-        for (auto id : gui->getSelectionManager()->getSelectedUnits()) {
-            ss << id << "  ";
-        }
-        ss << "]\n";
+        auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
+        if (guiGame) {
+            ss << "Selected units amount: " << guiGame->getSelectionManager()->getSelectedUnits().size() << " [";
+            for (auto id : guiGame->getSelectionManager()->getSelectedUnits()) {
+                ss << id << "  ";
+            }
+            ss << "]\n";
 
-        ss << "Selectable units amount: " << selectables.size() << "\n";
-        for (auto [ent, map, bb, xm, ym] : selectables) {
-            ss << " -> Entity: " << ent->id << "; map: " << map->id;
-            ss << "; x: " << bb->x << "; y: " << bb->y << "; w: " << bb->w << "; h: " << bb->h;
-            ss << "; def: " << bb->isDefined;
-            ss << "; xm: " << xm << "; ym: " << ym << "\n";
-        }
-        ss << "\n";
+            ss << "Selectable units amount: " << selectables.size() << "\n";
+            for (auto [ent, map, bb, xm, ym] : selectables) {
+                ss << " -> Entity: " << ent->id << "; map: " << map->id;
+                ss << "; x: " << bb->x << "; y: " << bb->y << "; w: " << bb->w << "; h: " << bb->h;
+                ss << "; def: " << bb->isDefined;
+                ss << "; xm: " << xm << "; ym: " << ym << "\n";
+            }
+            ss << "\n";
 
-        auto col = game->getCollisionTracker();
-        ss << "Collisions: " << col->getCollisionList().size() << "\n";
-        for(auto& collision : col->getCollisionList()) {
-            ss << "  Entities: " << collision->entityA << " & " << collision->entityB;
-            ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
+            auto col = game->getCollisionTracker();
+            ss << "Collisions: " << col->getCollisionList().size() << "\n";
+            for(auto& collision : col->getCollisionList()) {
+                ss << "  Entities: " << collision->entityA << " & " << collision->entityB;
+                ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
+            }
         }
 
         ss << "\n--- More Debug Info ---\n";

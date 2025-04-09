@@ -13,7 +13,7 @@ namespace SupDef {
         }
         if (!asset) {
             resetCommand();
-            Logger::getInstance().addMessage(MessageType::Error, "Unknown command: &1", currentCommand);
+            LOG_ERROR("Unknown command: &1", currentCommand)
             return;
         }
         if (!game->getCommandTracker()->ongoing) {
@@ -36,7 +36,7 @@ namespace SupDef {
     }
 
     void RendererBasic::processCommandMessage(Entity* asset, std::string msg, const json &j) {
-        Logger::getInstance().addMessage(MessageType::Info, msg);
+        LOG(Info, msg)
     }
 
     bool RendererBasic::addPositionData(json &j) {

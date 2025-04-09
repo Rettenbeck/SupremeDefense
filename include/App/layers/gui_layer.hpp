@@ -18,27 +18,37 @@ namespace SupDef {
             GuiLayer() { }
         
             void onAttach() override {
-                guiManager = std::make_unique<GuiManager>();
-                assert(globalDispatcher);
-                globalDispatcher->subscribe<WindowResizeEvent>([this](const SupDef::Events& events) {
-                    for (const auto& event : events) {
-                        const auto& typedEvent = static_cast<const SupDef::WindowResizeEvent&>(*event);
-                        guiManager->resize(typedEvent.width, typedEvent.height);
-                    }
-                });
+                SUBSCRIBE_BEGIN(globalDispatcher, WindowResizeEvent)
+                    if (guiManager) guiManager->resize(typedEvent.width, typedEvent.height);
+                SUBSCRIBE_END
             }
         
             void onDetach() override {
                 // Cleanup logic if needed
             }
         
-            void update(float deltaTime) override {
-                if (guiManager) {
-                    guiManager->setGlobalDispatcher(globalDispatcher);
-                    guiManager->setSelectionManager(selectionManager);
-                    guiManager->setGame(game);
-                    guiManager->update(deltaTime);
+            template <typename T>
+            T* setGuiManager() {
+                // static_assert(std::is_base_of<GuiManager, T>, "T must be derived from GuiManager");
+                if (!guiManager || !dynamic_cast<T*>(guiManager.get())) {
+                    guiManager = std::make_unique<T>();
                 }
+                assert(guiManager);
+                guiManager->setGlobalDispatcher(globalDispatcher);
+                return dynamic_cast<T*>(guiManager.get());
+            }
+
+            void update(float deltaTime) override {
+                if (game) {
+                    auto ptr = setGuiManager<GuiManagerGame>();
+                    ptr->setSelectionManager(selectionManager);
+                    ptr->setGame(game);
+                    // ptr->update(deltaTime);
+                } else {
+                    auto ptr = setGuiManager<GuiManagerNetwork>();
+                    // ptr->update(deltaTime);
+                }
+                guiManager->update(deltaTime);
             }
         
             GuiManager* getGuiManager() const { return guiManager.get(); }

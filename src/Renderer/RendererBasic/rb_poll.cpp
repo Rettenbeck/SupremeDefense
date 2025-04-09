@@ -28,7 +28,7 @@ namespace SupDef {
                     else
                         zoom(1.1f);
                 }
-        
+                
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyPressed>()) {
                     if (keyEvent->code == sf::Keyboard::Key::Left)  keyL = true;
                     if (keyEvent->code == sf::Keyboard::Key::Right) keyR = true;
@@ -61,6 +61,15 @@ namespace SupDef {
                         auto otherPlayer = game->otherPlayer;
                         game->otherPlayer = currentPlayer;
                         game->setThisPlayer(otherPlayer);
+                    }
+                    if (keyEvent->code == sf::Keyboard::Key::Y) {
+                        globalDispatcher->dispatch<StartNetworkGameAsServerEvent>();
+                    }
+                    if (keyEvent->code == sf::Keyboard::Key::X) {
+                        globalDispatcher->dispatch<StartNetworkGameAsClientEvent>();
+                    }
+                    if (keyEvent->code == sf::Keyboard::Key::C) {
+                        globalDispatcher->dispatch<CompleteServerEvent>();
                     }
                 }
 

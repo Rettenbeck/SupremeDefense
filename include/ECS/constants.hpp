@@ -79,6 +79,8 @@ namespace SupDef {
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_INIT_CONTAINER                    = "init_container"                      ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
+    const std::string SCA_INIT_POSITION                     = "init_position"                       ;
+    const std::string SCA_PLAYER_SPAWN                      = "player_spwan"                        ;
 
     // Tech Components
     const std::string SCT_TECH                              = "tech"                                ;
