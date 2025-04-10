@@ -70,6 +70,7 @@ namespace SupDef {
 }
 
 
+
 // Internal helper to count args (we only care about 1 or 2)
 #define GET_MACRO(_1, _2, _3, NAME, ...) NAME
 
@@ -102,6 +103,7 @@ Logger::getInstance().addMessage(MessageType::TYPE, MESSAGE, ARG1);
 #define LOG(...) GET_MACRO(__VA_ARGS__, LOG_3, LOG_2, LOG_1)(__VA_ARGS__)
 
 
+
 #define LOG_ERROR_3(MESSAGE, ARG1, unused) \
 LOG(Error, MESSAGE, ARG1)
 
@@ -113,6 +115,20 @@ LOG(Error, MESSAGE)
 
 #define LOG_ERROR(...) \
 GET_MACRO(__VA_ARGS__, LOG_ERROR_3, LOG_ERROR_2, LOG_ERROR_1)(__VA_ARGS__)
+
+
+
+#define LOG_INFO_3(MESSAGE, ARG1, unused) \
+LOG(Info, MESSAGE, ARG1)
+
+#define LOG_INFO_2(MESSAGE, ARG1) \
+LOG(Info, MESSAGE, ARG1)
+
+#define LOG_INFO_1(MESSAGE) \
+LOG(Info, MESSAGE)
+
+#define LOG_INFO(...) \
+GET_MACRO(__VA_ARGS__, LOG_INFO_3, LOG_INFO_2, LOG_INFO_1)(__VA_ARGS__)
 
 
 

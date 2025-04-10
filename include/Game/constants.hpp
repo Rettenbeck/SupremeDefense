@@ -20,6 +20,10 @@ namespace SupDef {
     using TechAssignments = std::vector<TechAssignment>;
     using TechMap = std::unordered_map<EntityID, TechAssignments>;
 
+    // External player id, spawn asset id, player asset id, player entity id
+    using PlayerMapExtSingle = std::tuple<int, AssetID, AssetID, EntityID>;
+    using PlayerMapExt = std::vector<PlayerMapExtSingle>;
+
     using EntityIDsTriple = std::tuple<EntityIDs, EntityIDs, EntityIDs>;
 
     using _EntWorld = std::tuple<Entity*, WorldComponent*>;

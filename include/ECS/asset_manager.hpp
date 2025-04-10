@@ -27,6 +27,12 @@ namespace SupDef {
                 return (it != assets.end()) ? it->second.get() : nullptr;
             }
 
+            Entity* getAssetStrict(AssetID id) const {
+                auto ptr = getAsset(id);
+                assert(ptr);
+                return ptr;
+            }
+
             template <typename... ComponentTypes>
             PEntities extractAssets(const std::vector<std::tuple<Entity*, ComponentTypes*...>>& tuples) {
                 PEntities entities;

@@ -43,7 +43,6 @@ namespace SupDef {
         if(!window->isOpen()) { return false; }
 
         ImGui::SFML::Update(*(window.get()), deltaClock.restart());
-
         window->clear(sf::Color::Black);
 
         window->setView(gameView);

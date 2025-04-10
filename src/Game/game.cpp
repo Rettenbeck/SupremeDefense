@@ -1,4 +1,5 @@
 #include <Game/game.hpp>
+#include <Game/game_startup.cpp>
 #include <Game/game_actions.cpp>
 #include <Game/game_commands.cpp>
 #include <Game/game_requirements.cpp>

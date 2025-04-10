@@ -16,7 +16,9 @@ namespace SupDef {
             long frameCount = 0;
     
         public:
-            GameLayer() {}
+            GameLayer() {
+                priority = PRIORITY_GAME;
+            }
 
             void onAttach() override {
                 actionQueue = std::make_unique<ActionQueue>();
@@ -35,8 +37,11 @@ namespace SupDef {
         
             void update(float deltaTime) override {
                 if (blockedByNetwork) return;
+                assert(game);
+                assert(globalDispatcher);
                 game->update(deltaTime);
                 frameCount++;
+                assert(game->getThisPlayer());
                 globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
             }
             

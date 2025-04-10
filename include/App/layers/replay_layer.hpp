@@ -12,6 +12,7 @@ namespace SupDef {
 
         public:
             ReplayLayer() {
+                priority = PRIORITY_REPLAY;
                 actionQueue = std::make_unique<ActionQueue>();
             }
             

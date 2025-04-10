@@ -38,10 +38,12 @@ namespace SupDef {
     const std::string AS_PLAYER_EX                          = "player"                              ;
     const std::string AS_PLAYER_EX_NAME_DE                  = "Spieler"                             ;
     const std::string AS_PLAYER_EX_DESC_DE                  = "Spieler"                             ;
+    const std::string AS_PLAYER_EX_STARTER                  = "mover1"                              ;
 
     const std::string AS_PLAYER_EX_NO_MOVE                  = "player_no_move"                      ;
     const std::string AS_PLAYER_EX_NO_MOVE_NAME_DE          = "Spieler (nm)"                        ;
     const std::string AS_PLAYER_EX_NO_MOVE_DESC_DE          = "Spieler (nm)"                        ;
+    const std::string AS_PLAYER_EX_NO_MOVE_STARTER          = "imm1"                                ;
 
 
 
