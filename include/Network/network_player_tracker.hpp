@@ -1,8 +1,8 @@
+#pragma once
+
 #include <Util/util.hpp>
 #include <EventDispatcher/include.hpp>
 #include <App/Log/logger.hpp>
-
-#pragma once
 
 
 namespace SupDef {

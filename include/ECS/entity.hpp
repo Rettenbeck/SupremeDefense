@@ -1,6 +1,6 @@
-#include <ECS/components.hpp>
-
 #pragma once
+
+#include <ECS/components.hpp>
 
 // #ifndef Included_Entity_HPP
 

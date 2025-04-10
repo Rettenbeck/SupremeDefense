@@ -1,7 +1,7 @@
+#pragma once
+
 #include <ECS/component_registry.hpp>
 #include <Misc/text.hpp>
-
-#pragma once
 
 
 namespace SupDef {

@@ -1,9 +1,9 @@
+#pragma once
+
 #include <EventDispatcher/event.hpp>
 #include <ECS/entity.hpp>
 #include <Action/action.hpp>
 #include <Action/action_queue.hpp>
-
-#pragma once
 
 
 namespace SupDef {

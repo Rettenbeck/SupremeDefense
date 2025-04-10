@@ -1,7 +1,7 @@
+#pragma once
+
 #include <ECS/entity.hpp>
 #include <EventDispatcher/include.hpp>
-
-#pragma once
 
 
 namespace SupDef {

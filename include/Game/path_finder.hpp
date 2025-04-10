@@ -1,8 +1,8 @@
+#pragma once
+
 #include <ECS/include.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
-
-#pragma once
 
 
 namespace SupDef {

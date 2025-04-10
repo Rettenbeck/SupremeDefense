@@ -1,6 +1,7 @@
+#pragma once
+
 #include <Util/basic.hpp>
 
-#pragma once
 
 namespace SupDef {
 

@@ -1,10 +1,10 @@
+#pragma once
+
 #include <Util/util.hpp>
 #include <App/constants.hpp>
 #include <Action/action_queue.hpp>
 #include <Network/socket_backend.hpp>
 #include <App/Log/logger.hpp>
-
-#pragma once
 
 
 namespace SupDef {

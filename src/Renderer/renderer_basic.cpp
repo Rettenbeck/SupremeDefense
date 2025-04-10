@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Renderer/renderer_basic.hpp>
 #include <Renderer/RendererBasic/rb_poll.cpp>
 #include <Renderer/RendererBasic/rb_interactive.cpp>
@@ -6,8 +8,6 @@
 #include <Renderer/RendererBasic/rb_render_game.cpp>
 #include <Renderer/RendererBasic/rb_render_gui.cpp>
 #include <Renderer/RendererBasic/rb_draw_basic.cpp>
-
-#pragma once
 
 
 namespace SupDef {

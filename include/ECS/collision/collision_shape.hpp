@@ -1,6 +1,6 @@
-#include <ECS/collision/bounding_box.hpp>
-
 #pragma once
+
+#include <ECS/collision/bounding_box.hpp>
 
 
 namespace SupDef {

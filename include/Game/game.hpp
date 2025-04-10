@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ECS/include.hpp>
 #include <Action/include.hpp>
 #include <Game/path_finder.hpp>
@@ -6,8 +8,6 @@
 #include <Game/command_tracker.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
-
-#pragma once
 
 
 namespace SupDef {

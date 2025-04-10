@@ -1,6 +1,6 @@
-#include <EventDispatcher/event_dispatcher.hpp>
-
 #pragma once
+
+#include <EventDispatcher/event_dispatcher.hpp>
 
 
 namespace SupDef {

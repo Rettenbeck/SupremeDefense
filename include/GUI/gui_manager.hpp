@@ -1,7 +1,7 @@
+#pragma once
+
 #include <GUI/gui_elements.hpp>
 #include <Game/game.hpp>
-
-#pragma once
 
 
 namespace SupDef {

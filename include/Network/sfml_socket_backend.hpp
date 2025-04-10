@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Network/socket_backend.hpp>
 #include <SFML/Network.hpp>
-
-#pragma once
 
 
 namespace SupDef {

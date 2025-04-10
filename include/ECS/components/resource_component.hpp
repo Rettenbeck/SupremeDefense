@@ -1,8 +1,8 @@
+#pragma once
+
 #include <ECS/component_registry.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>
 #include <Misc/resource.hpp>
-
-#pragma once
 
 
 namespace SupDef {

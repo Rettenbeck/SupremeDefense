@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Util/basic.hpp>
 #include <GUI/constants.hpp>
-
-#pragma once
 
 
 namespace SupDef {

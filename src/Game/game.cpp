@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Game/game.hpp>
 #include <Game/game_startup.cpp>
 #include <Game/game_actions.cpp>
@@ -12,8 +14,6 @@
 #include <Game/game_projectiles.cpp>
 #include <Game/game_assets.cpp>
 #include <Game/game_serial.cpp>
-
-#pragma once
 
 
 namespace SupDef {

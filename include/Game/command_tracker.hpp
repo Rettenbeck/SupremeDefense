@@ -1,6 +1,6 @@
-#include <ECS/include.hpp>
-
 #pragma once
+
+#include <ECS/include.hpp>
 
 
 namespace SupDef {

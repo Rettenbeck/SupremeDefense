@@ -1,8 +1,8 @@
+#pragma once
+
 #include <Util/util.hpp>
 #include <ECS/field.hpp>
 #include <ECS/constants.hpp>
-
-#pragma once
 
 
 namespace SupDef {

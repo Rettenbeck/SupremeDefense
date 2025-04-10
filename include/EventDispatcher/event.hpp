@@ -1,6 +1,6 @@
-#include <App/Log/logger.hpp>
-
 #pragma once
+
+#include <App/Log/logger.hpp>
 
 
 namespace SupDef {

@@ -1,7 +1,7 @@
+#pragma once
+
 #include <ECS/component_registry.hpp>
 #include <ECS/collision/collision_checks.hpp>
-
-#pragma once
 
 
 namespace SupDef {

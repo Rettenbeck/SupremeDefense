@@ -1,6 +1,6 @@
-#include <Game/collision_system.hpp>
-
 #pragma once
+
+#include <Game/collision_system.hpp>
 
 
 namespace SupDef {

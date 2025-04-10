@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Util/basic.hpp>
 #include <nlohmann/include.hpp>
-
-#pragma once
 
 
 namespace SupDef {

@@ -1,3 +1,3 @@
-#include <Game/game_startup.cpp>
-
 #pragma once
+
+#include <Game/game_startup.cpp>

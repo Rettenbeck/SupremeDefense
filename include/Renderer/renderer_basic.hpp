@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Renderer/renderer.cpp>
 
 #include <SFML/Main.hpp>
@@ -5,8 +7,6 @@
 
 #include <imgui.h>
 #include <imgui-SFML.h>
-
-#pragma once
 
 
 namespace SupDef {

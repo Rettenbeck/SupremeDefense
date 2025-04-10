@@ -1,6 +1,6 @@
-#include <Renderer/renderer_basic.hpp>
-
 #pragma once
+
+#include <Renderer/renderer_basic.hpp>
 
 
 namespace SupDef {

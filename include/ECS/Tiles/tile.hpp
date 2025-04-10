@@ -1,8 +1,8 @@
+#pragma once
+
 #include <Util/util.hpp>
 #include <ECS/constants.hpp>
 #include <nlohmann/include.hpp>
-
-#pragma once
 
 
 namespace SupDef {

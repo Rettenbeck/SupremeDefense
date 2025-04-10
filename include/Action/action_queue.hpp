@@ -1,6 +1,6 @@
-#include <Action/action.hpp>
-
 #pragma once
+
+#include <Action/action.hpp>
 
 
 namespace SupDef {

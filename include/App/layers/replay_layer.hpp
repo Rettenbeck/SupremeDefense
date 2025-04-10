@@ -1,7 +1,7 @@
+#pragma once
+
 #include <App/layer.hpp>
 #include <Action/action_queue.hpp>
-
-#pragma once
 
 
 namespace SupDef {

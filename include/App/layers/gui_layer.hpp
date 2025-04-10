@@ -1,8 +1,8 @@
+#pragma once
+
 #include <App/layer.hpp>
 #include <GUI/include.hpp>
 #include <Game/game.hpp>
-
-#pragma once
 
 
 namespace SupDef {

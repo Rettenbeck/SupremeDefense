@@ -1,6 +1,6 @@
-#include <ECS/collision/collisions_shapes.hpp>
-
 #pragma once
+
+#include <ECS/collision/collisions_shapes.hpp>
 
 
 namespace SupDef::CollisionUtils {

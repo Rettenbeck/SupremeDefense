@@ -1,10 +1,10 @@
+#pragma once
+
 #include <App/layers/game_layer.hpp>
 #include <App/layers/replay_layer.hpp>
 #include <App/layers/network_layer.hpp>
 #include <EventDispatcher/events.hpp>
 #include <Action/include.hpp>
-
-#pragma once
 
 
 namespace SupDef {

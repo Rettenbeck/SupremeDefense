@@ -1,8 +1,8 @@
+#pragma once
+
 #include <App/layer.hpp>
 #include <GUI/include.hpp>
 #include <Renderer/renderer_basic.cpp>
-
-#pragma once
 
 
 namespace SupDef {

@@ -1,6 +1,6 @@
-#include <Game/asset_builder.hpp>
-
 #pragma once
+
+#include <Game/asset_builder.hpp>
 
 
 namespace SupDef::BuildAssets {

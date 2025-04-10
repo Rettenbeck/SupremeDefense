@@ -1,6 +1,6 @@
-#include <GUI/gui_manager.hpp>
-
 #pragma once
+
+#include <GUI/gui_manager.hpp>
 
 
 namespace SupDef {

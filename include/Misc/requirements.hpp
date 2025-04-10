@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Misc/requirement.hpp>
 #include <Misc/resource.hpp>
-
-#pragma once
 
 
 namespace SupDef {

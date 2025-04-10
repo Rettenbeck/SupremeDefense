@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Game/game.hpp>
 #include <Game/BuildAssets/constants.hpp>
-
-#pragma once
 
 
 namespace SupDef::BuildAssets {

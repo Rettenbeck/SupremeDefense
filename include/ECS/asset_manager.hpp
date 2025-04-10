@@ -1,8 +1,7 @@
-#include <ECS/entity.hpp>
-//#include <ECS/asset_components/asset_component.hpp>
-#include <EventDispatcher/include.hpp>
-
 #pragma once
+
+#include <ECS/entity.hpp>
+#include <EventDispatcher/include.hpp>
 
 
 namespace SupDef {

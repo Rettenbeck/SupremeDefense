@@ -1,7 +1,7 @@
+#pragma once
+
 #include <Util/basic.hpp>
 #include <EventDispatcher/events.hpp>
-
-#pragma once
 
 
 namespace SupDef {

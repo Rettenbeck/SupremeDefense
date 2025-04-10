@@ -1,6 +1,6 @@
-#include <Game/game.hpp>
-
 #pragma once
+
+#include <Game/game.hpp>
 
 
 namespace SupDef {

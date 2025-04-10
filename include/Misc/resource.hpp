@@ -1,7 +1,7 @@
+#pragma once
+
 #include <ECS/constants.hpp>
 #include <nlohmann/include.hpp>
-
-#pragma once
 
 
 namespace SupDef {
