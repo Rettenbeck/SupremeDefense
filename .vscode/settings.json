@@ -124,7 +124,8 @@
     "stdfloat": "cpp",
     "syncstream": "cpp",
     "typeindex": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "zz": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp_Runner.msvcWarnings": [

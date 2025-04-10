@@ -15,7 +15,9 @@ namespace SupDef {
 
         public:
 
-            GuiLayer() { }
+            GuiLayer() {
+                priority = PRIORITY_GUI;
+            }
         
             void onAttach() override {
                 SUBSCRIBE_BEGIN(globalDispatcher, WindowResizeEvent)
@@ -32,6 +34,8 @@ namespace SupDef {
                 // static_assert(std::is_base_of<GuiManager, T>, "T must be derived from GuiManager");
                 if (!guiManager || !dynamic_cast<T*>(guiManager.get())) {
                     guiManager = std::make_unique<T>();
+                    assert(globalDispatcher);
+                    globalDispatcher->dispatch<UpdateAppEvent>();
                 }
                 assert(guiManager);
                 guiManager->setGlobalDispatcher(globalDispatcher);

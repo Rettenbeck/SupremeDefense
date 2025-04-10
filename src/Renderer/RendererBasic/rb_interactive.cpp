@@ -94,6 +94,7 @@ namespace SupDef {
     }
 
     void RendererBasic::prepareSelectableList() {
+        if (!game) return;
         selectables.clear();
         auto list = game->getEntityManager()
             ->getEntitiesWithComponents<PositionComponent, CollisionComponent, SelectableComponent>();

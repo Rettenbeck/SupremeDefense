@@ -191,4 +191,11 @@ namespace SupDef {
         setNewPositionByDifference(pos, dx, dy);
     }
 
+    void Game::setNewCenteredPosition(Entity* entity, float x, float y) {
+        assert(entity);
+        auto pos = entity->getComponent<PositionComponent>();
+        if (!pos) return;
+        setNewCenteredPosition(entity, pos, x, y);
+    }
+
 }

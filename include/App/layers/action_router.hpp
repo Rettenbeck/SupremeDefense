@@ -27,7 +27,9 @@ namespace SupDef {
                 isReplay = (replay == nullptr);
             }
 
-            ActionRouter() {}
+            ActionRouter() {
+                priority = PRIORITY_ACTION_ROUTER;
+            }
 
             void onAttach() override {
                 SUBSCRIBE_BEGIN(globalDispatcher, ActionCreatedEvent)

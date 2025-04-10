@@ -4,9 +4,27 @@
             "label": "build",
             "dependsOn": [
                 "build:windows",
-                "build:linux"
+                "build:linux",
+                "CMake Configure",
+                "CMake Build"
             ],
             "dependsOrder": "sequence"
+        },
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake -S . -B build -G \"MinGW Makefiles\" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake Build",
+            "type": "shell",
+            "command": "cmake --build build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "build:windows",

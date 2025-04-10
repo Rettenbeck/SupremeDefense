@@ -157,7 +157,9 @@ namespace SupDef {
             }
 
             void handleClickOnGui(GuiElement* element, MouseClick button, json data) {
+                std::cout << "Command to trigger 1\n";
                 if (!element) return;
+                std::cout << "Command to trigger 2\n";
                 if (button == MLEFT) if (handleButton(element)) return;
                 auto it = elementMap.find(element);
                 assert(it != elementMap.end());
@@ -167,6 +169,7 @@ namespace SupDef {
                 auto active = tech->getComponent<ActiveTechComponent>();
                 assert(active);
                 assert(globalDispatcher);
+                std::cout << "Command triggered\n";
                 globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, data);
             }
             

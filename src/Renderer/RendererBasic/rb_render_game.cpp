@@ -8,6 +8,7 @@ namespace SupDef {
     void RendererBasic::renderGame() {
         if(!game) return;
         if(!gui) return;
+        assert(game->getEntityManager());
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
         renderSelectedUnits();
@@ -153,7 +154,7 @@ namespace SupDef {
 
     void RendererBasic::renderSelectedUnits() {
         auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
-        assert(guiGame);
+        if (!guiGame) return;
         auto sm = guiGame->getSelectionManager();
         assert(sm);
         auto list = sm->getSelectedUnits();

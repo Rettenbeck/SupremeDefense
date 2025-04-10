@@ -15,6 +15,7 @@ namespace SupDef {
 
         public:
             RenderLayer() {
+                priority = PRIORITY_RENDER;
                 renderer = std::make_unique<RendererBasic>();
             }
         

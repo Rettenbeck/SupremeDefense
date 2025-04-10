@@ -11,11 +11,13 @@ namespace SupDef {
         Layers layers;
         UEventDispatcher globalDispatcher;
         USettings settings;
+        std::vector<std::function<void()>> actions;
 
         unsigned init_window_width, init_window_height;
         double frames_per_second, frame_duration;
         long current_frame = -1;
         bool end = false;
+        bool changed = false;
         
         public:
             App() {
@@ -28,23 +30,29 @@ namespace SupDef {
 
                 init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
-
+                
                 SUBSCRIBE_BEGIN(globalDispatcher, GameEndEvent)
                     LOG(Info, "Game ended from renderer")
                     end = true;
                 SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsServerEvent)
+                SUBSCRIBE_BEGIN(globalDispatcher, UpdateAppEvent)
+                    changed = true;
+                SUBSCRIBE_END
+                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartNetworkGameAsServerEvent, actions)
                     startNetworkGameAsServer(typedEvent.port);
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, StartNetworkGameAsClientEvent)
+                SUBSCRIBE_ACTION_END
+                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartNetworkGameAsClientEvent, actions)
                     startNetworkGameAsClient(typedEvent.ip, typedEvent.port);
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, CompleteServerEvent)
+                SUBSCRIBE_ACTION_END
+                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, CompleteServerEvent, actions)
                     completeServer();
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, StopNetworkGameEvent)
+                SUBSCRIBE_ACTION_END
+                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StopNetworkGameEvent, actions)
                     stopNetworkGame();
-                SUBSCRIBE_END
+                SUBSCRIBE_ACTION_END
+                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartTestGameEvent, actions)
+                    startGame();
+                SUBSCRIBE_ACTION_END
             }
 
             ~App() { layers.clear(); }
@@ -76,6 +84,16 @@ namespace SupDef {
                     if(cast) return cast;
                 }
                 return nullptr;
+            }
+
+            template <typename T>
+            T* retrieveLayer() {
+                auto ptr = getLayer<T>();
+                if (ptr) return ptr;
+                addLayer(std::make_unique<T>());
+                ptr = getLayer<T>();
+                assert(ptr);
+                return ptr;
             }
 
             void doUpdatePreparations() {
@@ -126,38 +144,39 @@ namespace SupDef {
                 current_frame = 0;
                 while (true) {
                     startMeasurement();
+                    processQueuedActions();
                     doUpdatePreparations();
                     current_frame++;
                     for (auto& layer : layers) {
                         layer->startMeasurement();
                         layer->update(1.0);
                         layer->stopMeasurement();
+                        if (changed) doUpdatePreparations();
                         if(end) { return; }
+                        changed = false;
                     }
                     stopMeasurement();
                     waitUntilElapsed(frame_duration * 1000.0);
                 }
             }
 
-            NetworkLayer* getNetworkLayer() {
-                auto ptr = getLayer<NetworkLayer>();
-                if (ptr) return ptr;
-                addLayer(std::make_unique<NetworkLayer>());
-                ptr = getLayer<NetworkLayer>();
-                assert(ptr);
-                return ptr;
+            void processQueuedActions() {
+                for (const auto& action : actions) {
+                    action();
+                }
+                actions.clear();
             }
 
             bool startNetworkGameAsServer(unsigned short port) {
                 assert(globalDispatcher);
-                auto success = getNetworkLayer()->startNetworkGameAsServer(port);
+                auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsServer(port);
                 globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
                 return success;
             }
 
             bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
                 assert(globalDispatcher);
-                auto success = getNetworkLayer()->startNetworkGameAsClient(ip, port);
+                auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsClient(ip, port);
                 globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
                 return success;
             }
@@ -167,7 +186,31 @@ namespace SupDef {
             }
 
             void completeServer() {
-                getNetworkLayer()->completeServer();
+                retrieveLayer<NetworkLayer>()->completeServer();
+            }
+
+            void startGame(UAssetManager assetManager, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
+                assert(assetManager);
+                if (worldID.empty()) {
+                    LOG_ERROR("No worldID given")
+                    return;
+                }
+                removeLayer<GameLayer>();
+                auto gameLayer = retrieveLayer<GameLayer>();
+                auto game = gameLayer->getGame();
+                assert(game);
+                game->setAssetManager(std::move(assetManager));
+                game->startWorld(worldID, playerMapExt, thisPlayer);
+            }
+
+            void startGame() {
+                auto am = std::make_unique<AssetManager>();
+                BuildAssets::build(am.get());
+                AssetID worldID = AS_MAP_WINTER_MAUL;
+                PlayerMapExt playerMapExt;
+                playerMapExt.emplace_back(1, AS_PLAYER_EX, "map_winter_maul_spawn_1", NO_ENTITY);
+                playerMapExt.emplace_back(2, AS_PLAYER_EX, "map_winter_maul_spawn_2", NO_ENTITY);
+                startGame(std::move(am), worldID, playerMapExt, 1);
             }
 
             void setFramerate(double fps) {

@@ -27,8 +27,6 @@ namespace SupDef {
 
 
             // ### GENERAL FUNCTIONS ###################################################### //
-            void startWorld(AssetID world);
-
             void updateWorlds(float deltaTime);
             void updateWorld(float deltaTime, _EntWorld world);
             void updateMap(float deltaTime, _EntMapTiles map);
@@ -36,6 +34,15 @@ namespace SupDef {
             Entity* addMap(AssetID mapAssetID);
             EntityID getMapOfEntity(EntityID entityID);
             void generatePlayerList();
+
+            
+
+
+            // ### STARTUP FUNCTIONS ###################################################### //
+            void startWorld(AssetID worldID, PlayerMapExt playerMapExt_, int thisPlayer_);
+            Entity* createPlayer(AssetID playerID, AssetID spawnID, EntityID mapID);
+            EntityID getMapIDBySpawn(AssetID spawnAssetID);
+
 
             
 
@@ -75,6 +82,8 @@ namespace SupDef {
             void setNewPositionByDifference(PositionComponent* pos, float dx, float dy);
             void setNewPosition(PositionComponent* pos, float x, float y);
             void setNewCenteredPosition(Entity* entity, PositionComponent* pos, float x, float y);
+            void setNewCenteredPosition(Entity* entity, float x, float y);
+            void setInitialPosition(Entity* entity, InitPositionComponent* initComp);
             
 
             
@@ -116,6 +125,7 @@ namespace SupDef {
             Entity* createEntityFromAsset(AssetID assetID, float x, float y);
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y);
             Entity* createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID, float x, float y);
+            void setParentOfNewEntity(AssetID assetID, Entity* entity, EntityID parentID);
 
             void setInitialOwner(Entity* entity, EntityID ownerID);
             void setInitialOwner(EntityID entityID, EntityID ownerID);
@@ -190,6 +200,7 @@ namespace SupDef {
             void setGlobalDispatcher(EventDispatcher* globalDispatcher_) { globalDispatcher = globalDispatcher_; }
             void setActionQueue(ActionQueue* actionQueue_) { actionQueue = actionQueue_; }
             void setThisPlayer(EntityID playerID) { thisPlayer = playerID; }
+            void setAssetManager(UAssetManager assetManager_) { assetManager = std::move(assetManager_); }
             Entity* getThisPlayer() { return entityManager->getEntity(thisPlayer); }
             Entity* getVirtualEntity() { if (!virtualEntity) return nullptr; return virtualEntity.get(); }
 
@@ -208,6 +219,7 @@ namespace SupDef {
 
         private:
             EntityID thisPlayer = NO_ENTITY;
+            PlayerMapExt playerMapExt;
             UEntityManager    entityManager    = nullptr;
             UAssetManager     assetManager     = nullptr;
             UEventDispatcher  eventDispatcher  = nullptr;
