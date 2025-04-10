@@ -153,10 +153,7 @@ namespace SupDef {
     }
 
     void RendererBasic::renderSelectedUnits() {
-        std::cout << "s1\n";
-        std::cout << "Gui: " << gui << "\n";
         auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
-        std::cout << "s2\n";
         if (!guiGame) return;
         auto sm = guiGame->getSelectionManager();
         assert(sm);
@@ -174,13 +171,11 @@ namespace SupDef {
         if (!posComp) return;
         if (!colComp) return;
 
-        std::cout << "rs1\n";
         auto infs = game->getEntityManager()->getEntitiesWithComponents<PositionComponent, CollisionComponent, InfluenceComponent>(entityID);
         for(auto [entity, pos, col, inf] : infs) {
             renderEntityWithInfluence(pos, col);
         }
 
-        std::cout << "rs2\n";
         int d = 5;
         ColorData cd(sf::Color::Black, sf::Color::White, 1);
         drawSelection(
@@ -190,7 +185,6 @@ namespace SupDef {
             colComp->boundingBox.h + 2 * d,
             cd
         );
-        std::cout << "rs3\n";
     }
 
     void RendererBasic::renderVirtualEntity() {
