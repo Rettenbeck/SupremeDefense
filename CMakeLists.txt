@@ -18,7 +18,7 @@ set(IMGUI_SFML_SRC include/imgui-sfml-master/imgui-SFML.cpp)
 # Your own sources
 file(GLOB_RECURSE MY_SRC CONFIGURE_DEPENDS src/*.cpp)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
 message(STATUS "Linker search path: ${CMAKE_SOURCE_DIR}/lib")
 add_executable(MyApp ${MY_SRC} ${IMGUI_SRC} ${IMGUI_SFML_SRC})
 
