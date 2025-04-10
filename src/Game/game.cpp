@@ -3,19 +3,22 @@
 #define GAME_GAME
 
 #include <Game/game.hpp>
-// #include <Game/game_startup.cpp>
-// #include <Game/game_actions.cpp>
-// #include <Game/game_commands.cpp>
-// #include <Game/game_requirements.cpp>
-// #include <Game/game_collisions.cpp>
-// #include <Game/game_movement.cpp>
-// #include <Game/game_player.cpp>
-// #include <Game/game_logic.cpp>
-// #include <Game/game_tech.cpp>
-// #include <Game/game_weapons.cpp>
-// #include <Game/game_projectiles.cpp>
-// #include <Game/game_assets.cpp>
-// #include <Game/game_serial.cpp>
+
+#ifdef INCLUDE_CPP
+    #include <Game/game_startup.cpp>
+    #include <Game/game_actions.cpp>
+    #include <Game/game_commands.cpp>
+    #include <Game/game_requirements.cpp>
+    #include <Game/game_collisions.cpp>
+    #include <Game/game_movement.cpp>
+    #include <Game/game_player.cpp>
+    #include <Game/game_logic.cpp>
+    #include <Game/game_tech.cpp>
+    #include <Game/game_weapons.cpp>
+    #include <Game/game_projectiles.cpp>
+    #include <Game/game_assets.cpp>
+    #include <Game/game_serial.cpp>
+#endif
 
 
 namespace SupDef {

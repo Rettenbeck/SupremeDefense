@@ -3,7 +3,10 @@
 #include <App/layer.hpp>
 #include <GUI/include.hpp>
 #include <Renderer/renderer_basic.hpp>
-// #include <Renderer/renderer_basic.cpp>
+
+#ifdef INCLUDE_CPP
+    #include <Renderer/renderer_basic.cpp>
+#endif
 
 
 namespace SupDef {

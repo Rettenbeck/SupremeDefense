@@ -7,4 +7,8 @@
 #include <App/layers.hpp>
 #include <App/app.hpp>
 
-// #include <Game/game.cpp>
+
+#ifdef INCLUDE_CPP
+    #include <Game/game.cpp>
+    #include <Renderer/renderer.cpp>
+#endif

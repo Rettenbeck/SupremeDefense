@@ -1,3 +1,5 @@
+// #define INCLUDE_CPP
+
 #include <iostream>
 #include <include.hpp>
 
