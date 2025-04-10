@@ -159,9 +159,9 @@ namespace SupDef {
             return asset;
         }
 
-        static Entity* buildPlayer(AsData data) {
+        static Entity* buildPlayer(AsData data, AssetID starterBuilding) {
             auto asset = createEmptyAsset(data);
-            asset->addComponent<PlayerComponent>();
+            asset->addComponent<PlayerComponent>(starterBuilding);
             return asset;
         }
 

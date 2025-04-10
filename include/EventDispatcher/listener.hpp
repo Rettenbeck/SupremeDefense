@@ -45,6 +45,14 @@ namespace SupDef {
         } \
     });
 
+    #define SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
+    SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+    ACTIONS.push_back([&]() {
+
+    #define SUBSCRIBE_ACTION_END \
+    }); \
+    SUBSCRIBE_END
+
 
     #define SUBSCRIBE_HEAD_BEGIN(DISPATCHER, EVENT) \
     { \

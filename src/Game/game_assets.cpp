@@ -30,13 +30,13 @@ namespace SupDef {
 
     Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID) {
         auto entity = createEntityFromAsset(assetID);
-        entityManager->setParent(entity->id, parentID);
+        setParentOfNewEntity(assetID, entity, parentID);
         return entity;
     }
 
     Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID, EntityID ownerID) {
         auto entity = createEntityFromAsset(assetID);
-        entityManager->setParent(entity->id, parentID);
+        setParentOfNewEntity(assetID, entity, parentID);
         setInitialOwner(entity, ownerID);
         return entity;
     }
@@ -51,7 +51,7 @@ namespace SupDef {
 
     Entity* Game::createEntityFromAsset(AssetID assetID, EntityID parentID, float x, float y) {
         auto entity = createEntityFromAsset(assetID, x, y);
-        entityManager->setParent(entity->id, parentID);
+        setParentOfNewEntity(assetID, entity, parentID);
         return entity;
     }
 
@@ -59,6 +59,17 @@ namespace SupDef {
         auto entity = createEntityFromAsset(assetID, parentID, x, y);
         setInitialOwner(entity, ownerID);
         return entity;
+    }
+
+    void Game::setParentOfNewEntity(AssetID assetID, Entity* entity, EntityID parentID) {
+        assert(entity);
+        auto asset = assetManager->getAsset(assetID);
+        assert(asset);
+        entityManager->setParent(entity->id, parentID);
+        auto initPosComp = asset->getComponent<InitPositionComponent>();
+        if (initPosComp) {
+            setInitialPosition(entity, initPosComp);
+        }
     }
 
     Entity* Game::realizeVirtualEntity() {
@@ -92,4 +103,24 @@ namespace SupDef {
         setInitialOwner(entityManager->getEntity(entityID), ownerID);
     }
     
+    void Game::setInitialPosition(Entity* entity, InitPositionComponent* initComp) {
+        assert(entity);
+        assert(initComp);
+        
+        if (initComp->relativeToMap) {
+            auto mapID = getMapOfEntity(entity->id);
+            if (mapID != NO_ENTITY) {
+                auto map = entityManager->getEntity(mapID);
+                assert(map);
+                auto posComp = map->getComponent<PositionComponent>();
+                assert(posComp);
+                float x = initComp->x + posComp->x;
+                float y = initComp->y + posComp->y;
+                setNewCenteredPosition(entity, x, y);
+                return;
+            }
+        }
+        setNewCenteredPosition(entity, initComp->x, initComp->y);
+    }
+
 }

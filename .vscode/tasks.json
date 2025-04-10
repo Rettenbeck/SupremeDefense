@@ -1,8 +1,34 @@
 {
     "tasks": [
         {
+            "label": "build",
+            "dependsOn": [
+                "build:windows",
+                "build:linux",
+                "CMake Configure",
+                "CMake Build"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake -S . -B build -G \"MinGW Makefiles\" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake Build",
+            "type": "shell",
+            "command": "cmake --build build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build:windows",
             "type": "cppbuild",
-            "label": "C/C++: g++.exe Aktive Datei kompilieren",
             "command": "C:\\mingw64\\bin\\g++.exe",
             "args": [
                 "-DSFML_STATIC",
@@ -48,7 +74,60 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Vom Debugger generierte Aufgabe."
+            "detail": "Vom Debugger generierte Aufgabe.",
+        },
+        {
+            "label": "build:linux",
+            "type": "cppbuild",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-DSFML_STATIC",
+                "${workspaceFolder}/src/main.cpp",
+                //"${workspaceFolder}/include/ECS/collision/circle_shape.hpp",
+                //"${workspaceFolder}/include/ECS/collision/rectangle_shape.hpp",
+                //"${workspaceFolder}/include/ECS/collision/collisions_shapes.hpp",
+                "-o",
+                "${workspaceFolder}/bin/main",
+                "-I${workspaceFolder}/src",
+                "-I${workspaceFolder}/include",
+                "-I${workspaceFolder}/include/SFML",
+                "-I${workspaceFolder}/include/imgui-master",
+                "-I${workspaceFolder}/include/imgui-sfml-master",
+                "${workspaceFolder}/include/imgui-master/imgui.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_draw.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_widgets.cpp",
+                "${workspaceFolder}/include/imgui-master/imgui_tables.cpp",
+                "${workspaceFolder}/include/imgui-sfml-master/imgui-SFML.cpp",
+                "-L/home/fabian/Downloads/sfml/lib",
+                //"-L/usr/local/sfml/lib",
+                "-lsfml-graphics-s",
+                "-lsfml-window-s",
+                "-lsfml-system-s",
+                "-lsfml-audio-s",
+                "-lsfml-network-s",
+                "-lGL",
+                "-lfreetype",
+                "-lX11",
+                "-lXrandr",
+                "-lXinerama",
+                "-lXi",
+                "-lXxf86vm",
+                "-lXcursor",
+                "-lpthread",
+                "-ludev",
+                "-O2"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Vom Debugger generierte Aufgabe.",
         }
     ],
     "version": "2.0.0"

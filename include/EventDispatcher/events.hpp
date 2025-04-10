@@ -18,6 +18,14 @@ namespace SupDef {
     struct GameEndEvent : public Event {
         GameEndEvent() {}
     };
+
+    struct StartTestGameEvent : public Event {
+        StartTestGameEvent() {}
+    };
+
+    struct UpdateAppEvent : public Event {
+        UpdateAppEvent() {}
+    };
     
 
 

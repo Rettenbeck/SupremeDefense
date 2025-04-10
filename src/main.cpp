@@ -26,24 +26,24 @@ int main() {
 
 void test_app() {
     auto g = start_app();
-    auto entityManager = g->getEntityManager();
+    // auto entityManager = g->getEntityManager();
     
-    auto map = g->addMap(SupDef::AS_MAP_EX);
-    auto mapComp   = map->getComponent<SupDef::MapComponent>();
-    auto tilesComp = map->getComponent<SupDef::TilesComponent>();
+    // auto map = g->addMap(SupDef::AS_MAP_EX);
+    // auto mapComp   = map->getComponent<SupDef::MapComponent>();
+    // auto tilesComp = map->getComponent<SupDef::TilesComponent>();
 
-    auto player1 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
-    auto player2 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX_NO_MOVE);
-    g->setThisPlayer(player1->id);
-    g->otherPlayer = player2->id;
+    // auto player1 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX);
+    // auto player2 = g->createEntityFromAsset(SupDef::AS_PLAYER_EX_NO_MOVE);
+    // g->setThisPlayer(player1->id);
+    // g->otherPlayer = player2->id;
 
-    auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  12,  20);
-    auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  14,  64);
-    auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player1->id,  64,  12);
+    // auto e1 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  12,  20);
+    // auto e2 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player1->id,  14,  64);
+    // auto e3 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player1->id,  64,  12);
 
-    auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 212,  20);
-    auto e5 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 214,  64);
-    auto e6 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player2->id, 264,  12);
+    // auto e4 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 212,  20);
+    // auto e5 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_1, map->id, player2->id, 214,  64);
+    // auto e6 = g->createEntityFromAsset(SupDef::AS_UNIT_MOVER_2, map->id, player2->id, 264,  12);
     
     //serialize_game(g);
 
@@ -54,35 +54,28 @@ void test_app() {
 
 
 SupDef::Game* start_app() {
-    auto gameLayer    = std::make_unique<SupDef::GameLayer>();
+    // auto gameLayer    = std::make_unique<SupDef::GameLayer>();
     auto networkLayer = std::make_unique<SupDef::NetworkLayer>();
     auto replayLayer  = std::make_unique<SupDef::ReplayLayer>();
     auto actionRouter = std::make_unique<SupDef::ActionRouter>();
     auto renderLayer  = std::make_unique<SupDef::RenderLayer>();
     auto guiLayer     = std::make_unique<SupDef::GuiLayer>();
 
-    // -> First GUI, then Network, then Game, then Replay; finally ActionRouter
-    gameLayer->setPriority(30);
-    networkLayer->setPriority(20);
-    replayLayer->setPriority(40);
-    actionRouter->setPriority(50);
-    guiLayer->setPriority(60);
-    renderLayer->setPriority(70);
+    // auto game = gameLayer.get();
+    // auto router = actionRouter.get();
 
-    auto game = gameLayer.get();
-    auto router = actionRouter.get();
-
-    app->addLayer(std::move(gameLayer));
+    // app->addLayer(std::move(gameLayer));
     //app->addLayer(std::move(networkLayer));
     app->addLayer(std::move(replayLayer));
     app->addLayer(std::move(actionRouter));
     app->addLayer(std::move(guiLayer));
     app->addLayer(std::move(renderLayer));
 
-    auto g = game->getGame();
-    SupDef::BuildAssets::build(g->getAssetManager());
+    // auto g = game->getGame();
+    // SupDef::BuildAssets::build(g->getAssetManager());
 
-    return g;
+    // return g;
+    return nullptr;
 }
 
 void serialize_game(SupDef::Game* g) {

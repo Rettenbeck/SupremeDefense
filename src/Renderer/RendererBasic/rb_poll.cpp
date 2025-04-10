@@ -6,6 +6,7 @@
 namespace SupDef {
 
     bool RendererBasic::poll() {
+        assert(globalDispatcher);
         if(!window->isOpen()) { return false; }
         prepareSelectableList();
 
@@ -70,6 +71,9 @@ namespace SupDef {
                     }
                     if (keyEvent->code == sf::Keyboard::Key::C) {
                         globalDispatcher->dispatch<CompleteServerEvent>();
+                    }
+                    if (keyEvent->code == sf::Keyboard::Key::M) {
+                        globalDispatcher->dispatch<StartTestGameEvent>();
                     }
                 }
 

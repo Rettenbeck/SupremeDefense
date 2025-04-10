@@ -8,10 +8,16 @@ namespace SupDef {
     DEFINE_COMPONENT_BEGIN(PlayerComponent, SC_PLAYER)
         EntityID teamID = NO_ENTITY;
         bool isNeutral = false;
+        AssetID starterBuilding = NO_ASSET;
+
+        PlayerComponent(AssetID starterBuilding) : starterBuilding(starterBuilding) {
+            addToRegistry();
+        }
 
         REFLECT_COMPONENT_BEGIN(ThisType)
             REFLECT_FIELD(teamID)
             REFLECT_FIELD(isNeutral)
+            REFLECT_FIELD(starterBuilding)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END
 

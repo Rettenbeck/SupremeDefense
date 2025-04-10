@@ -40,6 +40,13 @@ namespace SupDef {
             }
             
             template <typename T>
+            T* getComponentStrict() {
+                auto ptr = getComponent<T>();
+                assert(ptr);
+                return ptr;
+            }
+            
+            template <typename T>
             T* retrieveComponent() {
                 auto comp = getComponent<T>();
                 if (comp) return comp;
@@ -94,6 +101,7 @@ namespace SupDef {
                     for (const auto& componentJson : j[S_COMPONENTS]) {
                         std::string typeName = componentJson.at(S_TYPE).get<std::string>();
                         auto component = ComponentRegistry::createComponent(typeName);
+                        if (!component) std::cout << "Component: " << typeName << "\n";
                         assert(component);
                         component->from_json(componentJson);
                         components[typeid(*component)] = std::move(component);

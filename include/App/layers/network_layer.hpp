@@ -25,6 +25,7 @@ namespace SupDef {
 
         public:
             NetworkLayer() {
+                priority = PRIORITY_NETWORK;
                 npt = std::make_unique<NetworkPlayerTracker>();
                 socketBackend = std::make_unique<SFMLSocketBackend>();
                 networkHelper = std::make_unique<NetworkHelper>();

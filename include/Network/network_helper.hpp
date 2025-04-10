@@ -9,11 +9,18 @@
 
 namespace SupDef {
 
+    enum class NetworkMessageType {
+        ActionFromClient, ActionsFromServer, Chat, Assets, Undefined
+    };
+
     struct NetworkPackage {
         bool forServer = false;
         json data = json();
+        NetworkMessageType type = NetworkMessageType::Undefined;
         NetworkPackage() {}
         NetworkPackage(bool forServer, json& data) : forServer(forServer), data(data) {}
+        NetworkPackage(bool forServer, json& data, NetworkMessageType type)
+        : forServer(forServer), data(data), type(type) {}
     };
     using UNetworkPackage = std::unique_ptr<NetworkPackage>;
 
@@ -56,13 +63,21 @@ namespace SupDef {
                 }
                 auto type = j[S_NET_MESSAGE_TYPE];
                 if (type == S_NET_ACTION_FROM_CLIENT) {
-                    package = std::make_unique<NetworkPackage>(true, j);
+                    setPackage(true, j, NetworkMessageType::ActionFromClient);
                 } else if (type == S_NET_ACTIONS_FROM_SERVER) {
-                    package = std::make_unique<NetworkPackage>(false, j);
+                    setPackage(false, j, NetworkMessageType::ActionsFromServer);
+                } else if (type == S_NET_CHAT) {
+                    setPackage(false, j, NetworkMessageType::Chat);
+                } else if (type == S_NET_ASSETS) {
+                    setPackage(false, j, NetworkMessageType::Assets);
                 } else {
                     LOG_ERROR("Network package has unknown message type: &1", type)
                     return;
                 }
+            }
+
+            void setPackage(bool forServer, json j, NetworkMessageType type) {
+                package = std::make_unique<NetworkPackage>(forServer, j, type);
             }
 
             void fillActionQueueFromJson(const json& j, ActionQueue* actionQueue, long frameCount) {
