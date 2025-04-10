@@ -1,3 +1,0 @@
-C:/Users/User/Documents/Cpp/SupremeDefense/build/CMakeFiles/MyApp.dir
-C:/Users/User/Documents/Cpp/SupremeDefense/build/CMakeFiles/edit_cache.dir
-C:/Users/User/Documents/Cpp/SupremeDefense/build/CMakeFiles/rebuild_cache.dir
