@@ -383,26 +383,11 @@ CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\RendererBasic\rb_render_gui.cpp -o CMakeFiles\MyApp.dir\src\Renderer\RendererBasic\rb_render_gui.cpp.s
 
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: CMakeFiles/MyApp.dir/flags.make
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/include.cpp
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj -MF CMakeFiles\MyApp.dir\src\Renderer\include.cpp.obj.d -o CMakeFiles\MyApp.dir\src\Renderer\include.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\include.cpp
-
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyApp.dir/src/Renderer/include.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\include.cpp > CMakeFiles\MyApp.dir\src\Renderer\include.cpp.i
-
-CMakeFiles/MyApp.dir/src/Renderer/include.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyApp.dir/src/Renderer/include.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\include.cpp -o CMakeFiles\MyApp.dir\src\Renderer\include.cpp.s
-
 CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj: CMakeFiles/MyApp.dir/flags.make
 CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp
 CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj -MF CMakeFiles\MyApp.dir\src\Renderer\renderer.cpp.obj.d -o CMakeFiles\MyApp.dir\src\Renderer\renderer.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\renderer.cpp
 
 CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.i: cmake_force
@@ -417,7 +402,7 @@ CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj: CMakeFiles/MyApp.dir/f
 CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer_basic.cpp
 CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj -MF CMakeFiles\MyApp.dir\src\Renderer\renderer_basic.cpp.obj.d -o CMakeFiles\MyApp.dir\src\Renderer\renderer_basic.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\renderer_basic.cpp
 
 CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.i: cmake_force
@@ -432,7 +417,7 @@ CMakeFiles/MyApp.dir/src/main.cpp.obj: CMakeFiles/MyApp.dir/flags.make
 CMakeFiles/MyApp.dir/src/main.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/src/main.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/src/main.cpp
 CMakeFiles/MyApp.dir/src/main.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/MyApp.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/MyApp.dir/src/main.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/src/main.cpp.obj -MF CMakeFiles\MyApp.dir\src\main.cpp.obj.d -o CMakeFiles\MyApp.dir\src\main.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\src\main.cpp
 
 CMakeFiles/MyApp.dir/src/main.cpp.i: cmake_force
@@ -447,7 +432,7 @@ CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj: CMakeFiles/MyApp.dir/fl
 CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imgui.cpp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.obj -MF CMakeFiles\MyApp.dir\include\imgui-master\imgui.cpp.obj.d -o CMakeFiles\MyApp.dir\include\imgui-master\imgui.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\include\imgui-master\imgui.cpp
 
 CMakeFiles/MyApp.dir/include/imgui-master/imgui.cpp.i: cmake_force
@@ -462,7 +447,7 @@ CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/MyApp.d
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imgui_draw.cpp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.obj -MF CMakeFiles\MyApp.dir\include\imgui-master\imgui_draw.cpp.obj.d -o CMakeFiles\MyApp.dir\include\imgui-master\imgui_draw.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\include\imgui-master\imgui_draw.cpp
 
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_draw.cpp.i: cmake_force
@@ -477,7 +462,7 @@ CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/MyAp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imgui_widgets.cpp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.obj -MF CMakeFiles\MyApp.dir\include\imgui-master\imgui_widgets.cpp.obj.d -o CMakeFiles\MyApp.dir\include\imgui-master\imgui_widgets.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\include\imgui-master\imgui_widgets.cpp
 
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_widgets.cpp.i: cmake_force
@@ -492,7 +477,7 @@ CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/MyApp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imgui_tables.cpp
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.obj -MF CMakeFiles\MyApp.dir\include\imgui-master\imgui_tables.cpp.obj.d -o CMakeFiles\MyApp.dir\include\imgui-master\imgui_tables.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\include\imgui-master\imgui_tables.cpp
 
 CMakeFiles/MyApp.dir/include/imgui-master/imgui_tables.cpp.i: cmake_force
@@ -507,7 +492,7 @@ CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj: CMakeFiles/My
 CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj: CMakeFiles/MyApp.dir/includes_CXX.rsp
 CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj: C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML.cpp
 CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj: CMakeFiles/MyApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.obj -MF CMakeFiles\MyApp.dir\include\imgui-sfml-master\imgui-SFML.cpp.obj.d -o CMakeFiles\MyApp.dir\include\imgui-sfml-master\imgui-SFML.cpp.obj -c C:\Users\User\Documents\Cpp\SupremeDefense\include\imgui-sfml-master\imgui-SFML.cpp
 
 CMakeFiles/MyApp.dir/include/imgui-sfml-master/imgui-SFML.cpp.i: cmake_force
@@ -541,7 +526,6 @@ MyApp_OBJECTS = \
 "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_poll.cpp.obj" \
 "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_game.cpp.obj" \
 "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj" \
-"CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj" \
 "CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj" \
 "CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj" \
 "CMakeFiles/MyApp.dir/src/main.cpp.obj" \
@@ -575,7 +559,6 @@ MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_interactive.cpp.ob
 MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_poll.cpp.obj
 MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_game.cpp.obj
 MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj
-MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj
 MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj
 MyApp.exe: CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj
 MyApp.exe: CMakeFiles/MyApp.dir/src/main.cpp.obj
@@ -588,7 +571,7 @@ MyApp.exe: CMakeFiles/MyApp.dir/build.make
 MyApp.exe: CMakeFiles/MyApp.dir/linkLibs.rsp
 MyApp.exe: CMakeFiles/MyApp.dir/objects1.rsp
 MyApp.exe: CMakeFiles/MyApp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Linking CXX executable MyApp.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\User\Documents\Cpp\SupremeDefense\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Linking CXX executable MyApp.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\MyApp.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -42,6 +42,7 @@ namespace SupDef {
     }
 
     bool RendererBasic::addPositionData(json &j) {
+        if (!game) return false;
         auto position = getMousePosWorld();
         j[JCOM_X] = position.x;
         j[JCOM_Y] = position.y;

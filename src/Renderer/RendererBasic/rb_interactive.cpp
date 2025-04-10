@@ -32,10 +32,12 @@ namespace SupDef {
     void RendererBasic::onMouseClick(MouseClick button) {
         json j;
         auto mousePos = getMousePos();
-        auto element = gui->getGuiInSpot(mousePos.x, mousePos.y);
-        if (element) {
-            gui->handleClickOnGui(element, button);
-            return;
+        if (gui) {
+            auto element = gui->getGuiInSpot(mousePos.x, mousePos.y);
+            if (element) {
+                gui->handleClickOnGui(element, button);
+                return;
+            }
         }
 
         switch (commandMode) {
@@ -69,8 +71,10 @@ namespace SupDef {
                     currentMap = mapID;
                     globalDispatcher->dispatch<UnitSelectedEvent>(entity);
                 } else if (button == MRIGHT) {
-                    if (addPositionData(j)) {
-                        gui->handleClickMove(j);
+                    if (game) {
+                        if (addPositionData(j)) {
+                            gui->handleClickMove(j);
+                        }
                     }
                 }
                 break;
@@ -125,6 +129,7 @@ namespace SupDef {
     }
 
     std::tuple<Entity*, EntityID> RendererBasic::getUnitInSpot(float worldX, float worldY) {
+        if (!game) return {nullptr, NO_ENTITY};
         Entity* sEntity = nullptr;
         EntityID mapID = NO_ENTITY;
         float distance = 999999;

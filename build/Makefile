@@ -753,30 +753,6 @@ src/Renderer/RendererBasic/rb_render_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyApp.dir\build.make CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.s
 .PHONY : src/Renderer/RendererBasic/rb_render_gui.cpp.s
 
-src/Renderer/include.obj: src/Renderer/include.cpp.obj
-.PHONY : src/Renderer/include.obj
-
-# target to build an object file
-src/Renderer/include.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyApp.dir\build.make CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj
-.PHONY : src/Renderer/include.cpp.obj
-
-src/Renderer/include.i: src/Renderer/include.cpp.i
-.PHONY : src/Renderer/include.i
-
-# target to preprocess a source file
-src/Renderer/include.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyApp.dir\build.make CMakeFiles/MyApp.dir/src/Renderer/include.cpp.i
-.PHONY : src/Renderer/include.cpp.i
-
-src/Renderer/include.s: src/Renderer/include.cpp.s
-.PHONY : src/Renderer/include.s
-
-# target to generate assembly for a file
-src/Renderer/include.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyApp.dir\build.make CMakeFiles/MyApp.dir/src/Renderer/include.cpp.s
-.PHONY : src/Renderer/include.cpp.s
-
 src/Renderer/renderer.obj: src/Renderer/renderer.cpp.obj
 .PHONY : src/Renderer/renderer.obj
 
@@ -936,9 +912,6 @@ help:
 	@echo ... src/Renderer/RendererBasic/rb_render_gui.obj
 	@echo ... src/Renderer/RendererBasic/rb_render_gui.i
 	@echo ... src/Renderer/RendererBasic/rb_render_gui.s
-	@echo ... src/Renderer/include.obj
-	@echo ... src/Renderer/include.i
-	@echo ... src/Renderer/include.s
 	@echo ... src/Renderer/renderer.obj
 	@echo ... src/Renderer/renderer.i
 	@echo ... src/Renderer/renderer.s

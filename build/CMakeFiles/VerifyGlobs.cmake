@@ -26,7 +26,6 @@ set(OLD_GLOB
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_poll.cpp"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_game.cpp"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_gui.cpp"
-  "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/include.cpp"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer_basic.cpp"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/main.cpp"

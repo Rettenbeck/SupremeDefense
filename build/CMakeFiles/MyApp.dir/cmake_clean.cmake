@@ -51,8 +51,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_game.cpp.obj.d"
   "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj"
   "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj.d"
-  "CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj"
-  "CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj.d"
   "CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj"
   "CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj.d"
   "CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj"

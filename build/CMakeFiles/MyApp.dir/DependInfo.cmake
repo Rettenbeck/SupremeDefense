@@ -34,7 +34,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_poll.cpp" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_poll.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_poll.cpp.obj.d"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_game.cpp" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_game.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_game.cpp.obj.d"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_gui.cpp" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_render_gui.cpp.obj.d"
-  "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/include.cpp" "CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj.d"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp" "CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/renderer.cpp.obj.d"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer_basic.cpp" "CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/Renderer/renderer_basic.cpp.obj.d"
   "C:/Users/User/Documents/Cpp/SupremeDefense/src/main.cpp" "CMakeFiles/MyApp.dir/src/main.cpp.obj" "gcc" "CMakeFiles/MyApp.dir/src/main.cpp.obj.d"
