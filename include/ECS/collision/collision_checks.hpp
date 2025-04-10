@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef COLLISION_UTILS
+#define COLLISION_UTILS
 
 #include <ECS/collision/collisions_shapes.hpp>
 
@@ -6,18 +8,18 @@
 namespace SupDef::CollisionUtils {
 
     // Circle vs. Circle
-    bool checkCollision(const CircleShape* c1, float x1, float y1, const CircleShape* c2, float x2, float y2) {
+    inline bool checkCollision(const CircleShape* c1, float x1, float y1, const CircleShape* c2, float x2, float y2) {
         return Math::circleOverlap(x1, y1, x2, y2, c1->radius, c2->radius);
     }
 
     // Rectangle vs. Rectangle
-    bool checkCollision(const RectangleShape* r1, float x1, float y1, const RectangleShape* r2, float x2, float y2) {
+    inline bool checkCollision(const RectangleShape* r1, float x1, float y1, const RectangleShape* r2, float x2, float y2) {
         return !(x1 + r1->width  <= x2 || x2 + r2->width  <= x1 ||
                  y1 + r1->height <= y2 || y2 + r2->height <= y1);
     }
 
     // Circle vs. Rectangle (using nearest point projection)
-    bool checkCollision(const CircleShape* circle, float cx, float cy, const RectangleShape* rect, float rx, float ry) {
+    inline bool checkCollision(const CircleShape* circle, float cx, float cy, const RectangleShape* rect, float rx, float ry) {
         float closestX = std::max(rx, std::min(cx, rx + rect->width));
         float closestY = std::max(ry, std::min(cy, ry + rect->height));
         float dx = cx - closestX;
@@ -26,7 +28,7 @@ namespace SupDef::CollisionUtils {
     }
 
     // General collision check
-    bool checkCollision(const CollisionShape* s1, float x1, float y1, const CollisionShape* s2, float x2, float y2) {
+    inline bool checkCollision(const CollisionShape* s1, float x1, float y1, const CollisionShape* s2, float x2, float y2) {
         if (const auto* c1 = dynamic_cast<const CircleShape*>(s1)) {
             if (const auto* c2 = dynamic_cast<const CircleShape*>(s2)) {
                 std::cout << "    Circle circle\n";
@@ -47,3 +49,5 @@ namespace SupDef::CollisionUtils {
     }
 
 }
+
+#endif

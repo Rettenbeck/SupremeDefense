@@ -456,18 +456,4 @@ CMakeFiles/MyApp.dir/src/Game/game.cpp.obj: \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/constants.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/collision_system.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/collision_tracker.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/command_tracker.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/Game/game_startup.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_startup.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_actions.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_commands.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_requirements.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_collisions.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_movement.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_player.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_logic.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_tech.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_weapons.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_projectiles.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_assets.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_serial.cpp
+ C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/command_tracker.hpp

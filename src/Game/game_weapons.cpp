@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef GAME_WEAPONS
+#define GAME_WEAPONS
 
 #include <Game/game.hpp>
 
@@ -87,3 +89,5 @@ namespace SupDef {
     }
     
 }
+
+#endif

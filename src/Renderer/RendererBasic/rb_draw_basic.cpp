@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef RENDERER_BASIC_DRAW
+#define RENDERER_BASIC_DRAW
 
 #include <Renderer/renderer_basic.hpp>
 
@@ -74,3 +76,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

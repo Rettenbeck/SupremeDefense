@@ -15,7 +15,7 @@ auto app = std::make_unique<SupDef::App>();
 
 
 int main() {
-    test_app();
+    test_app(); 
     
     return 0;
 }

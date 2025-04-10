@@ -1,7 +1,6 @@
 CMakeFiles/MyApp.dir/src/Renderer/RendererBasic/rb_command_proc.cpp.obj: \
  C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\RendererBasic\rb_command_proc.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer_basic.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/game.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/ECS/include.hpp \

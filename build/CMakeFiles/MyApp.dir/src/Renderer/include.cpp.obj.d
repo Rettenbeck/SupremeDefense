@@ -1,8 +1,6 @@
 CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: \
  C:\Users\User\Documents\Cpp\SupremeDefense\src\Renderer\include.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer_basic.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer_basic.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Game/game.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/ECS/include.hpp \
@@ -550,11 +548,4 @@ CMakeFiles/MyApp.dir/src/Renderer/include.cpp.obj: \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imgui.h \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imconfig.h \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML.h \
- C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML_export.h \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_poll.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_interactive.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_command_com.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_command_proc.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_game.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_gui.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_draw_basic.cpp
+ C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML_export.h

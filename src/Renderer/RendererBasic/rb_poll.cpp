@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef RENDERER_BASIC_POLL
+#define RENDERER_BASIC_POLL
 
 #include <Renderer/renderer_basic.hpp>
 
@@ -96,3 +98,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

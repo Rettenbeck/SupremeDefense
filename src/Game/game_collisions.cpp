@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef GAME_COLLISIONS
+#define GAME_COLLISIONS
 
 #include <Game/game.hpp>
 
@@ -219,3 +221,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Renderer/renderer.cpp>
+#include <Renderer/renderer.hpp>
 
 #include <SFML/Main.hpp>
 #include <SFML/Graphics.hpp>

@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef GAME_SERIAL
+#define GAME_SERIAL
 
 #include <Game/game.hpp>
 
@@ -37,3 +39,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef GAME_ACTIONS
+#define GAME_ACTIONS
 
 #include <Game/game.hpp>
 
@@ -74,3 +76,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

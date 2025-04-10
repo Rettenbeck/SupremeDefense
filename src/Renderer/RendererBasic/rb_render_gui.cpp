@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef RENDERER_BASIC_GUI
+#define RENDERER_BASIC_GUI
 
 #include <Renderer/renderer_basic.hpp>
 
@@ -131,3 +133,5 @@ namespace SupDef {
     }
 
 }
+
+#endif

@@ -527,9 +527,7 @@ CMakeFiles/MyApp.dir/src/main.cpp.obj: \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/GUI/gui_element.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/GUI/constants.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/GUI/gui_manager_game.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer_basic.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer_basic.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/renderer.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/Renderer/renderer.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/SFML/Main.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/SFML/Graphics.hpp \
@@ -592,27 +590,6 @@ CMakeFiles/MyApp.dir/src/main.cpp.obj: \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-master/imconfig.h \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML.h \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/imgui-sfml-master/imgui-SFML_export.h \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_poll.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_interactive.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_command_com.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_command_proc.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_game.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_render_gui.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Renderer/RendererBasic/rb_draw_basic.cpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/App/layers/gui_layer.hpp \
  C:/Users/User/Documents/Cpp/SupremeDefense/include/App/app.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/include/App/settings.hpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_startup.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_actions.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_commands.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_requirements.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_collisions.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_movement.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_player.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_logic.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_tech.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_weapons.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_projectiles.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_assets.cpp \
- C:/Users/User/Documents/Cpp/SupremeDefense/src/Game/game_serial.cpp
+ C:/Users/User/Documents/Cpp/SupremeDefense/include/App/settings.hpp

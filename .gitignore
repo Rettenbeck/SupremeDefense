@@ -1,4 +1,5 @@
 bin/
+build/
 src/log.txt
 src/settings.txt
 src/state.txt

@@ -1,13 +1,15 @@
-#pragma once
+// #pragma once
+#ifndef RENDERER_BASIC_RENDERER
+#define RENDERER_BASIC_RENDERER
 
 #include <Renderer/renderer_basic.hpp>
-#include <Renderer/RendererBasic/rb_poll.cpp>
-#include <Renderer/RendererBasic/rb_interactive.cpp>
-#include <Renderer/RendererBasic/rb_command_com.cpp>
-#include <Renderer/RendererBasic/rb_command_proc.cpp>
-#include <Renderer/RendererBasic/rb_render_game.cpp>
-#include <Renderer/RendererBasic/rb_render_gui.cpp>
-#include <Renderer/RendererBasic/rb_draw_basic.cpp>
+// #include <Renderer/RendererBasic/rb_poll.cpp>
+// #include <Renderer/RendererBasic/rb_interactive.cpp>
+// #include <Renderer/RendererBasic/rb_command_com.cpp>
+// #include <Renderer/RendererBasic/rb_command_proc.cpp>
+// #include <Renderer/RendererBasic/rb_render_game.cpp>
+// #include <Renderer/RendererBasic/rb_render_gui.cpp>
+// #include <Renderer/RendererBasic/rb_draw_basic.cpp>
 
 
 namespace SupDef {
@@ -66,4 +68,5 @@ namespace SupDef {
     }
 
 }
-    
+
+#endif

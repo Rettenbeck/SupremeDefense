@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef GAME_PLAYER
+#define GAME_PLAYER
 
 #include <Game/game.hpp>
 
@@ -52,3 +54,5 @@ namespace SupDef {
     }
 
 }
+
+#endif
