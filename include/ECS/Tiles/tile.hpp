@@ -22,11 +22,11 @@ namespace SupDef {
             isOccupied   = false;
         }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(isImpassable)
             REFLECT_FIELD(isOccupied)
             REFLECT_FIELD(movementCost)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_SCLASS_END
 
     DEFINE_UNIQUE_AND_LIST(Tile, UTile, Tiles);

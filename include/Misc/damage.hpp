@@ -31,11 +31,11 @@ namespace SupDef {
             return std::move(clone);
         }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(damage_amount)
             REFLECT_FIELD(damageType)
             REFLECT_FIELD(pierce)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_SCLASS_END
     
     DEFINE_UNIQUE_AND_LIST(Damage, UDamage, Damages);

@@ -30,9 +30,9 @@ namespace SupDef {
             accessors.erase(std::remove(accessors.begin(), accessors.end(), entityID), accessors.end());
         }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(ownerID)
             REFLECT_FIELD(accessors)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
 }

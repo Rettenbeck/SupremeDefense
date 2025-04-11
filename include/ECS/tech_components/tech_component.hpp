@@ -70,7 +70,7 @@ namespace SupDef {
 
         bool isTech() const override { return true; }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(gained)
             REFLECT_FIELD(kept)
             REFLECT_FIELD(lost)
@@ -88,7 +88,7 @@ namespace SupDef {
             REFLECT_FIELD(requiredComponents)
             REFLECT_FIELD(whitelist)
             REFLECT_FIELD(blacklist)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
 
 }

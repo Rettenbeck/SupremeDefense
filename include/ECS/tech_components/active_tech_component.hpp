@@ -14,13 +14,13 @@ namespace SupDef {
 
         bool isTech() const override { return true; }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(commandID)
             REFLECT_FIELD(cooldown)
             REFLECT_FIELD(current_cooldown)
             REFLECT_FIELD(original_cooldown)
             REFLECT_FIELD(initWithFullCooldown)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
 
 }

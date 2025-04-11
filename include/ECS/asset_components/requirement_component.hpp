@@ -15,9 +15,9 @@ namespace SupDef {
         
         bool isAsset() const override { return true; }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_LIST_UNIQUE(resources, Resource)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
     
 }

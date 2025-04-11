@@ -16,11 +16,11 @@ namespace SupDef {
         WaveSegment(AssetID toSpawn, long frameCount, float xRel, float yRel)
         : toSpawn(toSpawn), frameCount(frameCount), xRel(xRel), yRel(yRel) {}
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(toSpawn)
             REFLECT_FIELD(xRel)
             REFLECT_FIELD(yRel)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_SCLASS_END
 
     DEFINE_UNIQUE_AND_LIST(WaveSegment, UWaveSegment, WaveSegments);

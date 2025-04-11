@@ -77,12 +77,12 @@ namespace SupDef {
             return tiles[index].get();
         }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(tileSize)
             REFLECT_FIELD(tilesX)
             REFLECT_FIELD(tilesY)
             REFLECT_LIST_UNIQUE(tiles, Tile)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
 
 }

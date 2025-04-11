@@ -13,10 +13,10 @@ namespace SupDef {
         
         bool isAsset() const override { return true; }
 
-        REFLECT_COMPONENT_BEGINX
+        REFLECT_BEGIN
             REFLECT_FIELD(x)
             REFLECT_FIELD(y)
             REFLECT_FIELD(relativeToMap)
-        REFLECT_COMPONENT_END()
+        REFLECT_END
     DEFINE_COMPONENT_END
 }
