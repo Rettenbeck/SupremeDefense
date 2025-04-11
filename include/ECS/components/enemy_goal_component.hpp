@@ -10,7 +10,7 @@ namespace SupDef {
 
         EnemyGoalComponent(EntityID goal) : goal(goal) {}
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(goal)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END

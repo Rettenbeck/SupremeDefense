@@ -14,7 +14,7 @@ namespace SupDef {
 
         bool isTech() const override { return true; }
 
-        REFLECT_COMPONENT_BEGIN(ActiveTechComponent)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(commandID)
             REFLECT_FIELD(cooldown)
             REFLECT_FIELD(current_cooldown)

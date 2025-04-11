@@ -13,7 +13,7 @@ namespace SupDef {
         PositionComponent(bool followParent) : followParent(followParent) { addToRegistry(); }
         PositionComponent(float x_, float y_) : x(x_), y(y_) { addToRegistry(); }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(x)
             REFLECT_FIELD(y)
             REFLECT_FIELD(xRel)

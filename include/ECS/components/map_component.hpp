@@ -10,7 +10,7 @@ namespace SupDef {
 
         MapComponent(int width_, int height_) : width(width_), height(height_) { addToRegistry(); }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(width)
             REFLECT_FIELD(height)
         REFLECT_COMPONENT_END()

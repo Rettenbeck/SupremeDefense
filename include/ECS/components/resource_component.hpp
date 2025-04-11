@@ -18,7 +18,7 @@ namespace SupDef {
             resources[resource->resourceID] = std::move(resource);
         }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_MAP_UNIQUE(resources, ResourceID, Resource)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END

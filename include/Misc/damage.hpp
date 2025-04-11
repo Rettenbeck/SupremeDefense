@@ -31,7 +31,7 @@ namespace SupDef {
             return std::move(clone);
         }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(damage_amount)
             REFLECT_FIELD(damageType)
             REFLECT_FIELD(pierce)

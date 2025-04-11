@@ -18,7 +18,7 @@ namespace SupDef {
             marksTilesOccupied(marksTilesOccupied_),
             marksTilesImpassable(marksTilesImpassable_) { addToRegistry(); }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(requiresTileCheck)
             REFLECT_FIELD(requiresCollisionCheck)
             REFLECT_FIELD(marksTilesOccupied)

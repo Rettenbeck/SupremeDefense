@@ -17,7 +17,7 @@ namespace SupDef {
 
         bool isDead() { return health <= 0; }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(health)
             REFLECT_FIELD(max_health)
         REFLECT_COMPONENT_END()

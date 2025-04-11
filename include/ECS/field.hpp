@@ -242,11 +242,17 @@ namespace SupDef {
         static_cast<Field<T, FieldType>*>(field.get())->setRef(obj, value);
     }
 
+/* 
     #define REFLECT_COMPONENT_BEGIN(Type) \
     static std::vector<std::unique_ptr<IField<Type>>> getFieldMap() { \
         using ThisType = Type; \
         std::vector<std::unique_ptr<IField<Type>>> fields;
+ */
 
+    #define REFLECT_COMPONENT_BEGINX \
+    static std::vector<std::unique_ptr<IField<ThisType>>> getFieldMap() { \
+        std::vector<std::unique_ptr<IField<ThisType>>> fields;
+    
     #define REFLECT_FIELD(name) \
         fields.push_back(std::make_unique<Field<ThisType, decltype(ThisType::name)>>(#name, &ThisType::name));
 
@@ -287,7 +293,7 @@ namespace SupDef {
     
     #define DEFINE_EMPTY_COMPONENT(CLASS_NAME, COMPONENT_NAME) \
     DEFINE_COMPONENT_BEGIN(CLASS_NAME, COMPONENT_NAME) \
-        REFLECT_COMPONENT_BEGIN(ThisType) \
+        REFLECT_COMPONENT_BEGINX \
         REFLECT_COMPONENT_END() \
     DEFINE_COMPONENT_END
     

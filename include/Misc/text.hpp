@@ -23,7 +23,7 @@ namespace SupDef {
 
         std::string get() { return get(""); }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(texts)
         REFLECT_COMPONENT_END()
 

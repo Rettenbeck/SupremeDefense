@@ -10,7 +10,7 @@ namespace SupDef {
         EntityID goal = NO_ENTITY;
         Waves waves;
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(goal)
             REFLECT_LIST_UNIQUE(waves, Wave)
         REFLECT_COMPONENT_END()

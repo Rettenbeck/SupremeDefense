@@ -22,7 +22,7 @@ namespace SupDef {
             remove_all(applyTechsOnHit, assetID);
         }
 
-        REFLECT_COMPONENT_BEGIN(ProjectileComponent)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(applyTechsOnHit)
             REFLECT_FIELD(multiHitCooldown)
             REFLECT_FIELD(homing)

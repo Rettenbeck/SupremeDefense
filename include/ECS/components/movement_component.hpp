@@ -73,7 +73,7 @@ namespace SupDef {
             return Math::getDistanceSquared(myX, myY, targetX, targetY) <= toleranceSquared;
         }
         
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(vx)
             REFLECT_FIELD(vy)
             REFLECT_FIELD(original_speed)

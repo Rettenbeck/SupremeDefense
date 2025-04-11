@@ -32,7 +32,7 @@ namespace SupDef {
 
         bool isTech() const override { return true; }
 
-        REFLECT_COMPONENT_BEGIN(GiftTechComponent)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(techsToCreate)
             REFLECT_FIELD(createdTechs)
         REFLECT_COMPONENT_END()

@@ -24,7 +24,7 @@ namespace SupDef {
             push_back_unique(targets, target);
         }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(cooldown)
             REFLECT_FIELD(current_cooldown)
             REFLECT_FIELD(original_cooldown)

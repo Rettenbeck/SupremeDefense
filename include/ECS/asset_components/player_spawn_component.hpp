@@ -20,7 +20,7 @@ namespace SupDef {
 
         bool isAsset() const override { return true; }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(allowedPlayers)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END

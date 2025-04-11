@@ -70,7 +70,7 @@ namespace SupDef {
 
         bool isTech() const override { return true; }
 
-        REFLECT_COMPONENT_BEGIN(TechComponent)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(gained)
             REFLECT_FIELD(kept)
             REFLECT_FIELD(lost)

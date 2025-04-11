@@ -14,7 +14,7 @@ namespace SupDef {
             addToRegistry();
         }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(teamID)
             REFLECT_FIELD(isNeutral)
             REFLECT_FIELD(starterBuilding)

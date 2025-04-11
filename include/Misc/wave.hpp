@@ -8,7 +8,7 @@ namespace SupDef {
     DEFINE_SCLASS_BEGIN(Wave)
         WaveSegments waveSegments;
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_LIST_UNIQUE(waveSegments, WaveSegment)
         REFLECT_COMPONENT_END()
     DEFINE_SCLASS_END

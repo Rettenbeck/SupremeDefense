@@ -18,7 +18,7 @@ namespace SupDef {
         Resource(ResourceID resourceID, long amount = 0, float rate = 0.0, long capacity = 0)
         : resourceID(resourceID), amount(amount), rate(rate), capacity(capacity) {}
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_FIELD(resourceID)
             REFLECT_FIELD(amount)
             REFLECT_FIELD(rate)

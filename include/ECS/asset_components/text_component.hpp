@@ -40,7 +40,7 @@ namespace SupDef {
 
         bool isAsset() const override { return true; }
 
-        REFLECT_COMPONENT_BEGIN(ThisType)
+        REFLECT_COMPONENT_BEGINX
             REFLECT_MAP_UNIQUE(texts, std::string, Text)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END
