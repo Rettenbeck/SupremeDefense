@@ -71,6 +71,8 @@ namespace SupDef {
     const std::string SC_PROJECTILE_HITTABLE                = "projectile_hittable"                 ;
     const std::string SC_WEAPON                             = "weapon"                              ;
     const std::string SC_HEALTH                             = "health"                              ;
+    const std::string SC_ENEMY_SPAWNER                      = "enemy_spawner"                       ;
+    const std::string SC_ENEMY_GOAL                         = "enemy_goal"                          ;
 
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
