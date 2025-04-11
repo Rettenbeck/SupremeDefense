@@ -17,6 +17,7 @@ namespace SupDef {
         bool hasGoal = false;                       // Has currently a goal to follow
         float goalX = 0.0f, goalY = 0.0f;           // X and Y of goal
         float tempGoalX = 0.0f, tempGoalY = 0.0f;   // X and Y of temporary goal (relevant only for ground-based movers as flyers can move straigth to target)
+        EntityID goalID = NO_ENTITY;
         MovementMode movementMode = MovementMode::PursueTarget;
 
         MovementComponent(float speed_, bool isGroundBased_) : original_speed(speed_), isGroundBased(isGroundBased_) { addToRegistry(); }
@@ -83,6 +84,7 @@ namespace SupDef {
             REFLECT_FIELD(goalY)
             REFLECT_FIELD(tempGoalX)
             REFLECT_FIELD(tempGoalY)
+            REFLECT_FIELD(goalID)
             REFLECT_FIELD(movementMode)
         REFLECT_COMPONENT_END()
     DEFINE_COMPONENT_END

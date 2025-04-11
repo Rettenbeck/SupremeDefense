@@ -10,6 +10,7 @@ namespace SupDef {
         public:
             EventDispatcher* eventDispatcher = nullptr;
             std::unordered_map<AssetID, UEntity> assets;
+            EntityID nextAssetID = 1;
 
             AssetManager(EventDispatcher* eventDispatcher_) : eventDispatcher(eventDispatcher_) {}
             AssetManager() {}
@@ -19,6 +20,13 @@ namespace SupDef {
                 auto rawPtr = newEntity.get();
                 assets[id] = std::move(newEntity);
                 return rawPtr;
+            }
+
+            Entity* createAsset() {
+                std::stringstream ss;
+                ss << "$" << nextAssetID++;
+                AssetID id = ss.str();
+                return createAsset(id);
             }
 
             Entity* getAsset(AssetID id) const {

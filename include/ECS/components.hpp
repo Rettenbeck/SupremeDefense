@@ -19,6 +19,8 @@
 #include <ECS/components/projectile_hittable_component.hpp>
 #include <ECS/components/weapon_component.hpp>
 #include <ECS/components/health_component.hpp>
+#include <ECS/components/enemy_spawner_component.hpp>
+#include <ECS/components/enemy_goal_component.hpp>
 
 #include <ECS/asset_components/text_component.hpp>
 #include <ECS/asset_components/command_component.hpp>
