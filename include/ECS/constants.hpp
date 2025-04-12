@@ -34,6 +34,12 @@ namespace SupDef {
     const CommandType JCOM_X        = "x";
     const CommandType JCOM_Y        = "y";
     
+    const float TILE_INITIAL_MOVEMENT_COST = 1.0f;
+    const std::string TILE_SEPARATOR = "/";
+    const std::string TILE_ATTRIBUTE_SEPARATOR = ";";
+    const std::string TILE_ATTRIBUTE_COST = "c";
+
+    
 
     // Non-component objects
     const std::string SX_NAME                               = "name"                                ;

@@ -10,7 +10,7 @@ namespace SupDef {
     DEFINE_SCLASS_BEGIN(Tile)
         bool isImpassable = false;
         bool isOccupied   = false;
-        float movementCost = 1.0f; // Higher cost = slower movement (e.g., rough terrain)
+        float movementCost = TILE_INITIAL_MOVEMENT_COST; // Higher cost = slower movement (e.g., rough terrain)
     
         Tile(float cost) : isImpassable(false), isOccupied(false), movementCost(cost) {}
 
