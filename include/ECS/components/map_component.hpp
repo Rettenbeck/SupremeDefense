@@ -7,6 +7,8 @@ namespace SupDef {
 
     DEFINE_COMPONENT_BEGIN(MapComponent, SC_MAP)
         int width = 0, height = 0;
+        MapPlayerSpawnList playerSpawns;
+        VF2s enemySpawns, enemyGoals;
 
         MapComponent(int width_, int height_) : width(width_), height(height_) { addToRegistry(); }
 

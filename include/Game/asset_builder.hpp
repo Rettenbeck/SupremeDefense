@@ -6,6 +6,9 @@
 
 namespace SupDef {
 
+    #define RETRIEVE_COMP(NAME, TYPE) \
+    assert(asset); auto NAME = asset->retrieveComponent<TYPE>(); assert(NAME);
+
     struct AsData {
         AssetManager* am;
         AssetID assetID;
@@ -53,7 +56,12 @@ namespace SupDef {
         public:
 
         static Entity* createEmptyAsset(AsData& data) {
-            auto asset = data.am->createAsset(data.assetID);
+            Entity* asset = nullptr;
+            if (data.assetID.empty()) {
+                asset = data.am->createAsset();
+            } else {
+                asset = data.am->createAsset(data.assetID);
+            }
             assert(asset);
             auto textComp = asset->addComponent<TextComponent>();
             assert(textComp);
@@ -67,23 +75,18 @@ namespace SupDef {
         static void addResource(Entity* asset, ResourceID id, long amount = 0,
             float gatherRate = 0, long maxCapacity = INFINITE_CAPACITY) {
             //
-            assert(asset);
-            auto resComp = asset->retrieveComponent<ResourceComponent>();
-            assert(resComp);
+            assert(asset); auto resComp = asset->retrieveComponent<ResourceComponent>(); assert(resComp);
             resComp->addResource(id, amount, gatherRate, maxCapacity);
         }
 
         static void addRequiredResource(Entity* asset, ResourceID id, long amount) {
             //
-            assert(asset);
-            auto req = asset->retrieveComponent<RequirementComponent>();
+            assert(asset); auto req = asset->retrieveComponent<RequirementComponent>();
             req->add(std::make_unique<SupDef::Resource>(id, amount));
         }
 
         static void addInit(Entity* asset, AssetID assetID) {
-            assert(asset);
-            auto initComp = asset->retrieveComponent<InitContainerComponent>();
-            assert(initComp);
+            RETRIEVE_COMP(initComp, InitContainerComponent)
             initComp->contained.push_back(assetID);
         }
 
@@ -93,43 +96,8 @@ namespace SupDef {
             }
         }
 
-        static void addPlayerSpawn(AsData data, Entity* asset, float x, float y, AssetIDs players) {
-            assert(asset);
-            AsData dataSpawn = data;
-            int i = 1;
-            do {
-                std::stringstream ss; ss << data.assetID << AFFIX_SPAWN << i;
-                dataSpawn.assetID = ss.str();
-                if (!data.am->getAsset(dataSpawn.assetID)) break;
-            } while (i++ < 1000);
-            auto assetSpawn = createEmptyAsset(dataSpawn);
-            assetSpawn->addComponent<PlayerSpawnComponent>(players);
-            assetSpawn->addComponent<InitPositionComponent>(x, y);
-            addInit(asset, dataSpawn.assetID);
-        }
-
-        static void addPlayerSpawn(AsData data, Entity* asset, float x, float y, AssetID player) {
-            AssetIDs players;
-            players.push_back(player);
-            addPlayerSpawn(data, asset, x, y, players);
-        }
-
-        static void addPlayerSpawns(AsData data, Entity* asset, VF2s positions, AssetIDs players) {
-            for (auto& position : positions) {
-                addPlayerSpawn(data, asset, position.x, position.y, players);
-            }
-        }
-
-        static void addPlayerSpawns(AsData data, Entity* asset, VF2s positions, AssetID player) {
-            AssetIDs players;
-            players.push_back(player);
-            addPlayerSpawns(data, asset, positions, players);
-        }
-
         static void addRectangleShape(Entity* asset, float width, float height, bool calcDummyRadius = true) {
-            assert(asset);
-            auto colComp = asset->retrieveComponent<CollisionComponent>();
-            assert(colComp);
+            RETRIEVE_COMP(colComp, CollisionComponent)
             if (calcDummyRadius) {
                 colComp->dummyRadius = std::min(width, height);
             }
@@ -137,11 +105,24 @@ namespace SupDef {
         }
 
         static void addDummyRadius(Entity* asset, float radius, bool isInfluence = false) {
-            assert(asset);
-            auto colComp = asset->retrieveComponent<CollisionComponent>();
-            assert(colComp);
+            RETRIEVE_COMP(colComp, CollisionComponent)
             colComp->dummyRadius = radius;
             colComp->isInfluence = isInfluence;
+        }
+
+        static void addWorldPlayer(Entity* asset, int player, int team) {
+            RETRIEVE_COMP(worldComp, WorldComponent)
+            worldComp->playerList.emplace_back(player, team);
+        }
+
+        static void addWorldEnemySpawn(Entity* asset, int enemy_spawn_point, AssetID waves, int enemy_goal_point) {
+            RETRIEVE_COMP(worldComp, WorldComponent)
+            worldComp->enemySpawnList.emplace_back(enemy_spawn_point, waves, enemy_goal_point);
+        }
+
+        static void addWorldEnemyGoal(Entity* asset, int enemy_goal_point, int player, int team) {
+            RETRIEVE_COMP(worldComp, WorldComponent)
+            worldComp->enemyGoalList.emplace_back(enemy_goal_point, player, team);
         }
 
         static Entity* buildWorld(AsData data, AssetID map) {
@@ -151,11 +132,57 @@ namespace SupDef {
             return asset;
         }
 
+        static void addMapPlayerSpawn(Entity* asset, float x, float y, AssetID playerRole) {
+            RETRIEVE_COMP(mapComp, MapComponent)
+            mapComp->playerSpawns.emplace_back(x, y, playerRole);
+        }
+        static void addMapPlayerSpawn(Entity* asset, VF2 pos, AssetID playerRole) {
+            addMapPlayerSpawn(asset, pos.x, pos.y, playerRole); }
+        static void addMapPlayerSpawn(Entity* asset, VF2s positions, AssetID playerRole) {
+            for (auto& pos : positions) addMapPlayerSpawn(asset, pos, playerRole); }
+
+        static void addMapEnemySpawn(Entity* asset, float x, float y) {
+            RETRIEVE_COMP(mapComp, MapComponent)
+            mapComp->enemySpawns.emplace_back(x, y);
+        }
+        static void addMapEnemySpawn(Entity* asset, VF2 pos) {
+            addMapEnemySpawn(asset, pos.x, pos.y); }
+        static void addMapEnemySpawn(Entity* asset, VF2s positions) {
+            for (auto& pos : positions) addMapEnemySpawn(asset, pos); }
+
+        static void addMapEnemyGoal(Entity* asset, float x, float y) {
+            RETRIEVE_COMP(mapComp, MapComponent)
+            mapComp->enemyGoals.emplace_back(x, y);
+        }
+        static void addMapEnemyGoal(Entity* asset, VF2 pos) {
+            addMapEnemyGoal(asset, pos.x, pos.y); }
+        static void addMapEnemyGoal(Entity* asset, VF2s positions) {
+            for (auto& pos : positions) addMapEnemyGoal(asset, pos); }
+
+        static void addMapData(Entity* asset, AssetID playerRole, VF2s players, VF2s enemies, VF2s goals) {
+            addMapPlayerSpawn(asset, players, playerRole);
+            addMapEnemySpawn(asset, enemies);
+            addMapEnemyGoal(asset, goals);
+        }
+
         static Entity* buildMap(AsData data, int tileSize, int x, int y, int width, int height) {
             auto asset = createEmptyAsset(data);
             asset->addComponent<MapComponent>(width, height);
             asset->addComponent<TilesComponent>(tileSize, width, height);
             asset->addComponent<PositionComponent>(x, y);
+            return asset;
+        }
+
+        static Entity* buildPlayerRole(AsData data, AssetIDs playerList, bool blackListed) {
+            auto asset = createEmptyAsset(data);
+            asset->addComponent<PlayerRoleComponent>(playerList, blackListed);
+            return asset;
+        }
+
+        static Entity* buildPlayerRole(AsData data, bool blackListed = false) {
+            auto asset = createEmptyAsset(data);
+            AssetIDs playerList;
+            asset->addComponent<PlayerRoleComponent>(playerList, blackListed);
             return asset;
         }
 

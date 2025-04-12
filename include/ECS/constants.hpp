@@ -16,11 +16,16 @@ namespace SupDef {
 
     using CommandType = std::string;
 
-    using WorldPlayerListEntry = std::tuple<int, int>; // Player index, team index
-    using WorldPlayerList = std::vctor<WorldPlayerListEntry>;
-    using WorldEnemySpawnListEntry = std::tuple<int, AssetID>; // Enemy spawn point index, enemy waves
-    using WorldEnemySpawnList = std::vctor<WorldEnemySpawnListEntry>;
-    
+    using WorldPlayerEntry = std::tuple<int, int>; // Player index, team index
+    using WorldPlayerList = std::vector<WorldPlayerEntry>;
+    using WorldEnemySpawnEntry = std::tuple<int, AssetID, int>; // Enemy spawn point index, enemy waves, enemy goal index
+    using WorldEnemySpawnList = std::vector<WorldEnemySpawnEntry>;
+    using WorldEnemyGoalEntry = std::tuple<int, int, int>; // Enemy goal point index, player index, team index
+    using WorldEnemyGoalList = std::vector<WorldEnemyGoalEntry>;
+
+    using MapPlayerSpawnEntry = std::tuple<float, float, AssetID>; // x, y, player role
+    using MapPlayerSpawnList = std::vector<MapPlayerSpawnEntry>;
+
     using Cooldown = long;
     const Cooldown COOLDOWN_SEC = 12000;
     const Cooldown COOLDOWN_FRAME = COOLDOWN_SEC / 60;
@@ -91,7 +96,7 @@ namespace SupDef {
     const std::string SCI_PLAYER_SPAWN_POINT                = "player_spawn_point"                  ;
     const std::string SCI_ENEMY_SPAWN_POINT                 = "enemy_spawn_point"                   ;
     const std::string SCI_ENEMY_GOAL_POINT                  = "enemy_goal_point"                    ;
-    const std::string SCI_ENEMY_WAVES                       = "enemy_waves                          ;
+    const std::string SCI_ENEMY_WAVES                       = "enemy_waves"                         ;
 
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;

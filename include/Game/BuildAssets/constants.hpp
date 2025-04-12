@@ -23,13 +23,31 @@ namespace SupDef {
     const std::string AS_MAP_WINTER_MAUL_NAME_DE            = "Winter Maul"                         ;
     const std::string AS_MAP_WINTER_MAUL_DESC_DE            = "Winter Maul ist zurück!"             ;
     const int AS_MAP_WINTER_MAUL_WIDTH                      = 2000;
-    const int AS_MAP_WINTER_MAUL_HEIGHT                     = 2000;
+    const int AS_MAP_WINTER_MAUL_HEIGHT                     = 1600;
 
-    VF2s as_map_winter_maul_spawns = {
-        { 20.0f,  20.0f},
-        {620.0f,  20.0f},
-        {620.0f, 620.0f}
+    VF2s AS_MAP_WINTER_MAUL_PLAYER_SPAWNS = {
+        {  50.0f,   50.0f},
+        { 620.0f,   50.0f},
+        { 620.0f,  620.0f}
     };
+
+    VF2s AS_MAP_WINTER_MAUL_ENEMY_SPAWNS = {
+        {  80.0f, 1250.0f},
+        { 420.0f, 1250.0f}
+    };
+
+    VF2s AS_MAP_WINTER_MAUL_ENEMY_GOALS = {
+        { 250.0f,  150.0f},
+        { 450.0f,  150.0f}
+    };
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= PLAYER ROLE DATA                        =-=-=-=-=-=-=-=-=-=-=-=-= //
+    const std::string AS_PLAYER_ROLE_ALL                    = "player_role_all"                     ;
+    const std::string AS_PLAYER_ROLE_ALL_NAME_DE            = "Keine Einschränkungen"               ;
+    const std::string AS_PLAYER_ROLE_ALL_DESC_DE            = "Auswahl ohne Einschränkungen"        ;
 
 
 
