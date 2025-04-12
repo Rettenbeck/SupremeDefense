@@ -33,4 +33,5 @@ namespace SupDef {
             REFLECT_UNIQUE(damage, Damage)
         REFLECT_END
     DEFINE_COMPONENT_END
+    
 }

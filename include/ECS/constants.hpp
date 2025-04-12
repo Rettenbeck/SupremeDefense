@@ -5,7 +5,6 @@
 
 namespace SupDef {
     
-    // Defines
     using EntityID  = uint32_t;
     using EntityIDs = std::vector<EntityID>;
     using EntityStatus = uint32_t;
@@ -16,6 +15,11 @@ namespace SupDef {
     using ResourceID = std::string;
 
     using CommandType = std::string;
+
+    using WorldPlayerListEntry = std::tuple<int, int>; // Player index, team index
+    using WorldPlayerList = std::vctor<WorldPlayerListEntry>;
+    using WorldEnemySpawnListEntry = std::tuple<int, AssetID>; // Enemy spawn point index, enemy waves
+    using WorldEnemySpawnList = std::vctor<WorldEnemySpawnListEntry>;
     
     using Cooldown = long;
     const Cooldown COOLDOWN_SEC = 12000;
@@ -80,14 +84,21 @@ namespace SupDef {
     const std::string SC_ENEMY_SPAWNER                      = "enemy_spawner"                       ;
     const std::string SC_ENEMY_GOAL                         = "enemy_goal"                          ;
 
+    // Initial Components
+    const std::string SCI_INIT_CONTAINER                    = "init_container"                      ;
+    const std::string SCI_INIT_POSITION                     = "init_position"                       ;
+    const std::string SCI_PLAYER_ROLE                       = "player_role"                         ;
+    const std::string SCI_PLAYER_SPAWN_POINT                = "player_spawn_point"                  ;
+    const std::string SCI_ENEMY_SPAWN_POINT                 = "enemy_spawn_point"                   ;
+    const std::string SCI_ENEMY_GOAL_POINT                  = "enemy_goal_point"                    ;
+    const std::string SCI_ENEMY_WAVES                       = "enemy_waves                          ;
+
     // Asset Components
     const std::string SCA_ASSET                             = "asset"                               ;
     const std::string SCA_COMMAND                           = "command"                             ;
     const std::string SCA_MOVE_COMMAND                      = "move_command"                        ;
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
-    const std::string SCA_INIT_CONTAINER                    = "init_container"                      ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
-    const std::string SCA_INIT_POSITION                     = "init_position"                       ;
     const std::string SCA_PLAYER_SPAWN                      = "player_spawn"                        ;
 
     // Tech Components

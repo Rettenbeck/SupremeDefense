@@ -6,7 +6,7 @@
 
 namespace SupDef {
 
-    DEFINE_COMPONENT_BEGIN(InitContainerComponent, SCA_INIT_CONTAINER)
+    DEFINE_COMPONENT_BEGIN(InitContainerComponent, SCI_INIT_CONTAINER)
         AssetIDs contained;
 
         InitContainerComponent(AssetID contained_) { addToRegistry(); contained.push_back(contained_); }

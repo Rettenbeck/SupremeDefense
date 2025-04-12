@@ -32,6 +32,10 @@
 
 #include <ECS/initial_components/init_container_component.hpp>
 #include <ECS/initial_components/init_position_component.hpp>
+#include <ECS/initial_components/player_role_component.hpp>
+#include <ECS/initial_components/player_spawn_point_component.hpp>
+#include <ECS/initial_components/enemy_spawn_point_component.hpp>
+#include <ECS/initial_components/enemy_goal_point_component.hpp>
 
 #include <ECS/tech_components/tech_component.hpp>
 #include <ECS/tech_components/active_tech_component.hpp>
