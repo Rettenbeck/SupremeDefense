@@ -16,10 +16,12 @@ namespace SupDef {
 
         auto initComp = asset->getComponent<InitContainerComponent>();
         if (initComp) {
-            for (auto& containedID : initComp->contained) {
-                createEntityFromAsset(containedID, id);
+            for (auto& [containedID, initPos, x, y] : initComp->contained) {
+                auto initEntity = createEntityFromAsset(containedID, id);
+                setNewCenteredPosition(initEntity, x, y);
             }
         }
+        
         return entity;
     }
 

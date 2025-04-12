@@ -7,30 +7,30 @@
 namespace SupDef {
 
     DEFINE_COMPONENT_BEGIN(InitContainerComponent, SCI_INIT_CONTAINER)
-        AssetIDs contained;
+        InitContainerList contained;
 
-        InitContainerComponent(AssetID contained_) { addToRegistry(); contained.push_back(contained_); }
-        InitContainerComponent(AssetIDs contained_) { addToRegistry(); contained = contained_; }
-
-        InitContainerComponent(AssetID contained1, AssetID contained2) {
+        InitContainerComponent(AssetID contained_) {
             addToRegistry();
-            contained.push_back(contained1);
-            contained.push_back(contained2);
+            add(contained_);
         }
 
-        InitContainerComponent(AssetID contained1, AssetID contained2, AssetID contained3) {
+        InitContainerComponent(AssetIDs contained_) {
             addToRegistry();
-            contained.push_back(contained1);
-            contained.push_back(contained2);
-            contained.push_back(contained3);
+            add(contained_);
         }
 
-        InitContainerComponent(AssetID contained1, AssetID contained2, AssetID contained3, AssetID contained4) {
-            addToRegistry();
-            contained.push_back(contained1);
-            contained.push_back(contained2);
-            contained.push_back(contained3);
-            contained.push_back(contained4);
+        void add(AssetID contained_, float x, float y) {
+            contained.emplace_back(contained_, true, x, y);
+        }
+
+        void add(AssetID contained_) {
+            contained.emplace_back(contained_, false, 0.0, 0.0);
+        }
+
+        void add(AssetIDs contained_) {
+            for (auto& item : contained_) {
+                add(item);
+            }
         }
 
         bool isAsset() const override { return true; }

@@ -87,7 +87,19 @@ namespace SupDef {
 
         static void addInit(Entity* asset, AssetID assetID) {
             RETRIEVE_COMP(initComp, InitContainerComponent)
-            initComp->contained.push_back(assetID);
+            initComp->add(assetID);
+        }
+
+        static void addInit(Entity* asset, AssetID assetID, float x, float y) {
+            RETRIEVE_COMP(initComp, InitContainerComponent)
+            initComp->add(assetID, x, y);
+        }
+
+        static void addInit(Entity* asset, AssetID assetID, VF2s positions) {
+            RETRIEVE_COMP(initComp, InitContainerComponent)
+            for (auto& [x, y] : positions) {
+                initComp->add(assetID, x, y);
+            }
         }
 
         static void addInit(Entity* asset, AssetIDs assetIDs) {
@@ -108,6 +120,13 @@ namespace SupDef {
             RETRIEVE_COMP(colComp, CollisionComponent)
             colComp->dummyRadius = radius;
             colComp->isInfluence = isInfluence;
+        }
+
+        static void addGraphic(Entity* asset, std::string filepath, long zBuffer = 1000, bool drawCentered = true) {
+            RETRIEVE_COMP(graphicComp, GraphicComponent)
+            graphicComp->filepath = filepath;
+            graphicComp->zBuffer = zBuffer;
+            graphicComp->drawCentered = drawCentered;
         }
 
         static void addWorldPlayer(Entity* asset, int player, int team) {
@@ -203,6 +222,16 @@ namespace SupDef {
             asset->addComponent<ProjectileHittableComponent>();
             return asset;
         }
+
+        static Entity* buildWall(AsData data, bool tilesCheck, bool colCheck, bool occupy, bool impassable,
+            float width, float height) {
+        //
+        auto asset = createEmptyAsset(data);
+        asset->addComponent<SupDef::PositionComponent>(0.0, 0.0);
+        asset->addComponent<SupDef::ImmovableComponent>(tilesCheck, colCheck, occupy, impassable);
+        asset->addComponent<SupDef::CollisionComponent>(3.0);
+        return asset;
+    }
 
         static Entity* buildImmovableUnit(AsData data, bool tilesCheck, bool colCheck, bool occupy, bool impassable) {
             auto asset = createEmptyAsset(data);

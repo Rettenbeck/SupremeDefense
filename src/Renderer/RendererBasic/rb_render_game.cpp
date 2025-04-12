@@ -10,6 +10,7 @@ namespace SupDef {
         if(!game) return;
         if(!gui) return;
         assert(game->getEntityManager());
+        drawSprites(game->getEntityManager());
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
         renderSelectedUnits();

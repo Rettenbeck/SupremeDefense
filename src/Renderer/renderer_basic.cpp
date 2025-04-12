@@ -11,6 +11,7 @@
     #include <Renderer/RendererBasic/rb_render_game.cpp>
     #include <Renderer/RendererBasic/rb_render_gui.cpp>
     #include <Renderer/RendererBasic/rb_draw_basic.cpp>
+    #include <Renderer/RendererBasic/rb_sprite.cpp>
 #endif
 
 
