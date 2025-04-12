@@ -9,6 +9,7 @@ namespace SupDef {
         EntityID teamID = NO_ENTITY;
         bool isNeutral = false;
         AssetID starterBuilding = NO_ASSET;
+        AssetID playerRole = NO_ASSET;
 
         PlayerComponent(AssetID starterBuilding) : starterBuilding(starterBuilding) {
             addToRegistry();
@@ -18,6 +19,7 @@ namespace SupDef {
             REFLECT_FIELD(teamID)
             REFLECT_FIELD(isNeutral)
             REFLECT_FIELD(starterBuilding)
+            REFLECT_FIELD(playerRole)
         REFLECT_END
     DEFINE_COMPONENT_END
 

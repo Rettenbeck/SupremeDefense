@@ -1,4 +1,4 @@
-// #define INCLUDE_CPP
+#define INCLUDE_CPP
 
 #include <iostream>
 #include <include.hpp>

@@ -5,7 +5,7 @@
 
 namespace SupDef {
 
-    DEFINE_COMPONENT_BEGIN(InitPositionComponent, SCA_INIT_POSITION)
+    DEFINE_COMPONENT_BEGIN(InitPositionComponent, SCI_INIT_POSITION)
         float x = 0, y = 0;
         bool relativeToMap = true;
 

@@ -18,7 +18,9 @@ namespace SupDef::BuildAssets {
             mapAsData,
             DEFAULT_MAP_TILESIZE, 0, 0, AS_MAP_WINTER_MAUL_WIDTH, AS_MAP_WINTER_MAUL_HEIGHT
         );
-        AssetBuilder::addPlayerSpawns(mapAsData, asset, as_map_winter_maul_spawns, AS_PLAYER_EX);
+        AssetBuilder::addMapData(asset, AS_PLAYER_ROLE_ALL,
+            AS_MAP_WINTER_MAUL_PLAYER_SPAWNS, AS_MAP_WINTER_MAUL_ENEMY_SPAWNS, AS_MAP_WINTER_MAUL_ENEMY_GOALS
+        );
     }
 
     void buildMaps(AssetManager* am) {
