@@ -208,8 +208,9 @@ namespace SupDef {
                 BuildAssets::build(am.get());
                 AssetID worldID = AS_MAP_WINTER_MAUL;
                 PlayerMapExt playerMapExt;
-                playerMapExt.emplace_back(1, AS_PLAYER_EX, "map_winter_maul_spawn_1", NO_ENTITY);
-                playerMapExt.emplace_back(2, AS_PLAYER_EX, "map_winter_maul_spawn_2", NO_ENTITY);
+                playerMapExt.emplace_back(1, AS_PLAYER_EX, NO_ENTITY);
+                playerMapExt.emplace_back(2, AS_PLAYER_EX, NO_ENTITY);
+                playerMapExt.emplace_back(3, AS_PLAYER_EX, NO_ENTITY);
                 startGame(std::move(am), worldID, playerMapExt, 1);
             }
 

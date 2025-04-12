@@ -112,7 +112,7 @@ namespace SupDef {
 
         static void addWorldPlayer(Entity* asset, int player, int team) {
             RETRIEVE_COMP(worldComp, WorldComponent)
-            worldComp->playerList.emplace_back(player, team);
+            worldComp->playerList.emplace_back(player, team, NO_ENTITY, NO_ENTITY);
         }
 
         static void addWorldEnemySpawn(Entity* asset, int enemy_spawn_point, AssetID waves, int enemy_goal_point) {
@@ -122,7 +122,7 @@ namespace SupDef {
 
         static void addWorldEnemyGoal(Entity* asset, int enemy_goal_point, int player, int team) {
             RETRIEVE_COMP(worldComp, WorldComponent)
-            worldComp->enemyGoalList.emplace_back(enemy_goal_point, player, team);
+            worldComp->enemyGoalList.emplace_back(enemy_goal_point, player, team, NO_ENTITY);
         }
 
         static Entity* buildWorld(AsData data, AssetID map) {
@@ -134,7 +134,7 @@ namespace SupDef {
 
         static void addMapPlayerSpawn(Entity* asset, float x, float y, AssetID playerRole) {
             RETRIEVE_COMP(mapComp, MapComponent)
-            mapComp->playerSpawns.emplace_back(x, y, playerRole);
+            mapComp->playerSpawns.emplace_back(x, y, playerRole, NO_ENTITY);
         }
         static void addMapPlayerSpawn(Entity* asset, VF2 pos, AssetID playerRole) {
             addMapPlayerSpawn(asset, pos.x, pos.y, playerRole); }

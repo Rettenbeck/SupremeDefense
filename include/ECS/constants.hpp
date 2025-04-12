@@ -16,14 +16,14 @@ namespace SupDef {
 
     using CommandType = std::string;
 
-    using WorldPlayerEntry = std::tuple<int, int>; // Player index, team index
+    using WorldPlayerEntry = std::tuple<int, int, EntityID, EntityID>; // Player index, team index, player id, team id
     using WorldPlayerList = std::vector<WorldPlayerEntry>;
     using WorldEnemySpawnEntry = std::tuple<int, AssetID, int>; // Enemy spawn point index, enemy waves, enemy goal index
     using WorldEnemySpawnList = std::vector<WorldEnemySpawnEntry>;
-    using WorldEnemyGoalEntry = std::tuple<int, int, int>; // Enemy goal point index, player index, team index
+    using WorldEnemyGoalEntry = std::tuple<int, int, int, EntityID>; // Enemy goal point index, player index, team index, enemy goal entity
     using WorldEnemyGoalList = std::vector<WorldEnemyGoalEntry>;
 
-    using MapPlayerSpawnEntry = std::tuple<float, float, AssetID>; // x, y, player role
+    using MapPlayerSpawnEntry = std::tuple<float, float, AssetID, EntityID>; // x, y, player role, concrete entity
     using MapPlayerSpawnList = std::vector<MapPlayerSpawnEntry>;
 
     using Cooldown = long;
