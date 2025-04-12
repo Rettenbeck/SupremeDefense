@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_TECH
 #define GAME_TECH
 

@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef RENDERER_BASIC_GUI
 #define RENDERER_BASIC_GUI
 

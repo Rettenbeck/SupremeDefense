@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_COLLISIONS
 #define GAME_COLLISIONS
 

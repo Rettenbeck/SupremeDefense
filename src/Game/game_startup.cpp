@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_STARTUP
 #define GAME_STARTUP
 

@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef RENDERER_BASIC_INTER
 #define RENDERER_BASIC_INTER
 

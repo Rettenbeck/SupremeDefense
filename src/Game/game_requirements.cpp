@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_REQ
 #define GAME_REQ
 

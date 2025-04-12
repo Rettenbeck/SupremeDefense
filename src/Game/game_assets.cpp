@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_ASSETS
 #define GAME_ASSETS
 

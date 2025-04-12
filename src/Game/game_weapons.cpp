@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_WEAPONS
 #define GAME_WEAPONS
 

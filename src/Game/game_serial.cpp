@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_SERIAL
 #define GAME_SERIAL
 

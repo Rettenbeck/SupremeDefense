@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef GAME_MOVE
 #define GAME_MOVE
 
