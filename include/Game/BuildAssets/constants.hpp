@@ -9,7 +9,12 @@ namespace SupDef {
     const int DEFAULT_MAP_TILESIZE = 32;
     const int DEFAULT_MAP_WIDTH  = 640;
     const int DEFAULT_MAP_HEIGHT = 480;
-    const std::string AFFIX_SPAWN = "_spawn_";
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= World DATA                              =-=-=-=-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WORLD_WINTER_MAUL                  = "world_winter_maul"                   ;
 
 
 

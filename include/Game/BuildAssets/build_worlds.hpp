@@ -7,7 +7,7 @@ namespace SupDef::BuildAssets {
 
     void buildWorldWinterMaul(AssetManager* am) {
         auto asset = AssetBuilder::buildWorld(
-            AsData(am, AS_MAP_WINTER_MAUL, AS_MAP_WINTER_MAUL_NAME_DE, AS_MAP_WINTER_MAUL_DESC_DE),
+            AsData(am, AS_WORLD_WINTER_MAUL, AS_MAP_WINTER_MAUL_NAME_DE, AS_MAP_WINTER_MAUL_DESC_DE),
             AS_MAP_WINTER_MAUL
         );
         AssetBuilder::addWorldPlayer(asset, 1, 0);

@@ -35,9 +35,6 @@ namespace SupDef {
     }
 
     void Game::initialize() {
-        auto world = entityManager->createEntity();
-        world->addComponent<WorldComponent>();
-
         SUBSCRIBE_BEGIN(globalDispatcher, TriggerCommandEvent)
             handleTriggerCommand(typedEvent);
         SUBSCRIBE_END

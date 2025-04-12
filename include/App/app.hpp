@@ -206,7 +206,7 @@ namespace SupDef {
             void startGame() {
                 auto am = std::make_unique<AssetManager>();
                 BuildAssets::build(am.get());
-                AssetID worldID = AS_MAP_WINTER_MAUL;
+                AssetID worldID = AS_WORLD_WINTER_MAUL;
                 PlayerMapExt playerMapExt;
                 playerMapExt.emplace_back(1, AS_PLAYER_EX, NO_ENTITY);
                 playerMapExt.emplace_back(2, AS_PLAYER_EX, NO_ENTITY);
