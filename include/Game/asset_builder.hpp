@@ -225,13 +225,15 @@ namespace SupDef {
 
         static Entity* buildWall(AsData data, bool tilesCheck, bool colCheck, bool occupy, bool impassable,
             float width, float height) {
-        //
-        auto asset = createEmptyAsset(data);
-        asset->addComponent<SupDef::PositionComponent>(0.0, 0.0);
-        asset->addComponent<SupDef::ImmovableComponent>(tilesCheck, colCheck, occupy, impassable);
-        asset->addComponent<SupDef::CollisionComponent>(3.0);
-        return asset;
-    }
+            //
+            auto asset = createEmptyAsset(data);
+            asset->addComponent<SupDef::PositionComponent>(0.0, 0.0);
+            asset->addComponent<SupDef::ImmovableComponent>(tilesCheck, colCheck, occupy, impassable);
+            asset->addComponent<SupDef::CollisionComponent>(3.0);
+            asset->addComponent<SelectableComponent>();
+            addRectangleShape(asset, width, height);
+            return asset;
+        }
 
         static Entity* buildImmovableUnit(AsData data, bool tilesCheck, bool colCheck, bool occupy, bool impassable) {
             auto asset = createEmptyAsset(data);

@@ -127,7 +127,7 @@ namespace SupDef {
             TextureMap textureMap;
 
             bool debugMode = false;
-            bool drawTiles = true;
+            bool drawTiles = false;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;

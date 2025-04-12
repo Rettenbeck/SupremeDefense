@@ -37,8 +37,8 @@ namespace SupDef {
         if (gra->drawCentered) {
             if (col) {
                 auto center = col->getCenter(pos->x, pos->y);
-                x -= texture->getSize().x / 2;
-                y -= texture->getSize().y / 2;
+                x = center.x - texture->getSize().x / 2;
+                y = center.y - texture->getSize().y / 2;
             }
         }
         sf::Sprite sprite(*texture);
