@@ -6,7 +6,7 @@
 
 namespace SupDef {
 
-    DEFINE_COMPONENT_BEGIN(TilesComponent, SC_TILES)
+    DEFINE_COMPONENT_NOJSON_BEGIN(TilesComponent, SC_TILES)
         int tileSize = 16;
         int tilesX = 0, tilesY = 0;
         Tiles tiles;
@@ -75,6 +75,53 @@ namespace SupDef {
             int index = getIndexFromPos(x, y);
             if(index < 0 || index >= tiles.size()) return nullptr;
             return tiles[index].get();
+        }
+        
+        void rebuildFromString(std::string input) {
+            tiles.clear();
+            std::stringstream ss(input);
+            std::string segment;
+        
+            while (std::getline(ss, segment, TILE_SEPARATOR[0])) {
+                if (segment.empty()) continue;
+                assert(segment.size() >= 2);
+        
+                char first = segment[0];
+                char second = segment[1];
+                std::string rest = segment.substr(2);
+                float cost = TILE_INITIAL_MOVEMENT_COST;
+                if (rest.size() > 1) {
+                    char third = rest[0];
+                    std::string value = rest.substr(1);
+                    if (third == TILE_ATTRIBUTE_COST[0]) {
+                        cost = std::stof(value);
+                    }
+                }
+                tiles.push_back(std::make_unique<Tile>(STR_TO_BOOL(first), STR_TO_BOOL(second), cost));
+            }
+        }
+
+        void to_json(json& j) const override {
+            j[S_TILE_SIZE] = tileSize;
+            j[S_TILES_X] = tilesX;
+            j[S_TILES_Y] = tilesY;
+            std::stringstream ss;
+            for (auto& tile : tiles) {
+                ss << BOOL_TO_INT(tile->isImpassable);
+                ss << BOOL_TO_INT(tile->isOccupied);
+                if (tile->movementCost != TILE_INITIAL_MOVEMENT_COST) {
+                    ss << TILE_ATTRIBUTE_COST << tile->movementCost << TILE_ATTRIBUTE_SEPARATOR;
+                }
+                ss << TILE_SEPARATOR;
+            }
+            j[S_TILES] = ss.str();
+        }
+        
+        void from_json(const json& j) override {
+            tileSize = j.at(S_TILE_SIZE).get<int>();
+            tilesX = j.at(S_TILES_X).get<int>();
+            tilesY = j.at(S_TILES_Y).get<int>();
+            rebuildFromString(j.at(S_TILES).get<std::string>());
         }
 
         REFLECT_BEGIN

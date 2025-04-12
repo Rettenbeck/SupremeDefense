@@ -62,7 +62,8 @@ namespace SupDef {
             if (!ptr) return nullptr;
     
             nlohmann::json j;
-            generic_to_json(j, ptr.get());
+            // generic_to_json(j, ptr.get());
+            ptr->to_json(j);
             return j;
         }
     
@@ -73,7 +74,8 @@ namespace SupDef {
             } else {
                 obj->*memberPtr = std::make_unique<PointeeType>();
                 auto& ptr = obj->*memberPtr;
-                generic_from_json(j, ptr.get());
+                // generic_from_json(j, ptr.get());
+                ptr->from_json(j);
             }
         }
     
@@ -109,7 +111,8 @@ namespace SupDef {
             for (const auto& item : vec) {
                 if (item) {
                     nlohmann::json element;
-                    generic_to_json(element, item.get());
+                    // generic_to_json(element, item.get());
+                    item->to_json(element);
                     j.push_back(element);
                 } else {
                     j.push_back(nullptr);
@@ -129,7 +132,8 @@ namespace SupDef {
                     vec.push_back(nullptr);
                 } else {
                     auto ptr = std::make_unique<ItemType>();
-                    generic_from_json(element, ptr.get());
+                    // generic_from_json(element, ptr.get());
+                    ptr->from_json(element);
                     vec.push_back(std::move(ptr));
                 }
             }
@@ -342,5 +346,11 @@ namespace SupDef {
     #define DEFINE_UNIQUE_AND_LIST(CLASS, UNIQUE, LIST) \
     DEFINE_UNIQUE(CLASS, UNIQUE) \
     DEFINE_LIST(UNIQUE, LIST)
+
+    #define BOOL_TO_INT(BOOL) \
+    ((BOOL) ? 1 : 0)
+
+    #define STR_TO_BOOL(STR) \
+    ((STR == '1') ? true : false)
 
 }
