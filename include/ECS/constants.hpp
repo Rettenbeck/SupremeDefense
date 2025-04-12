@@ -26,6 +26,9 @@ namespace SupDef {
     using MapPlayerSpawnEntry = std::tuple<float, float, AssetID, EntityID>; // x, y, player role, concrete entity
     using MapPlayerSpawnList = std::vector<MapPlayerSpawnEntry>;
 
+    using InitContainerEntry = std::tuple<AssetID, bool, float, float>; // Asset to store, whether having init position, x, y
+    using InitContainerList = std::vector<InitContainerEntry>;
+
     using Cooldown = long;
     const Cooldown COOLDOWN_SEC = 12000;
     const Cooldown COOLDOWN_FRAME = COOLDOWN_SEC / 60;
@@ -88,6 +91,7 @@ namespace SupDef {
     const std::string SC_HEALTH                             = "health"                              ;
     const std::string SC_ENEMY_SPAWNER                      = "enemy_spawner"                       ;
     const std::string SC_ENEMY_GOAL                         = "enemy_goal"                          ;
+    const std::string SC_GRAPHIC                            = "graphic"                             ;
 
     // Initial Components
     const std::string SCI_INIT_CONTAINER                    = "init_container"                      ;
@@ -105,6 +109,7 @@ namespace SupDef {
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
     const std::string SCA_PLAYER_SPAWN                      = "player_spawn"                        ;
+    const std::string SCA_GRAPHIC_ASSET                     = "graphic_asset"                       ;
 
     // Tech Components
     const std::string SCT_TECH                              = "tech"                                ;

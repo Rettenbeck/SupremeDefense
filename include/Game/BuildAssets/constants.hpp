@@ -46,6 +46,27 @@ namespace SupDef {
         { 450.0f,  150.0f}
     };
 
+    VF2s AS_MAP_WINTER_MAUL_WINTER_WALLS = {
+        { 256.0f,   64.0f},
+        { 256.0f,  128.0f},
+        { 256.0f,  192.0f}
+    };
+
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= WALL DATA                               =-=-=-=-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WALL_WINTER                        = "wall_winter"                         ;
+    const std::string AS_WALL_WINTER_NAME_DE                = "Wand"                                ;
+    const std::string AS_WALL_WINTER_DESC_DE                = "Verschneite Wand"                    ;
+    const float AS_WALL_WINTER_WIDTH                        = 64.0;
+    const float AS_WALL_WINTER_HEIGHT                       = 64.0;
+    const bool AS_WALL_WINTER_TILES_CHECK                   = true;
+    const bool AS_WALL_WINTER_COL_CHECK                     = false;
+    const bool AS_WALL_WINTER_OCCUPY                        = true;
+    const bool AS_WALL_WINTER_IMPASSABLE                    = true;
+
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //

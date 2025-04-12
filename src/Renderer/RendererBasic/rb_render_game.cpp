@@ -10,6 +10,7 @@ namespace SupDef {
         if(!game) return;
         if(!gui) return;
         assert(game->getEntityManager());
+        drawSprites(game->getEntityManager());
         renderMaps(game->getEntityManager());
         renderEntitiesWithCollision(game->getEntityManager());
         renderSelectedUnits();
@@ -85,10 +86,14 @@ namespace SupDef {
         assert(entityManager);
         auto entities = entityManager->getEntitiesWithComponents<PositionComponent, CollisionComponent>();
         for (auto [entity, pos, col] : entities) {
+            bool hasGraphic = false;
+            auto gra = entity->getComponent<GraphicComponent>();
+            if (gra) if (getTexture(gra)) hasGraphic = true;
+
             if (entity->hasComponent<InfluenceComponent>()) {
                 // renderEntityWithInfluence(pos, col);
             } else {
-                renderEntityWithCollision(pos, col, false);
+                if (!hasGraphic) renderEntityWithCollision(pos, col, false);
                 drawHealthBar(entity, pos, col, 56, 10);
             }
         }

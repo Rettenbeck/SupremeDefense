@@ -21,6 +21,8 @@ namespace SupDef::BuildAssets {
         AssetBuilder::addMapData(asset, AS_PLAYER_ROLE_ALL,
             AS_MAP_WINTER_MAUL_PLAYER_SPAWNS, AS_MAP_WINTER_MAUL_ENEMY_SPAWNS, AS_MAP_WINTER_MAUL_ENEMY_GOALS
         );
+        AssetBuilder::addGraphic(asset, "../data/graphics/map_winter1.png", 0, false);
+        AssetBuilder::addInit(asset, AS_WALL_WINTER, AS_MAP_WINTER_MAUL_WINTER_WALLS);
     }
 
     void buildMaps(AssetManager* am) {

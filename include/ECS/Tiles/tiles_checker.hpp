@@ -127,6 +127,7 @@ namespace SupDef {
                     <PositionComponent, CollisionComponent, ImmovableComponent>();
                 //
                 for (auto& comp : all_entities) {
+                    auto entity = std::get<0>(comp);
                     setTilesAfterPlacing(comp, tilesComponent);
                 }
             }

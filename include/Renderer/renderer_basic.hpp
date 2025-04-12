@@ -14,6 +14,9 @@ namespace SupDef {
     using RSelectable  = std::tuple<Entity*, Entity*, BoundingBox*, float, float>;
     using RSelectables = std::vector<RSelectable>;
 
+    using UTexture = std::unique_ptr<sf::Texture>;
+    using TextureMap = std::unordered_map<std::string, UTexture>;
+
     enum class RCommandMode {
         NONE,
         MOVE,
@@ -83,6 +86,12 @@ namespace SupDef {
             void drawHealthBar(float x, float y, float width, float height, long health, long health_max);
             void renderMaps(EntityManager* entityManager);
             void renderMap(_EntMapTiles map);
+
+            void drawSprites(EntityManager* entityManager);
+            void drawSprite(Entity* entity, PositionComponent* pos, GraphicComponent* gra);
+            void drawSprite(PositionComponent* pos, CollisionComponent* col, GraphicComponent* gra);
+            sf::Texture* getTexture(GraphicComponent* graphic);
+            sf::Texture* getTexture(const std::string& filename);
             
             void showDebug();
             void renderGui();
@@ -115,8 +124,10 @@ namespace SupDef {
             EntityID currentMap = NO_ENTITY;
             RSelectables selectables;
 
+            TextureMap textureMap;
+
             bool debugMode = false;
-            bool drawTiles = true;
+            bool drawTiles = false;
 
             //std::unique_ptr<GUI::Root> gui;
             //std::unique_ptr<sf::Font> font;
