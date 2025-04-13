@@ -9,6 +9,8 @@ void start_app();
 auto app = std::make_unique<SupDef::App>();
 
 
+// Press 'M' to start the game!
+
 int main() {
     start_app();
     app->run();
