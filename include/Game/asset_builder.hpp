@@ -122,7 +122,9 @@ namespace SupDef {
             colComp->isInfluence = isInfluence;
         }
 
-        static void addAnimation(Entity* asset, long totalFrames, int width, int height, int columnCount, bool dieAfterAnimation = false) {
+        static void addAnimation(Entity* asset, long totalFrames, int width, int height, int columnCount,
+            bool dieAfterAnimation = false, MovementAnimation movementAnimation = MovementAnimation::AlwaysAnimate ) {
+            //
             RETRIEVE_COMP(aniComp, AnimationComponent)
             aniComp->currentFrame = 0;
             aniComp->totalFrames = totalFrames;
@@ -130,6 +132,7 @@ namespace SupDef {
             aniComp->height = height;
             aniComp->columnCount = columnCount;
             aniComp->dieAfterAnimation = dieAfterAnimation;
+            aniComp->movementAnimation = movementAnimation;
         }
 
         static void addGraphic(Entity* asset, std::string filepath, long zBuffer = 1000, bool drawCentered = true, bool rotate = false) {

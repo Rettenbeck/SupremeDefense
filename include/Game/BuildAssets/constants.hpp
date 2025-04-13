@@ -82,7 +82,7 @@ namespace SupDef {
     const std::string AS_PLAYER_EX                          = "player"                              ;
     const std::string AS_PLAYER_EX_NAME_DE                  = "Spieler"                             ;
     const std::string AS_PLAYER_EX_DESC_DE                  = "Spieler"                             ;
-    const std::string AS_PLAYER_EX_STARTER                  = "mover1"                              ;
+    const std::string AS_PLAYER_EX_STARTER                  = "spider"                              ;
 
     const std::string AS_PLAYER_EX_NO_MOVE                  = "player_no_move"                      ;
     const std::string AS_PLAYER_EX_NO_MOVE_NAME_DE          = "Spieler (nm)"                        ;
@@ -152,6 +152,15 @@ namespace SupDef {
     const float AS_UNIT_MOVER_2_SPEED                       = 3.2;
     const float AS_UNIT_MOVER_2_DUMMY_RADIUS                = 15.0;
     const bool  AS_UNIT_MOVER_2_GROUND_BASED                = true;
+
+    // =-=-=-=-=-=-=-=-=-= Spider                                              =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_UNIT_SPIDER                        = "spider"                              ;
+    const std::string AS_UNIT_SPIDER_NAME_DE                = "Spinne"                              ;
+    const std::string AS_UNIT_SPIDER_DESC_DE                = "Einfache Spinne"                     ;
+    const long AS_UNIT_SPIDER_HEALTH                        = 500;
+    const float AS_UNIT_SPIDER_SPEED                        = 1.8;
+    const float AS_UNIT_SPIDER_DUMMY_RADIUS                 = 20.0;
+    const bool  AS_UNIT_SPIDER_GROUND_BASED                 = true;
 
 
 
