@@ -24,9 +24,19 @@ namespace SupDef::BuildAssets {
         AssetBuilder::addInit(asset, AS_COM_TECH_TEST2);
     }
 
+    void buildSpider(AssetManager* am) {
+        auto asset = AssetBuilder::buildMovableUnit(
+            AsData(am, AS_UNIT_SPIDER, AS_UNIT_SPIDER_NAME_DE, AS_UNIT_SPIDER_DESC_DE),
+            AS_UNIT_SPIDER_HEALTH, AS_UNIT_SPIDER_SPEED, AS_UNIT_SPIDER_GROUND_BASED, AS_UNIT_SPIDER_DUMMY_RADIUS
+        );
+        AssetBuilder::addGraphic(asset, "../data/graphics/spider.png", 1000, true, true);
+        AssetBuilder::addAnimation(asset, 2, 46, 46, 2, false, MovementAnimation::ResetAnimationOnStop);
+    }
+
     void buildMovableUnits(AssetManager* am) {
         buildMovableUnitM1(am);
         buildMovableUnitM2(am);
+        buildSpider(am);
     }
 
 }

@@ -5,6 +5,10 @@
 
 namespace SupDef {
 
+    enum class MovementAnimation {
+        AlwaysAnimate, AnimateMovement, ResetAnimationOnStop
+    };
+
     DEFINE_COMPONENT_BEGIN(AnimationComponent, SCF_ANIMATION)
         long currentFrame = 0;
         long totalFrames = 0;
@@ -12,6 +16,7 @@ namespace SupDef {
         int columnCount = 0;
         bool dieAfterAnimation = false;
         int animationSpeed = 2;
+        MovementAnimation movementAnimation = MovementAnimation::AlwaysAnimate;
 
         REFLECT_BEGIN
             REFLECT_FIELD(currentFrame)
@@ -21,6 +26,7 @@ namespace SupDef {
             REFLECT_FIELD(columnCount)
             REFLECT_FIELD(dieAfterAnimation)
             REFLECT_FIELD(animationSpeed)
+            REFLECT_FIELD(movementAnimation)
         REFLECT_END
     DEFINE_COMPONENT_END
 

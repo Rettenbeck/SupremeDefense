@@ -41,7 +41,7 @@ namespace SupDef {
         }
 
         sf::Sprite sprite(*texture);
-        handleAnimation(entity, sprite);
+        handleAnimation(entity, sprite, pos);
         auto bounds = sprite.getLocalBounds();
         sprite.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
         sprite.setPosition(sf::Vector2f(x, y));
@@ -49,7 +49,7 @@ namespace SupDef {
         window->draw(sprite);
     }
 
-    void RendererBasic::handleAnimation(Entity* entity, sf::Sprite& sprite) {
+    void RendererBasic::handleAnimation(Entity* entity, sf::Sprite& sprite, PositionComponent* pos) {
         auto ani = entity->getComponent<AnimationComponent>();
         if (!ani) return;
 
@@ -58,7 +58,22 @@ namespace SupDef {
         int cy = (frame / ani->columnCount) * ani->height;
         sprite.setTextureRect(sf::IntRect(sf::Vector2i(cx, cy), sf::Vector2i(ani->width, ani->height)));
 
-        ani->currentFrame++;
+        bool resting = (pos->ox == pos->x && pos->oy == pos->y);
+        switch (ani->movementAnimation) {
+            case MovementAnimation::AlwaysAnimate:
+                ani->currentFrame++;
+                break;
+            case MovementAnimation::AnimateMovement:
+                if (!resting) ani->currentFrame++;
+                break;
+            case MovementAnimation::ResetAnimationOnStop:
+                if (resting) ani->currentFrame = 0;
+                else ani->currentFrame++;
+                break;
+            default:
+                break;
+        }
+
         if (ani->currentFrame / ani->animationSpeed >= ani->totalFrames) {
             ani->currentFrame = 0;
             if (ani->dieAfterAnimation) {
