@@ -122,11 +122,22 @@ namespace SupDef {
             colComp->isInfluence = isInfluence;
         }
 
-        static void addGraphic(Entity* asset, std::string filepath, long zBuffer = 1000, bool drawCentered = true) {
+        static void addAnimation(Entity* asset, long totalFrames, int width, int height, int columnCount, bool dieAfterAnimation = false) {
+            RETRIEVE_COMP(aniComp, AnimationComponent)
+            aniComp->currentFrame = 0;
+            aniComp->totalFrames = totalFrames;
+            aniComp->width = width;
+            aniComp->height = height;
+            aniComp->columnCount = columnCount;
+            aniComp->dieAfterAnimation = dieAfterAnimation;
+        }
+
+        static void addGraphic(Entity* asset, std::string filepath, long zBuffer = 1000, bool drawCentered = true, bool rotate = false) {
             RETRIEVE_COMP(graphicComp, GraphicComponent)
             graphicComp->filepath = filepath;
             graphicComp->zBuffer = zBuffer;
             graphicComp->drawCentered = drawCentered;
+            graphicComp->rotate = rotate;
         }
 
         static void addWorldPlayer(Entity* asset, int player, int team) {

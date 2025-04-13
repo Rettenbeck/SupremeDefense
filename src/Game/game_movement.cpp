@@ -69,6 +69,7 @@ namespace SupDef {
         auto collisionComp = std::get<3>(comp);
         assert(tilesComp); assert(positionComp); assert(movementComp); assert(collisionComp);
 
+        positionComp->storeOldPosition();
         if (movementComp->movementMode == MovementMode::DirectedMotion) {
             updatePositionDirected(deltaTime, tilesComp, comp);
             return;

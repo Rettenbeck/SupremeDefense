@@ -89,7 +89,8 @@ namespace SupDef {
 
             void drawSprites(EntityManager* entityManager);
             void drawSprite(Entity* entity, PositionComponent* pos, GraphicComponent* gra);
-            void drawSprite(PositionComponent* pos, CollisionComponent* col, GraphicComponent* gra);
+            void handleAnimation(Entity* entity, sf::Sprite& sprite);
+            void handleRotation(Entity* entity, sf::Sprite& sprite, PositionComponent* pos);
             sf::Texture* getTexture(GraphicComponent* graphic);
             sf::Texture* getTexture(const std::string& filename);
             
