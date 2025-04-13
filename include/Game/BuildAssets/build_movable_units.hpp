@@ -12,6 +12,7 @@ namespace SupDef::BuildAssets {
         );
         asset->addComponent<InfluenceableComponent>();
         AssetBuilder::addGraphic(asset, "../data/graphics/mover1.png", 1000, true, true);
+        AssetBuilder::addAnimation(asset, 15, 32, 32, 4);
     }
 
     void buildMovableUnitM2(AssetManager* am) {

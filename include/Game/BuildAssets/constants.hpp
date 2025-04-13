@@ -140,7 +140,7 @@ namespace SupDef {
     const std::string AS_UNIT_MOVER_1_NAME_DE               = "Mover One"                           ;
     const std::string AS_UNIT_MOVER_1_DESC_DE               = "Einfache Einheit zum Testen"         ;
     const long AS_UNIT_MOVER_1_HEALTH                       = 300;
-    const float AS_UNIT_MOVER_1_SPEED                       = 8.0;
+    const float AS_UNIT_MOVER_1_SPEED                       = 3.0;
     const float AS_UNIT_MOVER_1_DUMMY_RADIUS                = 12.0;
     const bool  AS_UNIT_MOVER_1_GROUND_BASED                = true;
 

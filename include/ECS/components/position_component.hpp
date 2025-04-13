@@ -10,6 +10,7 @@ namespace SupDef {
         float ox = 0.0f, oy = 0.0f;
         float xRel = 0.0f, yRel = 0.0f;
         bool followParent = false;
+        float lastAngle = -1.0f;
 
         PositionComponent(bool followParent) : followParent(followParent) { addToRegistry(); }
         PositionComponent(float x_, float y_) : x(x_), y(y_) { addToRegistry(); }
@@ -20,9 +21,8 @@ namespace SupDef {
             auto dx = x - ox; auto dy = y - oy;
             if (dx == 0.0 && dy == 0.0) return -1.0;
             double angle = std::atan2(dy, dx);
-            if (angle < 0) angle += 2 * M_PI;
-            double adjusted = std::fmod((2 * M_PI + (M_PI / 2) - angle), 2 * M_PI);
-            return adjusted;
+            lastAngle = angle;
+            return angle;
         }
 
         REFLECT_BEGIN

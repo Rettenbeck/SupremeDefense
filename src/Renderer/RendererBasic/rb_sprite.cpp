@@ -28,20 +28,24 @@ namespace SupDef {
         if (!texture) return;
 
         auto col = entity->getComponent<CollisionComponent>();
+        auto map = entity->getComponent<MapComponent>();
         float x = pos->x;
         float y = pos->y;
-        if (gra->drawCentered) {
-            if (col) {
-                auto center = col->getCenter(pos->x, pos->y);
-                x = center.x - texture->getSize().x / 2;
-                y = center.y - texture->getSize().y / 2;
-            }
+        if (col) {
+            auto center = col->getCenter(pos->x, pos->y);
+            x = center.x;
+            y = center.y;
+        } else if (map) {
+            x += map->width  / 2;
+            y += map->height / 2;
         }
 
         sf::Sprite sprite(*texture);
-        sprite.setPosition(sf::Vector2f(x, y));
         handleAnimation(entity, sprite);
-        if (gra->rotate) handleRotation(entity, sprite, pos);
+        auto bounds = sprite.getLocalBounds();
+        sprite.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
+        sprite.setPosition(sf::Vector2f(x, y));
+        if (gra->rotate) handleRotation(entity, sprite, pos, gra->drawCentered);
         window->draw(sprite);
     }
 
@@ -64,16 +68,17 @@ namespace SupDef {
         }
     }
 
-    void RendererBasic::handleRotation(Entity* entity, sf::Sprite& sprite, PositionComponent* pos) {
+    void RendererBasic::handleRotation(Entity* entity, sf::Sprite& sprite, PositionComponent* pos, bool centered) {
         auto mov = entity->getComponent<MovementComponent>();
         if (!mov) return;
         
         auto radians = pos->getAngleOfVelocity();
-        if (radians == -1.0) return;
+        if (radians == -1.0) {
+            radians = pos->lastAngle;
+            if (radians == -1.0) return;
+        }
 
         auto angle = sf::radians(radians);
-        auto bounds = sprite.getLocalBounds();
-        sprite.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
         sprite.setRotation(angle);
     }
 
