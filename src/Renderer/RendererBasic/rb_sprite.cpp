@@ -23,27 +23,63 @@ namespace SupDef {
     }
 
     void RendererBasic::drawSprite(Entity* entity, PositionComponent* pos, GraphicComponent* gra) {
-        assert(entity);
-        auto col = entity->getComponent<CollisionComponent>();
-        drawSprite(pos, col, gra);
-    }
-
-    void RendererBasic::drawSprite(PositionComponent* pos, CollisionComponent* col, GraphicComponent* gra) {
-        assert(pos); assert(gra);
-        float x = pos->x;
-        float y = pos->y;
+        assert(entity); assert(pos); assert(gra);
         auto texture = getTexture(gra);
         if (!texture) return;
-        if (gra->drawCentered) {
-            if (col) {
-                auto center = col->getCenter(pos->x, pos->y);
-                x = center.x - texture->getSize().x / 2;
-                y = center.y - texture->getSize().y / 2;
+
+        auto col = entity->getComponent<CollisionComponent>();
+        auto map = entity->getComponent<MapComponent>();
+        float x = pos->x;
+        float y = pos->y;
+        if (col) {
+            auto center = col->getCenter(pos->x, pos->y);
+            x = center.x;
+            y = center.y;
+        } else if (map) {
+            x += map->width  / 2;
+            y += map->height / 2;
+        }
+
+        sf::Sprite sprite(*texture);
+        handleAnimation(entity, sprite);
+        auto bounds = sprite.getLocalBounds();
+        sprite.setOrigin(sf::Vector2f(bounds.size.x / 2.f, bounds.size.y / 2.f));
+        sprite.setPosition(sf::Vector2f(x, y));
+        if (gra->rotate) handleRotation(entity, sprite, pos, gra->drawCentered);
+        window->draw(sprite);
+    }
+
+    void RendererBasic::handleAnimation(Entity* entity, sf::Sprite& sprite) {
+        auto ani = entity->getComponent<AnimationComponent>();
+        if (!ani) return;
+
+        int frame = ani->currentFrame / ani->animationSpeed;
+        int cx = (frame % ani->columnCount) * ani->width ;
+        int cy = (frame / ani->columnCount) * ani->height;
+        sprite.setTextureRect(sf::IntRect(sf::Vector2i(cx, cy), sf::Vector2i(ani->width, ani->height)));
+
+        ani->currentFrame++;
+        if (ani->currentFrame / ani->animationSpeed >= ani->totalFrames) {
+            ani->currentFrame = 0;
+            if (ani->dieAfterAnimation) {
+                assert(globalDispatcher);
+                globalDispatcher->queueEvent<DieAfterAnimationEvent>(entity->id);
             }
         }
-        sf::Sprite sprite(*texture);
-        sprite.setPosition(sf::Vector2f(x, y));
-        window->draw(sprite);
+    }
+
+    void RendererBasic::handleRotation(Entity* entity, sf::Sprite& sprite, PositionComponent* pos, bool centered) {
+        auto mov = entity->getComponent<MovementComponent>();
+        if (!mov) return;
+        
+        auto radians = pos->getAngleOfVelocity();
+        if (radians == -1.0) {
+            radians = pos->lastAngle;
+            if (radians == -1.0) return;
+        }
+
+        auto angle = sf::radians(radians);
+        sprite.setRotation(angle);
     }
 
     sf::Texture* RendererBasic::getTexture(GraphicComponent* graphic) {

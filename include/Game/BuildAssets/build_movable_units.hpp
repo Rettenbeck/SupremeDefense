@@ -11,6 +11,8 @@ namespace SupDef::BuildAssets {
             AS_UNIT_MOVER_1_HEALTH, AS_UNIT_MOVER_1_SPEED, AS_UNIT_MOVER_1_GROUND_BASED, AS_UNIT_MOVER_1_DUMMY_RADIUS
         );
         asset->addComponent<InfluenceableComponent>();
+        AssetBuilder::addGraphic(asset, "../data/graphics/mover1.png", 1000, true, true);
+        AssetBuilder::addAnimation(asset, 15, 32, 32, 4);
     }
 
     void buildMovableUnitM2(AssetManager* am) {

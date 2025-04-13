@@ -64,6 +64,11 @@ namespace SupDef {
         Entity* entity;
         UnitSelectedEvent(Entity* entity_) : entity(entity_) {}
     };
+    
+    struct DieAfterAnimationEvent : public Event {
+        EntityID id;
+        DieAfterAnimationEvent(EntityID id) : id(id) {}
+    };
 
     
 

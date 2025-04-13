@@ -21,7 +21,6 @@
 #include <ECS/components/health_component.hpp>
 #include <ECS/components/enemy_spawner_component.hpp>
 #include <ECS/components/enemy_goal_component.hpp>
-#include <ECS/components/graphic_component.hpp>
 
 #include <ECS/asset_components/text_component.hpp>
 #include <ECS/asset_components/command_component.hpp>
@@ -30,7 +29,6 @@
 #include <ECS/asset_components/requirement_component.hpp>
 #include <ECS/asset_components/resource_def_component.hpp>
 #include <ECS/asset_components/player_spawn_component.hpp>
-// #include <ECS/asset_components/graphic_asset_component.hpp>
 
 #include <ECS/initial_components/init_container_component.hpp>
 #include <ECS/initial_components/init_position_component.hpp>
@@ -40,3 +38,6 @@
 #include <ECS/tech_components/tech_component.hpp>
 #include <ECS/tech_components/active_tech_component.hpp>
 #include <ECS/tech_components/gift_tech_component.hpp>
+
+#include <ECS/frontend_components/graphic_component.hpp>
+#include <ECS/frontend_components/animation_component.hpp>

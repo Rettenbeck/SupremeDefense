@@ -91,7 +91,6 @@ namespace SupDef {
     const std::string SC_HEALTH                             = "health"                              ;
     const std::string SC_ENEMY_SPAWNER                      = "enemy_spawner"                       ;
     const std::string SC_ENEMY_GOAL                         = "enemy_goal"                          ;
-    const std::string SC_GRAPHIC                            = "graphic"                             ;
 
     // Initial Components
     const std::string SCI_INIT_CONTAINER                    = "init_container"                      ;
@@ -109,12 +108,15 @@ namespace SupDef {
     const std::string SCA_BUILD_COMMAND                     = "build_command"                       ;
     const std::string SCA_RESOURCE_DEF                      = "resource_def"                        ;
     const std::string SCA_PLAYER_SPAWN                      = "player_spawn"                        ;
-    const std::string SCA_GRAPHIC_ASSET                     = "graphic_asset"                       ;
 
     // Tech Components
     const std::string SCT_TECH                              = "tech"                                ;
     const std::string SCT_ACTIVE_TECH                       = "active_tech"                         ;
     const std::string SCT_GIFT_TECH                         = "gift_tech"                           ;
+
+    // Frontend Components
+    const std::string SCF_GRAPHIC                           = "graphic"                             ;
+    const std::string SCF_ANIMATION                         = "animation"                           ;
 
     // Attributes
     const std::string S_IS_UNIQUE                           = "unique"                              ;
