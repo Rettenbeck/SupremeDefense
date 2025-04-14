@@ -41,6 +41,7 @@ namespace SupDef {
     const CollisionGroup CG_INFLUENCE                       = "cg_influence"                        ;
     const CollisionGroup CG_WEAPON                          = "cg_weapon"                           ;
     const CollisionGroup CG_PROJECTILE                      = "cg_projectile"                       ;
+    const CollisionGroup CG_ENEMY_GOAL                      = "cg_enemy_goal"                       ;
 
     const std::string DEFAULT_FILENAME_SAVEGAME             = "game_save.txt"                       ;
 

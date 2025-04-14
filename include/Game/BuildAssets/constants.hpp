@@ -10,6 +10,11 @@ namespace SupDef {
     const int DEFAULT_MAP_WIDTH  = 640;
     const int DEFAULT_MAP_HEIGHT = 480;
 
+    struct WaveDataSingle {
+        long waveNumber, frameCount; float x, y; AssetID enemyID;
+    };
+    using WaveData = std::vector<WaveDataSingle>;
+
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -42,8 +47,8 @@ namespace SupDef {
     };
 
     VF2s AS_MAP_WINTER_MAUL_ENEMY_GOALS = {
-        { 250.0f,  150.0f},
-        { 450.0f,  150.0f}
+        { 450.0f,  150.0f},
+        { 750.0f,  150.0f}
     };
 
     VF2s AS_MAP_WINTER_MAUL_WINTER_WALLS = {
@@ -236,5 +241,34 @@ namespace SupDef {
     const bool AS_PROJECTILE_BASIC_HOMER_HOMING             = true;
     const float AS_PROJECTILE_BASIC_HOMER_RADIUS            = 4.0;
     const float AS_PROJECTILE_BASIC_HOMER_SPEED             = 10.0;
+
+
+
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+    // =-=-=-=-=-=-=-=-=-=-=-=-= Enemy Waves                             =-=-=-=-=-=-=-=-=-=-=-=-= //
+    
+    // =-=-=-=-=-=-=-=-=-= Wave 1                                              =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WAVES_SPIDER1                      = "waves_spider1"                       ;
+    WaveData AS_WAVES_SPIDER1_DATA = {
+        {1, 100, 0, 0, AS_UNIT_SPIDER},
+        {1, 200, 0, 0, AS_UNIT_SPIDER},
+        {1, 300, 0, 0, AS_UNIT_SPIDER},
+        {1, 400, 0, 0, AS_UNIT_SPIDER},
+        {1, 500, 0, 0, AS_UNIT_SPIDER},
+        {1, 600, 0, 0, AS_UNIT_SPIDER}
+    };
+    
+    // =-=-=-=-=-=-=-=-=-= Wave 2                                              =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WAVES_SPIDER2                      = "waves_spider2"                       ;
+    WaveData AS_WAVES_SPIDER2_DATA = {
+        {1, 100,  0, 10, AS_UNIT_SPIDER},
+        {1, 160,  0, 20, AS_UNIT_SPIDER},
+        {1, 220,  0,  0, AS_UNIT_SPIDER},
+        {1, 280, 10,  5, AS_UNIT_SPIDER},
+        {1, 440, 20,  0, AS_UNIT_SPIDER},
+        {1, 550,  0,  5, AS_UNIT_SPIDER}
+    };
+    
+
 
 }

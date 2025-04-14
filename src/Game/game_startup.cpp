@@ -121,6 +121,8 @@ namespace SupDef {
 
                         auto goal = entityManager->createEntity(mapEntity->id);
                         goal->addComponent<PositionComponent>();
+                        goal->addComponent<CollisionComponent>(8.0f);
+                        goal->addComponent<ImmovableComponent>(true, false, true, false);
                         setNewCenteredPosition(goal, x, y);
                         auto goalComp = goal->addComponent<EnemyGoalComponent>();
                         if (playerIndex1 != 0) goalComp->playerID = playerID;
@@ -160,6 +162,8 @@ namespace SupDef {
 
                         auto spawner = entityManager->createEntity(mapEntity->id);
                         spawner->addComponent<PositionComponent>();
+                        spawner->addComponent<CollisionComponent>(16.0f);
+                        spawner->addComponent<ImmovableComponent>(true, false, true, false);
                         setNewCenteredPosition(spawner, x, y);
                         auto spawnerComp = spawner->addComponent<EnemySpawnerComponent>();
                         spawnerComp->goalID = goalID;

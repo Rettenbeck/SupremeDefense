@@ -225,6 +225,15 @@ namespace SupDef {
             return asset;
         }
 
+        static Entity* buildEnemyWaves(AsData data, WaveData waveData) {
+            auto asset = createEmptyAsset(data);
+            auto wavesComp = asset->addComponent<EnemyWavesComponent>();
+            for (auto& single : waveData) {
+                wavesComp->addSegment(single.waveNumber, single.frameCount, single.x, single.y, single.enemyID);
+            }
+            return asset;
+        }
+
         static Entity* buildMovableUnit(AsData data, long health, float speed, bool groundBased, float dummyRadius) {
             auto asset = createEmptyAsset(data);
             asset->addComponent<PositionComponent>(0.0, 0.0);
