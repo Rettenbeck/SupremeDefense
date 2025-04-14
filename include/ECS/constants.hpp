@@ -91,6 +91,7 @@ namespace SupDef {
     const std::string SC_HEALTH                             = "health"                              ;
     const std::string SC_ENEMY_SPAWNER                      = "enemy_spawner"                       ;
     const std::string SC_ENEMY_GOAL                         = "enemy_goal"                          ;
+    const std::string SC_ENEMY_GOAL_SEEKER                  = "enemy_goal_seeker"                   ;
 
     // Initial Components
     const std::string SCI_INIT_CONTAINER                    = "init_container"                      ;

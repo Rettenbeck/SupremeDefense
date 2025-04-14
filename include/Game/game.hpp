@@ -92,6 +92,7 @@ namespace SupDef {
             void determineCollisionsInfluence();
             void determineCollisionsWeapons();
             void determineCollisionsProjectiles();
+            void determineCollisionsEnemyGoals();
 
             template <typename... T>
             void determineCollisionsGeneric(CollisionGroup collisionGroup, bool influenceMode = false);
@@ -189,6 +190,14 @@ namespace SupDef {
             
 
             
+            // ### ENEMIES HANDLING ####################################################### //
+            void processEnemies();
+            void setEnemyMovementTowardsGoal(Entity* entity, MovementComponent* mov, EnemyGoalSeekerComponent *skr);
+            void checkSpawner(Entity* entity, PositionComponent* pos, EnemySpawnerComponent* spw);
+            void spawnEnemy(PositionComponent* pos, WaveSegment* waveSegment, EntityID goalID, EntityID mapID);
+            
+
+            
             // ### REFERENCE METHODS ###################################################### //
             EntityManager*    getEntityManager   () { return entityManager   .get(); }
             AssetManager*     getAssetManager    () { return assetManager    .get(); }
@@ -206,6 +215,7 @@ namespace SupDef {
 
             TechMap& getTechToAssignees() { return techToAssignees; }
             TechMap& getAssigneeToTechs() { return assigneeToTechs; }
+            void setFrameCount(long frameCount_) { frameCount = frameCount_; }
             
 
             
@@ -235,6 +245,8 @@ namespace SupDef {
 
             TechMap techToAssignees;
             TechMap assigneeToTechs;
+
+            long frameCount = 0;
 
     };
     

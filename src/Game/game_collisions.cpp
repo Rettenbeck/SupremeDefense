@@ -10,6 +10,7 @@ namespace SupDef {
         determineCollisionsInfluence();
         determineCollisionsWeapons();
         determineCollisionsProjectiles();
+        determineCollisionsEnemyGoals();
     }
 
     void Game::determineCollisionsInfluence() {
@@ -33,6 +34,14 @@ namespace SupDef {
             std::tuple<ProjectileComponent>{},
             std::tuple<ProjectileHittableComponent>{},
             CG_PROJECTILE
+        );
+    }
+    
+    void Game::determineCollisionsEnemyGoals() {
+        determineCollisionsGeneric(
+            std::tuple<EnemyGoalSeekerComponent>{},
+            std::tuple<EnemyGoalComponent>{},
+            CG_ENEMY_GOAL
         );
     }
     

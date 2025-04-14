@@ -5,17 +5,15 @@
 
 namespace SupDef {
     
-    DEFINE_COMPONENT_BEGIN(EnemySpawnerComponent, SC_ENEMY_SPAWNER)
+    DEFINE_COMPONENT_BEGIN(EnemyGoalSeekerComponent, SC_ENEMY_GOAL_SEEKER)
         EntityID goalID = NO_ENTITY;
-        AssetID wavesID = NO_ASSET;
 
-        EnemySpawnerComponent(AssetID wavesID) : wavesID(wavesID) {
+        EnemyGoalSeekerComponent(EntityID goalID) : goalID(goalID) {
             addToRegistry();
         }
 
         REFLECT_BEGIN
             REFLECT_FIELD(goalID)
-            REFLECT_FIELD(wavesID)
         REFLECT_END
     DEFINE_COMPONENT_END
 

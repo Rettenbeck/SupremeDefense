@@ -10,6 +10,7 @@ namespace SupDef {
         toPrint = "";
         removeResolvedCollisions();
         updateWorlds(deltaTime);
+        processEnemies();
         determineCollisions();
         processWeapons();
         processProjectiles();

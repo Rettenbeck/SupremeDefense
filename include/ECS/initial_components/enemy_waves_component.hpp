@@ -6,8 +6,22 @@
 
 namespace SupDef {
 
-    DEFINE_COMPONENT_BEGIN(EnemyGoalPointComponent, SCI_ENEMY_WAVES)
+    DEFINE_COMPONENT_BEGIN(EnemyWavesComponent, SCI_ENEMY_WAVES)
         Waves waves;
+
+        EnemyWavesComponent(Waves waves_) {
+            waves = std::move(waves_);
+            addToRegistry();
+        }
+
+        void addSegment(long waveNumber, long frameCount, float x, float y, AssetID enemyID) {
+            while (waves.size() < waveNumber) {
+                waves.push_back(std::make_unique<Wave>());
+            }
+            assert(waves.size() >= waveNumber);
+            auto& wave = waves[waveNumber - 1];
+            wave->waveSegments.push_back(std::make_unique<WaveSegment>(enemyID, frameCount, x, y));
+        }
 
         bool isAsset() const override { return true; }
 

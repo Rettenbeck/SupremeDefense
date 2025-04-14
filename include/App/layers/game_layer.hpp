@@ -41,6 +41,7 @@ namespace SupDef {
                 assert(globalDispatcher);
                 game->update(deltaTime);
                 frameCount++;
+                game->setFrameCount(frameCount);
                 assert(game->getThisPlayer());
                 globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
             }
