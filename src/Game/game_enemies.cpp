@@ -62,6 +62,7 @@ namespace SupDef {
         auto seekerComp = enemy->retrieveComponent<EnemyGoalSeekerComponent>();
         seekerComp->goalID = goalID;
         setNewCenteredPosition(enemy, x, y);
+        setInitialOwner(enemy, enemyPlayer);
     }
 
 }

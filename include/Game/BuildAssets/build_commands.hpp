@@ -47,10 +47,24 @@ namespace SupDef::BuildAssets {
         AssetBuilder::addRequiredResource(asset, AS_RES_WOOD, 35);
     }
 
+    void buildCommandArcherTower(AssetManager* am) {
+        auto techComponent = std::make_unique<TechComponent>();
+        techComponent->applyToOwner = true;
+        techComponent->affectsAll = true;
+
+        auto asset = AssetBuilder::buildCommand(
+            AsData(am, AS_COM_BUILD_ARCHER_TOWER, AS_COM_BUILD_ARCHER_TOWER_NAME_DE, ""),
+            AS_COM_TECH_BUILD_ARCHER_TOWER, TechData(techComponent.get())
+        );
+        asset->addComponent<BuildCommandComponent>(AS_UNIT_ARCHER_TOWER);
+        AssetBuilder::addRequiredResource(asset, AS_RES_GOLD, 15);
+    }
+
     void buildCommands(AssetManager* am) {
         buildCommandMove(am);
         buildCommandTest1(am);
         buildCommandTest2(am);
+        buildCommandArcherTower(am);
     }
 
 }

@@ -22,9 +22,18 @@ namespace SupDef::BuildAssets {
         );
     }
 
+    void buildWeaponArcher(AssetManager* am) {
+        auto damage = std::make_unique<Damage>(AS_WEAPON_ARCHER_DAMAGE, AS_WEAPON_ARCHER_PIERCE, AS_WEAPON_ARCHER_DTYPE);
+        auto asset = AssetBuilder::buildWeapon(
+            AsData(am, AS_WEAPON_ARCHER, AS_WEAPON_ARCHER_NAME_DE, AS_WEAPON_ARCHER_DESC_DE),
+            AS_PROJECTILE_ARCHER, damage.get(), AS_WEAPON_ARCHER_COOLDOWN, AS_WEAPON_ARCHER_RADIUS
+        );
+    }
+
     void buildWeapons(AssetManager* am) {
         buildWeaponBasic(am);
         buildWeaponBasicHoming(am);
+        buildWeaponArcher(am);
     }
 
 }

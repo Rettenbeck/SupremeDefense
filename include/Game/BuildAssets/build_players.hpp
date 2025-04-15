@@ -26,9 +26,19 @@ namespace SupDef::BuildAssets {
         AssetBuilder::addInit(asset, AS_COM_TECH_MOVE);
     }
 
+    void buildPlayerHuman(AssetManager* am) {
+        auto asset = AssetBuilder::buildPlayer(
+            AsData(am, AS_PLAYER_HUMAN, AS_PLAYER_HUMAN_NAME_DE, AS_PLAYER_HUMAN_DESC_DE),
+            AS_PLAYER_HUMAN_STARTER
+        );
+        AssetBuilder::addResource(asset, AS_RES_GOLD, 450);
+        AssetBuilder::addInit(asset, AS_COM_TECH_MOVE);
+    }
+
     void buildPlayers(AssetManager* am) {
         buildPlayerExample(am);
         buildPlayerExampleNoMove(am);
+        buildPlayerHuman(am);
     }
 
 }
