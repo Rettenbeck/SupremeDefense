@@ -269,10 +269,15 @@ namespace SupDef {
         }
 
         static Entity* buildImmovableUnit(AsData data, bool tilesCheck, bool colCheck, bool occupy, bool impassable,
-                float width, float height) {
-            //
+            float width, float height) {
+        //
             auto asset = buildImmovableUnit(data, tilesCheck, colCheck, occupy, impassable);
             addRectangleShape(asset, width, height);
+            return asset;
+        }
+
+        static Entity* buildImmovableUnit(AsData data, float width, float height) {
+            auto asset = buildImmovableUnit(data, true, false, true, true, width, height);
             return asset;
         }
 

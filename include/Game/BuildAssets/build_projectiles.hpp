@@ -34,9 +34,25 @@ namespace SupDef::BuildAssets {
         );
     }
 
+    void buildProjectileArcher(AssetManager* am) {
+        ProjectileData projectileData(
+            AS_PROJECTILE_ARCHER_MULTIHIT,
+            AS_PROJECTILE_ARCHER_HOMING,
+            AS_PROJECTILE_ARCHER_RADIUS,
+            AS_PROJECTILE_ARCHER_SPEED
+        );
+
+        auto asset = AssetBuilder::buildProjectile(
+            AsData(am, AS_PROJECTILE_ARCHER, AS_PROJECTILE_ARCHER_NAME_DE, ""),
+            projectileData
+        );
+        AssetBuilder::addGraphic(asset, "../data/graphics/arrow.png", 1000, true, true);
+    }
+
     void buildProjectiles(AssetManager* am) {
         buildProjectileBasic(am);
         buildProjectileBasicHoming(am);
+        buildProjectileArcher(am);
     }
 
 }

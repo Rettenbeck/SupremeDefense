@@ -229,6 +229,7 @@ namespace SupDef {
 
         private:
             EntityID thisPlayer = NO_ENTITY;
+            EntityID enemyPlayer = NO_ENTITY;
             PlayerMapExt playerMapExt;
             UEntityManager    entityManager    = nullptr;
             UAssetManager     assetManager     = nullptr;

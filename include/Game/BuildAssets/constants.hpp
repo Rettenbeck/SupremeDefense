@@ -94,6 +94,11 @@ namespace SupDef {
     const std::string AS_PLAYER_EX_NO_MOVE_DESC_DE          = "Spieler (nm)"                        ;
     const std::string AS_PLAYER_EX_NO_MOVE_STARTER          = "imm1"                                ;
 
+    const std::string AS_PLAYER_HUMAN                       = "player_human"                        ;
+    const std::string AS_PLAYER_HUMAN_NAME_DE               = "Menschen"                            ;
+    const std::string AS_PLAYER_HUMAN_DESC_DE               = "Bauen durchschnittliche Türme."      ;
+    const std::string AS_PLAYER_HUMAN_STARTER               = "imm_human_main"                      ;
+
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -134,6 +139,10 @@ namespace SupDef {
     const std::string AS_COM_TEST2_DESC_DE                  = "Einfach was nochmals testen"         ;
     const std::string AS_COM_TECH_TEST2                     = "com_tech_test2"                      ;
     const float AS_COM_TEST2_RADIUS                         = 70.0;
+    
+    const std::string AS_COM_BUILD_ARCHER_TOWER             = "com_build_archer_tower"              ;
+    const std::string AS_COM_BUILD_ARCHER_TOWER_NAME_DE     = "Bogenschützenturm bauen"             ;
+    const std::string AS_COM_TECH_BUILD_ARCHER_TOWER        = "tech_build_archer_tower"              ;
     
 
 
@@ -194,6 +203,34 @@ namespace SupDef {
     const bool AS_UNIT_IMM_2_OCCUPY                         = true;
     const bool AS_UNIT_IMM_2_IMPASSABLE                     = true;
 
+    // =-=-=-=-=-=-=-=-=-= Human main building                                 =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_UNIT_HUMAN_MAIN                    = "imm_human_main"                      ;
+    const std::string AS_UNIT_HUMAN_MAIN_NAME_DE            = "Menschen Hauptgebäude"               ;
+    const std::string AS_UNIT_HUMAN_MAIN_DESC_DE            = "Von hier aus kann man Türme der Menschen bauen.";
+    const float AS_UNIT_HUMAN_MAIN_WIDTH                    = 64.0;
+    const float AS_UNIT_HUMAN_MAIN_HEIGHT                   = 64.0;
+
+    // =-=-=-=-=-=-=-=-=-= Human archer tower                                  =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_UNIT_ARCHER_TOWER                  = "imm_archer_tower"                    ;
+    const std::string AS_UNIT_ARCHER_TOWER_NAME_DE          = "Bogenschützenturm"                   ;
+    const std::string AS_UNIT_ARCHER_TOWER_DESC_DE          = "Einfacher Turm zur Gegnerabwehr."    ;
+    const float AS_UNIT_ARCHER_TOWER_WIDTH                  = 64.0;
+    const float AS_UNIT_ARCHER_TOWER_HEIGHT                 = 64.0;
+
+    // =-=-=-=-=-=-=-=-=-= Human fire tower                                    =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_UNIT_FIRE_TOWER                    = "imm_fire_tower"                      ;
+    const std::string AS_UNIT_FIRE_TOWER_NAME_DE            = "Feuerturm"                           ;
+    const std::string AS_UNIT_FIRE_TOWER_DESC_DE            = "Kann Gegner in Brand setzen."        ;
+    const float AS_UNIT_FIRE_TOWER_WIDTH                    = 64.0;
+    const float AS_UNIT_FIRE_TOWER_HEIGHT                   = 64.0;
+
+    // =-=-=-=-=-=-=-=-=-= Human wizard tower                                  =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_UNIT_WIZ_TOWER                     = "imm_wiz_tower"                       ;
+    const std::string AS_UNIT_WIZ_TOWER_NAME_DE             = "Zaubererturm"                        ;
+    const std::string AS_UNIT_WIZ_TOWER_DESC_DE             = "Verzaubert Gegner."                  ;
+    const float AS_UNIT_WIZ_TOWER_WIDTH                     = 64.0;
+    const float AS_UNIT_WIZ_TOWER_HEIGHT                    = 64.0;
+
 
 
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -218,6 +255,36 @@ namespace SupDef {
     const DamageType AS_WEAPON_BASIC_HOMER_DTYPE            = DamageType::Normal;
     const int AS_WEAPON_BASIC_HOMER_COOLDOWN                = 3600;
     const float AS_WEAPON_BASIC_HOMER_RADIUS                = 130.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Weapon Archer                                       =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WEAPON_ARCHER                      = "weapon_archer"                       ;
+    const std::string AS_WEAPON_ARCHER_NAME_DE              = "Pfeilschuss"                         ;
+    const std::string AS_WEAPON_ARCHER_DESC_DE              = "Simpler Schuss, der durch Gegner schlägt.";
+    const long AS_WEAPON_ARCHER_DAMAGE                      = 12;
+    const long AS_WEAPON_ARCHER_PIERCE                      = 3;
+    const DamageType AS_WEAPON_ARCHER_DTYPE                 = DamageType::Normal;
+    const int AS_WEAPON_ARCHER_COOLDOWN                     = 4500;
+    const float AS_WEAPON_ARCHER_RADIUS                     = 100.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Weapon Fire                                         =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WEAPON_FIRE                        = "weapon_fire"                         ;
+    const std::string AS_WEAPON_FIRE_NAME_DE                = "Feuerschuss"                         ;
+    const std::string AS_WEAPON_FIRE_DESC_DE                = "Verbrennt Gegner."                   ;
+    const long AS_WEAPON_FIRE_DAMAGE                        = 8;
+    const long AS_WEAPON_FIRE_PIERCE                        = 1;
+    const DamageType AS_WEAPON_FIRE_DTYPE                   = DamageType::Fire;
+    const int AS_WEAPON_FIRE_COOLDOWN                       = 5500;
+    const float AS_WEAPON_FIRE_RADIUS                       = 120.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Weapon Fire                                         =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_WEAPON_WIZ                         = "weapon_wiz"                          ;
+    const std::string AS_WEAPON_WIZ_NAME_DE                 = "Zauberschuss"                        ;
+    const std::string AS_WEAPON_WIZ_DESC_DE                 = "Hohe Angriffsgeschwindigkeit."       ;
+    const long AS_WEAPON_WIZ_DAMAGE                         = 9;
+    const long AS_WEAPON_WIZ_PIERCE                         = 1;
+    const DamageType AS_WEAPON_WIZ_DTYPE                    = DamageType::Normal;
+    const int AS_WEAPON_WIZ_COOLDOWN                        = 1300;
+    const float AS_WEAPON_WIZ_RADIUS                        = 140.0;
 
 
 
@@ -241,6 +308,14 @@ namespace SupDef {
     const bool AS_PROJECTILE_BASIC_HOMER_HOMING             = true;
     const float AS_PROJECTILE_BASIC_HOMER_RADIUS            = 4.0;
     const float AS_PROJECTILE_BASIC_HOMER_SPEED             = 10.0;
+    
+    // =-=-=-=-=-=-=-=-=-= Projectile Archer                                   =-=-=-=-=-=-=-=-=-= //
+    const std::string AS_PROJECTILE_ARCHER                  = "proj_archer"                         ;
+    const std::string AS_PROJECTILE_ARCHER_NAME_DE          = "Pfeil"                               ;
+    const int AS_PROJECTILE_ARCHER_MULTIHIT                 = 0;
+    const bool AS_PROJECTILE_ARCHER_HOMING                  = false;
+    const float AS_PROJECTILE_ARCHER_RADIUS                 = 8.0;
+    const float AS_PROJECTILE_ARCHER_SPEED                  = 10.0;
 
 
 
