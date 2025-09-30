@@ -101,6 +101,7 @@ namespace SupDef {
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
             void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
             void drawCooldownOverlay(float x, float y, float width, float height, float perc);
+            void addClickHandling(GuiElement* element);
 
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);

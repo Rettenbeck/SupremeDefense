@@ -38,21 +38,11 @@ namespace SupDef {
                 SUBSCRIBE_BEGIN(globalDispatcher, UpdateAppEvent)
                     changed = true;
                 SUBSCRIBE_END
-                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartNetworkGameAsServerEvent, actions)
-                    startNetworkGameAsServer(typedEvent.port);
-                SUBSCRIBE_ACTION_END
-                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartNetworkGameAsClientEvent, actions)
-                    startNetworkGameAsClient(typedEvent.ip, typedEvent.port);
-                SUBSCRIBE_ACTION_END
-                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, CompleteServerEvent, actions)
-                    completeServer();
-                SUBSCRIBE_ACTION_END
-                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StopNetworkGameEvent, actions)
-                    stopNetworkGame();
-                SUBSCRIBE_ACTION_END
-                SUBSCRIBE_ACTION_BEGIN(globalDispatcher, StartTestGameEvent, actions)
-                    startGame();
-                SUBSCRIBE_ACTION_END
+                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartNetworkGameAsServerEvent, actions, startNetworkGameAsServer(typedEvent.port))
+                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartNetworkGameAsClientEvent, actions, startNetworkGameAsClient(typedEvent.ip, typedEvent.port))
+                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, CompleteServerEvent, actions, completeServer())
+                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StopNetworkGameEvent, actions, stopNetworkGame())
+                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartTestGameEvent, actions, startGame())
             }
 
             ~App() { layers.clear(); }
@@ -105,6 +95,7 @@ namespace SupDef {
                 auto gui     = getLayer<GuiLayer    >();
 
                 Game* gamePtr = nullptr;
+                SocketBackend* socketBackendPtr = nullptr;
                 GuiManager* guiPtr = nullptr;
                 SelectionManager* selPtr = nullptr;
                 
@@ -112,11 +103,13 @@ namespace SupDef {
                     gamePtr = game->getGame();
                     selPtr  = game->getSelectionManager();
                 }
+                if (network) socketBackendPtr = network->getSocketBackend();
                 if (gui) guiPtr = gui->getGuiManager();
 
                 if(gui) {
                     gui->setGame(gamePtr);
                     gui->setSelectionManager(selPtr);
+                    gui->setSocketBackend(socketBackendPtr);
                 }
                 if(render) {
                     render->setGame(gamePtr);
@@ -168,17 +161,19 @@ namespace SupDef {
             }
 
             bool startNetworkGameAsServer(unsigned short port) {
-                assert(globalDispatcher);
-                auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsServer(port);
-                globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
-                return success;
+                // assert(globalDispatcher);
+                // auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsServer(port);
+                // globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
+                // return success;
+                return true;
             }
 
             bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
-                assert(globalDispatcher);
-                auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsClient(ip, port);
-                globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
-                return success;
+                // assert(globalDispatcher);
+                // auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsClient(ip, port);
+                // globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
+                // return success;
+                return true;
             }
 
             void stopNetworkGame() {
@@ -186,7 +181,7 @@ namespace SupDef {
             }
 
             void completeServer() {
-                retrieveLayer<NetworkLayer>()->completeServer();
+                // retrieveLayer<NetworkLayer>()->completeServer();
             }
 
             void startGame(UAssetManager assetManager, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
@@ -201,6 +196,8 @@ namespace SupDef {
                 assert(game);
                 game->setAssetManager(std::move(assetManager));
                 game->startWorld(worldID, playerMapExt, thisPlayer);
+                assert(globalDispatcher);
+                globalDispatcher->dispatch<GotoPageEvent>(PAGE_ID_GAME);
             }
 
             void startGame() {

@@ -55,7 +55,7 @@ namespace SupDef {
                 }
             }
 
-            bool complete() {
+            bool isComplete() {
                 for(auto& [player, data] : playerMap) {
                     if (!data.received) return false;
                 }

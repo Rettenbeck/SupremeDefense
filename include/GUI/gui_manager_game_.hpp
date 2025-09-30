@@ -17,7 +17,9 @@ namespace SupDef {
             GUI_ElementMap elementMap;
         
         public:
-            ~GuiManagerGame() {}
+            ~GuiManagerGame() {
+                //GuiButtonClickedEvent
+            }
         
             void update(float deltaTime) {
                 GuiManager::update(deltaTime);
@@ -25,7 +27,6 @@ namespace SupDef {
                 showResources(0, 0);
                 buildGuiForUnit();
                 if (!info.empty()) add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 1000, 10, info));
-                // elements.push_back(std::make_unique<GuiPanel >(GuiElementStyle::Default, 1200, 10, 150, 50));
             }
 
             void buildGuiForUnit() {
