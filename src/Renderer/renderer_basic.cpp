@@ -58,7 +58,8 @@ namespace SupDef {
         ImGui::SetNextWindowBgAlpha(0.0f);
         ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
         ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize, ImGuiCond_Always);
-        ImGui::Begin("GameOverlay", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMove);
+
+        ImGui::Begin("GameOverlay", nullptr, ImGuiWindowFlags_NoDecoration |ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMove);
         renderGui();
         ImGui::End();
         ImGui::SFML::Render(*(window.get()));

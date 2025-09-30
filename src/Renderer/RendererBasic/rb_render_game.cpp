@@ -159,9 +159,10 @@ namespace SupDef {
     }
 
     void RendererBasic::renderSelectedUnits() {
-        auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
-        if (!guiGame) return;
-        auto sm = guiGame->getSelectionManager();
+        // auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
+        // if (!guiGame) return;
+        assert(gui);
+        auto sm = gui->getSelectionManager();
         assert(sm);
         auto list = sm->getSelectedUnits();
         for (auto id : list) {

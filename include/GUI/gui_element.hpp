@@ -16,6 +16,7 @@ namespace SupDef {
         float x, y, width, height;
         bool clickable = true;
         char ipBuffer[64] = "";
+        bool blocked = false;
 
         GuiElement(GuiElementType type, GuiElementStyle style, float x, float y, float width, float height, std::string text = "")
         : type(type), style(style), x(x), y(y), width(width), height(height), text(std::move(text)) {}

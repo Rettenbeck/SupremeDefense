@@ -21,10 +21,10 @@ namespace SupDef {
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
         ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
 
-        auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
-        if (guiGame) {
-            ss << "Selected units amount: " << guiGame->getSelectionManager()->getSelectedUnits().size() << " [";
-            for (auto id : guiGame->getSelectionManager()->getSelectedUnits()) {
+        // auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
+        if (gui) {
+            ss << "Selected units amount: " << gui->getSelectionManager()->getSelectedUnits().size() << " [";
+            for (auto id : gui->getSelectionManager()->getSelectedUnits()) {
                 ss << id << "  ";
             }
             ss << "]\n";
@@ -66,6 +66,7 @@ namespace SupDef {
                     drawButton(element->style, element->x, element->y, element->width, element->height, element->text);
                     break;
             }
+            addClickHandling(element.get());
         }
         showDebug();
     }
@@ -115,8 +116,21 @@ namespace SupDef {
 
     void RendererBasic::drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text) {
         ImGui::SetCursorPos(ImVec2(x, y));
-        if (ImGui::Button(text.c_str(), ImVec2(width, height))) {
-            std::cout << "Button '" << text << "' clicked!\n";
+        ImGui::Button(text.c_str(), ImVec2(width, height));
+    }
+
+    void RendererBasic::addClickHandling(GuiElement* element) {
+        assert(globalDispatcher);
+        assert(element);
+        if (element->clickable) {
+            auto ptr = static_cast<void*>(element);
+            if (ImGui::IsItemClicked(ImGuiMouseButton_Left)) {
+                globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MLEFT);
+                std::cout << "Button " << ptr << " left clicked!\n";
+            } else if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+                globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MRIGHT);
+                std::cout << "Button " << ptr << " right clicked!\n";
+            }
         }
     }
 

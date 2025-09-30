@@ -76,6 +76,9 @@ namespace SupDef {
                     if (keyEvent->code == sf::Keyboard::Key::M) {
                         globalDispatcher->dispatch<StartTestGameEvent>();
                     }
+                    if (keyEvent->code == sf::Keyboard::Key::O) {
+                        globalDispatcher->dispatch<PrintPagesEvent>();
+                    }
                 }
 
                 if (const auto* keyEvent = event->getIf<sf::Event::KeyReleased>()) {

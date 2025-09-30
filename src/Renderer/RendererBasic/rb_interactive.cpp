@@ -30,34 +30,30 @@ namespace SupDef {
 
     void RendererBasic::onMouseClick(MouseClick button) {
         json j;
-        auto mousePos = getMousePos();
-        if (gui) {
-            auto element = gui->getGuiInSpot(mousePos.x, mousePos.y);
-            if (element) {
-                gui->handleClickOnGui(element, button);
-                return;
-            }
-        }
+        bool coveredByImGui = ImGui::IsAnyItemHovered();
+        // auto coveredByImGui = ImGui::GetIO().WantCaptureMouse;
+        std::cout << "Click consumend by widget? " << (coveredByImGui ? "yes" : "no") << "\n";
+        if (coveredByImGui) return;
 
         switch (commandMode) {
             case RCommandMode::MOVE:
                 if (button == MLEFT) {
                     if (addPositionData(j)) {
                         auto c = game->getCommandTracker(); assert(c);
-                        globalDispatcher->dispatch<TriggerCommandEvent>(c->entityID, c->techID, j);
+                        DISPATCH_GIE(globalDispatcher, TriggerCommandEvent, c->entityID, c->techID, j)
                     }
                 } else if (button == MRIGHT) {
-                    globalDispatcher->dispatch<TriggerCommandEvent>();
+                    DISPATCH_GIE(globalDispatcher, TriggerCommandEvent)
                 }
                 break;
             case RCommandMode::BUILD:
                 if (button == MLEFT) {
                     if (addVirtualEntityData(j)) {
                         auto c = game->getCommandTracker(); assert(c);
-                        globalDispatcher->dispatch<TriggerCommandEvent>(c->entityID, c->techID, j);
+                        DISPATCH_GIE(globalDispatcher, TriggerCommandEvent, c->entityID, c->techID, j)
                     }
                 } else if (button == MRIGHT) {
-                    globalDispatcher->dispatch<TriggerCommandEvent>();
+                    DISPATCH_GIE(globalDispatcher, TriggerCommandEvent)
                 }
                 break;
             case RCommandMode::NONE:
@@ -68,13 +64,9 @@ namespace SupDef {
                     if (entity) id = entity->id;
                     std::cout << "Entity: " << id << "; map: " << mapID << "\n";
                     currentMap = mapID;
-                    globalDispatcher->dispatch<UnitSelectedEvent>(entity);
+                    DISPATCH_GIE(globalDispatcher, UnitSelectedEvent, entity)
                 } else if (button == MRIGHT) {
-                    if (game) {
-                        if (addPositionData(j)) {
-                            gui->handleClickMove(j);
-                        }
-                    }
+                    if (game) if (addPositionData(j)) globalDispatcher->dispatch<GameInteractionMovementEvent>(j);
                 }
                 break;
             default:

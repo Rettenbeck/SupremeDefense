@@ -2,6 +2,7 @@
 
 #include <GUI/gui_elements.hpp>
 #include <Game/game.hpp>
+#include <App/layers/network_layer.hpp>
 
 
 namespace SupDef {
@@ -12,28 +13,33 @@ namespace SupDef {
 
     class GuiManager : public Listener {
         protected:
-            using GuiMemberFunc = void (GuiManager::*)();
-            Game* game = nullptr;
+            using GuiMemberFunc = std::function<void()>;  // Button <-> function map
+
+            // GUI management
             GuiElements elements;
             std::unordered_map<int, GuiMemberFunc> clickableMap;
             std::unordered_map<int, GuiInput*> inputMap;
             unsigned width = 1, height = 1;
             int mouseX = 0, mouseY = 0;
-            std::string info = "";
+
+            SelectionManager* selectionManager = nullptr;
+            bool isGameBlocked = false;
         
         public:
-            virtual ~GuiManager() {}
-        
-            virtual void update(float deltaTime) {
-                info.clear();
-                elements.clear();
-                clickableMap.clear();
-                inputMap.clear();
+            void initialize() {
+                SUBSCRIBE_SIMPLE(globalDispatcher, GuiButtonClickedEvent,
+                    onButtonClick(typedEvent.element, typedEvent.mouseClick));
+                //
+            }
+
+            void update(float deltaTime) {
+                clear();
             }
 
             GuiElement* getGuiInSpot(int x, int y) {
                 for (auto it = elements.rbegin(); it != elements.rend(); it++) {
                     auto el = (*it).get();
+                    if (el->blocked) continue;
                     float x1 = el->x, y1 = el->y, x2 = x1 + el->width, y2 = y1 + el->height;
                     if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
                         return el;
@@ -58,6 +64,14 @@ namespace SupDef {
                 add(std::move(element));
             }
 
+            template<typename T>
+            void addClickable(UGuiElement element) {
+                assert(globalDispatcher);
+                auto callback = [&](){ globalDispatcher->dispatch<T>(); };
+                clickableMap[elements.size()] = callback;
+                add(std::move(element));
+            }
+
             void setInput(int key, std::string value) {
                 assert(inputMap.count(key));
                 inputMap[key]->value = value;
@@ -71,7 +85,7 @@ namespace SupDef {
             bool handleButton(int index) {
                 assert(globalDispatcher);
                 if (!clickableMap.count(index)) return false;
-                (this->*clickableMap[index])();
+                (clickableMap[index])();
                 return true;
             }
 
@@ -84,9 +98,32 @@ namespace SupDef {
                 return true;
             }
 
-            virtual void handleClickOnGui(GuiElement* element, MouseClick button, json data) {}
+            void onButtonClick(void* element, MouseClick mouseClick) {
+                if (mouseClick == MRIGHT) return;
+                if (!element) return;
+                auto guiElement = static_cast<GuiElement*>(element);
+                handleButton(guiElement);
+            }
+
+            void clear() {
+                isGameBlocked = false;
+                info.clear();
+                elements.clear();
+                clickableMap.clear();
+                inputMap.clear();
+            }
+
+            void setElementsUnreactive() {
+                for (auto& element : elements) {
+                    element->blocked = true;
+                }
+            }
+
+            void handleClickOnGui(GuiElement* element, MouseClick button, json data) {
+                if (button == MLEFT) if (handleButton(element)) return;
+            }
         
-            virtual void handleClickOnGui(GuiElement* element, MouseClick button) {
+            void handleClickOnGui(GuiElement* element, MouseClick button) {
                 handleClickOnGui(element, button, json());
             }
         
@@ -96,11 +133,18 @@ namespace SupDef {
 
             void resize(unsigned width_, unsigned height_) {
                 width = width_; height = height_;
-                // std::cout << "Resized to " << width << " & " << height << "\n";
             }
 
             void setMousePos(int x, int y) { mouseX = x; mouseY = y; }
 
+            void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
+            SelectionManager* getSelectionManager() { return selectionManager; }
+
+            unsigned getWidth () { return width ; }
+            unsigned getHeight() { return height; }
+
+            std::string info = "";
+            
     };
 
     using UGuiManager = std::unique_ptr<GuiManager>;

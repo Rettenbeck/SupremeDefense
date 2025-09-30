@@ -4,7 +4,7 @@
 
 
 namespace SupDef {
-        
+    
     class Listener {
         protected:
             SubscriptionTokens tokens;
@@ -34,6 +34,8 @@ namespace SupDef {
             }
 
     };
+
+    using UListener = std::unique_ptr<Listener>;
 
     #define SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
     assert(DISPATCHER); \
@@ -71,5 +73,14 @@ namespace SupDef {
     }); \
     }
 
+    #define SUBSCRIBE_SIMPLE(DISPATCHER, EVENT, FUNC) \
+        SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+            FUNC; \
+        SUBSCRIBE_END
+
+    #define SUBSCRIBE_ACTION_SIMPLE(DISPATCHER, EVENT, ACTIONS, FUNC) \
+        SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
+            FUNC; \
+        SUBSCRIBE_ACTION_END
 
 }

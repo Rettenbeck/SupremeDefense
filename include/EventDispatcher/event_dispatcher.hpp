@@ -55,6 +55,18 @@ namespace SupDef {
                 }
             }
 
+            void dispatch(UEvent e) {
+                const auto key = std::type_index(typeid(*e));
+                auto it = listeners.find(key);
+                if (it != listeners.end()) {
+                    for (const auto& listener : it->second) {
+                        Events tempBatch;
+                        tempBatch.emplace_back(std::move(e));
+                        listener.callback(tempBatch);
+                    }
+                }
+            }
+
             template <typename EventType, typename... Args>
             void queueEvent(Args&&... args) {
                 auto event = std::make_unique<EventType>(std::forward<Args>(args)...);
