@@ -30,4 +30,5 @@ void start_app() {
     app->addLayer(std::move(actionRouter));
     app->addLayer(std::move(guiLayer));
     app->addLayer(std::move(renderLayer));
+    app->addLayer(std::move(networkLayer));
 }

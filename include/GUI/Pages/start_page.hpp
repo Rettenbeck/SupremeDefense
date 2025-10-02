@@ -10,8 +10,8 @@ namespace SupDef {
             StartPage(PageId pageId_) : Page(pageId_) { }
 
             void initialize() override {
-                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonOpenServerEvent, gotoPageOpenServer());
-                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonJoinServerEvent, gotoPageJoinServer());
+                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonOpenServerEvent, gotoPageOpenServer())
+                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonJoinServerEvent, gotoPageJoinServer())
             }
 
             void build() override {

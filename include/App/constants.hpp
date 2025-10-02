@@ -12,6 +12,9 @@ namespace SupDef {
     const int PRIORITY_RENDER   = 60;
     const int PRIORITY_NETWORK  = 70;
 
+    const unsigned short discoveryPortInitial = 43000;
+    const unsigned short connectionPortInitial = 50000;
+
     const std::string DEFAULT_FILENAME_LOG                  = "log.txt"                             ;
     const std::string DEFAULT_FILENAME_SETTINGS             = "settings.txt"                        ;
     const std::string MESSAGE_INIT                          = "------------------"                  ;

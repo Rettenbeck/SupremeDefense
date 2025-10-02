@@ -32,6 +32,10 @@ namespace SupDef {
             }
         
             void onAttach() override {
+                socketBackend->setGlobalDispatcher(globalDispatcher);
+                socketBackend->initialize();
+                socketBackend->start(discoveryPortInitial, connectionPortInitial);
+
                 SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
                     assert(networkPlayerTracker);
                     networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);

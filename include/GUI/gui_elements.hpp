@@ -43,6 +43,32 @@ namespace SupDef {
         : GuiElement(GuiElementType::Table, style, x, y, width, height) {
             clickable = false;
         }
+
+        bool setHead(TableLine head_) {
+            if (!data.empty()) return false;
+            head = head_;
+            return true;
+        }
+
+        void clear() { data.clear(); }
+
+        void appendData(std::vector<std::string> data_) {
+            assert(!head.empty());  // Headerline must be filled
+            TableLine tmp;
+            for(auto& d : data_) {
+                if (tmp.size() >= head.size()) {
+                    data.push_back(tmp);
+                    tmp.clear();
+                }
+                tmp.push_back(d);
+            }
+            if (tmp.size() > 0) data.push_back(tmp);
+        }
+
+        void appendData(std::vector<std::vector<std::string>> data_) {
+            for(auto& line : data_) data.push_back(line);
+        }
+
     };
 
 }

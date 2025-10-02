@@ -169,6 +169,26 @@ namespace SupDef {
 
 
     // #### Network events #########################################################################
+    struct RequestServerListRefreshEvent : public Event { RequestServerListRefreshEvent() {} };
+
+    struct RequestServerListRefreshAnswerEvent : public Event {
+        bool ok;
+        std::string message;
+        RequestServerListRefreshAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
+    };
+
+    // struct RetrievedServerListEvent : public Event {
+    //     RetrievedServerListEvent() {}
+    // };
+
+
+
+
+
+
+
+
+
     struct SetPlayerNameEvent : public Event {
         std::string name;
         SetPlayerNameEvent(std::string name) : name(name) {}

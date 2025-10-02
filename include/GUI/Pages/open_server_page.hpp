@@ -15,10 +15,9 @@ namespace SupDef {
             }
 
             void build() override {
-                assert(guiManager);
-                guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server aufmachen"));
+                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server joinen");
 
-                guiManager->addClickable<ClosePageEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"));
+                addButton<ClosePageEvent>(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück");
             }
 
             bool isBlocking() override { return true; }
