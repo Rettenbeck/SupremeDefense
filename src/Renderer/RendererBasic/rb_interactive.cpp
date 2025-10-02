@@ -66,7 +66,7 @@ namespace SupDef {
                     currentMap = mapID;
                     DISPATCH_GIE(globalDispatcher, UnitSelectedEvent, entity)
                 } else if (button == MRIGHT) {
-                    if (game) if (addPositionData(j)) globalDispatcher->dispatch<GameInteractionMovementEvent>(j);
+                    if (game) if (addPositionData(j)) dispatch<GameInteractionMovementEvent>(j);
                 }
                 break;
             default:

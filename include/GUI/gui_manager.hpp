@@ -13,8 +13,6 @@ namespace SupDef {
 
     class GuiManager : public Listener {
         protected:
-
-            // GUI management
             GuiElements elements;
             std::unordered_map<int, GuiMemberFunc> clickableMap;
             std::unordered_map<int, GuiInput*> inputMap;
@@ -26,9 +24,7 @@ namespace SupDef {
         
         public:
             void initialize() {
-                SUBSCRIBE_SIMPLE(globalDispatcher, GuiButtonClickedEvent,
-                    onButtonClick(typedEvent.element, typedEvent.mouseClick));
-                //
+                SUBSCRIBE(GuiButtonClickedEvent)
             }
 
             void update(float deltaTime) {
@@ -76,7 +72,7 @@ namespace SupDef {
                 assert(globalDispatcher);
                 assert(element);
                 auto ptr = element.get();
-                auto callback = [&](){ globalDispatcher->dispatch<T>(); };
+                auto callback = [&](){ dispatch<T>(); };
                 clickableMap[elements.size()] = callback;
                 add(std::move(element));
                 return ptr;
@@ -108,10 +104,10 @@ namespace SupDef {
                 return true;
             }
 
-            void onButtonClick(void* element, MouseClick mouseClick) {
-                if (mouseClick == MRIGHT) return;
-                if (!element) return;
-                auto guiElement = static_cast<GuiElement*>(element);
+            DEFINE_EVENT_CALLBACK(GuiButtonClickedEvent) {
+                if (event.mouseClick == MRIGHT) return;
+                if (!event.element) return;
+                auto guiElement = static_cast<GuiElement*>(event.element);
                 handleButton(guiElement);
             }
 

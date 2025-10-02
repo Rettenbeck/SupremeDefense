@@ -6,7 +6,7 @@
 
 namespace SupDef {
 
-    class Renderer {
+    class Renderer : public Listener {
         public:
 
             Renderer();
@@ -22,7 +22,6 @@ namespace SupDef {
             unsigned width = 1280, height = 720;
             Game* game = nullptr;
             GuiManager* gui = nullptr;
-            EventDispatcher* globalDispatcher = nullptr;
 
             float framecountTotal = 0.0, framecountRenderer = 0.0, framecountGame = 0.0;
 

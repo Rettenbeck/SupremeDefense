@@ -44,8 +44,9 @@ namespace SupDef {
 
     using UListener = std::unique_ptr<Listener>;
 
-    #define DEFINE_EVENT_CALLBACK_BEGIN(EVENT) void on##EVENT(const EVENT& event)
-    #define DEFINE_EVENT_CALLBACK_SHORT_BEGIN(EVENT) void on##EVENT()
+    #define DEFINE_EVENT_CALLBACK(EVENT) void on##EVENT(const EVENT& event)
+    #define DEFINE_EVENT_CALLBACK_IMPL(CLASS, EVENT) void CLASS::on##EVENT(const EVENT& event)
+    // #define DEFINE_EVENT_CALLBACK_SHORT(EVENT) void on##EVENT()
 
     #define SUBSCRIBE2(EVENT, FUNC) \
     subscribe<EVENT>([this](const SupDef::Events& events) { \
@@ -58,36 +59,46 @@ namespace SupDef {
     #define SUBSCRIBE_GET(_1, _2, NAME, ...) NAME
     #define SUBSCRIBE(...) SUBSCRIBE_GET(__VA_ARGS__, SUBSCRIBE2, SUBSCRIBE1)(__VA_ARGS__)
 
-    #define SUBSCRIBE_SHORT2(EVENT, FUNC) \
+    #define SUBSCRIBE_ACTION(EVENT) \
     subscribe<EVENT>([this](const SupDef::Events& events) { \
         for (const auto& event_ : events) {                 \
-            FUNC(); \
+            const auto& event = static_cast<const EVENT&>(*event_); \
+            actions.push_back([&]() { \
+                on##EVENT(event); \
+            }); \
         } \
     });
-    #define SUBSCRIBE_SHORT1(EVENT) SUBSCRIBE_SHORT2(EVENT, on##EVENT)
-    #define SUBSCRIBE_SHORT_GET(_1, _2, NAME, ...) NAME
-    #define SUBSCRIBE_SHORT(...) SUBSCRIBE_SHORT_GET(__VA_ARGS__, SUBSCRIBE_SHORT2, SUBSCRIBE_SHORT1)(__VA_ARGS__)
+
+    // #define SUBSCRIBE_SHORT2(EVENT, FUNC) \
+    // subscribe<EVENT>([this](const SupDef::Events& events) { \
+    //     for (const auto& event_ : events) {                 \
+    //         FUNC(); \
+    //     } \
+    // });
+    // #define SUBSCRIBE_SHORT1(EVENT) SUBSCRIBE_SHORT2(EVENT, on##EVENT)
+    // #define SUBSCRIBE_SHORT_GET(_1, _2, NAME, ...) NAME
+    // #define SUBSCRIBE_SHORT(...) SUBSCRIBE_SHORT_GET(__VA_ARGS__, SUBSCRIBE_SHORT2, SUBSCRIBE_SHORT1)(__VA_ARGS__)
 
 
 
 
-    #define SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
-    assert(DISPATCHER); \
-    DISPATCHER->subscribe<EVENT>([this](const SupDef::Events& events) { \
-        for (const auto& event : events) {                              \
-            const auto& typedEvent = static_cast<const EVENT&>(*event);
+    // #define SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+    // assert(DISPATCHER); \
+    // DISPATCHER->subscribe<EVENT>([this](const SupDef::Events& events) { \
+    //     for (const auto& event : events) {                              \
+    //         const auto& typedEvent = static_cast<const EVENT&>(*event);
     
-    #define SUBSCRIBE_END \
-        } \
-    });
+    // #define SUBSCRIBE_END \
+    //     } \
+    // });
 
-    #define SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
-    SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
-    ACTIONS.push_back([&]() {
+    // #define SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
+    // SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+    // ACTIONS.push_back([&]() {
 
-    #define SUBSCRIBE_ACTION_END \
-    }); \
-    SUBSCRIBE_END
+    // #define SUBSCRIBE_ACTION_END \
+    // }); \
+    // SUBSCRIBE_END
 
 
     #define SUBSCRIBE_HEAD_BEGIN(DISPATCHER, EVENT) \
@@ -107,14 +118,14 @@ namespace SupDef {
     }); \
     }
 
-    #define SUBSCRIBE_SIMPLE(DISPATCHER, EVENT, FUNC) \
-        SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
-            FUNC; \
-        SUBSCRIBE_END
+    // #define SUBSCRIBE_SIMPLE(DISPATCHER, EVENT, FUNC) \
+    //     SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
+    //         FUNC; \
+    //     SUBSCRIBE_END
 
-    #define SUBSCRIBE_ACTION_SIMPLE(DISPATCHER, EVENT, ACTIONS, FUNC) \
-        SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
-            FUNC; \
-        SUBSCRIBE_ACTION_END
+    // #define SUBSCRIBE_ACTION_SIMPLE(DISPATCHER, EVENT, ACTIONS, FUNC) \
+    //     SUBSCRIBE_ACTION_BEGIN(DISPATCHER, EVENT, ACTIONS) \
+    //         FUNC; \
+    //     SUBSCRIBE_ACTION_END
 
 }

@@ -18,10 +18,10 @@ namespace SupDef {
             PageManager() { registerPages(); }
 
             void initialize() {
-                SUBSCRIBE_SIMPLE(globalDispatcher, GotoPageEvent, gotoPage(typedEvent.pageId));
-                SUBSCRIBE_SIMPLE(globalDispatcher, PushPageEvent, pushPage(typedEvent.pageId));
-                SUBSCRIBE_SIMPLE(globalDispatcher, ClosePageEvent, closePage());
-                SUBSCRIBE_SIMPLE(globalDispatcher, PrintPagesEvent, pagesToStr());
+                SUBSCRIBE(GotoPageEvent);
+                SUBSCRIBE(PushPageEvent);
+                SUBSCRIBE(ClosePageEvent);
+                SUBSCRIBE(PrintPagesEvent);
             }
 
             void update(float deltaTime) {
@@ -80,11 +80,6 @@ namespace SupDef {
                 tempPages.clear();
             }
 
-            void gotoPage(PageId pageId) {
-                pages.clear();
-                pushPage(pageId);
-            }
-
             void pushPage(PageId pageId) {
                 auto newPage = Page::createPage(pageId);
                 assert(newPage);
@@ -93,12 +88,21 @@ namespace SupDef {
                 pages.push_back(std::move(newPage));
             }
 
-            void closePage() {
+            DEFINE_EVENT_CALLBACK(GotoPageEvent) {
+                pages.clear();
+                pushPage(event.pageId);
+            }
+
+            DEFINE_EVENT_CALLBACK(PushPageEvent) {
+                pushPage(event.pageId);
+            }
+
+            DEFINE_EVENT_CALLBACK(ClosePageEvent) {
                 if (pages.empty()) return;
                 pages.pop_back();
             }
 
-            void pagesToStr() {
+            DEFINE_EVENT_CALLBACK(PrintPagesEvent) {
                 std::stringstream ss;
                 ss << "Pages total: " << pages.size() << "\n";
                 for (int i = 0; i < pages.size(); i++) {

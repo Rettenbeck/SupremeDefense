@@ -603,7 +603,7 @@ namespace SupDef {
                 //
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerListRefreshEvent) {
+            DEFINE_EVENT_CALLBACK(RequestServerListRefreshEvent) {
                 auto result = requestDiscovery();
                 dispatch<RequestServerListRefreshAnswerEvent>(result.ok, result.error);
             }

@@ -23,7 +23,7 @@ namespace SupDef {
 
                 auto func = [&]() {
                     std::cout << "Button Refresh pushed\n";
-                    globalDispatcher->dispatch<RequestServerListRefreshEvent>();
+                    dispatch<RequestServerListRefreshEvent>();
                 };
 
                 addButtonCB(func, GuiElementStyle::Default, 20, 160, 160, 28, "Refresh");
@@ -36,7 +36,7 @@ namespace SupDef {
                 ptr_table->appendData(data);
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerListRefreshAnswerEvent) {
+            DEFINE_EVENT_CALLBACK(RequestServerListRefreshAnswerEvent) {
                 std::cout << "RequestServerListRefreshAnswerEvent: Ok? " << event.ok << "; message: " << event.message << "\n";
             }
 

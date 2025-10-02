@@ -35,8 +35,7 @@ namespace SupDef {
 
         //font = std::make_unique<sf::Font>();
         //font->loadFromFile("arial.ttf");
-        assert(globalDispatcher);
-        globalDispatcher->dispatch<WindowResizeEvent>(width, height);
+        dispatch<WindowResizeEvent>(width, height);
         subscribeToEvents();
     }
 
@@ -67,7 +66,7 @@ namespace SupDef {
         updateCommand();
 
         window->display();
-        globalDispatcher->dispatch<WindowResizeEvent>(window->getSize().x, window->getSize().y);
+        dispatch<WindowResizeEvent>(window->getSize().x, window->getSize().y);
         return true;
     }
 

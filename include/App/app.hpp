@@ -31,18 +31,13 @@ namespace SupDef {
                 init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
                 init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
                 
-                SUBSCRIBE_BEGIN(globalDispatcher, GameEndEvent)
-                    LOG(Info, "Game ended from renderer")
-                    end = true;
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, UpdateAppEvent)
-                    changed = true;
-                SUBSCRIBE_END
-                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartNetworkGameAsServerEvent, actions, startNetworkGameAsServer(typedEvent.port))
-                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartNetworkGameAsClientEvent, actions, startNetworkGameAsClient(typedEvent.ip, typedEvent.port))
-                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, CompleteServerEvent, actions, completeServer())
-                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StopNetworkGameEvent, actions, stopNetworkGame())
-                SUBSCRIBE_ACTION_SIMPLE(globalDispatcher, StartTestGameEvent, actions, startGame())
+                globalDispatcher->SUBSCRIBE(GameEndEvent)
+                globalDispatcher->SUBSCRIBE(UpdateAppEvent)
+                globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsServerEvent)
+                globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsClientEvent)
+                globalDispatcher->SUBSCRIBE_ACTION(CompleteServerEvent)
+                globalDispatcher->SUBSCRIBE_ACTION(StopNetworkGameEvent)
+                globalDispatcher->SUBSCRIBE_ACTION(StartTestGameEvent)
             }
 
             ~App() { layers.clear(); }
@@ -211,6 +206,35 @@ namespace SupDef {
                 startGame(std::move(am), worldID, playerMapExt, 1);
             }
 
+            DEFINE_EVENT_CALLBACK(GameEndEvent) {
+                LOG(Info, "Game ended")
+                end = true;
+            }
+            
+            DEFINE_EVENT_CALLBACK(UpdateAppEvent) {
+                changed = true;
+            }
+            
+            DEFINE_EVENT_CALLBACK(StartNetworkGameAsServerEvent) {
+                startNetworkGameAsServer(event.port);
+            }
+            
+            DEFINE_EVENT_CALLBACK(StartNetworkGameAsClientEvent) {
+                startNetworkGameAsClient(event.ip, event.port);
+            }
+            
+            DEFINE_EVENT_CALLBACK(CompleteServerEvent) {
+                completeServer();
+            }
+            
+            DEFINE_EVENT_CALLBACK(StopNetworkGameEvent) {
+                stopNetworkGame();
+            }
+            
+            DEFINE_EVENT_CALLBACK(StartTestGameEvent) {
+                startGame();
+            }
+            
             void setFramerate(double fps) {
                 frames_per_second = fps;
                 frame_duration = 1.0 / fps;

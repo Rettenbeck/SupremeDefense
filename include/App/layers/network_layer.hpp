@@ -57,12 +57,12 @@ namespace SupDef {
                 //
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerOpenEvent) {
+            DEFINE_EVENT_CALLBACK(RequestServerOpenEvent) {
                 std::cout << "onRequestServerOpenEvent\n";
             }
 
 
-            DEFINE_EVENT_CALLBACK_BEGIN(RequestOpenServerCloseEvent) {
+            DEFINE_EVENT_CALLBACK(RequestOpenServerCloseEvent) {
                 std::cout << "onRequestOpenServerCloseEvent\n";
             }
 

@@ -171,9 +171,8 @@ namespace SupDef {
                 assert(tech);
                 auto active = tech->getComponent<ActiveTechComponent>();
                 assert(active);
-                assert(globalDispatcher);
                 std::cout << "Command triggered\n";
-                globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, data);
+                dispatch<TriggerCommandEvent>(id, techID, data);
             }
             
             void handleClickMove(json j) {
@@ -197,18 +196,18 @@ namespace SupDef {
                 return !getBlocked();
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(GuiButtonClickedEvent) {
+            DEFINE_EVENT_CALLBACK(GuiButtonClickedEvent) {
                 if (!event.element) return;
                 auto guiElement = static_cast<GuiElement*>(event.element);
                 handleClickOnGui(guiElement, event.mouseClick, json());
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(GameInteractionEvent) {
+            DEFINE_EVENT_CALLBACK(GameInteractionEvent) {
                 if (!isInteractionAllowed()) return;
                 event.call();
             }
 
-            DEFINE_EVENT_CALLBACK_BEGIN(GameInteractionMovementEvent) {
+            DEFINE_EVENT_CALLBACK(GameInteractionMovementEvent) {
                 if (!isInteractionAllowed()) return;
                 handleClickMove(event.j);
             }

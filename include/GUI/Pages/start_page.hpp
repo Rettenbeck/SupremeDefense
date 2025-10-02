@@ -10,8 +10,8 @@ namespace SupDef {
             StartPage(PageId pageId_) : Page(pageId_) { }
 
             void initialize() override {
-                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonOpenServerEvent, gotoPageOpenServer())
-                SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonJoinServerEvent, gotoPageJoinServer())
+                SUBSCRIBE(MenuButtonOpenServerEvent)
+                SUBSCRIBE(MenuButtonJoinServerEvent)
             }
 
             void build() override {
@@ -23,11 +23,12 @@ namespace SupDef {
                 addButton<GameEndEvent>(GuiElementStyle::Default, 10, 220, 160, 28, "Beenden");
             }
 
-            void gotoPageOpenServer() {
+            DEFINE_EVENT_CALLBACK(MenuButtonOpenServerEvent) {
                 pushPage(PAGE_ID_OPEN_SERVER);
             }
 
-            void gotoPageJoinServer() {
+            
+            DEFINE_EVENT_CALLBACK(MenuButtonJoinServerEvent) {
                 pushPage(PAGE_ID_JOIN_SERVER);
             }
 

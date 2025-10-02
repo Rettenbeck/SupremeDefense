@@ -66,7 +66,7 @@ namespace SupDef {
             void trigger(int i);
             void subscribeToEvents();
 
-            void onCommandToRender(const CommandToRenderEvent& event);
+            DEFINE_EVENT_CALLBACK(CommandToRenderEvent);
             void resetCommand();
             void updateCommand();
             void processCommand(Entity* asset, const json &j);

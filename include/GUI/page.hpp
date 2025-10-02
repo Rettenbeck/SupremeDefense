@@ -40,17 +40,17 @@ namespace SupDef {
 
             void gotoPage(PageId pageId) {
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<GotoPageEvent>(pageId);
+                dispatch<GotoPageEvent>(pageId);
             }
 
             void pushPage(PageId pageId) {
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<PushPageEvent>(pageId);
+                dispatch<PushPageEvent>(pageId);
             }
 
             void close() {
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<ClosePageEvent>();
+                dispatch<ClosePageEvent>();
             }
 
             void setOnTop(bool isOnTop_) { isOnTop = isOnTop_; }

@@ -25,7 +25,7 @@ namespace SupDef {
         
             void onAttach() override {
                 if(!renderer) return;
-                renderer->globalDispatcher = globalDispatcher;
+                renderer->setGlobalDispatcher(globalDispatcher);
             }
         
             void onStart() override {
@@ -43,7 +43,7 @@ namespace SupDef {
 
                 if(end) {
                     renderer->end();
-                    globalDispatcher->dispatch<GameEndEvent>();
+                    dispatch<GameEndEvent>();
                 }
             }
 

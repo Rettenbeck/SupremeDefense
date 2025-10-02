@@ -7,7 +7,6 @@
 namespace SupDef {
 
     bool RendererBasic::poll() {
-        assert(globalDispatcher);
         if(!window->isOpen()) { return false; }
         prepareSelectableList();
 
@@ -21,7 +20,7 @@ namespace SupDef {
 
             if(event.has_value()) {
                 if (const auto* resizedEvent = event->getIf<sf::Event::Resized>()) {
-                    globalDispatcher->dispatch<WindowResizeEvent>(resizedEvent->size.x, resizedEvent->size.y);
+                    dispatch<WindowResizeEvent>(resizedEvent->size.x, resizedEvent->size.y);
                 }
 
                 if (const auto* scrollEvent = event->getIf<sf::Event::MouseWheelScrolled>()) {
@@ -65,19 +64,19 @@ namespace SupDef {
                         game->setThisPlayer(otherPlayer);
                     }
                     if (keyEvent->code == sf::Keyboard::Key::Y) {
-                        globalDispatcher->dispatch<StartNetworkGameAsServerEvent>();
+                        dispatch<StartNetworkGameAsServerEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::X) {
-                        globalDispatcher->dispatch<StartNetworkGameAsClientEvent>();
+                        dispatch<StartNetworkGameAsClientEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::C) {
-                        globalDispatcher->dispatch<CompleteServerEvent>();
+                        dispatch<CompleteServerEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::M) {
-                        globalDispatcher->dispatch<StartTestGameEvent>();
+                        dispatch<StartTestGameEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::O) {
-                        globalDispatcher->dispatch<PrintPagesEvent>();
+                        dispatch<PrintPagesEvent>();
                     }
                 }
 

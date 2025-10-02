@@ -47,8 +47,10 @@ namespace SupDef {
             
 
             // ### COMMAND MANAGEMENT ##################################################### //
-            void handleTriggerCommand(const TriggerCommandEvent& event);
-            void handleUpdateCommand(const UpdateCommandEvent& event);
+            DEFINE_EVENT_CALLBACK(TriggerCommandEvent);
+            DEFINE_EVENT_CALLBACK(UpdateCommandEvent);
+            // void onTriggerCommandEvent(const TriggerCommandEvent& event);
+            // void onUpdateCommandEvent(const UpdateCommandEvent& event);
             void handleCompleteCommand(EntityID entityID, EntityID techID, CommandID commandID, json data);
             void handleIncompleteCommand(Entity* command, EntityID entityID, EntityID techID, json j);
             bool isCommandComplete(Entity* command, json j);

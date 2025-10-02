@@ -6,10 +6,10 @@
 
 namespace SupDef {
 
-    void Game::handleTriggerCommand(const TriggerCommandEvent& event) {
+    DEFINE_EVENT_CALLBACK_IMPL(Game, TriggerCommandEvent) {
         if (event.cancel) {
             commandTracker->reset();
-            globalDispatcher->dispatch<CommandToRenderEvent>(NO_COMMAND, NO_ENTITY, NO_ENTITY, json());
+            dispatch<CommandToRenderEvent>(NO_COMMAND, NO_ENTITY, NO_ENTITY, json());
             virtualEntity = nullptr;
             return;
         }
@@ -21,7 +21,7 @@ namespace SupDef {
         auto success = checkRequirements(command->assetID, data, false);
         if (!success) {
             auto j = getFeedbackFromCheck(data, "Requirements not met");
-            globalDispatcher->dispatch<CommandToRenderEvent>(active->commandID, event.entityID, event.techID, j);
+            dispatch<CommandToRenderEvent>(active->commandID, event.entityID, event.techID, j);
             return;
         }
 
@@ -35,7 +35,7 @@ namespace SupDef {
         }
     }
 
-    void Game::handleUpdateCommand(const UpdateCommandEvent& event) {
+    DEFINE_EVENT_CALLBACK_IMPL(Game, UpdateCommandEvent) {
         //
     }
 
@@ -43,9 +43,9 @@ namespace SupDef {
         std::stringstream ss;
         ss << "Command " << commandID << " successful!\n";
         auto j = getFeedbackFromCheck(data);
-        globalDispatcher->dispatch<CommandToRenderEvent>(commandID, entityID, techID, j);
+        dispatch<CommandToRenderEvent>(commandID, entityID, techID, j);
         auto action = std::make_shared<Action>(commandID, entityID, thisPlayer, j);
-        globalDispatcher->dispatch<SupDef::ActionCreatedEvent>(action);
+        dispatch<SupDef::ActionCreatedEvent>(action);
         virtualEntity = nullptr;
     }
 
@@ -54,11 +54,11 @@ namespace SupDef {
         if (buildComp) {
             createVirtualEntityFromAsset(buildComp->toBuild);
             assert(virtualEntity);
-            globalDispatcher->dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
+            dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
         }
         auto moveComp = command->getComponent<MoveCommandComponent>();
         if (moveComp) {
-            globalDispatcher->dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
+            dispatch<CommandToRenderEvent>(command->assetID, entityID, techID, j);
         }
     }
 
