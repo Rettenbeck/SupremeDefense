@@ -60,6 +60,40 @@ namespace SupDef {
             bool getBlocked() { return isBlocked; }
             bool getCovered() { return isCovered; }
 
+            template<typename TypeElement, typename... Args>
+            GuiElement* addElement(Args&&... args) {
+                assert(guiManager);
+                return guiManager->add(std::make_unique<TypeElement>(std::forward<Args>(args)...));
+            }
+
+            template<typename TypeElement, typename TypeEvent, typename... Args>
+            GuiElement* addClickable(Args&&... args) {
+                assert(guiManager);
+                return guiManager->addClickable<TypeEvent>(std::make_unique<TypeElement>(std::forward<Args>(args)...));
+            }
+
+            template<typename TypeElement, typename... Args>
+            GuiElement* addClickableCB(GuiMemberFunc func, Args&&... args) {
+                assert(guiManager);
+                return guiManager->addClickable(std::make_unique<TypeElement>(std::forward<Args>(args)...), func);
+            }
+
+            template<typename TypeEvent, typename... Args>
+            GuiElement* addButton(Args&&... args) {
+                return addClickable<GuiButton, TypeEvent>(std::forward<Args>(args)...);
+            }
+
+            template<typename... Args>
+            GuiElement* addButtonCB(GuiMemberFunc func, Args&&... args) {
+                return addClickableCB<GuiButton>(func, std::forward<Args>(args)...);
+            }
+
+    // #define ADD_ELEMENT(GUI, TYPE, ...) GUI->add(std::make_unique<TYPE>(__VA_ARGS__));
+    // #define ADD_CLICKABLE(GUI, TYPE, EVENT, ...) GUI->addClickable<EVENT>(std::make_unique<TYPE>(__VA_ARGS__));
+    // #define ADD_CB_CLICKABLE(GUI, TYPE, FUNC, ...) GUI->addClickable(std::make_unique<TYPE>(__VA_ARGS__), FUNC);
+    // #define ADD_BUTTON(GUI, EVENT, ...) ADD_CLICKABLE(GUI, GuiButton, EVENT, __VA_ARGS__)
+    // #define ADD_CB_BUTTON(GUI, FUNC, ...) ADD_CB_CLICKABLE(GUI, GuiButton, FUNC, __VA_ARGS__)
+
             void setGuiManager(GuiManager* guiManager_) { guiManager = guiManager_; }
 
             void setGame(Game* game_) { game = game_; }

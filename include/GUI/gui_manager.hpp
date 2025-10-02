@@ -13,7 +13,6 @@ namespace SupDef {
 
     class GuiManager : public Listener {
         protected:
-            using GuiMemberFunc = std::function<void()>;  // Button <-> function map
 
             // GUI management
             GuiElements elements;

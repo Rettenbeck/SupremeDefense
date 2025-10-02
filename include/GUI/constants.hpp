@@ -7,6 +7,7 @@ namespace SupDef {
     
     using PageId = int;
 
+    using GuiMemberFunc = std::function<void()>;  // Button <-> function map
     using TableLine = std::vector<std::string>;
     using TableData = std::vector<TableLine>;
 

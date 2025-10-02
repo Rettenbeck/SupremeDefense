@@ -15,13 +15,12 @@ namespace SupDef {
             }
 
             void build() override {
-                assert(guiManager);
-                guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 10, 10, "Supreme Defense"));
+                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Supreme Defense");
 
-                guiManager->addClickable<MenuButtonOpenServerEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10,  60, 160, 28, "Server aufmachen"));
-                guiManager->addClickable<MenuButtonJoinServerEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10, 100, 160, 28, "Server joinen"));
-                guiManager->addClickable<StartTestGameEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10, 140, 160, 28, "Testspiel starten"));
-                guiManager->addClickable<GameEndEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10, 220, 160, 28, "Beenden"));
+                addButton<MenuButtonOpenServerEvent>(GuiElementStyle::Default, 10,  60, 160, 28, "Server aufmachen");
+                addButton<MenuButtonJoinServerEvent>(GuiElementStyle::Default, 10, 100, 160, 28, "Server joinen");
+                addButton<StartTestGameEvent>(GuiElementStyle::Default, 10, 140, 160, 28, "Testspiel starten");
+                addButton<GameEndEvent>(GuiElementStyle::Default, 10, 220, 160, 28, "Beenden");
             }
 
             void gotoPageOpenServer() {
