@@ -48,28 +48,39 @@ namespace SupDef {
                 return nullptr;
             }
 
-            void add(UGuiElement element) {
+            GuiElement* add(UGuiElement element) {
+                assert(element);
+                auto ptr = element.get();
                 elements.push_back(std::move(element));
+                return ptr;
             }
 
-            void addInput(UGuiElement element, int key) {
+            GuiInput* addInput(UGuiElement element, int key) {
+                assert(element);
                 auto ptr_input = dynamic_cast<GuiInput*>(element.get());
                 assert(ptr_input);
                 inputMap[key] = ptr_input;
                 add(std::move(element));
+                return ptr_input;
             }
 
-            void addClickable(UGuiElement element, GuiMemberFunc func) {
+            GuiElement* addClickable(UGuiElement element, GuiMemberFunc func) {
+                assert(element);
+                auto ptr = element.get();
                 clickableMap[elements.size()] = func;
                 add(std::move(element));
+                return ptr;
             }
 
             template<typename T>
-            void addClickable(UGuiElement element) {
+            GuiElement* addClickable(UGuiElement element) {
                 assert(globalDispatcher);
+                assert(element);
+                auto ptr = element.get();
                 auto callback = [&](){ globalDispatcher->dispatch<T>(); };
                 clickableMap[elements.size()] = callback;
                 add(std::move(element));
+                return ptr;
             }
 
             void setInput(int key, std::string value) {
