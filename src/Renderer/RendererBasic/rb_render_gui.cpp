@@ -120,7 +120,6 @@ namespace SupDef {
     }
 
     void RendererBasic::addClickHandling(GuiElement* element) {
-        assert(globalDispatcher);
         assert(element);
         if (element->clickable) {
             auto ptr = static_cast<void*>(element);

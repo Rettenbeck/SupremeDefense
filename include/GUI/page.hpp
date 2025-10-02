@@ -39,17 +39,14 @@ namespace SupDef {
             PageId getPageId() { return pageId; }
 
             void gotoPage(PageId pageId) {
-                assert(globalDispatcher);
                 dispatch<GotoPageEvent>(pageId);
             }
 
             void pushPage(PageId pageId) {
-                assert(globalDispatcher);
                 dispatch<PushPageEvent>(pageId);
             }
 
             void close() {
-                assert(globalDispatcher);
                 dispatch<ClosePageEvent>();
             }
 

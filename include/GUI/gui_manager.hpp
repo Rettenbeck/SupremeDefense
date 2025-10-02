@@ -69,7 +69,6 @@ namespace SupDef {
 
             template<typename T>
             GuiElement* addClickable(UGuiElement element) {
-                assert(globalDispatcher);
                 assert(element);
                 auto ptr = element.get();
                 auto callback = [&](){ dispatch<T>(); };
@@ -89,7 +88,6 @@ namespace SupDef {
             }
 
             bool handleButton(int index) {
-                assert(globalDispatcher);
                 if (!clickableMap.count(index)) return false;
                 (clickableMap[index])();
                 return true;
