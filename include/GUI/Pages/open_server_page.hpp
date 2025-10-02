@@ -9,9 +9,12 @@ namespace SupDef {
         public:
             OpenServerPage(PageId pageId_) : Page(pageId_) { }
 
+            ~OpenServerPage() {
+                dispatch<RequestOpenServerCloseEvent>();
+            }
+
             void initialize() override {
-                // SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonOpenServer, gotoPageOpenServer);
-                // SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonJoinServer, gotoPageJoinServer);
+                dispatch<RequestServerOpenEvent>();
             }
 
             void build() override {

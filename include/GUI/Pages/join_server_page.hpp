@@ -13,8 +13,7 @@ namespace SupDef {
             JoinServerPage(PageId pageId_) : Page(pageId_) { }
 
             void initialize() override {
-                SUBSCRIBE_SIMPLE(globalDispatcher, RequestServerListRefreshAnswerEvent,
-                    onRequestServerListRefreshAnswerEvent(typedEvent.ok, typedEvent.message));
+                SUBSCRIBE(RequestServerListRefreshAnswerEvent);
             }
 
             void build() override {
@@ -37,8 +36,8 @@ namespace SupDef {
                 ptr_table->appendData(data);
             }
 
-            void onRequestServerListRefreshAnswerEvent(bool ok, std::string message) {
-                std::cout << "RequestServerListRefreshAnswerEvent: Ok? " << ok << "; message: " << message << "\n";
+            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerListRefreshAnswerEvent) {
+                std::cout << "RequestServerListRefreshAnswerEvent: Ok? " << event.ok << "; message: " << event.message << "\n";
             }
 
             bool isBlocking() override { return true; }

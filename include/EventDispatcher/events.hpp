@@ -169,13 +169,46 @@ namespace SupDef {
 
 
     // #### Network events #########################################################################
+
+    /**
+     * @brief Event notifying that the server list is to be refreshed.
+     *
+     * Is dispatched by the JoinServerPage when the corresponding button is pushed and subscribed
+     *   to by the SFMLSocketBackend. Notifies the socket backend that a discovery request is be
+     *   sent out.
+     * @see RequestServerListRefreshAnswerEvent
+     */
     struct RequestServerListRefreshEvent : public Event { RequestServerListRefreshEvent() {} };
 
+    /**
+     * @brief Event notifying that the server list refresh message has been sent.
+     *
+     * Directly confirms that the RequestServerListRefreshEvent has been received and returns
+     *   whether the request was successful. If so, within a short time open servers should
+     *   respond (handled by another event).
+     * @see RequestServerListRefreshEvent
+     */
     struct RequestServerListRefreshAnswerEvent : public Event {
         bool ok;
         std::string message;
         RequestServerListRefreshAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
     };
+
+    /**
+     * @brief Event notifying a local server to be started.
+     *
+     * Is dispatched by the StartPage when the corresponding button is pushed and subscribed to by
+     *   the NetworkLayer. Notifies the network layer that a server is to be opened up.
+     */
+    struct RequestServerOpenEvent : public Event { RequestServerOpenEvent() {} };
+
+    /**
+     * @brief Event notifying the local server to be closed.
+     *
+     * Is dispatched by the OpenServerPage when the page is closed. Notifies that the local server is
+     *   to be closed. Only closes the server when the game is not yet running.
+     */
+    struct RequestOpenServerCloseEvent : public Event { RequestOpenServerCloseEvent() {} };
 
     // struct RetrievedServerListEvent : public Event {
     //     RetrievedServerListEvent() {}
@@ -247,6 +280,4 @@ namespace SupDef {
         StopNetworkGameEvent() {}
     };
 
-
-    
 }

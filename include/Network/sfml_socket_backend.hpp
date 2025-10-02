@@ -27,7 +27,7 @@ namespace SupDef {
             }
 
             void initialize() override {
-                SUBSCRIBE_SIMPLE(globalDispatcher, RequestServerListRefreshEvent, onRequestServerListRefreshEvent())
+                SUBSCRIBE(RequestServerListRefreshEvent)
             }
 
             bool start(unsigned short discoveryPort_, unsigned short connectionPort_) override {
@@ -603,11 +603,9 @@ namespace SupDef {
                 //
             }
 
-            void onRequestServerListRefreshEvent() {
+            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerListRefreshEvent) {
                 auto result = requestDiscovery();
-                assert(globalDispatcher);
-                std::cout << "onRequestServerListRefresh: Ok? " << result.ok << "; message: " << result.error<< "\n";
-                globalDispatcher->dispatch<RequestServerListRefreshAnswerEvent>(result.ok, result.error);
+                dispatch<RequestServerListRefreshAnswerEvent>(result.ok, result.error);
             }
 
         private:

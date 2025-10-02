@@ -126,10 +126,10 @@ namespace SupDef {
             auto ptr = static_cast<void*>(element);
             if (ImGui::IsItemClicked(ImGuiMouseButton_Left)) {
                 globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MLEFT);
-                std::cout << "Button " << ptr << " left clicked!\n";
+                // std::cout << "Button " << ptr << " left clicked!\n";
             } else if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
                 globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MRIGHT);
-                std::cout << "Button " << ptr << " right clicked!\n";
+                // std::cout << "Button " << ptr << " right clicked!\n";
             }
         }
     }

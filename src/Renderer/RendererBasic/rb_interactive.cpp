@@ -32,7 +32,7 @@ namespace SupDef {
         json j;
         bool coveredByImGui = ImGui::IsAnyItemHovered();
         // auto coveredByImGui = ImGui::GetIO().WantCaptureMouse;
-        std::cout << "Click consumend by widget? " << (coveredByImGui ? "yes" : "no") << "\n";
+        // std::cout << "Click consumend by widget? " << (coveredByImGui ? "yes" : "no") << "\n";
         if (coveredByImGui) return;
 
         switch (commandMode) {

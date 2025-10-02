@@ -28,14 +28,48 @@ namespace SupDef {
             }
         
             template <typename EventType>
-            void subscribeGlobal(BatchEventCallback callback) {
+            void subscribe(BatchEventCallback callback) {
+                assert(globalDispatcher);
                 auto token = globalDispatcher->subscribe<EventType>(callback);
                 tokens.push_back(token);
+            }
+
+            template <typename EventType, typename... Args>
+            void dispatch(Args&&... args) {
+                assert(globalDispatcher);
+                globalDispatcher->dispatch<EventType>(std::forward<Args>(args)...);
             }
 
     };
 
     using UListener = std::unique_ptr<Listener>;
+
+    #define DEFINE_EVENT_CALLBACK_BEGIN(EVENT) void on##EVENT(const EVENT& event)
+    #define DEFINE_EVENT_CALLBACK_SHORT_BEGIN(EVENT) void on##EVENT()
+
+    #define SUBSCRIBE2(EVENT, FUNC) \
+    subscribe<EVENT>([this](const SupDef::Events& events) { \
+        for (const auto& event_ : events) {                 \
+            const auto& event = static_cast<const EVENT&>(*event_); \
+            FUNC(event); \
+        } \
+    });
+    #define SUBSCRIBE1(EVENT) SUBSCRIBE2(EVENT, on##EVENT)
+    #define SUBSCRIBE_GET(_1, _2, NAME, ...) NAME
+    #define SUBSCRIBE(...) SUBSCRIBE_GET(__VA_ARGS__, SUBSCRIBE2, SUBSCRIBE1)(__VA_ARGS__)
+
+    #define SUBSCRIBE_SHORT2(EVENT, FUNC) \
+    subscribe<EVENT>([this](const SupDef::Events& events) { \
+        for (const auto& event_ : events) {                 \
+            FUNC(); \
+        } \
+    });
+    #define SUBSCRIBE_SHORT1(EVENT) SUBSCRIBE_SHORT2(EVENT, on##EVENT)
+    #define SUBSCRIBE_SHORT_GET(_1, _2, NAME, ...) NAME
+    #define SUBSCRIBE_SHORT(...) SUBSCRIBE_SHORT_GET(__VA_ARGS__, SUBSCRIBE_SHORT2, SUBSCRIBE_SHORT1)(__VA_ARGS__)
+
+
+
 
     #define SUBSCRIBE_BEGIN(DISPATCHER, EVENT) \
     assert(DISPATCHER); \

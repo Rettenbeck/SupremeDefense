@@ -36,35 +36,39 @@ namespace SupDef {
                 socketBackend->initialize();
                 socketBackend->start(discoveryPortInitial, connectionPortInitial);
 
-                SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
-                    assert(networkPlayerTracker);
-                    networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
-                    hasGameUpdated = true;
-                    gameFrameCount = typedEvent.frameCount;
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
-                    assert(networkPlayerTracker);
-                    networkPlayerTracker->resetPlayerList(typedEvent.playerList);
-                SUBSCRIBE_END
+                SUBSCRIBE(RequestServerOpenEvent)
+                SUBSCRIBE(RequestOpenServerCloseEvent)
+
+                // SUBSCRIBE_SIMPLE(globalDispatcher, RequestServerOpenEvent, onRequestServerOpenEvent(typedEvent.ok, typedEvent.error))
+
+                // SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
+                //     assert(networkPlayerTracker);
+                //     networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
+                //     hasGameUpdated = true;
+                //     gameFrameCount = typedEvent.frameCount;
+                // SUBSCRIBE_END
+                // SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
+                //     assert(networkPlayerTracker);
+                //     networkPlayerTracker->resetPlayerList(typedEvent.playerList);
+                // SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
-                // assert()
-                // switch(status) {
-                //     case NetworkStatus::Initial:
-                //         break;
-                //     case NetworkStatus::Listening:
-                //         checkForClients();
-                //         break;
-                //     case NetworkStatus::Connected:
-                //     case NetworkStatus::Completed:
-                //         send();
-                //         receive();
-                //         break;
-                //     default:
-                //         assert(false);
-                // }
+                //
             }
+
+            DEFINE_EVENT_CALLBACK_BEGIN(RequestServerOpenEvent) {
+                std::cout << "onRequestServerOpenEvent\n";
+            }
+
+
+            DEFINE_EVENT_CALLBACK_BEGIN(RequestOpenServerCloseEvent) {
+                std::cout << "onRequestOpenServerCloseEvent\n";
+            }
+
+            // void onRequestServerOpenEvent(bool ok, std::string message) {
+            //     //
+            // }
 
             SocketBackend* getSocketBackend() { return socketBackend.get(); }
 
