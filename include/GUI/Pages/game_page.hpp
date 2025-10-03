@@ -15,12 +15,12 @@ namespace SupDef {
             GUI_ElementMap elementMap;
 
         public:
-            GamePage(PageId pageId_) : Page(pageId_) { }
+            GamePage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             void initialize() override {
-                SUBSCRIBE_SIMPLE(globalDispatcher, GuiButtonClickedEvent, onButtonClick(typedEvent.element, typedEvent.mouseClick));
-                SUBSCRIBE_SIMPLE(globalDispatcher, GameInteractionEvent, onGameInteraction(typedEvent.call));
-                SUBSCRIBE_SIMPLE(globalDispatcher, GameInteractionMovementEvent, onGameMovementInteraction(typedEvent.j));
+                SUBSCRIBE(GuiButtonClickedEvent);
+                SUBSCRIBE(GameInteractionEvent);
+                SUBSCRIBE(GameInteractionMovementEvent);
             }
 
             void build() override {
@@ -171,12 +171,11 @@ namespace SupDef {
                 assert(tech);
                 auto active = tech->getComponent<ActiveTechComponent>();
                 assert(active);
-                assert(globalDispatcher);
                 std::cout << "Command triggered\n";
-                globalDispatcher->dispatch<TriggerCommandEvent>(id, techID, data);
+                dispatch<TriggerCommandEvent>(id, techID, data);
             }
             
-            void handleClickMove(json& j) {
+            void handleClickMove(json j) {
                 for(auto& [element, tuple] : elementMap) {
                     auto techID = std::get<1>(tuple);
                     auto tech = game->getEntityManager()->getEntity(techID);
@@ -197,20 +196,20 @@ namespace SupDef {
                 return !getBlocked();
             }
 
-            void onGameInteraction(std::function<void()> call) {
-                if (!isInteractionAllowed()) return;
-                call();
+            DEFINE_EVENT_CALLBACK(GuiButtonClickedEvent) {
+                if (!event.element) return;
+                auto guiElement = static_cast<GuiElement*>(event.element);
+                handleClickOnGui(guiElement, event.mouseClick, json());
             }
 
-            void onGameMovementInteraction(json j) {
+            DEFINE_EVENT_CALLBACK(GameInteractionEvent) {
                 if (!isInteractionAllowed()) return;
-                handleClickMove(j);
+                event.call();
             }
 
-            void onButtonClick(void* element, MouseClick mouseClick) {
-                if (!element) return;
-                auto guiElement = static_cast<GuiElement*>(element);
-                handleClickOnGui(guiElement, mouseClick, json());
+            DEFINE_EVENT_CALLBACK(GameInteractionMovementEvent) {
+                if (!isInteractionAllowed()) return;
+                handleClickMove(event.j);
             }
 
             bool isBlocking() override { return true; }

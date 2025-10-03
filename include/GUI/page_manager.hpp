@@ -9,6 +9,7 @@ namespace SupDef {
         private:
             GuiManager* guiManager = nullptr;
             Pages pages, tempPages;
+            PageId nextPageId = 1;
         
             Game* game = nullptr;
             SelectionManager* selectionManager = nullptr;
@@ -18,10 +19,10 @@ namespace SupDef {
             PageManager() { registerPages(); }
 
             void initialize() {
-                SUBSCRIBE_SIMPLE(globalDispatcher, GotoPageEvent, gotoPage(typedEvent.pageId));
-                SUBSCRIBE_SIMPLE(globalDispatcher, PushPageEvent, pushPage(typedEvent.pageId));
-                SUBSCRIBE_SIMPLE(globalDispatcher, ClosePageEvent, closePage());
-                SUBSCRIBE_SIMPLE(globalDispatcher, PrintPagesEvent, pagesToStr());
+                SUBSCRIBE(GotoPageEvent);
+                SUBSCRIBE(PushPageEvent);
+                SUBSCRIBE(ClosePageEvent);
+                SUBSCRIBE(PrintPagesEvent);
             }
 
             void update(float deltaTime) {
@@ -67,7 +68,7 @@ namespace SupDef {
             }
 
             void createInitialPage() {
-                pushPage(PAGE_ID_START);
+                pushPage(PAGE_TYPE_ID_START);
             }
 
             void transferPages() {
@@ -80,29 +81,42 @@ namespace SupDef {
                 tempPages.clear();
             }
 
-            void gotoPage(PageId pageId) {
-                pages.clear();
-                pushPage(pageId);
-            }
-
-            void pushPage(PageId pageId) {
-                auto newPage = Page::createPage(pageId);
+            void pushPage(PageTypeId pageTypeId) {
+                auto id = nextPageId++;
+                auto newPage = Page::createPage(pageTypeId);
                 assert(newPage);
+                newPage->setPageId(id);
                 newPage->setGlobalDispatcher(globalDispatcher);
                 newPage->initialize();
                 pages.push_back(std::move(newPage));
             }
 
-            void closePage() {
+            DEFINE_EVENT_CALLBACK(GotoPageEvent) {
+                pages.clear();
+                pushPage(event.pageTypeId);
+            }
+
+            DEFINE_EVENT_CALLBACK(PushPageEvent) {
+                pushPage(event.pageTypeId);
+            }
+
+            DEFINE_EVENT_CALLBACK(ClosePageEvent) {
                 if (pages.empty()) return;
+                auto id = event.pageId;
+                pages.erase(
+                    std::remove_if(pages.begin(), pages.end(),
+                                [id](const UPage& page) {
+                                    return page->getPageId() == id;
+                                }),
+                    pages.end());
                 pages.pop_back();
             }
 
-            void pagesToStr() {
+            DEFINE_EVENT_CALLBACK(PrintPagesEvent) {
                 std::stringstream ss;
                 ss << "Pages total: " << pages.size() << "\n";
                 for (int i = 0; i < pages.size(); i++) {
-                    ss << "  Page " << i
+                    ss << "  Page " << i << "; id: " << pages[i]->getPageId()
                         << "; blocked? " << ((pages[i]->getBlocked()) ? "yes" : "no")
                         << "; covered? " << ((pages[i]->getCovered()) ? "yes" : "no")
                         << "\n";
@@ -116,10 +130,6 @@ namespace SupDef {
             void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
             void setSocketBackend(SocketBackend* socketBackend_) { socketBackend = socketBackend_; }
 
-            // Game* getGame() { return game; }
-            // SelectionManager* getSelectionManager() { return selectionManager; }
-            // SocketBackend* getSocketBackend() { return socketBackend; }
-            
     };
 
     using UPageManager = std::unique_ptr<PageManager>;

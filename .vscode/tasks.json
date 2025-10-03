@@ -62,6 +62,8 @@
                 "-lgdi32",
                 "-lwinmm",
                 "-lshell32",
+                "-static-libgcc",
+                "-static-libstdc++",
                 "-O2"
             ],
             "options": {

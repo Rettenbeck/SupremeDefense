@@ -35,12 +35,8 @@ namespace SupDef {
     }
 
     void Game::initialize() {
-        SUBSCRIBE_BEGIN(globalDispatcher, TriggerCommandEvent)
-            handleTriggerCommand(typedEvent);
-        SUBSCRIBE_END
-        SUBSCRIBE_BEGIN(globalDispatcher, UpdateCommandEvent)
-            handleUpdateCommand(typedEvent);
-        SUBSCRIBE_END
+        SUBSCRIBE(TriggerCommandEvent)
+        SUBSCRIBE(UpdateCommandEvent)
     }
 
     Entity* Game::addMap(AssetID mapAssetID) {
@@ -73,7 +69,7 @@ namespace SupDef {
         for (auto [entity, playerComp] : players) {
             playerList.push_back(entity->id);
         }
-        globalDispatcher->dispatch<SendPlayerListEvent>(playerList);
+        dispatch<SendPlayerListEvent>(playerList);
     }
 
 }

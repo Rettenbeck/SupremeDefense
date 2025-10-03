@@ -20,6 +20,7 @@ namespace SupDef {
             bool isCovered = false;     // Covered by higher pages -> will not be drawn
 
             PageId pageId = -1;
+            PageTypeId pageTypeId = -1;
 
             static CreatePageFuncMap& registry() {
                 static CreatePageFuncMap instance;
@@ -27,7 +28,7 @@ namespace SupDef {
             }
         
         public:
-            Page(PageId pageId_) { pageId = pageId_; }
+            Page(PageTypeId pageTypeId_) { pageTypeId = pageTypeId_; }
 
             virtual void initialize() = 0;
 
@@ -36,21 +37,19 @@ namespace SupDef {
             virtual bool isBlocking() = 0;
             virtual bool isCovering() = 0;
 
-            PageId getPageId() { return pageId; }
+            PageTypeId getPageTypeId() { return pageTypeId; }
 
-            void gotoPage(PageId pageId) {
-                assert(globalDispatcher);
-                globalDispatcher->dispatch<GotoPageEvent>(pageId);
+            void gotoPage(PageTypeId pageTypeId) {
+                dispatch<GotoPageEvent>(pageTypeId);
             }
 
-            void pushPage(PageId pageId) {
-                assert(globalDispatcher);
-                globalDispatcher->dispatch<PushPageEvent>(pageId);
+            void pushPage(PageTypeId pageTypeId) {
+                dispatch<PushPageEvent>(pageTypeId);
             }
 
             void close() {
-                assert(globalDispatcher);
-                globalDispatcher->dispatch<ClosePageEvent>();
+                uint32_t id = pageId;
+                dispatch<ClosePageEvent>(id);
             }
 
             void setOnTop(bool isOnTop_) { isOnTop = isOnTop_; }
@@ -60,28 +59,80 @@ namespace SupDef {
             bool getBlocked() { return isBlocked; }
             bool getCovered() { return isCovered; }
 
-            void setGuiManager(GuiManager* guiManager_) { guiManager = guiManager_; }
+            template<typename TypeElement, typename... Args>
+            TypeElement* addElement(Args&&... args) {
+                assert(guiManager);
+                auto ptr = guiManager->add(std::make_unique<TypeElement>(std::forward<Args>(args)...));
+                return dynamic_cast<TypeElement*>(ptr);
+            }
 
-            void setGame(Game* game_) { game = game_; }
-            void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
-            void setSocketBackend(SocketBackend* socketBackend_) { socketBackend = socketBackend_; }
+            template<typename TypeElement, typename TypeEvent, typename... Args>
+            TypeElement* addClickable(Args&&... args) {
+                assert(guiManager);
+                auto ptr = guiManager->addClickable<TypeEvent>(std::make_unique<TypeElement>(std::forward<Args>(args)...));
+                return dynamic_cast<TypeElement*>(ptr);
+            }
+
+            template<typename TypeElement, typename TypeEvent, class... A1, class... A2>
+            TypeElement* addClickableEvent(std::tuple<A1...> a1, std::tuple<A2...> a2) {
+                assert(guiManager);
+
+                auto ptr = guiManager->addClickable(
+                    std::apply([](auto&&... x){
+                        return std::make_unique<TypeElement>(std::forward<decltype(x)>(x)...);
+                    }, std::move(a1)),
+                    [this, args = std::move(a2)]() mutable {
+                        std::apply([this](auto&... xs){ dispatch<TypeEvent>(xs...); }, args);
+                    }
+                );
+                return dynamic_cast<TypeElement*>(ptr);
+            }
+
+            template<typename TypeElement, typename... Args>
+            TypeElement* addClickableCB(GuiMemberFunc func, Args&&... args) {
+                assert(guiManager);
+                auto ptr = guiManager->addClickable(std::make_unique<TypeElement>(std::forward<Args>(args)...), func);
+                return dynamic_cast<TypeElement*>(ptr);
+            }
+
+            template<typename TypeEvent, typename... Args>
+            GuiButton* addButton(Args&&... args) {
+                return addClickable<GuiButton, TypeEvent>(std::forward<Args>(args)...);
+            }
+
+            template<typename TypeEvent, class... A1, class... A2>
+            GuiButton* addButtonEvent(std::tuple<A1...> a1, std::tuple<A2...> a2) {
+                return addClickableEvent<GuiButton, TypeEvent>(a1, a2);
+            }
+
+            template<typename... Args>
+            GuiButton* addButtonCB(GuiMemberFunc func, Args&&... args) {
+                return addClickableCB<GuiButton>(func, std::forward<Args>(args)...);
+            }
 
             template <typename T>
-            static void addToRegistry(PageId pageId) {
-                Page::registerPage(pageId, [pageId]() { return std::make_unique<T>(pageId); });
+            static void addToRegistry(PageTypeId pageTypeId) {
+                Page::registerPage(pageTypeId, [pageTypeId]() { return std::make_unique<T>(pageTypeId); });
             }
 
             static void registerPage(const int pageType, CreatePageFunc func) {
                 registry()[pageType] = func;
             }
         
-            static std::unique_ptr<Page> createPage(const int pageType) {
-                auto it = registry().find(pageType);
+            static std::unique_ptr<Page> createPage(const PageTypeId pageTypeId) {
+                auto it = registry().find(pageTypeId);
                 if (it != registry().end()) {
                     return it->second();
                 }
                 return nullptr;
             }
+
+            PageId getPageId() { return pageId; }
+            void setPageId(PageId pageId_) { pageId = pageId_; }
+            void setGuiManager(GuiManager* guiManager_) { guiManager = guiManager_; }
+            void setGame(Game* game_) { game = game_; }
+            void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
+            void setSocketBackend(SocketBackend* socketBackend_) { socketBackend = socketBackend_; }
 
     };
 

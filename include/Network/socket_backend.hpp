@@ -10,6 +10,8 @@ namespace SupDef {
         public:
             virtual ~SocketBackend() = default;
 
+            virtual void initialize() = 0;
+
             virtual bool start(unsigned short discoveryPort_, unsigned short connectionPort_) = 0;
 
             virtual Role getRole() noexcept = 0;

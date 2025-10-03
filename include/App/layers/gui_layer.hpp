@@ -24,9 +24,7 @@ namespace SupDef {
             }
         
             void onAttach() override {
-                SUBSCRIBE_BEGIN(globalDispatcher, WindowResizeEvent)
-                    if (guiManager) guiManager->resize(typedEvent.width, typedEvent.height);
-                SUBSCRIBE_END
+                SUBSCRIBE(WindowResizeEvent)
                 
                 guiManager ->setGlobalDispatcher(globalDispatcher);
                 pageManager->setGlobalDispatcher(globalDispatcher);
@@ -47,6 +45,10 @@ namespace SupDef {
                 pageManager->update(deltaTime);
             }
         
+            DEFINE_EVENT_CALLBACK(WindowResizeEvent) {
+                if (guiManager) guiManager->resize(event.width, event.height);
+            }
+
             GuiManager* getGuiManager() const { return guiManager.get(); }
 
             void setGame(Game* game_) { game = game_; }

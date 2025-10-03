@@ -16,12 +16,10 @@ namespace SupDef {
     }
 
     void RendererBasic::subscribeToEvents() {
-        SUBSCRIBE_BEGIN(globalDispatcher, CommandToRenderEvent)
-            onCommandToRender(typedEvent);
-        SUBSCRIBE_END
+        SUBSCRIBE(CommandToRenderEvent)
     }
 
-    void RendererBasic::onCommandToRender(const CommandToRenderEvent& event) {
+    DEFINE_EVENT_CALLBACK_IMPL(RendererBasic, CommandToRenderEvent) {
         if (!game) return;
         if (!game->getAssetManager()) return;
         currentCommand = event.commandID;

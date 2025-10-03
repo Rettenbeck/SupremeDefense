@@ -76,20 +76,18 @@ namespace SupDef {
             void doPageInitialStartAsServer() {
                 page = GM_Network_Page::Server;
                 auto playerName = getInput(GUI_NW_INPUT_KEY_PLAYER_NAME);
-                globalDispatcher->dispatch<SetPlayerNameEvent>(playerName);
-                // globalDispatcher->dispatch<StartNetworkGameAsServerEvent>();
+                dispatch<SetPlayerNameEvent>(playerName);
             }
         
             void doPageInitialStartAsClient() {
                 page = GM_Network_Page::Client;
                 auto playerName = getInput(GUI_NW_INPUT_KEY_PLAYER_NAME);
-                globalDispatcher->dispatch<SetPlayerNameEvent>(playerName);
-                // globalDispatcher->dispatch<StartNetworkGameAsClientEvent>();
+                dispatch<SetPlayerNameEvent>(playerName);
             }
 
             void doBackToInitial() {
                 page = GM_Network_Page::Initial;
-                globalDispatcher->dispatch<StopNetworkGameEvent>();
+                dispatch<StopNetworkGameEvent>();
             }
         
     };

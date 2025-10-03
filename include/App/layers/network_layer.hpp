@@ -32,35 +32,57 @@ namespace SupDef {
             }
         
             void onAttach() override {
-                SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
-                    assert(networkPlayerTracker);
-                    networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
-                    hasGameUpdated = true;
-                    gameFrameCount = typedEvent.frameCount;
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
-                    assert(networkPlayerTracker);
-                    networkPlayerTracker->resetPlayerList(typedEvent.playerList);
-                SUBSCRIBE_END
+                socketBackend->setGlobalDispatcher(globalDispatcher);
+                socketBackend->initialize();
+                socketBackend->start(discoveryPortInitial, connectionPortInitial);
+
+                SUBSCRIBE(RequestServerOpenEvent)
+                SUBSCRIBE(RequestOpenServerCloseEvent)
+
+                // SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
+                //     assert(networkPlayerTracker);
+                //     networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
+                //     hasGameUpdated = true;
+                //     gameFrameCount = typedEvent.frameCount;
+                // SUBSCRIBE_END
+                // SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
+                //     assert(networkPlayerTracker);
+                //     networkPlayerTracker->resetPlayerList(typedEvent.playerList);
+                // SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {
-                // assert()
-                // switch(status) {
-                //     case NetworkStatus::Initial:
-                //         break;
-                //     case NetworkStatus::Listening:
-                //         checkForClients();
-                //         break;
-                //     case NetworkStatus::Connected:
-                //     case NetworkStatus::Completed:
-                //         send();
-                //         receive();
-                //         break;
-                //     default:
-                //         assert(false);
-                // }
+                assert(socketBackend);
+                socketBackend->update();
             }
+
+            DEFINE_EVENT_CALLBACK(RequestServerOpenEvent) {
+                assert(socketBackend);
+                if (status != NetworkStatus::Initial) {
+                    dispatch<RequestServerOpenAnswerEvent>(false, "Cannot open server; wrong network layer status");
+                    return;
+                }
+                auto result = socketBackend->openServer(connectionPortInitial);
+                if (result.ok) status = NetworkStatus::Listening;
+                dispatch<RequestServerOpenAnswerEvent>(result.ok, result.error);
+                if (result.ok) std::cout << "Server open\n";
+            }
+
+            DEFINE_EVENT_CALLBACK(RequestOpenServerCloseEvent) {
+                assert(socketBackend);
+                if (status != NetworkStatus::Listening) {
+                    dispatch<RequestOpenServerCloseAnswerEvent>(false, "Cannot close server; wrong network layer status");
+                    return;
+                }
+                socketBackend->closeServer();
+                status = NetworkStatus::Initial;
+                dispatch<RequestOpenServerCloseAnswerEvent>(true, "");
+                std::cout << "Server closed\n";
+            }
+
+            // void onRequestServerOpenEvent(bool ok, std::string message) {
+            //     //
+            // }
 
             SocketBackend* getSocketBackend() { return socketBackend.get(); }
 

@@ -30,20 +30,21 @@ namespace SupDef {
                 selectionManager->setGlobalDispatcher(globalDispatcher);
                 selectionManager->initialize();
 
-                SUBSCRIBE_BEGIN(globalDispatcher, GameBlockedByNetworkEvent)
-                    blockedByNetwork = typedEvent.blocked;
-                SUBSCRIBE_END
+                SUBSCRIBE(GameBlockedByNetworkEvent)
             }
         
             void update(float deltaTime) override {
                 if (blockedByNetwork) return;
                 assert(game);
-                assert(globalDispatcher);
                 game->update(deltaTime);
                 frameCount++;
                 game->setFrameCount(frameCount);
                 assert(game->getThisPlayer());
-                globalDispatcher->dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
+                dispatch<GameHasUpdatedEvent>(game->getThisPlayer()->id, frameCount);
+            }
+
+            DEFINE_EVENT_CALLBACK(GameBlockedByNetworkEvent) {
+                blockedByNetwork = event.blocked;
             }
             
             Game* getGame() { return game.get(); }

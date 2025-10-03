@@ -9,8 +9,6 @@ void start_app();
 auto app = std::make_unique<SupDef::App>();
 
 
-// Press 'M' to start the game!
-
 int main() {
     start_app();
     app->run();
@@ -30,4 +28,5 @@ void start_app() {
     app->addLayer(std::move(actionRouter));
     app->addLayer(std::move(guiLayer));
     app->addLayer(std::move(renderLayer));
+    app->addLayer(std::move(networkLayer));
 }

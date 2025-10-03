@@ -7,9 +7,8 @@
 
 
 namespace SupDef {
-    
 
-    // #### General events #########################################################################
+    // #### General events ############################################################################
 
     // Is dispatched by the renderer when the window is resized. Useful for the GUI to know.
     struct WindowResizeEvent : public Event {
@@ -38,7 +37,7 @@ namespace SupDef {
 
 
 
-    // #### Command events #########################################################################
+    // #### Command events ############################################################################
 
     // Is dispatched in the render class and subscribed to by the game class. Tells the game that
     //   the player wants to start/execute a command.
@@ -74,29 +73,36 @@ namespace SupDef {
 
 
 
-    // #### Gui events #############################################################################
+    // #### Gui events ################################################################################
 
     // Is dispatched by a page object and subscribed to by the page manager. Starts a new page.
     struct GotoPageEvent : public Event {
-        int pageId;
-        GotoPageEvent(int pageId_) { pageId = pageId_; }
+        int pageTypeId;
+        GotoPageEvent(int pageTypeId_) { pageTypeId = pageTypeId_; }
     };
 
     // Is dispatched by a page object and subscribed to by the page manager. Starts a new page.
     struct PushPageEvent : public Event {
-        int pageId;
-        PushPageEvent(int pageId_) { pageId = pageId_; }
+        int pageTypeId;
+        PushPageEvent(int pageTypeId_) { pageTypeId = pageTypeId_; }
     };
 
     // Is dispatched by a page object and subscribed to by the page manager. Closes the top page.
+    
+    /**
+     * @brief Event notifying that the top page is to be closed.
+     *
+     * Is dispatched by a Page and subscribed to by the PageManager. Closes the top page.
+     */
     struct ClosePageEvent : public Event {
-        ClosePageEvent() { }
+        uint32_t pageId = -1;
+        ClosePageEvent(uint32_t pageId_) : pageId(pageId_) { }
     };
 
 
 
 
-    // #### Gui menu buttons #######################################################################
+    // #### Gui menu buttons ##########################################################################
 
     struct MenuButtonOpenServerEvent : public Event { MenuButtonOpenServerEvent() { } };
     struct MenuButtonJoinServerEvent : public Event { MenuButtonJoinServerEvent() { } };
@@ -104,11 +110,15 @@ namespace SupDef {
     
 
 
-    // #### Game Gui events ########################################################################
+    // #### Game Gui events ###########################################################################
     
-    // Is dispatched by the renderer and subscribed to by the gui manager. Contains an event that
-    //   is intended for the game logic. This way the gui still has a change about reacting to that
-    //   interaction.
+    /**
+     * @brief Event notifying that a game interaction has been performed.
+     *
+     * Is dispatched by the renderer and subscribed to by the GuiManager. Contains an event that is
+     *   intended for the game logic. This way the gui still has a change about reacting to that
+     *   interaction.
+     */
     struct GameInteractionEvent : public Event {
         std::function<void()> call;
         GameInteractionEvent() {}
@@ -120,15 +130,23 @@ namespace SupDef {
             [&]() { DISPATCHER->dispatch<EVENT>(__VA_ARGS__); } \
         );
 
-    // Is dispatched by the renderer and subscribed to by the gui manager. Conveys a movement
-    //   command.
+    /**
+     * @brief Event notifying that a movement command has been performed.
+     *
+     * Is dispatched by the renderer when the player moves a unit and subscribed to by the Game.
+     */
     struct GameInteractionMovementEvent : public Event {
         json j;
         GameInteractionMovementEvent() {}
         GameInteractionMovementEvent(json j_) : j(j_) {}
     };
 
-    // Is dispatched by the renderer and subscribed to by the gui manager. Conveys a button click.
+    /**
+     * @brief Event notifying that the player has pushed a button.
+     *
+     * Is dispatched by the renderer when a button is pushed and subscribed to by the GuiManager and
+     *   potentially a Page.
+     */
     struct GuiButtonClickedEvent : public Event {
         void* element;
         bool mouseClick;
@@ -139,73 +157,131 @@ namespace SupDef {
         PrintPagesEvent() {}
     };
 
-    // Is dispatched by the renderer and subscribed to by the game object (?). Notifies the game
-    //   that units have been selected.
+    /**
+     * @brief Event notifying that the player has selected one or more units.
+     *
+     * Is dispatched by the renderer and subscribed to by the SelectionManager. Notifies that the
+     *   player has selected one or more units.
+     */
     struct UnitSelectedEvent : public Event {
         Entity* entity;
         UnitSelectedEvent(Entity* entity_) : entity(entity_) {}
     };
 
-    struct DieAfterAnimationEvent : public Event {
-        EntityID id;
-        DieAfterAnimationEvent(EntityID id) : id(id) {}
-    };
+    // struct DieAfterAnimationEvent : public Event {
+    //     EntityID id;
+    //     DieAfterAnimationEvent(EntityID id) : id(id) {}
+    // };
 
     
 
 
-    // #### Action events ##########################################################################
+    // #### Action events #############################################################################
+
+    /**
+     * @brief Event notifying that an action has been performed.
+     *
+     * Is dispatched by the Game when the player performs an action. Is subscribed to by the
+     *   ActionRouter which in turns distributes it accordingly.
+     */
     struct ActionCreatedEvent : public Event {
         SAction action;
         ActionCreatedEvent(SAction action_) : action(std::move(action_)) {}
     };
 
-    struct EntityDestroyedEvent : public Event {
-        EntityID entityID;
-        EntityDestroyedEvent(EntityID id) : entityID(id) {}
-    };
+    // struct EntityDestroyedEvent : public Event {
+    //     EntityID entityID;
+    //     EntityDestroyedEvent(EntityID id) : entityID(id) {}
+    // };
 
     
 
 
-    // #### Network events #########################################################################
+    // #### Network events ############################################################################
+
+    /**
+     * @brief Event notifying that the server list is to be refreshed.
+     *
+     * Is dispatched by the JoinServerPage when the corresponding button is pushed and is subscribed
+     *   to by the SFMLSocketBackend. Notifies the socket backend that a discovery request is be
+     *   sent out.
+     */
+    struct RequestServerListRefreshEvent : public Event { RequestServerListRefreshEvent() {} };
+
+    struct RequestServerListRefreshAnswerEvent : public Event {
+        bool ok; std::string message;
+        RequestServerListRefreshAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
+    };
+
+    /**
+     * @brief Event notifying a local server to be started.
+     *
+     * Is dispatched by the StartPage when the corresponding button is pushed and is subscribed to by
+     *   the NetworkLayer. Notifies the network layer that a server is to be opened up.
+     */
+    struct RequestServerOpenEvent : public Event { RequestServerOpenEvent() {} };
+    
+    struct RequestServerOpenAnswerEvent : public Event {
+        bool ok; std::string message;
+        RequestServerOpenAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
+    };
+
+    /**
+     * @brief Event notifying that a server has been found. Contains the entire server list.
+     *
+     * Is dispatched by the SFMLBackEnd when a server is found through a discovery request. The event
+     *   contains the entire server list since the last discovery reqest. It is subscribed to by the
+     *   JoinServerPage.
+     */
+    struct RetrievedServerListEvent : public Event {
+        std::vector<std::string> data;
+        RetrievedServerListEvent(std::vector<std::string>& data_) : data(data_) {}
+    };
+
+    /**
+     * @brief Event notifying the local server to be closed.
+     *
+     * Is dispatched by the OpenServerPage when the page is closed and is subscribed to by the
+     *   NetworkLayer. Notifies that the local server is to be closed. Only closes the server
+     *   when the game is not yet running.
+     */
+    struct RequestOpenServerCloseEvent : public Event { RequestOpenServerCloseEvent() {} };
+    
+    struct RequestOpenServerCloseAnswerEvent : public Event {
+        bool ok; std::string message;
+        RequestOpenServerCloseAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
+    };
+
+
+
+
+
+
+
+
+
     struct SetPlayerNameEvent : public Event {
         std::string name;
         SetPlayerNameEvent(std::string name) : name(name) {}
     };
 
-    struct StartNetworkGameAsServerEvent : public Event {
-        unsigned short port;
-        StartNetworkGameAsServerEvent() : port(9000) {}
-        StartNetworkGameAsServerEvent(unsigned short port) : port(port) {}
-    };
-
-    struct StartNetworkGameAsClientEvent : public Event {
-        unsigned short port;
-        std::string ip;
-        StartNetworkGameAsClientEvent() : ip("127.0.0.1"), port(9000) {}
-        StartNetworkGameAsClientEvent(std::string ip, unsigned short port) : ip(ip), port(port) {}
-    };
-
-    struct CompleteServerEvent : public Event {
-        CompleteServerEvent() {}
-    };
-
-    struct StartGameAsServerStatusEvent : public Event {
-        bool success;
-        StartGameAsServerStatusEvent(bool success) : success(success) {}
-    };
-
-    struct StartGameAsClientStatusEvent : public Event {
-        bool success;
-        StartGameAsClientStatusEvent(bool success) : success(success) {}
-    };
-
+    /**
+     * @brief Event notifying the local server to be closed.
+     *
+     * Is dispatched by the NetworkLayer when the game needs to be paused to wait for other players'
+     *   connections. Is subscribed to by the Game Layer and causes it to pause.
+     */
     struct GameBlockedByNetworkEvent : public Event {
         bool blocked;
         GameBlockedByNetworkEvent(bool blocked = true) : blocked(blocked) {}
     };
 
+
+    /**
+     * @brief Event notifying that the Game has updated by one frame.
+     *
+     * Is dispatched by the GameLayer when after it has processed one frame.
+     */
     struct GameHasUpdatedEvent : public Event {
         EntityID thisPlayer;
         long frameCount;
@@ -213,20 +289,27 @@ namespace SupDef {
         : thisPlayer(thisPlayer), frameCount(frameCount) {}
     };
 
+
+    /**
+     * @brief Event to distribute an action list handed out by the server.
+     *
+     * Is dispatched by the NetworkLayer when all players have responded with their actions. Is
+     *   subscribed to by the ActionRouter which distributes it further to the GameLayer.
+     */
     struct ReceivedActionsFromServerEvent : public Event {
         ActionQueue* actionQueue = nullptr;
         ReceivedActionsFromServerEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
     };
 
+    /**
+     * @brief Event containing the current in-game player list.
+     *
+     * Is dispatched by the Game and is subscribed to by the NetworkLayer. Notifies the network layer
+     *   that a server is to be opened up.
+     */
     struct SendPlayerListEvent : public Event {
         EntityIDs playerList;
         SendPlayerListEvent(EntityIDs& playerList) : playerList(playerList) {}
     };
 
-    struct StopNetworkGameEvent : public Event {
-        StopNetworkGameEvent() {}
-    };
-
-
-    
 }

@@ -6,19 +6,43 @@
 namespace SupDef {
 
     class JoinServerPage : public Page {
+        private:
+            std::vector<std::string> data;
+
         public:
-            JoinServerPage(PageId pageId_) : Page(pageId_) { }
+            JoinServerPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             void initialize() override {
-                // SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonOpenServer, gotoPageOpenServer);
-                // SUBSCRIBE_SIMPLE(globalDispatcher, MenuButtonJoinServer, gotoPageJoinServer);
+                SUBSCRIBE(RequestServerListRefreshAnswerEvent)
+                SUBSCRIBE(RetrievedServerListEvent)
+                dispatch<RequestServerListRefreshEvent>();
             }
 
             void build() override {
-                assert(guiManager);
-                guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server joinen"));
+                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server joinen");
 
-                guiManager->addClickable<ClosePageEvent>(std::make_unique<GuiButton>(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"));
+                addButton<RequestServerListRefreshEvent>(GuiElementStyle::Default, 200, 60, 160, 28, "Refresh");
+
+                auto ptr_table = addElement<GuiTable>(GuiElementStyle::Default, 200, 92, 760, 460, "Server list");
+                assert(ptr_table);
+                TableLine head = {"Servername", "IP", "Beschreibung"};
+                ptr_table->setHead(head);
+                ptr_table->clear();
+                ptr_table->appendData(data);
+                
+                addClickableEvent<GuiButton, ClosePageEvent>(
+                    std::make_tuple(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"),
+                    std::make_tuple(pageId)
+                );
+            }
+
+            DEFINE_EVENT_CALLBACK(RequestServerListRefreshAnswerEvent) {
+                if (!event.ok) std::cout << "Error on discovery request: " << event.message << "\n";
+            }
+
+            DEFINE_EVENT_CALLBACK(RetrievedServerListEvent) {
+                data.clear();
+                data = event.data;
             }
 
             bool isBlocking() override { return true; }

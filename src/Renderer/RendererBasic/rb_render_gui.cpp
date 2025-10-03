@@ -65,6 +65,10 @@ namespace SupDef {
                 case GuiElementType::Button:
                     drawButton(element->style, element->x, element->y, element->width, element->height, element->text);
                     break;
+                case GuiElementType::Table:
+                    auto table_ptr = dynamic_cast<GuiTable*>(element.get());
+                    drawTable(table_ptr);
+                    break;
             }
             addClickHandling(element.get());
         }
@@ -119,17 +123,67 @@ namespace SupDef {
         ImGui::Button(text.c_str(), ImVec2(width, height));
     }
 
+    void RendererBasic::drawTable(GuiTable* table) {
+        assert(table);
+        // ImGui::Begin(table->header.c_str());
+
+        ImGuiTableFlags flags =
+            ImGuiTableFlags_Resizable |
+            ImGuiTableFlags_Reorderable |
+            ImGuiTableFlags_Hideable |
+            ImGuiTableFlags_RowBg |
+            ImGuiTableFlags_Borders |
+            ImGuiTableFlags_ScrollY |
+            ImGuiTableFlags_SizingStretchProp;
+
+        ImGui::SetCursorPos(ImVec2(table->x, table->y));
+        ImVec2 size(table->width, table->height);
+
+        table->checkColumnWidths();
+
+        if (table->head.size() > 0) {
+            if (ImGui::BeginTable(table->header.c_str(), table->head.size(), flags, size)) {
+                // Setup columns (use StretchProp so they share space nicely)
+                assert(table->head.size() == table->column_width.size());
+                for(int i = 0; i < table->head.size(); i++) {
+                    auto col_name = table->head[i].c_str();
+                    auto& col_width = table->column_width[i];
+                    ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
+                }
+
+                ImGui::TableHeadersRow();
+
+                // Optional: sortable headers
+                // (Read ImGui::TableGetSortSpecs() if you want to implement sorting yourself.)
+
+                // Fill rows
+                for (const auto& line : table->data) {
+                    assert(line.size() == table->head.size());
+                    ImGui::TableNextRow();
+
+                    for(int i = 0; i < line.size(); i++) {
+                        ImGui::TableSetColumnIndex(i);
+                        ImGui::TextUnformatted(line[i].c_str());
+                    }
+                }
+
+                ImGui::EndTable();
+            }
+        }
+
+        // ImGui::End();
+    }
+
     void RendererBasic::addClickHandling(GuiElement* element) {
-        assert(globalDispatcher);
         assert(element);
         if (element->clickable) {
             auto ptr = static_cast<void*>(element);
             if (ImGui::IsItemClicked(ImGuiMouseButton_Left)) {
-                globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MLEFT);
-                std::cout << "Button " << ptr << " left clicked!\n";
+                dispatch<GuiButtonClickedEvent>(ptr, MLEFT);
+                // std::cout << "Button " << ptr << " left clicked!\n";
             } else if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
-                globalDispatcher->dispatch<GuiButtonClickedEvent>(ptr, MRIGHT);
-                std::cout << "Button " << ptr << " right clicked!\n";
+                dispatch<GuiButtonClickedEvent>(ptr, MRIGHT);
+                // std::cout << "Button " << ptr << " right clicked!\n";
             }
         }
     }

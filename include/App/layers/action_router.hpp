@@ -32,12 +32,8 @@ namespace SupDef {
             }
 
             void onAttach() override {
-                SUBSCRIBE_BEGIN(globalDispatcher, ActionCreatedEvent)
-                    handleAction(typedEvent.action);
-                SUBSCRIBE_END
-                SUBSCRIBE_BEGIN(globalDispatcher, ReceivedActionsFromServerEvent)
-                    forwardActionsToGame(typedEvent.actionQueue);
-                SUBSCRIBE_END
+                SUBSCRIBE(ActionCreatedEvent)
+                SUBSCRIBE(ReceivedActionsFromServerEvent)
             }
         
             void handleAction(SAction action) {
@@ -69,6 +65,14 @@ namespace SupDef {
                 }
             }
         
+            DEFINE_EVENT_CALLBACK(ActionCreatedEvent) {
+                handleAction(event.action);
+            }
+
+            DEFINE_EVENT_CALLBACK(ReceivedActionsFromServerEvent) {
+                forwardActionsToGame(event.actionQueue);
+            }
+
             void update(float deltaTime) override {
                 // Process any queued events or additional logic if necessary
             }

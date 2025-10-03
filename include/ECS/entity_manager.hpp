@@ -149,7 +149,7 @@ namespace SupDef {
                 parentMap.erase(entityID);
                 childrenMap.erase(entityID);
 
-                eventDispatcher->dispatch<EntityDestroyedEvent>(entityID);
+                // eventDispatcher->dispatch<EntityDestroyedEvent>(entityID);
                 entities.erase(entityID);
             }
 

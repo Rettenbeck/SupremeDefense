@@ -13,7 +13,7 @@ namespace SupDef {
         public:
 
             void process(Role role, NetMessage netMessage) {
-                //
+                std::cout << "Received network message. " << netMessage.error << netMessage.j.dump(4) << "\n";
             }
 
     };
