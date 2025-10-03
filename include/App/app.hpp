@@ -33,10 +33,10 @@ namespace SupDef {
                 
                 globalDispatcher->SUBSCRIBE(GameEndEvent)
                 globalDispatcher->SUBSCRIBE(UpdateAppEvent)
-                globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsServerEvent)
-                globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsClientEvent)
-                globalDispatcher->SUBSCRIBE_ACTION(CompleteServerEvent)
-                globalDispatcher->SUBSCRIBE_ACTION(StopNetworkGameEvent)
+                // globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsServerEvent)
+                // globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsClientEvent)
+                // globalDispatcher->SUBSCRIBE_ACTION(CompleteServerEvent)
+                // globalDispatcher->SUBSCRIBE_ACTION(StopNetworkGameEvent)
                 globalDispatcher->SUBSCRIBE_ACTION(StartTestGameEvent)
             }
 
@@ -192,7 +192,7 @@ namespace SupDef {
                 game->setAssetManager(std::move(assetManager));
                 game->startWorld(worldID, playerMapExt, thisPlayer);
                 assert(globalDispatcher);
-                globalDispatcher->dispatch<GotoPageEvent>(PAGE_ID_GAME);
+                globalDispatcher->dispatch<GotoPageEvent>(PAGE_TYPE_ID_GAME);
             }
 
             void startGame() {
@@ -215,21 +215,21 @@ namespace SupDef {
                 changed = true;
             }
             
-            DEFINE_EVENT_CALLBACK(StartNetworkGameAsServerEvent) {
-                startNetworkGameAsServer(event.port);
-            }
+            // DEFINE_EVENT_CALLBACK(StartNetworkGameAsServerEvent) {
+            //     startNetworkGameAsServer(event.port);
+            // }
             
-            DEFINE_EVENT_CALLBACK(StartNetworkGameAsClientEvent) {
-                startNetworkGameAsClient(event.ip, event.port);
-            }
+            // DEFINE_EVENT_CALLBACK(StartNetworkGameAsClientEvent) {
+            //     startNetworkGameAsClient(event.ip, event.port);
+            // }
             
-            DEFINE_EVENT_CALLBACK(CompleteServerEvent) {
-                completeServer();
-            }
+            // DEFINE_EVENT_CALLBACK(CompleteServerEvent) {
+            //     completeServer();
+            // }
             
-            DEFINE_EVENT_CALLBACK(StopNetworkGameEvent) {
-                stopNetworkGame();
-            }
+            // DEFINE_EVENT_CALLBACK(StopNetworkGameEvent) {
+            //     stopNetworkGame();
+            // }
             
             DEFINE_EVENT_CALLBACK(StartTestGameEvent) {
                 startGame();

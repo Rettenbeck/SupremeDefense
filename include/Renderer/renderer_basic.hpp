@@ -99,6 +99,7 @@ namespace SupDef {
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
+            void drawTable(GuiTable* table);
             void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
             void drawCooldownOverlay(float x, float y, float width, float height, float perc);
             void addClickHandling(GuiElement* element);

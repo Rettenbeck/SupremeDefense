@@ -9,10 +9,10 @@
 namespace SupDef {
 
     void registerPages() {
-        Page::addToRegistry<StartPage>(PAGE_ID_START);
-        Page::addToRegistry<OpenServerPage>(PAGE_ID_OPEN_SERVER);
-        Page::addToRegistry<JoinServerPage>(PAGE_ID_JOIN_SERVER);
-        Page::addToRegistry<GamePage>(PAGE_ID_GAME);
+        Page::addToRegistry<StartPage>(PAGE_TYPE_ID_START);
+        Page::addToRegistry<OpenServerPage>(PAGE_TYPE_ID_OPEN_SERVER);
+        Page::addToRegistry<JoinServerPage>(PAGE_TYPE_ID_JOIN_SERVER);
+        Page::addToRegistry<GamePage>(PAGE_TYPE_ID_GAME);
     }
 
 }

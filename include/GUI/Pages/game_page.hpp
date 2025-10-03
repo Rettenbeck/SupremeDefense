@@ -15,7 +15,7 @@ namespace SupDef {
             GUI_ElementMap elementMap;
 
         public:
-            GamePage(PageId pageId_) : Page(pageId_) { }
+            GamePage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             void initialize() override {
                 SUBSCRIBE(GuiButtonClickedEvent);

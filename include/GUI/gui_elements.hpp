@@ -37,11 +37,15 @@ namespace SupDef {
     };
 
     struct GuiTable : public GuiElement {
+        std::string header = "";
+        std::vector<float> column_width;
         TableLine head;
         TableData data;
-        GuiTable(GuiElementStyle style, float x, float y, float width, float height)
+
+        GuiTable(GuiElementStyle style, float x, float y, float width, float height, std::string header_)
         : GuiElement(GuiElementType::Table, style, x, y, width, height) {
             clickable = false;
+            header = header_;
         }
 
         bool setHead(TableLine head_) {
@@ -50,10 +54,30 @@ namespace SupDef {
             return true;
         }
 
+        void distributeColumnWidths() {
+            assert(!head.empty());
+            assert(width > 0.0);
+            auto width_per_column = width / ((float) head.size());
+            column_width.clear();
+            for(int i = 0; i < head.size(); i++) column_width.push_back(width_per_column);
+        }
+
+        void checkColumnWidths() {
+            // if (head.empty()) return;
+            if (column_width.size() == head.size()) {
+                //
+            } else if (column_width.size() < head.size()) {
+                distributeColumnWidths();
+            }
+            while(column_width.size() > head.size()) {
+                column_width.pop_back();
+            }
+        }
+
         void clear() { data.clear(); }
 
         void appendData(std::vector<std::string> data_) {
-            assert(!head.empty());  // Headerline must be filled
+            assert(!head.empty());
             TableLine tmp;
             for(auto& d : data_) {
                 if (tmp.size() >= head.size()) {
@@ -62,7 +86,10 @@ namespace SupDef {
                 }
                 tmp.push_back(d);
             }
-            if (tmp.size() > 0) data.push_back(tmp);
+            if (tmp.size() > 0) {
+                while(tmp.size() < head.size()) tmp.push_back("");
+                data.push_back(tmp);
+            }
         }
 
         void appendData(std::vector<std::vector<std::string>> data_) {

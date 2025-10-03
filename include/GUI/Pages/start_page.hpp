@@ -7,7 +7,7 @@ namespace SupDef {
 
     class StartPage : public Page {
         public:
-            StartPage(PageId pageId_) : Page(pageId_) { }
+            StartPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             void initialize() override {
                 SUBSCRIBE(MenuButtonOpenServerEvent)
@@ -24,12 +24,12 @@ namespace SupDef {
             }
 
             DEFINE_EVENT_CALLBACK(MenuButtonOpenServerEvent) {
-                pushPage(PAGE_ID_OPEN_SERVER);
+                pushPage(PAGE_TYPE_ID_OPEN_SERVER);
             }
 
             
             DEFINE_EVENT_CALLBACK(MenuButtonJoinServerEvent) {
-                pushPage(PAGE_ID_JOIN_SERVER);
+                pushPage(PAGE_TYPE_ID_JOIN_SERVER);
             }
 
             bool isBlocking() override { return true; }

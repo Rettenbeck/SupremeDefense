@@ -30,6 +30,7 @@ namespace SupDef {
         std::string ip = "";
         unsigned short port = 0;
         std::string server_name = "";
+        std::string description = "";
     };
 
     using DiscoveryReplies = std::vector<DiscoveryReply>;

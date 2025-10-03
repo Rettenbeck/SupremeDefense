@@ -253,6 +253,7 @@ namespace SupDef {
                 }
 
                 servers.clear();
+                dispatchDiscoveryEvent();
                 return NetResult::Ok();
             }
 
@@ -262,6 +263,9 @@ namespace SupDef {
                 packet << buildDiscoveryReply();
                 auto status = udp->send(packet, sender, port);
 
+                if (sender == sf::IpAddress::Any) {
+                    return NetResult::Error("UDP attempts to send to 0.0.0.0");
+                }
                 if (status == sf::Socket::Status::NotReady) {
                     return NetResult::Error("UDP send not ready");
                 }
@@ -282,12 +286,11 @@ namespace SupDef {
 
                 while (processed < kMaxPerTick) {
                     sf::Packet packet;
-                    auto sender = sf::IpAddress::Any;
+                    std::optional<sf::IpAddress> sender;
                     unsigned short senderPort = 0;
-                    std::optional<sf::IpAddress> opt_sender = sender;
 
                     assert(udp);
-                    auto status = udp->receive(packet, opt_sender, senderPort);
+                    auto status = udp->receive(packet, sender, senderPort);
 
                     if (status == sf::Socket::Status::NotReady) {
                         // No more packets right now — this is fine in non-blocking mode.
@@ -304,7 +307,7 @@ namespace SupDef {
                         continue;
                     }
 
-                    auto replyRes = replyDiscovery(sender, senderPort);
+                    auto replyRes = replyDiscovery(sender.value(), senderPort);
                     if (!replyRes.ok) {
                         // You might also choose to log and continue instead of bailing.
                         return replyRes;
@@ -326,12 +329,11 @@ namespace SupDef {
 
                 while (processed < kMaxPerTick) {
                     sf::Packet packet;
-                    auto sender = sf::IpAddress::Any;
+                    std::optional<sf::IpAddress> sender;
                     unsigned short senderPort = 0;
-                    std::optional<sf::IpAddress> opt_sender = sender;
 
                     assert(udp);
-                    auto status = udp->receive(packet, opt_sender, senderPort);
+                    auto status = udp->receive(packet, sender, senderPort);
 
                     if (status == sf::Socket::Status::NotReady) {
                         // No more packets right now — this is fine in non-blocking mode.
@@ -349,12 +351,25 @@ namespace SupDef {
                         continue;
                     }
 
-                    reply.ip = sender.toString();
+                    reply.ip = sender.value().toString();
                     servers.push_back(reply);
+                    dispatchDiscoveryEvent();
                     ++processed;
                 }
 
                 return NetResult::Ok();
+            }
+
+            void dispatchDiscoveryEvent() {
+                std::vector<std::string> data;
+                for(auto& s : servers) {
+                    if (!s.ok) continue;
+                    std::stringstream ss; ss << s.ip << ":" << s.port;
+                    data.push_back(s.server_name);
+                    data.push_back(ss.str());
+                    data.push_back(s.description);
+                }
+                dispatch<RetrievedServerListEvent>(data);
             }
 
             json generateInitialMessage(const int message_type) {
@@ -371,6 +386,7 @@ namespace SupDef {
                     result.error = "Could not retrieve data from packet";
                     return result;
                 }
+                std::cout << "Data received: " << data << "\n";
                 return analyzeMessage(data);
             }
 

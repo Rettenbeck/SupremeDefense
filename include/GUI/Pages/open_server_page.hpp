@@ -7,20 +7,33 @@ namespace SupDef {
 
     class OpenServerPage : public Page {
         public:
-            OpenServerPage(PageId pageId_) : Page(pageId_) { }
+            OpenServerPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             ~OpenServerPage() {
                 dispatch<RequestOpenServerCloseEvent>();
             }
 
             void initialize() override {
+                SUBSCRIBE(RequestServerOpenAnswerEvent)
                 dispatch<RequestServerOpenEvent>();
             }
 
             void build() override {
-                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server joinen");
+                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server aufmachen");
 
-                addButton<ClosePageEvent>(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück");
+                addButtonEvent<ClosePageEvent>(
+                    std::make_tuple(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"),
+                    std::make_tuple(pageId)
+                );
+            }
+
+            DEFINE_EVENT_CALLBACK(RequestServerOpenAnswerEvent) {
+                if (!event.ok) {
+                    // TODO: Message for the user?
+                    std::cout << "Server could not be opened: " << event.message << "\n";
+                    close();
+                    return;
+                }
             }
 
             bool isBlocking() override { return true; }

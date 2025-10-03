@@ -78,7 +78,7 @@ namespace SupDef {
             ani->currentFrame = 0;
             if (ani->dieAfterAnimation) {
                 assert(globalDispatcher);
-                globalDispatcher->queueEvent<DieAfterAnimationEvent>(entity->id);
+                // globalDispatcher->queueEvent<DieAfterAnimationEvent>(entity->id);
             }
         }
     }

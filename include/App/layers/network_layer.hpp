@@ -39,8 +39,6 @@ namespace SupDef {
                 SUBSCRIBE(RequestServerOpenEvent)
                 SUBSCRIBE(RequestOpenServerCloseEvent)
 
-                // SUBSCRIBE_SIMPLE(globalDispatcher, RequestServerOpenEvent, onRequestServerOpenEvent(typedEvent.ok, typedEvent.error))
-
                 // SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
                 //     assert(networkPlayerTracker);
                 //     networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
@@ -54,16 +52,32 @@ namespace SupDef {
             }
         
             void update(float deltaTime) override {
-                //
+                assert(socketBackend);
+                socketBackend->update();
             }
 
             DEFINE_EVENT_CALLBACK(RequestServerOpenEvent) {
-                std::cout << "onRequestServerOpenEvent\n";
+                assert(socketBackend);
+                if (status != NetworkStatus::Initial) {
+                    dispatch<RequestServerOpenAnswerEvent>(false, "Cannot open server; wrong network layer status");
+                    return;
+                }
+                auto result = socketBackend->openServer(connectionPortInitial);
+                if (result.ok) status = NetworkStatus::Listening;
+                dispatch<RequestServerOpenAnswerEvent>(result.ok, result.error);
+                if (result.ok) std::cout << "Server open\n";
             }
 
-
             DEFINE_EVENT_CALLBACK(RequestOpenServerCloseEvent) {
-                std::cout << "onRequestOpenServerCloseEvent\n";
+                assert(socketBackend);
+                if (status != NetworkStatus::Listening) {
+                    dispatch<RequestOpenServerCloseAnswerEvent>(false, "Cannot close server; wrong network layer status");
+                    return;
+                }
+                socketBackend->closeServer();
+                status = NetworkStatus::Initial;
+                dispatch<RequestOpenServerCloseAnswerEvent>(true, "");
+                std::cout << "Server closed\n";
             }
 
             // void onRequestServerOpenEvent(bool ok, std::string message) {
