@@ -33,11 +33,9 @@ namespace SupDef {
                 
                 globalDispatcher->SUBSCRIBE(GameEndEvent)
                 globalDispatcher->SUBSCRIBE(UpdateAppEvent)
-                // globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsServerEvent)
-                // globalDispatcher->SUBSCRIBE_ACTION(StartNetworkGameAsClientEvent)
-                // globalDispatcher->SUBSCRIBE_ACTION(CompleteServerEvent)
-                // globalDispatcher->SUBSCRIBE_ACTION(StopNetworkGameEvent)
                 globalDispatcher->SUBSCRIBE_ACTION(StartTestGameEvent)
+
+                fillLayers();
             }
 
             ~App() { layers.clear(); }
@@ -247,6 +245,14 @@ namespace SupDef {
 
             Layers& getLayers() {
                 return layers;
+            }
+
+            void fillLayers() {
+                addLayer(std::make_unique<SupDef::ReplayLayer>());
+                addLayer(std::make_unique<SupDef::ActionRouter>());
+                addLayer(std::make_unique<SupDef::GuiLayer>());
+                addLayer(std::make_unique<SupDef::RenderLayer>());
+                addLayer(std::make_unique<SupDef::NetworkLayer>());
             }
 
             EventDispatcher* getGlobalDispatcher() { return globalDispatcher.get(); }
