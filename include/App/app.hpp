@@ -253,6 +253,7 @@ namespace SupDef {
                 addLayer(std::make_unique<SupDef::GuiLayer>());
                 addLayer(std::make_unique<SupDef::RenderLayer>());
                 addLayer(std::make_unique<SupDef::NetworkLayer>());
+                addLayer(std::make_unique<SupDef::AssetLayer>());
             }
 
             EventDispatcher* getGlobalDispatcher() { return globalDispatcher.get(); }

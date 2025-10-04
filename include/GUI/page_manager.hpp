@@ -39,7 +39,7 @@ namespace SupDef {
                     page->build();
                     if (page->getBlocked()) guiManager->setElementsUnreactive();
                 }
-                guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 10, 10, guiManager->info));
+                guiManager->add(std::make_unique<GuiLabel>(10, 10, guiManager->info));
             }
 
             void updatePageHierarchy() {

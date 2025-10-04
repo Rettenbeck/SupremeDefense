@@ -125,7 +125,8 @@
     "syncstream": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "zz": "cpp"
+    "zz": "cpp",
+    "filesystem": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp_Runner.msvcWarnings": [

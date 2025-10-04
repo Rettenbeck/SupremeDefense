@@ -19,10 +19,10 @@ namespace SupDef {
             }
 
             void build() override {
-                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server aufmachen");
+                addElement<GuiLabel>(10, 10, "Server aufmachen");
 
                 addButtonEvent<ClosePageEvent>(
-                    std::make_tuple(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"),
+                    std::make_tuple(10,  60, 160, 28, "Zurück"),
                     std::make_tuple(pageId)
                 );
             }

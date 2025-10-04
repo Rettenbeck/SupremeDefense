@@ -12,15 +12,18 @@ namespace SupDef {
             void initialize() override {
                 SUBSCRIBE(MenuButtonOpenServerEvent)
                 SUBSCRIBE(MenuButtonJoinServerEvent)
+                SUBSCRIBE(MenuButtonOpenModListEvent)
             }
 
             void build() override {
-                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Supreme Defense");
+                addElement<GuiLabel>(10, 10, "Supreme Defense");
 
-                addButton<MenuButtonOpenServerEvent>(GuiElementStyle::Default, 10,  60, 160, 28, "Server aufmachen");
-                addButton<MenuButtonJoinServerEvent>(GuiElementStyle::Default, 10, 100, 160, 28, "Server joinen");
-                addButton<StartTestGameEvent>(GuiElementStyle::Default, 10, 140, 160, 28, "Testspiel starten");
-                addButton<GameEndEvent>(GuiElementStyle::Default, 10, 220, 160, 28, "Beenden");
+                addButton<MenuButtonOpenServerEvent>(10,  60, 160, 28, "Server aufmachen");
+                addButton<MenuButtonJoinServerEvent>(10, 100, 160, 28, "Server joinen");
+                addButton<StartTestGameEvent>(10, 140, 160, 28, "Testspiel starten");
+                addButton<MenuButtonOpenModListEvent>(10, 180, 160, 28, "Mods");
+
+                addButton<GameEndEvent>(10, 260, 160, 28, "Beenden");
             }
 
             DEFINE_EVENT_CALLBACK(MenuButtonOpenServerEvent) {
@@ -30,6 +33,10 @@ namespace SupDef {
             
             DEFINE_EVENT_CALLBACK(MenuButtonJoinServerEvent) {
                 pushPage(PAGE_TYPE_ID_JOIN_SERVER);
+            }
+
+            DEFINE_EVENT_CALLBACK(MenuButtonOpenModListEvent) {
+                pushPage(PAGE_TYPE_ID_MOD_LIST);
             }
 
             bool isBlocking() override { return true; }
