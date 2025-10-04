@@ -106,8 +106,9 @@ namespace SupDef {
 
     struct MenuButtonOpenServerEvent : public Event { MenuButtonOpenServerEvent() { } };
     struct MenuButtonJoinServerEvent : public Event { MenuButtonJoinServerEvent() { } };
+    struct MenuButtonOpenModListEvent : public Event { MenuButtonOpenModListEvent() { } };
 
-    
+
 
 
     // #### Game Gui events ###########################################################################
@@ -172,8 +173,26 @@ namespace SupDef {
     //     EntityID id;
     //     DieAfterAnimationEvent(EntityID id) : id(id) {}
     // };
-
     
+
+
+
+    // #### Other Gui events ##########################################################################
+    
+    /**
+     * @brief Event notifying that the mod list should be reprocessed.
+     *
+     * Is dispatched by the renderer and subscribed to by the SelectionManager. Notifies that the
+     *   player has selected one or more units.
+     */
+    struct RetrieveModListEvent : public Event { RetrieveModListEvent() { } };
+
+    struct RetrieveModListAnswerEvent : public Event {
+        std::vector<std::string> data;
+        RetrieveModListAnswerEvent(std::vector<std::string>& data_) : data(data_) {}
+    };
+    
+
 
 
     // #### Action events #############################################################################

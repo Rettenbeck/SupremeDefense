@@ -2,6 +2,7 @@
 #define RENDERER_BASIC_RENDERER
 
 #include <Renderer/renderer_basic.hpp>
+#include <windows.h>
 
 #ifdef INCLUDE_CPP
     #include <Renderer/RendererBasic/rb_poll.cpp>
@@ -24,17 +25,18 @@ namespace SupDef {
     }
 
     void RendererBasic::start() {
-        unsigned w, h;
-        w = width;
-        h = height;
-        window = std::make_unique<sf::RenderWindow>(sf::VideoMode({width, height}), "Supreme");
+        window = std::make_unique<sf::RenderWindow>(sf::VideoMode({width, height}), "Supreme", sf::State::Windowed);
+
+        HWND hwnd = window->getNativeHandle();
+        ShowWindow(hwnd, SW_MAXIMIZE);
+
         auto initOk = ImGui::SFML::Init(*(window.get()));
 
         gameView = window->getDefaultView();
         guiView  = window->getDefaultView();
 
-        //font = std::make_unique<sf::Font>();
-        //font->loadFromFile("arial.ttf");
+        width  = window->getSize().x;
+        height = window->getSize().y;
         dispatch<WindowResizeEvent>(width, height);
         subscribeToEvents();
     }
@@ -58,7 +60,13 @@ namespace SupDef {
         ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
         ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize, ImGuiCond_Always);
 
-        ImGui::Begin("GameOverlay", nullptr, ImGuiWindowFlags_NoDecoration |ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMove);
+        ImGui::Begin("GameOverlay", nullptr,
+            ImGuiWindowFlags_NoDecoration |
+            ImGuiWindowFlags_NoBackground |
+            ImGuiWindowFlags_NoMove |
+            // ImGuiWindowFlags_NoInputs |
+            ImGuiWindowFlags_NoBringToFrontOnFocus);
+
         renderGui();
         ImGui::End();
         ImGui::SFML::Render(*(window.get()));

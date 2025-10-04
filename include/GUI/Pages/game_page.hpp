@@ -28,7 +28,7 @@ namespace SupDef {
                 assert(game);
                 showResources(0, 0);
                 buildGuiForUnit();
-                if (!guiManager->info.empty()) guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, 1000, 10, guiManager->info));
+                if (!guiManager->info.empty()) guiManager->add(std::make_unique<GuiLabel>(1000, 10, guiManager->info));
             }
 
             void buildGuiForUnit() {
@@ -52,7 +52,7 @@ namespace SupDef {
                         desc = active->commandID;
                     }
                     ss << "  Desc: " << desc << "\n";
-                    auto button = std::make_unique<GuiButton>(GuiElementStyle::Default,  cx, cy, bw, bh, desc);
+                    auto button = std::make_unique<GuiButton>(cx, cy, bw, bh, desc);
                     elementMap[button.get()] = {id, techID};
                     guiManager->add(std::move(button));
                     cx += bw + 1; cc++;
@@ -154,7 +154,7 @@ namespace SupDef {
                     if(resource->rate != 0) ss << "; Rate: " << resource->rate;
                     if(resource->capacity != 0) ss << "; Max: " << resource->capacity;
 
-                    guiManager->add(std::make_unique<GuiLabel>(GuiElementStyle::Default, x, y + dy, ss.str()));
+                    guiManager->add(std::make_unique<GuiLabel>(x, y + dy, ss.str()));
                     dy += line_distance;
                 }
             }

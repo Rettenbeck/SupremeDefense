@@ -13,6 +13,7 @@ namespace SupDef {
 
     class GuiManager : public Listener {
         protected:
+            uint32_t nextGuiId = 1;
             GuiElements elements;
             std::unordered_map<int, GuiMemberFunc> clickableMap;
             std::unordered_map<int, GuiInput*> inputMap;
@@ -46,6 +47,7 @@ namespace SupDef {
             GuiElement* add(UGuiElement element) {
                 assert(element);
                 auto ptr = element.get();
+                element->guiId = getNextGuiId();
                 elements.push_back(std::move(element));
                 return ptr;
             }
@@ -109,12 +111,29 @@ namespace SupDef {
                 handleButton(guiElement);
             }
 
+            std::string getNextGuiId() {
+                std::stringstream ss;
+                ss << "gui_" << nextGuiId++;
+                return ss.str();
+            }
+
             void clear() {
+                nextGuiId = 1;
                 isGameBlocked = false;
                 info.clear();
                 elements.clear();
                 clickableMap.clear();
                 inputMap.clear();
+            }
+
+            void checkIdUniqueness() {
+                for(auto& e : elements) assert(!e->guiId.empty());
+                if (elements.size() <= 1) return;
+                for(int i = 0; i < elements.size() - 1; i++) {
+                    for(int j = i + 1; j < elements.size(); j++) {
+                        assert(elements[i]->guiId != elements[j]->guiId);
+                    }
+                }
             }
 
             void setElementsUnreactive() {

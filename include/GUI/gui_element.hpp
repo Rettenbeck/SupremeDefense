@@ -6,10 +6,12 @@
 
 namespace SupDef {
 
-    enum class GuiElementType  { Button, Label, Panel, Input, Table };
+    enum class GuiElementType  { Button, Label, Panel, Input, Checkbox, Table, TableComplex };
     enum class GuiElementStyle { Default, Test };
 
     struct GuiElement {
+        bool embedded = false;
+        std::string guiId = "";
         GuiElementType type;
         GuiElementStyle style = GuiElementStyle::Default;
         std::string text;
@@ -26,6 +28,7 @@ namespace SupDef {
 
     using UGuiElement = std::unique_ptr<GuiElement>;
     using GuiElements = std::vector<UGuiElement>;
-    using PGuiElements = std::vector<GuiElement*>;
+    using GuiElementRow = std::vector<GuiElement*>;
+    using GuiElementRows = std::vector<GuiElementRow>;
 
 }

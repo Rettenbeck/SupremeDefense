@@ -80,13 +80,13 @@ namespace SupDef {
                 for (const auto& [id, entity] : assets) {
                     json entityJson;
                     entity->to_json(entityJson);
-                    j[S_ASSETS].push_back(entityJson);
+                    j[S_ASSETS][id] = entityJson;
                 }
             }
         
             void from_json(const json& j) {
                 assets.clear();
-                for (const auto& entityJson : j[S_ASSETS]) {
+                for (const auto& [id, entityJson] : j[S_ASSETS].items()) {
                     auto entity = std::make_unique<Entity>(NO_ENTITY);
                     entity->from_json(entityJson);
                     assets[entity->assetID] = std::move(entity);

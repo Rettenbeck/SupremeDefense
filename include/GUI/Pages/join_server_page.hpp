@@ -19,11 +19,11 @@ namespace SupDef {
             }
 
             void build() override {
-                addElement<GuiLabel>(GuiElementStyle::Default, 10, 10, "Server joinen");
+                addElement<GuiLabel>(10, 10, "Server joinen");
 
-                addButton<RequestServerListRefreshEvent>(GuiElementStyle::Default, 200, 60, 160, 28, "Refresh");
+                addButton<RequestServerListRefreshEvent>(200, 60, 160, 28, "Refresh");
 
-                auto ptr_table = addElement<GuiTable>(GuiElementStyle::Default, 200, 92, 760, 460, "Server list");
+                auto ptr_table = addElement<GuiTable>(200, 92, 760, 460);
                 assert(ptr_table);
                 TableLine head = {"Servername", "IP", "Beschreibung"};
                 ptr_table->setHead(head);
@@ -31,7 +31,7 @@ namespace SupDef {
                 ptr_table->appendData(data);
                 
                 addClickableEvent<GuiButton, ClosePageEvent>(
-                    std::make_tuple(GuiElementStyle::Default, 10,  60, 160, 28, "Zurück"),
+                    std::make_tuple(10,  60, 160, 28, "Zurück"),
                     std::make_tuple(pageId)
                 );
             }

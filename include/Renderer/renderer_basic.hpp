@@ -96,10 +96,14 @@ namespace SupDef {
             
             void showDebug();
             void renderGui();
+            void drawElement(GuiElement* element);
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
+            void drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool checked);
+            void drawCheckbox(GuiCheckbox* checkbox);
             void drawTable(GuiTable* table);
+            void drawTableComplex(GuiTableComplex* table);
             void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
             void drawCooldownOverlay(float x, float y, float width, float height, float perc);
             void addClickHandling(GuiElement* element);
@@ -116,6 +120,7 @@ namespace SupDef {
 
             sf::View gameView;
             sf::View guiView;
+            bool dontSetPosition = false;
 
             float currentZoom = 1.0;
             float moveAmount = 10.0;

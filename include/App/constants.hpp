@@ -11,6 +11,7 @@ namespace SupDef {
     const int PRIORITY_GUI      = 50;
     const int PRIORITY_RENDER   = 60;
     const int PRIORITY_NETWORK  = 70;
+    const int PRIORITY_ASSET    = 91;
 
     const unsigned short discoveryPortInitial = 43000;
     const unsigned short connectionPortInitial = 50000;
@@ -28,5 +29,12 @@ namespace SupDef {
     const std::string S_NET_ASSETS                          = "assets"                              ;
     const std::string S_NET_ACTION_FROM_CLIENT              = "action_from_client"                  ;
     const std::string S_NET_ACTIONS_FROM_SERVER             = "actions_from_server"                 ;
+
+    const std::string MOD_FOLDER                            = "mods"                                ;
+    const std::string FILETYPE_MOD                          = ".ini"                                ;
+    const std::string MOD_HEADER_ENTRY                      = "header"                              ;
+    const std::string MOD_HEADER_NAME                       = "name"                                ;
+    const std::string MOD_HEADER_DESC                       = "desc"                                ;
+    const std::string MOD_HEADER_TEXT_DEFAULT_LANGUAGE      = "en"                                  ;
 
 }
