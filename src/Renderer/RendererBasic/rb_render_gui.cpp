@@ -54,25 +54,39 @@ namespace SupDef {
 
     void RendererBasic::renderGui() {
         if(!gui) return;
+        gui->checkIdUniqueness();
         for (const auto& element : gui->getGuiElements()) {
-            switch (element->type) {
-                case GuiElementType::Panel:
-                    drawPanel(element->style, element->x, element->y, element->width, element->height);
-                    break;
-                case GuiElementType::Label:
-                    drawLabel(element->style, element->x, element->y, element->text);
-                    break;
-                case GuiElementType::Button:
-                    drawButton(element->style, element->x, element->y, element->width, element->height, element->text);
-                    break;
-                case GuiElementType::Table:
-                    auto table_ptr = dynamic_cast<GuiTable*>(element.get());
-                    drawTable(table_ptr);
-                    break;
-            }
-            addClickHandling(element.get());
+            if (element->embedded) continue;
+            drawElement(element.get());
         }
         showDebug();
+    }
+
+    void RendererBasic::drawElement(GuiElement* element) {
+        assert(element);
+        ImGui::PushID(element->guiId.c_str());
+        switch (element->type) {
+            case GuiElementType::Panel:
+                drawPanel(element->style, element->x, element->y, element->width, element->height);
+                break;
+            case GuiElementType::Label:
+                drawLabel(element->style, element->x, element->y, element->text);
+                break;
+            case GuiElementType::Button:
+                drawButton(element->style, element->x, element->y, element->width, element->height, element->text);
+                break;
+            case GuiElementType::Checkbox:
+                drawCheckbox(dynamic_cast<GuiCheckbox*>(element));
+                break;
+            case GuiElementType::Table:
+                drawTable(dynamic_cast<GuiTable*>(element));
+                break;
+            case GuiElementType::TableComplex:
+                drawTableComplex(dynamic_cast<GuiTableComplex*>(element));
+                break;
+        }
+        ImGui::PopID();
+        addClickHandling(element);
     }
 
     void RendererBasic::drawPanel(GuiElementStyle style, float x, float y, float width, float height) {
@@ -111,21 +125,31 @@ namespace SupDef {
         // ImGui::SetCursorPos(ImVec2(x, y));
         // ImGui::BeginChild("##panel", ImVec2(width, height), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
         // ImGui::EndChild();
-    }   
+    } 
 
     void RendererBasic::drawLabel(GuiElementStyle style, float x, float y, const std::string text) {
-        ImGui::SetCursorPos(ImVec2(x, y));
+        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(x, y));
         ImGui::Text("%s", text.c_str());
     }   
 
     void RendererBasic::drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text) {
-        ImGui::SetCursorPos(ImVec2(x, y));
+        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(x, y));
         ImGui::Button(text.c_str(), ImVec2(width, height));
+    }
+
+    void RendererBasic::drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool* checked) {
+        assert(checked);
+        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(x, y));
+        ImGui::Checkbox(text.c_str(), checked);
+    }
+
+    void RendererBasic::drawCheckbox(GuiCheckbox* checkbox) {
+        assert(checkbox);
+        drawCheckbox(checkbox->style, checkbox->x, checkbox->y, checkbox->text, checkbox->isChecked);
     }
 
     void RendererBasic::drawTable(GuiTable* table) {
         assert(table);
-        // ImGui::Begin(table->header.c_str());
 
         ImGuiTableFlags flags =
             ImGuiTableFlags_Resizable |
@@ -135,15 +159,20 @@ namespace SupDef {
             ImGuiTableFlags_Borders |
             ImGuiTableFlags_ScrollY |
             ImGuiTableFlags_SizingStretchProp;
+            
+        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(table->x, table->y));
 
-        ImGui::SetCursorPos(ImVec2(table->x, table->y));
-        ImVec2 size(table->width, table->height);
+        float width = ImGui::GetContentRegionAvail().x;
+        if (table->width != 0.0) width = table->width;
 
-        table->checkColumnWidths();
+        float height = ImGui::GetContentRegionAvail().y;
+        if (table->height != 0.0) height = table->height;
+
+        ImVec2 size = ImVec2(width, height);
 
         if (table->head.size() > 0) {
-            if (ImGui::BeginTable(table->header.c_str(), table->head.size(), flags, size)) {
-                // Setup columns (use StretchProp so they share space nicely)
+            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
+                table->distributeColumnWidths(width);
                 assert(table->head.size() == table->column_width.size());
                 for(int i = 0; i < table->head.size(); i++) {
                     auto col_name = table->head[i].c_str();
@@ -170,8 +199,55 @@ namespace SupDef {
                 ImGui::EndTable();
             }
         }
+    }
 
-        // ImGui::End();
+    void RendererBasic::drawTableComplex(GuiTableComplex* table) {
+        assert(table);
+
+        ImGuiTableFlags flags =
+            ImGuiTableFlags_Resizable |
+            ImGuiTableFlags_Reorderable |
+            ImGuiTableFlags_Hideable |
+            ImGuiTableFlags_RowBg |
+            ImGuiTableFlags_Borders |
+            ImGuiTableFlags_ScrollY |
+            ImGuiTableFlags_SizingStretchProp;
+            
+        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(table->x, table->y));
+
+        float width = ImGui::GetContentRegionAvail().x;
+        if (table->width != 0.0) width = table->width;
+
+        float height = ImGui::GetContentRegionAvail().y;
+        if (table->height != 0.0) height = table->height;
+
+        ImVec2 size = ImVec2(width, height);
+
+        if (table->head.size() > 0) {
+            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
+                table->distributeColumnWidths(width);
+                assert(table->head.size() == table->column_width.size());
+                for(int i = 0; i < table->head.size(); i++) {
+                    auto col_name = table->head[i].c_str();
+                    auto& col_width = table->column_width[i];
+                    ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
+                }
+
+                ImGui::TableHeadersRow();
+                for (const auto& row : table->rows) {
+                    assert(row.size() == table->head.size());
+                    ImGui::TableNextRow();
+                    for(int i = 0; i < row.size(); i++) {
+                        ImGui::TableSetColumnIndex(i);
+                        dontSetPosition = true;
+                        drawElement(row[i]);
+                        dontSetPosition = false;
+                    }
+                }
+
+                ImGui::EndTable();
+            }
+        }
     }
 
     void RendererBasic::addClickHandling(GuiElement* element) {

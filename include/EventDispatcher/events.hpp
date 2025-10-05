@@ -4,6 +4,7 @@
 #include <ECS/entity.hpp>
 #include <Action/action.hpp>
 #include <Action/action_queue.hpp>
+#include <Game/mod_data.hpp>
 
 
 namespace SupDef {
@@ -106,8 +107,9 @@ namespace SupDef {
 
     struct MenuButtonOpenServerEvent : public Event { MenuButtonOpenServerEvent() { } };
     struct MenuButtonJoinServerEvent : public Event { MenuButtonJoinServerEvent() { } };
+    struct MenuButtonOpenModListEvent : public Event { MenuButtonOpenModListEvent() { } };
 
-    
+
 
 
     // #### Game Gui events ###########################################################################
@@ -172,8 +174,32 @@ namespace SupDef {
     //     EntityID id;
     //     DieAfterAnimationEvent(EntityID id) : id(id) {}
     // };
-
     
+
+
+
+    // #### Other Gui events ##########################################################################
+    
+    /**
+     * @brief Event notifying that the mod list should be sent.
+     *
+     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     */
+    struct RequestModListEvent : public Event { RequestModListEvent() { } };
+
+    struct RequestModListAnswerEvent : public Event {
+        Mods* mods;
+        RequestModListAnswerEvent(Mods* mods_) : mods(mods_) {}
+    };
+
+    /**
+     * @brief Event notifying that the mod list should be reprocessed.
+     *
+     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     */
+    struct BuildModListEvent : public Event { BuildModListEvent() { } };
+
+
 
 
     // #### Action events #############################################################################

@@ -76,7 +76,8 @@ namespace SupDef {
                     json componentJson;
                     component->to_json(componentJson);
                     componentJson[S_TYPE] = component->getTypeName();
-                    j[S_COMPONENTS].push_back(componentJson);
+                    // j[S_COMPONENTS][component->getTypeName()].push_back(componentJson);
+                    j[S_COMPONENTS][component->getTypeName()] = componentJson;
                 }
             }
         
@@ -88,7 +89,8 @@ namespace SupDef {
                     json componentJson;
                     component->to_json(componentJson);
                     componentJson[S_TYPE] = component->getTypeName();
-                    j[S_COMPONENTS].push_back(componentJson);
+                    // j[S_COMPONENTS][component->getTypeName()].push_back(componentJson);
+                    j[S_COMPONENTS][component->getTypeName()] = componentJson;
                 }
             }
         
@@ -97,11 +99,11 @@ namespace SupDef {
                 else id = NO_ENTITY;
 
                 assetID = j.at(S_ASSET_ID).get<AssetID>();
-                if (j.contains(S_COMPONENTS) && j[S_COMPONENTS].is_array()) {
-                    for (const auto& componentJson : j[S_COMPONENTS]) {
+                if (j.contains(S_COMPONENTS)) {
+                    for (const auto& [componentName, componentJson] : j[S_COMPONENTS].items()) {
                         std::string typeName = componentJson.at(S_TYPE).get<std::string>();
                         auto component = ComponentRegistry::createComponent(typeName);
-                        if (!component) std::cout << "Component: " << typeName << "\n";
+                        // if (!component) std::cout << "Component: " << typeName << "\n";
                         assert(component);
                         component->from_json(componentJson);
                         components[typeid(*component)] = std::move(component);

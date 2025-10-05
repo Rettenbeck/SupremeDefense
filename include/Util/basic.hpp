@@ -31,6 +31,11 @@
     #include <sstream>
 #endif
 
+#ifndef INCL_FILESYSTEM
+    #define INCL_FILESYSTEM
+    #include <filesystem>
+#endif
+
 #ifndef INCL_FSTREAM
     #define INCL_FSTREAM
     #include <fstream>

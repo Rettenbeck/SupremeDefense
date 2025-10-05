@@ -7,56 +7,104 @@ namespace SupDef {
 
     struct GuiButton : public GuiElement {
         bool isPressed = false;
-    
-        GuiButton(GuiElementStyle style, float x, float y, float width, float height, const std::string& text)
-        : GuiElement(GuiElementType::Button, style, x, y, width, height, text) {
+        GuiButton(float x, float y, float width, float height, const std::string& text)
+        : GuiElement(GuiElementType::Button, GuiElementStyle::Default, x, y, width, height, text) {
             clickable = true;
         }
     };
     
     struct GuiLabel : public GuiElement {
-        GuiLabel(GuiElementStyle style, float x, float y, const std::string& text)
-        : GuiElement(GuiElementType::Label, style, x, y, 0, 0, text) {
+        GuiLabel(float x, float y, const std::string& text)
+        : GuiElement(GuiElementType::Label, GuiElementStyle::Default, x, y, 0.0, 0.0, text) {
+            clickable = false;
+        }
+        GuiLabel(const std::string& text)
+        : GuiElement(GuiElementType::Label, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) {
             clickable = false;
         }
     };
     
     struct GuiPanel : public GuiElement {
-        GuiPanel(GuiElementStyle style, float x, float y, float width, float height)
-        : GuiElement(GuiElementType::Panel, style, x, y, width, height) {
+        GuiPanel(float x, float y, float width, float height)
+        : GuiElement(GuiElementType::Panel, GuiElementStyle::Default, x, y, width, height) {
             clickable = true;
         }
     };
 
     struct GuiInput : public GuiElement {
         std::string value = "";
-        GuiInput(GuiElementStyle style, float x, float y, const std::string& text)
-        : GuiElement(GuiElementType::Input, style, x, y, 0, 0, text) {
+        GuiInput(float x, float y, const std::string& text)
+        : GuiElement(GuiElementType::Input, GuiElementStyle::Default, x, y, 0.0, 0.0, text) {
             clickable = false;
         }
     };
 
+    struct GuiCheckbox : public GuiElement {
+        bool isPressed = false;
+        bool* isChecked;
+
+        GuiCheckbox(float x, float y, const std::string& text, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, text) , isChecked(checked) {
+            clickable = true; }
+
+        GuiCheckbox(float x, float y, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, "") , isChecked(checked) {
+            clickable = true; isChecked = checked; }
+
+        GuiCheckbox(const std::string& text, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) , isChecked(checked) {
+            clickable = true; isChecked = checked; }
+
+        GuiCheckbox(bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, "") , isChecked(checked) {
+            clickable = true; isChecked = checked; }
+    };
+    
     struct GuiTable : public GuiElement {
-        std::string header = "";
         std::vector<float> column_width;
+        std::vector<float> column_width_perc;
         TableLine head;
         TableData data;
 
-        GuiTable(GuiElementStyle style, float x, float y, float width, float height, std::string header_)
-        : GuiElement(GuiElementType::Table, style, x, y, width, height) {
+        GuiTable(float x, float y, float width, float height)
+        : GuiElement(GuiElementType::Table, GuiElementStyle::Default, x, y, width, height) {
             clickable = false;
-            header = header_;
         }
 
         bool setHead(TableLine head_) {
-            if (!data.empty()) return false;
+            // if (!data.empty()) return false;
             head = head_;
             return true;
         }
 
+        void distributeColumnWidths(float width_) {
+            width = width_;
+            distributeColumnWidths();
+        }
+
         void distributeColumnWidths() {
+            if (width == 0.0) return;
             assert(!head.empty());
-            assert(width > 0.0);
+            if (column_width_perc.empty()) {
+                distributeColumnWidthsEqually();
+            } else {
+                assert(column_width_perc.size() == head.size());
+                column_width.clear();
+                float total_perc = 0.0;
+                for(int i = 0; i < column_width_perc.size(); i++) total_perc += column_width_perc[i];
+                assert(total_perc != 0.0);
+                for(int i = 0; i < column_width_perc.size(); i++) {
+                    column_width_perc[i] /= total_perc;
+                }
+                for(int i = 0; i < column_width_perc.size(); i++) {
+                    column_width.push_back(width * column_width_perc[i]);
+                }
+            }
+        }
+
+        void distributeColumnWidthsEqually() {
+            if (width == 0.0) return;
+            assert(!head.empty());
             auto width_per_column = width / ((float) head.size());
             column_width.clear();
             for(int i = 0; i < head.size(); i++) column_width.push_back(width_per_column);
@@ -95,6 +143,20 @@ namespace SupDef {
         void appendData(std::vector<std::vector<std::string>> data_) {
             for(auto& line : data_) data.push_back(line);
         }
+
+    };
+
+    struct GuiTableComplex : public GuiTable {
+        GuiElementRows rows;
+
+        GuiTableComplex(float x, float y, float width, float height)
+        : GuiTable(x, y, width, height) {
+            clickable = false;
+            type = GuiElementType::TableComplex;
+        }
+        
+        void appendData(std::vector<std::string> data_) = delete;
+        void appendData() = delete;
 
     };
 
