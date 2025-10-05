@@ -2,7 +2,6 @@
 
 #include <App/layers.hpp>
 #include <App/constants.hpp>
-#include <App/settings.hpp>
 
 
 namespace SupDef {
@@ -42,6 +41,7 @@ namespace SupDef {
 
             void addLayer(ULayer layer) {
                 layer->setGlobalDispatcher(globalDispatcher.get());
+                layer->setSettings(settings.get());
                 layer->onAttach();
                 layers.push_back(std::move(layer));
                 std::sort(layers.begin(), layers.end(), [](const auto& a, const auto& b) {

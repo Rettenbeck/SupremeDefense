@@ -31,6 +31,7 @@ namespace SupDef {
                 
                 SUBSCRIBE(RequestModListEvent)
                 SUBSCRIBE(BuildModListEvent)
+                SUBSCRIBE(SaveModListEvent)
             }
         
             void update(float deltaTime) override {
@@ -42,7 +43,12 @@ namespace SupDef {
             }
 
             DEFINE_EVENT_CALLBACK(BuildModListEvent) {
+                addModsToSettings();
                 buildModList();
+            }
+
+            DEFINE_EVENT_CALLBACK(SaveModListEvent) {
+                addModsToSettings();
             }
 
             void applyMods() {
@@ -65,6 +71,8 @@ namespace SupDef {
                 mods.clear();
                 namespace fs = std::filesystem;
                 fs::path modPath = fs::current_path() / MOD_FOLDER;
+                assert(settings);
+                auto& j_mods = settings->raw()[S_APP_MODS];
 
                 try {
                     for (const auto& entry : fs::directory_iterator(modPath)) {
@@ -101,6 +109,15 @@ namespace SupDef {
                                         auto& header = file->j[MOD_HEADER_ENTRY];
                                         mod->name = retrieveTextFromJson(header, MOD_HEADER_NAME);
                                         mod->desc = retrieveTextFromJson(header, MOD_HEADER_DESC);
+                                        if (header.contains(MOD_HEADER_EXCLUSIVE)) {
+                                            auto& excl = header[MOD_HEADER_EXCLUSIVE];
+                                            if (excl.is_boolean()) mod->exclusive = excl;
+                                        }
+                                    }
+
+                                    if (j_mods.contains(mod->defaultname)) {
+                                        auto& j_mod = j_mods[mod->defaultname];
+                                        if (j_mod.is_boolean()) mod->active = j_mod;
                                     }
 
                                     mod->files.push_back(std::move(file));
@@ -128,6 +145,17 @@ namespace SupDef {
                     text->from_json(json_key);
                     return std::move(text);
                 }
+            }
+
+            void addModsToSettings() {
+                assert(settings);
+                auto& j_mods = settings->raw()[S_APP_MODS];
+                bool changed = false;
+                for(auto& mod : mods) {
+                    j_mods[mod->defaultname] = mod->active;
+                    changed = true;
+                }
+                if (changed) settings->onChange();
             }
 
             void printModList() {

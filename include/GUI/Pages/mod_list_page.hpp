@@ -13,6 +13,10 @@ namespace SupDef {
         public:
             ModListPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
+            ~ModListPage() {
+                dispatch<SaveModListEvent>();
+            }
+
             void initialize() override {
                 SUBSCRIBE(RequestModListAnswerEvent)
                 dispatch<RequestModListEvent>();
@@ -34,8 +38,8 @@ namespace SupDef {
 
             void fillTableData(GuiTableComplex* table) {
                 assert(table);
-                TableLine head = {"Mod", "Beschreibung", "Aktiv", "Default", "Pfad"};
-                table->column_width_perc = {1, 5, 0.3, 1, 2};
+                TableLine head = {"Mod", "Beschreibung", "Aktiv", "Exklusiv", "Default", "Pfad"};
+                table->column_width_perc = {1, 5, 0.3, 0.3, 1, 2};
                 table->setHead(head);
                 table->rows.clear();
                 if (!mods) return;
@@ -52,9 +56,11 @@ namespace SupDef {
                 assert(mod);
                 GuiElementRow row;
 
+                auto exclusive = mod->exclusive;
                 addElementToRow(row, addElement<GuiLabel>(mod->getName()));
                 addElementToRow(row, addElement<GuiLabel>(mod->desc->get()));
                 addElementToRow(row, addElement<GuiCheckbox>(&(mod->active)));
+                addElementToRow(row, addElement<GuiCheckboxReadOnly>(&(mod->exclusive)));
                 addElementToRow(row, addElement<GuiLabel>(mod->defaultname));
                 addElementToRow(row, addElement<GuiLabel>(mod->path));
                 table->rows.push_back(row);

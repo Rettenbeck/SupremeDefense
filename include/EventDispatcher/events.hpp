@@ -2,6 +2,7 @@
 
 #include <EventDispatcher/event.hpp>
 #include <ECS/entity.hpp>
+#include <App/settings.hpp>
 #include <Action/action.hpp>
 #include <Action/action_queue.hpp>
 #include <Game/mod_data.hpp>
@@ -198,6 +199,14 @@ namespace SupDef {
      * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
      */
     struct BuildModListEvent : public Event { BuildModListEvent() { } };
+
+    /**
+     * @brief Event notifying that the mod list active flags should be written to
+     *   the global settings.
+     *
+     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     */
+    struct SaveModListEvent : public Event { SaveModListEvent() { } };
 
 
 

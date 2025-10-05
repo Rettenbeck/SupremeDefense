@@ -40,26 +40,41 @@ namespace SupDef {
     };
 
     struct GuiCheckbox : public GuiElement {
-        bool isPressed = false;
-        bool* isChecked;
+        bool isPressed = false, isReadOnly = false;
+        bool* checkedPtr;
+        std::unique_ptr<bool> checkedPtrReadOnly;
 
         GuiCheckbox(float x, float y, const std::string& text, bool* checked)
-        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, text) , isChecked(checked) {
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, text) , checkedPtr(checked) {
             clickable = true; }
 
         GuiCheckbox(float x, float y, bool* checked)
-        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, "") , isChecked(checked) {
-            clickable = true; isChecked = checked; }
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, "") , checkedPtr(checked) {
+            clickable = true; }
 
         GuiCheckbox(const std::string& text, bool* checked)
-        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) , isChecked(checked) {
-            clickable = true; isChecked = checked; }
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) , checkedPtr(checked) {
+            clickable = true; }
 
         GuiCheckbox(bool* checked)
-        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, "") , isChecked(checked) {
-            clickable = true; isChecked = checked; }
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, "") , checkedPtr(checked) {
+            clickable = true; }
+
+        bool* getCheckedPtr() {
+            if (isReadOnly) {
+                checkedPtrReadOnly = std::make_unique<bool>(*checkedPtr);
+                return checkedPtrReadOnly.get();
+            } else {
+                return checkedPtr;
+            }
+        }
     };
     
+    struct GuiCheckboxReadOnly : public GuiCheckbox {
+        GuiCheckboxReadOnly(bool* checked) : GuiCheckbox(checked) {
+            isReadOnly = true; }
+    };
+
     struct GuiTable : public GuiElement {
         std::vector<float> column_width;
         std::vector<float> column_width_perc;
