@@ -9,6 +9,8 @@ namespace SupDef {
 
     class Settings {
         public:
+            bool autoSave = true;
+            std::string loadFile = "";
 
             void to_json(json& j) const { j = data; }
             void from_json(const json& j) { data = j; }
@@ -31,6 +33,7 @@ namespace SupDef {
                     LOG_ERROR(ss.str())
                     return false;
                 }
+                loadFile = filename;
                 return true;
             }
         
@@ -47,22 +50,34 @@ namespace SupDef {
                 file << j.dump(4);
                 return true;
             }
+
+            bool saveToFile() const {
+                if (loadFile == "") return false;
+                return saveToFile(loadFile);
+            }
+
+            void onChange() const {
+                saveToFile();
+            }
         
             template <typename T>
             void set(const std::string& key, const T& value) {
                 data[key] = value;
+                onChange();
             }
         
             template <typename T>
-            T get(const std::string& key, const T& defaultValue) const {
-                if (data.contains(key)) {
-                    try {
-                        return data.at(key).get<T>();
-                    } catch (const nlohmann::json::type_error&) {
-                        std::stringstream ss;
-                        ss << "Type mismatch for key: " << key;
-                        LOG_ERROR(ss.str())
-                    }
+            T get(const std::string& key, const T& defaultValue) {
+                if (!data.contains(key)) {
+                    data[key] = defaultValue;
+                    onChange();
+                }
+                try {
+                    return data.at(key).get<T>();
+                } catch (const nlohmann::json::type_error&) {
+                    std::stringstream ss;
+                    ss << "Type mismatch for key: " << key;
+                    LOG_ERROR(ss.str())
                 }
                 return defaultValue;
             }

@@ -13,6 +13,10 @@ namespace SupDef {
         public:
             ModListPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
+            ~ModListPage() {
+                dispatch<SaveModListEvent>();
+            }
+
             void initialize() override {
                 SUBSCRIBE(RequestModListAnswerEvent)
                 dispatch<RequestModListEvent>();

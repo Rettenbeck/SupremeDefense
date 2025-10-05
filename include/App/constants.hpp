@@ -23,6 +23,7 @@ namespace SupDef {
     const std::string S_APP_FRAMERATE                       = "framerate"                           ;
     const std::string S_APP_INIT_WINDOW_WIDTH               = "init_window_width"                   ;
     const std::string S_APP_INIT_WINDOW_HEIGHT              = "init_window_height"                  ;
+    const std::string S_APP_MODS                            = "mods"                                ;
 
     const std::string S_NET_MESSAGE_TYPE                    = "network_message_type"                ;
     const std::string S_NET_CHAT                            = "chat"                                ;
