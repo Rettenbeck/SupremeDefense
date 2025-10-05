@@ -101,6 +101,10 @@ namespace SupDef {
                                         auto& header = file->j[MOD_HEADER_ENTRY];
                                         mod->name = retrieveTextFromJson(header, MOD_HEADER_NAME);
                                         mod->desc = retrieveTextFromJson(header, MOD_HEADER_DESC);
+                                        if (header.contains(MOD_HEADER_EXCLUSIVE)) {
+                                            auto& excl = header[MOD_HEADER_EXCLUSIVE];
+                                            if (excl.is_boolean()) mod->exclusive = excl;
+                                        }
                                     }
 
                                     mod->files.push_back(std::move(file));

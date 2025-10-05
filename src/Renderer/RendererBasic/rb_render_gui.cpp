@@ -145,7 +145,7 @@ namespace SupDef {
 
     void RendererBasic::drawCheckbox(GuiCheckbox* checkbox) {
         assert(checkbox);
-        drawCheckbox(checkbox->style, checkbox->x, checkbox->y, checkbox->text, checkbox->isChecked);
+        drawCheckbox(checkbox->style, checkbox->x, checkbox->y, checkbox->text, checkbox->getCheckedPtr());
     }
 
     void RendererBasic::drawTable(GuiTable* table) {

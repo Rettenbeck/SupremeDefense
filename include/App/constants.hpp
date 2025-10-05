@@ -36,5 +36,6 @@ namespace SupDef {
     const std::string MOD_HEADER_NAME                       = "name"                                ;
     const std::string MOD_HEADER_DESC                       = "desc"                                ;
     const std::string MOD_HEADER_TEXT_DEFAULT_LANGUAGE      = "en"                                  ;
+    const std::string MOD_HEADER_EXCLUSIVE                  = "exclusive"                           ;
 
 }
