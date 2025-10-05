@@ -100,7 +100,7 @@ namespace SupDef {
             void drawPanel(GuiElementStyle style, float x, float y, float width, float height);
             void drawLabel(GuiElementStyle style, float x, float y, std::string text);
             void drawButton(GuiElementStyle style, float x, float y, float width, float height, std::string text);
-            void drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool checked);
+            void drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool* checked);
             void drawCheckbox(GuiCheckbox* checkbox);
             void drawTable(GuiTable* table);
             void drawTableComplex(GuiTableComplex* table);

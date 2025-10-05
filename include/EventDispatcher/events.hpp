@@ -4,6 +4,7 @@
 #include <ECS/entity.hpp>
 #include <Action/action.hpp>
 #include <Action/action_queue.hpp>
+#include <Game/mod_data.hpp>
 
 
 namespace SupDef {
@@ -180,18 +181,24 @@ namespace SupDef {
     // #### Other Gui events ##########################################################################
     
     /**
+     * @brief Event notifying that the mod list should be sent.
+     *
+     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     */
+    struct RequestModListEvent : public Event { RequestModListEvent() { } };
+
+    struct RequestModListAnswerEvent : public Event {
+        Mods* mods;
+        RequestModListAnswerEvent(Mods* mods_) : mods(mods_) {}
+    };
+
+    /**
      * @brief Event notifying that the mod list should be reprocessed.
      *
-     * Is dispatched by the renderer and subscribed to by the SelectionManager. Notifies that the
-     *   player has selected one or more units.
+     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
      */
-    struct RetrieveModListEvent : public Event { RetrieveModListEvent() { } };
+    struct BuildModListEvent : public Event { BuildModListEvent() { } };
 
-    struct RetrieveModListAnswerEvent : public Event {
-        std::vector<std::string> data;
-        RetrieveModListAnswerEvent(std::vector<std::string>& data_) : data(data_) {}
-    };
-    
 
 
 

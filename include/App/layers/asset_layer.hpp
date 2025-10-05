@@ -3,32 +3,10 @@
 #include <App/layer.hpp>
 #include <Game/game.hpp>
 #include <Game/build_assets.hpp>
+#include <Game/mod_data.hpp>
 
 
 namespace SupDef {
-
-    struct FileData {
-        std::string filename = "";
-        json j;
-    };
-    DEFINE_UNIQUE_AND_LIST(FileData, UFile, Files);
-
-    struct ModData {
-        std::string defaultname = "", path = "";
-        UText name, desc;
-        bool exclusive = false;
-        bool active = true;
-        Files files;
-
-        std::string getName() {
-            if (name) return name->get();
-            return defaultname;
-        }
-        std::string getActive() {
-            return (active ? "y" : "n");
-        }
-    };
-    DEFINE_UNIQUE_AND_LIST(ModData, UMod, Mods);
 
     class AssetLayer : public Layer {
         private:
@@ -49,31 +27,22 @@ namespace SupDef {
                 BuildAssets::build(originalAssetManager.get());
                 BuildAssets::build(assetManager.get());
                 mods.clear();
+                buildModList();
                 
-                SUBSCRIBE(RetrieveModListEvent)
+                SUBSCRIBE(RequestModListEvent)
+                SUBSCRIBE(BuildModListEvent)
             }
         
             void update(float deltaTime) override {
                 // Process any queued events or additional logic if necessary
             }
 
-            DEFINE_EVENT_CALLBACK(RetrieveModListEvent) {
-                retrieveMods();
-                // printModList();
-                applyMods();
-                sendModList();
+            DEFINE_EVENT_CALLBACK(RequestModListEvent) {
+                dispatch<RequestModListAnswerEvent>(&mods);
             }
 
-            void sendModList() {
-                std::vector<std::string> data;
-                for(auto& mod : mods) {
-                    data.push_back(mod->getName());
-                    data.push_back(mod->desc->get());
-                    data.push_back(mod->getActive());
-                    data.push_back(mod->defaultname);
-                    data.push_back(mod->path);
-                }
-                dispatch<RetrieveModListAnswerEvent>(data);
+            DEFINE_EVENT_CALLBACK(BuildModListEvent) {
+                buildModList();
             }
 
             void applyMods() {
@@ -81,6 +50,7 @@ namespace SupDef {
                 assert(assetManager);
                 assert(originalAssetManager);
 
+                originalAssetManager->to_json(j_am);
                 for(auto& mod : mods) {
                     if (mod->active) {
                         for(auto& file : mod->files) {
@@ -88,9 +58,10 @@ namespace SupDef {
                         }
                     }
                 }
+                assetManager->from_json(j_am);
             }
 
-            void retrieveMods() {
+            void buildModList() {
                 mods.clear();
                 namespace fs = std::filesystem;
                 fs::path modPath = fs::current_path() / MOD_FOLDER;

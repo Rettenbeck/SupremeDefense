@@ -15,7 +15,11 @@ namespace SupDef {
     
     struct GuiLabel : public GuiElement {
         GuiLabel(float x, float y, const std::string& text)
-        : GuiElement(GuiElementType::Label, GuiElementStyle::Default, x, y, 0, 0, text) {
+        : GuiElement(GuiElementType::Label, GuiElementStyle::Default, x, y, 0.0, 0.0, text) {
+            clickable = false;
+        }
+        GuiLabel(const std::string& text)
+        : GuiElement(GuiElementType::Label, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) {
             clickable = false;
         }
     };
@@ -30,18 +34,30 @@ namespace SupDef {
     struct GuiInput : public GuiElement {
         std::string value = "";
         GuiInput(float x, float y, const std::string& text)
-        : GuiElement(GuiElementType::Input, GuiElementStyle::Default, x, y, 0, 0, text) {
+        : GuiElement(GuiElementType::Input, GuiElementStyle::Default, x, y, 0.0, 0.0, text) {
             clickable = false;
         }
     };
 
     struct GuiCheckbox : public GuiElement {
-        bool isPressed = false, isChecked = false;
-        GuiCheckbox(float x, float y, const std::string& text, bool checked)
-        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, text) {
-            clickable = true;
-            isChecked = checked;
-        }
+        bool isPressed = false;
+        bool* isChecked;
+
+        GuiCheckbox(float x, float y, const std::string& text, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, text) , isChecked(checked) {
+            clickable = true; }
+
+        GuiCheckbox(float x, float y, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, x, y, 0.0, 0.0, "") , isChecked(checked) {
+            clickable = true; isChecked = checked; }
+
+        GuiCheckbox(const std::string& text, bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, text) , isChecked(checked) {
+            clickable = true; isChecked = checked; }
+
+        GuiCheckbox(bool* checked)
+        : GuiElement(GuiElementType::Checkbox, GuiElementStyle::Default, 0.0, 0.0, 0.0, 0.0, "") , isChecked(checked) {
+            clickable = true; isChecked = checked; }
     };
     
     struct GuiTable : public GuiElement {

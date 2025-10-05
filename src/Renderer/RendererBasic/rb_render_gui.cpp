@@ -54,7 +54,6 @@ namespace SupDef {
 
     void RendererBasic::renderGui() {
         if(!gui) return;
-        ImGui::ShowMetricsWindow();
         gui->checkIdUniqueness();
         for (const auto& element : gui->getGuiElements()) {
             if (element->embedded) continue;
@@ -138,9 +137,10 @@ namespace SupDef {
         ImGui::Button(text.c_str(), ImVec2(width, height));
     }
 
-    void RendererBasic::drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool checked) {
+    void RendererBasic::drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool* checked) {
+        assert(checked);
         if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(x, y));
-        ImGui::Checkbox(text.c_str(), &checked);
+        ImGui::Checkbox(text.c_str(), checked);
     }
 
     void RendererBasic::drawCheckbox(GuiCheckbox* checkbox) {
