@@ -49,19 +49,41 @@ namespace SupDef {
 
             DEFINE_EVENT_CALLBACK(SaveModListEvent) {
                 addModsToSettings();
+                applyMods();
             }
 
             void applyMods() {
                 json j_am;
+                bool mergeable = true;
                 assert(assetManager);
                 assert(originalAssetManager);
+                std::vector<ModData*> regulars, exclusives;
 
-                originalAssetManager->to_json(j_am);
                 for(auto& mod : mods) {
                     if (mod->active) {
-                        for(auto& file : mod->files) {
-                            j_am.merge_patch(file->j);
+                        if (mod->exclusive) {
+                            exclusives.push_back(mod.get());
+                            mergeable = false;
+                        } else {
+                            regulars.push_back(mod.get());
                         }
+                    }
+                }
+
+                if (mergeable) originalAssetManager->to_json(j_am);
+                for(auto mod : exclusives) {
+                    for(auto& file : mod->files) {
+                        if (mergeable) {
+                            j_am.merge_patch(file->j);
+                        } else {
+                            j_am = file->j;
+                            mergeable = true;
+                        }
+                    }
+                }
+                for(auto mod : regulars) {
+                    for(auto& file : mod->files) {
+                        j_am.merge_patch(file->j);
                     }
                 }
                 assetManager->from_json(j_am);
