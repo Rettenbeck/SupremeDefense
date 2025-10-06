@@ -217,19 +217,25 @@ namespace SupDef {
      * @brief Event notifying that an action has been performed.
      *
      * Is dispatched by the Game when the player performs an action. Is subscribed to by the
-     *   ActionRouter which in turns distributes it accordingly.
+     *   NetworkLayer which in turns distributes it accordingly, and by the ReplayLayer.
      */
     struct ActionCreatedEvent : public Event {
         SAction action;
         ActionCreatedEvent(SAction action_) : action(std::move(action_)) {}
     };
 
-    // struct EntityDestroyedEvent : public Event {
-    //     EntityID entityID;
-    //     EntityDestroyedEvent(EntityID id) : entityID(id) {}
-    // };
+    /**
+     * @brief Event to distribute an action list handed out by the server.
+     *
+     * Is dispatched by the NetworkLayer when all players have responded with their actions. Is
+     *   subscribed to by the GameLayer.
+     */
+    struct ActionReceivedForGameEvent : public Event {
+        ActionQueue* actionQueue = nullptr;
+        ActionReceivedForGameEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
+    };
 
-    
+
 
 
     // #### Network events ############################################################################
@@ -277,8 +283,7 @@ namespace SupDef {
      * @brief Event notifying the local server to be closed.
      *
      * Is dispatched by the OpenServerPage when the page is closed and is subscribed to by the
-     *   NetworkLayer. Notifies that the local server is to be closed. Only closes the server
-     *   when the game is not yet running.
+     *   NetworkLayer. Notifies that the local server is to be closed.
      */
     struct RequestOpenServerCloseEvent : public Event { RequestOpenServerCloseEvent() {} };
     
@@ -287,10 +292,26 @@ namespace SupDef {
         RequestOpenServerCloseAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
     };
 
+    // /**
+    //  * @brief Event notifying the player to start looking for servers to join.
+    //  *
+    //  * Is dispatched by the JoinServerPage when the page is closed and is subscribed to by the
+    //  *   NetworkLayer. Notifies that the a discovery request is to be done.
+    //  */
+    // struct PrepareForDiscoveryEvent : public Event { PrepareForDiscoveryEvent() {} };
+    
+    // struct PrepareForDiscoveryAnswerEvent : public Event {
+    //     bool ok; std::string message;
+    //     PrepareForDiscoveryAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
+    // };
 
-
-
-
+    /**
+     * @brief Event notifying the player is no longer looking for other servers.
+     *
+     * Is dispatched by the JoinServerPage when the page is closed and is subscribed to by the
+     *   NetworkLayer. Notifies that the discoveries are no longer needed.
+     */
+    struct PrepareForDiscoveryEndEvent : public Event { PrepareForDiscoveryEndEvent() {} };
 
 
 
@@ -311,7 +332,6 @@ namespace SupDef {
         GameBlockedByNetworkEvent(bool blocked = true) : blocked(blocked) {}
     };
 
-
     /**
      * @brief Event notifying that the Game has updated by one frame.
      *
@@ -322,18 +342,6 @@ namespace SupDef {
         long frameCount;
         GameHasUpdatedEvent(EntityID thisPlayer, long frameCount)
         : thisPlayer(thisPlayer), frameCount(frameCount) {}
-    };
-
-
-    /**
-     * @brief Event to distribute an action list handed out by the server.
-     *
-     * Is dispatched by the NetworkLayer when all players have responded with their actions. Is
-     *   subscribed to by the ActionRouter which distributes it further to the GameLayer.
-     */
-    struct ReceivedActionsFromServerEvent : public Event {
-        ActionQueue* actionQueue = nullptr;
-        ReceivedActionsFromServerEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
     };
 
     /**

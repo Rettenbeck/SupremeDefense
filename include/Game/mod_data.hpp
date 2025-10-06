@@ -25,9 +25,6 @@ namespace SupDef {
             if (name) return name->get();
             return defaultname;
         }
-        // std::string getActive() {
-        //     return (active ? "y" : "n");
-        // }
     };
     
     using UMod = std::unique_ptr<ModData>;

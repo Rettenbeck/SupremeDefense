@@ -15,16 +15,11 @@ namespace SupDef {
             ReplayLayer* replayLayer = nullptr;
             NetworkLayer* networkLayer = nullptr;
         
-            bool isMultiplayer = false;
-            bool isReplay = false;
-        
         public:
             void prepare(GameLayer* game, ReplayLayer* replay, NetworkLayer* network) {
                 gameLayer = game;
                 replayLayer = replay;
                 networkLayer = network;
-                isMultiplayer = (network != nullptr);
-                isReplay = (replay == nullptr);
             }
 
             ActionRouter() {
@@ -40,7 +35,7 @@ namespace SupDef {
                 auto& logger = Logger::getInstance();
                 logger.addMessage(MessageType::Info, "Action created");
 
-                if (isMultiplayer && networkLayer) {
+                if (networkLayer) {
                     logger.addMessage(MessageType::Info, "  Sent to network");
                     networkLayer->getActionQueue()->enqueue(action);
                 } else {
@@ -48,17 +43,21 @@ namespace SupDef {
                     forwardActionToGame(action);
                 }
         
-                if (replayLayer && !isReplay) {
+                if (replayLayer) {
                     logger.addMessage(MessageType::Info, "  Sent to replay");
                     replayLayer->getActionQueue()->enqueue(action);
                 }
             }
 
             void forwardActionToGame(SAction action) {
+                assert(gameLayer);
+                assert(gameLayer->getActionQueue());
                 gameLayer->getActionQueue()->enqueue(action);
             }
         
             void forwardActionsToGame(ActionQueue* actionQueue) {
+                assert(gameLayer);
+                assert(gameLayer->getActionQueue());
                 assert(actionQueue);
                 for(auto action : actionQueue->getActions()) {
                     gameLayer->getActionQueue()->enqueue(action);
