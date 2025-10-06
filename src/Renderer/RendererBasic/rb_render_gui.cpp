@@ -8,21 +8,28 @@ namespace SupDef {
 
     void RendererBasic::showDebug() {
         if (!debugMode) return;
+        assert(gui);
         std::stringstream ss;
 
         ss << "Framecount Total:    " << framecountTotal << "\n";
         ss << "           Renderer: " << framecountRenderer << "\n";
         ss << "           Game:     " << framecountGame << "\n";
         ss << "\n";
-
+        
+        EntityID localPlayerId = NO_ENTITY;
+        if (game) {
+            auto localPlayer = game->getThisPlayer();
+            if (localPlayer) localPlayerId = localPlayer->id;
+        }
+        
         auto pos = getMousePos();
         auto posW = getMousePosWorld();
-        ss << "Player: " << game->getThisPlayer()->id << "\n";
+
+        ss << "Player: " << localPlayerId << "\n";
         ss << "Mouse: " << pos.x << "; " << pos.y << "\n";
         ss << "Mouse world: " << posW.x << "; " << posW.y << "\n";
 
-        // auto guiGame = dynamic_cast<GuiManagerGame*>(gui);
-        if (gui) {
+        if (game) {
             ss << "Selected units amount: " << gui->getSelectionManager()->getSelectedUnits().size() << " [";
             for (auto id : gui->getSelectionManager()->getSelectedUnits()) {
                 ss << id << "  ";
@@ -44,10 +51,10 @@ namespace SupDef {
                 ss << "  Entities: " << collision->entityA << " & " << collision->entityB;
                 ss << "; framecount: " << collision->frameCount << "; group: " << collision->collisionGroup << "\n";
             }
+            
+            ss << "\n--- More Debug Info ---\n";
+            ss << game->toPrint << "\n";
         }
-
-        ss << "\n--- More Debug Info ---\n";
-        ss << game->toPrint << "\n";
 
         drawLabel(GuiElementStyle::Default, 2, 100, ss.str());
     }

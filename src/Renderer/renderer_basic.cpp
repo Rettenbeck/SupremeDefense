@@ -56,16 +56,15 @@ namespace SupDef {
         renderGame();
 
         window->setView(guiView);
+        if (debugMode) ImGui::ShowMetricsWindow();
         ImGui::SetNextWindowBgAlpha(0.0f);
         ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
         ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize, ImGuiCond_Always);
-        if (false) ImGui::ShowMetricsWindow();
 
         ImGui::Begin("GameOverlay", nullptr,
             ImGuiWindowFlags_NoDecoration |
             ImGuiWindowFlags_NoBackground |
             ImGuiWindowFlags_NoMove |
-            // ImGuiWindowFlags_NoInputs |
             ImGuiWindowFlags_NoBringToFrontOnFocus);
 
         renderGui();
