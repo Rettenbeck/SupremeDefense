@@ -169,14 +169,21 @@ namespace SupDef {
         if (table->height != 0.0) height = table->height;
 
         ImVec2 size = ImVec2(width, height);
+        int adder = (table->selectable) ? 1 : 0;
 
         if (table->head.size() > 0) {
-            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
+            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size() + adder, flags, size)) {
                 table->distributeColumnWidths(width);
                 assert(table->head.size() == table->column_width.size());
-                for(int i = 0; i < table->head.size(); i++) {
-                    auto col_name = table->head[i].c_str();
-                    auto& col_width = table->column_width[i];
+                if (table->selectable) {
+                    std::stringstream ss; ss << table->guiId << "_-1";
+                    ImGui::PushID(ss.str().c_str());
+                    ImGui::TableSetupColumn("", ImGuiTableColumnFlags_WidthFixed, 1);
+                    ImGui::PopID();
+                }
+                for(int i = adder; i < table->head.size() + adder; i++) {
+                    auto col_name = table->head[i - adder].c_str();
+                    auto& col_width = table->column_width[i - adder];
                     ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
                 }
 
@@ -196,15 +203,18 @@ namespace SupDef {
                     ImGui::TableSetColumnIndex(0);
                     ImGui::PushID(ss.str().c_str());
 
-                    int adder = 0;
                     if (table->selectable) {
-                        adder = 1;
                         bool is_selected = (table->selected_row == i);
                         if (ImGui::Selectable("##row_bg", is_selected,
                                             ImGuiSelectableFlags_SpanAllColumns |
                                             ImGuiSelectableFlags_AllowItemOverlap))
                         {
                             table->selected_row = i;
+                            if (table->clickable) {
+                                if (table->checkeds.size() > i) {
+                                    table->checkeds[i] != table->checkeds[i];
+                                }
+                            }
                         }
                     }
 

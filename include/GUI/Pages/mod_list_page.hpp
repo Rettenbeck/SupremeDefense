@@ -66,6 +66,7 @@ namespace SupDef {
                 addElementToRow(row, addElement<GuiLabel>(mod->defaultname));
                 addElementToRow(row, addElement<GuiLabel>(mod->path));
                 table->rows.push_back(row);
+                table->checkeds.push_back(&(mod->active));
             }
 
             DEFINE_EVENT_CALLBACK(RequestModListAnswerEvent) {
