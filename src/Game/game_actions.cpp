@@ -8,12 +8,14 @@ namespace SupDef {
 
     void Game::processActions() {
         assert(actionQueue);
+        assert(saveReplay);
         for (auto& action : actionQueue->getActions()) {
             assert(action);
             auto command = getAssetFromCommand(action->commandID, action->data);
             assert(command);
             processAction(command, action->entityID, action->playerID, action->data);
         }
+        saveReplay->add(frameCount, actionQueue);
         actionQueue->clear();
     }
 
@@ -72,6 +74,18 @@ namespace SupDef {
                 // std::cout << "  mx1: " << mx1 << "; my1: " << my1 << "; mx2: " << mx2 << "; my2: " << my2 << "\n";
             }
         }
+    }
+
+    void Game::fillActionQueueByReplay() {
+        if (!loadReplay) return;
+        assert(actionQueue);
+        auto replayActions = loadReplay->get(frameCount);
+        if (replayActions) actionQueue->getActions() = replayActions->getActions();
+    }
+
+    bool Game::isReplay() {
+        if (loadReplay) return true;
+        return false;
     }
 
 }

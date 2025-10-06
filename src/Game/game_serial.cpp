@@ -15,12 +15,16 @@ namespace SupDef {
 
         j[SG_COLLISION_TRACKER] = json();
         collisionTracker->to_json(j[SG_COLLISION_TRACKER]);
+
+        j[SG_REPLAY] = json();
+        saveReplay->to_json(j[SG_REPLAY]);
     }
 
     void Game::from_json(const json& j) {
         entityManager    ->from_json(j[SG_ENTITY_MANAGER]);
         assetManager     ->from_json(j[SG_ASSET_MANAGER ]);
         collisionTracker ->from_json(j[SG_COLLISION_TRACKER]);
+        saveReplay       ->from_json(j[SG_REPLAY]);
     }
 
     void Game::serialize(const std::string& filename) const {

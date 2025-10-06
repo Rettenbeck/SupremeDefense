@@ -17,13 +17,20 @@ namespace SupDef {
             }
             
             void onAttach() override {
-                //
+                SUBSCRIBE(ActionsReceivedForGameEvent)
             }
         
             void update(float deltaTime) override {
                 // Process any queued events or additional logic if necessary
             }
 
+            DEFINE_EVENT_CALLBACK(ActionsReceivedForGameEvent) {
+                assert(actionQueue);
+                assert(event.actionQueue);
+                actionQueue->clear();
+                actionQueue->getActions() = event.actionQueue->getActions();
+            }
+            
             ActionQueue* getActionQueue() { return actionQueue.get(); }
 
     };    

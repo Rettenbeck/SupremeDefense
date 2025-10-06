@@ -17,6 +17,7 @@ namespace SupDef {
         processTechs();
         processActions();
         generatePlayerList();
+        fillActionQueueByReplay();
     }
 
     void Game::updateWorlds(float deltaTime) {

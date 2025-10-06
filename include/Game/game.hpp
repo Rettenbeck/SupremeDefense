@@ -6,6 +6,7 @@
 #include <Game/collision_system.hpp>
 #include <Game/collision_tracker.hpp>
 #include <Game/command_tracker.hpp>
+#include <Game/replay.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
 
@@ -66,6 +67,8 @@ namespace SupDef {
 
             void processActions();
             void processAction(Entity* command, EntityID entityID, EntityID playerID, json &data);
+            void fillActionQueueByReplay();
+            bool isReplay();
             
 
 
@@ -245,6 +248,8 @@ namespace SupDef {
 
             UEntity virtualEntity = nullptr;
             UEntity uniqueCommand = nullptr;
+
+            UReplay saveReplay, loadReplay;
 
             TechMap techToAssignees;
             TechMap assigneeToTechs;

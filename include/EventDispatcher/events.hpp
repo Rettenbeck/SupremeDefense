@@ -230,9 +230,11 @@ namespace SupDef {
      * Is dispatched by the NetworkLayer when all players have responded with their actions. Is
      *   subscribed to by the GameLayer.
      */
-    struct ActionReceivedForGameEvent : public Event {
+    struct ActionsReceivedForGameEvent : public Event {
+        long gameFrameCount = 0;
         ActionQueue* actionQueue = nullptr;
-        ActionReceivedForGameEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
+        ActionsReceivedForGameEvent(long gameFrameCount, ActionQueue* actionQueue)
+        : gameFrameCount(gameFrameCount), actionQueue(actionQueue) {}
     };
 
 

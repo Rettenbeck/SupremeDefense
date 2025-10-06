@@ -31,7 +31,7 @@ namespace SupDef {
                 selectionManager->initialize();
 
                 SUBSCRIBE(GameBlockedByNetworkEvent)
-                SUBSCRIBE(ActionReceivedForGameEvent)
+                SUBSCRIBE(ActionsReceivedForGameEvent)
             }
         
             void update(float deltaTime) override {
@@ -48,7 +48,9 @@ namespace SupDef {
                 blockedByNetwork = event.blocked;
             }
             
-            DEFINE_EVENT_CALLBACK(ActionReceivedForGameEvent) {
+            DEFINE_EVENT_CALLBACK(ActionsReceivedForGameEvent) {
+                if (!game) return;
+                if (game->isReplay()) return;
                 assert(actionQueue);
                 assert(event.actionQueue);
                 actionQueue->clear();

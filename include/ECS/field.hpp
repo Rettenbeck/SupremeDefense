@@ -155,6 +155,64 @@ namespace SupDef {
         return std::make_unique<ListField<T, ItemType>>(name, memberPtr);
     }
 
+    template <typename T, typename ItemType>
+    struct ListFieldShared : public IField<T> {
+        std::vector<std::shared_ptr<ItemType>> T::* memberPtr;
+    
+        ListFieldShared(const std::string& name_, std::vector<std::shared_ptr<ItemType>> T::* ptr) : memberPtr(ptr) {
+            this->name = name_;
+        }
+    
+        nlohmann::json getJson(const T* obj) const override {
+            assert(obj);
+            const auto& vec = obj->*memberPtr;
+            nlohmann::json j = nlohmann::json::array();
+    
+            for (const auto& item : vec) {
+                if (item) {
+                    nlohmann::json element;
+                    item->to_json(element);
+                    j.push_back(element);
+                } else {
+                    j.push_back(nullptr);
+                }
+            }
+    
+            return j;
+        }
+    
+        void setJson(T* obj, const nlohmann::json& j) const override {
+            assert(obj);
+            auto& vec = obj->*memberPtr;
+            vec.clear();
+    
+            for (const auto& element : j) {
+                if (element.is_null()) {
+                    vec.push_back(nullptr);
+                } else {
+                    auto ptr = std::make_shared<ItemType>();
+                    ptr->from_json(element);
+                    vec.push_back(std::move(ptr));
+                }
+            }
+        }
+    
+        std::vector<std::shared_ptr<ItemType>>& getRef(T* obj) const {
+            assert(obj);
+            return obj->*memberPtr;
+        }
+    
+        void setRef(T* obj, std::vector<std::shared_ptr<ItemType>> value) const {
+            assert(obj);
+            obj->*memberPtr = std::move(value);
+        }
+    };
+
+    template <typename T, typename ItemType>
+    std::unique_ptr<IField<T>> makeListSharedField(const std::string& name, std::vector<std::shared_ptr<ItemType>> T::* memberPtr) {
+        return std::make_unique<ListFieldShared<T, ItemType>>(name, memberPtr);
+    }
+
     template <typename T, typename K, typename V>
     struct MapField : public IField<T> {
         std::unordered_map<K, std::unique_ptr<V>> T::* memberPtr;
@@ -175,7 +233,7 @@ namespace SupDef {
                     generic_to_json(valJson, value.get());
                     j[ss.str()] = valJson;
                 } else {
-                    j[ss.str()] = nullptr;
+                    // j[ss.str()] = nullptr;
                 }
             }
     
@@ -195,7 +253,7 @@ namespace SupDef {
                 std::istringstream(keyStr) >> key;
     
                 if (valueJson.is_null()) {
-                    map[key] = nullptr;
+                    // map[key] = nullptr;
                 } else {
                     auto ptr = std::make_unique<V>();
                     generic_from_json(valueJson, ptr.get());
@@ -258,6 +316,9 @@ namespace SupDef {
 
     #define REFLECT_LIST_UNIQUE(name, itemType) \
         fields.push_back(makeListField<ThisType, itemType>(#name, &ThisType::name));
+
+    #define REFLECT_LIST_SHARED(name, itemType) \
+        fields.push_back(makeListSharedField<ThisType, itemType>(#name, &ThisType::name));
 
     #define REFLECT_MAP_UNIQUE(name, keyType, valueType) \
         fields.push_back(makeMapField<ThisType, keyType, valueType>(#name, &ThisType::name));
