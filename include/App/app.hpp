@@ -21,7 +21,7 @@ namespace SupDef {
         public:
             App() {
                 Logger::getInstance().setFileOutput(DEFAULT_FILENAME_LOG);
-                LOG(Init, MESSAGE_INIT)
+                // LOG(Init, MESSAGE_INIT)
                 globalDispatcher = std::make_unique<EventDispatcher>();
 
                 settings = std::make_unique<Settings>(DEFAULT_FILENAME_SETTINGS);
@@ -203,7 +203,7 @@ namespace SupDef {
             }
 
             DEFINE_EVENT_CALLBACK(GameEndEvent) {
-                LOG(Info, "Game ended")
+                // LOG(Info, "Game ended")
                 end = true;
             }
             
