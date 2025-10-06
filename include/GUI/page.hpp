@@ -110,6 +110,26 @@ namespace SupDef {
                 return addClickableCB<GuiButton>(func, std::forward<Args>(args)...);
             }
 
+            void addElementToRow(GuiElementRow& row, GuiElement* element) {
+                assert(element);
+                element->embedded = true;
+                row.push_back(element);
+            }
+
+            void finalizeSimpleTable(GuiTable* table) {
+                assert(table);
+                table->rows.clear();
+
+                for(auto line : table->strData) {
+                    GuiElementRow row;
+                    for(auto str : line) {
+                        addElementToRow(row, addElement<GuiLabel>(str));
+                    }
+                    table->rows.push_back(row);
+                }
+                table->distributeGuiIds();
+            }
+
             template <typename T>
             static void addToRegistry(PageTypeId pageTypeId) {
                 Page::registerPage(pageTypeId, [pageTypeId]() { return std::make_unique<T>(pageTypeId); });

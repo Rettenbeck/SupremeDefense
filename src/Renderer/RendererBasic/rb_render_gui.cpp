@@ -88,9 +88,6 @@ namespace SupDef {
             case GuiElementType::Table:
                 drawTable(dynamic_cast<GuiTable*>(element));
                 break;
-            case GuiElementType::TableComplex:
-                drawTableComplex(dynamic_cast<GuiTableComplex*>(element));
-                break;
         }
         ImGui::PopID();
         addClickHandling(element);
@@ -128,10 +125,6 @@ namespace SupDef {
             drawRect(x + frameThickness, y + frameThickness,
                 width - 2 * frameThickness, height - 2 * frameThickness, inner);
         }
-        
-        // ImGui::SetCursorPos(ImVec2(x, y));
-        // ImGui::BeginChild("##panel", ImVec2(width, height), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
-        // ImGui::EndChild();
     } 
 
     void RendererBasic::drawLabel(GuiElementStyle style, float x, float y, const std::string text) {
@@ -187,69 +180,44 @@ namespace SupDef {
                     ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
                 }
 
-                ImGui::TableHeadersRow();
-
-                // Optional: sortable headers
-                // (Read ImGui::TableGetSortSpecs() if you want to implement sorting yourself.)
-
-                // Fill rows
-                for (const auto& line : table->data) {
-                    assert(line.size() == table->head.size());
-                    ImGui::TableNextRow();
-
-                    for(int i = 0; i < line.size(); i++) {
-                        ImGui::TableSetColumnIndex(i);
-                        ImGui::TextUnformatted(line[i].c_str());
+                if (table->selectable) {
+                    if (!table->checkeds.empty()) {
+                        assert(table->checkeds.size() == table->rows.size());
                     }
                 }
 
-                ImGui::EndTable();
-            }
-        }
-    }
-
-    void RendererBasic::drawTableComplex(GuiTableComplex* table) {
-        assert(table);
-
-        ImGuiTableFlags flags =
-            ImGuiTableFlags_Resizable |
-            ImGuiTableFlags_Reorderable |
-            ImGuiTableFlags_Hideable |
-            ImGuiTableFlags_RowBg |
-            ImGuiTableFlags_Borders |
-            ImGuiTableFlags_ScrollY |
-            ImGuiTableFlags_SizingStretchProp;
-            
-        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(table->x, table->y));
-
-        float width = ImGui::GetContentRegionAvail().x;
-        if (table->width != 0.0) width = table->width;
-
-        float height = ImGui::GetContentRegionAvail().y;
-        if (table->height != 0.0) height = table->height;
-
-        ImVec2 size = ImVec2(width, height);
-
-        if (table->head.size() > 0) {
-            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
-                table->distributeColumnWidths(width);
-                assert(table->head.size() == table->column_width.size());
-                for(int i = 0; i < table->head.size(); i++) {
-                    auto col_name = table->head[i].c_str();
-                    auto& col_width = table->column_width[i];
-                    ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
-                }
-
                 ImGui::TableHeadersRow();
-                for (const auto& row : table->rows) {
+                for (int i = 0; i < table->rows.size(); i++) {
+                    auto& row = table->rows[i];
+                    std::stringstream ss; ss << table->guiId << "_" << i;
                     assert(row.size() == table->head.size());
+
                     ImGui::TableNextRow();
-                    for(int i = 0; i < row.size(); i++) {
-                        ImGui::TableSetColumnIndex(i);
+                    ImGui::TableSetColumnIndex(0);
+                    ImGui::PushID(ss.str().c_str());
+
+                    int adder = 0;
+                    if (table->selectable) {
+                        adder = 1;
+                        bool is_selected = (table->selected_row == i);
+                        if (ImGui::Selectable("##row_bg", is_selected,
+                                            ImGuiSelectableFlags_SpanAllColumns |
+                                            ImGuiSelectableFlags_AllowItemOverlap))
+                        {
+                            table->selected_row = i;
+                        }
+                    }
+
+                    if (table->hoverable && ImGui::IsItemHovered()) table->hovered_row = i;
+
+                    for(int j = adder; j < row.size() + adder; j++) {
+                        ImGui::TableSetColumnIndex(j);
                         dontSetPosition = true;
-                        drawElement(row[i]);
+                        drawElement(row[j - adder]);
                         dontSetPosition = false;
                     }
+
+                    ImGui::PopID();
                 }
 
                 ImGui::EndTable();

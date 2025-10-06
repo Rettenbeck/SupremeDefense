@@ -79,7 +79,11 @@ namespace SupDef {
         std::vector<float> column_width;
         std::vector<float> column_width_perc;
         TableLine head;
-        TableData data;
+        GuiElementRows rows;
+        TableData strData;
+        bool selectable = true, hoverable = true;
+        int selected_row = -1, hovered_row  = -1;
+        std::vector<bool*> checkeds;
 
         GuiTable(float x, float y, float width, float height)
         : GuiElement(GuiElementType::Table, GuiElementStyle::Default, x, y, width, height) {
@@ -87,7 +91,6 @@ namespace SupDef {
         }
 
         bool setHead(TableLine head_) {
-            // if (!data.empty()) return false;
             head = head_;
             return true;
         }
@@ -137,41 +140,43 @@ namespace SupDef {
             }
         }
 
-        void clear() { data.clear(); }
+        void clear() {
+            rows.clear();
+            strData.clear();
+        }
 
-        void appendData(std::vector<std::string> data_) {
+        void appendStringData(std::vector<std::string> data_) {
             assert(!head.empty());
             TableLine tmp;
             for(auto& d : data_) {
                 if (tmp.size() >= head.size()) {
-                    data.push_back(tmp);
+                    strData.push_back(tmp);
                     tmp.clear();
                 }
                 tmp.push_back(d);
             }
             if (tmp.size() > 0) {
                 while(tmp.size() < head.size()) tmp.push_back("");
-                data.push_back(tmp);
+                strData.push_back(tmp);
             }
         }
 
-        void appendData(std::vector<std::vector<std::string>> data_) {
-            for(auto& line : data_) data.push_back(line);
+        void appendStringData(std::vector<std::vector<std::string>> data_) {
+            for(auto& line : data_) strData.push_back(line);
         }
 
-    };
-
-    struct GuiTableComplex : public GuiTable {
-        GuiElementRows rows;
-
-        GuiTableComplex(float x, float y, float width, float height)
-        : GuiTable(x, y, width, height) {
-            clickable = false;
-            type = GuiElementType::TableComplex;
+        void distributeGuiIds() {
+            for(int i = 0; i < rows.size(); i++) {
+                auto& row = rows[i];
+                for(int j = 0; j < row.size(); j++) {
+                    auto& element = row[j];
+                    assert(element);
+                    std::stringstream ss;
+                    ss << guiId << "_" << i << "_" << j;
+                    element->guiId = ss.str();
+                }
+            }
         }
-        
-        void appendData(std::vector<std::string> data_) = delete;
-        void appendData() = delete;
 
     };
 
