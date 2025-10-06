@@ -13,7 +13,7 @@ namespace SupDef {
                 actions.push_back(std::move(action));
             }
 
-            const SActions& getActions() const {
+            SActions& getActions() {
                 return actions;
             }
 

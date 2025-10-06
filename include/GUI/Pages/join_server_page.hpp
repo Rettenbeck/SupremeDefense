@@ -12,6 +12,10 @@ namespace SupDef {
         public:
             JoinServerPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
+            ~JoinServerPage() {
+                dispatch<PrepareForDiscoveryEndEvent>();
+            }
+
             void initialize() override {
                 SUBSCRIBE(RequestServerListRefreshAnswerEvent)
                 SUBSCRIBE(RetrievedServerListEvent)

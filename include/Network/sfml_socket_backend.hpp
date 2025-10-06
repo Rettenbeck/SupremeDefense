@@ -26,9 +26,7 @@ namespace SupDef {
                 networkRouter = std::make_unique<NetworkRouter>();
             }
 
-            void initialize() override {
-                SUBSCRIBE(RequestServerListRefreshEvent)
-            }
+            void initialize() override { }
 
             bool start(unsigned short discoveryPort_, unsigned short connectionPort_) override {
                 discoveryPort = discoveryPort_;
@@ -617,11 +615,6 @@ namespace SupDef {
 
             void onServerDisconnect() { // Disconnected by message
                 //
-            }
-
-            DEFINE_EVENT_CALLBACK(RequestServerListRefreshEvent) {
-                auto result = requestDiscovery();
-                dispatch<RequestServerListRefreshAnswerEvent>(result.ok, result.error);
             }
 
         private:
