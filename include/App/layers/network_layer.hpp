@@ -77,7 +77,7 @@ namespace SupDef {
 
             void updateOffline() {
                 assert(actionQueue);
-                dispatch<ActionReceivedForGameEvent>(actionQueue.get());
+                dispatch<ActionsReceivedForGameEvent>(gameFrameCount, actionQueue.get());
                 actionQueue->clear();
             }
 

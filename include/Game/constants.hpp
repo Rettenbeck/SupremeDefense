@@ -50,6 +50,7 @@ namespace SupDef {
     const std::string SG_ASSET_MANAGER                      = "asset_manager"                       ;
     const std::string SG_TECH_MANAGER                       = "tech_manager"                        ;
     const std::string SG_COLLISION_TRACKER                  = "collision_tracker"                   ;
+    const std::string SG_REPLAY                             = "replay"                              ;
     
     const std::string SG_ENTITY_A                           = "entityA"                             ;
     const std::string SG_ENTITY_B                           = "entityB"                             ;

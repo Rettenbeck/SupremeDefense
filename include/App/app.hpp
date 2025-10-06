@@ -84,7 +84,6 @@ namespace SupDef {
                 auto render  = getLayer<RenderLayer >();
                 auto replay  = getLayer<ReplayLayer >();
                 auto network = getLayer<NetworkLayer>();
-                // auto action  = getLayer<ActionRouter>();
                 auto gui     = getLayer<GuiLayer    >();
 
                 Game* gamePtr = nullptr;
@@ -114,7 +113,6 @@ namespace SupDef {
                     if (game) fc_game = 1000.0 / game->getLastMeasurement();
                     render->setFramecountData(fc_total, fc_renderer, fc_game);
                 }
-                // if(action) action->prepare(game, replay, network);
             }
 
             void start() {

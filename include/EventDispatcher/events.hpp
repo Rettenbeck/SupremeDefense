@@ -230,9 +230,11 @@ namespace SupDef {
      * Is dispatched by the NetworkLayer when all players have responded with their actions. Is
      *   subscribed to by the GameLayer.
      */
-    struct ActionReceivedForGameEvent : public Event {
+    struct ActionsReceivedForGameEvent : public Event {
+        long gameFrameCount = 0;
         ActionQueue* actionQueue = nullptr;
-        ActionReceivedForGameEvent(ActionQueue* actionQueue) : actionQueue(actionQueue) {}
+        ActionsReceivedForGameEvent(long gameFrameCount, ActionQueue* actionQueue)
+        : gameFrameCount(gameFrameCount), actionQueue(actionQueue) {}
     };
 
 
@@ -291,19 +293,6 @@ namespace SupDef {
         bool ok; std::string message;
         RequestOpenServerCloseAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
     };
-
-    // /**
-    //  * @brief Event notifying the player to start looking for servers to join.
-    //  *
-    //  * Is dispatched by the JoinServerPage when the page is closed and is subscribed to by the
-    //  *   NetworkLayer. Notifies that the a discovery request is to be done.
-    //  */
-    // struct PrepareForDiscoveryEvent : public Event { PrepareForDiscoveryEvent() {} };
-    
-    // struct PrepareForDiscoveryAnswerEvent : public Event {
-    //     bool ok; std::string message;
-    //     PrepareForDiscoveryAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
-    // };
 
     /**
      * @brief Event notifying the player is no longer looking for other servers.
