@@ -292,19 +292,6 @@ namespace SupDef {
         RequestOpenServerCloseAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
     };
 
-    // /**
-    //  * @brief Event notifying the player to start looking for servers to join.
-    //  *
-    //  * Is dispatched by the JoinServerPage when the page is closed and is subscribed to by the
-    //  *   NetworkLayer. Notifies that the a discovery request is to be done.
-    //  */
-    // struct PrepareForDiscoveryEvent : public Event { PrepareForDiscoveryEvent() {} };
-    
-    // struct PrepareForDiscoveryAnswerEvent : public Event {
-    //     bool ok; std::string message;
-    //     PrepareForDiscoveryAnswerEvent(bool ok_, std::string message_) : ok(ok_), message(message_) {}
-    // };
-
     /**
      * @brief Event notifying the player is no longer looking for other servers.
      *
