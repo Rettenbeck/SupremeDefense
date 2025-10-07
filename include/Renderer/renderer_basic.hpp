@@ -106,6 +106,7 @@ namespace SupDef {
             void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
             void drawCooldownOverlay(float x, float y, float width, float height, float perc);
             void addClickHandling(GuiElement* element);
+            float getRowHeight(GuiElementRow& row);
 
             void drawRect(float x, float y, float width, float height, ColorData cData);
             void drawCircle(float x, float y, float r, ColorData cData);
