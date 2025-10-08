@@ -192,6 +192,9 @@ namespace SupDef {
                     std::stringstream ss; ss << table->guiId << "_" << i;
                     assert(row.size() == table->head.size());
 
+                    auto row_h = getRowHeight(row);
+                    if (table->selectable_height > 0.0) row_h = table->selectable_height;
+
                     ImGui::TableNextRow();
                     ImGui::TableSetColumnIndex(0);
                     ImGui::PushID(ss.str().c_str());
@@ -200,22 +203,16 @@ namespace SupDef {
                         bool is_selected = (table->selected_row == i);
                         ImVec2 cell0_start = ImGui::GetCursorScreenPos();
                         std::stringstream ss_sel; ss_sel << "##" << table->guiId << "_row_bg";
-                        if (ImGui::Selectable("##row_bg", is_selected,
+                        if (ImGui::Selectable(ss_sel.str().c_str(), is_selected,
                                             ImGuiSelectableFlags_SpanAllColumns |
-                                            ImGuiSelectableFlags_AllowItemOverlap))
+                                            ImGuiSelectableFlags_AllowItemOverlap, ImVec2(0, row_h)))
                         {
                             if (table->clickable) {
                                 table->selected_row = i;
                                 if (table->checkeds.size() > i) {
                                     assert(table->checkeds[i]);
                                     *(table->checkeds[i]) = !(*(table->checkeds[i]));
-                                    // std::cout << "table click\n";
                                 }
-                                
-                                // if (table->checkeds.size() > table->hovered_row) {
-                                //     std::cout << "Check[hovered] = "
-                                //         << (*(table->checkeds[table->hovered_row]) ? "y":"n") << "\n";
-                                // }
                             }
                         }
                         if (ImGui::IsItemHovered()) table->hovered_row = i;
@@ -240,7 +237,16 @@ namespace SupDef {
     }
 
     float RendererBasic::getRowHeight(GuiElementRow& row) {
-        return 0.0;
+        float row_h = ImGui::GetFrameHeight();
+        float wrap = ImGui::GetContentRegionAvail().x;
+        for(auto el : row) {
+            auto text = dynamic_cast<GuiLabel*>(el);
+            if (text) {
+                ImVec2 t = ImGui::CalcTextSize(text->text.c_str(), nullptr, false, wrap);
+                row_h = std::max(row_h, t.y + ImGui::GetStyle().FramePadding.y * 2.0f);
+            }
+        }
+        return row_h;
     }
 
     void RendererBasic::addClickHandling(GuiElement* element) {

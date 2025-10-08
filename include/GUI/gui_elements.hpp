@@ -84,6 +84,7 @@ namespace SupDef {
         bool hoverable = true;
         int selected_row = -1, hovered_row  = -1;
         std::vector<bool*> checkeds;
+        float selectable_height = 0.0;
 
         GuiTable(float x, float y, float width, float height)
         : GuiElement(GuiElementType::Table, GuiElementStyle::Default, x, y, width, height) {
