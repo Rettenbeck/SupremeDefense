@@ -81,7 +81,7 @@ namespace SupDef {
         TableLine head;
         GuiElementRows rows;
         TableData strData;
-        bool selectable = true, hoverable = true;
+        bool hoverable = true;
         int selected_row = -1, hovered_row  = -1;
         std::vector<bool*> checkeds;
 

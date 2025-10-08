@@ -9,6 +9,7 @@ namespace SupDef {
     class ModListPage : public Page {
         private:
             Mods* mods = nullptr;
+            bool t_hoverable = true, t_clickable = true;
 
         public:
             ModListPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
@@ -26,6 +27,9 @@ namespace SupDef {
                 addElement<GuiLabel>(10, 10, "Mods");
 
                 addButton<BuildModListEvent>(200, 60, 160, 28, "Refresh");
+
+                addElement<GuiCheckbox>(400, 60, "Hoverable", &(t_hoverable));
+                addElement<GuiCheckbox>(500, 60, "Clickable", &(t_clickable));
 
                 auto ptr_table = addElement<GuiTable>(200, 92, 0.0, 0.0);
                 fillTableData(ptr_table);
@@ -50,7 +54,8 @@ namespace SupDef {
                     modToRow(table, mod.get());
                 }
                 table->distributeGuiIds();
-                table->clickable = true;
+                table->hoverable = t_hoverable;
+                table->clickable = t_clickable;
             }
 
             void modToRow(GuiTable* table, ModData* mod) {

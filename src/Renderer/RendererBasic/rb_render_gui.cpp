@@ -169,7 +169,6 @@ namespace SupDef {
         if (table->height != 0.0) height = table->height;
 
         ImVec2 size = ImVec2(width, height);
-        // int adder = (table->selectable) ? 1 : 0;
 
         if (table->head.size() > 0) {
             if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
@@ -181,7 +180,7 @@ namespace SupDef {
                     ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
                 }
 
-                if (table->selectable) {
+                if (table->clickable) {
                     if (!table->checkeds.empty()) {
                         assert(table->checkeds.size() == table->rows.size());
                     }
@@ -197,26 +196,32 @@ namespace SupDef {
                     ImGui::TableSetColumnIndex(0);
                     ImGui::PushID(ss.str().c_str());
 
-                    if (table->selectable) {
+                    if (table->hoverable) {
                         bool is_selected = (table->selected_row == i);
                         ImVec2 cell0_start = ImGui::GetCursorScreenPos();
+                        std::stringstream ss_sel; ss_sel << "##" << table->guiId << "_row_bg";
                         if (ImGui::Selectable("##row_bg", is_selected,
                                             ImGuiSelectableFlags_SpanAllColumns |
-                                            ImGuiSelectableFlags_AllowItemOverlap)) {
-                        // if (ImGui::IsItemClicked()) {
-                            table->selected_row = i;
+                                            ImGuiSelectableFlags_AllowItemOverlap))
+                        {
                             if (table->clickable) {
+                                table->selected_row = i;
                                 if (table->checkeds.size() > i) {
                                     assert(table->checkeds[i]);
-                                    *(table->checkeds[i]) != *(table->checkeds[i]);
-                                    std::cout << "table click\n";
+                                    *(table->checkeds[i]) = !(*(table->checkeds[i]));
+                                    // std::cout << "table click\n";
                                 }
+                                
+                                // if (table->checkeds.size() > table->hovered_row) {
+                                //     std::cout << "Check[hovered] = "
+                                //         << (*(table->checkeds[table->hovered_row]) ? "y":"n") << "\n";
+                                // }
                             }
                         }
+                        if (ImGui::IsItemHovered()) table->hovered_row = i;
                         ImGui::SetCursorScreenPos(cell0_start);
                     }
 
-                    if (table->hoverable && ImGui::IsItemHovered()) table->hovered_row = i;
 
                     for(int j = 0; j < row.size(); j++) {
                         ImGui::TableSetColumnIndex(j);
@@ -224,6 +229,7 @@ namespace SupDef {
                         drawElement(row[j]);
                         dontSetPosition = false;
                     }
+                    // std::cout << "Selected: " << table->selected_row << "; Hovered: " << table->hovered_row << "\n";
 
                     ImGui::PopID();
                 }
@@ -234,7 +240,7 @@ namespace SupDef {
     }
 
     float RendererBasic::getRowHeight(GuiElementRow& row) {
-        //
+        return 0.0;
     }
 
     void RendererBasic::addClickHandling(GuiElement* element) {
