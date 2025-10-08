@@ -88,9 +88,6 @@ namespace SupDef {
             case GuiElementType::Table:
                 drawTable(dynamic_cast<GuiTable*>(element));
                 break;
-            case GuiElementType::TableComplex:
-                drawTableComplex(dynamic_cast<GuiTableComplex*>(element));
-                break;
         }
         ImGui::PopID();
         addClickHandling(element);
@@ -128,10 +125,6 @@ namespace SupDef {
             drawRect(x + frameThickness, y + frameThickness,
                 width - 2 * frameThickness, height - 2 * frameThickness, inner);
         }
-        
-        // ImGui::SetCursorPos(ImVec2(x, y));
-        // ImGui::BeginChild("##panel", ImVec2(width, height), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
-        // ImGui::EndChild();
     } 
 
     void RendererBasic::drawLabel(GuiElementStyle style, float x, float y, const std::string text) {
@@ -187,20 +180,55 @@ namespace SupDef {
                     ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
                 }
 
-                ImGui::TableHeadersRow();
-
-                // Optional: sortable headers
-                // (Read ImGui::TableGetSortSpecs() if you want to implement sorting yourself.)
-
-                // Fill rows
-                for (const auto& line : table->data) {
-                    assert(line.size() == table->head.size());
-                    ImGui::TableNextRow();
-
-                    for(int i = 0; i < line.size(); i++) {
-                        ImGui::TableSetColumnIndex(i);
-                        ImGui::TextUnformatted(line[i].c_str());
+                if (table->clickable) {
+                    if (!table->checkeds.empty()) {
+                        assert(table->checkeds.size() == table->rows.size());
                     }
+                }
+
+                ImGui::TableHeadersRow();
+                for (int i = 0; i < table->rows.size(); i++) {
+                    auto& row = table->rows[i];
+                    std::stringstream ss; ss << table->guiId << "_" << i;
+                    assert(row.size() == table->head.size());
+
+                    auto row_h = getRowHeight(row);
+                    if (table->selectable_height > 0.0) row_h = table->selectable_height;
+
+                    ImGui::TableNextRow();
+                    ImGui::TableSetColumnIndex(0);
+                    ImGui::PushID(ss.str().c_str());
+
+                    if (table->hoverable) {
+                        bool is_selected = (table->selected_row == i);
+                        ImVec2 cell0_start = ImGui::GetCursorScreenPos();
+                        std::stringstream ss_sel; ss_sel << "##" << table->guiId << "_row_bg";
+                        if (ImGui::Selectable(ss_sel.str().c_str(), is_selected,
+                                            ImGuiSelectableFlags_SpanAllColumns |
+                                            ImGuiSelectableFlags_AllowItemOverlap, ImVec2(0, row_h)))
+                        {
+                            if (table->clickable) {
+                                table->selected_row = i;
+                                if (table->checkeds.size() > i) {
+                                    assert(table->checkeds[i]);
+                                    *(table->checkeds[i]) = !(*(table->checkeds[i]));
+                                }
+                            }
+                        }
+                        if (ImGui::IsItemHovered()) table->hovered_row = i;
+                        ImGui::SetCursorScreenPos(cell0_start);
+                    }
+
+
+                    for(int j = 0; j < row.size(); j++) {
+                        ImGui::TableSetColumnIndex(j);
+                        dontSetPosition = true;
+                        drawElement(row[j]);
+                        dontSetPosition = false;
+                    }
+                    // std::cout << "Selected: " << table->selected_row << "; Hovered: " << table->hovered_row << "\n";
+
+                    ImGui::PopID();
                 }
 
                 ImGui::EndTable();
@@ -208,53 +236,17 @@ namespace SupDef {
         }
     }
 
-    void RendererBasic::drawTableComplex(GuiTableComplex* table) {
-        assert(table);
-
-        ImGuiTableFlags flags =
-            ImGuiTableFlags_Resizable |
-            ImGuiTableFlags_Reorderable |
-            ImGuiTableFlags_Hideable |
-            ImGuiTableFlags_RowBg |
-            ImGuiTableFlags_Borders |
-            ImGuiTableFlags_ScrollY |
-            ImGuiTableFlags_SizingStretchProp;
-            
-        if (!dontSetPosition) ImGui::SetCursorPos(ImVec2(table->x, table->y));
-
-        float width = ImGui::GetContentRegionAvail().x;
-        if (table->width != 0.0) width = table->width;
-
-        float height = ImGui::GetContentRegionAvail().y;
-        if (table->height != 0.0) height = table->height;
-
-        ImVec2 size = ImVec2(width, height);
-
-        if (table->head.size() > 0) {
-            if (ImGui::BeginTable(table->guiId.c_str(), table->head.size(), flags, size)) {
-                table->distributeColumnWidths(width);
-                assert(table->head.size() == table->column_width.size());
-                for(int i = 0; i < table->head.size(); i++) {
-                    auto col_name = table->head[i].c_str();
-                    auto& col_width = table->column_width[i];
-                    ImGui::TableSetupColumn(col_name, ImGuiTableColumnFlags_WidthFixed, col_width);
-                }
-
-                ImGui::TableHeadersRow();
-                for (const auto& row : table->rows) {
-                    assert(row.size() == table->head.size());
-                    ImGui::TableNextRow();
-                    for(int i = 0; i < row.size(); i++) {
-                        ImGui::TableSetColumnIndex(i);
-                        dontSetPosition = true;
-                        drawElement(row[i]);
-                        dontSetPosition = false;
-                    }
-                }
-
-                ImGui::EndTable();
+    float RendererBasic::getRowHeight(GuiElementRow& row) {
+        float row_h = ImGui::GetFrameHeight();
+        float wrap = ImGui::GetContentRegionAvail().x;
+        for(auto el : row) {
+            auto text = dynamic_cast<GuiLabel*>(el);
+            if (text) {
+                ImVec2 t = ImGui::CalcTextSize(text->text.c_str(), nullptr, false, wrap);
+                row_h = std::max(row_h, t.y + ImGui::GetStyle().FramePadding.y * 2.0f);
             }
         }
+        return row_h;
     }
 
     void RendererBasic::addClickHandling(GuiElement* element) {
@@ -263,10 +255,8 @@ namespace SupDef {
             auto ptr = static_cast<void*>(element);
             if (ImGui::IsItemClicked(ImGuiMouseButton_Left)) {
                 dispatch<GuiButtonClickedEvent>(ptr, MLEFT);
-                // std::cout << "Button " << ptr << " left clicked!\n";
             } else if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
                 dispatch<GuiButtonClickedEvent>(ptr, MRIGHT);
-                // std::cout << "Button " << ptr << " right clicked!\n";
             }
         }
     }

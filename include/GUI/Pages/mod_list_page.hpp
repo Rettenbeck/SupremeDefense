@@ -27,7 +27,7 @@ namespace SupDef {
 
                 addButton<BuildModListEvent>(200, 60, 160, 28, "Refresh");
 
-                auto ptr_table = addElement<GuiTableComplex>(200, 92, 0.0, 0.0);
+                auto ptr_table = addElement<GuiTable>(200, 92, 0.0, 0.0);
                 fillTableData(ptr_table);
                 
                 addClickableEvent<GuiButton, ClosePageEvent>(
@@ -36,7 +36,7 @@ namespace SupDef {
                 );
             }
 
-            void fillTableData(GuiTableComplex* table) {
+            void fillTableData(GuiTable* table) {
                 assert(table);
                 TableLine head = {"Mod", "Beschreibung", "Aktiv", "Exklusiv", "Default", "Pfad"};
                 table->column_width_perc = {1, 5, 0.3, 0.3, 1, 2};
@@ -49,9 +49,12 @@ namespace SupDef {
                 for(auto& mod : (*mods)) {
                     modToRow(table, mod.get());
                 }
+                table->distributeGuiIds();
+                table->hoverable = true;
+                table->clickable = true;
             }
 
-            void modToRow(GuiTableComplex* table, ModData* mod) {
+            void modToRow(GuiTable* table, ModData* mod) {
                 assert(table);
                 assert(mod);
                 GuiElementRow row;
@@ -64,12 +67,7 @@ namespace SupDef {
                 addElementToRow(row, addElement<GuiLabel>(mod->defaultname));
                 addElementToRow(row, addElement<GuiLabel>(mod->path));
                 table->rows.push_back(row);
-            }
-
-            void addElementToRow(GuiElementRow& row, GuiElement* element) {
-                assert(element);
-                element->embedded = true;
-                row.push_back(element);
+                table->checkeds.push_back(&(mod->active));
             }
 
             DEFINE_EVENT_CALLBACK(RequestModListAnswerEvent) {

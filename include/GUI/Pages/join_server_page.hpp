@@ -32,7 +32,8 @@ namespace SupDef {
                 TableLine head = {"Servername", "IP", "Beschreibung"};
                 ptr_table->setHead(head);
                 ptr_table->clear();
-                ptr_table->appendData(data);
+                ptr_table->appendStringData(data);
+                finalizeSimpleTable(ptr_table);
                 
                 addClickableEvent<GuiButton, ClosePageEvent>(
                     std::make_tuple(10,  60, 160, 28, "Zurück"),
