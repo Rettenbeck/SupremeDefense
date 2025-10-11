@@ -2,7 +2,7 @@
 
 #include <EventDispatcher/event_dispatcher.hpp>
 #include <App/timer.hpp>
-#include <App/settings.hpp>
+#include <App/services.hpp>
 #include <App/constants.hpp>
 
 
@@ -11,7 +11,7 @@ namespace SupDef {
     class Layer : public Listener , public Timer {
         protected:
             int priority = 0;
-            Settings* settings = nullptr;
+            Services* services = nullptr;
         
         public:
             virtual ~Layer() = default;
@@ -23,7 +23,7 @@ namespace SupDef {
 
             int getPriority() const { return priority; }
             void setPriority(int priority_) { priority = priority_; }
-            void setSettings(Settings* settings_) { settings = settings_; }
+            void setServices(Services* services_) { services = services_; }
 
     };
      

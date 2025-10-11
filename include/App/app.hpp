@@ -1,34 +1,29 @@
 #pragma once
 
 #include <App/layers.hpp>
-#include <App/constants.hpp>
 
 
 namespace SupDef {
     
-    class App : public Timer {
+    class App : public Timer , public Listener {
         Layers layers;
-        UEventDispatcher globalDispatcher;
-        USettings settings;
+        UServices services;
         std::vector<std::function<void()>> actions;
 
         unsigned init_window_width, init_window_height;
         double frames_per_second, frame_duration;
         long current_frame = -1;
-        bool end = false;
-        bool changed = false;
+        bool changed = false, end = false;
         
         public:
             App() {
                 Logger::getInstance().setFileOutput(DEFAULT_FILENAME_LOG);
-                // LOG(Init, MESSAGE_INIT)
-                globalDispatcher = std::make_unique<EventDispatcher>();
+                services = std::make_unique<Services>();
+                setGlobalDispatcher(services->globalDispatcher.get());
+                setFramerate(services->settings->get<double>(S_APP_FRAMERATE, 60.0));
 
-                settings = std::make_unique<Settings>(DEFAULT_FILENAME_SETTINGS);
-                setFramerate(settings->get<double>(S_APP_FRAMERATE, 60.0));
-
-                init_window_width  = settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
-                init_window_height = settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
+                init_window_width  = services->settings->get<unsigned>(S_APP_INIT_WINDOW_WIDTH, 1280);
+                init_window_height = services->settings->get<unsigned>(S_APP_INIT_WINDOW_HEIGHT, 720);
                 
                 globalDispatcher->SUBSCRIBE(GameEndEvent)
                 globalDispatcher->SUBSCRIBE(UpdateAppEvent)
@@ -40,8 +35,8 @@ namespace SupDef {
             ~App() { layers.clear(); }
 
             void addLayer(ULayer layer) {
-                layer->setGlobalDispatcher(globalDispatcher.get());
-                layer->setSettings(settings.get());
+                layer->setGlobalDispatcher(globalDispatcher);
+                layer->setServices(services.get());
                 layer->onAttach();
                 layers.push_back(std::move(layer));
                 std::sort(layers.begin(), layers.end(), [](const auto& a, const auto& b) {
@@ -82,7 +77,6 @@ namespace SupDef {
             void doUpdatePreparations() {
                 auto game    = getLayer<GameLayer   >();
                 auto render  = getLayer<RenderLayer >();
-                auto replay  = getLayer<ReplayLayer >();
                 auto network = getLayer<NetworkLayer>();
                 auto gui     = getLayer<GuiLayer    >();
 
@@ -151,30 +145,6 @@ namespace SupDef {
                 actions.clear();
             }
 
-            bool startNetworkGameAsServer(unsigned short port) {
-                // assert(globalDispatcher);
-                // auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsServer(port);
-                // globalDispatcher->dispatch<StartGameAsServerStatusEvent>(success);
-                // return success;
-                return true;
-            }
-
-            bool startNetworkGameAsClient(const std::string& ip, unsigned short port) {
-                // assert(globalDispatcher);
-                // auto success = retrieveLayer<NetworkLayer>()->startNetworkGameAsClient(ip, port);
-                // globalDispatcher->dispatch<StartGameAsClientStatusEvent>(success);
-                // return success;
-                return true;
-            }
-
-            void stopNetworkGame() {
-                removeLayer<NetworkLayer>();
-            }
-
-            void completeServer() {
-                // retrieveLayer<NetworkLayer>()->completeServer();
-            }
-
             void startGame(UAssetManager assetManager, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
                 assert(assetManager);
                 if (worldID.empty()) {
@@ -211,22 +181,6 @@ namespace SupDef {
                 changed = true;
             }
             
-            // DEFINE_EVENT_CALLBACK(StartNetworkGameAsServerEvent) {
-            //     startNetworkGameAsServer(event.port);
-            // }
-            
-            // DEFINE_EVENT_CALLBACK(StartNetworkGameAsClientEvent) {
-            //     startNetworkGameAsClient(event.ip, event.port);
-            // }
-            
-            // DEFINE_EVENT_CALLBACK(CompleteServerEvent) {
-            //     completeServer();
-            // }
-            
-            // DEFINE_EVENT_CALLBACK(StopNetworkGameEvent) {
-            //     stopNetworkGame();
-            // }
-            
             DEFINE_EVENT_CALLBACK(StartTestGameEvent) {
                 startGame();
             }
@@ -246,16 +200,12 @@ namespace SupDef {
             }
 
             void fillLayers() {
-                addLayer(std::make_unique<SupDef::ReplayLayer>());
-                // addLayer(std::make_unique<SupDef::ActionRouter>());
                 addLayer(std::make_unique<SupDef::GuiLayer>());
+                // addLayer(std::make_unique<SupDef::GameLayer>());
                 addLayer(std::make_unique<SupDef::RenderLayer>());
                 addLayer(std::make_unique<SupDef::NetworkLayer>());
-                addLayer(std::make_unique<SupDef::AssetLayer>());
             }
 
-            EventDispatcher* getGlobalDispatcher() { return globalDispatcher.get(); }
-            
     };
     
     using UApp = std::unique_ptr<App>;

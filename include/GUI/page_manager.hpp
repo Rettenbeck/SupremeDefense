@@ -14,6 +14,7 @@ namespace SupDef {
             Game* game = nullptr;
             SelectionManager* selectionManager = nullptr;
             SocketBackend* socketBackend = nullptr;
+            Services* services = nullptr;
 
         public:
             PageManager() { registerPages(); }
@@ -87,6 +88,7 @@ namespace SupDef {
                 assert(newPage);
                 newPage->setPageId(id);
                 newPage->setGlobalDispatcher(globalDispatcher);
+                newPage->setServices(services);
                 newPage->initialize();
                 pages.push_back(std::move(newPage));
             }
@@ -129,6 +131,7 @@ namespace SupDef {
             void setGame(Game* game_) { game = game_; }
             void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
             void setSocketBackend(SocketBackend* socketBackend_) { socketBackend = socketBackend_; }
+            void setServices(Services* services_) { services = services_; }
 
     };
 

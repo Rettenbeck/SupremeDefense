@@ -9,6 +9,7 @@
 #include <Game/replay.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
+#include <App/services.hpp>
 
 
 namespace SupDef {
@@ -215,6 +216,7 @@ namespace SupDef {
             void setActionQueue(ActionQueue* actionQueue_) { actionQueue = actionQueue_; }
             void setThisPlayer(EntityID playerID) { thisPlayer = playerID; }
             void setAssetManager(UAssetManager assetManager_) { assetManager = std::move(assetManager_); }
+            void setServices(Services* services_) { services = services_; }
             Entity* getThisPlayer() { return entityManager->getEntity(thisPlayer); }
             Entity* getVirtualEntity() { if (!virtualEntity) return nullptr; return virtualEntity.get(); }
 
@@ -245,6 +247,7 @@ namespace SupDef {
             UCollisionTracker collisionTracker = nullptr;
             UCommandTracker   commandTracker   = nullptr;
             ActionQueue*      actionQueue      = nullptr;
+            Services*         services         = nullptr;
 
             UEntity virtualEntity = nullptr;
             UEntity uniqueCommand = nullptr;

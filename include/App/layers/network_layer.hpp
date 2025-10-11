@@ -44,17 +44,6 @@ namespace SupDef {
                 SUBSCRIBE(RequestServerListRefreshEvent)
                 SUBSCRIBE(PrepareForDiscoveryEndEvent)
                 SUBSCRIBE(ActionCreatedEvent)
-
-                // SUBSCRIBE_BEGIN(globalDispatcher, GameHasUpdatedEvent)
-                //     assert(networkPlayerTracker);
-                //     networkPlayerTracker->setThisPlayer(typedEvent.thisPlayer);
-                //     hasGameUpdated = true;
-                //     gameFrameCount = typedEvent.frameCount;
-                // SUBSCRIBE_END
-                // SUBSCRIBE_BEGIN(globalDispatcher, SendPlayerListEvent)
-                //     assert(networkPlayerTracker);
-                //     networkPlayerTracker->resetPlayerList(typedEvent.playerList);
-                // SUBSCRIBE_END
             }
         
             void update(float deltaTime) override {

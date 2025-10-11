@@ -7,28 +7,24 @@
 namespace SupDef {
 
     class ModListPage : public Page {
-        private:
-            Mods* mods = nullptr;
-
         public:
             ModListPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
 
             ~ModListPage() {
-                dispatch<SaveModListEvent>();
+                assert(services);
+                services->assetService->saveMods();
             }
 
             void initialize() override {
-                SUBSCRIBE(RequestModListAnswerEvent)
-                dispatch<RequestModListEvent>();
+                assert(services);
+                services->assetService->buildModList();
+                SUBSCRIBE(BuildModListEvent)
             }
 
             void build() override {
                 addElement<GuiLabel>(10, 10, "Mods");
-
                 addButton<BuildModListEvent>(200, 60, 160, 28, "Refresh");
-
-                auto ptr_table = addElement<GuiTable>(200, 92, 0.0, 0.0);
-                fillTableData(ptr_table);
+                fillTableData(addElement<GuiTable>(200, 92, 0.0, 0.0));
                 
                 addClickableEvent<GuiButton, ClosePageEvent>(
                     std::make_tuple(10,  60, 160, 28, "Zurück"),
@@ -37,11 +33,13 @@ namespace SupDef {
             }
 
             void fillTableData(GuiTable* table) {
+                assert(services);
                 assert(table);
                 TableLine head = {"Mod", "Beschreibung", "Aktiv", "Exklusiv", "Default", "Pfad"};
                 table->column_width_perc = {1, 5, 0.3, 0.3, 1, 2};
                 table->setHead(head);
                 table->rows.clear();
+                auto mods = &(services->assetService->getModList());
                 if (!mods) return;
                 if (mods->empty()) return;
                 assert(!table->head.empty());
@@ -70,8 +68,8 @@ namespace SupDef {
                 table->checkeds.push_back(&(mod->active));
             }
 
-            DEFINE_EVENT_CALLBACK(RequestModListAnswerEvent) {
-                mods = event.mods;
+            DEFINE_EVENT_CALLBACK(BuildModListEvent) {
+                services->assetService->buildModList();
             }
 
             bool isBlocking() override { return true; }
