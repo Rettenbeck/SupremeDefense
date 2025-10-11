@@ -31,7 +31,7 @@ namespace SupDef {
         json j;
         to_json(j);
         std::ofstream file(filename);
-        file << j.dump(4);  // Pretty print with 4-space indentation
+        file << j.dump(4);
     }
 
     void Game::deserialize(const std::string& filename) {

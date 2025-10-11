@@ -28,6 +28,8 @@ namespace SupDef {
                 
                 guiManager ->setGlobalDispatcher(globalDispatcher);
                 pageManager->setGlobalDispatcher(globalDispatcher);
+                guiManager ->setServices(services);
+                pageManager->setServices(services);
                 guiManager ->initialize();
                 pageManager->initialize();
             }

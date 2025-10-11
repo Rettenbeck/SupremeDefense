@@ -3,6 +3,7 @@
 #include <Util/basic.hpp>
 #include <nlohmann/include.hpp>
 #include <App/Log/logger.hpp>
+#include <App/constants.hpp>
 
 
 namespace SupDef {
@@ -82,7 +83,7 @@ namespace SupDef {
                 return defaultValue;
             }
         
-            Settings() {}
+            Settings() { loadFromFile(DEFAULT_FILENAME_SETTINGS); }
             Settings(const std::string& filename) { loadFromFile(filename); }
     
             json& raw() { return data; }

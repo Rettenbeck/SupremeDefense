@@ -14,6 +14,7 @@ namespace SupDef {
             Game* game = nullptr;
             SelectionManager* selectionManager = nullptr;
             SocketBackend* socketBackend = nullptr;
+            Services* services = nullptr;
 
             bool isOnTop = false;
             bool isBlocked = false;     // Blocked by higher pages -> may be drawn but does not react
@@ -153,6 +154,7 @@ namespace SupDef {
             void setGame(Game* game_) { game = game_; }
             void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
             void setSocketBackend(SocketBackend* socketBackend_) { socketBackend = socketBackend_; }
+            void setServices(Services* services_) { services = services_; }
 
     };
 

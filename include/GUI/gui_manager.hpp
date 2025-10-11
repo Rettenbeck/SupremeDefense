@@ -3,6 +3,7 @@
 #include <GUI/gui_elements.hpp>
 #include <Game/game.hpp>
 #include <App/layers/network_layer.hpp>
+#include <App/services.hpp>
 
 
 namespace SupDef {
@@ -20,6 +21,7 @@ namespace SupDef {
             unsigned width = 1, height = 1;
             int mouseX = 0, mouseY = 0;
 
+            Services* services = nullptr;
             SelectionManager* selectionManager = nullptr;
             bool isGameBlocked = false;
         
@@ -160,6 +162,7 @@ namespace SupDef {
 
             void setMousePos(int x, int y) { mouseX = x; mouseY = y; }
 
+            void setServices(Services* services_) { services = services_; }
             void setSelectionManager(SelectionManager* selectionManager_) { selectionManager = selectionManager_; }
             SelectionManager* getSelectionManager() { return selectionManager; }
 
