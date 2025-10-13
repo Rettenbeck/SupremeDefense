@@ -3,6 +3,7 @@
 #include <App/settings.hpp>
 #include <App/Services/asset_service.hpp>
 #include <App/Services/file_manager.hpp>
+#include <App/Services/game_starter.hpp>
 
 
 namespace SupDef {
@@ -12,6 +13,7 @@ namespace SupDef {
         UEventDispatcher globalDispatcher;
         UAssetService assetService;
         UFileManager fileManager;
+        UGameStarter gameStarter;
 
         Services() {
             settings = std::make_unique<Settings>();

@@ -1,17 +1,11 @@
 #pragma once
 
-// #include <EventDispatcher/event_dispatcher.hpp>
 #include <Game/constants.hpp>
-// #include <ECS/constants.hpp>
 
 
 namespace SupDef {
 
     struct FileManager {
-        // FileManager(EventDispatcher* globalDispatcher_) {
-        //     assert(globalDispatcher_);
-        //     setGlobalDispatcher(globalDispatcher_);
-        // }
         FileManager() { }
 
         void clearData() {
