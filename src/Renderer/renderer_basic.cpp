@@ -61,7 +61,7 @@ namespace SupDef {
         ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
         ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize, ImGuiCond_Always);
 
-        ImGui::Begin("GameOverlay", nullptr,
+        ImGui::Begin("##GameOverlay", nullptr,
             ImGuiWindowFlags_NoDecoration |
             ImGuiWindowFlags_NoBackground |
             ImGuiWindowFlags_NoMove |

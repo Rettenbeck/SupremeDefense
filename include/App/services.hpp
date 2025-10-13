@@ -16,8 +16,8 @@ namespace SupDef {
         Services() {
             settings = std::make_unique<Settings>();
             globalDispatcher = std::make_unique<EventDispatcher>();
-            assetService = std::make_unique<AssetService>(globalDispatcher.get());
-            fileManager = std::make_unique<FileManager>(globalDispatcher.get());
+            assetService = std::make_unique<AssetService>();
+            fileManager = std::make_unique<FileManager>();
 
             assetService->setSettings(settings.get());
             assetService->initialize();

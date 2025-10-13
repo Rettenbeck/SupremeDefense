@@ -181,4 +181,13 @@ namespace SupDef {
 
     };
 
+    struct GuiFileBrowser : public GuiElement {
+        std::string* ptr = nullptr;
+        GuiFileBrowser(float x, float y, float width, float height, std::string* ptr_ = nullptr)
+        : GuiElement(GuiElementType::FileBrowser, GuiElementStyle::Default, x, y, width, height) {
+            clickable = false;
+            ptr = ptr_;
+        }
+    };
+
 }

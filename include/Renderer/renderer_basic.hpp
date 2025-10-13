@@ -103,6 +103,7 @@ namespace SupDef {
             void drawCheckbox(GuiElementStyle style, float x, float y, std::string text, bool* checked);
             void drawCheckbox(GuiCheckbox* checkbox);
             void drawTable(GuiTable* table);
+            void drawFileBrowser(GuiFileBrowser* browser);
             void drawCooldownOverlay(float x, float y, float width, float height, Cooldown current, Cooldown max);
             void drawCooldownOverlay(float x, float y, float width, float height, float perc);
             void addClickHandling(GuiElement* element);

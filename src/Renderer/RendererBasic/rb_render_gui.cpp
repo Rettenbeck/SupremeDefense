@@ -88,6 +88,9 @@ namespace SupDef {
             case GuiElementType::Table:
                 drawTable(dynamic_cast<GuiTable*>(element));
                 break;
+            case GuiElementType::FileBrowser:
+                drawFileBrowser(dynamic_cast<GuiFileBrowser*>(element));
+                break;
         }
         ImGui::PopID();
         addClickHandling(element);
@@ -219,21 +222,30 @@ namespace SupDef {
                         ImGui::SetCursorScreenPos(cell0_start);
                     }
 
-
                     for(int j = 0; j < row.size(); j++) {
                         ImGui::TableSetColumnIndex(j);
                         dontSetPosition = true;
                         drawElement(row[j]);
                         dontSetPosition = false;
                     }
-                    // std::cout << "Selected: " << table->selected_row << "; Hovered: " << table->hovered_row << "\n";
-
                     ImGui::PopID();
                 }
-
                 ImGui::EndTable();
             }
         }
+    }
+
+    void RendererBasic::drawFileBrowser(GuiFileBrowser* browser) {
+        // assert(browser);
+        // assert(browser->ptr);
+        // if (ImGuiFileDialog::Instance()->Display()) {
+        //     if (ImGuiFileDialog::Instance()->IsOk()) {
+        //         std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+        //         std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+        //         *(browser->ptr) = filePath;
+        //     }
+        //     ImGuiFileDialog::Instance()->Close();
+        // }
     }
 
     float RendererBasic::getRowHeight(GuiElementRow& row) {

@@ -8,18 +8,22 @@
 
 namespace SupDef {
 
-    class AssetService : public Listener {
+    class AssetService {
         private:
             UAssetManager originalAssetManager, assetManager;
             Settings* settings = nullptr;
             Mods mods;
 
         public:
-            AssetService(EventDispatcher* globalDispatcher_) {
-                assert(globalDispatcher_);
-                setGlobalDispatcher(globalDispatcher_);
-                originalAssetManager = std::make_unique<AssetManager>(globalDispatcher_);
-                assetManager = std::make_unique<AssetManager>(globalDispatcher_);
+            // AssetService(EventDispatcher* globalDispatcher_) {
+            //     assert(globalDispatcher_);
+            //     setGlobalDispatcher(globalDispatcher_);
+            //     originalAssetManager = std::make_unique<AssetManager>(globalDispatcher_);
+            //     assetManager = std::make_unique<AssetManager>(globalDispatcher_);
+            // }
+            AssetService() {
+                originalAssetManager = std::make_unique<AssetManager>();
+                assetManager = std::make_unique<AssetManager>();
             }
             
             void initialize() {

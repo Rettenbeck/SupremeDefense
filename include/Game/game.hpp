@@ -44,6 +44,7 @@ namespace SupDef {
             void startWorld(AssetID worldID, PlayerMapExt playerMapExt_, int thisPlayer_);
             Entity* createPlayer(AssetID playerID, AssetID spawnID, EntityID mapID);
             EntityID getMapIDBySpawn(AssetID spawnAssetID);
+            void startReplay(json& j);
 
 
             

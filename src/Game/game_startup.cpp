@@ -134,6 +134,17 @@ namespace SupDef {
         serialize("startup.txt");
     }
 
+    void Game::startReplay(json& j) {
+        from_json(j);
+        assert(entityManager);
+        thisPlayer = NO_ENTITY;
+        auto players = entityManager->getEntitiesWithComponents<PlayerComponent>();
+        for(auto& [entity, playerComp] : players) {
+            thisPlayer = entity->id;
+        }
+        assert(thisPlayer != NO_ENTITY);
+    }
+
 }
 
 #endif
