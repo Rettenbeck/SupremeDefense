@@ -103,7 +103,7 @@ namespace SupDef {
                     for (const auto& [componentName, componentJson] : j[S_COMPONENTS].items()) {
                         std::string typeName = componentJson.at(S_TYPE).get<std::string>();
                         auto component = ComponentRegistry::createComponent(typeName);
-                        // if (!component) std::cout << "Component: " << typeName << "\n";
+                        if (!component) std::cout << "Component: " << typeName << "\n";
                         assert(component);
                         component->from_json(componentJson);
                         components[typeid(*component)] = std::move(component);

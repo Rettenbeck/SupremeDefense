@@ -42,3 +42,25 @@
 
 #include <ECS/frontend_components/graphic_component.hpp>
 #include <ECS/frontend_components/animation_component.hpp>
+
+
+namespace SupDef {
+
+    template <class... Ts>
+    void construct_components_list() noexcept((std::is_nothrow_default_constructible_v<Ts> && ...)) {
+        (void)std::initializer_list<int>{ ( (void)Ts{}, 0 )... };
+    }
+
+    void construct_components() {
+        construct_components_list<PlayerComponent, TeamComponent, ResourceComponent, PlayerOwnershipComponent,
+            WorldComponent, MapComponent, TilesComponent, SelectableComponent, PositionComponent,
+            MovementComponent, CollisionComponent, ImmovableComponent, InfluenceComponent, InfluenceableComponent,
+            ProjectileComponent, ProjectileTargetComponent, ProjectileHittableComponent, WeaponComponent,
+            HealthComponent, EnemySpawnerComponent, EnemyGoalComponent, EnemyGoalSeekerComponent, TextComponent,
+            CommandComponent, MoveCommandComponent, BuildCommandComponent, RequirementComponent,
+            ResourceDefComponent, PlayerSpawnComponent, InitContainerComponent, InitPositionComponent,
+            PlayerRoleComponent, EnemyWavesComponent, TechComponent, ActiveTechComponent, GiftTechComponent,
+            GraphicComponent, AnimationComponent>();
+    }
+
+}

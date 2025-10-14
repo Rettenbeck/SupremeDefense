@@ -17,6 +17,7 @@ namespace SupDef {
         
         public:
             App() {
+                construct_components();
                 Logger::getInstance().setFileOutput(DEFAULT_FILENAME_LOG);
                 services = std::make_unique<Services>();
                 setGlobalDispatcher(services->globalDispatcher.get());
@@ -176,6 +177,13 @@ namespace SupDef {
                 std::cout << "Load begin\n";
                 services->fileManager->loadFromFile("state.txt");
                 assert(services->fileManager->contains_full_replay);
+                auto ret = services->dataChecker->checkFromFile(services->fileManager.get());
+                // std::cout << "Success? " << ret << "\n";
+                // std::cout << "Assets: "   << services->dataChecker->assetManager.get() << "\n";
+                // std::cout << "Entities: " << services->dataChecker->entityManager.get() << "\n";
+                // std::cout << "Colls: "    << services->dataChecker->collisionTracker.get() << "\n";
+                // std::cout << "Replay: "   << services->dataChecker->replay.get() << "\n";
+                return;
                 auto gameLayer = retrieveLayer<GameLayer>();
                 auto game = gameLayer->createGame();
                 assert(game);

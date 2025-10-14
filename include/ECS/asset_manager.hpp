@@ -1,18 +1,15 @@
 #pragma once
 
 #include <ECS/entity.hpp>
-// #include <EventDispatcher/include.hpp>
 
 
 namespace SupDef {
     
     class AssetManager {
         public:
-            // EventDispatcher* eventDispatcher = nullptr;
             std::unordered_map<AssetID, UEntity> assets;
             EntityID nextAssetID = 1;
 
-            // AssetManager(EventDispatcher* eventDispatcher_) : eventDispatcher(eventDispatcher_) {}
             AssetManager() {}
 
             Entity* createAsset(AssetID id) {
@@ -86,7 +83,9 @@ namespace SupDef {
         
             void from_json(const json& j) {
                 assets.clear();
+                // std::cout << "Assets start\n";
                 for (const auto& [id, entityJson] : j[S_ASSETS].items()) {
+                    // std::cout << "ID: " << id << "; json:" << entityJson.dump(2) << "\n";
                     auto entity = std::make_unique<Entity>(NO_ENTITY);
                     entity->from_json(entityJson);
                     assets[entity->assetID] = std::move(entity);
