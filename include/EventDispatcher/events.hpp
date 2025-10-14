@@ -89,8 +89,10 @@ namespace SupDef {
         PushPageEvent(int pageTypeId_) { pageTypeId = pageTypeId_; }
     };
 
-    // Is dispatched by a page object and subscribed to by the page manager. Closes the top page.
-    
+    struct PushGamePageEvent : public Event {
+        PushGamePageEvent() { }
+    };
+
     /**
      * @brief Event notifying that the top page is to be closed.
      *

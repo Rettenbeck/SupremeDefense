@@ -6,6 +6,11 @@
 
 namespace SupDef {
 
+    void Game::startWorld(UInitialConditions initialConditions) {
+        assert(initialConditions);
+        startWorld(initialConditions->worldID, initialConditions->playerMapExt, initialConditions->thisPlayer);
+    }
+
     void Game::startWorld(AssetID worldID, PlayerMapExt playerMapExt_, int thisPlayer_) {
         auto world = createEntityFromAsset(worldID);
         auto worldComp = world->getComponent<WorldComponent>();
@@ -23,7 +28,7 @@ namespace SupDef {
             for (auto& [x, y, playerRole, playerID1] : mapComp->playerSpawns) {
                 Entity* player = nullptr;
                 auto tmpIndex = i++;
-                for (auto& [playerIndex, playerAsset, playerID2] : playerMapExt_) {
+                for (auto& [playerIndex, playerAsset, playerID2, playerName] : playerMapExt_) {
                     if (tmpIndex != playerIndex) continue;
                     player = createEntityFromAsset(playerAsset);
                     assert(player);
@@ -47,14 +52,14 @@ namespace SupDef {
         for (auto& [playerIndex1, teamIndex, playerID1, teamID] : worldComp->playerList) {
             teamID = NO_ENTITY;
             if (teamIndex == 0) {
-                for (auto& [playerIndex2, playerAsset, playerID2] : playerMapExt_) {
+                for (auto& [playerIndex2, playerAsset, playerID2, playerName] : playerMapExt_) {
                     if (playerIndex1 != playerIndex2) continue;
                     playerID1 = playerID2;
                     break;
                 }
                 continue;
             }
-            for (auto& [playerIndex2, playerAsset, playerID2] : playerMapExt_) {
+            for (auto& [playerIndex2, playerAsset, playerID2, playerName] : playerMapExt_) {
                 if (playerIndex1 != playerIndex2) continue;
 
                 EntityID existingTeamID = NO_ENTITY;

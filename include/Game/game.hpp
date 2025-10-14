@@ -42,6 +42,7 @@ namespace SupDef {
 
             // ### STARTUP FUNCTIONS ###################################################### //
             void startWorld(AssetID worldID, PlayerMapExt playerMapExt_, int thisPlayer_);
+            void startWorld(UInitialConditions initialConditions);
             Entity* createPlayer(AssetID playerID, AssetID spawnID, EntityID mapID);
             EntityID getMapIDBySpawn(AssetID spawnAssetID);
             void startReplay(json& j);
@@ -217,7 +218,11 @@ namespace SupDef {
             void setActionQueue(ActionQueue* actionQueue_) { actionQueue = actionQueue_; }
             void setThisPlayer(EntityID playerID) { thisPlayer = playerID; }
             void setAssetManager(UAssetManager assetManager_) { assetManager = std::move(assetManager_); }
+            void setEntityManager(UEntityManager entityManager_) { entityManager = std::move(entityManager_); }
             void setServices(Services* services_) { services = services_; }
+            void setCollisionTracker(UCollisionTracker collisionTracker_) { collisionTracker = std::move(collisionTracker_); }
+            void setSaveReplay(UReplay replay_) { saveReplay = std::move(replay_); }
+            void setLoadReplay(UReplay replay_) { loadReplay = std::move(replay_); }
             Entity* getThisPlayer() { return entityManager->getEntity(thisPlayer); }
             Entity* getVirtualEntity() { if (!virtualEntity) return nullptr; return virtualEntity.get(); }
 

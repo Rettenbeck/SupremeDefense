@@ -3,7 +3,6 @@
 #include <App/Services/file_manager.hpp>
 #include <ECS/asset_manager.hpp>
 #include <ECS/entity_manager.hpp>
-#include <ECS/components.hpp>
 #include <Game/collision_tracker.hpp>
 #include <Game/replay.hpp>
 

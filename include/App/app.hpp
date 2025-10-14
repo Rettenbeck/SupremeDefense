@@ -163,31 +163,46 @@ namespace SupDef {
             }
 
             void startGame() {
-                auto am = std::make_unique<AssetManager>();
-                BuildAssets::build(am.get());
-                AssetID worldID = AS_WORLD_WINTER_MAUL;
-                PlayerMapExt playerMapExt;
-                playerMapExt.emplace_back(1, AS_PLAYER_HUMAN, NO_ENTITY);
-                playerMapExt.emplace_back(2, AS_PLAYER_HUMAN, NO_ENTITY);
-                playerMapExt.emplace_back(3, AS_PLAYER_HUMAN, NO_ENTITY);
-                startGame(std::move(am), worldID, playerMapExt, 1);
+                // auto am = std::make_unique<AssetManager>();
+                // BuildAssets::build(am.get());
+                // AssetID worldID = AS_WORLD_WINTER_MAUL;
+                // PlayerMapExt playerMapExt;
+                // playerMapExt.emplace_back(1, AS_PLAYER_HUMAN, NO_ENTITY);
+                // playerMapExt.emplace_back(2, AS_PLAYER_HUMAN, NO_ENTITY);
+                // playerMapExt.emplace_back(3, AS_PLAYER_HUMAN, NO_ENTITY);
+                // startGame(std::move(am), worldID, playerMapExt, 1);
             }
 
             DEFINE_EVENT_CALLBACK(StartReplayEvent) {
-                std::cout << "Load begin\n";
-                services->fileManager->loadFromFile("state.txt");
-                assert(services->fileManager->contains_full_replay);
-                auto ret = services->dataChecker->checkFromFile(services->fileManager.get());
+                // std::cout << "Load begin\n";
+                // services->fileManager->loadFromFile("state.txt");
+                // assert(services->fileManager->contains_full_replay);
+                // auto ret = services->dataChecker->checkFromFile(services->fileManager.get());
                 // std::cout << "Success? " << ret << "\n";
                 // std::cout << "Assets: "   << services->dataChecker->assetManager.get() << "\n";
                 // std::cout << "Entities: " << services->dataChecker->entityManager.get() << "\n";
                 // std::cout << "Colls: "    << services->dataChecker->collisionTracker.get() << "\n";
                 // std::cout << "Replay: "   << services->dataChecker->replay.get() << "\n";
+                assert(services->gameStarter);
+                assert(services->assetService);
+
+                PlayerMapExt playerMapExt;
+                playerMapExt.emplace_back(1, AS_PLAYER_HUMAN, NO_ENTITY);
+                playerMapExt.emplace_back(2, AS_PLAYER_HUMAN, NO_ENTITY);
+                playerMapExt.emplace_back(3, AS_PLAYER_HUMAN, NO_ENTITY);
+
+                auto initial = std::make_unique<InitialConditions>();
+                initial->worldID = AS_WORLD_WINTER_MAUL;
+                initial->playerMapExt = playerMapExt;
+                initial->thisPlayer = 1;
+
+                auto s = services->gameStarter->startNewGame(services->assetService.get(), std::move(initial));
+                std::cout << "Game to be started. Success? " << s << "\n";
                 return;
-                auto gameLayer = retrieveLayer<GameLayer>();
-                auto game = gameLayer->createGame();
-                assert(game);
-                game->startReplay(services->fileManager->j_full_replay);
+                // auto gameLayer = retrieveLayer<GameLayer>();
+                // auto game = gameLayer->createGame();
+                // assert(game);
+                // game->startReplay(services->fileManager->j_full_replay);
             }
             
             DEFINE_EVENT_CALLBACK(GameEndEvent) {
