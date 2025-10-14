@@ -24,7 +24,7 @@ namespace SupDef {
                 addButton<StartReplayEvent>(10, 60, 160, 28, "Start");
 
                 addButtonEvent<ClosePageEvent>(
-                    std::make_tuple(10,  60, 200, 28, "Zurück"),
+                    std::make_tuple(10, 100, 160, 28, "Zurück"),
                     std::make_tuple(pageId)
                 );
             }

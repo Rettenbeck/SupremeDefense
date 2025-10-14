@@ -8,7 +8,7 @@
 namespace SupDef {
 
     enum class GameStarterStatus {
-        NoGame, NewGame, SavedGame, Replay, GameStarted
+        NoGame, NewGame, PrepareNewGame, SavedGame, Replay, GameStarted
     };
 
     struct GameStarterResult {
