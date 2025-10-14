@@ -108,6 +108,7 @@ namespace SupDef {
 
     struct MenuButtonOpenServerEvent : public Event { MenuButtonOpenServerEvent() { } };
     struct MenuButtonJoinServerEvent : public Event { MenuButtonJoinServerEvent() { } };
+    struct MenuButtonOpenFileEvent   : public Event { MenuButtonOpenFileEvent()   { } };
     struct MenuButtonOpenModListEvent : public Event { MenuButtonOpenModListEvent() { } };
 
 
@@ -184,17 +185,23 @@ namespace SupDef {
     /**
      * @brief Event notifying that the mod list should be reprocessed.
      *
-     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     * Is dispatched by the ModListPage and subscribed to by itself.
      */
     struct BuildModListEvent : public Event { BuildModListEvent() { } };
 
     /**
-     * @brief Event notifying that the mod list active flags should be written to
-     *   the global settings.
+     * @brief Event notifying that the file selection dialog is to be opened
      *
-     * Is dispatched by the ModListPage and subscribed to by the AssetLayer.
+     * Is dispatched by some Pages and subscribed to by themselves.
      */
-    // struct SaveModListEvent : public Event { SaveModListEvent() { } };
+    struct ChooseFileEvent : public Event { ChooseFileEvent() { } };
+
+    /**
+     * @brief Event notifying that the replay is to be started.
+     *
+     * Is dispatched by some Pages and subscribed to by themselves.
+     */
+    struct StartReplayEvent : public Event { StartReplayEvent() { } };
 
 
 

@@ -27,6 +27,7 @@ namespace SupDef {
                 
                 globalDispatcher->SUBSCRIBE(GameEndEvent)
                 globalDispatcher->SUBSCRIBE(UpdateAppEvent)
+                globalDispatcher->SUBSCRIBE(StartReplayEvent)
                 globalDispatcher->SUBSCRIBE_ACTION(StartTestGameEvent)
 
                 fillLayers();
@@ -151,9 +152,8 @@ namespace SupDef {
                     LOG_ERROR("No worldID given")
                     return;
                 }
-                removeLayer<GameLayer>();
                 auto gameLayer = retrieveLayer<GameLayer>();
-                auto game = gameLayer->getGame();
+                auto game = gameLayer->createGame();
                 assert(game);
                 game->setAssetManager(std::move(assetManager));
                 game->startWorld(worldID, playerMapExt, thisPlayer);
@@ -172,6 +172,16 @@ namespace SupDef {
                 startGame(std::move(am), worldID, playerMapExt, 1);
             }
 
+            DEFINE_EVENT_CALLBACK(StartReplayEvent) {
+                std::cout << "Load begin\n";
+                services->fileManager->loadFromFile("state.txt");
+                assert(services->fileManager->contains_full_replay);
+                auto gameLayer = retrieveLayer<GameLayer>();
+                auto game = gameLayer->createGame();
+                assert(game);
+                game->startReplay(services->fileManager->j_full_replay);
+            }
+            
             DEFINE_EVENT_CALLBACK(GameEndEvent) {
                 // LOG(Info, "Game ended")
                 end = true;
@@ -201,7 +211,7 @@ namespace SupDef {
 
             void fillLayers() {
                 addLayer(std::make_unique<SupDef::GuiLayer>());
-                // addLayer(std::make_unique<SupDef::GameLayer>());
+                addLayer(std::make_unique<SupDef::GameLayer>());
                 addLayer(std::make_unique<SupDef::RenderLayer>());
                 addLayer(std::make_unique<SupDef::NetworkLayer>());
             }

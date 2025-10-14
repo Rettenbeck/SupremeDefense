@@ -22,10 +22,6 @@ namespace SupDef {
 
             void onAttach() override {
                 actionQueue = std::make_unique<ActionQueue>();
-                game = std::make_unique<Game>();
-                game->setGlobalDispatcher(globalDispatcher);
-                game->setActionQueue(actionQueue.get());
-                game->initialize();
                 selectionManager = std::make_unique<SelectionManager>();
                 selectionManager->setGlobalDispatcher(globalDispatcher);
                 selectionManager->initialize();
@@ -33,10 +29,18 @@ namespace SupDef {
                 SUBSCRIBE(GameBlockedByNetworkEvent)
                 SUBSCRIBE(ActionsReceivedForGameEvent)
             }
+
+            Game* createGame() {
+                game = std::make_unique<Game>();
+                game->setGlobalDispatcher(globalDispatcher);
+                game->setActionQueue(actionQueue.get());
+                game->initialize();
+                return game.get();
+            }
         
             void update(float deltaTime) override {
                 if (blockedByNetwork) return;
-                assert(game);
+                if (!game) return;
                 game->update(deltaTime);
                 frameCount++;
                 game->setFrameCount(frameCount);

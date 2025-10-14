@@ -6,7 +6,7 @@
 
 namespace SupDef {
 
-    enum class GuiElementType  { Button, Label, Panel, Input, Checkbox, Table };
+    enum class GuiElementType  { Button, Label, Panel, Input, Checkbox, Table, FileBrowser };
     enum class GuiElementStyle { Default, Test };
 
     struct GuiElement {

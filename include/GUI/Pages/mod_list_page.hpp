@@ -9,11 +9,8 @@ namespace SupDef {
     class ModListPage : public Page {
         public:
             ModListPage(PageTypeId pageTypeId_) : Page(pageTypeId_) { }
-
-            ~ModListPage() {
-                assert(services);
-                services->assetService->saveMods();
-            }
+            
+            ~ModListPage() { services->assetService->saveMods(); }
 
             void initialize() override {
                 assert(services);

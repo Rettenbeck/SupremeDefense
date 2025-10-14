@@ -8,14 +8,14 @@ namespace SupDef {
     
     class EntityManager {
         private:
-            EventDispatcher* eventDispatcher = nullptr;
+            // EventDispatcher* eventDispatcher = nullptr;
             std::unordered_map<EntityID, UEntity> entities;
             std::unordered_map<EntityID, EntityID> parentMap;
             std::unordered_map<EntityID, EntityIDs> childrenMap;
             EntityID nextEntityID = 1;
 
         public:
-            EntityManager(EventDispatcher* eventDispatcher_) : eventDispatcher(eventDispatcher_) {}
+            // EntityManager(EventDispatcher* eventDispatcher_) : eventDispatcher(eventDispatcher_) {}
             EntityManager() {}
 
             Entity* createEntity() {
@@ -148,8 +148,6 @@ namespace SupDef {
 
                 parentMap.erase(entityID);
                 childrenMap.erase(entityID);
-
-                // eventDispatcher->dispatch<EntityDestroyedEvent>(entityID);
                 entities.erase(entityID);
             }
 

@@ -15,7 +15,8 @@ namespace SupDef {
     const PageTypeId PAGE_TYPE_ID_START             = 1;
     const PageTypeId PAGE_TYPE_ID_OPEN_SERVER       = 10;
     const PageTypeId PAGE_TYPE_ID_JOIN_SERVER       = 20;
-    const PageTypeId PAGE_TYPE_ID_MOD_LIST          = 30;
+    const PageTypeId PAGE_TYPE_ID_OPEN_FILE         = 30;
+    const PageTypeId PAGE_TYPE_ID_MOD_LIST          = 40;
     const PageTypeId PAGE_TYPE_ID_GAME              = 100;
 
     const int GUI_NW_INPUT_KEY_PLAYER_NAME = 1;
