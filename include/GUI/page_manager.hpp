@@ -104,6 +104,7 @@ namespace SupDef {
             }
 
             DEFINE_EVENT_CALLBACK(PushGamePageEvent) {
+                pages.clear();
                 pushPage(PAGE_TYPE_ID_GAME);
             }
 

@@ -87,6 +87,7 @@ namespace SupDef {
         
             void update(float deltaTime) override {
                 if (blockedByNetwork) return;
+                startGameFromStarter();
                 if (!game) return;
                 game->update(deltaTime);
                 frameCount++;

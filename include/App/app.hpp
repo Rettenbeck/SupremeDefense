@@ -187,9 +187,9 @@ namespace SupDef {
                 assert(services->assetService);
 
                 PlayerMapExt playerMapExt;
-                playerMapExt.emplace_back(1, AS_PLAYER_HUMAN, NO_ENTITY);
-                playerMapExt.emplace_back(2, AS_PLAYER_HUMAN, NO_ENTITY);
-                playerMapExt.emplace_back(3, AS_PLAYER_HUMAN, NO_ENTITY);
+                playerMapExt.emplace_back(1, AS_PLAYER_HUMAN, NO_ENTITY, "Player 1");
+                playerMapExt.emplace_back(2, AS_PLAYER_HUMAN, NO_ENTITY, "Player 2");
+                playerMapExt.emplace_back(3, AS_PLAYER_HUMAN, NO_ENTITY, "Player 3");
 
                 auto initial = std::make_unique<InitialConditions>();
                 initial->worldID = AS_WORLD_WINTER_MAUL;

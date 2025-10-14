@@ -25,7 +25,7 @@ namespace SupDef {
 
             void build() override {
                 assert(guiManager);
-                assert(game);
+                if (!game) return;
                 showResources(0, 0);
                 buildGuiForUnit();
                 if (!guiManager->info.empty()) guiManager->add(std::make_unique<GuiLabel>(1000, 10, guiManager->info));
