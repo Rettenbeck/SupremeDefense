@@ -26,8 +26,6 @@ namespace SupDef {
             UInitialConditions initial;
             UAssetManager assetManager;
             UGameState gameState;
-            // UEntityManager entityManager;
-            // UCollisionTracker collisionTracker;
             UReplay replay;
 
             GameStarter() { }
@@ -65,15 +63,11 @@ namespace SupDef {
                 if (!gameState_) return false;
                 if (!gameState_->entityManager) return false;
                 if (!gameState_->collisionTracker) return false;
-                // if (!entityManager_) return false;
-                // if (!collisionTracker_) return false;
                 if (!replay_) return false;
                 if (!replay_->initial) return false;
                 initial = std::move(replay_->initial);
                 assetManager = std::move(assetManager_);
                 gameState = std::move(gameState_);
-                // entityManager = std::move(entityManager_);
-                // collisionTracker = std::move(collisionTracker_);
                 replay = std::move(replay_);
                 initial->thisPlayer = thisPlayer;
                 status = GameStarterStatus::SavedGame;
@@ -86,8 +80,6 @@ namespace SupDef {
                 if (!dataChecker->gameState) return false;
                 if (!dataChecker->gameState->entityManager) return false;
                 if (!dataChecker->gameState->collisionTracker) return false;
-                // if (!dataChecker->entityManager) return false;
-                // if (!dataChecker->collisionTracker) return false;
                 if (!dataChecker->replay) return false;
                 return startSavedGame(std::move(dataChecker->assetManager), std::move(dataChecker->gameState),
                                         std::move(dataChecker->replay), thisPlayer);

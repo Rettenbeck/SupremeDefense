@@ -12,8 +12,6 @@ namespace SupDef {
         public:
             UAssetManager assetManager;
             UGameState gameState;
-            // UEntityManager entityManager;
-            // UCollisionTracker collisionTracker;
             UReplay replay;
 
             DataChecker() { }
@@ -21,8 +19,6 @@ namespace SupDef {
             void clear() {
                 assetManager.reset();
                 gameState.reset();
-                // entityManager.reset();
-                // collisionTracker.reset();
                 replay.reset();
             }
 
@@ -33,8 +29,6 @@ namespace SupDef {
                 clear();
                 if (fileManager->has_asset     ) if (!checkAssetManager    (fileManager->j_assets    )) success = false;
                 if (fileManager->has_game_state) if (!checkGameState       (fileManager->j_game_state)) success = false;
-                // if (fileManager->has_entities  ) if (!checkEntityManager   (fileManager->j_entities  )) success = false;
-                // if (fileManager->has_collisions) if (!checkCollisionTracker(fileManager->j_collisions)) success = false;
                 if (fileManager->has_replay    ) if (!checkReplay          (fileManager->j_replay    )) success = false;
                 return success;
             }
@@ -55,8 +49,6 @@ namespace SupDef {
             }
 
             bool checkAssetManager    (json& j) { return check<AssetManager    >(assetManager    , j); }
-            // bool checkEntityManager   (json& j) { return check<EntityManager   >(entityManager   , j); }
-            // bool checkCollisionTracker(json& j) { return check<CollisionTracker>(collisionTracker, j); }
             bool checkGameState       (json& j) { return check<GameState       >(gameState       , j); }
             bool checkReplay          (json& j) { return check<Replay          >(replay          , j); }
 
