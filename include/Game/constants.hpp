@@ -20,8 +20,15 @@ namespace SupDef {
     using TechAssignments = std::vector<TechAssignment>;
     using TechMap = std::unordered_map<EntityID, TechAssignments>;
 
-    // External player id, player asset id, player entity id, player name
-    using PlayerMapExtSingle = std::tuple<int, AssetID, EntityID, std::string>;
+    struct PlayerMapExtSingle {
+        int playerIndex = 0;
+        AssetID playerAsset = NO_ASSET;
+        EntityID playerEntityId = NO_ENTITY;
+        std::string playerName = "";
+        // PlayerMapExtSingle() {}
+        // PlayerMapExtSingle(int playerIndex_, AssetID playerAsset_, std::string playerName_)
+        // : playerIndex(playerIndex_), playerAsset(playerAsset_), playerName(playerName_) {}
+    };
     using PlayerMapExt = std::vector<PlayerMapExtSingle>;
 
     using EntityIDsTriple = std::tuple<EntityIDs, EntityIDs, EntityIDs>;

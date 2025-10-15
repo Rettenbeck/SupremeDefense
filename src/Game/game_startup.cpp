@@ -25,15 +25,15 @@ namespace SupDef {
         // Create players and their starter units
         int i = 1;
         for (auto& [mapEntity, mapComp] : maps) {
-            for (auto& [x, y, playerRole, playerID1] : mapComp->playerSpawns) {
+            for (auto& [x, y, playerRole, playerId] : mapComp->playerSpawns) {
                 Entity* player = nullptr;
                 auto tmpIndex = i++;
-                for (auto& [playerIndex, playerAsset, playerID2, playerName] : playerMapExt_) {
-                    if (tmpIndex != playerIndex) continue;
-                    player = createEntityFromAsset(playerAsset);
+                for (auto& playerMapExtSingle : playerMapExt_) {
+                    if (tmpIndex != playerMapExtSingle.playerIndex) continue;
+                    player = createEntityFromAsset(playerMapExtSingle.playerAsset);
                     assert(player);
-                    playerID1 = player->id;
-                    playerID2 = player->id;
+                    playerId = player->id;
+                    playerMapExtSingle.playerEntityId = player->id;
                     if (thisPlayer_ == tmpIndex) {
                         thisPlayer = player->id;
                     }
@@ -49,37 +49,37 @@ namespace SupDef {
         }
 
         // Add teams
-        for (auto& [playerIndex1, teamIndex, playerID1, teamID] : worldComp->playerList) {
-            teamID = NO_ENTITY;
+        for (auto& [playerIndex, teamIndex, playerId, teamId] : worldComp->playerList) {
+            teamId = NO_ENTITY;
             if (teamIndex == 0) {
-                for (auto& [playerIndex2, playerAsset, playerID2, playerName] : playerMapExt_) {
-                    if (playerIndex1 != playerIndex2) continue;
-                    playerID1 = playerID2;
+                for (auto& playerMapExtSingle : playerMapExt_) {
+                    if (playerIndex != playerMapExtSingle.playerIndex) continue;
+                    playerId = playerMapExtSingle.playerEntityId;
                     break;
                 }
                 continue;
             }
-            for (auto& [playerIndex2, playerAsset, playerID2, playerName] : playerMapExt_) {
-                if (playerIndex1 != playerIndex2) continue;
+            for (auto& playerMapExtSingle : playerMapExt_) {
+                if (playerIndex != playerMapExtSingle.playerIndex) continue;
 
-                EntityID existingTeamID = NO_ENTITY;
-                for (auto& [playerIndex_, teamIndex_, playerID_, teamID_] : worldComp->playerList) {
+                EntityID existingTeamId = NO_ENTITY;
+                for (auto& [playerIndex_, teamIndex_, playerId_, teamId_] : worldComp->playerList) {
                     if (teamIndex_ == teamIndex) {
-                        existingTeamID = teamID_;
+                        existingTeamId = teamId_;
                         break;
                     }
                 }
 
-                if (existingTeamID == NO_ENTITY) {
+                if (existingTeamId == NO_ENTITY) {
                     auto team = entityManager->createEntity();
                     team->addComponent<TeamComponent>();
-                    entityManager->setParent(playerID2, team->id);
-                    teamID = team->id;
+                    entityManager->setParent(playerMapExtSingle.playerEntityId, team->id);
+                    teamId = team->id;
                 } else {
-                    teamID = existingTeamID;
+                    teamId = existingTeamId;
                 }
-                playerID1 = playerID2;
-                entityManager->setParent(playerID2, teamID);
+                playerId = playerMapExtSingle.playerEntityId;
+                entityManager->setParent(playerId, teamId);
                 break;
             }
         }
@@ -89,9 +89,9 @@ namespace SupDef {
         for (auto& [mapEntity, mapComp] : maps) {
             for (auto& [x, y] : mapComp->enemyGoals) {
                 i++;
-                for (auto& [goalIndex, playerIndex1, teamIndex1, goalID] : worldComp->enemyGoalList) {
+                for (auto& [goalIndex, playerIndex1, teamIndex1, goalId] : worldComp->enemyGoalList) {
                     if (i != goalIndex) continue;
-                    for (auto& [playerIndex2, teamIndex2, playerID, teamID] : worldComp->playerList) {
+                    for (auto& [playerIndex2, teamIndex2, playerId, teamId] : worldComp->playerList) {
                         if (playerIndex1 != 0) if (playerIndex1 != playerIndex2) continue;
                         if (teamIndex1   != 0) if (teamIndex1   != teamIndex2  ) continue;
 
@@ -101,9 +101,9 @@ namespace SupDef {
                         goal->addComponent<ImmovableComponent>(true, false, true, false);
                         setNewCenteredPosition(goal, x, y);
                         auto goalComp = goal->addComponent<EnemyGoalComponent>();
-                        if (playerIndex1 != 0) goalComp->playerID = playerID;
-                        if (teamIndex1   != 0) goalComp->teamID   = teamID  ;
-                        goalID = goal->id;
+                        if (playerIndex1 != 0) goalComp->playerID = playerId;
+                        if (teamIndex1   != 0) goalComp->teamID   = teamId  ;
+                        goalId = goal->id;
                         break;
                     }
                     break;
@@ -116,9 +116,9 @@ namespace SupDef {
         for (auto& [mapEntity, mapComp] : maps) {
             for (auto& [x, y] : mapComp->enemySpawns) {
                 i++;
-                for (auto& [spawnIndex, wavesID, goalIndex1] : worldComp->enemySpawnList) {
+                for (auto& [spawnIndex, wavesId, goalIndex1] : worldComp->enemySpawnList) {
                     if (i != spawnIndex) continue;
-                    for (auto& [goalIndex2, playerIndex, teamIndex, goalID] : worldComp->enemyGoalList) {
+                    for (auto& [goalIndex2, playerIndex, teamIndex, goalId] : worldComp->enemyGoalList) {
                         if (goalIndex1 != goalIndex2) continue;
 
                         auto spawner = entityManager->createEntity(mapEntity->id);
@@ -127,8 +127,8 @@ namespace SupDef {
                         spawner->addComponent<ImmovableComponent>(true, false, true, false);
                         setNewCenteredPosition(spawner, x, y);
                         auto spawnerComp = spawner->addComponent<EnemySpawnerComponent>();
-                        spawnerComp->goalID = goalID;
-                        spawnerComp->wavesID = wavesID;
+                        spawnerComp->goalID = goalId;
+                        spawnerComp->wavesID = wavesId;
                         break;
                     }
                     break;
