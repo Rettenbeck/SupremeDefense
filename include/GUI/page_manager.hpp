@@ -24,6 +24,7 @@ namespace SupDef {
                 SUBSCRIBE(PushPageEvent);
                 SUBSCRIBE(ClosePageEvent);
                 SUBSCRIBE(PrintPagesEvent);
+                SUBSCRIBE(PushGamePageEvent);
             }
 
             void update(float deltaTime) {
@@ -100,6 +101,11 @@ namespace SupDef {
 
             DEFINE_EVENT_CALLBACK(PushPageEvent) {
                 pushPage(event.pageTypeId);
+            }
+
+            DEFINE_EVENT_CALLBACK(PushGamePageEvent) {
+                pages.clear();
+                pushPage(PAGE_TYPE_ID_GAME);
             }
 
             DEFINE_EVENT_CALLBACK(ClosePageEvent) {

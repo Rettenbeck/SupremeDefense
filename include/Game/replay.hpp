@@ -2,7 +2,7 @@
 
 #include <ECS/field.hpp>
 #include <Action/action_queue.hpp>
-#include <nlohmann/include.hpp>
+#include <Game/initial_conditions.hpp>
 
 
 namespace SupDef {
@@ -11,6 +11,7 @@ namespace SupDef {
 
     DEFINE_SCLASS_BEGIN(Replay)
         ReplayData data;
+        UInitialConditions initial;
         
         void initialize() { }
 
@@ -32,6 +33,7 @@ namespace SupDef {
 
         REFLECT_BEGIN
             REFLECT_MAP_UNIQUE(data, long, ActionQueue)
+            REFLECT_UNIQUE(initial, InitialConditions)
         REFLECT_END
     DEFINE_SCLASS_END
 

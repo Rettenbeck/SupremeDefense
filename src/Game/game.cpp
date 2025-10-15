@@ -32,7 +32,7 @@ namespace SupDef {
         collisionSystem  = std::make_unique<CollisionSystem >();
         collisionTracker = std::make_unique<CollisionTracker>();
         commandTracker   = std::make_unique<CommandTracker  >();
-        saveReplay       = std::make_unique<Replay>();
+        saveReplay       = std::make_unique<Replay          >();
     }
 
     void Game::initialize() {

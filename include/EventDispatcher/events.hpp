@@ -26,9 +26,9 @@ namespace SupDef {
 
     // Is dispatched by the render layer and subscribed to by the App class. Starts a test game
     //   with hard-coded parameters.
-    struct StartTestGameEvent : public Event {
-        StartTestGameEvent() {}
-    };
+    // struct StartTestGameEvent : public Event {
+    //     StartTestGameEvent() {}
+    // };
 
     // Is not dispatched currently; subscribed to by the App class. Makes sure to reassign objects
     //   within the App class once objects have changed.
@@ -89,8 +89,10 @@ namespace SupDef {
         PushPageEvent(int pageTypeId_) { pageTypeId = pageTypeId_; }
     };
 
-    // Is dispatched by a page object and subscribed to by the page manager. Closes the top page.
-    
+    struct PushGamePageEvent : public Event {
+        PushGamePageEvent() { }
+    };
+
     /**
      * @brief Event notifying that the top page is to be closed.
      *
@@ -201,7 +203,9 @@ namespace SupDef {
      *
      * Is dispatched by some Pages and subscribed to by themselves.
      */
-    struct StartReplayEvent : public Event { StartReplayEvent() { } };
+    struct StartTestNewGameEvent : public Event { StartTestNewGameEvent() { } };
+    struct StartTestSavedGameEvent : public Event { StartTestSavedGameEvent() { } };
+    struct StartTestReplayEvent : public Event { StartTestReplayEvent() { } };
 
 
 

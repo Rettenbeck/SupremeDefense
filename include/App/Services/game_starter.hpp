@@ -1,8 +1,9 @@
 #pragma once
 
-#include <Util/basic.hpp>
 #include <Game/constants.hpp>
-#include <nlohmann/include.hpp>
+#include <App/Services/asset_service.hpp>
+#include <App/Services/data_checker.hpp>
+#include <Game/replay.hpp>
 
 
 namespace SupDef {
@@ -18,40 +19,105 @@ namespace SupDef {
 
     class GameStarter {
         private:
-            json j_replay, j_assets, j_entities, j_collisions;
-            json j_complete;
             GameStarterStatus status = GameStarterStatus::NoGame;
             std::string message = "";
 
         public:
+            UInitialConditions initial;
+            UAssetManager assetManager;
+            UEntityManager entityManager;
+            UCollisionTracker collisionTracker;
+            UReplay replay;
+
             GameStarter() { }
 
-            void startNewGame(json& j_assets_, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
+
+            // ### New game ############################################## //
+            bool startNewGame(UInitialConditions initial_, UAssetManager assetManager_) {
                 clear();
-                j_assets = j_assets_;
+                if (!initial_) return false;
+                if (!assetManager_) return false;
+                initial = std::move(initial_);
+                assetManager = std::move(assetManager_);
+                status = GameStarterStatus::NewGame;
+                return true;
             }
 
-            void startSavedGame(json& j_assets_, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
-                clear();
-                j_assets = j_assets_;
+            bool startNewGame(AssetService* assetService, UInitialConditions initial_) {
+                assert(assetService);
+                return startNewGame(std::move(initial_), std::move(assetService->getAssetManagerClone()));
             }
 
-            void buildReplay(json& j_replay_, json& j_assets_) {
+            bool startNewGame(UAssetManager assetManager_, AssetID worldID, PlayerMapExt playerMapExt, int thisPlayer) {
+                auto initial_ = std::make_unique<InitialConditions>();
+                initial_->worldID = worldID;
+                initial_->playerMapExt = playerMapExt;
+                initial_->thisPlayer = thisPlayer;
+                return startNewGame(std::move(initial_), std::move(assetManager_));
+            }
+
+            
+            // ### Saved game ############################################## //
+            bool startSavedGame(UAssetManager assetManager_, UEntityManager entityManager_,
+                                UCollisionTracker collisionTracker_, UReplay replay_, int thisPlayer) {
                 clear();
-                j_replay = j_replay_;
-                j_assets = j_assets_;
+                if (!assetManager_) return false;
+                if (!entityManager_) return false;
+                if (!collisionTracker_) return false;
+                if (!replay_) return false;
+                if (!replay_->initial) return false;
+                initial = std::move(replay_->initial);
+                assetManager = std::move(assetManager_);
+                entityManager = std::move(entityManager_);
+                collisionTracker = std::move(collisionTracker_);
+                replay = std::move(replay_);
+                initial->thisPlayer = thisPlayer;
+                status = GameStarterStatus::SavedGame;
+                return true;
+            }
+
+            bool startSavedGame(DataChecker* dataChecker, int thisPlayer) {
+                assert(dataChecker);
+                if (!dataChecker->assetManager) return false;
+                if (!dataChecker->entityManager) return false;
+                if (!dataChecker->collisionTracker) return false;
+                if (!dataChecker->replay) return false;
+                return startSavedGame(std::move(dataChecker->assetManager), std::move(dataChecker->entityManager),
+                                        std::move(dataChecker->collisionTracker), std::move(dataChecker->replay), thisPlayer);
+            }
+
+            
+            // ### Replay ############################################## //
+            bool startReplay(UAssetManager assetManager_, UReplay replay_) {
+                clear();
+                if (!assetManager_) return false;
+                if (!replay_) return false;
+                if (!replay_->initial) return false;
+                assetManager = std::move(assetManager_);
+                replay = std::move(replay_);
+                status = GameStarterStatus::Replay;
+                return true;
+            }
+
+            bool startReplay(DataChecker* dataChecker) {
+                assert(dataChecker);
+                if (!dataChecker->assetManager) return false;
+                if (!dataChecker->replay) return false;
+                return startReplay(std::move(dataChecker->assetManager), std::move(dataChecker->replay));
             }
 
             void clear() {
                 status = GameStarterStatus::NoGame;
-                j_replay = json();
-                j_assets = json();
-                j_entities = json();
-                j_collisions = json();
-                j_complete = json();
+                initial.reset();
+                assetManager.reset();
+                entityManager.reset();
+                collisionTracker.reset();
+                replay.reset();
             }
 
-            GameStarterResult getResult() { return {status, message}; }
+            void setStatus(GameStarterStatus status_) { status = status_; }
+            GameStarterStatus getStatus() { return status; }
+            // GameStarterResult getResult() { return {status, message}; }
 
     };
 

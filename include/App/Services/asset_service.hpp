@@ -15,12 +15,6 @@ namespace SupDef {
             Mods mods;
 
         public:
-            // AssetService(EventDispatcher* globalDispatcher_) {
-            //     assert(globalDispatcher_);
-            //     setGlobalDispatcher(globalDispatcher_);
-            //     originalAssetManager = std::make_unique<AssetManager>(globalDispatcher_);
-            //     assetManager = std::make_unique<AssetManager>(globalDispatcher_);
-            // }
             AssetService() {
                 originalAssetManager = std::make_unique<AssetManager>();
                 assetManager = std::make_unique<AssetManager>();
@@ -33,6 +27,16 @@ namespace SupDef {
                 BuildAssets::build(assetManager.get());
                 mods.clear();
                 buildModList();
+            }
+
+            UAssetManager getAssetManagerClone() {
+                applyMods();
+                assert(assetManager);
+                json j;
+                auto result = std::make_unique<AssetManager>();
+                assetManager->to_json(j);
+                result->from_json(j);
+                return std::move(result);
             }
         
             Mods& getModList() {
