@@ -56,44 +56,6 @@ namespace SupDef {
             bool checkCollisionTracker(json& j) { return check<CollisionTracker>(collisionTracker, j); }
             bool checkReplay          (json& j) { return check<Replay          >(replay          , j); }
 
-            // bool checkEntityManager(json& j) {
-            //     try {
-            //         entityManager = std::make_unique<EntityManager>();
-            //         entityManager->from_json(j);
-            //         return true;
-            //     } catch(const std::exception& e) {
-            //         entityManager.reset();
-            //         LOG_ERROR("Error on reading entities: &1", e.what());
-            //         return false;
-            //     }
-            // }
-
-            // bool checkCollisionTracker(json& j) {
-            //     try {
-            //         std::cout << "Coll\n";
-            //         collisionTracker = std::make_unique<CollisionTracker>();
-            //         collisionTracker->from_json(j);
-            //         return true;
-            //     } catch(const std::exception& e) {
-            //         collisionTracker.reset();
-            //         LOG_ERROR("Error on reading collisions: &1", e.what());
-            //         return false;
-            //     }
-            // }
-
-            // bool checkReplay(json& j) {
-            //     try {
-            //         std::cout << "Replay\n";
-            //         replay = std::make_unique<Replay>();
-            //         replay->from_json(j);
-            //         return true;
-            //     } catch(const std::exception& e) {
-            //         replay.reset();
-            //         LOG_ERROR("Error on reading replay: &1", e.what());
-            //         return false;
-            //     }
-            // }
-
     };
 
     using UDataChecker = std::unique_ptr<DataChecker>;

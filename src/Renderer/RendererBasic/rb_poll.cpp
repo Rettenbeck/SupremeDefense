@@ -64,7 +64,7 @@ namespace SupDef {
                         game->setThisPlayer(otherPlayer);
                     }
                     if (keyEvent->code == sf::Keyboard::Key::M) {
-                        dispatch<StartTestGameEvent>();
+                        // dispatch<StartTestGameEvent>();
                     }
                     if (keyEvent->code == sf::Keyboard::Key::O) {
                         dispatch<PrintPagesEvent>();

@@ -16,12 +16,14 @@ namespace SupDef {
 
             void to_json(json& j) const {
                 j[SG_WORLD_ID] = worldID;
-                for (const auto& [id, type, entitiyId, name] : playerMapExt) {
-                    auto& j_sub = j[SG_PLAYER_DATA][id];
-                    j_sub[SG_PLAYER_ID] = id;
-                    j_sub[SG_PLAYER_TYPE] = type;
-                    j_sub[SG_PLAYER_ENT_ID] = entitiyId;
-                    j_sub[SG_PLAYER_NAME] = name;
+                for (const auto& [id, type, entityId, name] : playerMapExt) {
+                    std::stringstream ss; ss << id;
+                    json j_player_data;
+                    j_player_data[SG_PLAYER_ID] = id;
+                    j_player_data[SG_PLAYER_TYPE] = type;
+                    j_player_data[SG_PLAYER_ENT_ID] = entityId;
+                    j_player_data[SG_PLAYER_NAME] = name;
+                    j[SG_PLAYER_DATA][ss.str()] = j_player_data;
                 }
             }
 
@@ -29,13 +31,12 @@ namespace SupDef {
                 playerMapExt.clear();
                 worldID = j.at(SG_WORLD_ID);
                 auto& j_sub = j[SG_PLAYER_DATA];
-                for(auto& [id, j_data] : j_sub.items()) {
-                    playerMapExt.emplace_back(
-                        j_data[SG_PLAYER_ID],
-                        j_data[SG_PLAYER_TYPE],
-                        j_data[SG_PLAYER_ENT_ID],
-                        j_data[SG_PLAYER_NAME]
-                    );
+                for(auto& [id, j_player_data] : j_sub.items()) {
+                    int id_ = j_player_data[SG_PLAYER_ID];
+                    AssetID type = j_player_data[SG_PLAYER_TYPE];
+                    EntityID ent_id = j_player_data[SG_PLAYER_ENT_ID];
+                    std::string name = j_player_data[SG_PLAYER_NAME];
+                    playerMapExt.emplace_back(id_, type, ent_id, name);
                 }
             }
     

@@ -31,6 +31,8 @@ namespace SupDef {
 
             GameStarter() { }
 
+
+            // ### New game ############################################## //
             bool startNewGame(UInitialConditions initial_, UAssetManager assetManager_) {
                 clear();
                 if (!initial_) return false;
@@ -54,39 +56,54 @@ namespace SupDef {
                 return startNewGame(std::move(initial_), std::move(assetManager_));
             }
 
+            
+            // ### Saved game ############################################## //
             bool startSavedGame(UAssetManager assetManager_, UEntityManager entityManager_,
-                                UCollisionTracker collisionTracker_, UReplay replay_) {
+                                UCollisionTracker collisionTracker_, UReplay replay_, int thisPlayer) {
                 clear();
                 if (!assetManager_) return false;
                 if (!entityManager_) return false;
                 if (!collisionTracker_) return false;
                 if (!replay_) return false;
+                if (!replay_->initial) return false;
+                initial = std::move(replay_->initial);
                 assetManager = std::move(assetManager_);
                 entityManager = std::move(entityManager_);
                 collisionTracker = std::move(collisionTracker_);
                 replay = std::move(replay_);
+                initial->thisPlayer = thisPlayer;
                 status = GameStarterStatus::SavedGame;
                 return true;
             }
 
-            bool startSavedGame(DataChecker* dataChecker) {
+            bool startSavedGame(DataChecker* dataChecker, int thisPlayer) {
                 assert(dataChecker);
                 if (!dataChecker->assetManager) return false;
                 if (!dataChecker->entityManager) return false;
                 if (!dataChecker->collisionTracker) return false;
                 if (!dataChecker->replay) return false;
                 return startSavedGame(std::move(dataChecker->assetManager), std::move(dataChecker->entityManager),
-                                        std::move(dataChecker->collisionTracker), std::move(dataChecker->replay));
+                                        std::move(dataChecker->collisionTracker), std::move(dataChecker->replay), thisPlayer);
             }
 
-            bool buildReplay(UAssetManager assetManager_, UReplay replay_) {
+            
+            // ### Replay ############################################## //
+            bool startReplay(UAssetManager assetManager_, UReplay replay_) {
                 clear();
                 if (!assetManager_) return false;
                 if (!replay_) return false;
+                if (!replay_->initial) return false;
                 assetManager = std::move(assetManager_);
                 replay = std::move(replay_);
                 status = GameStarterStatus::Replay;
                 return true;
+            }
+
+            bool startReplay(DataChecker* dataChecker) {
+                assert(dataChecker);
+                if (!dataChecker->assetManager) return false;
+                if (!dataChecker->replay) return false;
+                return startReplay(std::move(dataChecker->assetManager), std::move(dataChecker->replay));
             }
 
             void clear() {

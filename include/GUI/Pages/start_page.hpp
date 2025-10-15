@@ -21,7 +21,7 @@ namespace SupDef {
 
                 addButton<MenuButtonOpenServerEvent>(10,  60, 160, 28, "Server aufmachen");
                 addButton<MenuButtonJoinServerEvent>(10, 100, 160, 28, "Server joinen");
-                addButton<StartTestGameEvent>(10, 140, 160, 28, "Testspiel starten");
+                // addButton<StartTestGameEvent>(10, 140, 160, 28, "Testspiel starten");
                 addButton<MenuButtonOpenFileEvent>(10, 180, 160, 28, "Datei laden");
                 addButton<MenuButtonOpenModListEvent>(10, 220, 160, 28, "Mods");
 

@@ -136,6 +136,11 @@ namespace SupDef {
             }
         }
 
+        assert(saveReplay);
+        saveReplay->initial = std::make_unique<InitialConditions>();
+        saveReplay->initial->worldID = worldID;
+        saveReplay->initial->playerMapExt = playerMapExt_;
+
         serialize("startup.txt");
     }
 

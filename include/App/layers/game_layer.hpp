@@ -79,6 +79,9 @@ namespace SupDef {
                 auto initial = std::make_unique<InitialConditions>();
                 json j; starter->replay->initial->to_json(j);
                 initial->from_json(j);
+                assert(!initial->playerMapExt.empty());
+                auto& [id, type, ent_id, name] = initial->playerMapExt[0];
+                initial->thisPlayer = id;
                 game->setAssetManager(std::move(starter->assetManager));
                 game->startWorld(std::move(initial));
                 game->setLoadReplay(std::move(starter->replay));
