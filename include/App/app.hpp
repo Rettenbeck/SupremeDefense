@@ -170,6 +170,7 @@ namespace SupDef {
                 assert(services->fileManager);
                 assert(services->dataChecker);
                 assert(services->gameStarter);
+                
                 if (!services->fileManager->loadFromFile("state.txt")) return;
                 services->dataChecker->checkFromFile(services->fileManager.get());
                 auto s = services->gameStarter->startSavedGame(services->dataChecker.get(), 1);

@@ -67,8 +67,7 @@ namespace SupDef {
 
             void startSavedGame(GameStarter* starter) {
                 startNewGame(starter);
-                game->setCollisionTracker(std::move(starter->collisionTracker));
-                game->setEntityManager(std::move(starter->entityManager));
+                game->receiveGameState(starter->gameState.get());
                 game->setSaveReplay(std::move(starter->replay));
             }
         

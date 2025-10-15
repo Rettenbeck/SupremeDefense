@@ -6,6 +6,7 @@
 #include <Game/collision_system.hpp>
 #include <Game/collision_tracker.hpp>
 #include <Game/command_tracker.hpp>
+#include <Game/game_state.hpp>
 #include <Game/replay.hpp>
 #include <Game/constants.hpp>
 #include <App/Log/logger.hpp>
@@ -46,6 +47,7 @@ namespace SupDef {
             Entity* createPlayer(AssetID playerID, AssetID spawnID, EntityID mapID);
             EntityID getMapIDBySpawn(AssetID spawnAssetID);
             void startReplay(json& j);
+            void receiveGameState(GameState* gameState);
 
 
             
