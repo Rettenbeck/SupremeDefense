@@ -36,7 +36,7 @@ namespace SupDef {
                     AssetID type = j_player_data[SG_PLAYER_TYPE];
                     EntityID ent_id = j_player_data[SG_PLAYER_ENT_ID];
                     std::string name = j_player_data[SG_PLAYER_NAME];
-                    playerMapExt.emplace_back(id_, type, ent_id, name);
+                    playerMapExt.push_back({id_, type, ent_id, name});
                 }
             }
     
