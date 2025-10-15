@@ -7,23 +7,23 @@
 namespace SupDef {
 
     void Game::to_json(json& j) const {
-        j[SG_ENTITY_MANAGER] = json();
-        entityManager->to_json(j[SG_ENTITY_MANAGER]);
-    
         j[SG_ASSET_MANAGER] = json();
         assetManager->to_json(j[SG_ASSET_MANAGER]);
 
-        j[SG_COLLISION_TRACKER] = json();
-        collisionTracker->to_json(j[SG_COLLISION_TRACKER]);
+        j[SG_GAME_STATE][SG_ENTITY_MANAGER] = json();
+        entityManager->to_json(j[SG_GAME_STATE][SG_ENTITY_MANAGER]);
+    
+        j[SG_GAME_STATE][SG_COLLISION_TRACKER] = json();
+        collisionTracker->to_json(j[SG_GAME_STATE][SG_COLLISION_TRACKER]);
 
         j[SG_REPLAY] = json();
         saveReplay->to_json(j[SG_REPLAY]);
     }
 
     void Game::from_json(const json& j) {
-        entityManager    ->from_json(j[SG_ENTITY_MANAGER]);
         assetManager     ->from_json(j[SG_ASSET_MANAGER ]);
-        collisionTracker ->from_json(j[SG_COLLISION_TRACKER]);
+        entityManager    ->from_json(j[SG_GAME_STATE][SG_ENTITY_MANAGER]);
+        collisionTracker ->from_json(j[SG_GAME_STATE][SG_COLLISION_TRACKER]);
         saveReplay       ->from_json(j[SG_REPLAY]);
     }
 

@@ -155,6 +155,14 @@ namespace SupDef {
         assert(thisPlayer != NO_ENTITY);
     }
 
+    void Game::receiveGameState(GameState* gameState) {
+        assert(gameState);
+        assert(gameState->entityManager);
+        assert(gameState->collisionTracker);
+        entityManager = std::move(gameState->entityManager);
+        collisionTracker = std::move(gameState->collisionTracker);
+    }
+            
 }
 
 #endif

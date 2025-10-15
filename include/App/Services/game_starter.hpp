@@ -25,8 +25,9 @@ namespace SupDef {
         public:
             UInitialConditions initial;
             UAssetManager assetManager;
-            UEntityManager entityManager;
-            UCollisionTracker collisionTracker;
+            UGameState gameState;
+            // UEntityManager entityManager;
+            // UCollisionTracker collisionTracker;
             UReplay replay;
 
             GameStarter() { }
@@ -58,18 +59,21 @@ namespace SupDef {
 
             
             // ### Saved game ############################################## //
-            bool startSavedGame(UAssetManager assetManager_, UEntityManager entityManager_,
-                                UCollisionTracker collisionTracker_, UReplay replay_, int thisPlayer) {
+            bool startSavedGame(UAssetManager assetManager_, UGameState gameState_, UReplay replay_, int thisPlayer) {
                 clear();
                 if (!assetManager_) return false;
-                if (!entityManager_) return false;
-                if (!collisionTracker_) return false;
+                if (!gameState_) return false;
+                if (!gameState_->entityManager) return false;
+                if (!gameState_->collisionTracker) return false;
+                // if (!entityManager_) return false;
+                // if (!collisionTracker_) return false;
                 if (!replay_) return false;
                 if (!replay_->initial) return false;
                 initial = std::move(replay_->initial);
                 assetManager = std::move(assetManager_);
-                entityManager = std::move(entityManager_);
-                collisionTracker = std::move(collisionTracker_);
+                gameState = std::move(gameState_);
+                // entityManager = std::move(entityManager_);
+                // collisionTracker = std::move(collisionTracker_);
                 replay = std::move(replay_);
                 initial->thisPlayer = thisPlayer;
                 status = GameStarterStatus::SavedGame;
@@ -79,11 +83,14 @@ namespace SupDef {
             bool startSavedGame(DataChecker* dataChecker, int thisPlayer) {
                 assert(dataChecker);
                 if (!dataChecker->assetManager) return false;
-                if (!dataChecker->entityManager) return false;
-                if (!dataChecker->collisionTracker) return false;
+                if (!dataChecker->gameState) return false;
+                if (!dataChecker->gameState->entityManager) return false;
+                if (!dataChecker->gameState->collisionTracker) return false;
+                // if (!dataChecker->entityManager) return false;
+                // if (!dataChecker->collisionTracker) return false;
                 if (!dataChecker->replay) return false;
-                return startSavedGame(std::move(dataChecker->assetManager), std::move(dataChecker->entityManager),
-                                        std::move(dataChecker->collisionTracker), std::move(dataChecker->replay), thisPlayer);
+                return startSavedGame(std::move(dataChecker->assetManager), std::move(dataChecker->gameState),
+                                        std::move(dataChecker->replay), thisPlayer);
             }
 
             
@@ -110,14 +117,12 @@ namespace SupDef {
                 status = GameStarterStatus::NoGame;
                 initial.reset();
                 assetManager.reset();
-                entityManager.reset();
-                collisionTracker.reset();
+                gameState.reset();
                 replay.reset();
             }
 
             void setStatus(GameStarterStatus status_) { status = status_; }
             GameStarterStatus getStatus() { return status; }
-            // GameStarterResult getResult() { return {status, message}; }
 
     };
 
